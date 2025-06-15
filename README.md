@@ -3,7 +3,7 @@ WORKSHOP_TITLE
 
 ### posit::conf(2025)
 
-by Max Kuhn, and Emil Hvitfeldt
+by Thomas Pedersen and Teun Van den Brand
 
 -----
 
