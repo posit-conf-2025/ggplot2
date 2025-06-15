@@ -1,4 +1,4 @@
-WORKSHOP_TITLE
+Mastering Data Visualization with ggplot2: Latest Techniques and Best Practices
 ================
 
 ### posit::conf(2025)
