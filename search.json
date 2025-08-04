@@ -1,5 +1,33 @@
 [
   {
+    "objectID": "sessions/3_2_interaction.html",
+    "href": "sessions/3_2_interaction.html",
+    "title": "Interactive plots",
+    "section": "",
+    "text": "Slides Exercises Solutions\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/4_2_fun.html",
+    "href": "sessions/4_2_fun.html",
+    "title": "Spice up your plot",
+    "section": "",
+    "text": "Slides Exercises Solutions\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/4_1_extensions.html",
+    "href": "sessions/4_1_extensions.html",
+    "title": "Creating extensions",
+    "section": "",
+    "text": "Slides Exercises Solutions\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/2_1_text_fonts.html",
+    "href": "sessions/2_1_text_fonts.html",
+    "title": "Text rendering and font use",
+    "section": "",
+    "text": "Slides Exercises Solutions\n\n\n\n Previous session\nNext session"
+  },
+  {
     "objectID": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
     "href": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
     "title": "Attribution-ShareAlike 4.0 International",
@@ -11,7 +39,7 @@
     "href": "index.html",
     "title": "Mastering Data Visualization with ggplot2",
     "section": "",
-    "text": "by Thomas Lin Pedersen and Teun Van den Brand\n🗓   September 16, 2025 ⏰   09:00 - 17:00 🏨   ROOM TBD ✍️   pos.it/conf"
+    "text": "by Thomas Lin Pedersen and Teun van den Brand\n🗓   September 16, 2025 ⏰   09:00 - 17:00 🏨   ROOM TBD ✍️   pos.it/conf"
   },
   {
     "objectID": "index.html#description",
@@ -25,7 +53,7 @@
     "href": "index.html#preparation",
     "title": "Mastering Data Visualization with ggplot2",
     "section": "Preparation",
-    "text": "Preparation\nParticipants are expected to bring their own laptop with a working installation of R (preferably the latest version), as well as the latest versions of the following packages:\n\nggplot2\npatchwork\nmarquee\nsystemfonts\nggiraph\nlegendry\nggfx\n\nIf you have trouble installing any of these packages please contact the instructors so we can sort it out before the workshop starts."
+    "text": "Preparation\nThis workshop expects familiarity with ggplot2 and the grammar of graphics. In order to have time for more advanced topics we will not spend time taking about how to use ggplot2 in general, nor its design philosophy and how it ties into the grammar of graphics. If you are not yet at this level we advise that you read through https://ggplot2-book.org to the extend possible.\nParticipants are expected to bring their own laptop with a working installation of R (preferably the latest version), as well as the latest versions of the following packages:\n\nggplot2\npatchwork\nmarquee\nsystemfonts\nggiraph\nlegendry\nggfx\n\nIf you have trouble installing any of these packages please contact the instructors so we can sort it out before the workshop starts."
   },
   {
     "objectID": "index.html#schedule",
@@ -39,6 +67,34 @@
     "href": "index.html#instructors",
     "title": "Mastering Data Visualization with ggplot2",
     "section": "Instructor(s)",
-    "text": "Instructor(s)\nThomas Lin Pedersen (thomas.pedersen@posit.co)\nThomas is a software engineer at Posit where he is in charge of most things related to R graphics. He is the maintainer of ggplot2 and author of numerous packages that improves the graphics capabilities of R. On the side, Thomas is a generative artist making computational art using R, JavaScript, and GLSL. A not insignificant number of packages or features has been born from artistic needs.\nTeun Van den Brand (teun.vandenbrand@posit.co)\n\n This work is licensed under a Creative Commons Attribution 4.0 International License."
+    "text": "Instructor(s)\nThomas Lin Pedersen (thomas.pedersen@posit.co)\nThomas is a software engineer at Posit where he is in charge of most things related to R graphics. He is the maintainer of ggplot2 and author of numerous packages that improves the graphics capabilities of R. On the side, Thomas is a generative artist making computational art using R, JavaScript, and GLSL. A not insignificant number of packages or features has been born from artistic needs.\nTeun van den Brand (teun.vandenbrand@posit.co) Teun is a contractor working for Posit. He contributes mostly to the ggplot2 and scales packages and has been in charge of most of the new features in the latest releases. He has authored other packages such as legendry, ggh4x and ggarrow — all building on the ggplot2 framework.\n\n This work is licensed under a Creative Commons Attribution 4.0 International License."
+  },
+  {
+    "objectID": "sessions/2_2_theme_guide.html",
+    "href": "sessions/2_2_theme_guide.html",
+    "title": "Styling your plot",
+    "section": "",
+    "text": "Slides Exercises Solutions\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/3_1_composition.html",
+    "href": "sessions/3_1_composition.html",
+    "title": "Plot composition",
+    "section": "",
+    "text": "Slides Exercises Solutions\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/1_1_introduction.html",
+    "href": "sessions/1_1_introduction.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "This session will briefly introduce the rest of the day, giving an overview of the schedule and any practical information that may be relevant.\n\n\nSlides Exercises Solutions\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/1_2_ggplot2.html",
+    "href": "sessions/1_2_ggplot2.html",
+    "title": "Modern ggplot2",
+    "section": "",
+    "text": "Slides Exercises Solutions\n\n\n\n Previous session\nNext session"
   }
 ]
