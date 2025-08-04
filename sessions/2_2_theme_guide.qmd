@@ -2,3 +2,17 @@
 title: "Styling your plot"
 author: "Teun van den Brand"
 ---
+
+::: {.text-center .plain}
+:::::: {.btn-group}
+[Slides](../slides/2_2_theme_guide.qmd){.btn .btn-primary role="button"}
+[Exercises](){.btn .btn-success .disabled role="button"}
+[Solutions](){.btn .btn-warning .disabled role="button"}
+::::::
+:::
+
+::: {.d-flex .justify-content-between}
+[<i class="bi bi-caret-left"></i> Previous session](../sessions/2_1_text_fonts.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
+
+[Next session <i class="bi bi-caret-right"></i>](../sessions/3_1_composition.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
+:::

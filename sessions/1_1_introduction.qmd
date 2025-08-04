@@ -2,3 +2,19 @@
 title: "Introduction"
 author: "Thomas Lin Pedersen"
 ---
+
+This session will briefly introduce the rest of the day, giving an overview of the schedule and any practical information that may be relevant.
+
+::: {.text-center .plain}
+:::::: {.btn-group}
+[Slides](../slides/1_1_introduction.qmd){.btn .btn-primary role="button"}
+[Exercises](){.btn .btn-success .disabled role="button"}
+[Solutions](){.btn .btn-warning .disabled role="button"}
+::::::
+:::
+
+::: {.d-flex .justify-content-between}
+[<i class="bi bi-caret-left"></i> Previous session](){.btn .btn-sm .btn-outline-secondary .disabled role="button"}
+
+[Next session <i class="bi bi-caret-right"></i>](../sessions/1_2_ggplot2.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
+:::

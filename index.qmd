@@ -23,6 +23,8 @@ Throughout the day, participants will:
 By the end of this workshop, you'll have a comprehensive understanding of the latest tools and techniques in ggplot2, empowering you to create compelling and insightful data visualizations. Whether you're a user or a package developer, this workshop will provide valuable insights and skills to enhance your data visualization toolkit.
 
 ## Preparation
+This workshop expects familiarity with ggplot2 and the grammar of graphics. In order to have time for more advanced topics we will not spend time taking about how to use ggplot2 in general, nor its design philosophy and how it ties into the grammar of graphics. If you are not yet at this level we advise that you read through https://ggplot2-book.org to the extend possible.
+
 Participants are expected to bring their own laptop with a working installation of R (preferably the latest version), as well as the latest versions of the following packages:
 
 * ggplot2

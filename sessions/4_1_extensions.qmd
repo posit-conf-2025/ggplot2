@@ -2,3 +2,17 @@
 title: "Creating extensions"
 author: "Teun van den Brand"
 ---
+
+::: {.text-center .plain}
+:::::: {.btn-group}
+[Slides](../slides/4_1_extensions.qmd){.btn .btn-primary role="button"}
+[Exercises](){.btn .btn-success .disabled role="button"}
+[Solutions](){.btn .btn-warning .disabled role="button"}
+::::::
+:::
+
+::: {.d-flex .justify-content-between}
+[<i class="bi bi-caret-left"></i> Previous session](../sessions/3_2_interaction.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
+
+[Next session <i class="bi bi-caret-right"></i>](../sessions/4_2_fun.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
+:::
