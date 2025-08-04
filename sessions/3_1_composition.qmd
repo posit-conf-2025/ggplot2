@@ -1,0 +1,4 @@
+---
+title: "Plot composition"
+author: "Thomas Lin Pedersen"
+---

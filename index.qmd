@@ -1,0 +1,64 @@
+---
+title: "Mastering Data Visualization with ggplot2"
+---
+
+*by Thomas Lin Pedersen and Teun Van den Brand*
+
+🗓 &emsp; September 16, 2025<br/>
+⏰ &emsp; 09:00 - 17:00<br/>
+🏨 &emsp; ROOM TBD<br/>
+✍️ &emsp; [pos.it/conf](http://pos.it/conf)
+
+
+## Description
+This workshop will explore the cutting-edge advancements and best practices in data visualization using ggplot2. This workshop is designed for data enthusiasts, analysts, and researchers who are eager to elevate their visual data storytelling skills. This workshop will be relevant to both ggplot2 users as well as package authors that somehow extend ggplot2 in their packages.
+
+Throughout the day, participants will:
+
+- Discover the Latest Features: ggplot2 and its ecosystem is ever-evolving. We will cover all the new features of ggplot2 itself and highlight key features from important extension packages, so you can rest assured that no new features have escaped your attention.
+- Advanced Customization Techniques: Dive deep into how to manage and control the looks of your visualisation in order to create visually stunning and informative plots.
+- Understand text and fonts: Text is an indispensable part of data visualisation, yet rendering of it, especially when using custom fonts, is somewhat mysterious. Learn exactly what is going on so you can be confident in using text to the fullest
+- Multifigure Plot Compositions: Utilize the latest features of patchwork to create complex plot layouts, including native support for gt tables and improved handling of plot components across multiple grid cells.
+
+By the end of this workshop, you'll have a comprehensive understanding of the latest tools and techniques in ggplot2, empowering you to create compelling and insightful data visualizations. Whether you're a user or a package developer, this workshop will provide valuable insights and skills to enhance your data visualization toolkit.
+
+## Preparation
+Participants are expected to bring their own laptop with a working installation of R (preferably the latest version), as well as the latest versions of the following packages:
+
+* ggplot2
+* patchwork
+* marquee
+* systemfonts
+* ggiraph
+* legendry
+* ggfx
+
+If you have trouble installing any of these packages please contact the instructors so we can sort it out before the workshop starts.
+
+## Schedule
+
+| Time          | Activity                                                   |
+| :------------ | :--------------------------------------------------------- |
+| 09:00 - 9:30  | [Introduction](sessions/1_1_introduction.qmd)              |
+| 09:30 - 10:30 | [Modern ggplot2](sessions/1_2_ggplot2.qmd)                 |
+| 10:30 - 11:00 | *Coffee break*                                             |
+| 11:00 - 11:45 | [Text rendering and font use](sessions/2_1_text_fonts.qmd) |
+| 11:45 - 12:30 | [Styling your plot](sessions/2_2_theme_guide.qmd)          |
+| 12:30 - 13:30 | *Lunch break*                                              |
+| 13:30 - 14:15 | [Plot Composition](sessions/3_1_composition.qmd)           |
+| 14:15 - 15:00 | [Interactive plots](sessions/3_2_interaction.qmd)          |
+| 15:00 - 15:30 | *Coffee break*                                             |
+| 15:30 - 16:30 | [Creating extensions](sessions/4_1_extensions.qmd)         |
+| 16:30 - 17:00 | [Spice up your plot](sessions/4_2_fun.qmd)                 |
+
+## Instructor(s)
+
+**Thomas Lin Pedersen** (thomas.pedersen@posit.co)
+
+Thomas is a software engineer at Posit where he is in charge of most things related to R graphics. He is the maintainer of ggplot2 and author of numerous packages that improves the graphics capabilities of R. On the side, Thomas is a generative artist making computational art using R, JavaScript, and GLSL. A not insignificant number of packages or features has been born from artistic needs.
+
+**Teun Van den Brand** (teun.vandenbrand@posit.co)
+
+-----
+
+![](https://i.creativecommons.org/l/by/4.0/88x31.png) This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).

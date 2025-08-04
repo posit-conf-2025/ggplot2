@@ -1,0 +1,42 @@
+project:
+  type: website
+
+website:
+  title: "Mastering Data Visualization with ggplot2"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - text: Sessions
+        menu:
+        - text: Session 1
+        - href: sessions/1_1_introduction.qmd
+          text: Introduction
+        - href: sessions/1_2_ggplot2.qmd
+          text: Modern ggplot2
+        - text: Session 2
+        - href: sessions/2_1_text_fonts.qmd
+          text: Text rendering and font use
+        - href: sessions/2_2_theme_guide.qmd
+          text: Styling your plot
+        - text: Session 3
+        - href: sessions/3_1_composition.qmd
+          text: Plot composition
+        - href: sessions/3_2_interaction.qmd
+          text: Interactive plots
+        - text: Session 4
+        - href: sessions/4_1_extensions.qmd
+          text: Creating extensions
+        - href: sessions/4_2_fun.qmd
+          text: Spice up your plot
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+
+
