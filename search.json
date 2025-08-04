@@ -4,7 +4,7 @@
     "href": "sessions/3_2_interaction.html",
     "title": "Interactive plots",
     "section": "",
-    "text": "Slides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
+    "text": "Here we learn about sprucing up your plots for the digital world:\n\nplotly\nggiraph\ngganimate\n\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
   },
   {
     "objectID": "sessions/4_2_fun.html",
@@ -18,7 +18,7 @@
     "href": "sessions/4_1_extensions.html",
     "title": "Creating extensions",
     "section": "",
-    "text": "Slides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
+    "text": "Here we talk about creating reusable pieces of code that fit into the grammar:\n\nClasses\nConstructors\nPatterns\n\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
   },
   {
     "objectID": "sessions/2_1_text_fonts.html",
@@ -74,7 +74,7 @@
     "href": "sessions/2_2_theme_guide.html",
     "title": "Styling your plot",
     "section": "",
-    "text": "Slides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
+    "text": "In this session, we learn about the following topics:\n\nInk and paper\nPalettes in themes\nBuilding your own theme\nCustomising guides\n\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
   },
   {
     "objectID": "sessions/3_1_composition.html",
@@ -95,6 +95,6 @@
     "href": "sessions/1_2_ggplot2.html",
     "title": "Modern ggplot2",
     "section": "",
-    "text": "Slides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
+    "text": "The goal of this session is to get you up to speed with the latest developments from ggplot2 3.5.0 onwards.\n\nHeadings\nPatterns and gradients\nPolar coordinates\nFacets\n\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
   }
 ]
