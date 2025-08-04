@@ -1,5 +1,5 @@
 ---
 title: "Interactive plots"
-author: "Teun Van den Brand"
+author: "Teun van den Brand"
 format: revealjs
 ---

@@ -2,7 +2,7 @@
 title: "Mastering Data Visualization with ggplot2"
 ---
 
-*by Thomas Lin Pedersen and Teun Van den Brand*
+*by Thomas Lin Pedersen and Teun van den Brand*
 
 🗓 &emsp; September 16, 2025<br/>
 ⏰ &emsp; 09:00 - 17:00<br/>
@@ -57,7 +57,7 @@ If you have trouble installing any of these packages please contact the instruct
 
 Thomas is a software engineer at Posit where he is in charge of most things related to R graphics. He is the maintainer of ggplot2 and author of numerous packages that improves the graphics capabilities of R. On the side, Thomas is a generative artist making computational art using R, JavaScript, and GLSL. A not insignificant number of packages or features has been born from artistic needs.
 
-**Teun Van den Brand** (teun.vandenbrand@posit.co)
+**Teun van den Brand** (teun.vandenbrand@posit.co)
 
 -----
 

@@ -1,4 +1,4 @@
 ---
 title: "Creating extensions"
-author: "Teun Van den Brand"
+author: "Teun van den Brand"
 ---
