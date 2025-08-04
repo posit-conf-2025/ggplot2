@@ -3,6 +3,12 @@ title: "Interactive plots"
 author: "Teun van den Brand"
 ---
 
+Here we learn about sprucing up your plots for the digital world:
+
+* plotly
+* ggiraph
+* gganimate
+
 ::: {.text-center .plain}
 :::::: {.btn-group}
 [Slides](../slides/3_2_interaction.qmd){.btn .btn-primary role="button"}

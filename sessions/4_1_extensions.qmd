@@ -3,6 +3,12 @@ title: "Creating extensions"
 author: "Teun van den Brand"
 ---
 
+Here we talk about creating reusable pieces of code that fit into the grammar:
+
+* Classes
+* Constructors
+* Patterns
+
 ::: {.text-center .plain}
 :::::: {.btn-group}
 [Slides](../slides/4_1_extensions.qmd){.btn .btn-primary role="button"}

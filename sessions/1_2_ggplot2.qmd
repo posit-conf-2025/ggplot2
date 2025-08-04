@@ -3,6 +3,13 @@ title: "Modern ggplot2"
 author: "Teun van den Brand"
 ---
 
+The goal of this session is to get you up to speed with the latest developments from ggplot2 3.5.0 onwards.
+
+* Headings
+* Patterns and gradients
+* Polar coordinates
+* Facets
+
 ::: {.text-center .plain}
 :::::: {.btn-group}
 [Slides](../slides/1_2_ggplot2.qmd){.btn .btn-primary role="button"}
