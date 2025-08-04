@@ -24,14 +24,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages:
-          - any::ggplot2
-          - any::patchwork
-          - any::marquee
-          - any::systemfonts
-          - any::ggiraph
-          - any::legendry
-          - any::ggfx
+          extra-packages: any::ggplot2, any::patchwork, any::marquee, any::systemfonts, any::ggiraph, any::legendry, any::ggfx
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
