@@ -13,6 +13,8 @@ This session will briefly introduce the rest of the day, giving an overview of t
 ::::::
 :::
 
+---
+
 ::: {.d-flex .justify-content-between}
 [<i class="bi bi-caret-left"></i> Previous session](){.btn .btn-sm .btn-outline-secondary .disabled role="button"}
 

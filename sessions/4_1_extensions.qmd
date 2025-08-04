@@ -11,6 +11,8 @@ author: "Teun van den Brand"
 ::::::
 :::
 
+---
+
 ::: {.d-flex .justify-content-between}
 [<i class="bi bi-caret-left"></i> Previous session](../sessions/3_2_interaction.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
 

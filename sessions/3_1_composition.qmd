@@ -11,6 +11,8 @@ author: "Thomas Lin Pedersen"
 ::::::
 :::
 
+---
+
 ::: {.d-flex .justify-content-between}
 [<i class="bi bi-caret-left"></i> Previous session](../sessions/2_2_theme_guide.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
 
