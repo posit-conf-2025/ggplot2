@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Mastering Data Visualization with ggplot2",
     "section": "",
-    "text": "by Thomas Lin Pedersen and Teun Van den Brand\n🗓   September 16, 2025 ⏰   09:00 - 17:00 🏨   ROOM TBD ✍️   pos.it/conf"
+    "text": "by Thomas Lin Pedersen and Teun van den Brand\n🗓   September 16, 2025 ⏰   09:00 - 17:00 🏨   ROOM TBD ✍️   pos.it/conf"
   },
   {
     "objectID": "index.html#description",
@@ -39,6 +39,6 @@
     "href": "index.html#instructors",
     "title": "Mastering Data Visualization with ggplot2",
     "section": "Instructor(s)",
-    "text": "Instructor(s)\nThomas Lin Pedersen (thomas.pedersen@posit.co)\nThomas is a software engineer at Posit where he is in charge of most things related to R graphics. He is the maintainer of ggplot2 and author of numerous packages that improves the graphics capabilities of R. On the side, Thomas is a generative artist making computational art using R, JavaScript, and GLSL. A not insignificant number of packages or features has been born from artistic needs.\nTeun Van den Brand (teun.vandenbrand@posit.co)\n\n This work is licensed under a Creative Commons Attribution 4.0 International License."
+    "text": "Instructor(s)\nThomas Lin Pedersen (thomas.pedersen@posit.co)\nThomas is a software engineer at Posit where he is in charge of most things related to R graphics. He is the maintainer of ggplot2 and author of numerous packages that improves the graphics capabilities of R. On the side, Thomas is a generative artist making computational art using R, JavaScript, and GLSL. A not insignificant number of packages or features has been born from artistic needs.\nTeun van den Brand (teun.vandenbrand@posit.co)\n\n This work is licensed under a Creative Commons Attribution 4.0 International License."
   }
 ]
