@@ -3,7 +3,7 @@ Mastering Data Visualization with ggplot2: Latest Techniques and Best Practices
 
 ### posit::conf(2025)
 
-by Thomas Pedersen and Teun Van den Brand
+by Thomas Pedersen and Teun van den Brand
 
 -----
 
@@ -43,6 +43,12 @@ ADD INFORMATION YOU WANT LEARNERS TO HAVE / STEPS THEY WANT THEM TO COMPLETE PRI
 ## Instructor(s)
 
 ADD INSTRUCTOR(S) INFO.
+
+**Teun van den Brand**  
+*Contractor*  
+Teun van den Brand is a contractor working for Posit.
+He contributes mostly to the ggplot2 and scales packages.
+He authored CRAN packages such as legendry, ggh4x and ggarrow; all building on the ggplot2 framework.
 
 -----
 
