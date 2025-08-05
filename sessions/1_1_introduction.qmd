@@ -5,6 +5,14 @@ author: "Thomas Lin Pedersen"
 
 This session will briefly introduce the rest of the day, giving an overview of the schedule and any practical information that may be relevant.
 
+Key points:
+* Agenda
+* Who we are
+* Practical info
+  * Toilets
+  * Ribbons
+  * Etc
+
 ::: {.text-center .plain}
 :::::: {.btn-group}
 [Slides](../slides/1_1_introduction.qmd){.btn .btn-primary role="button"}

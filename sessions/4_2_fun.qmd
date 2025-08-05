@@ -3,6 +3,8 @@ title: "Spice up your plot"
 author: "Thomas Lin Pedersen"
 ---
 
+In this last session we will (if time permits) spend some time showcasing things you can do with ggplots and its extensions that may make Tufte roll over, but on the other hand can help you create memorable visualisations with a lot of personality
+
 ::: {.text-center .plain}
 :::::: {.btn-group}
 [Slides](../slides/4_2_fun.qmd){.btn .btn-primary role="button"}
