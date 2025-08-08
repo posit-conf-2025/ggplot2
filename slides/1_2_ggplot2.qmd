@@ -3,3 +3,157 @@ title: "Modern ggplot2"
 author: "Teun van den Brand"
 format: revealjs
 ---
+
+```{r}
+# library(ggplot2)
+# theme_set(theme_gray(base_size = 22))
+knitr::opts_chunk$set(dev = "ragg_png", dev.args = list(scaling = 2))
+```
+
+
+## Headings
+
+- Column metadata
+- Data dictionary
+
+---
+
+### Column metadata
+
+:::: {.columns}
+
+:::{.column}
+
+
+- 'Pretty labels' implemented as `"label"` attribute in columns.
+- Implemented in Hmisc, tinylabels, haven, labelled & sjlabelled
+
+:::
+
+:::{.column}
+
+```{r}
+#| echo: true
+#| collapse: true
+df <- mtcars
+
+df$mpg <- haven::labelled(df$mpg, label = "Miles per gallon")
+
+head(df$mpg)
+
+attr(df$mpg, "label")
+```
+:::
+::::
+
+---
+
+### Column metadata
+
+:::: {.columns}
+
+:::{.column}
+
+- 'Pretty labels' implemented as `"label"` attribute in columns.
+- Implemented in Hmisc, tinylabels, haven, labelled & sjlabelled
+- Careful with label attribute stability
+
+:::
+
+:::{.column}
+
+```{r}
+#| echo: true
+#| collapse: true
+df <- mtcars
+
+attr(df$mpg, "label") <- "Miles per gallon"
+
+head(df$mpg)
+
+vctrs::vec_slice(df$mpg, 1:6)
+```
+
+:::
+
+::::
+
+---
+
+### Column metadata
+
+Label attribute automatically detected.
+
+```{r}
+#| echo: true
+library(ggplot2)
+
+ggplot(df, aes(mpg, disp)) +
+  geom_point()
+```
+---
+
+### Data dictionary
+
+Example dictionary for `mtcars`
+
+```{r}
+#| echo: true
+dict <- tibble::tribble(
+  ~column, ~label,                ~unit,    ~note,
+  "mpg",   "Efficiency",          "mi/gal", "Gallons are US gallons",
+  "cyl",   "Number of cylinders", "",       "",
+  "disp",  "Engine Displacement", "in^3",   "",
+  "am",    "Transmission",        "",       "0 = automatic, 1 = manual"
+)
+dict
+```
+
+---
+
+### Data dictionary
+
+```{r}
+#| echo: true
+#| collapse: true
+# Format label as named vector
+named_vec <- setNames(dict$label, dict$column)
+# or:
+named_vec <- dplyr::pull(dict, label, name = column)
+
+named_vec
+```
+
+---
+
+### Data dictionary
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+ggplot(mtcars, aes(mpg, disp, colour = cyl)) +
+  geom_point() +
+  labs(dictionary = named_vec)
+```
+
+---
+
+### Pros
+
+- Label variables directly, rather than aesthetics
+- Rewards habit of annotating data
+- Reusable within document
+
+```{r}
+#| echo: true
+ggplot(mtcars, aes(cyl, mpg, group = cyl)) +
+  geom_boxplot() +
+  labs(dictionary = named_vec)
+```
+---
+
+### Cons
+
+- Extra effort for 'naked' data
+- Expressions like `factor(cyl)` or `cyl + 1` do not get automatic labels
+
