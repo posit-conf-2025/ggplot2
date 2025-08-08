@@ -157,3 +157,249 @@ ggplot(mtcars, aes(cyl, mpg, group = cyl)) +
 - Extra effort for 'naked' data
 - Expressions like `factor(cyl)` or `cyl + 1` do not get automatic labels
 
+## Patterns and gradients
+
+In R 4.1 the grid package introduced patterns and gradients.
+
+* `grid::linearGradient()`
+* `grid::radialGradient()`
+* `grid::pattern()`
+
+We allow these as `fill` aesthetic in ggplot2.
+
+---
+
+### Gradients
+
+Simple examples of linear and radial gradients.
+
+```{r}
+#| echo: true
+colours <- hcl.colors(100, "Sunset")
+
+library(grid)
+linear <- linearGradient(colours, x1 = 0.5, x2 = 0.5)
+radial <- radialGradient(rev(colours), cx1 = 0.8, cy1 = 0.8, group = FALSE)
+```
+
+---
+
+### Gradients
+
+Use these gradients by providing them as a list.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+ggplot(mtcars) +
+  aes(factor(vs)) +
+  geom_bar(fill = list(linear, radial))
+```
+
+---
+
+### Patterns
+
+Patterns are more complicated.
+You may need to know a little bit of grid to get these right.
+Here we're using a diagonal line as a pattern.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3-6,9"
+width <- height <- unit(3, "mm")
+
+inner_drawing <- segmentsGrob(
+  gp = gpar(col = "black"),
+  vp = viewport(width = width, height = height)
+)
+
+hatching <- pattern(
+  inner_drawing,
+  width = width, height = height,
+  extend = "repeat"
+)
+```
+
+---
+
+### Patterns
+
+Like gradients, patterns can be given as a list.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "4"
+ggplot(mtcars) +
+  aes(factor(vs)) +
+  geom_bar(
+    fill = list(hatching), 
+    colour = "black"
+  )
+```
+
+---
+
+### Patterns
+
+To 'fix' patterning artefacts, you may need to adjust the strokes in the inner drawing.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "4-5"
+width <- height <- unit(3, "mm")
+inner_drawing <- segmentsGrob(
+  x0 = c(-1, -1, 0), x1 = c(1, 2, 2),
+  y0 = c(0, -1, -1), y1 = c(2, 2, 1),
+  gp = gpar(col = "black"),
+  vp = viewport(width = width, height = height)
+)
+hatching <- pattern(
+  inner_drawing,
+  width = width, height = height,
+  extend = "repeat"
+)
+```
+
+
+```{r}
+grid.newpage()
+grid.draw(inner_drawing)
+grid.rect(
+  width = width, height = height, 
+  gp = gpar(fill = NA, lty = "dotted", col = "grey50")
+)
+```
+
+---
+
+### Patterns
+
+Using patterns as a scale.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3-5"
+ggplot(mtcars, aes(cyl, disp, fill = factor(cyl))) +
+  geom_boxplot() +
+  scale_fill_manual(
+    values = list(linear, radial, hatching)
+  )
+```
+
+---
+
+### Ribbon gradient
+
+Ribbon geometries now render a varying `fill` aesthetic as a gradient.
+
+```{r}
+#| echo: true
+ggplot(economics) +
+  aes(date, unemploy, fill = uempmed) +
+  geom_area()
+```
+
+---
+
+### Patterns galore
+
+Using the gridpattern package to easily generate patterns.
+
+```{r}
+#| echo: true
+herringbone <- gridpattern::patternFill(
+  "polygon_tiling", type = "herringbone", 
+  spacing = 0.2, units = "cm", colour = "grey40", linewidth = 0.3
+)
+hexagons <- gridpattern::patternFill(
+  "polygon_tiling", type = "hexagonal",
+  spacing = 0.2, units = "cm", colour = "grey40", linewidth = 0.3
+)
+waves <- gridpattern::patternFill(
+  "wave", spacing = 0.2, units = "cm", colour = "grey40", linewidth = 0.3
+)
+```
+
+---
+
+### Patterns galore
+
+Using the gridpattern package to easily generate patterns.
+
+```{r}
+#| echo: true
+#| code-fold: true
+ggplot(mtcars, aes(cyl, disp, fill = factor(cyl))) +
+  geom_boxplot() +
+  scale_fill_manual(
+    values = list(herringbone, hexagons, waves)
+  )
+```
+
+### Patterns galore
+
+Parametrised patterns with the ggpattern package.
+
+```{r}
+#| echo: true
+library(ggpattern)
+
+ggplot(mtcars, aes(cyl, disp, pattern_spacing = cyl, group = cyl)) +
+  geom_boxplot_pattern(pattern_fill = "black") +
+  scale_pattern_spacing_continuous(range = c(0.01, 0.05))
+```
+
+---
+
+### Patterns galore
+
+Emoji isotype plot using text patterns.
+
+```{r}
+#| echo: true
+#| code-fold: true
+# Helper function
+width <- unit(20, "pt")
+patternise_text <- function(text) {
+  lapply(text, function(string) {
+    grob <- textGrob(string, x = 0, hjust = 0, gp = gpar(fontsize = 18))
+    pattern(
+      grob,
+      x = 0, hjust = 0,
+      width = width, 
+      extend = "repeat", 
+      # Center text per bar using height/group
+      height = unit(1, "npc"),
+      group = FALSE
+    )
+  })
+}
+
+# Stats for the Netherlands
+df <- data.frame(
+  animal = c("chickens", "pigs",   "cows", "sheep", "goats", "humans"),
+  amount = c(99900000,   11400000, 3800000, 850000, 480000,  17990000)
+)
+
+ggplot(df, aes(amount, animal, fill = animal)) +
+  geom_col() +
+  scale_fill_manual(
+    values = patternise_text(c(
+      "chickens" = "🐓",
+      "pigs"     = "🐖",
+      "cows"     = "🐄",
+      "sheep"    = "🐑",
+      "goats"    = "🐐",
+      "humans"   = "🧍"
+    ))
+  ) +
+  scale_x_continuous(
+    labels = scales::label_number(scale = 1e-6, suffix = "M")
+  ) +
+  theme(
+    legend.key.width = width,
+    legend.key.height = unit(18, "pt") # see fontsize in pattern
+  )
+```
+
