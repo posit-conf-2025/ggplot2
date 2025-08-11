@@ -403,3 +403,192 @@ ggplot(df, aes(amount, animal, fill = animal)) +
   )
 ```
 
+## Delayed evaluation
+
+With regards to evaluation, there are three stages:
+
+1. Direct input at start
+2. After computing stat
+3. After scale mapping
+
+---
+
+### Direct input
+
+Data available from the start, when mapped from data columns.
+
+```{r}
+#| echo: true
+#| eval: false
+aes(x = displ, y = hwy)
+```
+
+Unmapped aesthetics like `geom_bar(fill = "red")` are not direct input.  
+Data columns that are not mapped are not input.
+
+---
+
+### After computing stat
+
+In addition to aesthetics, *computed variables* become available.  
+These are listed in a documentation section in e.g. `?stat_density`.  
+Sometimes, these are used by default and can be recognised by the use of `after_stat()`.
+
+```{r}
+#| echo: true
+StatDensity$default_aes
+```
+
+---
+
+### After computing stat
+
+You can use `after_stat()` yourself to redirect or modify stat outputs.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "4"
+ggplot(mpg, aes(displ, drv)) +
+  stat_density(
+    geom = "tile", position = "identity",
+    aes(fill = after_stat(scaled))
+  )
+```
+
+---
+
+### After computing stat
+
+You may have run into a histogram/density misalignment problem.
+
+```{r}
+#| echo: true
+ggplot(faithful, aes(waiting)) +
+  geom_histogram(binwidth = 2) +
+  geom_density()
+```
+
+---
+
+### After computing stat
+
+This can be fixed by using the `density` computed variable in the histogram.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+ggplot(faithful, aes(waiting)) +
+  geom_histogram(
+    aes(y = after_stat(density)), 
+    binwidth = 2
+  ) +
+  geom_density()
+```
+
+---
+
+### After computing stat
+
+Or scaling the `count` computed variable in the density.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "5"
+binwidth <- 2
+ggplot(faithful, aes(waiting)) +
+  geom_histogram(binwidth = binwidth) +
+  geom_density(
+    aes(y = after_stat(count * binwidth))
+  )
+```
+
+---
+
+### After scales
+
+At this stage in the plot, the variables are mapped by the scales.  
+It means that the hex codes from colour scales are available, the sizes and shapes of points and other variables mapped by scales.  
+You can intervene by using the `after_scale()` function.
+
+--- 
+
+### After scales
+
+A typical use of `after_scale()` is to derive colours from `colour` to `fill` or vice versa.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+ggplot(mpg, aes(displ, fill = drv)) +
+  geom_density(
+    aes(colour = after_scale(scales::col_mix(fill, "black")))
+  )
+```
+
+--- 
+
+### After scales
+
+A nice benefit of using `after_scale()` is that you derive colours, so you can still swap out scales.
+
+```{r}
+#| echo: true
+last_plot() + 
+  scale_fill_viridis_d()
+```
+
+### After scales
+
+Another use case can be to create half-geometries.
+
+```{r}
+#| echo: true
+#| warning: false
+ggplot(mpg, aes(class, displ)) +
+  geom_boxplot(aes(xmin = after_scale(x)), staplewidth = 0.3) +
+  geom_violin(aes(xmax = after_scale(x)))
+```
+
+### Staging
+
+When you need a combination of direct input, after stat or after scale modifications, you can use `stage()`.
+
+* `stage(x)` is equivalent to `x`.
+* `stage(after_stat = x)` is equivalent to `after_stat(x)`.
+* `stage(after_scale = x)` is equivalent to `after_scale(x)`.
+
+### Staging
+
+A typical use case is when you want to initialise the aesthetic with one column, and later modify the mapped values.
+
+```{r}
+#| echo: true
+ggplot(mpg, aes(class, displ)) +
+  geom_violin(
+    aes(fill = stage(class, after_scale = scales::col_mix(fill, "transparent")))
+  )
+```
+
+### Staging
+
+Another use case is to reposition labels after computing a statistic.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "4-8|9-12"
+ggplot(mpg, aes(class, displ, fill = class)) +
+  geom_violin() +
+  stat_summary(
+    fun.data = ~ data.frame(
+      mean = mean(.x), 
+      sd   = sd(.x), 
+      max  = max(.x)
+    ),
+    aes(
+      y = stage(displ, after_stat = max + 0.2),
+      label = after_stat(sprintf("%.2f±%.2f", mean, sd))
+    ),
+    geom = "text"
+  )
+```
+
