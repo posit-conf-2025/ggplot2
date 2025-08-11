@@ -28,6 +28,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -138,11 +204,803 @@ Teun van den Brand
 </div>
 
 </section>
+<section id="headings" class="slide level2">
+<h2>Headings</h2>
+<ul>
+<li>Column metadata</li>
+<li>Data dictionary</li>
+</ul>
+</section>
 <section class="slide level2">
 
-
-
+<h3 id="column-metadata">Column metadata</h3>
+<div class="columns">
+<div class="column">
+<ul>
+<li>‘Pretty labels’ implemented as <code>"label"</code> attribute in columns.</li>
+<li>Implemented in Hmisc, tinylabels, haven, labelled &amp; sjlabelled</li>
+</ul>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>df <span class="ot">&lt;-</span> mtcars</span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a>df<span class="sc">$</span>mpg <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">labelled</span>(df<span class="sc">$</span>mpg, <span class="at">label =</span> <span class="st">"Miles per gallon"</span>)</span>
+<span id="cb1-4"><a></a></span>
+<span id="cb1-5"><a></a><span class="fu">head</span>(df<span class="sc">$</span>mpg)</span>
+<span id="cb1-6"><a></a><span class="do">## &lt;labelled&lt;double&gt;[6]&gt;: Miles per gallon</span></span>
+<span id="cb1-7"><a></a><span class="do">## [1] 21.0 21.0 22.8 21.4 18.7 18.1</span></span>
+<span id="cb1-8"><a></a></span>
+<span id="cb1-9"><a></a><span class="fu">attr</span>(df<span class="sc">$</span>mpg, <span class="st">"label"</span>)</span>
+<span id="cb1-10"><a></a><span class="do">## [1] "Miles per gallon"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div></div>
 </section>
+<section class="slide level2">
+
+<h3 id="column-metadata-1">Column metadata</h3>
+<div class="columns">
+<div class="column">
+<ul>
+<li>‘Pretty labels’ implemented as <code>"label"</code> attribute in columns.</li>
+<li>Implemented in Hmisc, tinylabels, haven, labelled &amp; sjlabelled</li>
+<li>Careful with label attribute stability</li>
+</ul>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>df <span class="ot">&lt;-</span> mtcars</span>
+<span id="cb2-2"><a></a></span>
+<span id="cb2-3"><a></a><span class="fu">attr</span>(df<span class="sc">$</span>mpg, <span class="st">"label"</span>) <span class="ot">&lt;-</span> <span class="st">"Miles per gallon"</span></span>
+<span id="cb2-4"><a></a></span>
+<span id="cb2-5"><a></a><span class="fu">head</span>(df<span class="sc">$</span>mpg)</span>
+<span id="cb2-6"><a></a><span class="do">## [1] 21.0 21.0 22.8 21.4 18.7 18.1</span></span>
+<span id="cb2-7"><a></a></span>
+<span id="cb2-8"><a></a>vctrs<span class="sc">::</span><span class="fu">vec_slice</span>(df<span class="sc">$</span>mpg, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb2-9"><a></a><span class="do">## [1] 21.0 21.0 22.8 21.4 18.7 18.1</span></span>
+<span id="cb2-10"><a></a><span class="do">## attr(,"label")</span></span>
+<span id="cb2-11"><a></a><span class="do">## [1] "Miles per gallon"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="column-metadata-2">Column metadata</h3>
+<p>Label attribute automatically detected.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-2"><a></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(mpg, disp)) <span class="sc">+</span></span>
+<span id="cb3-5"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="data-dictionary">Data dictionary</h3>
+<p>Example dictionary for <code>mtcars</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>dict <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb4-2"><a></a>  <span class="sc">~</span>column, <span class="sc">~</span>label,                <span class="sc">~</span>unit,    <span class="sc">~</span>note,</span>
+<span id="cb4-3"><a></a>  <span class="st">"mpg"</span>,   <span class="st">"Efficiency"</span>,          <span class="st">"mi/gal"</span>, <span class="st">"Gallons are US gallons"</span>,</span>
+<span id="cb4-4"><a></a>  <span class="st">"cyl"</span>,   <span class="st">"Number of cylinders"</span>, <span class="st">""</span>,       <span class="st">""</span>,</span>
+<span id="cb4-5"><a></a>  <span class="st">"disp"</span>,  <span class="st">"Engine Displacement"</span>, <span class="st">"in^3"</span>,   <span class="st">""</span>,</span>
+<span id="cb4-6"><a></a>  <span class="st">"am"</span>,    <span class="st">"Transmission"</span>,        <span class="st">""</span>,       <span class="st">"0 = automatic, 1 = manual"</span></span>
+<span id="cb4-7"><a></a>)</span>
+<span id="cb4-8"><a></a>dict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 4
+  column label               unit     note                       
+  &lt;chr&gt;  &lt;chr&gt;               &lt;chr&gt;    &lt;chr&gt;                      
+1 mpg    Efficiency          "mi/gal" "Gallons are US gallons"   
+2 cyl    Number of cylinders ""       ""                         
+3 disp   Engine Displacement "in^3"   ""                         
+4 am     Transmission        ""       "0 = automatic, 1 = manual"</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="data-dictionary-1">Data dictionary</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># Format label as named vector</span></span>
+<span id="cb6-2"><a></a>named_vec <span class="ot">&lt;-</span> <span class="fu">setNames</span>(dict<span class="sc">$</span>label, dict<span class="sc">$</span>column)</span>
+<span id="cb6-3"><a></a><span class="co"># or:</span></span>
+<span id="cb6-4"><a></a>named_vec <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">pull</span>(dict, label, <span class="at">name =</span> column)</span>
+<span id="cb6-5"><a></a></span>
+<span id="cb6-6"><a></a>named_vec</span>
+<span id="cb6-7"><a></a><span class="do">##                   mpg                   cyl                  disp </span></span>
+<span id="cb6-8"><a></a><span class="do">##          "Efficiency" "Number of cylinders" "Engine Displacement" </span></span>
+<span id="cb6-9"><a></a><span class="do">##                    am </span></span>
+<span id="cb6-10"><a></a><span class="do">##        "Transmission"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="data-dictionary-2">Data dictionary</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(mpg, disp, <span class="at">colour =</span> cyl)) <span class="sc">+</span></span>
+<span id="cb7-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb7-3"><a></a>  <span class="fu">labs</span>(<span class="at">dictionary =</span> named_vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="pros">Pros</h3>
+<ul>
+<li>Label variables directly, rather than aesthetics</li>
+<li>Rewards habit of annotating data</li>
+<li>Reusable within document</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(cyl, mpg, <span class="at">group =</span> cyl)) <span class="sc">+</span></span>
+<span id="cb8-2"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb8-3"><a></a>  <span class="fu">labs</span>(<span class="at">dictionary =</span> named_vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="cons">Cons</h3>
+<ul>
+<li>Extra effort for ‘naked’ data</li>
+<li>Expressions like <code>factor(cyl)</code> or <code>cyl + 1</code> do not get automatic labels</li>
+</ul>
+</section>
+<section id="patterns-and-gradients" class="slide level2">
+<h2>Patterns and gradients</h2>
+<p>In R 4.1 the grid package introduced patterns and gradients.</p>
+<ul>
+<li><code>grid::linearGradient()</code></li>
+<li><code>grid::radialGradient()</code></li>
+<li><code>grid::pattern()</code></li>
+</ul>
+<p>We allow these as <code>fill</code> aesthetic in ggplot2.<br>
+Patterns can aid in cases of colour vision deficiency.</p>
+</section>
+<section class="slide level2">
+
+<h3 id="gradients">Gradients</h3>
+<p>Simple examples of linear and radial gradients.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>colours <span class="ot">&lt;-</span> <span class="fu">hcl.colors</span>(<span class="dv">100</span>, <span class="st">"Sunset"</span>)</span>
+<span id="cb9-2"><a></a></span>
+<span id="cb9-3"><a></a><span class="fu">library</span>(grid)</span>
+<span id="cb9-4"><a></a>linear <span class="ot">&lt;-</span> <span class="fu">linearGradient</span>(colours, <span class="at">x1 =</span> <span class="fl">0.5</span>, <span class="at">x2 =</span> <span class="fl">0.5</span>)</span>
+<span id="cb9-5"><a></a>radial <span class="ot">&lt;-</span> <span class="fu">radialGradient</span>(<span class="fu">rev</span>(colours), <span class="at">cx1 =</span> <span class="fl">0.8</span>, <span class="at">cy1 =</span> <span class="fl">0.8</span>, <span class="at">group =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="gradients-1">Gradients</h3>
+<p>Use these gradients by providing them as a list.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(mtcars) <span class="sc">+</span></span>
+<span id="cb10-2"><a></a>  <span class="fu">aes</span>(<span class="fu">factor</span>(vs)) <span class="sc">+</span></span>
+<span id="cb10-3"><a></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="fu">list</span>(linear, radial))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="patterns">Patterns</h3>
+<p>Patterns are more complicated. You may need to know a little bit of grid to get these right. Here we’re using a diagonal line as a pattern.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="3-6,9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>width <span class="ot">&lt;-</span> height <span class="ot">&lt;-</span> <span class="fu">unit</span>(<span class="dv">3</span>, <span class="st">"mm"</span>)</span>
+<span id="cb11-2"><a></a></span>
+<span id="cb11-3"><a></a>inner_drawing <span class="ot">&lt;-</span> <span class="fu">segmentsGrob</span>(</span>
+<span id="cb11-4"><a></a>  <span class="at">gp =</span> <span class="fu">gpar</span>(<span class="at">col =</span> <span class="st">"black"</span>),</span>
+<span id="cb11-5"><a></a>  <span class="at">vp =</span> <span class="fu">viewport</span>(<span class="at">width =</span> width, <span class="at">height =</span> height)</span>
+<span id="cb11-6"><a></a>)</span>
+<span id="cb11-7"><a></a></span>
+<span id="cb11-8"><a></a>hatching <span class="ot">&lt;-</span> <span class="fu">pattern</span>(</span>
+<span id="cb11-9"><a></a>  inner_drawing,</span>
+<span id="cb11-10"><a></a>  <span class="at">width =</span> width, <span class="at">height =</span> height,</span>
+<span id="cb11-11"><a></a>  <span class="at">extend =</span> <span class="st">"repeat"</span></span>
+<span id="cb11-12"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="patterns-1">Patterns</h3>
+<p>Like gradients, patterns can be given as a list.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">ggplot</span>(mtcars) <span class="sc">+</span></span>
+<span id="cb12-2"><a></a>  <span class="fu">aes</span>(<span class="fu">factor</span>(vs)) <span class="sc">+</span></span>
+<span id="cb12-3"><a></a>  <span class="fu">geom_bar</span>(</span>
+<span id="cb12-4"><a></a>    <span class="at">fill =</span> <span class="fu">list</span>(hatching), </span>
+<span id="cb12-5"><a></a>    <span class="at">colour =</span> <span class="st">"black"</span></span>
+<span id="cb12-6"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="patterns-2">Patterns</h3>
+<p>To ‘fix’ patterning artefacts, you may need to adjust the strokes in the inner drawing.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" data-code-line-numbers="3-4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>width <span class="ot">&lt;-</span> height <span class="ot">&lt;-</span> <span class="fu">unit</span>(<span class="dv">3</span>, <span class="st">"mm"</span>)</span>
+<span id="cb13-2"><a></a>inner_drawing <span class="ot">&lt;-</span> <span class="fu">segmentsGrob</span>(</span>
+<span id="cb13-3"><a></a>  <span class="at">x0 =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>), <span class="at">x1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>),</span>
+<span id="cb13-4"><a></a>  <span class="at">y0 =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="at">y1 =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>),</span>
+<span id="cb13-5"><a></a>  <span class="at">gp =</span> <span class="fu">gpar</span>(<span class="at">col =</span> <span class="st">"black"</span>),</span>
+<span id="cb13-6"><a></a>  <span class="at">vp =</span> <span class="fu">viewport</span>(<span class="at">width =</span> width, <span class="at">height =</span> height)</span>
+<span id="cb13-7"><a></a>)</span>
+<span id="cb13-8"><a></a>hatching <span class="ot">&lt;-</span> <span class="fu">pattern</span>(</span>
+<span id="cb13-9"><a></a>  inner_drawing,</span>
+<span id="cb13-10"><a></a>  <span class="at">width =</span> width, <span class="at">height =</span> height,</span>
+<span id="cb13-11"><a></a>  <span class="at">extend =</span> <span class="st">"repeat"</span></span>
+<span id="cb13-12"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="patterns-3">Patterns</h3>
+<p>Using patterns as a scale.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14" data-code-line-numbers="3-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(cyl, disp, <span class="at">fill =</span> <span class="fu">factor</span>(cyl))) <span class="sc">+</span></span>
+<span id="cb14-2"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb14-3"><a></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb14-4"><a></a>    <span class="at">values =</span> <span class="fu">list</span>(linear, radial, hatching)</span>
+<span id="cb14-5"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="ribbon-gradient">Ribbon gradient</h3>
+<p>Ribbon geometries now render a varying <code>fill</code> aesthetic as a gradient.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">ggplot</span>(economics) <span class="sc">+</span></span>
+<span id="cb15-2"><a></a>  <span class="fu">aes</span>(date, unemploy, <span class="at">fill =</span> uempmed) <span class="sc">+</span></span>
+<span id="cb15-3"><a></a>  <span class="fu">geom_area</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="patterns-galore">Patterns galore</h3>
+<p>Using the gridpattern package to easily generate patterns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>herringbone <span class="ot">&lt;-</span> gridpattern<span class="sc">::</span><span class="fu">patternFill</span>(</span>
+<span id="cb16-2"><a></a>  <span class="st">"polygon_tiling"</span>, <span class="at">type =</span> <span class="st">"herringbone"</span>, </span>
+<span id="cb16-3"><a></a>  <span class="at">spacing =</span> <span class="fl">0.2</span>, <span class="at">units =</span> <span class="st">"cm"</span>, <span class="at">colour =</span> <span class="st">"grey40"</span>, <span class="at">linewidth =</span> <span class="fl">0.3</span></span>
+<span id="cb16-4"><a></a>)</span>
+<span id="cb16-5"><a></a>hexagons <span class="ot">&lt;-</span> gridpattern<span class="sc">::</span><span class="fu">patternFill</span>(</span>
+<span id="cb16-6"><a></a>  <span class="st">"polygon_tiling"</span>, <span class="at">type =</span> <span class="st">"hexagonal"</span>,</span>
+<span id="cb16-7"><a></a>  <span class="at">spacing =</span> <span class="fl">0.2</span>, <span class="at">units =</span> <span class="st">"cm"</span>, <span class="at">colour =</span> <span class="st">"grey40"</span>, <span class="at">linewidth =</span> <span class="fl">0.3</span></span>
+<span id="cb16-8"><a></a>)</span>
+<span id="cb16-9"><a></a>waves <span class="ot">&lt;-</span> gridpattern<span class="sc">::</span><span class="fu">patternFill</span>(</span>
+<span id="cb16-10"><a></a>  <span class="st">"wave"</span>, <span class="at">spacing =</span> <span class="fl">0.2</span>, <span class="at">units =</span> <span class="st">"cm"</span>, <span class="at">colour =</span> <span class="st">"grey40"</span>, <span class="at">linewidth =</span> <span class="fl">0.3</span></span>
+<span id="cb16-11"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="patterns-galore-1">Patterns galore</h3>
+<p>Using the gridpattern package to easily generate patterns.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(cyl, disp, <span class="at">fill =</span> <span class="fu">factor</span>(cyl))) <span class="sc">+</span></span>
+<span id="cb17-2"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb17-3"><a></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb17-4"><a></a>    <span class="at">values =</span> <span class="fu">list</span>(herringbone, hexagons, waves)</span>
+<span id="cb17-5"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<h3 id="patterns-galore-2">Patterns galore</h3>
+<p>Parametrised patterns with the ggpattern package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">library</span>(ggpattern)</span>
+<span id="cb18-2"><a></a></span>
+<span id="cb18-3"><a></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(cyl, disp, <span class="at">pattern_spacing =</span> cyl, <span class="at">group =</span> cyl)) <span class="sc">+</span></span>
+<span id="cb18-4"><a></a>  <span class="fu">geom_boxplot_pattern</span>(<span class="at">pattern_fill =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb18-5"><a></a>  <span class="fu">scale_pattern_spacing_continuous</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.05</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="patterns-galore-3">Patterns galore</h3>
+<p>Emoji isotype plot using text patterns.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co"># Helper function</span></span>
+<span id="cb19-2"><a></a>width <span class="ot">&lt;-</span> <span class="fu">unit</span>(<span class="dv">20</span>, <span class="st">"pt"</span>)</span>
+<span id="cb19-3"><a></a>patternise_text <span class="ot">&lt;-</span> <span class="cf">function</span>(text) {</span>
+<span id="cb19-4"><a></a>  <span class="fu">lapply</span>(text, <span class="cf">function</span>(string) {</span>
+<span id="cb19-5"><a></a>    grob <span class="ot">&lt;-</span> <span class="fu">textGrob</span>(string, <span class="at">x =</span> <span class="dv">0</span>, <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">gp =</span> <span class="fu">gpar</span>(<span class="at">fontsize =</span> <span class="dv">18</span>))</span>
+<span id="cb19-6"><a></a>    <span class="fu">pattern</span>(</span>
+<span id="cb19-7"><a></a>      grob,</span>
+<span id="cb19-8"><a></a>      <span class="at">x =</span> <span class="dv">0</span>, <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb19-9"><a></a>      <span class="at">width =</span> width, </span>
+<span id="cb19-10"><a></a>      <span class="at">extend =</span> <span class="st">"repeat"</span>, </span>
+<span id="cb19-11"><a></a>      <span class="co"># Center text per bar using height/group</span></span>
+<span id="cb19-12"><a></a>      <span class="at">height =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"npc"</span>),</span>
+<span id="cb19-13"><a></a>      <span class="at">group =</span> <span class="cn">FALSE</span></span>
+<span id="cb19-14"><a></a>    )</span>
+<span id="cb19-15"><a></a>  })</span>
+<span id="cb19-16"><a></a>}</span>
+<span id="cb19-17"><a></a></span>
+<span id="cb19-18"><a></a><span class="co"># Stats for the Netherlands</span></span>
+<span id="cb19-19"><a></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb19-20"><a></a>  <span class="at">animal =</span> <span class="fu">c</span>(<span class="st">"chickens"</span>, <span class="st">"pigs"</span>,   <span class="st">"cows"</span>, <span class="st">"sheep"</span>, <span class="st">"goats"</span>, <span class="st">"humans"</span>),</span>
+<span id="cb19-21"><a></a>  <span class="at">amount =</span> <span class="fu">c</span>(<span class="dv">99900000</span>,   <span class="dv">11400000</span>, <span class="dv">3800000</span>, <span class="dv">850000</span>, <span class="dv">480000</span>,  <span class="dv">17990000</span>)</span>
+<span id="cb19-22"><a></a>)</span>
+<span id="cb19-23"><a></a></span>
+<span id="cb19-24"><a></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(amount, animal, <span class="at">fill =</span> animal)) <span class="sc">+</span></span>
+<span id="cb19-25"><a></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb19-26"><a></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb19-27"><a></a>    <span class="at">values =</span> <span class="fu">patternise_text</span>(<span class="fu">c</span>(</span>
+<span id="cb19-28"><a></a>      <span class="st">"chickens"</span> <span class="ot">=</span> <span class="st">"🐓"</span>,</span>
+<span id="cb19-29"><a></a>      <span class="st">"pigs"</span>     <span class="ot">=</span> <span class="st">"🐖"</span>,</span>
+<span id="cb19-30"><a></a>      <span class="st">"cows"</span>     <span class="ot">=</span> <span class="st">"🐄"</span>,</span>
+<span id="cb19-31"><a></a>      <span class="st">"sheep"</span>    <span class="ot">=</span> <span class="st">"🐑"</span>,</span>
+<span id="cb19-32"><a></a>      <span class="st">"goats"</span>    <span class="ot">=</span> <span class="st">"🐐"</span>,</span>
+<span id="cb19-33"><a></a>      <span class="st">"humans"</span>   <span class="ot">=</span> <span class="st">"🧍"</span></span>
+<span id="cb19-34"><a></a>    ))</span>
+<span id="cb19-35"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb19-36"><a></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb19-37"><a></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>(<span class="at">scale =</span> <span class="fl">1e-6</span>, <span class="at">suffix =</span> <span class="st">"M"</span>)</span>
+<span id="cb19-38"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb19-39"><a></a>  <span class="fu">theme</span>(</span>
+<span id="cb19-40"><a></a>    <span class="at">legend.key.width =</span> width,</span>
+<span id="cb19-41"><a></a>    <span class="at">legend.key.height =</span> <span class="fu">unit</span>(<span class="dv">18</span>, <span class="st">"pt"</span>) <span class="co"># see fontsize in pattern</span></span>
+<span id="cb19-42"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"></section>
+<section id="delayed-evaluation" class="slide level2">
+<h2>Delayed evaluation</h2>
+<p>With regards to evaluation, there are three stages:</p>
+<ol type="1">
+<li>Direct input at start</li>
+<li>After computing stat</li>
+<li>After scale mapping</li>
+</ol>
+</section>
+<section class="slide level2">
+
+<h3 id="direct-input">Direct input</h3>
+<p>Data available from the start, when mapped from data columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Unmapped aesthetics like <code>geom_bar(fill = "red")</code> are not direct input.<br>
+Data columns that are not mapped are not input.</p>
+</section>
+<section class="slide level2">
+
+<h3 id="after-computing-stat">After computing stat</h3>
+<p>In addition to aesthetics, <em>computed variables</em> become available.<br>
+These are listed in a documentation section in e.g.&nbsp;<code>?stat_density</code>.<br>
+Sometimes, these are used by default and can be recognised by the use of <code>after_stat()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>StatDensity<span class="sc">$</span>default_aes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Aesthetic mapping: 
+* `x`      -&gt; `after_stat(density)`
+* `y`      -&gt; `after_stat(density)`
+* `fill`   -&gt; NA
+* `weight` -&gt; NULL</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="after-computing-stat-1">After computing stat</h3>
+<p>You can use <code>after_stat()</code> yourself to redirect or modify stat outputs.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, drv)) <span class="sc">+</span></span>
+<span id="cb23-2"><a></a>  <span class="fu">stat_density</span>(</span>
+<span id="cb23-3"><a></a>    <span class="at">geom =</span> <span class="st">"tile"</span>, <span class="at">position =</span> <span class="st">"identity"</span>,</span>
+<span id="cb23-4"><a></a>    <span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">after_stat</span>(scaled))</span>
+<span id="cb23-5"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-23-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="after-computing-stat-2">After computing stat</h3>
+<p>You may have run into a histogram/density misalignment problem.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">ggplot</span>(faithful, <span class="fu">aes</span>(waiting)) <span class="sc">+</span></span>
+<span id="cb24-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb24-3"><a></a>  <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="after-computing-stat-3">After computing stat</h3>
+<p>This can be fixed by using the <code>density</code> computed variable in the histogram.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">ggplot</span>(faithful, <span class="fu">aes</span>(waiting)) <span class="sc">+</span></span>
+<span id="cb25-2"><a></a>  <span class="fu">geom_histogram</span>(</span>
+<span id="cb25-3"><a></a>    <span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)), </span>
+<span id="cb25-4"><a></a>    <span class="at">binwidth =</span> <span class="dv">2</span></span>
+<span id="cb25-5"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb25-6"><a></a>  <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-25-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="after-computing-stat-4">After computing stat</h3>
+<p>Or scaling the <code>count</code> computed variable in the density.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>binwidth <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb26-2"><a></a><span class="fu">ggplot</span>(faithful, <span class="fu">aes</span>(waiting)) <span class="sc">+</span></span>
+<span id="cb26-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> binwidth) <span class="sc">+</span></span>
+<span id="cb26-4"><a></a>  <span class="fu">geom_density</span>(</span>
+<span id="cb26-5"><a></a>    <span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(count <span class="sc">*</span> binwidth))</span>
+<span id="cb26-6"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-26-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="after-scales">After scales</h3>
+<p>At this stage in the plot, the variables are mapped by the scales.<br>
+It means that the hex codes from colour scales are available, the sizes and shapes of points and other variables mapped by scales.<br>
+You can intervene by using the <code>after_scale()</code> function.</p>
+</section>
+<section class="slide level2">
+
+<h3 id="after-scales-1">After scales</h3>
+<p>A typical use of <code>after_scale()</code> is to derive colours from <code>colour</code> to <code>fill</code> or vice versa.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, <span class="at">fill =</span> drv)) <span class="sc">+</span></span>
+<span id="cb27-2"><a></a>  <span class="fu">geom_density</span>(</span>
+<span id="cb27-3"><a></a>    <span class="fu">aes</span>(<span class="at">colour =</span> <span class="fu">after_scale</span>(scales<span class="sc">::</span><span class="fu">col_mix</span>(fill, <span class="st">"black"</span>)))</span>
+<span id="cb27-4"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-27-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="after-scales-2">After scales</h3>
+<p>A nice benefit of using <code>after_scale()</code> is that you derive colours, so you can still swap out scales.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">last_plot</span>() <span class="sc">+</span> </span>
+<span id="cb28-2"><a></a>  <span class="fu">scale_fill_viridis_d</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<h3 id="after-scales-3">After scales</h3>
+<p>Another use case can be to create half-geometries.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(class, displ)) <span class="sc">+</span></span>
+<span id="cb29-2"><a></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> <span class="fu">after_scale</span>(x)), <span class="at">staplewidth =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb29-3"><a></a>  <span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">xmax =</span> <span class="fu">after_scale</span>(x)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<h3 id="staging">Staging</h3>
+<p>When you need a combination of direct input, after stat or after scale modifications, you can use <code>stage()</code>.</p>
+<ul>
+<li><code>stage(x)</code> is equivalent to <code>x</code>.</li>
+<li><code>stage(after_stat = x)</code> is equivalent to <code>after_stat(x)</code>.</li>
+<li><code>stage(after_scale = x)</code> is equivalent to <code>after_scale(x)</code>.</li>
+</ul>
+<h3 id="staging-1">Staging</h3>
+<p>A typical use case is when you want to initialise the aesthetic with one column, and later modify the mapped values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(class, displ)) <span class="sc">+</span></span>
+<span id="cb30-2"><a></a>  <span class="fu">geom_violin</span>(</span>
+<span id="cb30-3"><a></a>    <span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">stage</span>(class, <span class="at">after_scale =</span> scales<span class="sc">::</span><span class="fu">col_mix</span>(fill, <span class="st">"transparent"</span>)))</span>
+<span id="cb30-4"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<h3 id="staging-2">Staging</h3>
+<p>Another use case is to reposition labels after computing a statistic.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31" data-code-line-numbers="4-8|9-12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(class, displ, <span class="at">fill =</span> class)) <span class="sc">+</span></span>
+<span id="cb31-2"><a></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb31-3"><a></a>  <span class="fu">stat_summary</span>(</span>
+<span id="cb31-4"><a></a>    <span class="at">fun.data =</span> <span class="sc">~</span> <span class="fu">data.frame</span>(</span>
+<span id="cb31-5"><a></a>      <span class="at">mean =</span> <span class="fu">mean</span>(.x), </span>
+<span id="cb31-6"><a></a>      <span class="at">sd   =</span> <span class="fu">sd</span>(.x), </span>
+<span id="cb31-7"><a></a>      <span class="at">max  =</span> <span class="fu">max</span>(.x)</span>
+<span id="cb31-8"><a></a>    ),</span>
+<span id="cb31-9"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb31-10"><a></a>      <span class="at">y =</span> <span class="fu">stage</span>(displ, <span class="at">after_stat =</span> max <span class="sc">+</span> <span class="fl">0.2</span>),</span>
+<span id="cb31-11"><a></a>      <span class="at">label =</span> <span class="fu">after_stat</span>(<span class="fu">sprintf</span>(<span class="st">"%.2f±%.2f"</span>, mean, sd))</span>
+<span id="cb31-12"><a></a>    ),</span>
+<span id="cb31-13"><a></a>    <span class="at">geom =</span> <span class="st">"text"</span></span>
+<span id="cb31-14"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="polar-coordinates" class="slide level2">
+<h2>Polar coordinates</h2>
+<p>The classic <code>coord_polar()</code> is succeeded by <code>coord_radial()</code>.</p>
+<ul>
+<li><code>expand</code> parameter</li>
+<li>Arbitrary sectors</li>
+<li>Donuts</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="polar-coordinates-1">Polar coordinates</h3>
+<p>Helpful to always examine plot in Cartesian coordinates.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">factor</span>(<span class="dv">1</span>), <span class="at">fill =</span> <span class="fu">factor</span>(drv))) <span class="sc">+</span></span>
+<span id="cb32-2"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb32-3"><a></a>  <span class="co"># Add labels</span></span>
+<span id="cb32-4"><a></a>  <span class="fu">stat_count</span>(</span>
+<span id="cb32-5"><a></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">after_stat</span>(<span class="fu">paste0</span>(fill, <span class="st">" =</span><span class="sc">\n</span><span class="st">"</span>, count))),</span>
+<span id="cb32-6"><a></a>    <span class="at">geom =</span> <span class="st">"text"</span>,</span>
+<span id="cb32-7"><a></a>    <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>)</span>
+<span id="cb32-8"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb32-9"><a></a>  <span class="co"># Turn off y-axis and legend</span></span>
+<span id="cb32-10"><a></a>  <span class="fu">scale_y_discrete</span>(<span class="at">guide =</span> <span class="st">"none"</span>, <span class="at">name =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb32-11"><a></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">guide =</span> <span class="st">"none"</span>)</span>
+<span id="cb32-12"><a></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-32-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="polar-coordinates-2">Polar coordinates</h3>
+<p>Differences between <code>coord_polar()</code> and <code>coord_radial()</code>.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>polar <span class="ot">&lt;-</span> p <span class="sc">+</span> </span>
+<span id="cb33-2"><a></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span> </span>
+<span id="cb33-3"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"coord_polar()"</span>)</span>
+<span id="cb33-4"><a></a>radial <span class="ot">&lt;-</span> p <span class="sc">+</span> </span>
+<span id="cb33-5"><a></a>  <span class="fu">coord_radial</span>() <span class="sc">+</span> </span>
+<span id="cb33-6"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"coord_radial()"</span>)</span>
+<span id="cb33-7"><a></a></span>
+<span id="cb33-8"><a></a>polar <span class="sc">+</span> radial</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="polar-coordinates-3">Polar coordinates</h3>
+<p>Set <code>expand = FALSE</code> for use in pie charts.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb34" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>polar <span class="ot">&lt;-</span> p <span class="sc">+</span> </span>
+<span id="cb34-2"><a></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span> </span>
+<span id="cb34-3"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"coord_polar()"</span>)</span>
+<span id="cb34-4"><a></a>radial <span class="ot">&lt;-</span> p <span class="sc">+</span> </span>
+<span id="cb34-5"><a></a>  <span class="fu">coord_radial</span>(<span class="at">expand =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb34-6"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"coord_radial(expand = FALSE)"</span>)</span>
+<span id="cb34-7"><a></a></span>
+<span id="cb34-8"><a></a>polar <span class="sc">+</span> radial</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-34-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="polar-coordinates-4">Polar coordinates</h3>
+<p><code>coord_radial()</code> interfaces with guide system mostly via <code>guide_axis_theta()</code>. Also note the text angles.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>red_axis <span class="ot">&lt;-</span> <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb35-2"><a></a>  <span class="at">guide =</span> <span class="fu">guide_axis_theta</span>(</span>
+<span id="cb35-3"><a></a>    <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb35-4"><a></a>    <span class="at">theme =</span> <span class="fu">theme_gray</span>(<span class="at">ink =</span> <span class="st">"red"</span>)</span>
+<span id="cb35-5"><a></a>  )</span>
+<span id="cb35-6"><a></a>)</span>
+<span id="cb35-7"><a></a></span>
+<span id="cb35-8"><a></a><span class="co"># Ignores guide</span></span>
+<span id="cb35-9"><a></a>(polar <span class="sc">+</span> red_axis) <span class="sc">+</span> </span>
+<span id="cb35-10"><a></a>  <span class="co"># Uses correct guide</span></span>
+<span id="cb35-11"><a></a>  (radial <span class="sc">+</span> red_axis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-35-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="polar-coordinates-5">Polar coordinates</h3>
+<p>To rotate text angles of layers, you can use <code>rotate.angle</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>p <span class="sc">+</span> <span class="fu">coord_radial</span>(<span class="at">rotate.angle =</span> <span class="cn">TRUE</span>, <span class="at">expand =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-36-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="polar-coordinates-6">Polar coordinates</h3>
+<p>We’re no longer restricted to complete circles.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>p <span class="sc">+</span> <span class="fu">coord_radial</span>(<span class="at">start =</span> <span class="sc">-</span><span class="fl">0.4</span> <span class="sc">*</span> pi, <span class="at">end =</span> <span class="fl">0.4</span> <span class="sc">*</span> pi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-37-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="polar-coordinates-7">Polar coordinates</h3>
+<p>Switching a pie chart to a donut chart is as easy as setting the <code>inner.radius</code> argument.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>p <span class="sc">+</span> <span class="fu">coord_radial</span>(</span>
+<span id="cb38-2"><a></a>  <span class="at">expand =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb38-3"><a></a>  <span class="at">inner.radius =</span> <span class="fl">0.5</span></span>
+<span id="cb38-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-38-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="polar-coordinates-8">Polar coordinates</h3>
+<p>We can combine partial polar coordinates with donuts.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>p <span class="sc">+</span> <span class="fu">coord_radial</span>(</span>
+<span id="cb39-2"><a></a>  <span class="at">start =</span> <span class="dv">0</span>, <span class="at">end =</span> <span class="fl">0.5</span> <span class="sc">*</span> pi, </span>
+<span id="cb39-3"><a></a>  <span class="at">inner.radius =</span> <span class="fl">0.5</span></span>
+<span id="cb39-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-39-1.png" width="960" class="r-stretch"></section>
+<section id="facets" class="slide level2">
+<h2>Facets</h2>
+<ul>
+<li>Display of inner axes</li>
+<li>Layer layout</li>
+<li>Panel ordering</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="display-of-inner-axes">Display of inner axes</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(palmerpenguins<span class="sc">::</span>penguins) <span class="sc">+</span></span>
+<span id="cb40-2"><a></a>  <span class="fu">aes</span>(bill_length_mm, bill_depth_mm, <span class="at">colour =</span> sex) <span class="sc">+</span></span>
+<span id="cb40-3"><a></a>  <span class="fu">geom_point</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb40-4"><a></a>p <span class="sc">+</span> <span class="fu">facet_grid</span>(island <span class="sc">~</span> species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-40-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="display-of-inner-axes-1">Display of inner axes</h3>
+<p>Inner axes can be exposed, for all directions or <code>x</code> or <code>y</code> individually.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>p <span class="sc">+</span> <span class="fu">facet_grid</span>(island <span class="sc">~</span> species, <span class="at">axes =</span> <span class="st">"all"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-41-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="display-of-inner-axes-2">Display of inner axes</h3>
+<p>We can confine labels, so inner axes only display tick marks.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>p <span class="sc">+</span> <span class="fu">facet_grid</span>(island <span class="sc">~</span> species, <span class="at">axes =</span> <span class="st">"all"</span>, <span class="at">axis.labels =</span> <span class="st">"margins"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-42-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="layout">Layout</h3>
+<p>Layers have a <code>layout</code> argument that can be interpreted by facets.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>p <span class="sc">+</span></span>
+<span id="cb43-2"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb43-3"><a></a>    <span class="at">colour =</span><span class="st">"grey"</span>, <span class="at">shape =</span> <span class="dv">1</span>, </span>
+<span id="cb43-4"><a></a>    <span class="at">layout =</span> <span class="st">"fixed"</span></span>
+<span id="cb43-5"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb43-6"><a></a>  <span class="fu">geom_point</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb43-7"><a></a>  <span class="fu">facet_grid</span>(island <span class="sc">~</span> species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-43-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="layout-1">Layout</h3>
+<p><code>facet_wrap()</code> and <code>facet_grid()</code> allow placement at certain panels.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>p <span class="sc">+</span></span>
+<span id="cb44-2"><a></a>  <span class="fu">annotate</span>(</span>
+<span id="cb44-3"><a></a>    <span class="at">geom =</span> <span class="st">"text"</span>, <span class="at">x =</span> <span class="fu">I</span>(<span class="fl">0.7</span>), <span class="at">y =</span> <span class="fu">I</span>(<span class="fl">0.25</span>), <span class="at">size =</span> <span class="dv">2</span>,</span>
+<span id="cb44-4"><a></a>    <span class="at">label =</span> <span class="st">"Adelie Penguins</span><span class="sc">\n</span><span class="st">on Dream island"</span>,</span>
+<span id="cb44-5"><a></a>    <span class="at">layout =</span> <span class="dv">4</span></span>
+<span id="cb44-6"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb44-7"><a></a>  <span class="fu">facet_grid</span>(island <span class="sc">~</span> species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-44-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="wrap-panel-order">Wrap panel order</h3>
+<p>New panel ordering settings in <code>dir</code> argument.</p>
+<ul>
+<li><code>as.table</code> is now absorbed in <code>dir</code></li>
+<li>Use two-letter combination of <code>t</code>, <code>r</code>, <code>b</code>, <code>l</code>
+<ul>
+<li><code>t</code> = top</li>
+<li><code>r</code> = right</li>
+<li><code>b</code> = bottom</li>
+<li><code>l</code> = left</li>
+</ul></li>
+<li>Combinations determines starting point, e.g.&nbsp;<code>"br"</code> starts in the bottom-right.</li>
+<li>First letter indicates growing direction, e.g.&nbsp;<code>"br"</code> grows bottom-to-top before right-to-left.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="wrap-panel-order-1">Wrap panel order</h3>
+<p>The default order is <code>"lt"</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>panels <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">as.integer</span>(<span class="fu">interaction</span>(species, island, <span class="at">drop =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb45-2"><a></a>p <span class="sc">+</span> <span class="fu">facet_wrap</span>(panels, <span class="at">dir =</span> <span class="st">"lt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-45-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="wrap-panel-order-2">Wrap panel order</h3>
+
+
+
+<img data-src="1_2_ggplot2_files/figure-revealjs/unnamed-chunk-46-1.png" width="960" class="r-stretch"></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -358,6 +1216,44 @@ Teun van den Brand
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
