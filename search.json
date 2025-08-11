@@ -35,11 +35,130 @@
     "text": "Instructor(s)\nThomas Lin Pedersen (thomas.pedersen@posit.co)\nThomas is a software engineer at Posit where he is in charge of most things related to R graphics. He is the maintainer of ggplot2 and author of numerous packages that improves the graphics capabilities of R. On the side, Thomas is a generative artist making computational art using R, JavaScript, and GLSL. A not insignificant number of packages or features has been born from artistic needs.\nTeun van den Brand (teun.vandenbrand@posit.co) Teun is a contractor working for Posit. He contributes mostly to the ggplot2 and scales packages and has been in charge of most of the new features in the latest releases. He has authored other packages such as legendry, ggh4x and ggarrow — all building on the ggplot2 framework.\n\n This work is licensed under a Creative Commons Attribution 4.0 International License."
   },
   {
-    "objectID": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
-    "href": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
-    "title": "Attribution-ShareAlike 4.0 International",
-    "section": "Creative Commons Attribution-ShareAlike 4.0 International Public License",
-    "text": "Creative Commons Attribution-ShareAlike 4.0 International Public License\nBy exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution-ShareAlike 4.0 International Public License (“Public License”). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.\n\nSection 1 – Definitions.\n\nAdapted Material means material subject to Copyright and Similar Rights that is derived from or based upon the Licensed Material and in which the Licensed Material is translated, altered, arranged, transformed, or otherwise modified in a manner requiring permission under the Copyright and Similar Rights held by the Licensor. For purposes of this Public License, where the Licensed Material is a musical work, performance, or sound recording, Adapted Material is always produced where the Licensed Material is synched in timed relation with a moving image.\nAdapter’s License means the license You apply to Your Copyright and Similar Rights in Your contributions to Adapted Material in accordance with the terms and conditions of this Public License.\nBY-SA Compatible License means a license listed at creativecommons.org/compatiblelicenses, approved by Creative Commons as essentially the equivalent of this Public License.\nCopyright and Similar Rights means copyright and/or similar rights closely related to copyright including, without limitation, performance, broadcast, sound recording, and Sui Generis Database Rights, without regard to how the rights are labeled or categorized. For purposes of this Public License, the rights specified in Section 2(b)(1)-(2) are not Copyright and Similar Rights.\nEffective Technological Measures means those measures that, in the absence of proper authority, may not be circumvented under laws fulfilling obligations under Article 11 of the WIPO Copyright Treaty adopted on December 20, 1996, and/or similar international agreements.\nExceptions and Limitations means fair use, fair dealing, and/or any other exception or limitation to Copyright and Similar Rights that applies to Your use of the Licensed Material.\nLicense Elements means the license attributes listed in the name of a Creative Commons Public License. The License Elements of this Public License are Attribution and ShareAlike.\nLicensed Material means the artistic or literary work, database, or other material to which the Licensor applied this Public License.\nLicensed Rights means the rights granted to You subject to the terms and conditions of this Public License, which are limited to all Copyright and Similar Rights that apply to Your use of the Licensed Material and that the Licensor has authority to license.\nLicensor means the individual(s) or entity(ies) granting rights under this Public License.\nShare means to provide material to the public by any means or process that requires permission under the Licensed Rights, such as reproduction, public display, public performance, distribution, dissemination, communication, or importation, and to make material available to the public including in ways that members of the public may access the material from a place and at a time individually chosen by them.\nSui Generis Database Rights means rights other than copyright resulting from Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, as amended and/or succeeded, as well as other essentially equivalent rights anywhere in the world.\nYou means the individual or entity exercising the Licensed Rights under this Public License. Your has a corresponding meaning.\n\n\n\nSection 2 – Scope.\n\nLicense grant.\n\nSubject to the terms and conditions of this Public License, the Licensor hereby grants You a worldwide, royalty-free, non-sublicensable, non-exclusive, irrevocable license to exercise the Licensed Rights in the Licensed Material to:\nA. reproduce and Share the Licensed Material, in whole or in part; and\nB. produce, reproduce, and Share Adapted Material.\nExceptions and Limitations. For the avoidance of doubt, where Exceptions and Limitations apply to Your use, this Public License does not apply, and You do not need to comply with its terms and conditions.\nTerm. The term of this Public License is specified in Section 6(a).\nMedia and formats; technical modifications allowed. The Licensor authorizes You to exercise the Licensed Rights in all media and formats whether now known or hereafter created, and to make technical modifications necessary to do so. The Licensor waives and/or agrees not to assert any right or authority to forbid You from making technical modifications necessary to exercise the Licensed Rights, including technical modifications necessary to circumvent Effective Technological Measures. For purposes of this Public License, simply making modifications authorized by this Section 2(a)(4) never produces Adapted Material.\nDownstream recipients.\nA. Offer from the Licensor – Licensed Material. Every recipient of the Licensed Material automatically receives an offer from the Licensor to exercise the Licensed Rights under the terms and conditions of this Public License.\nB. __Additional offer from the Licensor – Adapted Material. Every recipient of Adapted Material from You automatically receives an offer from the Licensor to exercise the Licensed Rights in the Adapted Material under the conditions of the Adapter’s License You apply.\nC. No downstream restrictions. You may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, the Licensed Material if doing so restricts exercise of the Licensed Rights by any recipient of the Licensed Material.\nNo endorsement. Nothing in this Public License constitutes or may be construed as permission to assert or imply that You are, or that Your use of the Licensed Material is, connected with, or sponsored, endorsed, or granted official status by, the Licensor or others designated to receive attribution as provided in Section 3(a)(1)(A)(i).\n\nOther rights.\n\nMoral rights, such as the right of integrity, are not licensed under this Public License, nor are publicity, privacy, and/or other similar personality rights; however, to the extent possible, the Licensor waives and/or agrees not to assert any such rights held by the Licensor to the limited extent necessary to allow You to exercise the Licensed Rights, but not otherwise.\nPatent and trademark rights are not licensed under this Public License.\nTo the extent possible, the Licensor waives any right to collect royalties from You for the exercise of the Licensed Rights, whether directly or through a collecting society under any voluntary or waivable statutory or compulsory licensing scheme. In all other cases the Licensor expressly reserves any right to collect such royalties.\n\n\n\n\nSection 3 – License Conditions.\nYour exercise of the Licensed Rights is expressly made subject to the following conditions.\n\nAttribution.\n\nIf You Share the Licensed Material (including in modified form), You must:\nA. retain the following if it is supplied by the Licensor with the Licensed Material:\n\nidentification of the creator(s) of the Licensed Material and any others designated to receive attribution, in any reasonable manner requested by the Licensor (including by pseudonym if designated);\na copyright notice;\na notice that refers to this Public License;\na notice that refers to the disclaimer of warranties;\na URI or hyperlink to the Licensed Material to the extent reasonably practicable;\n\nB. indicate if You modified the Licensed Material and retain an indication of any previous modifications; and\nC. indicate the Licensed Material is licensed under this Public License, and include the text of, or the URI or hyperlink to, this Public License.\nYou may satisfy the conditions in Section 3(a)(1) in any reasonable manner based on the medium, means, and context in which You Share the Licensed Material. For example, it may be reasonable to satisfy the conditions by providing a URI or hyperlink to a resource that includes the required information.\nIf requested by the Licensor, You must remove any of the information required by Section 3(a)(1)(A) to the extent reasonably practicable.\n\nShareAlike.\n\nIn addition to the conditions in Section 3(a), if You Share Adapted Material You produce, the following conditions also apply.\n\nThe Adapter’s License You apply must be a Creative Commons license with the same License Elements, this version or later, or a BY-SA Compatible License.\nYou must include the text of, or the URI or hyperlink to, the Adapter’s License You apply. You may satisfy this condition in any reasonable manner based on the medium, means, and context in which You Share Adapted Material.\nYou may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, Adapted Material that restrict exercise of the rights granted under the Adapter’s License You apply.\n\n\n\nSection 4 – Sui Generis Database Rights.\nWhere the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:\n\nfor the avoidance of doubt, Section 2(a)(1) grants You the right to extract, reuse, reproduce, and Share all or a substantial portion of the contents of the database;\nif You include all or a substantial portion of the database contents in a database in which You have Sui Generis Database Rights, then the database in which You have Sui Generis Database Rights (but not its individual contents) is Adapted Material, including for purposes of Section 3(b); and\nYou must comply with the conditions in Section 3(a) if You Share all or a substantial portion of the contents of the database.\n\nFor the avoidance of doubt, this Section 4 supplements and does not replace Your obligations under this Public License where the Licensed Rights include other Copyright and Similar Rights.\n\n\nSection 5 – Disclaimer of Warranties and Limitation of Liability.\n\nUnless otherwise separately undertaken by the Licensor, to the extent possible, the Licensor offers the Licensed Material as-is and as-available, and makes no representations or warranties of any kind concerning the Licensed Material, whether express, implied, statutory, or other. This includes, without limitation, warranties of title, merchantability, fitness for a particular purpose, non-infringement, absence of latent or other defects, accuracy, or the presence or absence of errors, whether or not known or discoverable. Where disclaimers of warranties are not allowed in full or in part, this disclaimer may not apply to You.\nTo the extent possible, in no event will the Licensor be liable to You on any legal theory (including, without limitation, negligence) or otherwise for any direct, special, indirect, incidental, consequential, punitive, exemplary, or other losses, costs, expenses, or damages arising out of this Public License or use of the Licensed Material, even if the Licensor has been advised of the possibility of such losses, costs, expenses, or damages. Where a limitation of liability is not allowed in full or in part, this limitation may not apply to You.\nThe disclaimer of warranties and limitation of liability provided above shall be interpreted in a manner that, to the extent possible, most closely approximates an absolute disclaimer and waiver of all liability.\n\n\n\nSection 6 – Term and Termination.\n\nThis Public License applies for the term of the Copyright and Similar Rights licensed here. However, if You fail to comply with this Public License, then Your rights under this Public License terminate automatically.\nWhere Your right to use the Licensed Material has terminated under Section 6(a), it reinstates:\n\nautomatically as of the date the violation is cured, provided it is cured within 30 days of Your discovery of the violation; or\nupon express reinstatement by the Licensor.\n\nFor the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may have to seek remedies for Your violations of this Public License.\nFor the avoidance of doubt, the Licensor may also offer the Licensed Material under separate terms or conditions or stop distributing the Licensed Material at any time; however, doing so will not terminate this Public License.\nSections 1, 5, 6, 7, and 8 survive termination of this Public License.\n\n\n\nSection 7 – Other Terms and Conditions.\n\nThe Licensor shall not be bound by any additional or different terms or conditions communicated by You unless expressly agreed.\nAny arrangements, understandings, or agreements regarding the Licensed Material not stated herein are separate from and independent of the terms and conditions of this Public License.t stated herein are separate from and independent of the terms and conditions of this Public License.\n\n\n\nSection 8 – Interpretation.\n\nFor the avoidance of doubt, this Public License does not, and shall not be interpreted to, reduce, limit, restrict, or impose conditions on any use of the Licensed Material that could lawfully be made without permission under this Public License.\nTo the extent possible, if any provision of this Public License is deemed unenforceable, it shall be automatically reformed to the minimum extent necessary to make it enforceable. If the provision cannot be reformed, it shall be severed from this Public License without affecting the enforceability of the remaining terms and conditions.\nNo term or condition of this Public License will be waived and no failure to comply consented to unless expressly agreed to by the Licensor.\nNothing in this Public License constitutes or may be interpreted as a limitation upon, or waiver of, any privileges and immunities that apply to the Licensor or You, including from the legal processes of any jurisdiction or authority.\n\n\nCreative Commons is not a party to its public licenses. Notwithstanding, Creative Commons may elect to apply one of its public licenses to material it publishes and in those instances will be considered the “Licensor.” Except for the limited purpose of indicating that material is shared under a Creative Commons public license or as otherwise permitted by the Creative Commons policies published at creativecommons.org/policies, Creative Commons does not authorize the use of the trademark “Creative Commons” or any other trademark or logo of Creative Commons without its prior written consent including, without limitation, in connection with any unauthorized modifications to any of its public licenses or any other arrangements, understandings, or agreements concerning use of licensed material. For the avoidance of doubt, this paragraph does not form part of the public licenses.\nCreative Commons may be contacted at creativecommons.org"
+    "objectID": "exercises/2_1_text_fonts.html#exercise-2",
+    "href": "exercises/2_1_text_fonts.html#exercise-2",
+    "title": "Exercises for session 3",
+    "section": "Exercise 2",
+    "text": "Exercise 2\n\nA\n\n\nB"
+  },
+  {
+    "objectID": "slides/1_1_introduction.html#mastering-data-visualization-with-ggplot2",
+    "href": "slides/1_1_introduction.html#mastering-data-visualization-with-ggplot2",
+    "title": "Mastering Data Visualization with ggplot2",
+    "section": "Mastering Data Visualization with ggplot2",
+    "text": "Mastering Data Visualization with ggplot2\nLatest Techniques and Best Practices"
+  },
+  {
+    "objectID": "slides/1_1_introduction.html#the-team",
+    "href": "slides/1_1_introduction.html#the-team",
+    "title": "Mastering Data Visualization with ggplot2",
+    "section": "The Team",
+    "text": "The Team\n \nTeachers\nThomas Lin Pedersen (me)\nTeun van den Brand\n \nTAs\nKara Woo"
+  },
+  {
+    "objectID": "slides/1_1_introduction.html#today",
+    "href": "slides/1_1_introduction.html#today",
+    "title": "Mastering Data Visualization with ggplot2",
+    "section": "Today",
+    "text": "Today\n\nIntroduction\nModern ggplot2\nText rendering and font use\nStyling your plot\nPlot composition\nInteractive plots\nCreating extensions\nSpice up your plot"
+  },
+  {
+    "objectID": "slides/1_1_introduction.html#practical-information",
+    "href": "slides/1_1_introduction.html#practical-information",
+    "title": "Mastering Data Visualization with ggplot2",
+    "section": "Practical information",
+    "text": "Practical information\nTBD"
+  },
+  {
+    "objectID": "slides/1_2_ggplot2.html#headings",
+    "href": "slides/1_2_ggplot2.html#headings",
+    "title": "Modern ggplot2",
+    "section": "Headings",
+    "text": "Headings\n\nColumn metadata\nData dictionary"
+  },
+  {
+    "objectID": "slides/1_2_ggplot2.html#patterns-and-gradients",
+    "href": "slides/1_2_ggplot2.html#patterns-and-gradients",
+    "title": "Modern ggplot2",
+    "section": "Patterns and gradients",
+    "text": "Patterns and gradients\nIn R 4.1 the grid package introduced patterns and gradients.\n\ngrid::linearGradient()\ngrid::radialGradient()\ngrid::pattern()\n\nWe allow these as fill aesthetic in ggplot2.\nPatterns can aid in cases of colour vision deficiency."
+  },
+  {
+    "objectID": "slides/1_2_ggplot2.html#delayed-evaluation",
+    "href": "slides/1_2_ggplot2.html#delayed-evaluation",
+    "title": "Modern ggplot2",
+    "section": "Delayed evaluation",
+    "text": "Delayed evaluation\nWith regards to evaluation, there are three stages:\n\nDirect input at start\nAfter computing stat\nAfter scale mapping"
+  },
+  {
+    "objectID": "slides/1_2_ggplot2.html#polar-coordinates",
+    "href": "slides/1_2_ggplot2.html#polar-coordinates",
+    "title": "Modern ggplot2",
+    "section": "Polar coordinates",
+    "text": "Polar coordinates\nThe classic coord_polar() is succeeded by coord_radial().\n\nexpand parameter\nArbitrary sectors\nDonuts"
+  },
+  {
+    "objectID": "slides/1_2_ggplot2.html#facets",
+    "href": "slides/1_2_ggplot2.html#facets",
+    "title": "Modern ggplot2",
+    "section": "Facets",
+    "text": "Facets\n\nDisplay of inner axes\nLayer layout\nPanel ordering"
+  },
+  {
+    "objectID": "sessions/1_1_introduction.html",
+    "href": "sessions/1_1_introduction.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "This session will briefly introduce the rest of the day, giving an overview of the schedule and any practical information that may be relevant.\nKey points: * Agenda * Who we are * Practical info * Toilets * Ribbons * Etc\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/2_2_theme_guide.html",
+    "href": "sessions/2_2_theme_guide.html",
+    "title": "Styling your plot",
+    "section": "",
+    "text": "In this session, we learn about the following topics:\n\nInk and paper\nPalettes in themes\nBuilding your own theme\nCustomising guides\n\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/1_2_ggplot2.html",
+    "href": "sessions/1_2_ggplot2.html",
+    "title": "Modern ggplot2",
+    "section": "",
+    "text": "The goal of this session is to get you up to speed with the latest developments from ggplot2 3.5.0 onwards.\n\nHeadings\nPatterns and gradients\nDelayed evaluation\nPolar coordinates\nFacets\n\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/4_2_fun.html",
+    "href": "sessions/4_2_fun.html",
+    "title": "Spice up your plot",
+    "section": "",
+    "text": "In this last session we will (if time permits) spend some time showcasing things you can do with ggplots and its extensions that may make Tufte roll over, but on the other hand can help you create memorable visualisations with a lot of personality\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/3_1_composition.html",
+    "href": "sessions/3_1_composition.html",
+    "title": "Plot composition",
+    "section": "",
+    "text": "In this session we will dive into how you present multiple plots in the same figure. The key package here is patchwork and you will learn (almost) all there is to now about how to harness its power.\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/4_1_extensions.html",
+    "href": "sessions/4_1_extensions.html",
+    "title": "Creating extensions",
+    "section": "",
+    "text": "Here we talk about creating reusable pieces of code that fit into the grammar:\n\nClasses\nConstructors\nPatterns\n\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/2_1_text_fonts.html",
+    "href": "sessions/2_1_text_fonts.html",
+    "title": "Text rendering and font use",
+    "section": "",
+    "text": "In this session we will dive into working with text in ggplot2. There are two areas of special interest here: How to access the typeface (font) you want to use, and how to add rich formatting to your text. You will be introduced to two key packages that work in unison, namely systemfonts and marquee. Further, you will get an understanding of why selecting the right graphics device is paramount when it comes to text, moreso than for most other graphics features.\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/3_2_interaction.html",
+    "href": "sessions/3_2_interaction.html",
+    "title": "Interactive plots",
+    "section": "",
+    "text": "Here we learn about sprucing up your plots for the digital world:\n\nplotly\nggiraph\ngganimate\n\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
   },
   {
     "objectID": "slides/2_1_text_fonts.html#today",
@@ -189,129 +308,52 @@
     "text": "Exercies"
   },
   {
-    "objectID": "sessions/3_2_interaction.html",
-    "href": "sessions/3_2_interaction.html",
-    "title": "Interactive plots",
-    "section": "",
-    "text": "Here we learn about sprucing up your plots for the digital world:\n\nplotly\nggiraph\ngganimate\n\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
+    "objectID": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
+    "href": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
+    "title": "Attribution-ShareAlike 4.0 International",
+    "section": "Creative Commons Attribution-ShareAlike 4.0 International Public License",
+    "text": "Creative Commons Attribution-ShareAlike 4.0 International Public License\nBy exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution-ShareAlike 4.0 International Public License (“Public License”). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.\n\nSection 1 – Definitions.\n\nAdapted Material means material subject to Copyright and Similar Rights that is derived from or based upon the Licensed Material and in which the Licensed Material is translated, altered, arranged, transformed, or otherwise modified in a manner requiring permission under the Copyright and Similar Rights held by the Licensor. For purposes of this Public License, where the Licensed Material is a musical work, performance, or sound recording, Adapted Material is always produced where the Licensed Material is synched in timed relation with a moving image.\nAdapter’s License means the license You apply to Your Copyright and Similar Rights in Your contributions to Adapted Material in accordance with the terms and conditions of this Public License.\nBY-SA Compatible License means a license listed at creativecommons.org/compatiblelicenses, approved by Creative Commons as essentially the equivalent of this Public License.\nCopyright and Similar Rights means copyright and/or similar rights closely related to copyright including, without limitation, performance, broadcast, sound recording, and Sui Generis Database Rights, without regard to how the rights are labeled or categorized. For purposes of this Public License, the rights specified in Section 2(b)(1)-(2) are not Copyright and Similar Rights.\nEffective Technological Measures means those measures that, in the absence of proper authority, may not be circumvented under laws fulfilling obligations under Article 11 of the WIPO Copyright Treaty adopted on December 20, 1996, and/or similar international agreements.\nExceptions and Limitations means fair use, fair dealing, and/or any other exception or limitation to Copyright and Similar Rights that applies to Your use of the Licensed Material.\nLicense Elements means the license attributes listed in the name of a Creative Commons Public License. The License Elements of this Public License are Attribution and ShareAlike.\nLicensed Material means the artistic or literary work, database, or other material to which the Licensor applied this Public License.\nLicensed Rights means the rights granted to You subject to the terms and conditions of this Public License, which are limited to all Copyright and Similar Rights that apply to Your use of the Licensed Material and that the Licensor has authority to license.\nLicensor means the individual(s) or entity(ies) granting rights under this Public License.\nShare means to provide material to the public by any means or process that requires permission under the Licensed Rights, such as reproduction, public display, public performance, distribution, dissemination, communication, or importation, and to make material available to the public including in ways that members of the public may access the material from a place and at a time individually chosen by them.\nSui Generis Database Rights means rights other than copyright resulting from Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, as amended and/or succeeded, as well as other essentially equivalent rights anywhere in the world.\nYou means the individual or entity exercising the Licensed Rights under this Public License. Your has a corresponding meaning.\n\n\n\nSection 2 – Scope.\n\nLicense grant.\n\nSubject to the terms and conditions of this Public License, the Licensor hereby grants You a worldwide, royalty-free, non-sublicensable, non-exclusive, irrevocable license to exercise the Licensed Rights in the Licensed Material to:\nA. reproduce and Share the Licensed Material, in whole or in part; and\nB. produce, reproduce, and Share Adapted Material.\nExceptions and Limitations. For the avoidance of doubt, where Exceptions and Limitations apply to Your use, this Public License does not apply, and You do not need to comply with its terms and conditions.\nTerm. The term of this Public License is specified in Section 6(a).\nMedia and formats; technical modifications allowed. The Licensor authorizes You to exercise the Licensed Rights in all media and formats whether now known or hereafter created, and to make technical modifications necessary to do so. The Licensor waives and/or agrees not to assert any right or authority to forbid You from making technical modifications necessary to exercise the Licensed Rights, including technical modifications necessary to circumvent Effective Technological Measures. For purposes of this Public License, simply making modifications authorized by this Section 2(a)(4) never produces Adapted Material.\nDownstream recipients.\nA. Offer from the Licensor – Licensed Material. Every recipient of the Licensed Material automatically receives an offer from the Licensor to exercise the Licensed Rights under the terms and conditions of this Public License.\nB. __Additional offer from the Licensor – Adapted Material. Every recipient of Adapted Material from You automatically receives an offer from the Licensor to exercise the Licensed Rights in the Adapted Material under the conditions of the Adapter’s License You apply.\nC. No downstream restrictions. You may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, the Licensed Material if doing so restricts exercise of the Licensed Rights by any recipient of the Licensed Material.\nNo endorsement. Nothing in this Public License constitutes or may be construed as permission to assert or imply that You are, or that Your use of the Licensed Material is, connected with, or sponsored, endorsed, or granted official status by, the Licensor or others designated to receive attribution as provided in Section 3(a)(1)(A)(i).\n\nOther rights.\n\nMoral rights, such as the right of integrity, are not licensed under this Public License, nor are publicity, privacy, and/or other similar personality rights; however, to the extent possible, the Licensor waives and/or agrees not to assert any such rights held by the Licensor to the limited extent necessary to allow You to exercise the Licensed Rights, but not otherwise.\nPatent and trademark rights are not licensed under this Public License.\nTo the extent possible, the Licensor waives any right to collect royalties from You for the exercise of the Licensed Rights, whether directly or through a collecting society under any voluntary or waivable statutory or compulsory licensing scheme. In all other cases the Licensor expressly reserves any right to collect such royalties.\n\n\n\n\nSection 3 – License Conditions.\nYour exercise of the Licensed Rights is expressly made subject to the following conditions.\n\nAttribution.\n\nIf You Share the Licensed Material (including in modified form), You must:\nA. retain the following if it is supplied by the Licensor with the Licensed Material:\n\nidentification of the creator(s) of the Licensed Material and any others designated to receive attribution, in any reasonable manner requested by the Licensor (including by pseudonym if designated);\na copyright notice;\na notice that refers to this Public License;\na notice that refers to the disclaimer of warranties;\na URI or hyperlink to the Licensed Material to the extent reasonably practicable;\n\nB. indicate if You modified the Licensed Material and retain an indication of any previous modifications; and\nC. indicate the Licensed Material is licensed under this Public License, and include the text of, or the URI or hyperlink to, this Public License.\nYou may satisfy the conditions in Section 3(a)(1) in any reasonable manner based on the medium, means, and context in which You Share the Licensed Material. For example, it may be reasonable to satisfy the conditions by providing a URI or hyperlink to a resource that includes the required information.\nIf requested by the Licensor, You must remove any of the information required by Section 3(a)(1)(A) to the extent reasonably practicable.\n\nShareAlike.\n\nIn addition to the conditions in Section 3(a), if You Share Adapted Material You produce, the following conditions also apply.\n\nThe Adapter’s License You apply must be a Creative Commons license with the same License Elements, this version or later, or a BY-SA Compatible License.\nYou must include the text of, or the URI or hyperlink to, the Adapter’s License You apply. You may satisfy this condition in any reasonable manner based on the medium, means, and context in which You Share Adapted Material.\nYou may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, Adapted Material that restrict exercise of the rights granted under the Adapter’s License You apply.\n\n\n\nSection 4 – Sui Generis Database Rights.\nWhere the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:\n\nfor the avoidance of doubt, Section 2(a)(1) grants You the right to extract, reuse, reproduce, and Share all or a substantial portion of the contents of the database;\nif You include all or a substantial portion of the database contents in a database in which You have Sui Generis Database Rights, then the database in which You have Sui Generis Database Rights (but not its individual contents) is Adapted Material, including for purposes of Section 3(b); and\nYou must comply with the conditions in Section 3(a) if You Share all or a substantial portion of the contents of the database.\n\nFor the avoidance of doubt, this Section 4 supplements and does not replace Your obligations under this Public License where the Licensed Rights include other Copyright and Similar Rights.\n\n\nSection 5 – Disclaimer of Warranties and Limitation of Liability.\n\nUnless otherwise separately undertaken by the Licensor, to the extent possible, the Licensor offers the Licensed Material as-is and as-available, and makes no representations or warranties of any kind concerning the Licensed Material, whether express, implied, statutory, or other. This includes, without limitation, warranties of title, merchantability, fitness for a particular purpose, non-infringement, absence of latent or other defects, accuracy, or the presence or absence of errors, whether or not known or discoverable. Where disclaimers of warranties are not allowed in full or in part, this disclaimer may not apply to You.\nTo the extent possible, in no event will the Licensor be liable to You on any legal theory (including, without limitation, negligence) or otherwise for any direct, special, indirect, incidental, consequential, punitive, exemplary, or other losses, costs, expenses, or damages arising out of this Public License or use of the Licensed Material, even if the Licensor has been advised of the possibility of such losses, costs, expenses, or damages. Where a limitation of liability is not allowed in full or in part, this limitation may not apply to You.\nThe disclaimer of warranties and limitation of liability provided above shall be interpreted in a manner that, to the extent possible, most closely approximates an absolute disclaimer and waiver of all liability.\n\n\n\nSection 6 – Term and Termination.\n\nThis Public License applies for the term of the Copyright and Similar Rights licensed here. However, if You fail to comply with this Public License, then Your rights under this Public License terminate automatically.\nWhere Your right to use the Licensed Material has terminated under Section 6(a), it reinstates:\n\nautomatically as of the date the violation is cured, provided it is cured within 30 days of Your discovery of the violation; or\nupon express reinstatement by the Licensor.\n\nFor the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may have to seek remedies for Your violations of this Public License.\nFor the avoidance of doubt, the Licensor may also offer the Licensed Material under separate terms or conditions or stop distributing the Licensed Material at any time; however, doing so will not terminate this Public License.\nSections 1, 5, 6, 7, and 8 survive termination of this Public License.\n\n\n\nSection 7 – Other Terms and Conditions.\n\nThe Licensor shall not be bound by any additional or different terms or conditions communicated by You unless expressly agreed.\nAny arrangements, understandings, or agreements regarding the Licensed Material not stated herein are separate from and independent of the terms and conditions of this Public License.t stated herein are separate from and independent of the terms and conditions of this Public License.\n\n\n\nSection 8 – Interpretation.\n\nFor the avoidance of doubt, this Public License does not, and shall not be interpreted to, reduce, limit, restrict, or impose conditions on any use of the Licensed Material that could lawfully be made without permission under this Public License.\nTo the extent possible, if any provision of this Public License is deemed unenforceable, it shall be automatically reformed to the minimum extent necessary to make it enforceable. If the provision cannot be reformed, it shall be severed from this Public License without affecting the enforceability of the remaining terms and conditions.\nNo term or condition of this Public License will be waived and no failure to comply consented to unless expressly agreed to by the Licensor.\nNothing in this Public License constitutes or may be interpreted as a limitation upon, or waiver of, any privileges and immunities that apply to the Licensor or You, including from the legal processes of any jurisdiction or authority.\n\n\nCreative Commons is not a party to its public licenses. Notwithstanding, Creative Commons may elect to apply one of its public licenses to material it publishes and in those instances will be considered the “Licensor.” Except for the limited purpose of indicating that material is shared under a Creative Commons public license or as otherwise permitted by the Creative Commons policies published at creativecommons.org/policies, Creative Commons does not authorize the use of the trademark “Creative Commons” or any other trademark or logo of Creative Commons without its prior written consent including, without limitation, in connection with any unauthorized modifications to any of its public licenses or any other arrangements, understandings, or agreements concerning use of licensed material. For the avoidance of doubt, this paragraph does not form part of the public licenses.\nCreative Commons may be contacted at creativecommons.org"
   },
   {
-    "objectID": "sessions/2_1_text_fonts.html",
-    "href": "sessions/2_1_text_fonts.html",
-    "title": "Text rendering and font use",
+    "objectID": "exercises/1_2_ggplot2-ex.html",
+    "href": "exercises/1_2_ggplot2-ex.html",
+    "title": "Exercises for session 1.2",
     "section": "",
-    "text": "In this session we will dive into working with text in ggplot2. There are two areas of special interest here: How to access the typeface (font) you want to use, and how to add rich formatting to your text. You will be introduced to two key packages that work in unison, namely systemfonts and marquee. Further, you will get an understanding of why selecting the right graphics device is paramount when it comes to text, moreso than for most other graphics features.\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
+    "text": "library(ggplot2)\nlibrary(grid)\n\n# Some graphics devices don't support gradients and patterns. We set the\n# device to ragg, which does support these.\nknitr::opts_chunk$set(dev = \"ragg_png\")"
   },
   {
-    "objectID": "sessions/4_1_extensions.html",
-    "href": "sessions/4_1_extensions.html",
-    "title": "Creating extensions",
-    "section": "",
-    "text": "Here we talk about creating reusable pieces of code that fit into the grammar:\n\nClasses\nConstructors\nPatterns\n\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
-  },
-  {
-    "objectID": "sessions/3_1_composition.html",
-    "href": "sessions/3_1_composition.html",
-    "title": "Plot composition",
-    "section": "",
-    "text": "In this session we will dive into how you present multiple plots in the same figure. The key package here is patchwork and you will learn (almost) all there is to now about how to harness its power.\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
-  },
-  {
-    "objectID": "sessions/4_2_fun.html",
-    "href": "sessions/4_2_fun.html",
-    "title": "Spice up your plot",
-    "section": "",
-    "text": "In this last session we will (if time permits) spend some time showcasing things you can do with ggplots and its extensions that may make Tufte roll over, but on the other hand can help you create memorable visualisations with a lot of personality\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
-  },
-  {
-    "objectID": "sessions/1_2_ggplot2.html",
-    "href": "sessions/1_2_ggplot2.html",
-    "title": "Modern ggplot2",
-    "section": "",
-    "text": "The goal of this session is to get you up to speed with the latest developments from ggplot2 3.5.0 onwards.\n\nHeadings\nPatterns and gradients\nDelayed evaluation\nPolar coordinates\nFacets\n\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
-  },
-  {
-    "objectID": "sessions/2_2_theme_guide.html",
-    "href": "sessions/2_2_theme_guide.html",
-    "title": "Styling your plot",
-    "section": "",
-    "text": "In this session, we learn about the following topics:\n\nInk and paper\nPalettes in themes\nBuilding your own theme\nCustomising guides\n\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
-  },
-  {
-    "objectID": "sessions/1_1_introduction.html",
-    "href": "sessions/1_1_introduction.html",
-    "title": "Introduction",
-    "section": "",
-    "text": "This session will briefly introduce the rest of the day, giving an overview of the schedule and any practical information that may be relevant.\nKey points: * Agenda * Who we are * Practical info * Toilets * Ribbons * Etc\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
-  },
-  {
-    "objectID": "slides/1_2_ggplot2.html#headings",
-    "href": "slides/1_2_ggplot2.html#headings",
-    "title": "Modern ggplot2",
+    "objectID": "exercises/1_2_ggplot2-ex.html#headings",
+    "href": "exercises/1_2_ggplot2-ex.html#headings",
+    "title": "Exercises for session 1.2",
     "section": "Headings",
-    "text": "Headings\n\nColumn metadata\nData dictionary"
+    "text": "Headings\n\nExercise 1.2.1\nWe can use the label attribute in columns to automatically label a variable. Complete the chunk below to set a label attribute for the unemploy column in the economics dataset. Per ?economics, the unemploy variable gives the number of unemployed people in thousands.\n\nattr(economics$date, \"label\") &lt;- \"Year\"\n...\n\n\nggplot(economics, aes(date, unemploy)) +\n  geom_area(alpha = 0.4, colour = \"black\")\n\n\n\n\n\n\n\n\n\n\nExercise 1.2.2\nIf don’t have pre-set labels, we can also use the labs(dictionary) argument to populate column-label pairs. Use this argument to label the variables in the plot below. You can use ?mpg to find out what the columns are.\n\nggplot(mpg, aes(displ, hwy, colour = drv)) +\n  geom_point() +\n  labs(dictionary = ...)"
   },
   {
-    "objectID": "slides/1_2_ggplot2.html#patterns-and-gradients",
-    "href": "slides/1_2_ggplot2.html#patterns-and-gradients",
-    "title": "Modern ggplot2",
+    "objectID": "exercises/1_2_ggplot2-ex.html#patterns-and-gradients",
+    "href": "exercises/1_2_ggplot2-ex.html#patterns-and-gradients",
+    "title": "Exercises for session 1.2",
     "section": "Patterns and gradients",
-    "text": "Patterns and gradients\nIn R 4.1 the grid package introduced patterns and gradients.\n\ngrid::linearGradient()\ngrid::radialGradient()\ngrid::pattern()\n\nWe allow these as fill aesthetic in ggplot2.\nPatterns can aid in cases of colour vision deficiency."
+    "text": "Patterns and gradients\n\nExercise 1.2.3\nUse grid::linearGradient() to set up a horizontal colour gradient. Which arguments do you have to tweak to change the default diagonal gradient to a horizontal one? How would you set a vertical gradient instead?\n\ngradient &lt;- ...\n\nggplot(economics, aes(date, unemploy)) +\n  geom_area(fill = list(gradient), colour = \"black\")\n\n\n\nExercise 1.2.4\nThe following code sets up a crosshatch pattern that can be used as the fill aesthetic.\n\nwidth &lt;- height &lt;- unit(3, \"mm\")\ncrosshatch &lt;- pattern(\n  segmentsGrob(\n    x0 = c(0, 1), x1 = c(1, 0), \n    y0 = c(0, 0), y1 = c(1, 1),\n    gp = gg_par(col = \"black\", lwd = 0.5),\n    vp = viewport(width = width, height = height)\n  ),\n  width = width, height = height,\n  extend = \"repeat\"\n)\n\nggplot(economics, aes(date, unemploy)) +\n  geom_area(fill = crosshatch, colour = \"black\")\n\n\n\n\n\n\n\n\nCreate a new pattern of your liking. Can you design a polka-dot or checkerboard pattern? You can use grid::circleGrob() and grid::rectGrob() for circles and rectangles respectively. We’ll use it to create a manual fill scale of patterns.\n\nmy_pattern &lt;- pattern(\n  ...\n)\n\npatterns &lt;- list(\n  crosshatch,\n  gradient,\n  my_pattern\n)\n\nggplot(palmerpenguins::penguins) +\n  aes(species, fill = island) +\n  geom_bar() +\n  scale_fill_manual(values = patterns)"
   },
   {
-    "objectID": "slides/1_2_ggplot2.html#delayed-evaluation",
-    "href": "slides/1_2_ggplot2.html#delayed-evaluation",
-    "title": "Modern ggplot2",
+    "objectID": "exercises/1_2_ggplot2-ex.html#delayed-evaluation",
+    "href": "exercises/1_2_ggplot2-ex.html#delayed-evaluation",
+    "title": "Exercises for session 1.2",
     "section": "Delayed evaluation",
-    "text": "Delayed evaluation\nWith regards to evaluation, there are three stages:\n\nDirect input at start\nAfter computing stat\nAfter scale mapping"
+    "text": "Delayed evaluation\n\nExercise 1.2.5\nIn the plot below, can you redirect the alpha aesthetic to represent the count computed variable? You can set the fill aesthetic to a fixed colour like \"black\". For an extra challenge, can you use scale_alpha_continuous() to anchor 0 at complete transparency?\n\nggplot(diamonds) +\n  aes(carat, price) +\n  stat_bin_2d(\n    binwidth = c(0.05, 200)\n  )"
   },
   {
-    "objectID": "slides/1_2_ggplot2.html#polar-coordinates",
-    "href": "slides/1_2_ggplot2.html#polar-coordinates",
-    "title": "Modern ggplot2",
+    "objectID": "exercises/1_2_ggplot2-ex.html#polar-coordinates",
+    "href": "exercises/1_2_ggplot2-ex.html#polar-coordinates",
+    "title": "Exercises for session 1.2",
     "section": "Polar coordinates",
-    "text": "Polar coordinates\nThe classic coord_polar() is succeeded by coord_radial().\n\nexpand parameter\nArbitrary sectors\nDonuts"
+    "text": "Polar coordinates\n\nExercise 1.2.6\nPlot p displays a Cartesian bar chart of car manufacturers. Add a coord_radial() with arguments to p to make a half-ring shape coxcomb/windrose chart with nicely displayed text.\n\np &lt;- ggplot(mpg) +\n  aes(manufacturer, label = manufacturer) +\n  geom_bar() +\n  geom_text(\n    aes(y = 37),\n    # Prevent duplicated labels\n    data = ~ dplyr::filter(.x, !duplicated(manufacturer)),\n    angle = 90, hjust = 1\n  ) +\n  scale_x_discrete(guide = \"none\")\np"
   },
   {
-    "objectID": "slides/1_2_ggplot2.html#facets",
-    "href": "slides/1_2_ggplot2.html#facets",
-    "title": "Modern ggplot2",
+    "objectID": "exercises/1_2_ggplot2-ex.html#facets",
+    "href": "exercises/1_2_ggplot2-ex.html#facets",
+    "title": "Exercises for session 1.2",
     "section": "Facets",
-    "text": "Facets\n\nDisplay of inner axes\nLayer layout\nPanel ordering"
-  },
-  {
-    "objectID": "slides/1_1_introduction.html#mastering-data-visualization-with-ggplot2",
-    "href": "slides/1_1_introduction.html#mastering-data-visualization-with-ggplot2",
-    "title": "Mastering Data Visualization with ggplot2",
-    "section": "Mastering Data Visualization with ggplot2",
-    "text": "Mastering Data Visualization with ggplot2\nLatest Techniques and Best Practices"
-  },
-  {
-    "objectID": "slides/1_1_introduction.html#the-team",
-    "href": "slides/1_1_introduction.html#the-team",
-    "title": "Mastering Data Visualization with ggplot2",
-    "section": "The Team",
-    "text": "The Team\n \nTeachers\nThomas Lin Pedersen (me)\nTeun van den Brand\n \nTAs\nKara Woo"
-  },
-  {
-    "objectID": "slides/1_1_introduction.html#today",
-    "href": "slides/1_1_introduction.html#today",
-    "title": "Mastering Data Visualization with ggplot2",
-    "section": "Today",
-    "text": "Today\n\nIntroduction\nModern ggplot2\nText rendering and font use\nStyling your plot\nPlot composition\nInteractive plots\nCreating extensions\nSpice up your plot"
-  },
-  {
-    "objectID": "slides/1_1_introduction.html#practical-information",
-    "href": "slides/1_1_introduction.html#practical-information",
-    "title": "Mastering Data Visualization with ggplot2",
-    "section": "Practical information",
-    "text": "Practical information\nTBD"
-  },
-  {
-    "objectID": "exercises/2_1_text_fonts.html#exercise-2",
-    "href": "exercises/2_1_text_fonts.html#exercise-2",
-    "title": "Exercises for session 3",
-    "section": "Exercise 2",
-    "text": "Exercise 2\n\nA\n\n\nB"
+    "text": "Facets\n\nExercise 1.2.7\nGiven the following code, adapt the facet_wrap() statement to:\n\nMirror the facet order\nPlace labelled axes at the bottom of every panel\nPlace axis ticks on all y-axes\n\n\nggplot(diamonds) +\n  aes(carat, price) +\n  geom_point(shape = \".\") +\n  facet_wrap(~ cut, dir = \"lt\")"
   }
 ]

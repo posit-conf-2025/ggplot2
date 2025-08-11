@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Teun van den Brand">
 
-<title>Modern ggplot2 – Mastering Data Visualization with ggplot2</title>
+<title>Exercises for session 1.2 – Mastering Data Visualization with ggplot2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -148,27 +182,48 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#headings" id="toc-headings" class="nav-link active" data-scroll-target="#headings">Headings</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1.2.1" id="toc-exercise-1.2.1" class="nav-link" data-scroll-target="#exercise-1.2.1">Exercise 1.2.1</a></li>
+  <li><a href="#exercise-1.2.2" id="toc-exercise-1.2.2" class="nav-link" data-scroll-target="#exercise-1.2.2">Exercise 1.2.2</a></li>
+  </ul></li>
+  <li><a href="#patterns-and-gradients" id="toc-patterns-and-gradients" class="nav-link" data-scroll-target="#patterns-and-gradients">Patterns and gradients</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1.2.3" id="toc-exercise-1.2.3" class="nav-link" data-scroll-target="#exercise-1.2.3">Exercise 1.2.3</a></li>
+  <li><a href="#exercise-1.2.4" id="toc-exercise-1.2.4" class="nav-link" data-scroll-target="#exercise-1.2.4">Exercise 1.2.4</a></li>
+  </ul></li>
+  <li><a href="#delayed-evaluation" id="toc-delayed-evaluation" class="nav-link" data-scroll-target="#delayed-evaluation">Delayed evaluation</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1.2.5" id="toc-exercise-1.2.5" class="nav-link" data-scroll-target="#exercise-1.2.5">Exercise 1.2.5</a></li>
+  </ul></li>
+  <li><a href="#polar-coordinates" id="toc-polar-coordinates" class="nav-link" data-scroll-target="#polar-coordinates">Polar coordinates</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1.2.6" id="toc-exercise-1.2.6" class="nav-link" data-scroll-target="#exercise-1.2.6">Exercise 1.2.6</a></li>
+  </ul></li>
+  <li><a href="#facets" id="toc-facets" class="nav-link" data-scroll-target="#facets">Facets</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1.2.7" id="toc-exercise-1.2.7" class="nav-link" data-scroll-target="#exercise-1.2.7">Exercise 1.2.7</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Modern ggplot2</h1>
+<h1 class="title">Exercises for session 1.2</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Teun van den Brand </p>
-          </div>
-  </div>
     
   
     
@@ -179,26 +234,177 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The goal of this session is to get you up to speed with the latest developments from ggplot2 3.5.0 onwards.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Some graphics devices don't support gradients and patterns. We set the</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># device to ragg, which does support these.</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">dev =</span> <span class="st">"ragg_png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="headings" class="level2">
+<h2 class="anchored" data-anchor-id="headings">Headings</h2>
+<section id="exercise-1.2.1" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1.2.1">Exercise 1.2.1</h3>
+<p>We can use the <code>label</code> attribute in columns to automatically label a variable. Complete the chunk below to set a <code>label</code> attribute for the <code>unemploy</code> column in the <code>economics</code> dataset. Per <code>?economics</code>, the <code>unemploy</code> variable gives the number of unemployed people in thousands.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(economics<span class="sc">$</span>date, <span class="st">"label"</span>) <span class="ot">&lt;-</span> <span class="st">"Year"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(economics, <span class="fu">aes</span>(date, unemploy)) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_area</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">colour =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_2_ggplot2-ex_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-1.2.2" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1.2.2">Exercise 1.2.2</h3>
+<p>If don’t have pre-set labels, we can also use the <code>labs(dictionary)</code> argument to populate column-label pairs. Use this argument to label the variables in the plot below. You can use <code>?mpg</code> to find out what the columns are.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy, <span class="at">colour =</span> drv)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">dictionary =</span> ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="patterns-and-gradients" class="level2">
+<h2 class="anchored" data-anchor-id="patterns-and-gradients">Patterns and gradients</h2>
+<section id="exercise-1.2.3" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1.2.3">Exercise 1.2.3</h3>
+<p>Use <code>grid::linearGradient()</code> to set up a horizontal colour gradient. Which arguments do you have to tweak to change the default diagonal gradient to a horizontal one? How would you set a vertical gradient instead?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>gradient <span class="ot">&lt;-</span> ...</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(economics, <span class="fu">aes</span>(date, unemploy)) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_area</span>(<span class="at">fill =</span> <span class="fu">list</span>(gradient), <span class="at">colour =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="exercise-1.2.4" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1.2.4">Exercise 1.2.4</h3>
+<p>The following code sets up a crosshatch pattern that can be used as the <code>fill</code> aesthetic.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>width <span class="ot">&lt;-</span> height <span class="ot">&lt;-</span> <span class="fu">unit</span>(<span class="dv">3</span>, <span class="st">"mm"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>crosshatch <span class="ot">&lt;-</span> <span class="fu">pattern</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">segmentsGrob</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x0 =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">x1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y0 =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">y1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">gp =</span> <span class="fu">gg_par</span>(<span class="at">col =</span> <span class="st">"black"</span>, <span class="at">lwd =</span> <span class="fl">0.5</span>),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">vp =</span> <span class="fu">viewport</span>(<span class="at">width =</span> width, <span class="at">height =</span> height)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> width, <span class="at">height =</span> height,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">extend =</span> <span class="st">"repeat"</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(economics, <span class="fu">aes</span>(date, unemploy)) <span class="sc">+</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_area</span>(<span class="at">fill =</span> crosshatch, <span class="at">colour =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_2_ggplot2-ex_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Create a new pattern of your liking. Can you design a polka-dot or checkerboard pattern? You can use <code>grid::circleGrob()</code> and <code>grid::rectGrob()</code> for circles and rectangles respectively. We’ll use it to create a manual fill scale of patterns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>my_pattern <span class="ot">&lt;-</span> <span class="fu">pattern</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>patterns <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  crosshatch,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  gradient,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  my_pattern</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(palmerpenguins<span class="sc">::</span>penguins) <span class="sc">+</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(species, <span class="at">fill =</span> island) <span class="sc">+</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> patterns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="delayed-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="delayed-evaluation">Delayed evaluation</h2>
+<section id="exercise-1.2.5" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1.2.5">Exercise 1.2.5</h3>
+<p>In the plot below, can you redirect the <code>alpha</code> aesthetic to represent the <code>count</code> computed variable? You can set the <code>fill</code> aesthetic to a fixed colour like <code>"black"</code>. For an extra challenge, can you use <code>scale_alpha_continuous()</code> to anchor 0 at complete transparency?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(carat, price) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_bin_2d</span>(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">binwidth =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="dv">200</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_2_ggplot2-ex_files/figure-html/ex-1.2.5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="polar-coordinates" class="level2">
+<h2 class="anchored" data-anchor-id="polar-coordinates">Polar coordinates</h2>
+<section id="exercise-1.2.6" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1.2.6">Exercise 1.2.6</h3>
+<p>Plot <code>p</code> displays a Cartesian bar chart of car manufacturers. Add a <code>coord_radial()</code> with arguments to <code>p</code> to make a half-ring shape coxcomb/windrose chart with nicely displayed text.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(manufacturer, <span class="at">label =</span> manufacturer) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y =</span> <span class="dv">37</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Prevent duplicated labels</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> <span class="sc">~</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(.x, <span class="sc">!</span><span class="fu">duplicated</span>(manufacturer)),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">guide =</span> <span class="st">"none"</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_2_ggplot2-ex_files/figure-html/ex-1.2.6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="facets" class="level2">
+<h2 class="anchored" data-anchor-id="facets">Facets</h2>
+<section id="exercise-1.2.7" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1.2.7">Exercise 1.2.7</h3>
+<p>Given the following code, adapt the <code>facet_wrap()</code> statement to:</p>
 <ul>
-<li>Headings</li>
-<li>Patterns and gradients</li>
-<li>Delayed evaluation</li>
-<li>Polar coordinates</li>
-<li>Facets</li>
+<li>Mirror the facet order</li>
+<li>Place labelled axes at the bottom of every panel</li>
+<li>Place axis ticks on all y-axes</li>
 </ul>
-<div class="text-center">
-<div class="btn-group">
-<a href="../slides/1_2_ggplot2.html" class="btn btn-primary" role="button">Slides</a> <a href="../exercises/1_2_ggplot2-ex.html" class="btn btn-success disabled" role="button">Exercises</a> <a href="" class="btn btn-warning disabled" role="button">Solutions</a>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(carat, price) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="st">"."</span>) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> cut, <span class="at">dir =</span> <span class="st">"lt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_2_ggplot2-ex_files/figure-html/ex-1.2.7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<hr>
-<div class="d-flex justify-content-between">
-<p><a href="../sessions/1_1_introduction.html" class="btn btn-sm btn-outline-secondary" role="button"><i class="bi bi-caret-left"></i> Previous session</a></p>
-<p><a href="../sessions/2_1_text_fonts.html" class="btn btn-sm btn-outline-secondary" role="button">Next session <i class="bi bi-caret-right"></i></a></p>
 </div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
