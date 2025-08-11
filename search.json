@@ -1,40 +1,5 @@
 [
   {
-    "objectID": "sessions/3_2_interaction.html",
-    "href": "sessions/3_2_interaction.html",
-    "title": "Interactive plots",
-    "section": "",
-    "text": "Here we learn about sprucing up your plots for the digital world:\n\nplotly\nggiraph\ngganimate\n\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
-  },
-  {
-    "objectID": "sessions/4_2_fun.html",
-    "href": "sessions/4_2_fun.html",
-    "title": "Spice up your plot",
-    "section": "",
-    "text": "In this last session we will (if time permits) spend some time showcasing things you can do with ggplots and its extensions that may make Tufte roll over, but on the other hand can help you create memorable visualisations with a lot of personality\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
-  },
-  {
-    "objectID": "sessions/4_1_extensions.html",
-    "href": "sessions/4_1_extensions.html",
-    "title": "Creating extensions",
-    "section": "",
-    "text": "Here we talk about creating reusable pieces of code that fit into the grammar:\n\nClasses\nConstructors\nPatterns\n\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
-  },
-  {
-    "objectID": "sessions/2_1_text_fonts.html",
-    "href": "sessions/2_1_text_fonts.html",
-    "title": "Text rendering and font use",
-    "section": "",
-    "text": "In this session we will dive into working with text in ggplot2. There are two areas of special interest here: How to access the typeface (font) you want to use, and how to add rich formatting to your text. You will be introduced to two key packages that work in unison, namely systemfonts and marquee. Further, you will get an understanding of why selecting the right graphics device is paramount when it comes to text, moreso than for most other graphics features.\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
-  },
-  {
-    "objectID": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
-    "href": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
-    "title": "Attribution-ShareAlike 4.0 International",
-    "section": "Creative Commons Attribution-ShareAlike 4.0 International Public License",
-    "text": "Creative Commons Attribution-ShareAlike 4.0 International Public License\nBy exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution-ShareAlike 4.0 International Public License (“Public License”). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.\n\nSection 1 – Definitions.\n\nAdapted Material means material subject to Copyright and Similar Rights that is derived from or based upon the Licensed Material and in which the Licensed Material is translated, altered, arranged, transformed, or otherwise modified in a manner requiring permission under the Copyright and Similar Rights held by the Licensor. For purposes of this Public License, where the Licensed Material is a musical work, performance, or sound recording, Adapted Material is always produced where the Licensed Material is synched in timed relation with a moving image.\nAdapter’s License means the license You apply to Your Copyright and Similar Rights in Your contributions to Adapted Material in accordance with the terms and conditions of this Public License.\nBY-SA Compatible License means a license listed at creativecommons.org/compatiblelicenses, approved by Creative Commons as essentially the equivalent of this Public License.\nCopyright and Similar Rights means copyright and/or similar rights closely related to copyright including, without limitation, performance, broadcast, sound recording, and Sui Generis Database Rights, without regard to how the rights are labeled or categorized. For purposes of this Public License, the rights specified in Section 2(b)(1)-(2) are not Copyright and Similar Rights.\nEffective Technological Measures means those measures that, in the absence of proper authority, may not be circumvented under laws fulfilling obligations under Article 11 of the WIPO Copyright Treaty adopted on December 20, 1996, and/or similar international agreements.\nExceptions and Limitations means fair use, fair dealing, and/or any other exception or limitation to Copyright and Similar Rights that applies to Your use of the Licensed Material.\nLicense Elements means the license attributes listed in the name of a Creative Commons Public License. The License Elements of this Public License are Attribution and ShareAlike.\nLicensed Material means the artistic or literary work, database, or other material to which the Licensor applied this Public License.\nLicensed Rights means the rights granted to You subject to the terms and conditions of this Public License, which are limited to all Copyright and Similar Rights that apply to Your use of the Licensed Material and that the Licensor has authority to license.\nLicensor means the individual(s) or entity(ies) granting rights under this Public License.\nShare means to provide material to the public by any means or process that requires permission under the Licensed Rights, such as reproduction, public display, public performance, distribution, dissemination, communication, or importation, and to make material available to the public including in ways that members of the public may access the material from a place and at a time individually chosen by them.\nSui Generis Database Rights means rights other than copyright resulting from Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, as amended and/or succeeded, as well as other essentially equivalent rights anywhere in the world.\nYou means the individual or entity exercising the Licensed Rights under this Public License. Your has a corresponding meaning.\n\n\n\nSection 2 – Scope.\n\nLicense grant.\n\nSubject to the terms and conditions of this Public License, the Licensor hereby grants You a worldwide, royalty-free, non-sublicensable, non-exclusive, irrevocable license to exercise the Licensed Rights in the Licensed Material to:\nA. reproduce and Share the Licensed Material, in whole or in part; and\nB. produce, reproduce, and Share Adapted Material.\nExceptions and Limitations. For the avoidance of doubt, where Exceptions and Limitations apply to Your use, this Public License does not apply, and You do not need to comply with its terms and conditions.\nTerm. The term of this Public License is specified in Section 6(a).\nMedia and formats; technical modifications allowed. The Licensor authorizes You to exercise the Licensed Rights in all media and formats whether now known or hereafter created, and to make technical modifications necessary to do so. The Licensor waives and/or agrees not to assert any right or authority to forbid You from making technical modifications necessary to exercise the Licensed Rights, including technical modifications necessary to circumvent Effective Technological Measures. For purposes of this Public License, simply making modifications authorized by this Section 2(a)(4) never produces Adapted Material.\nDownstream recipients.\nA. Offer from the Licensor – Licensed Material. Every recipient of the Licensed Material automatically receives an offer from the Licensor to exercise the Licensed Rights under the terms and conditions of this Public License.\nB. __Additional offer from the Licensor – Adapted Material. Every recipient of Adapted Material from You automatically receives an offer from the Licensor to exercise the Licensed Rights in the Adapted Material under the conditions of the Adapter’s License You apply.\nC. No downstream restrictions. You may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, the Licensed Material if doing so restricts exercise of the Licensed Rights by any recipient of the Licensed Material.\nNo endorsement. Nothing in this Public License constitutes or may be construed as permission to assert or imply that You are, or that Your use of the Licensed Material is, connected with, or sponsored, endorsed, or granted official status by, the Licensor or others designated to receive attribution as provided in Section 3(a)(1)(A)(i).\n\nOther rights.\n\nMoral rights, such as the right of integrity, are not licensed under this Public License, nor are publicity, privacy, and/or other similar personality rights; however, to the extent possible, the Licensor waives and/or agrees not to assert any such rights held by the Licensor to the limited extent necessary to allow You to exercise the Licensed Rights, but not otherwise.\nPatent and trademark rights are not licensed under this Public License.\nTo the extent possible, the Licensor waives any right to collect royalties from You for the exercise of the Licensed Rights, whether directly or through a collecting society under any voluntary or waivable statutory or compulsory licensing scheme. In all other cases the Licensor expressly reserves any right to collect such royalties.\n\n\n\n\nSection 3 – License Conditions.\nYour exercise of the Licensed Rights is expressly made subject to the following conditions.\n\nAttribution.\n\nIf You Share the Licensed Material (including in modified form), You must:\nA. retain the following if it is supplied by the Licensor with the Licensed Material:\n\nidentification of the creator(s) of the Licensed Material and any others designated to receive attribution, in any reasonable manner requested by the Licensor (including by pseudonym if designated);\na copyright notice;\na notice that refers to this Public License;\na notice that refers to the disclaimer of warranties;\na URI or hyperlink to the Licensed Material to the extent reasonably practicable;\n\nB. indicate if You modified the Licensed Material and retain an indication of any previous modifications; and\nC. indicate the Licensed Material is licensed under this Public License, and include the text of, or the URI or hyperlink to, this Public License.\nYou may satisfy the conditions in Section 3(a)(1) in any reasonable manner based on the medium, means, and context in which You Share the Licensed Material. For example, it may be reasonable to satisfy the conditions by providing a URI or hyperlink to a resource that includes the required information.\nIf requested by the Licensor, You must remove any of the information required by Section 3(a)(1)(A) to the extent reasonably practicable.\n\nShareAlike.\n\nIn addition to the conditions in Section 3(a), if You Share Adapted Material You produce, the following conditions also apply.\n\nThe Adapter’s License You apply must be a Creative Commons license with the same License Elements, this version or later, or a BY-SA Compatible License.\nYou must include the text of, or the URI or hyperlink to, the Adapter’s License You apply. You may satisfy this condition in any reasonable manner based on the medium, means, and context in which You Share Adapted Material.\nYou may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, Adapted Material that restrict exercise of the rights granted under the Adapter’s License You apply.\n\n\n\nSection 4 – Sui Generis Database Rights.\nWhere the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:\n\nfor the avoidance of doubt, Section 2(a)(1) grants You the right to extract, reuse, reproduce, and Share all or a substantial portion of the contents of the database;\nif You include all or a substantial portion of the database contents in a database in which You have Sui Generis Database Rights, then the database in which You have Sui Generis Database Rights (but not its individual contents) is Adapted Material, including for purposes of Section 3(b); and\nYou must comply with the conditions in Section 3(a) if You Share all or a substantial portion of the contents of the database.\n\nFor the avoidance of doubt, this Section 4 supplements and does not replace Your obligations under this Public License where the Licensed Rights include other Copyright and Similar Rights.\n\n\nSection 5 – Disclaimer of Warranties and Limitation of Liability.\n\nUnless otherwise separately undertaken by the Licensor, to the extent possible, the Licensor offers the Licensed Material as-is and as-available, and makes no representations or warranties of any kind concerning the Licensed Material, whether express, implied, statutory, or other. This includes, without limitation, warranties of title, merchantability, fitness for a particular purpose, non-infringement, absence of latent or other defects, accuracy, or the presence or absence of errors, whether or not known or discoverable. Where disclaimers of warranties are not allowed in full or in part, this disclaimer may not apply to You.\nTo the extent possible, in no event will the Licensor be liable to You on any legal theory (including, without limitation, negligence) or otherwise for any direct, special, indirect, incidental, consequential, punitive, exemplary, or other losses, costs, expenses, or damages arising out of this Public License or use of the Licensed Material, even if the Licensor has been advised of the possibility of such losses, costs, expenses, or damages. Where a limitation of liability is not allowed in full or in part, this limitation may not apply to You.\nThe disclaimer of warranties and limitation of liability provided above shall be interpreted in a manner that, to the extent possible, most closely approximates an absolute disclaimer and waiver of all liability.\n\n\n\nSection 6 – Term and Termination.\n\nThis Public License applies for the term of the Copyright and Similar Rights licensed here. However, if You fail to comply with this Public License, then Your rights under this Public License terminate automatically.\nWhere Your right to use the Licensed Material has terminated under Section 6(a), it reinstates:\n\nautomatically as of the date the violation is cured, provided it is cured within 30 days of Your discovery of the violation; or\nupon express reinstatement by the Licensor.\n\nFor the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may have to seek remedies for Your violations of this Public License.\nFor the avoidance of doubt, the Licensor may also offer the Licensed Material under separate terms or conditions or stop distributing the Licensed Material at any time; however, doing so will not terminate this Public License.\nSections 1, 5, 6, 7, and 8 survive termination of this Public License.\n\n\n\nSection 7 – Other Terms and Conditions.\n\nThe Licensor shall not be bound by any additional or different terms or conditions communicated by You unless expressly agreed.\nAny arrangements, understandings, or agreements regarding the Licensed Material not stated herein are separate from and independent of the terms and conditions of this Public License.t stated herein are separate from and independent of the terms and conditions of this Public License.\n\n\n\nSection 8 – Interpretation.\n\nFor the avoidance of doubt, this Public License does not, and shall not be interpreted to, reduce, limit, restrict, or impose conditions on any use of the Licensed Material that could lawfully be made without permission under this Public License.\nTo the extent possible, if any provision of this Public License is deemed unenforceable, it shall be automatically reformed to the minimum extent necessary to make it enforceable. If the provision cannot be reformed, it shall be severed from this Public License without affecting the enforceability of the remaining terms and conditions.\nNo term or condition of this Public License will be waived and no failure to comply consented to unless expressly agreed to by the Licensor.\nNothing in this Public License constitutes or may be interpreted as a limitation upon, or waiver of, any privileges and immunities that apply to the Licensor or You, including from the legal processes of any jurisdiction or authority.\n\n\nCreative Commons is not a party to its public licenses. Notwithstanding, Creative Commons may elect to apply one of its public licenses to material it publishes and in those instances will be considered the “Licensor.” Except for the limited purpose of indicating that material is shared under a Creative Commons public license or as otherwise permitted by the Creative Commons policies published at creativecommons.org/policies, Creative Commons does not authorize the use of the trademark “Creative Commons” or any other trademark or logo of Creative Commons without its prior written consent including, without limitation, in connection with any unauthorized modifications to any of its public licenses or any other arrangements, understandings, or agreements concerning use of licensed material. For the avoidance of doubt, this paragraph does not form part of the public licenses.\nCreative Commons may be contacted at creativecommons.org"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Mastering Data Visualization with ggplot2",
@@ -53,7 +18,7 @@
     "href": "index.html#preparation",
     "title": "Mastering Data Visualization with ggplot2",
     "section": "Preparation",
-    "text": "Preparation\nThis workshop expects familiarity with ggplot2 and the grammar of graphics. In order to have time for more advanced topics we will not spend time taking about how to use ggplot2 in general, nor its design philosophy and how it ties into the grammar of graphics. If you are not yet at this level we advise that you read through https://ggplot2-book.org to the extend possible.\nParticipants are expected to bring their own laptop with a working installation of R (preferably the latest version), as well as the latest versions of the following packages:\n\nggplot2\npatchwork\nmarquee\nsystemfonts\nggiraph\nlegendry\nggfx\n\nIf you have trouble installing any of these packages please contact the instructors so we can sort it out before the workshop starts."
+    "text": "Preparation\nThis workshop expects familiarity with ggplot2 and the grammar of graphics. In order to have time for more advanced topics we will not spend time taking about how to use ggplot2 in general, nor its design philosophy and how it ties into the grammar of graphics. If you are not yet at this level we advise that you read through https://ggplot2-book.org to the extend possible.\nParticipants are expected to bring their own laptop with a working installation of R (preferably the latest version), as well as the latest versions of the following packages:\n\nggplot2\npatchwork\nmarquee\nsystemfonts\nragg\nggiraph\nlegendry\nggfx\n\nIf you have trouble installing any of these packages please contact the instructors so we can sort it out before the workshop starts."
   },
   {
     "objectID": "index.html#schedule",
@@ -70,11 +35,179 @@
     "text": "Instructor(s)\nThomas Lin Pedersen (thomas.pedersen@posit.co)\nThomas is a software engineer at Posit where he is in charge of most things related to R graphics. He is the maintainer of ggplot2 and author of numerous packages that improves the graphics capabilities of R. On the side, Thomas is a generative artist making computational art using R, JavaScript, and GLSL. A not insignificant number of packages or features has been born from artistic needs.\nTeun van den Brand (teun.vandenbrand@posit.co) Teun is a contractor working for Posit. He contributes mostly to the ggplot2 and scales packages and has been in charge of most of the new features in the latest releases. He has authored other packages such as legendry, ggh4x and ggarrow — all building on the ggplot2 framework.\n\n This work is licensed under a Creative Commons Attribution 4.0 International License."
   },
   {
-    "objectID": "sessions/2_2_theme_guide.html",
-    "href": "sessions/2_2_theme_guide.html",
-    "title": "Styling your plot",
+    "objectID": "exercies/2_1_text_fonts.html#exercise-2",
+    "href": "exercies/2_1_text_fonts.html#exercise-2",
+    "title": "Exercises for session 3",
+    "section": "Exercise 2",
+    "text": "Exercise 2\n\nA\n\n\nB"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#today",
+    "href": "slides/2_1_text_fonts.html#today",
+    "title": "Text rendering and font use",
+    "section": "Today",
+    "text": "Today\n\nSelecting the right typeface\nApply rich formatting"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#today-1",
+    "href": "slides/2_1_text_fonts.html#today-1",
+    "title": "Text rendering and font use",
+    "section": "Today",
+    "text": "Today\n\nSelecting the right typeface\n\nThe systemfonts package and why graphics devices matters\nHow it just works\nUsing web fonts\n\nApply rich formatting\n\nThe marquee package\nmarquee-flavoured markdown\nUsing it in ggplot2"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#selecting-the-right-typeface",
+    "href": "slides/2_1_text_fonts.html#selecting-the-right-typeface",
+    "title": "Text rendering and font use",
+    "section": "Selecting the right typeface",
+    "text": "Selecting the right typeface\n\n\nggplot(penguins) +\n  geom_point(aes(x = bill_len, y = body_mass)) +\n  theme_minimal(base_family = \"FANCY FONT\")"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#selecting-the-right-typeface-1",
+    "href": "slides/2_1_text_fonts.html#selecting-the-right-typeface-1",
+    "title": "Text rendering and font use",
+    "section": "Selecting the right typeface",
+    "text": "Selecting the right typeface\n\nggplot(penguins) +\n  geom_point(aes(x = bill_len, y = body_mass)) +\n  theme_minimal(base_family = \"FANCY FONT\")\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\n\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily 'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily 'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily 'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily 'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily 'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily 'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily 'FANCY FONT' not found in PostScript font database\n\n\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\n'FANCY FONT' not found in PostScript font database\n\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily 'FANCY FONT' not found in PostScript font database\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily 'FANCY FONT' not found in PostScript font database\n\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family 'FANCY FONT' not found in PostScript font database\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family 'FANCY FONT' not found in PostScript font database\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family 'FANCY FONT' not found in PostScript font database\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family 'FANCY FONT' not found in PostScript font database\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family 'FANCY FONT' not found in PostScript font database\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family 'FANCY FONT' not found in PostScript font database\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family 'FANCY FONT' not found in PostScript font database\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family 'FANCY FONT' not found in PostScript font database\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family 'FANCY FONT' not found in PostScript font database\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family 'FANCY FONT' not found in PostScript font database\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family 'FANCY FONT' not found in PostScript font database"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#the-impossible-life-of-a-graphics-device",
+    "href": "slides/2_1_text_fonts.html#the-impossible-life-of-a-graphics-device",
+    "title": "Text rendering and font use",
+    "section": "The impossible life of a graphics device",
+    "text": "The impossible life of a graphics device\n \nHere is a family name and some text — go fetch\n\n\nWhere are the font files (OS dependent)\nHow do I read them once I find them\nHow do I determine which font to use\nHow do I even render text???"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#the-impossible-life-of-a-graphics-device-1",
+    "href": "slides/2_1_text_fonts.html#the-impossible-life-of-a-graphics-device-1",
+    "title": "Text rendering and font use",
+    "section": "The impossible life of a graphics device",
+    "text": "The impossible life of a graphics device"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#systemfonts",
+    "href": "slides/2_1_text_fonts.html#systemfonts",
+    "title": "Text rendering and font use",
+    "section": "systemfonts",
+    "text": "systemfonts\nIt (should) just work\n\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\n\nRows: 162\nColumns: 9\n$ path      &lt;chr&gt; \"/usr/share/fonts/type1/urw-base35/URWGothic-BookOblique.t1\"…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"URWGothic-BookOblique\", \"Lato-ThinItalic\", \"LiberationSans-…\n$ family    &lt;chr&gt; \"URW Gothic\", \"Lato\", \"Liberation Sans\", \"Lato\", \"Nimbus Mon…\n$ style     &lt;chr&gt; \"Book Oblique\", \"Thin Italic\", \"Bold\", \"Semibold Italic\", \"B…\n$ weight    &lt;ord&gt; normal, normal, bold, semibold, bold, bold, bold, normal, me…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, FALSE, TRUE, TR…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, FALSE, FALSE, FALSE,…"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#systemfonts-1",
+    "href": "slides/2_1_text_fonts.html#systemfonts-1",
+    "title": "Text rendering and font use",
+    "section": "systemfonts",
+    "text": "systemfonts\nIt (should) just work\n\n\nggplot(penguins) +\n  geom_point(\n    aes(\n      x = bill_len,\n      y = body_mass\n    )\n  ) +\n  theme_minimal(\n    base_family = \"Barrio\"\n  )"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#systemfonts-2",
+    "href": "slides/2_1_text_fonts.html#systemfonts-2",
+    "title": "Text rendering and font use",
+    "section": "systemfonts",
+    "text": "systemfonts\nIt (should) just work\n\n\nggplot(penguins) +\n  geom_point(\n    aes(\n      x = bill_len,\n      y = body_mass\n    )\n  ) +\n  theme_minimal(\n    base_family = \"Barrio\"\n  ) +\n  labs(\n    title = \"I speak emoji 🤓\"\n  )"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#systemfonts-3",
+    "href": "slides/2_1_text_fonts.html#systemfonts-3",
+    "title": "Text rendering and font use",
+    "section": "systemfonts",
+    "text": "systemfonts\n \nProblem:\n\nI’m not allowed to install fonts on my computer\n\nSolution\n\nUse add_fonts() to register local font files"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#systemfonts-4",
+    "href": "slides/2_1_text_fonts.html#systemfonts-4",
+    "title": "Text rendering and font use",
+    "section": "systemfonts",
+    "text": "systemfonts\n \nProblem:\n\nI don’t want to call add_fonts() every time I start R\n\nSolution\n\nPlace font files in ~/fonts or ./fonts. These two locations will automatically get scanned when systemfonts is loaded"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#systemfonts-5",
+    "href": "slides/2_1_text_fonts.html#systemfonts-5",
+    "title": "Text rendering and font use",
+    "section": "systemfonts",
+    "text": "systemfonts\n \nProblem:\n\nI don’t like using a web browser to find fonts\n\nSolution\n\nDownload and add fonts from web repositories directly using get_from_google_fonts() and get_from_font_squirrel()"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#systemfonts-6",
+    "href": "slides/2_1_text_fonts.html#systemfonts-6",
+    "title": "Text rendering and font use",
+    "section": "systemfonts",
+    "text": "systemfonts\n \nProblem:\n\nI don’t know if the font is available on the computer my script will be running on\n\nSolution\n\nUse require_font() to ensure the font is installed from a web repository if missing (or error if it can’t be found there)"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#exercise",
+    "href": "slides/2_1_text_fonts.html#exercise",
+    "title": "Text rendering and font use",
+    "section": "Exercise",
+    "text": "Exercise"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#apply-rich-formatting",
+    "href": "slides/2_1_text_fonts.html#apply-rich-formatting",
+    "title": "Text rendering and font use",
+    "section": "Apply rich formatting",
+    "text": "Apply rich formatting\n \nThe limitations of R\n\nfont selection is limited.\n\nTwo levels of boldness\nItalic on/off\n\nAll text need to share the same font"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#apply-rich-formatting-1",
+    "href": "slides/2_1_text_fonts.html#apply-rich-formatting-1",
+    "title": "Text rendering and font use",
+    "section": "Apply rich formatting",
+    "text": "Apply rich formatting\n\nggtext by Claus Wilke\n\nWorks within the bounds of the old graphics engine limits\nUses a mix of basic markdown and a subset of HTML\nDoesn’t have a hex logo\n\nmarquee by me\n\nUses very new and fancy functionality I got Paul to add to R\nUses a superset of CommonMark syntax\nDoes have a logo"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#marquee",
+    "href": "slides/2_1_text_fonts.html#marquee",
+    "title": "Text rendering and font use",
+    "section": "marquee",
+    "text": "marquee\n\nInput text is treated as markdown and used for formatting\nCommonMark (basically what you expect) is supported\nCustom spans are supported"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#marquee-1",
+    "href": "slides/2_1_text_fonts.html#marquee-1",
+    "title": "Text rendering and font use",
+    "section": "marquee",
+    "text": "marquee\n\n\nlibrary(marquee)\n\ntext &lt;- \"\nNow you too can **sound like an llm**\n\n_Here is what you need:_\n\n* Add boldness to text at random\n* Put everithing in lists  \n✅ Make those lists use emojis\n\nRemember to delve into the intricate \nwords that **underscore your potential**\n\"\n\ngrid::grid.draw(marquee_grob(text))"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#custom-spans",
+    "href": "slides/2_1_text_fonts.html#custom-spans",
+    "title": "Text rendering and font use",
+    "section": "Custom spans",
+    "text": "Custom spans\nmarquee uses cli-esque syntax for custom spans.\n\n{.red color me red} will change the color of text to red\n{#00FF00 color me green} will change the color to green\n{.30 make me big} will set the size to 30\n{.class put a class on it} will add the classclass` to the text\n\nthis will become relevant when we talk about styling"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#custom-spans-1",
+    "href": "slides/2_1_text_fonts.html#custom-spans-1",
+    "title": "Text rendering and font use",
+    "section": "Custom spans",
+    "text": "Custom spans\n\n\ntext &lt;- \"\nSome {.red *red* text} and some {#00FF00 *green* text}\nwalked into a {.30 huge} bar and said to the {.person barman}...\n\"\n\ngrid::grid.draw(marquee_grob(text))"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#exercies",
+    "href": "slides/2_1_text_fonts.html#exercies",
+    "title": "Text rendering and font use",
+    "section": "Exercies",
+    "text": "Exercies"
+  },
+  {
+    "objectID": "sessions/3_2_interaction.html",
+    "href": "sessions/3_2_interaction.html",
+    "title": "Interactive plots",
     "section": "",
-    "text": "In this session, we learn about the following topics:\n\nInk and paper\nPalettes in themes\nBuilding your own theme\nCustomising guides\n\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
+    "text": "Here we learn about sprucing up your plots for the digital world:\n\nplotly\nggiraph\ngganimate\n\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/2_1_text_fonts.html",
+    "href": "sessions/2_1_text_fonts.html",
+    "title": "Text rendering and font use",
+    "section": "",
+    "text": "In this session we will dive into working with text in ggplot2. There are two areas of special interest here: How to access the typeface (font) you want to use, and how to add rich formatting to your text. You will be introduced to two key packages that work in unison, namely systemfonts and marquee. Further, you will get an understanding of why selecting the right graphics device is paramount when it comes to text, moreso than for most other graphics features.\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/4_1_extensions.html",
+    "href": "sessions/4_1_extensions.html",
+    "title": "Creating extensions",
+    "section": "",
+    "text": "Here we talk about creating reusable pieces of code that fit into the grammar:\n\nClasses\nConstructors\nPatterns\n\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
   },
   {
     "objectID": "sessions/3_1_composition.html",
@@ -84,11 +217,11 @@
     "text": "In this session we will dive into how you present multiple plots in the same figure. The key package here is patchwork and you will learn (almost) all there is to now about how to harness its power.\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
   },
   {
-    "objectID": "sessions/1_1_introduction.html",
-    "href": "sessions/1_1_introduction.html",
-    "title": "Introduction",
+    "objectID": "sessions/4_2_fun.html",
+    "href": "sessions/4_2_fun.html",
+    "title": "Spice up your plot",
     "section": "",
-    "text": "This session will briefly introduce the rest of the day, giving an overview of the schedule and any practical information that may be relevant.\nKey points: * Agenda * Who we are * Practical info * Toilets * Ribbons * Etc\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
+    "text": "In this last session we will (if time permits) spend some time showcasing things you can do with ggplots and its extensions that may make Tufte roll over, but on the other hand can help you create memorable visualisations with a lot of personality\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
   },
   {
     "objectID": "sessions/1_2_ggplot2.html",
@@ -96,5 +229,54 @@
     "title": "Modern ggplot2",
     "section": "",
     "text": "The goal of this session is to get you up to speed with the latest developments from ggplot2 3.5.0 onwards.\n\nHeadings\nPatterns and gradients\nPolar coordinates\nFacets\n\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/2_2_theme_guide.html",
+    "href": "sessions/2_2_theme_guide.html",
+    "title": "Styling your plot",
+    "section": "",
+    "text": "In this session, we learn about the following topics:\n\nInk and paper\nPalettes in themes\nBuilding your own theme\nCustomising guides\n\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/1_1_introduction.html",
+    "href": "sessions/1_1_introduction.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "This session will briefly introduce the rest of the day, giving an overview of the schedule and any practical information that may be relevant.\nKey points: * Agenda * Who we are * Practical info * Toilets * Ribbons * Etc\n\n\nSlides Exercises Solutions\n\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "slides/1_1_introduction.html#mastering-data-visualization-with-ggplot2",
+    "href": "slides/1_1_introduction.html#mastering-data-visualization-with-ggplot2",
+    "title": "Mastering Data Visualization with ggplot2",
+    "section": "Mastering Data Visualization with ggplot2",
+    "text": "Mastering Data Visualization with ggplot2\nLatest Techniques and Best Practices"
+  },
+  {
+    "objectID": "slides/1_1_introduction.html#the-team",
+    "href": "slides/1_1_introduction.html#the-team",
+    "title": "Mastering Data Visualization with ggplot2",
+    "section": "The Team",
+    "text": "The Team\n \nTeachers\nThomas Lin Pedersen (me)\nTeun van den Brand\n \nTAs\nKara Woo"
+  },
+  {
+    "objectID": "slides/1_1_introduction.html#today",
+    "href": "slides/1_1_introduction.html#today",
+    "title": "Mastering Data Visualization with ggplot2",
+    "section": "Today",
+    "text": "Today\n\nIntroduction\nModern ggplot2\nText rendering and font use\nStyling your plot\nPlot composition\nInteractive plots\nCreating extensions\nSpice up your plot"
+  },
+  {
+    "objectID": "slides/1_1_introduction.html#practical-information",
+    "href": "slides/1_1_introduction.html#practical-information",
+    "title": "Mastering Data Visualization with ggplot2",
+    "section": "Practical information",
+    "text": "Practical information\nTBD"
+  },
+  {
+    "objectID": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
+    "href": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
+    "title": "Attribution-ShareAlike 4.0 International",
+    "section": "Creative Commons Attribution-ShareAlike 4.0 International Public License",
+    "text": "Creative Commons Attribution-ShareAlike 4.0 International Public License\nBy exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution-ShareAlike 4.0 International Public License (“Public License”). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.\n\nSection 1 – Definitions.\n\nAdapted Material means material subject to Copyright and Similar Rights that is derived from or based upon the Licensed Material and in which the Licensed Material is translated, altered, arranged, transformed, or otherwise modified in a manner requiring permission under the Copyright and Similar Rights held by the Licensor. For purposes of this Public License, where the Licensed Material is a musical work, performance, or sound recording, Adapted Material is always produced where the Licensed Material is synched in timed relation with a moving image.\nAdapter’s License means the license You apply to Your Copyright and Similar Rights in Your contributions to Adapted Material in accordance with the terms and conditions of this Public License.\nBY-SA Compatible License means a license listed at creativecommons.org/compatiblelicenses, approved by Creative Commons as essentially the equivalent of this Public License.\nCopyright and Similar Rights means copyright and/or similar rights closely related to copyright including, without limitation, performance, broadcast, sound recording, and Sui Generis Database Rights, without regard to how the rights are labeled or categorized. For purposes of this Public License, the rights specified in Section 2(b)(1)-(2) are not Copyright and Similar Rights.\nEffective Technological Measures means those measures that, in the absence of proper authority, may not be circumvented under laws fulfilling obligations under Article 11 of the WIPO Copyright Treaty adopted on December 20, 1996, and/or similar international agreements.\nExceptions and Limitations means fair use, fair dealing, and/or any other exception or limitation to Copyright and Similar Rights that applies to Your use of the Licensed Material.\nLicense Elements means the license attributes listed in the name of a Creative Commons Public License. The License Elements of this Public License are Attribution and ShareAlike.\nLicensed Material means the artistic or literary work, database, or other material to which the Licensor applied this Public License.\nLicensed Rights means the rights granted to You subject to the terms and conditions of this Public License, which are limited to all Copyright and Similar Rights that apply to Your use of the Licensed Material and that the Licensor has authority to license.\nLicensor means the individual(s) or entity(ies) granting rights under this Public License.\nShare means to provide material to the public by any means or process that requires permission under the Licensed Rights, such as reproduction, public display, public performance, distribution, dissemination, communication, or importation, and to make material available to the public including in ways that members of the public may access the material from a place and at a time individually chosen by them.\nSui Generis Database Rights means rights other than copyright resulting from Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, as amended and/or succeeded, as well as other essentially equivalent rights anywhere in the world.\nYou means the individual or entity exercising the Licensed Rights under this Public License. Your has a corresponding meaning.\n\n\n\nSection 2 – Scope.\n\nLicense grant.\n\nSubject to the terms and conditions of this Public License, the Licensor hereby grants You a worldwide, royalty-free, non-sublicensable, non-exclusive, irrevocable license to exercise the Licensed Rights in the Licensed Material to:\nA. reproduce and Share the Licensed Material, in whole or in part; and\nB. produce, reproduce, and Share Adapted Material.\nExceptions and Limitations. For the avoidance of doubt, where Exceptions and Limitations apply to Your use, this Public License does not apply, and You do not need to comply with its terms and conditions.\nTerm. The term of this Public License is specified in Section 6(a).\nMedia and formats; technical modifications allowed. The Licensor authorizes You to exercise the Licensed Rights in all media and formats whether now known or hereafter created, and to make technical modifications necessary to do so. The Licensor waives and/or agrees not to assert any right or authority to forbid You from making technical modifications necessary to exercise the Licensed Rights, including technical modifications necessary to circumvent Effective Technological Measures. For purposes of this Public License, simply making modifications authorized by this Section 2(a)(4) never produces Adapted Material.\nDownstream recipients.\nA. Offer from the Licensor – Licensed Material. Every recipient of the Licensed Material automatically receives an offer from the Licensor to exercise the Licensed Rights under the terms and conditions of this Public License.\nB. __Additional offer from the Licensor – Adapted Material. Every recipient of Adapted Material from You automatically receives an offer from the Licensor to exercise the Licensed Rights in the Adapted Material under the conditions of the Adapter’s License You apply.\nC. No downstream restrictions. You may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, the Licensed Material if doing so restricts exercise of the Licensed Rights by any recipient of the Licensed Material.\nNo endorsement. Nothing in this Public License constitutes or may be construed as permission to assert or imply that You are, or that Your use of the Licensed Material is, connected with, or sponsored, endorsed, or granted official status by, the Licensor or others designated to receive attribution as provided in Section 3(a)(1)(A)(i).\n\nOther rights.\n\nMoral rights, such as the right of integrity, are not licensed under this Public License, nor are publicity, privacy, and/or other similar personality rights; however, to the extent possible, the Licensor waives and/or agrees not to assert any such rights held by the Licensor to the limited extent necessary to allow You to exercise the Licensed Rights, but not otherwise.\nPatent and trademark rights are not licensed under this Public License.\nTo the extent possible, the Licensor waives any right to collect royalties from You for the exercise of the Licensed Rights, whether directly or through a collecting society under any voluntary or waivable statutory or compulsory licensing scheme. In all other cases the Licensor expressly reserves any right to collect such royalties.\n\n\n\n\nSection 3 – License Conditions.\nYour exercise of the Licensed Rights is expressly made subject to the following conditions.\n\nAttribution.\n\nIf You Share the Licensed Material (including in modified form), You must:\nA. retain the following if it is supplied by the Licensor with the Licensed Material:\n\nidentification of the creator(s) of the Licensed Material and any others designated to receive attribution, in any reasonable manner requested by the Licensor (including by pseudonym if designated);\na copyright notice;\na notice that refers to this Public License;\na notice that refers to the disclaimer of warranties;\na URI or hyperlink to the Licensed Material to the extent reasonably practicable;\n\nB. indicate if You modified the Licensed Material and retain an indication of any previous modifications; and\nC. indicate the Licensed Material is licensed under this Public License, and include the text of, or the URI or hyperlink to, this Public License.\nYou may satisfy the conditions in Section 3(a)(1) in any reasonable manner based on the medium, means, and context in which You Share the Licensed Material. For example, it may be reasonable to satisfy the conditions by providing a URI or hyperlink to a resource that includes the required information.\nIf requested by the Licensor, You must remove any of the information required by Section 3(a)(1)(A) to the extent reasonably practicable.\n\nShareAlike.\n\nIn addition to the conditions in Section 3(a), if You Share Adapted Material You produce, the following conditions also apply.\n\nThe Adapter’s License You apply must be a Creative Commons license with the same License Elements, this version or later, or a BY-SA Compatible License.\nYou must include the text of, or the URI or hyperlink to, the Adapter’s License You apply. You may satisfy this condition in any reasonable manner based on the medium, means, and context in which You Share Adapted Material.\nYou may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, Adapted Material that restrict exercise of the rights granted under the Adapter’s License You apply.\n\n\n\nSection 4 – Sui Generis Database Rights.\nWhere the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:\n\nfor the avoidance of doubt, Section 2(a)(1) grants You the right to extract, reuse, reproduce, and Share all or a substantial portion of the contents of the database;\nif You include all or a substantial portion of the database contents in a database in which You have Sui Generis Database Rights, then the database in which You have Sui Generis Database Rights (but not its individual contents) is Adapted Material, including for purposes of Section 3(b); and\nYou must comply with the conditions in Section 3(a) if You Share all or a substantial portion of the contents of the database.\n\nFor the avoidance of doubt, this Section 4 supplements and does not replace Your obligations under this Public License where the Licensed Rights include other Copyright and Similar Rights.\n\n\nSection 5 – Disclaimer of Warranties and Limitation of Liability.\n\nUnless otherwise separately undertaken by the Licensor, to the extent possible, the Licensor offers the Licensed Material as-is and as-available, and makes no representations or warranties of any kind concerning the Licensed Material, whether express, implied, statutory, or other. This includes, without limitation, warranties of title, merchantability, fitness for a particular purpose, non-infringement, absence of latent or other defects, accuracy, or the presence or absence of errors, whether or not known or discoverable. Where disclaimers of warranties are not allowed in full or in part, this disclaimer may not apply to You.\nTo the extent possible, in no event will the Licensor be liable to You on any legal theory (including, without limitation, negligence) or otherwise for any direct, special, indirect, incidental, consequential, punitive, exemplary, or other losses, costs, expenses, or damages arising out of this Public License or use of the Licensed Material, even if the Licensor has been advised of the possibility of such losses, costs, expenses, or damages. Where a limitation of liability is not allowed in full or in part, this limitation may not apply to You.\nThe disclaimer of warranties and limitation of liability provided above shall be interpreted in a manner that, to the extent possible, most closely approximates an absolute disclaimer and waiver of all liability.\n\n\n\nSection 6 – Term and Termination.\n\nThis Public License applies for the term of the Copyright and Similar Rights licensed here. However, if You fail to comply with this Public License, then Your rights under this Public License terminate automatically.\nWhere Your right to use the Licensed Material has terminated under Section 6(a), it reinstates:\n\nautomatically as of the date the violation is cured, provided it is cured within 30 days of Your discovery of the violation; or\nupon express reinstatement by the Licensor.\n\nFor the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may have to seek remedies for Your violations of this Public License.\nFor the avoidance of doubt, the Licensor may also offer the Licensed Material under separate terms or conditions or stop distributing the Licensed Material at any time; however, doing so will not terminate this Public License.\nSections 1, 5, 6, 7, and 8 survive termination of this Public License.\n\n\n\nSection 7 – Other Terms and Conditions.\n\nThe Licensor shall not be bound by any additional or different terms or conditions communicated by You unless expressly agreed.\nAny arrangements, understandings, or agreements regarding the Licensed Material not stated herein are separate from and independent of the terms and conditions of this Public License.t stated herein are separate from and independent of the terms and conditions of this Public License.\n\n\n\nSection 8 – Interpretation.\n\nFor the avoidance of doubt, this Public License does not, and shall not be interpreted to, reduce, limit, restrict, or impose conditions on any use of the Licensed Material that could lawfully be made without permission under this Public License.\nTo the extent possible, if any provision of this Public License is deemed unenforceable, it shall be automatically reformed to the minimum extent necessary to make it enforceable. If the provision cannot be reformed, it shall be severed from this Public License without affecting the enforceability of the remaining terms and conditions.\nNo term or condition of this Public License will be waived and no failure to comply consented to unless expressly agreed to by the Licensor.\nNothing in this Public License constitutes or may be interpreted as a limitation upon, or waiver of, any privileges and immunities that apply to the Licensor or You, including from the legal processes of any jurisdiction or authority.\n\n\nCreative Commons is not a party to its public licenses. Notwithstanding, Creative Commons may elect to apply one of its public licenses to material it publishes and in those instances will be considered the “Licensor.” Except for the limited purpose of indicating that material is shared under a Creative Commons public license or as otherwise permitted by the Creative Commons policies published at creativecommons.org/policies, Creative Commons does not authorize the use of the trademark “Creative Commons” or any other trademark or logo of Creative Commons without its prior written consent including, without limitation, in connection with any unauthorized modifications to any of its public licenses or any other arrangements, understandings, or agreements concerning use of licensed material. For the avoidance of doubt, this paragraph does not form part of the public licenses.\nCreative Commons may be contacted at creativecommons.org"
   }
 ]

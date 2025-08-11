@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.33">
 
   <meta name="author" content="Thomas Lin Pedersen">
   <title>Mastering Data Visualization with ggplot2 – Text rendering and font use</title>
@@ -28,8 +28,74 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-816793a8a4a837d14f6ea458e2f1c5cb.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -140,13 +206,434 @@ Thomas Lin Pedersen
 </section>
 <section class="slide level2">
 
+<h3 id="key-takeaway-today">Key takeaway today:</h3>
+<p>&nbsp;</p>
+<p><em>Text rendering is hard (for Thomas), but doesn’t have to be (for me)</em></p>
+</section>
+<section id="today" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Today</h2>
+<ul>
+<li><p>Selecting the right typeface</p></li>
+<li><p>Apply rich formatting</p></li>
+</ul>
+</section>
+<section id="today-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Today</h2>
+<ul>
+<li><p>Selecting the right typeface</p>
+<ul>
+<li>The systemfonts package and why graphics devices matters</li>
+<li>How it just works</li>
+<li>Using web fonts</li>
+</ul></li>
+<li><p>Apply rich formatting</p>
+<ul>
+<li>The marquee package</li>
+<li>marquee-flavoured markdown</li>
+<li>Using it in ggplot2</li>
+</ul></li>
+</ul>
+</section>
+<section id="selecting-the-right-typeface" class="slide level2">
+<h2>Selecting the right typeface</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb1-2"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_len, <span class="at">y =</span> body_mass)) <span class="sc">+</span></span>
+<span id="cb1-3"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"FANCY FONT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+
+</div></div>
+</section>
+<section id="selecting-the-right-typeface-1" class="slide level2">
+<h2>Selecting the right typeface</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb2-2"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_len, <span class="at">y =</span> body_mass)) <span class="sc">+</span></span>
+<span id="cb2-3"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"FANCY FONT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+family 'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+family 'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+family 'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+family 'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+family 'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+family 'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+family 'FANCY FONT' not found in PostScript font database</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+'FANCY FONT' not found in PostScript font database</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+family 'FANCY FONT' not found in PostScript font database
+Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+family 'FANCY FONT' not found in PostScript font database</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+font family 'FANCY FONT' not found in PostScript font database
+Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+font family 'FANCY FONT' not found in PostScript font database
+Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+font family 'FANCY FONT' not found in PostScript font database
+Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+font family 'FANCY FONT' not found in PostScript font database
+Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+font family 'FANCY FONT' not found in PostScript font database
+Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+font family 'FANCY FONT' not found in PostScript font database
+Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+font family 'FANCY FONT' not found in PostScript font database
+Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+font family 'FANCY FONT' not found in PostScript font database
+Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+font family 'FANCY FONT' not found in PostScript font database
+Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+font family 'FANCY FONT' not found in PostScript font database
+Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+font family 'FANCY FONT' not found in PostScript font database</code></pre>
+</div>
+</div>
+</section>
+<section id="the-impossible-life-of-a-graphics-device" class="slide level2">
+<h2>The impossible life of a graphics device</h2>
+<p>&nbsp;</p>
+<p><em>Here is a family name and some text — go fetch</em></p>
+<div class="fragment">
+<ul>
+<li>Where are the font files (OS dependent)</li>
+<li>How do I read them once I find them</li>
+<li>How do I determine which font to use</li>
+<li>How do I even render text???</li>
+</ul>
+</div>
+</section>
+<section id="the-impossible-life-of-a-graphics-device-1" class="slide level2">
+<h2>The impossible life of a graphics device</h2>
+<div class="r-stack">
+<div style="margin-left:40px">
+<p><img data-src="https://github.com/rstudio/hex-stickers/blob/main/PNG/ragg.png?raw=true" width="400"></p>
+</div>
+<div class="fragment fade-left">
+<p><img data-src="https://github.com/rstudio/hex-stickers/blob/main/PNG/systemfonts.png?raw=true" width="400"></p>
+</div>
+<div class="fragment fade-left" style="margin-right:40px">
+<p><img data-src="https://github.com/rstudio/hex-stickers/blob/main/PNG/svglite.png?raw=true" width="400"></p>
+</div>
+</div>
+</section>
+<section id="systemfonts" class="slide level2">
+<h2>systemfonts</h2>
+<h4 id="it-should-just-work">It (should) just work</h4>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(systemfonts)</span>
+<span id="cb9-2"><a></a></span>
+<span id="cb9-3"><a></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(<span class="fu">system_fonts</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 162
+Columns: 9
+$ path      &lt;chr&gt; "/usr/share/fonts/type1/urw-base35/URWGothic-BookOblique.t1"…
+$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+$ name      &lt;chr&gt; "URWGothic-BookOblique", "Lato-ThinItalic", "LiberationSans-…
+$ family    &lt;chr&gt; "URW Gothic", "Lato", "Liberation Sans", "Lato", "Nimbus Mon…
+$ style     &lt;chr&gt; "Book Oblique", "Thin Italic", "Bold", "Semibold Italic", "B…
+$ weight    &lt;ord&gt; normal, normal, bold, semibold, bold, bold, bold, normal, me…
+$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…
+$ italic    &lt;lgl&gt; FALSE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, FALSE, TRUE, TR…
+$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, FALSE, FALSE, FALSE,…</code></pre>
+</div>
+</div></div>
+</section>
+<section id="systemfonts-1" class="slide level2">
+<h2>systemfonts</h2>
+<h4 id="it-should-just-work-1">It (should) just work</h4>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb11-2"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb11-3"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb11-4"><a></a>      <span class="at">x =</span> bill_len,</span>
+<span id="cb11-5"><a></a>      <span class="at">y =</span> body_mass</span>
+<span id="cb11-6"><a></a>    )</span>
+<span id="cb11-7"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb11-8"><a></a>  <span class="fu">theme_minimal</span>(</span>
+<span id="cb11-9"><a></a>    <span class="at">base_family =</span> <span class="st">"Barrio"</span></span>
+<span id="cb11-10"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="2_1_text_fonts_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="systemfonts-2" class="slide level2">
+<h2>systemfonts</h2>
+<h4 id="it-should-just-work-2">It (should) just work</h4>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb12-2"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb12-3"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb12-4"><a></a>      <span class="at">x =</span> bill_len,</span>
+<span id="cb12-5"><a></a>      <span class="at">y =</span> body_mass</span>
+<span id="cb12-6"><a></a>    )</span>
+<span id="cb12-7"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb12-8"><a></a>  <span class="fu">theme_minimal</span>(</span>
+<span id="cb12-9"><a></a>    <span class="at">base_family =</span> <span class="st">"Barrio"</span></span>
+<span id="cb12-10"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb12-11"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb12-12"><a></a>    <span class="at">title =</span> <span class="st">"I speak emoji 🤓"</span></span>
+<span id="cb12-13"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="2_1_text_fonts_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="systemfonts-3" class="slide level2">
+<h2>systemfonts</h2>
+<p>&nbsp;</p>
+<h4 id="problem">Problem:</h4>
+<ul>
+<li>I’m not allowed to install fonts on my computer</li>
+</ul>
+<h4 id="solution">Solution</h4>
+<ul>
+<li>Use <code>add_fonts()</code> to register local font files</li>
+</ul>
+</section>
+<section id="systemfonts-4" class="slide level2">
+<h2>systemfonts</h2>
+<p>&nbsp;</p>
+<h4 id="problem-1">Problem:</h4>
+<ul>
+<li>I don’t want to call <code>add_fonts()</code> every time I start R</li>
+</ul>
+<h4 id="solution-1">Solution</h4>
+<ul>
+<li>Place font files in <code>~/fonts</code> or <code>./fonts</code>. These two locations will automatically get scanned when systemfonts is loaded</li>
+</ul>
+</section>
+<section id="systemfonts-5" class="slide level2">
+<h2>systemfonts</h2>
+<p>&nbsp;</p>
+<h4 id="problem-2">Problem:</h4>
+<ul>
+<li>I don’t like using a web browser to find fonts</li>
+</ul>
+<h4 id="solution-2">Solution</h4>
+<ul>
+<li>Download and add fonts from web repositories directly using <code>get_from_google_fonts()</code> and <code>get_from_font_squirrel()</code></li>
+</ul>
+</section>
+<section id="systemfonts-6" class="slide level2">
+<h2>systemfonts</h2>
+<p>&nbsp;</p>
+<h4 id="problem-3">Problem:</h4>
+<ul>
+<li>I don’t know if the font is available on the computer my script will be running on</li>
+</ul>
+<h4 id="solution-3">Solution</h4>
+<ul>
+<li>Use <code>require_font()</code> to ensure the font is installed from a web repository if missing (or error if it can’t be found there)</li>
+</ul>
+</section>
+<section id="exercise" class="slide level2 center" style="text-align:center;">
+<h2>Exercise</h2>
+</section>
+<section id="apply-rich-formatting" class="slide level2">
+<h2>Apply rich formatting</h2>
+<p>&nbsp;</p>
+<h4 id="the-limitations-of-r">The limitations of R</h4>
+<ul>
+<li>font selection is limited.
+<ul>
+<li>Two levels of boldness</li>
+<li>Italic on/off</li>
+</ul></li>
+<li>All text need to share the same font</li>
+</ul>
+</section>
+<section id="apply-rich-formatting-1" class="slide level2">
+<h2>Apply rich formatting</h2>
+<ul>
+<li>ggtext by Claus Wilke
+<ul>
+<li>Works within the bounds of the old graphics engine limits</li>
+<li>Uses a mix of basic markdown and a subset of HTML</li>
+<li>Doesn’t have a hex logo</li>
+</ul></li>
+<li>marquee by me
+<ul>
+<li>Uses very new and fancy functionality I got Paul to add to R</li>
+<li>Uses a superset of CommonMark syntax</li>
+<li>Does have a logo</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<div class="r-stack">
+<p><img data-src="https://github.com/rstudio/hex-stickers/blob/main/PNG/marquee.png?raw=true" width="400"></p>
+</div>
+</section>
+<section id="marquee" class="slide level2">
+<h2>marquee</h2>
+<ul>
+<li>Input text is treated as markdown and used for formatting</li>
+<li>CommonMark (basically what you expect) is supported</li>
+<li>Custom spans are supported</li>
+</ul>
+</section>
+<section id="marquee-1" class="slide level2">
+<h2>marquee</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">library</span>(marquee)</span>
+<span id="cb13-2"><a></a></span>
+<span id="cb13-3"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb13-4"><a></a><span class="st">Now you too can **sound like an llm**</span></span>
+<span id="cb13-5"><a></a></span>
+<span id="cb13-6"><a></a><span class="st">_Here is what you need:_</span></span>
+<span id="cb13-7"><a></a></span>
+<span id="cb13-8"><a></a><span class="st">* Add boldness to text at random</span></span>
+<span id="cb13-9"><a></a><span class="st">* Put everithing in lists  </span></span>
+<span id="cb13-10"><a></a><span class="st">✅ Make those lists use emojis</span></span>
+<span id="cb13-11"><a></a></span>
+<span id="cb13-12"><a></a><span class="st">Remember to delve into the intricate </span></span>
+<span id="cb13-13"><a></a><span class="st">words that **underscore your potential**</span></span>
+<span id="cb13-14"><a></a><span class="st">"</span></span>
+<span id="cb13-15"><a></a></span>
+<span id="cb13-16"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="2_1_text_fonts_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="custom-spans" class="slide level2">
+<h2>Custom spans</h2>
+<p>marquee uses cli-esque syntax for custom spans.</p>
+<ul>
+<li><code>{.red color me red}</code> will change the color of text to red</li>
+<li><code>{#00FF00 color me green}</code> will change the color to green</li>
+<li><code>{.30 make me big}</code> will set the size to 30</li>
+<li><code>{.class put a class on it} will add the class</code>class` to the text
+<ul>
+<li>this will become relevant when we talk about styling</li>
+</ul></li>
+</ul>
+</section>
+<section id="custom-spans-1" class="slide level2">
+<h2>Custom spans</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb14-2"><a></a><span class="st">Some {.red *red* text} and some {#00FF00 *green* text}</span></span>
+<span id="cb14-3"><a></a><span class="st">walked into a {.30 huge} bar and said to the {.person barman}...</span></span>
+<span id="cb14-4"><a></a><span class="st">"</span></span>
+<span id="cb14-5"><a></a></span>
+<span id="cb14-6"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="2_1_text_fonts_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="exercies" class="slide level2 center" style="text-align:center;">
+<h2>Exercies</h2>
 
 
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-
+<p>posit::conf(2025) — Atlanta — September 16, 2025</p>
 </div>
 </div></div>
 
@@ -358,6 +845,44 @@ Thomas Lin Pedersen
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
