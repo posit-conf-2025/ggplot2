@@ -87,6 +87,7 @@ Label attribute automatically detected.
 ```{r}
 #| echo: true
 library(ggplot2)
+library(patchwork)
 
 ggplot(df, aes(mpg, disp)) +
   geom_point()
@@ -590,5 +591,145 @@ ggplot(mpg, aes(class, displ, fill = class)) +
     ),
     geom = "text"
   )
+```
+
+## Polar coordinates
+
+The classic `coord_polar()` is succeeded by `coord_radial()`.
+
+* `expand` parameter
+* Arbitrary sectors
+* Donuts
+
+---
+
+### Polar coordinates
+
+Helpful to always examine plot in Cartesian coordinates.
+
+```{r}
+#| echo: true
+#| code-fold: true
+p <- ggplot(mpg, aes(y = factor(1), fill = factor(drv))) +
+  geom_bar() +
+  # Add labels
+  stat_count(
+    aes(label = after_stat(paste0(fill, " =\n", count))),
+    geom = "text",
+    position = position_stack(vjust = 0.5)
+  ) +
+  # Turn off y-axis and legend
+  scale_y_discrete(guide = "none", name = NULL) +
+  scale_fill_discrete(guide = "none")
+p
+```
+
+---
+
+### Polar coordinates
+
+Differences between `coord_polar()` and `coord_radial()`.
+
+```{r}
+#| echo: true
+#| output-location: "column"
+polar <- p + 
+  coord_polar() + 
+  labs(title = "coord_polar()")
+radial <- p + 
+  coord_radial() + 
+  labs(title = "coord_radial()")
+
+polar + radial
+```
+
+---
+
+### Polar coordinates
+
+Set `expand = FALSE` for use in pie charts.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "5"
+#| output-location: "column"
+polar <- p + 
+  coord_polar() + 
+  labs(title = "coord_polar()")
+radial <- p + 
+  coord_radial(expand = FALSE) + 
+  labs(title = "coord_radial(expand = FALSE)")
+
+polar + radial
+```
+
+---
+
+### Polar coordinates
+
+`coord_radial()` interfaces with guide system mostly via `guide_axis_theta()`.
+Also note the text angles.
+
+```{r}
+#| echo: true
+#| output-location: "column"
+red_axis <- scale_x_continuous(
+  guide = guide_axis_theta(
+    angle = 0, 
+    theme = theme_gray(ink = "red")
+  )
+)
+
+(polar + red_axis) + (radial + red_axis)
+```
+
+---
+
+### Polar coordinates
+
+To rotate text angles of layers, you can use `rotate.angle`.
+
+```{r}
+#| echo: true
+p + coord_radial(rotate.angle = TRUE, expand = FALSE)
+```
+
+---
+
+### Polar coordinates
+
+We're no longer restricted to complete circles.
+
+```{r}
+#| echo: true
+p + coord_radial(start = -0.4 * pi, end = 0.4 * pi)
+```
+
+---
+
+### Polar coordinates
+
+Switching a pie chart to a donut chart is as easy as setting the `inner.radius` argument.
+
+```{r}
+#| echo: true
+p + coord_radial(
+  expand = FALSE, 
+  inner.radius = 0.5
+)
+```
+
+---
+
+### Polar coordinates
+
+We can combine partial polar coordinates with donuts.
+
+```{r}
+#| echo: true
+p + coord_radial(
+  start = 0, end = 0.5 * pi, 
+  inner.radius = 0.5
+)
 ```
 
