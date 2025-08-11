@@ -1,6 +1,40 @@
 ---
-title: "Introduction"
-author: "Thomas Lin Pedersen"
-format: revealjs
+format:
+  revealjs:
+    theme: serif
+    footer: posit::conf(2025) — Atlanta — September 16, 2025
 ---
 
+## Mastering Data Visualization with ggplot2
+### *Latest Techniques and Best Practices*
+
+![](https://raw.githubusercontent.com/rstudio/hex-stickers/refs/heads/main/SVG/ggplot2.svg){style="display: block; margin: auto; padding-top: 40px;"}
+
+## The Team
+
+&nbsp;
+
+#### Teachers
+**Thomas Lin Pedersen** (me)
+
+**Teun van den Brand**
+
+&nbsp;
+
+#### TAs
+**Kara Woo**
+
+## Today
+
+1. Introduction
+2. Modern ggplot2
+3. Text rendering and font use
+4. Styling your plot
+5. Plot composition
+6. Interactive plots
+7. Creating extensions
+8. Spice up your plot
+
+## Practical information
+
+TBD

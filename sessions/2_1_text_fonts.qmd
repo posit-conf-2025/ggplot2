@@ -3,10 +3,12 @@ title: "Text rendering and font use"
 author: "Thomas Lin Pedersen"
 ---
 
+In this session we will dive into working with text in ggplot2. There are two areas of special interest here: How to access the typeface (font) you want to use, and how to add rich formatting to your text. You will be introduced to two key packages that work in unison, namely [systemfonts](https://systemfonts.r-lib.org) and [marquee](https://marquee.r-lib.org). Further, you will get an understanding of why selecting the right graphics device is paramount when it comes to text, moreso than for most other graphics features.
+
 ::: {.text-center .plain}
 :::::: {.btn-group}
 [Slides](../slides/2_1_text_fonts.qmd){.btn .btn-primary role="button"}
-[Exercises](){.btn .btn-success .disabled role="button"}
+[Exercises](../exercies/2_1_text_fonts.qmd){.btn .btn-success role="button"}
 [Solutions](){.btn .btn-warning .disabled role="button"}
 ::::::
 :::

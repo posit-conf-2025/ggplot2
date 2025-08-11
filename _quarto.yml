@@ -39,4 +39,6 @@ format:
     toc: true
 
 
+filters:
+  - plain-div.lua
 

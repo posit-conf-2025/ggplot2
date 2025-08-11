@@ -1,5 +1,283 @@
 ---
 title: "Text rendering and font use"
 author: "Thomas Lin Pedersen"
-format: revealjs
+format:
+  revealjs:
+    theme: serif
+    footer: posit::conf(2025) — Atlanta — September 16, 2025
+    fig-height: 7
+    output-location: column
 ---
+
+```{r}
+#| include: false
+
+library(ggplot2)
+knitr::opts_chunk$set(
+  dev = "ragg_png",
+  dev.args = list(scaling = 3)
+)
+```
+
+---
+
+### Key takeaway today:
+
+&nbsp;
+
+*Text rendering is hard (for Thomas), but doesn't have to be (for me)*
+
+## Today {auto-animate="true"}
+
+* Selecting the right typeface
+
+* Apply rich formatting
+
+## Today {auto-animate="true"}
+
+* Selecting the right typeface
+
+  * The systemfonts package and why graphics devices matters
+  * How it just works
+  * Using web fonts
+
+* Apply rich formatting
+
+  * The marquee package
+  * marquee-flavoured markdown
+  * Using it in ggplot2
+
+## Selecting the right typeface
+
+```{r}
+#| echo: true
+#| eval: false
+
+ggplot(penguins) +
+  geom_point(aes(x = bill_len, y = body_mass)) +
+  theme_minimal(base_family = "FANCY FONT")
+```
+
+## Selecting the right typeface
+
+```{r}
+#| echo: true
+#| fig.keep: none
+#| warning: true
+#| dev: quartz
+#| dev.args: ~
+#| output-location: default
+
+ggplot(penguins) +
+  geom_point(aes(x = bill_len, y = body_mass)) +
+  theme_minimal(base_family = "FANCY FONT")
+```
+
+## The impossible life of a graphics device
+
+&nbsp;
+
+*Here is a family name and some text — go fetch*
+
+. . .
+
+* Where are the font files (OS dependent)
+* How do I read them once I find them
+* How do I determine which font to use
+* How do I even render text???
+
+## The impossible life of a graphics device
+
+:::::: r-stack
+::: {style="margin-left:40px"}
+![](https://github.com/rstudio/hex-stickers/blob/main/PNG/ragg.png?raw=true){width="400"}
+:::
+
+::: {.fragment .fade-left}
+![](https://github.com/rstudio/hex-stickers/blob/main/PNG/systemfonts.png?raw=true){width="400"}
+:::
+
+::: {.fragment .fade-left style="margin-right:40px"}
+![](https://github.com/rstudio/hex-stickers/blob/main/PNG/svglite.png?raw=true){width="400"}
+:::
+::::::
+
+## systemfonts
+
+#### It (should) just work
+
+```{r}
+#| echo: true
+library(systemfonts)
+
+dplyr::glimpse(system_fonts())
+```
+
+## systemfonts
+
+#### It (should) just work
+```{r}
+#| echo: true
+
+ggplot(penguins) +
+  geom_point(
+    aes(
+      x = bill_len,
+      y = body_mass
+    )
+  ) +
+  theme_minimal(
+    base_family = "Barrio"
+  )
+```
+
+## systemfonts
+
+#### It (should) just work
+
+```{r}
+#| echo: true
+
+ggplot(penguins) +
+  geom_point(
+    aes(
+      x = bill_len,
+      y = body_mass
+    )
+  ) +
+  theme_minimal(
+    base_family = "Barrio"
+  ) +
+  labs(
+    title = "I speak emoji 🤓"
+  )
+```
+
+## systemfonts
+
+&nbsp;
+
+#### Problem:
+* I'm not allowed to install fonts on my computer
+
+#### Solution
+* Use `add_fonts()` to register local font files
+
+## systemfonts
+
+&nbsp;
+
+#### Problem:
+* I don't want to call `add_fonts()` every time I start R
+
+#### Solution
+* Place font files in `~/fonts` or `./fonts`. These two locations will
+  automatically get scanned when systemfonts is loaded
+
+## systemfonts
+
+&nbsp;
+
+#### Problem:
+* I don't like using a web browser to find fonts
+
+#### Solution
+* Download and add fonts from web repositories directly using
+  `get_from_google_fonts()` and `get_from_font_squirrel()`
+
+## systemfonts
+
+&nbsp;
+
+#### Problem:
+* I don't know if the font is available on the computer my script will be
+  running on
+
+#### Solution
+* Use `require_font()` to ensure the font is installed from a web repository if
+  missing (or error if it can't be found there)
+
+## Exercise {.center style="text-align:center;"}
+
+## Apply rich formatting
+
+&nbsp;
+
+#### The limitations of R
+* font selection is limited.
+  * Two levels of boldness
+  * Italic on/off
+* All text need to share the same font
+
+## Apply rich formatting
+
+* ggtext by Claus Wilke
+  * Works within the bounds of the old graphics engine limits
+  * Uses a mix of basic markdown and a subset of HTML
+  * Doesn't have a hex logo
+* marquee by me
+  * Uses very new and fancy functionality I got Paul to add to R
+  * Uses a superset of CommonMark syntax
+  * Does have a logo
+
+---
+
+::::: r-stack
+![](https://github.com/rstudio/hex-stickers/blob/main/PNG/marquee.png?raw=true){width="400"}
+:::::
+
+## marquee
+
+* Input text is treated as markdown and used for formatting
+* CommonMark (basically what you expect) is supported
+* Custom spans are supported
+
+## marquee
+
+```{r}
+#| echo: true
+
+library(marquee)
+
+text <- "
+Now you too can **sound like an llm**
+
+_Here is what you need:_
+
+* Add boldness to text at random
+* Put everithing in lists  
+✅ Make those lists use emojis
+
+Remember to delve into the intricate 
+words that **underscore your potential**
+"
+
+grid::grid.draw(marquee_grob(text))
+```
+
+## Custom spans
+
+marquee uses cli-esque syntax for custom spans.
+
+* `{.red color me red}` will change the color of text to red
+* `{#00FF00 color me green}` will change the color to green
+* `{.30 make me big}` will set the size to 30
+* `{.class put a class on it} will add the class `class` to the text
+  * this will become relevant when we talk about styling
+
+## Custom spans
+
+```{r}
+#| echo: true
+
+text <- "
+Some {.red *red* text} and some {#00FF00 *green* text}
+walked into a {.30 huge} bar and said to the {.person barman}...
+"
+
+grid::grid.draw(marquee_grob(text))
+```
+
+## Exercies {.center style="text-align:center;"}
+
+
