@@ -14,7 +14,7 @@ The goal of this session is to get you up to speed with the latest developments 
 ::: {.text-center .plain}
 :::::: {.btn-group}
 [Slides](../slides/1_2_ggplot2.qmd){.btn .btn-primary role="button"}
-[Exercises](){.btn .btn-success .disabled role="button"}
+[Exercises](../exercises/1_2_ggplot2-ex.qmd){.btn .btn-success .disabled role="button"}
 [Solutions](){.btn .btn-warning .disabled role="button"}
 ::::::
 :::
