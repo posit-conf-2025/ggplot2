@@ -8,7 +8,7 @@ In this session we will dive into working with text in ggplot2. There are two ar
 ::: {.text-center .plain}
 :::::: {.btn-group}
 [Slides](../slides/2_1_text_fonts.qmd){.btn .btn-primary role="button"}
-[Exercises](){.btn .btn-success .disabled role="button"}
+[Exercises](../exercies/2_1_text_fonts.qmd){.btn .btn-success role="button"}
 [Solutions](){.btn .btn-warning .disabled role="button"}
 ::::::
 :::
