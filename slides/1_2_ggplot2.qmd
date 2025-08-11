@@ -166,7 +166,8 @@ In R 4.1 the grid package introduced patterns and gradients.
 * `grid::radialGradient()`
 * `grid::pattern()`
 
-We allow these as `fill` aesthetic in ggplot2.
+We allow these as `fill` aesthetic in ggplot2.  
+Patterns can aid in cases of colour vision deficiency.
 
 ---
 
@@ -247,7 +248,7 @@ To 'fix' patterning artefacts, you may need to adjust the strokes in the inner d
 
 ```{r}
 #| echo: true
-#| code-line-numbers: "4-5"
+#| code-line-numbers: "3-4"
 width <- height <- unit(3, "mm")
 inner_drawing <- segmentsGrob(
   x0 = c(-1, -1, 0), x1 = c(1, 2, 2),
@@ -680,7 +681,10 @@ red_axis <- scale_x_continuous(
   )
 )
 
-(polar + red_axis) + (radial + red_axis)
+# Ignores guide
+(polar + red_axis) + 
+  # Uses correct guide
+  (radial + red_axis)
 ```
 
 ---
@@ -733,3 +737,113 @@ p + coord_radial(
 )
 ```
 
+## Facets
+
+* Display of inner axes
+* Layer layout
+* Panel ordering
+
+---
+
+### Display of inner axes
+
+```{r}
+#| echo: true
+p <- ggplot(palmerpenguins::penguins) +
+  aes(bill_length_mm, bill_depth_mm, colour = sex) +
+  geom_point(na.rm = TRUE)
+p + facet_grid(island ~ species)
+```
+
+---
+
+### Display of inner axes
+
+Inner axes can be exposed, for all directions or `x` or `y` individually.
+
+```{r}
+#| echo: true
+p + facet_grid(island ~ species, axes = "all")
+```
+
+---
+
+### Display of inner axes
+
+We can confine labels, so inner axes only display tick marks.
+
+```{r}
+#| echo: true
+p + facet_grid(island ~ species, axes = "all", axis.labels = "margins")
+```
+
+---
+
+### Layout
+
+Layers have a `layout` argument that can be interpreted by facets.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "4"
+p +
+  geom_point(
+    colour ="grey", shape = 1, 
+    layout = "fixed"
+  ) +
+  geom_point(na.rm = TRUE) +
+  facet_grid(island ~ species)
+```
+
+---
+
+### Layout
+
+`facet_wrap()` and `facet_grid()` allow placement at certain panels.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "5"
+p +
+  annotate(
+    geom = "text", x = I(0.7), y = I(0.25), size = 2,
+    label = "Adelie Penguins\non Dream island",
+    layout = 4
+  ) +
+  facet_grid(island ~ species)
+```
+
+---
+
+### Wrap panel order
+
+New panel ordering settings in `dir` argument.
+
+* `as.table` is now absorbed in `dir`
+* Use two-letter combination of `t`, `r`, `b`, `l`
+    * `t` = top
+    * `r` = right
+    * `b` = bottom
+    * `l` = left
+* Combinations determines starting point, e.g. `"br"` starts in the bottom-right.
+* First letter indicates growing direction, e.g. `"br"` grows bottom-to-top before right-to-left.
+
+---
+
+### Wrap panel order
+
+The default order is `"lt"`.
+
+```{r}
+#| echo: true
+panels <- ~ as.integer(interaction(species, island, drop = TRUE))
+p + facet_wrap(panels, dir = "lt")
+```
+
+---
+
+### Wrap panel order
+
+```{r}
+p + facet_wrap(panels, dir = "tr")
+```
