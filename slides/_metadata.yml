@@ -3,11 +3,20 @@ format:
     theme: serif
     footer: posit::conf(2025) — Atlanta — September 16, 2025
     fig-height: 9
+    fig-align: center
     output-location: column
     css: styles.css
+    slide-number: true
+    smaller: true
+    transition: fade
+    transition-speed: fast
+    highlight-style: nord
+
 knitr:
   opts_chunk:
     dev: ragg_png
     dev.args:
       scaling: 3
 
+execute:
+  echo: true

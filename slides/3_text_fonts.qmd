@@ -44,7 +44,6 @@ library(ggplot2)
 ## Selecting the right typeface
 
 ```{r}
-#| echo: true
 #| eval: false
 #| output-location: default
 
@@ -56,7 +55,6 @@ ggplot(penguins) +
 ## Selecting the right typeface
 
 ```{r}
-#| echo: true
 #| fig.keep: none
 #| warning: true
 #| dev: quartz
@@ -102,7 +100,6 @@ ggplot(penguins) +
 #### It (should) just work
 
 ```{r}
-#| echo: true
 #| output-location: default
 library(systemfonts)
 
@@ -113,8 +110,6 @@ dplyr::glimpse(system_fonts())
 
 #### It (should) just work
 ```{r}
-#| echo: true
-
 ggplot(penguins) +
   geom_point(
     aes(
@@ -132,8 +127,6 @@ ggplot(penguins) +
 #### It (should) just work
 
 ```{r}
-#| echo: true
-
 ggplot(penguins) +
   geom_point(
     aes(
@@ -231,8 +224,6 @@ ggplot(penguins) +
 ## marquee
 
 ```{r}
-#| echo: true
-
 library(marquee)
 
 text <- "
@@ -265,8 +256,6 @@ marquee uses cli-esque syntax for custom spans.
 ## Custom spans
 
 ```{r}
-#| echo: true
-
 text <- "
 Some {.red *red* text} and some {#00FF00 *green* text}
 walked into a {.30 huge} bar and said to the {.person barman}:
@@ -281,9 +270,6 @@ grid::grid.draw(marquee_grob(text))
 ## Supercharged images
 
 ```{r}
-#| echo: true
-#| fig.height: 9
-
 p <- last_plot()
 point <- grid::pointsGrob(0.5, 0.5)
 
@@ -303,9 +289,6 @@ grid::grid.draw(marquee_grob(text))
 No markdown table support, but...
 
 ```{r}
-#| echo: true
-#| fig.height: 9
-
 table <- gt::gt(penguins[1:6, 1:4])
 
 text <- "
@@ -322,7 +305,6 @@ grid::grid.draw(marquee_grob(text))
 * So far we have used the default style which matches standard (GitHub) markdown rendering
 * marquee provides a simple but powerful styling system
   ```{r}
-  #| echo: true
   #| output-location: default
   
   classic_style()
@@ -332,7 +314,6 @@ grid::grid.draw(marquee_grob(text))
 
 * Each tag can be styled with 37 different properties
   ```{r}
-  #| echo: true
   #| output-location: default
 
   names(classic_style()[[1]]$base)
@@ -352,7 +333,6 @@ grid::grid.draw(marquee_grob(text))
 
 ## Styling
 ```{r}
-#| echo: true
 #| output-location: default
 
 new_style <- classic_style(base_size = 30) |> 
@@ -375,7 +355,6 @@ new_style <- classic_style(base_size = 30) |>
 
 ## Styling
 ```{r}
-#| echo: true
 text <- "
 {.fancy Readability is overrated}
 
