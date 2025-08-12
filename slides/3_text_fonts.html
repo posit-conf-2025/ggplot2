@@ -208,26 +208,22 @@ Thomas Lin Pedersen
 <section class="slide level2">
 
 <h3 id="key-takeaway-today">Key takeaway today:</h3>
-<p>&nbsp;</p>
+<div class="center-y">
+<blockquote>
 <p><em>Text rendering is hard (for Thomas), but doesn’t have to be (for me)</em></p>
+</blockquote>
+</div>
 </section>
-<section id="today" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Today</h2>
+<section id="today" class="slide level2">
+<h2>Today</h2>
 <ul>
-<li><p>Selecting the right typeface</p></li>
-<li><p>Apply rich formatting</p></li>
-</ul>
-</section>
-<section id="today-1" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Today</h2>
-<ul>
-<li><p>Selecting the right typeface</p>
+<li>Selecting the right typeface
 <ul>
 <li>The systemfonts package and why graphics devices matters</li>
 <li>How it just works</li>
 <li>Using web fonts</li>
 </ul></li>
-<li><p>Apply rich formatting</p>
+<li>Apply rich formatting
 <ul>
 <li>The marquee package</li>
 <li>marquee-flavoured markdown</li>
@@ -398,7 +394,7 @@ font family 'FANCY FONT' not found in PostScript font database</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 167
 Columns: 9
-$ path      &lt;chr&gt; "/tmp/RtmpYEOVlF/Barrio-regular.ttf", "/tmp/RtmpYEOVlF/Monte…
+$ path      &lt;chr&gt; "/tmp/RtmpChuuog/Barrio-regular.ttf", "/tmp/RtmpChuuog/Monte…
 $ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
 $ name      &lt;chr&gt; "Barrio-Regular", "MonteCarlo-Regular", "Datalegreya-Thin", …
 $ family    &lt;chr&gt; "Barrio", "MonteCarlo", "Datalegreya", "Datalegreya", "Datal…
@@ -465,7 +461,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 </section>
 <section id="systemfonts-3" class="slide level2">
 <h2>systemfonts</h2>
-<p>&nbsp;</p>
+<div class="center-y">
 <h4 id="problem">Problem:</h4>
 <ul>
 <li>I’m not allowed to install fonts on my computer</li>
@@ -474,10 +470,11 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <ul>
 <li>Use <code>add_fonts()</code> to register local font files</li>
 </ul>
+</div>
 </section>
 <section id="systemfonts-4" class="slide level2">
 <h2>systemfonts</h2>
-<p>&nbsp;</p>
+<div class="center-y">
 <h4 id="problem-1">Problem:</h4>
 <ul>
 <li>I don’t want to call <code>add_fonts()</code> every time I start R</li>
@@ -486,10 +483,11 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <ul>
 <li>Place font files in <code>~/fonts</code> or <code>./fonts</code>. These two locations will automatically get scanned when systemfonts is loaded</li>
 </ul>
+</div>
 </section>
 <section id="systemfonts-5" class="slide level2">
 <h2>systemfonts</h2>
-<p>&nbsp;</p>
+<div class="center-y">
 <h4 id="problem-2">Problem:</h4>
 <ul>
 <li>I don’t like using a web browser to find fonts</li>
@@ -498,10 +496,11 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <ul>
 <li>Download and add fonts from web repositories directly using <code>get_from_google_fonts()</code> and <code>get_from_font_squirrel()</code></li>
 </ul>
+</div>
 </section>
 <section id="systemfonts-6" class="slide level2">
 <h2>systemfonts</h2>
-<p>&nbsp;</p>
+<div class="center-y">
 <h4 id="problem-3">Problem:</h4>
 <ul>
 <li>I don’t know if the font is available on the computer my script will be running on</li>
@@ -510,6 +509,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <ul>
 <li>Use <code>require_font()</code> to ensure the font is installed from a web repository if missing (or error if it can’t be found there)</li>
 </ul>
+</div>
 </section>
 <section id="exercise" class="slide level2 center" style="text-align:center;">
 <h2>Exercise</h2>
@@ -521,7 +521,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <ul>
 <li>font selection is limited.
 <ul>
-<li>Two levels of boldness</li>
+<li>Two levels of boldness (normal and bold)</li>
 <li>Italic on/off</li>
 </ul></li>
 <li>All text need to share the same font</li>
@@ -544,8 +544,8 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 </ul></li>
 </ul>
 </section>
-<section class="slide level2">
-
+<section id="section" class="slide level2 center">
+<h2></h2>
 <div class="r-stack">
 <p><img data-src="https://github.com/rstudio/hex-stickers/blob/main/PNG/marquee.png?raw=true" width="400"></p>
 </div>
@@ -723,8 +723,8 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <li>Use <code>skip_inherit()</code> to make a value uninheritable</li>
 </ul>
 </section>
-<section id="section" class="slide level2 center">
-<h2>&nbsp;</h2>
+<section id="section-1" class="slide level2 center">
+<h2></h2>
 <blockquote>
 <p>Don’t roll your own — modify <code>classic_style()</code></p>
 </blockquote>

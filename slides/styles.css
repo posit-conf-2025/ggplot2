@@ -3,3 +3,15 @@
 .reveal figure>p {
   line-height: 0;
 }
+
+.reveal code {
+  color: #4496AD;
+}
+
+.center-y {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}

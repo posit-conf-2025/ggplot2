@@ -81,13 +81,6 @@
     "href": "slides/3_text_fonts.html#today",
     "title": "Text rendering and font use",
     "section": "Today",
-    "text": "Today\n\nSelecting the right typeface\nApply rich formatting"
-  },
-  {
-    "objectID": "slides/3_text_fonts.html#today-1",
-    "href": "slides/3_text_fonts.html#today-1",
-    "title": "Text rendering and font use",
-    "section": "Today",
     "text": "Today\n\nSelecting the right typeface\n\nThe systemfonts package and why graphics devices matters\nHow it just works\nUsing web fonts\n\nApply rich formatting\n\nThe marquee package\nmarquee-flavoured markdown\nUsing it in ggplot2"
   },
   {
@@ -123,7 +116,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 167\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpYEOVlF/Barrio-regular.ttf\", \"/tmp/RtmpYEOVlF/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"Book Obliq…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, normal, normal, bold, s…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 167\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpChuuog/Barrio-regular.ttf\", \"/tmp/RtmpChuuog/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"Book Obliq…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, normal, normal, bold, s…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
@@ -144,28 +137,28 @@
     "href": "slides/3_text_fonts.html#systemfonts-3",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\n \nProblem:\n\nI’m not allowed to install fonts on my computer\n\nSolution\n\nUse add_fonts() to register local font files"
+    "text": "systemfonts\n\nProblem:\n\nI’m not allowed to install fonts on my computer\n\nSolution\n\nUse add_fonts() to register local font files"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-4",
     "href": "slides/3_text_fonts.html#systemfonts-4",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\n \nProblem:\n\nI don’t want to call add_fonts() every time I start R\n\nSolution\n\nPlace font files in ~/fonts or ./fonts. These two locations will automatically get scanned when systemfonts is loaded"
+    "text": "systemfonts\n\nProblem:\n\nI don’t want to call add_fonts() every time I start R\n\nSolution\n\nPlace font files in ~/fonts or ./fonts. These two locations will automatically get scanned when systemfonts is loaded"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-5",
     "href": "slides/3_text_fonts.html#systemfonts-5",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\n \nProblem:\n\nI don’t like using a web browser to find fonts\n\nSolution\n\nDownload and add fonts from web repositories directly using get_from_google_fonts() and get_from_font_squirrel()"
+    "text": "systemfonts\n\nProblem:\n\nI don’t like using a web browser to find fonts\n\nSolution\n\nDownload and add fonts from web repositories directly using get_from_google_fonts() and get_from_font_squirrel()"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-6",
     "href": "slides/3_text_fonts.html#systemfonts-6",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\n \nProblem:\n\nI don’t know if the font is available on the computer my script will be running on\n\nSolution\n\nUse require_font() to ensure the font is installed from a web repository if missing (or error if it can’t be found there)"
+    "text": "systemfonts\n\nProblem:\n\nI don’t know if the font is available on the computer my script will be running on\n\nSolution\n\nUse require_font() to ensure the font is installed from a web repository if missing (or error if it can’t be found there)"
   },
   {
     "objectID": "slides/3_text_fonts.html#exercise",
@@ -179,7 +172,7 @@
     "href": "slides/3_text_fonts.html#apply-rich-formatting",
     "title": "Text rendering and font use",
     "section": "Apply rich formatting",
-    "text": "Apply rich formatting\n \nThe limitations of R\n\nfont selection is limited.\n\nTwo levels of boldness\nItalic on/off\n\nAll text need to share the same font"
+    "text": "Apply rich formatting\n \nThe limitations of R\n\nfont selection is limited.\n\nTwo levels of boldness (normal and bold)\nItalic on/off\n\nAll text need to share the same font"
   },
   {
     "objectID": "slides/3_text_fonts.html#apply-rich-formatting-1",
@@ -259,10 +252,10 @@
     "text": "Styling\n\nStyling is powered by direct inheritance\nAny NULL value will get it’s value from the parent\nAny rel() value will multiply the parent value with the rel value\nUse em() to make a value dependent on the text size of the element\nUse rem() to make a value dependent on the text size of the root element\nUse skip_inherit() to make a value uninheritable"
   },
   {
-    "objectID": "slides/3_text_fonts.html#section",
-    "href": "slides/3_text_fonts.html#section",
+    "objectID": "slides/3_text_fonts.html#section-1",
+    "href": "slides/3_text_fonts.html#section-1",
     "title": "Text rendering and font use",
-    "section": " ",
+    "section": "",
     "text": "Don’t roll your own — modify classic_style()"
   },
   {
