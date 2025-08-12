@@ -3,3 +3,847 @@ title: "Modern ggplot2"
 author: "Teun van den Brand"
 format: revealjs
 ---
+
+```{r}
+# library(ggplot2)
+# theme_set(theme_gray(base_size = 22))
+knitr::opts_chunk$set(dev = "ragg_png", dev.args = list(scaling = 2))
+```
+
+
+## Headings
+
+- Column metadata
+- Data dictionary
+
+---
+
+### Column metadata
+
+:::: {.columns}
+
+:::{.column}
+
+
+- 'Pretty labels' implemented as `"label"` attribute in columns.
+- Implemented in Hmisc, tinylabels, haven, labelled & sjlabelled
+
+:::
+
+:::{.column}
+
+```{r}
+#| echo: true
+#| collapse: true
+df <- mtcars
+
+df$mpg <- haven::labelled(df$mpg, label = "Miles per gallon")
+
+head(df$mpg)
+
+attr(df$mpg, "label")
+```
+:::
+::::
+
+---
+
+### Column metadata
+
+:::: {.columns}
+
+:::{.column}
+
+- 'Pretty labels' implemented as `"label"` attribute in columns.
+- Implemented in Hmisc, tinylabels, haven, labelled & sjlabelled
+- Careful with label attribute stability
+
+:::
+
+:::{.column}
+
+```{r}
+#| echo: true
+#| collapse: true
+df <- mtcars
+
+attr(df$mpg, "label") <- "Miles per gallon"
+
+head(df$mpg)
+
+vctrs::vec_slice(df$mpg, 1:6)
+```
+
+:::
+
+::::
+
+---
+
+### Column metadata
+
+Label attribute automatically detected.
+
+```{r}
+#| echo: true
+library(ggplot2)
+library(patchwork)
+
+ggplot(df, aes(mpg, disp)) +
+  geom_point()
+```
+---
+
+### Data dictionary
+
+Example dictionary for `mtcars`
+
+```{r}
+#| echo: true
+dict <- tibble::tribble(
+  ~column, ~label,                ~unit,    ~note,
+  "mpg",   "Efficiency",          "mi/gal", "Gallons are US gallons",
+  "cyl",   "Number of cylinders", "",       "",
+  "disp",  "Engine Displacement", "in^3",   "",
+  "am",    "Transmission",        "",       "0 = automatic, 1 = manual"
+)
+dict
+```
+
+---
+
+### Data dictionary
+
+```{r}
+#| echo: true
+#| collapse: true
+# Format label as named vector
+named_vec <- setNames(dict$label, dict$column)
+# or:
+named_vec <- dplyr::pull(dict, label, name = column)
+
+named_vec
+```
+
+---
+
+### Data dictionary
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+ggplot(mtcars, aes(mpg, disp, colour = cyl)) +
+  geom_point() +
+  labs(dictionary = named_vec)
+```
+
+---
+
+### Pros
+
+- Label variables directly, rather than aesthetics
+- Rewards habit of annotating data
+- Reusable within document
+
+```{r}
+#| echo: true
+ggplot(mtcars, aes(cyl, mpg, group = cyl)) +
+  geom_boxplot() +
+  labs(dictionary = named_vec)
+```
+---
+
+### Cons
+
+- Extra effort for 'naked' data
+- Expressions like `factor(cyl)` or `cyl + 1` do not get automatic labels
+
+## Patterns and gradients
+
+In R 4.1 the grid package introduced patterns and gradients.
+
+* `grid::linearGradient()`
+* `grid::radialGradient()`
+* `grid::pattern()`
+
+We allow these as `fill` aesthetic in ggplot2.  
+Patterns can aid in cases of colour vision deficiency.
+
+---
+
+### Gradients
+
+Simple examples of linear and radial gradients.
+
+```{r}
+#| echo: true
+colours <- hcl.colors(100, "Sunset")
+
+library(grid)
+linear <- linearGradient(colours, x1 = 0.5, x2 = 0.5)
+radial <- radialGradient(rev(colours), cx1 = 0.8, cy1 = 0.8, group = FALSE)
+```
+
+---
+
+### Gradients
+
+Use these gradients by providing them as a list.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+ggplot(mtcars) +
+  aes(factor(vs)) +
+  geom_bar(fill = list(linear, radial))
+```
+
+---
+
+### Patterns
+
+Patterns are more complicated.
+You may need to know a little bit of grid to get these right.
+Here we're using a diagonal line as a pattern.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3-6,9"
+width <- height <- unit(3, "mm")
+
+inner_drawing <- segmentsGrob(
+  gp = gpar(col = "black"),
+  vp = viewport(width = width, height = height)
+)
+
+hatching <- pattern(
+  inner_drawing,
+  width = width, height = height,
+  extend = "repeat"
+)
+```
+
+---
+
+### Patterns
+
+Like gradients, patterns can be given as a list.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "4"
+ggplot(mtcars) +
+  aes(factor(vs)) +
+  geom_bar(
+    fill = list(hatching), 
+    colour = "black"
+  )
+```
+
+---
+
+### Patterns
+
+To 'fix' patterning artefacts, you may need to adjust the strokes in the inner drawing.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3-4"
+width <- height <- unit(3, "mm")
+inner_drawing <- segmentsGrob(
+  x0 = c(-1, -1, 0), x1 = c(1, 2, 2),
+  y0 = c(0, -1, -1), y1 = c(2, 2, 1),
+  gp = gpar(col = "black"),
+  vp = viewport(width = width, height = height)
+)
+hatching <- pattern(
+  inner_drawing,
+  width = width, height = height,
+  extend = "repeat"
+)
+```
+
+
+```{r}
+grid.newpage()
+grid.draw(inner_drawing)
+grid.rect(
+  width = width, height = height, 
+  gp = gpar(fill = NA, lty = "dotted", col = "grey50")
+)
+```
+
+---
+
+### Patterns
+
+Using patterns as a scale.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3-5"
+ggplot(mtcars, aes(cyl, disp, fill = factor(cyl))) +
+  geom_boxplot() +
+  scale_fill_manual(
+    values = list(linear, radial, hatching)
+  )
+```
+
+---
+
+### Ribbon gradient
+
+Ribbon geometries now render a varying `fill` aesthetic as a gradient.
+
+```{r}
+#| echo: true
+ggplot(economics) +
+  aes(date, unemploy, fill = uempmed) +
+  geom_area()
+```
+
+---
+
+### Patterns galore
+
+Using the gridpattern package to easily generate patterns.
+
+```{r}
+#| echo: true
+herringbone <- gridpattern::patternFill(
+  "polygon_tiling", type = "herringbone", 
+  spacing = 0.2, units = "cm", colour = "grey40", linewidth = 0.3
+)
+hexagons <- gridpattern::patternFill(
+  "polygon_tiling", type = "hexagonal",
+  spacing = 0.2, units = "cm", colour = "grey40", linewidth = 0.3
+)
+waves <- gridpattern::patternFill(
+  "wave", spacing = 0.2, units = "cm", colour = "grey40", linewidth = 0.3
+)
+```
+
+---
+
+### Patterns galore
+
+Using the gridpattern package to easily generate patterns.
+
+```{r}
+#| echo: true
+#| code-fold: true
+ggplot(mtcars, aes(cyl, disp, fill = factor(cyl))) +
+  geom_boxplot() +
+  scale_fill_manual(
+    values = list(herringbone, hexagons, waves)
+  )
+```
+
+### Patterns galore
+
+Parametrised patterns with the ggpattern package.
+
+```{r}
+#| echo: true
+library(ggpattern)
+
+ggplot(mtcars, aes(cyl, disp, pattern_spacing = cyl, group = cyl)) +
+  geom_boxplot_pattern(pattern_fill = "black") +
+  scale_pattern_spacing_continuous(range = c(0.01, 0.05))
+```
+
+---
+
+### Patterns galore
+
+Emoji isotype plot using text patterns.
+
+```{r}
+#| echo: true
+#| code-fold: true
+# Helper function
+width <- unit(20, "pt")
+patternise_text <- function(text) {
+  lapply(text, function(string) {
+    grob <- textGrob(string, x = 0, hjust = 0, gp = gpar(fontsize = 18))
+    pattern(
+      grob,
+      x = 0, hjust = 0,
+      width = width, 
+      extend = "repeat", 
+      # Center text per bar using height/group
+      height = unit(1, "npc"),
+      group = FALSE
+    )
+  })
+}
+
+# Stats for the Netherlands
+df <- data.frame(
+  animal = c("chickens", "pigs",   "cows", "sheep", "goats", "humans"),
+  amount = c(99900000,   11400000, 3800000, 850000, 480000,  17990000)
+)
+
+ggplot(df, aes(amount, animal, fill = animal)) +
+  geom_col() +
+  scale_fill_manual(
+    values = patternise_text(c(
+      "chickens" = "🐓",
+      "pigs"     = "🐖",
+      "cows"     = "🐄",
+      "sheep"    = "🐑",
+      "goats"    = "🐐",
+      "humans"   = "🧍"
+    ))
+  ) +
+  scale_x_continuous(
+    labels = scales::label_number(scale = 1e-6, suffix = "M")
+  ) +
+  theme(
+    legend.key.width = width,
+    legend.key.height = unit(18, "pt") # see fontsize in pattern
+  )
+```
+
+## Delayed evaluation
+
+With regards to evaluation, there are three stages:
+
+1. Direct input at start
+2. After computing stat
+3. After scale mapping
+
+---
+
+### Direct input
+
+Data available from the start, when mapped from data columns.
+
+```{r}
+#| echo: true
+#| eval: false
+aes(x = displ, y = hwy)
+```
+
+Unmapped aesthetics like `geom_bar(fill = "red")` are not direct input.  
+Data columns that are not mapped are not input.
+
+---
+
+### After computing stat
+
+In addition to aesthetics, *computed variables* become available.  
+These are listed in a documentation section in e.g. `?stat_density`.  
+Sometimes, these are used by default and can be recognised by the use of `after_stat()`.
+
+```{r}
+#| echo: true
+StatDensity$default_aes
+```
+
+---
+
+### After computing stat
+
+You can use `after_stat()` yourself to redirect or modify stat outputs.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "4"
+ggplot(mpg, aes(displ, drv)) +
+  stat_density(
+    geom = "tile", position = "identity",
+    aes(fill = after_stat(scaled))
+  )
+```
+
+---
+
+### After computing stat
+
+You may have run into a histogram/density misalignment problem.
+
+```{r}
+#| echo: true
+ggplot(faithful, aes(waiting)) +
+  geom_histogram(binwidth = 2) +
+  geom_density()
+```
+
+---
+
+### After computing stat
+
+This can be fixed by using the `density` computed variable in the histogram.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+ggplot(faithful, aes(waiting)) +
+  geom_histogram(
+    aes(y = after_stat(density)), 
+    binwidth = 2
+  ) +
+  geom_density()
+```
+
+---
+
+### After computing stat
+
+Or scaling the `count` computed variable in the density.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "5"
+binwidth <- 2
+ggplot(faithful, aes(waiting)) +
+  geom_histogram(binwidth = binwidth) +
+  geom_density(
+    aes(y = after_stat(count * binwidth))
+  )
+```
+
+---
+
+### After scales
+
+At this stage in the plot, the variables are mapped by the scales.  
+It means that the hex codes from colour scales are available, the sizes and shapes of points and other variables mapped by scales.  
+You can intervene by using the `after_scale()` function.
+
+--- 
+
+### After scales
+
+A typical use of `after_scale()` is to derive colours from `colour` to `fill` or vice versa.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+ggplot(mpg, aes(displ, fill = drv)) +
+  geom_density(
+    aes(colour = after_scale(scales::col_mix(fill, "black")))
+  )
+```
+
+--- 
+
+### After scales
+
+A nice benefit of using `after_scale()` is that you derive colours, so you can still swap out scales.
+
+```{r}
+#| echo: true
+last_plot() + 
+  scale_fill_viridis_d()
+```
+
+### After scales
+
+Another use case can be to create half-geometries.
+
+```{r}
+#| echo: true
+#| warning: false
+ggplot(mpg, aes(class, displ)) +
+  geom_boxplot(aes(xmin = after_scale(x)), staplewidth = 0.3) +
+  geom_violin(aes(xmax = after_scale(x)))
+```
+
+### Staging
+
+When you need a combination of direct input, after stat or after scale modifications, you can use `stage()`.
+
+* `stage(x)` is equivalent to `x`.
+* `stage(after_stat = x)` is equivalent to `after_stat(x)`.
+* `stage(after_scale = x)` is equivalent to `after_scale(x)`.
+
+### Staging
+
+A typical use case is when you want to initialise the aesthetic with one column, and later modify the mapped values.
+
+```{r}
+#| echo: true
+ggplot(mpg, aes(class, displ)) +
+  geom_violin(
+    aes(fill = stage(class, after_scale = scales::col_mix(fill, "transparent")))
+  )
+```
+
+### Staging
+
+Another use case is to reposition labels after computing a statistic.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "4-8|9-12"
+ggplot(mpg, aes(class, displ, fill = class)) +
+  geom_violin() +
+  stat_summary(
+    fun.data = ~ data.frame(
+      mean = mean(.x), 
+      sd   = sd(.x), 
+      max  = max(.x)
+    ),
+    aes(
+      y = stage(displ, after_stat = max + 0.2),
+      label = after_stat(sprintf("%.2f±%.2f", mean, sd))
+    ),
+    geom = "text"
+  )
+```
+
+## Polar coordinates
+
+The classic `coord_polar()` is succeeded by `coord_radial()`.
+
+* `expand` parameter
+* Arbitrary sectors
+* Donuts
+
+---
+
+### Polar coordinates
+
+Helpful to always examine plot in Cartesian coordinates.
+
+```{r}
+#| echo: true
+#| code-fold: true
+p <- ggplot(mpg, aes(y = factor(1), fill = factor(drv))) +
+  geom_bar() +
+  # Add labels
+  stat_count(
+    aes(label = after_stat(paste0(fill, " =\n", count))),
+    geom = "text",
+    position = position_stack(vjust = 0.5)
+  ) +
+  # Turn off y-axis and legend
+  scale_y_discrete(guide = "none", name = NULL) +
+  scale_fill_discrete(guide = "none")
+p
+```
+
+---
+
+### Polar coordinates
+
+Differences between `coord_polar()` and `coord_radial()`.
+
+```{r}
+#| echo: true
+#| output-location: "column"
+polar <- p + 
+  coord_polar() + 
+  labs(title = "coord_polar()")
+radial <- p + 
+  coord_radial() + 
+  labs(title = "coord_radial()")
+
+polar + radial
+```
+
+---
+
+### Polar coordinates
+
+Set `expand = FALSE` for use in pie charts.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "5"
+#| output-location: "column"
+polar <- p + 
+  coord_polar() + 
+  labs(title = "coord_polar()")
+radial <- p + 
+  coord_radial(expand = FALSE) + 
+  labs(title = "coord_radial(expand = FALSE)")
+
+polar + radial
+```
+
+---
+
+### Polar coordinates
+
+`coord_radial()` interfaces with guide system mostly via `guide_axis_theta()`.
+Also note the text angles.
+
+```{r}
+#| echo: true
+#| output-location: "column"
+red_axis <- scale_x_continuous(
+  guide = guide_axis_theta(
+    angle = 0, 
+    theme = theme_gray(ink = "red")
+  )
+)
+
+# Ignores guide
+(polar + red_axis) + 
+  # Uses correct guide
+  (radial + red_axis)
+```
+
+---
+
+### Polar coordinates
+
+To rotate text angles of layers, you can use `rotate.angle`.
+
+```{r}
+#| echo: true
+p + coord_radial(rotate.angle = TRUE, expand = FALSE)
+```
+
+---
+
+### Polar coordinates
+
+We're no longer restricted to complete circles.
+
+```{r}
+#| echo: true
+p + coord_radial(start = -0.4 * pi, end = 0.4 * pi)
+```
+
+---
+
+### Polar coordinates
+
+Switching a pie chart to a donut chart is as easy as setting the `inner.radius` argument.
+
+```{r}
+#| echo: true
+p + coord_radial(
+  expand = FALSE, 
+  inner.radius = 0.5
+)
+```
+
+---
+
+### Polar coordinates
+
+We can combine partial polar coordinates with donuts.
+
+```{r}
+#| echo: true
+p + coord_radial(
+  start = 0, end = 0.5 * pi, 
+  inner.radius = 0.5
+)
+```
+
+## Facets
+
+* Display of inner axes
+* Layer layout
+* Panel ordering
+
+---
+
+### Display of inner axes
+
+```{r}
+#| echo: true
+p <- ggplot(palmerpenguins::penguins) +
+  aes(bill_length_mm, bill_depth_mm, colour = sex) +
+  geom_point(na.rm = TRUE)
+p + facet_grid(island ~ species)
+```
+
+---
+
+### Display of inner axes
+
+Inner axes can be exposed, for all directions or `x` or `y` individually.
+
+```{r}
+#| echo: true
+p + facet_grid(island ~ species, axes = "all")
+```
+
+---
+
+### Display of inner axes
+
+We can confine labels, so inner axes only display tick marks.
+
+```{r}
+#| echo: true
+p + facet_grid(island ~ species, axes = "all", axis.labels = "margins")
+```
+
+---
+
+### Layout
+
+Layers have a `layout` argument that can be interpreted by facets.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "4"
+p +
+  geom_point(
+    colour ="grey", shape = 1, 
+    layout = "fixed"
+  ) +
+  geom_point(na.rm = TRUE) +
+  facet_grid(island ~ species)
+```
+
+---
+
+### Layout
+
+`facet_wrap()` and `facet_grid()` allow placement at certain panels.
+
+```{r}
+#| echo: true
+#| code-line-numbers: "5"
+p +
+  annotate(
+    geom = "text", x = I(0.7), y = I(0.25), size = 2,
+    label = "Adelie Penguins\non Dream island",
+    layout = 4
+  ) +
+  facet_grid(island ~ species)
+```
+
+---
+
+### Wrap panel order
+
+New panel ordering settings in `dir` argument.
+
+* `as.table` is now absorbed in `dir`
+* Use two-letter combination of `t`, `r`, `b`, `l`
+    * `t` = top
+    * `r` = right
+    * `b` = bottom
+    * `l` = left
+* Combinations determines starting point, e.g. `"br"` starts in the bottom-right.
+* First letter indicates growing direction, e.g. `"br"` grows bottom-to-top before right-to-left.
+
+---
+
+### Wrap panel order
+
+The default order is `"lt"`.
+
+```{r}
+#| echo: true
+panels <- ~ as.integer(interaction(species, island, drop = TRUE))
+p + facet_wrap(panels, dir = "lt")
+```
+
+---
+
+### Wrap panel order
+
+```{r}
+p + facet_wrap(panels, dir = "tr")
+```
