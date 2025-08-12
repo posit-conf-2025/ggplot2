@@ -13,9 +13,7 @@ systemfonts::require_font("Datalegreya")
 library(ggplot2)
 ```
 
----
-
-### Key takeaway today:
+## Key takeaway today:
 
 ::: {.center-y}
 >*Text rendering is hard (for Thomas), but doesn't have to be (for me)*
@@ -175,6 +173,8 @@ ggplot(penguins) +
 #### Solution
 * Use `require_font()` to ensure the font is installed from a web repository if
   missing (or error if it can't be found there)
+
+  (this slideshow has `require_font("Barrio")` in the beginning so it can render everywhere)
 :::
 
 ## Exercise {.center style="text-align:center;"}
