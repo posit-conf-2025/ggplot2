@@ -17,26 +17,17 @@ library(ggplot2)
 
 ### Key takeaway today:
 
-&nbsp;
+::: {.center-y}
+>*Text rendering is hard (for Thomas), but doesn't have to be (for me)*
+:::
 
-*Text rendering is hard (for Thomas), but doesn't have to be (for me)*
-
-## Today {auto-animate="true"}
-
-* Selecting the right typeface
-
-* Apply rich formatting
-
-## Today {auto-animate="true"}
+## Today
 
 * Selecting the right typeface
-
   * The systemfonts package and why graphics devices matters
   * How it just works
   * Using web fonts
-
 * Apply rich formatting
-
   * The marquee package
   * marquee-flavoured markdown
   * Using it in ggplot2
@@ -144,40 +135,39 @@ ggplot(penguins) +
 
 ## systemfonts
 
-&nbsp;
-
+::: {.center-y}
 #### Problem:
 * I'm not allowed to install fonts on my computer
 
 #### Solution
 * Use `add_fonts()` to register local font files
+:::
 
 ## systemfonts
 
-&nbsp;
-
+::: {.center-y}
 #### Problem:
 * I don't want to call `add_fonts()` every time I start R
 
 #### Solution
 * Place font files in `~/fonts` or `./fonts`. These two locations will
   automatically get scanned when systemfonts is loaded
+:::
 
 ## systemfonts
 
-&nbsp;
-
+::: {.center-y}
 #### Problem:
 * I don't like using a web browser to find fonts
 
 #### Solution
 * Download and add fonts from web repositories directly using
   `get_from_google_fonts()` and `get_from_font_squirrel()`
+:::
 
 ## systemfonts
 
-&nbsp;
-
+::: {.center-y}
 #### Problem:
 * I don't know if the font is available on the computer my script will be
   running on
@@ -185,6 +175,7 @@ ggplot(penguins) +
 #### Solution
 * Use `require_font()` to ensure the font is installed from a web repository if
   missing (or error if it can't be found there)
+:::
 
 ## Exercise {.center style="text-align:center;"}
 
@@ -194,7 +185,7 @@ ggplot(penguins) +
 
 #### The limitations of R
 * font selection is limited.
-  * Two levels of boldness
+  * Two levels of boldness (normal and bold)
   * Italic on/off
 * All text need to share the same font
 
@@ -209,7 +200,7 @@ ggplot(penguins) +
   * Uses a superset of CommonMark syntax
   * Does have a logo
 
----
+## {.center}
 
 ::::: r-stack
 ![](https://github.com/rstudio/hex-stickers/blob/main/PNG/marquee.png?raw=true){width="400"}
@@ -328,7 +319,8 @@ grid::grid.draw(marquee_grob(text))
 * Use `rem()` to make a value dependent on the text size of the root element
 * Use `skip_inherit()` to make a value uninheritable
 
-## &nbsp; {.center}
+## {.center}
+
 >Don't roll your own — modify `classic_style()`
 
 ## Styling
