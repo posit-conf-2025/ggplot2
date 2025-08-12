@@ -205,9 +205,8 @@ Thomas Lin Pedersen
 </div>
 
 </section>
-<section class="slide level2">
-
-<h3 id="key-takeaway-today">Key takeaway today:</h3>
+<section id="key-takeaway-today" class="slide level2">
+<h2>Key takeaway today:</h2>
 <div class="center-y">
 <blockquote>
 <p><em>Text rendering is hard (for Thomas), but doesn’t have to be (for me)</em></p>
@@ -394,7 +393,7 @@ font family 'FANCY FONT' not found in PostScript font database</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 167
 Columns: 9
-$ path      &lt;chr&gt; "/tmp/RtmpChuuog/Barrio-regular.ttf", "/tmp/RtmpChuuog/Monte…
+$ path      &lt;chr&gt; "/tmp/RtmpDGi54D/Barrio-regular.ttf", "/tmp/RtmpDGi54D/Monte…
 $ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
 $ name      &lt;chr&gt; "Barrio-Regular", "MonteCarlo-Regular", "Datalegreya-Thin", …
 $ family    &lt;chr&gt; "Barrio", "MonteCarlo", "Datalegreya", "Datalegreya", "Datal…
@@ -507,7 +506,8 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 </ul>
 <h4 id="solution-3">Solution</h4>
 <ul>
-<li>Use <code>require_font()</code> to ensure the font is installed from a web repository if missing (or error if it can’t be found there)</li>
+<li><p>Use <code>require_font()</code> to ensure the font is installed from a web repository if missing (or error if it can’t be found there)</p>
+<p>(this slideshow has <code>require_font("Barrio")</code> in the beginning so it can render everywhere)</p></li>
 </ul>
 </div>
 </section>

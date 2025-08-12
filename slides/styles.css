@@ -15,3 +15,7 @@
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
+h2:empty {
+  display: none;
+}
