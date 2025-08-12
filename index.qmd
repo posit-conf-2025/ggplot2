@@ -36,23 +36,42 @@ Participants are expected to bring their own laptop with a working installation 
 * legendry
 * ggfx
 
+They can be installed with this code (if you don't have pak installed already you can do so with `install.packages("pak")`).
+
+```{r}
+#| eval: false
+#| echo: true
+
+# install.packages("pak")
+pak::pak(c(
+  "ggplot2",
+  "patchwork",
+  "marquee",
+  "systemfonts",
+  "ragg",
+  "ggiraph",
+  "legendry",
+  "ggfx"
+))
+```
+
 If you have trouble installing any of these packages please contact the instructors so we can sort it out before the workshop starts.
 
 ## Schedule
 
 | Time          | Activity                                                   |
 | :------------ | :--------------------------------------------------------- |
-| 09:00 - 9:30  | [Introduction](sessions/1_1_introduction.qmd)              |
-| 09:30 - 10:30 | [Modern ggplot2](sessions/1_2_ggplot2.qmd)                 |
+| 09:00 - 9:30  | [Introduction](sessions/1_introduction.qmd)              |
+| 09:30 - 10:30 | [Modern ggplot2](sessions/2_ggplot2.qmd)                 |
 | 10:30 - 11:00 | *Coffee break*                                             |
-| 11:00 - 11:45 | [Text rendering and font use](sessions/2_1_text_fonts.qmd) |
-| 11:45 - 12:30 | [Styling your plot](sessions/2_2_theme_guide.qmd)          |
+| 11:00 - 11:45 | [Text rendering and font use](sessions/3_text_fonts.qmd) |
+| 11:45 - 12:30 | [Styling your plot](sessions/4_theme_guide.qmd)          |
 | 12:30 - 13:30 | *Lunch break*                                              |
-| 13:30 - 14:15 | [Plot Composition](sessions/3_1_composition.qmd)           |
-| 14:15 - 15:00 | [Interactive plots](sessions/3_2_interaction.qmd)          |
+| 13:30 - 14:15 | [Plot Composition](sessions/5_composition.qmd)           |
+| 14:15 - 15:00 | [Interactive plots](sessions/6_interaction.qmd)          |
 | 15:00 - 15:30 | *Coffee break*                                             |
-| 15:30 - 16:30 | [Creating extensions](sessions/4_1_extensions.qmd)         |
-| 16:30 - 17:00 | [Spice up your plot](sessions/4_2_fun.qmd)                 |
+| 15:30 - 16:30 | [Creating extensions](sessions/7_extensions.qmd)         |
+| 16:30 - 17:00 | [Spice up your plot](sessions/8_fun.qmd)                 |
 
 ## Instructor(s)
 

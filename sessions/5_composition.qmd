@@ -7,16 +7,15 @@ In this session we will dive into how you present multiple plots in the same fig
 
 ::: {.text-center .plain}
 :::::: {.btn-group}
-[Slides](../slides/3_1_composition.qmd){.btn .btn-primary role="button"}
+[Slides](../slides/5_composition.qmd){.btn .btn-primary role="button"}
 [Exercises](){.btn .btn-success .disabled role="button"}
-[Solutions](){.btn .btn-warning .disabled role="button"}
 ::::::
 :::
 
 ---
 
 ::: {.d-flex .justify-content-between}
-[<i class="bi bi-caret-left"></i> Previous session](../sessions/2_2_theme_guide.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
+[<i class="bi bi-caret-left"></i> Previous session](../sessions/4_theme_guide.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
 
-[Next session <i class="bi bi-caret-right"></i>](../sessions/3_2_interaction.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
+[Next session <i class="bi bi-caret-right"></i>](../sessions/6_interaction.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
 :::

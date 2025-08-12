@@ -1,13 +1,11 @@
 ---
 title: "Modern ggplot2"
 author: "Teun van den Brand"
-format: revealjs
 ---
 
 ```{r}
 # library(ggplot2)
 # theme_set(theme_gray(base_size = 22))
-knitr::opts_chunk$set(dev = "ragg_png", dev.args = list(scaling = 2))
 ```
 
 

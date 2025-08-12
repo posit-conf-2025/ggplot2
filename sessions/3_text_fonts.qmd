@@ -7,16 +7,15 @@ In this session we will dive into working with text in ggplot2. There are two ar
 
 ::: {.text-center .plain}
 :::::: {.btn-group}
-[Slides](../slides/2_1_text_fonts.qmd){.btn .btn-primary role="button"}
-[Exercises](../exercises/2_1_text_fonts.qmd){.btn .btn-success role="button"}
-[Solutions](){.btn .btn-warning .disabled role="button"}
+[Slides](../slides/3_text_fonts.qmd){.btn .btn-primary role="button"}
+[Exercises](../exercises/3_text_fonts.qmd){.btn .btn-success role="button"}
 ::::::
 :::
 
 ---
 
 ::: {.d-flex .justify-content-between}
-[<i class="bi bi-caret-left"></i> Previous session](../sessions/1_2_ggplot2.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
+[<i class="bi bi-caret-left"></i> Previous session](../sessions/2_ggplot2.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
 
-[Next session <i class="bi bi-caret-right"></i>](../sessions/2_2_theme_guide.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
+[Next session <i class="bi bi-caret-right"></i>](../sessions/4_theme_guide.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
 :::

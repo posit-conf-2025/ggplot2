@@ -1,14 +1,12 @@
 ---
-format:
-  revealjs:
-    theme: serif
-    footer: posit::conf(2025) — Atlanta — September 16, 2025
 ---
 
 ## Mastering Data Visualization with ggplot2
 ### *Latest Techniques and Best Practices*
 
-![](https://raw.githubusercontent.com/rstudio/hex-stickers/refs/heads/main/SVG/ggplot2.svg){style="display: block; margin: auto; padding-top: 40px;"}
+::: r-stack
+![](https://github.com/rstudio/hex-stickers/blob/main/PNG/ggplot2.png?raw=true){width="400"}
+:::
 
 ## The Team
 

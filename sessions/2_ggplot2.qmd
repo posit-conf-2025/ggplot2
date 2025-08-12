@@ -1,0 +1,28 @@
+---
+title: "Modern ggplot2"
+author: "Teun van den Brand"
+---
+
+The goal of this session is to get you up to speed with the latest developments from ggplot2 3.5.0 onwards.
+
+* Headings
+* Patterns and gradients
+* Delayed evaluation
+* Polar coordinates
+* Facets
+
+::: {.text-center .plain}
+:::::: {.btn-group}
+[Slides](../slides/2_ggplot2.qmd){.btn .btn-primary role="button"}
+[Exercises](../exercises/
+2_ggplot2.qmd){.btn .btn-success .disabled role="button"}
+::::::
+:::
+
+---
+
+::: {.d-flex .justify-content-between}
+[<i class="bi bi-caret-left"></i> Previous session](../sessions/1_introduction.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
+
+[Next session <i class="bi bi-caret-right"></i>](../sessions/3_text_fonts.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
+:::

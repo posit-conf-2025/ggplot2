@@ -1,0 +1,25 @@
+---
+title: "Interactive plots"
+author: "Teun van den Brand"
+---
+
+Here we learn about sprucing up your plots for the digital world:
+
+* plotly
+* ggiraph
+* gganimate
+
+::: {.text-center .plain}
+:::::: {.btn-group}
+[Slides](../slides/6_interaction.qmd){.btn .btn-primary role="button"}
+[Exercises](){.btn .btn-success .disabled role="button"}
+::::::
+:::
+
+---
+
+::: {.d-flex .justify-content-between}
+[<i class="bi bi-caret-left"></i> Previous session](../sessions/5_composition.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
+
+[Next session <i class="bi bi-caret-right"></i>](../sessions/7_extensions.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
+:::

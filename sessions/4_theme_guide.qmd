@@ -1,0 +1,26 @@
+---
+title: "Styling your plot"
+author: "Teun van den Brand"
+---
+
+In this session, we learn about the following topics:
+
+* Ink and paper
+* Palettes in themes
+* Building your own theme
+* Customising guides
+
+::: {.text-center .plain}
+:::::: {.btn-group}
+[Slides](../slides/4_theme_guide.qmd){.btn .btn-primary role="button"}
+[Exercises](){.btn .btn-success .disabled role="button"}
+::::::
+:::
+
+---
+
+::: {.d-flex .justify-content-between}
+[<i class="bi bi-caret-left"></i> Previous session](../sessions/3_text_fonts.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
+
+[Next session <i class="bi bi-caret-right"></i>](../sessions/5_composition.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
+:::

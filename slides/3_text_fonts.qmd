@@ -1,13 +1,6 @@
 ---
 title: "Text rendering and font use"
 author: "Thomas Lin Pedersen"
-format:
-  revealjs:
-    theme: serif
-    footer: posit::conf(2025) — Atlanta — September 16, 2025
-    fig-height: 7
-    output-location: column
-    css: styles.css
 ---
 
 ```{r}
@@ -18,10 +11,6 @@ systemfonts::require_font("MonteCarlo")
 systemfonts::require_font("Datalegreya")
 
 library(ggplot2)
-knitr::opts_chunk$set(
-  dev = "ragg_png",
-  dev.args = list(scaling = 3)
-)
 ```
 
 ---

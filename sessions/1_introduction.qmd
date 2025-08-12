@@ -15,9 +15,8 @@ Key points:
 
 ::: {.text-center .plain}
 :::::: {.btn-group}
-[Slides](../slides/1_1_introduction.qmd){.btn .btn-primary role="button"}
+[Slides](../slides/1_introduction.qmd){.btn .btn-primary role="button"}
 [Exercises](){.btn .btn-success .disabled role="button"}
-[Solutions](){.btn .btn-warning .disabled role="button"}
 ::::::
 :::
 
@@ -26,5 +25,5 @@ Key points:
 ::: {.d-flex .justify-content-between}
 [<i class="bi bi-caret-left"></i> Previous session](){.btn .btn-sm .btn-outline-secondary .disabled role="button"}
 
-[Next session <i class="bi bi-caret-right"></i>](../sessions/1_2_ggplot2.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
+[Next session <i class="bi bi-caret-right"></i>](../sessions/2_ggplot2.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
 :::

@@ -1,5 +1,4 @@
 ---
 title: "Creating extensions"
 author: "Teun van den Brand"
-format: revealjs
 ---

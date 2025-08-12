@@ -1,0 +1,13 @@
+format:
+  revealjs:
+    theme: serif
+    footer: posit::conf(2025) — Atlanta — September 16, 2025
+    fig-height: 9
+    output-location: column
+    css: styles.css
+knitr:
+  opts_chunk:
+    dev: ragg_png
+    dev.args:
+      scaling: 3
+

@@ -1,5 +1,4 @@
 ---
 title: "Styling your plot"
 author: "Teun van den Brand"
-format: revealjs
 ---
