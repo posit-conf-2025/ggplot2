@@ -96,6 +96,7 @@
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-816793a8a4a837d14f6ea458e2f1c5cb.css">
+  <link rel="stylesheet" href="styles.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -236,14 +237,11 @@ Thomas Lin Pedersen
 </section>
 <section id="selecting-the-right-typeface" class="slide level2">
 <h2>Selecting the right typeface</h2>
-<div class="cell columns column-output-location">
-<div class="column">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
 <span id="cb1-2"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_len, <span class="at">y =</span> body_mass)) <span class="sc">+</span></span>
 <span id="cb1-3"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"FANCY FONT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
-
-</div></div>
+</div>
 </section>
 <section id="selecting-the-right-typeface-1" class="slide level2">
 <h2>Selecting the right typeface</h2>
@@ -393,26 +391,24 @@ font family 'FANCY FONT' not found in PostScript font database</code></pre>
 <section id="systemfonts" class="slide level2">
 <h2>systemfonts</h2>
 <h4 id="it-should-just-work">It (should) just work</h4>
-<div class="cell columns column-output-location">
-<div class="column">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(systemfonts)</span>
 <span id="cb9-2"><a></a></span>
 <span id="cb9-3"><a></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(<span class="fu">system_fonts</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 162
+<pre><code>Rows: 167
 Columns: 9
-$ path      &lt;chr&gt; "/usr/share/fonts/type1/urw-base35/URWGothic-BookOblique.t1"…
+$ path      &lt;chr&gt; "/tmp/RtmpcCzqFm/Barrio-regular.ttf", "/tmp/RtmpcCzqFm/Monte…
 $ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
-$ name      &lt;chr&gt; "URWGothic-BookOblique", "Lato-ThinItalic", "LiberationSans-…
-$ family    &lt;chr&gt; "URW Gothic", "Lato", "Liberation Sans", "Lato", "Nimbus Mon…
-$ style     &lt;chr&gt; "Book Oblique", "Thin Italic", "Bold", "Semibold Italic", "B…
-$ weight    &lt;ord&gt; normal, normal, bold, semibold, bold, bold, bold, normal, me…
+$ name      &lt;chr&gt; "Barrio-Regular", "MonteCarlo-Regular", "Datalegreya-Thin", …
+$ family    &lt;chr&gt; "Barrio", "MonteCarlo", "Datalegreya", "Datalegreya", "Datal…
+$ style     &lt;chr&gt; "Regular", "Regular", "Thin", "Gradient", "Dot", "Book Obliq…
+$ weight    &lt;ord&gt; normal, normal, light, normal, bold, normal, normal, bold, s…
 $ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…
-$ italic    &lt;lgl&gt; FALSE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, FALSE, TRUE, TR…
-$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, FALSE, FALSE, FALSE,…</code></pre>
+$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…
+$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…</code></pre>
 </div>
-</div></div>
+</div>
 </section>
 <section id="systemfonts-1" class="slide level2">
 <h2>systemfonts</h2>
@@ -574,7 +570,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, FALSE, FALSE, FA
 <span id="cb13-6"><a></a><span class="st">_Here is what you need:_</span></span>
 <span id="cb13-7"><a></a></span>
 <span id="cb13-8"><a></a><span class="st">* Add boldness to text at random</span></span>
-<span id="cb13-9"><a></a><span class="st">* Put everithing in lists  </span></span>
+<span id="cb13-9"><a></a><span class="st">* Put everything in lists  </span></span>
 <span id="cb13-10"><a></a><span class="st">✅ Make those lists use emojis</span></span>
 <span id="cb13-11"><a></a></span>
 <span id="cb13-12"><a></a><span class="st">Remember to delve into the intricate </span></span>
@@ -603,6 +599,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, FALSE, FALSE, FA
 <ul>
 <li>this will become relevant when we talk about styling</li>
 </ul></li>
+<li><code>{.sub supscript}</code> and <code>{.sup superscript}</code> are predefined custom spans</li>
 </ul>
 </section>
 <section id="custom-spans-1" class="slide level2">
@@ -611,10 +608,11 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, FALSE, FALSE, FA
 <div class="column">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
 <span id="cb14-2"><a></a><span class="st">Some {.red *red* text} and some {#00FF00 *green* text}</span></span>
-<span id="cb14-3"><a></a><span class="st">walked into a {.30 huge} bar and said to the {.person barman}...</span></span>
-<span id="cb14-4"><a></a><span class="st">"</span></span>
-<span id="cb14-5"><a></a></span>
-<span id="cb14-6"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-3"><a></a><span class="st">walked into a {.30 huge} bar and said to the {.person barman}:</span></span>
+<span id="cb14-4"><a></a><span class="st">”Can I get a glass of H{.sub 2}O?”</span></span>
+<span id="cb14-5"><a></a><span class="st">"</span></span>
+<span id="cb14-6"><a></a></span>
+<span id="cb14-7"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -625,8 +623,174 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, FALSE, FALSE, FA
 </div>
 </div></div>
 </section>
-<section id="exercies" class="slide level2 center" style="text-align:center;">
-<h2>Exercies</h2>
+<section id="exercises" class="slide level2 center" style="text-align:center;">
+<h2>Exercises</h2>
+</section>
+<section id="supercharged-images" class="slide level2">
+<h2>Supercharged images</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">last_plot</span>()</span>
+<span id="cb15-2"><a></a>point <span class="ot">&lt;-</span> grid<span class="sc">::</span><span class="fu">pointsGrob</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>)</span>
+<span id="cb15-3"><a></a></span>
+<span id="cb15-4"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb15-5"><a></a><span class="st">We made a *plot* earlier. Let's have a look:</span></span>
+<span id="cb15-6"><a></a></span>
+<span id="cb15-7"><a></a><span class="st">![](p)</span></span>
+<span id="cb15-8"><a></a></span>
+<span id="cb15-9"><a></a><span class="st">It can even work with grobs: ![](point)</span></span>
+<span id="cb15-10"><a></a><span class="st">"</span></span>
+<span id="cb15-11"><a></a></span>
+<span id="cb15-12"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="2_1_text_fonts_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="tables" class="slide level2">
+<h2>Tables</h2>
+<p>No markdown table support, but…</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>table <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">gt</span>(penguins[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span>
+<span id="cb16-2"><a></a></span>
+<span id="cb16-3"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb16-4"><a></a><span class="st">Why use markdown when you have gt</span></span>
+<span id="cb16-5"><a></a></span>
+<span id="cb16-6"><a></a><span class="st">![](table)</span></span>
+<span id="cb16-7"><a></a><span class="st">"</span></span>
+<span id="cb16-8"><a></a></span>
+<span id="cb16-9"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="2_1_text_fonts_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="styling" class="slide level2">
+<h2>Styling</h2>
+<ul>
+<li><p>So far we have used the default style which matches standard (GitHub) markdown rendering</p></li>
+<li><p>marquee provides a simple but powerful styling system</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">classic_style</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;marquee_style_set[1]&gt;
+[1] &lt;base, body, ul, ol, li, hr, h1, h2, h3, h4, h5, h6, cb, p, qb, em, str, a, code, u, del, img, sub, sup&gt;</code></pre>
+</div>
+</div></li>
+</ul>
+</section>
+<section id="styling-1" class="slide level2">
+<h2>Styling</h2>
+<ul>
+<li><p>Each tag can be styled with 37 different properties</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">names</span>(<span class="fu">classic_style</span>()[[<span class="dv">1</span>]]<span class="sc">$</span>base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "size"               "background"         "color"             
+ [4] "family"             "weight"             "italic"            
+ [7] "width"              "features"           "lineheight"        
+[10] "align"              "tracking"           "indent"            
+[13] "hanging"            "margin_top"         "margin_right"      
+[16] "margin_bottom"      "margin_left"        "padding_top"       
+[19] "padding_right"      "padding_bottom"     "padding_left"      
+[22] "border"             "border_size_top"    "border_size_right" 
+[25] "border_size_bottom" "border_size_left"   "border_radius"     
+[28] "bullets"            "underline"          "strikethrough"     
+[31] "baseline"           "img_asp"            "text_direction"    </code></pre>
+</div>
+</div></li>
+</ul>
+</section>
+<section id="styling-2" class="slide level2">
+<h2>Styling</h2>
+<ul>
+<li>Styling is powered by direct inheritance</li>
+<li>Any <code>NULL</code> value will get it’s value from the parent</li>
+<li>Any <code>rel()</code> value will multiply the parent value with the rel value</li>
+<li>Use <code>em()</code> to make a value dependent on the text size of the element</li>
+<li>Use <code>rem()</code> to make a value dependent on the text size of the root element</li>
+<li>Use <code>skip_inherit()</code> to make a value uninheritable</li>
+</ul>
+</section>
+<section id="section" class="slide level2 center">
+<h2>&nbsp;</h2>
+<blockquote>
+<p>Don’t roll your own — modify <code>classic_style()</code></p>
+</blockquote>
+</section>
+<section id="styling-3" class="slide level2">
+<h2>Styling</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>new_style <span class="ot">&lt;-</span> <span class="fu">classic_style</span>(<span class="at">base_size =</span> <span class="dv">30</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a></a>  <span class="fu">modify_style</span>(</span>
+<span id="cb21-3"><a></a>    <span class="st">"fancy"</span>,</span>
+<span id="cb21-4"><a></a>    <span class="at">family =</span> <span class="st">"MonteCarlo"</span>,</span>
+<span id="cb21-5"><a></a>    <span class="at">weight =</span> <span class="st">"light"</span>,</span>
+<span id="cb21-6"><a></a>    <span class="at">features =</span> <span class="fu">font_feature</span>(</span>
+<span id="cb21-7"><a></a>      <span class="at">ligatures =</span> <span class="fu">c</span>(<span class="st">"contextual"</span>, <span class="st">"discretionary"</span>),</span>
+<span id="cb21-8"><a></a>      <span class="at">letters =</span> <span class="fu">c</span>(<span class="st">"swash"</span>, <span class="st">"stylistic"</span>),</span>
+<span id="cb21-9"><a></a>      <span class="at">swsh =</span> <span class="dv">1</span></span>
+<span id="cb21-10"><a></a>    )</span>
+<span id="cb21-11"><a></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb21-12"><a></a>  <span class="fu">modify_style</span>(</span>
+<span id="cb21-13"><a></a>    <span class="st">"plot"</span>,</span>
+<span id="cb21-14"><a></a>    <span class="at">family =</span> <span class="st">"Datalegreya"</span>,</span>
+<span id="cb21-15"><a></a>    <span class="at">weight =</span> <span class="st">"bold"</span></span>
+<span id="cb21-16"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="styling-4" class="slide level2">
+<h2>Styling</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb22-2"><a></a><span class="st">{.fancy Readability is overrated}</span></span>
+<span id="cb22-3"><a></a></span>
+<span id="cb22-4"><a></a><span class="st">{.plot Even when it  </span></span>
+<span id="cb22-5"><a></a><span class="st">c|2o|3n|2t|3[++]a|1i|2n|0[--]s|1[high [low  ]     data}</span></span>
+<span id="cb22-6"><a></a><span class="st">"</span></span>
+<span id="cb22-7"><a></a></span>
+<span id="cb22-8"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(</span>
+<span id="cb22-9"><a></a>  <span class="fu">marquee_grob</span>(text, new_style)</span>
+<span id="cb22-10"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="2_1_text_fonts_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="exercises-1" class="slide level2 center" style="text-align:center;">
+<h2>Exercises</h2>
+</section>
+<section id="what-about-ggplot2" class="slide level2">
+<h2>What about ggplot2</h2>
+<ul>
+<li>Apart from the low-level grob that package developers can use, marquee also include high-level ggplot2 functions
+<ul>
+<li><code>geom_marquee()</code></li>
+<li><code>element_marquee()</code></li>
+<li><code>guide_marquee()</code></li>
+</ul></li>
+<li>These will eventually be included directly in ggplot2</li>
+</ul>
+</section>
+<section id="geom_marquee" class="slide level2">
+<h2><code>geom_marquee()</code></h2>
 
 
 </section>

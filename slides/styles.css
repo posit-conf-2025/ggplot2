@@ -1,0 +1,5 @@
+/* css styles */
+
+.reveal figure>p {
+  line-height: 0;
+}

@@ -179,7 +179,7 @@
     "href": "slides/2_1_text_fonts.html#selecting-the-right-typeface",
     "title": "Text rendering and font use",
     "section": "Selecting the right typeface",
-    "text": "Selecting the right typeface\n\n\nggplot(penguins) +\n  geom_point(aes(x = bill_len, y = body_mass)) +\n  theme_minimal(base_family = \"FANCY FONT\")"
+    "text": "Selecting the right typeface\n\nggplot(penguins) +\n  geom_point(aes(x = bill_len, y = body_mass)) +\n  theme_minimal(base_family = \"FANCY FONT\")"
   },
   {
     "objectID": "slides/2_1_text_fonts.html#selecting-the-right-typeface-1",
@@ -207,7 +207,7 @@
     "href": "slides/2_1_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\n\nRows: 162\nColumns: 9\n$ path      &lt;chr&gt; \"/usr/share/fonts/type1/urw-base35/URWGothic-BookOblique.t1\"…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"URWGothic-BookOblique\", \"Lato-ThinItalic\", \"LiberationSans-…\n$ family    &lt;chr&gt; \"URW Gothic\", \"Lato\", \"Liberation Sans\", \"Lato\", \"Nimbus Mon…\n$ style     &lt;chr&gt; \"Book Oblique\", \"Thin Italic\", \"Bold\", \"Semibold Italic\", \"B…\n$ weight    &lt;ord&gt; normal, normal, bold, semibold, bold, bold, bold, normal, me…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, FALSE, TRUE, TR…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, FALSE, FALSE, FALSE,…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 167\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpcCzqFm/Barrio-regular.ttf\", \"/tmp/RtmpcCzqFm/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"Book Obliq…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, normal, normal, bold, s…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/2_1_text_fonts.html#systemfonts-1",
@@ -284,28 +284,105 @@
     "href": "slides/2_1_text_fonts.html#marquee-1",
     "title": "Text rendering and font use",
     "section": "marquee",
-    "text": "marquee\n\n\nlibrary(marquee)\n\ntext &lt;- \"\nNow you too can **sound like an llm**\n\n_Here is what you need:_\n\n* Add boldness to text at random\n* Put everithing in lists  \n✅ Make those lists use emojis\n\nRemember to delve into the intricate \nwords that **underscore your potential**\n\"\n\ngrid::grid.draw(marquee_grob(text))"
+    "text": "marquee\n\n\nlibrary(marquee)\n\ntext &lt;- \"\nNow you too can **sound like an llm**\n\n_Here is what you need:_\n\n* Add boldness to text at random\n* Put everything in lists  \n✅ Make those lists use emojis\n\nRemember to delve into the intricate \nwords that **underscore your potential**\n\"\n\ngrid::grid.draw(marquee_grob(text))"
   },
   {
     "objectID": "slides/2_1_text_fonts.html#custom-spans",
     "href": "slides/2_1_text_fonts.html#custom-spans",
     "title": "Text rendering and font use",
     "section": "Custom spans",
-    "text": "Custom spans\nmarquee uses cli-esque syntax for custom spans.\n\n{.red color me red} will change the color of text to red\n{#00FF00 color me green} will change the color to green\n{.30 make me big} will set the size to 30\n{.class put a class on it} will add the classclass` to the text\n\nthis will become relevant when we talk about styling"
+    "text": "Custom spans\nmarquee uses cli-esque syntax for custom spans.\n\n{.red color me red} will change the color of text to red\n{#00FF00 color me green} will change the color to green\n{.30 make me big} will set the size to 30\n{.class put a class on it} will add the classclass` to the text\n\nthis will become relevant when we talk about styling\n\n{.sub supscript} and {.sup superscript} are predefined custom spans"
   },
   {
     "objectID": "slides/2_1_text_fonts.html#custom-spans-1",
     "href": "slides/2_1_text_fonts.html#custom-spans-1",
     "title": "Text rendering and font use",
     "section": "Custom spans",
-    "text": "Custom spans\n\n\ntext &lt;- \"\nSome {.red *red* text} and some {#00FF00 *green* text}\nwalked into a {.30 huge} bar and said to the {.person barman}...\n\"\n\ngrid::grid.draw(marquee_grob(text))"
+    "text": "Custom spans\n\n\ntext &lt;- \"\nSome {.red *red* text} and some {#00FF00 *green* text}\nwalked into a {.30 huge} bar and said to the {.person barman}:\n”Can I get a glass of H{.sub 2}O?”\n\"\n\ngrid::grid.draw(marquee_grob(text))"
   },
   {
-    "objectID": "slides/2_1_text_fonts.html#exercies",
-    "href": "slides/2_1_text_fonts.html#exercies",
+    "objectID": "slides/2_1_text_fonts.html#exercises",
+    "href": "slides/2_1_text_fonts.html#exercises",
     "title": "Text rendering and font use",
-    "section": "Exercies",
-    "text": "Exercies"
+    "section": "Exercises",
+    "text": "Exercises"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#supercharged-images",
+    "href": "slides/2_1_text_fonts.html#supercharged-images",
+    "title": "Text rendering and font use",
+    "section": "Supercharged images",
+    "text": "Supercharged images\n\n\np &lt;- last_plot()\npoint &lt;- grid::pointsGrob(0.5, 0.5)\n\ntext &lt;- \"\nWe made a *plot* earlier. Let's have a look:\n\n![](p)\n\nIt can even work with grobs: ![](point)\n\"\n\ngrid::grid.draw(marquee_grob(text))"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#tables",
+    "href": "slides/2_1_text_fonts.html#tables",
+    "title": "Text rendering and font use",
+    "section": "Tables",
+    "text": "Tables\nNo markdown table support, but…\n\n\ntable &lt;- gt::gt(penguins[1:6, 1:4])\n\ntext &lt;- \"\nWhy use markdown when you have gt\n\n![](table)\n\"\n\ngrid::grid.draw(marquee_grob(text))"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#styling",
+    "href": "slides/2_1_text_fonts.html#styling",
+    "title": "Text rendering and font use",
+    "section": "Styling",
+    "text": "Styling\n\nSo far we have used the default style which matches standard (GitHub) markdown rendering\nmarquee provides a simple but powerful styling system\n\nclassic_style()\n\n&lt;marquee_style_set[1]&gt;\n[1] &lt;base, body, ul, ol, li, hr, h1, h2, h3, h4, h5, h6, cb, p, qb, em, str, a, code, u, del, img, sub, sup&gt;"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#styling-1",
+    "href": "slides/2_1_text_fonts.html#styling-1",
+    "title": "Text rendering and font use",
+    "section": "Styling",
+    "text": "Styling\n\nEach tag can be styled with 37 different properties\n\nnames(classic_style()[[1]]$base)\n\n [1] \"size\"               \"background\"         \"color\"             \n [4] \"family\"             \"weight\"             \"italic\"            \n [7] \"width\"              \"features\"           \"lineheight\"        \n[10] \"align\"              \"tracking\"           \"indent\"            \n[13] \"hanging\"            \"margin_top\"         \"margin_right\"      \n[16] \"margin_bottom\"      \"margin_left\"        \"padding_top\"       \n[19] \"padding_right\"      \"padding_bottom\"     \"padding_left\"      \n[22] \"border\"             \"border_size_top\"    \"border_size_right\" \n[25] \"border_size_bottom\" \"border_size_left\"   \"border_radius\"     \n[28] \"bullets\"            \"underline\"          \"strikethrough\"     \n[31] \"baseline\"           \"img_asp\"            \"text_direction\""
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#styling-2",
+    "href": "slides/2_1_text_fonts.html#styling-2",
+    "title": "Text rendering and font use",
+    "section": "Styling",
+    "text": "Styling\n\nStyling is powered by direct inheritance\nAny NULL value will get it’s value from the parent\nAny rel() value will multiply the parent value with the rel value\nUse em() to make a value dependent on the text size of the element\nUse rem() to make a value dependent on the text size of the root element\nUse skip_inherit() to make a value uninheritable"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#section",
+    "href": "slides/2_1_text_fonts.html#section",
+    "title": "Text rendering and font use",
+    "section": " ",
+    "text": "Don’t roll your own — modify classic_style()"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#styling-3",
+    "href": "slides/2_1_text_fonts.html#styling-3",
+    "title": "Text rendering and font use",
+    "section": "Styling",
+    "text": "Styling\n\nnew_style &lt;- classic_style(base_size = 30) |&gt; \n  modify_style(\n    \"fancy\",\n    family = \"MonteCarlo\",\n    weight = \"light\",\n    features = font_feature(\n      ligatures = c(\"contextual\", \"discretionary\"),\n      letters = c(\"swash\", \"stylistic\"),\n      swsh = 1\n    )\n  ) |&gt; \n  modify_style(\n    \"plot\",\n    family = \"Datalegreya\",\n    weight = \"bold\"\n  )"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#styling-4",
+    "href": "slides/2_1_text_fonts.html#styling-4",
+    "title": "Text rendering and font use",
+    "section": "Styling",
+    "text": "Styling\n\n\ntext &lt;- \"\n{.fancy Readability is overrated}\n\n{.plot Even when it  \nc|2o|3n|2t|3[++]a|1i|2n|0[--]s|1[high [low  ]     data}\n\"\n\ngrid::grid.draw(\n  marquee_grob(text, new_style)\n)"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#exercises-1",
+    "href": "slides/2_1_text_fonts.html#exercises-1",
+    "title": "Text rendering and font use",
+    "section": "Exercises",
+    "text": "Exercises"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#what-about-ggplot2",
+    "href": "slides/2_1_text_fonts.html#what-about-ggplot2",
+    "title": "Text rendering and font use",
+    "section": "What about ggplot2",
+    "text": "What about ggplot2\n\nApart from the low-level grob that package developers can use, marquee also include high-level ggplot2 functions\n\ngeom_marquee()\nelement_marquee()\nguide_marquee()\n\nThese will eventually be included directly in ggplot2"
+  },
+  {
+    "objectID": "slides/2_1_text_fonts.html#geom_marquee",
+    "href": "slides/2_1_text_fonts.html#geom_marquee",
+    "title": "Text rendering and font use",
+    "section": "geom_marquee()",
+    "text": "geom_marquee()"
   },
   {
     "objectID": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
