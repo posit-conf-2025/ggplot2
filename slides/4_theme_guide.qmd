@@ -1,4 +1,628 @@
 ---
 title: "Styling your plot"
 author: "Teun van den Brand"
+knitr:
+  opts_chunk:
+    dev: ragg_png
+    dev.args:
+      scaling: 2
 ---
+
+```{r}
+#| include: false
+
+systemfonts::require_font("Barrio")
+systemfonts::require_font("Dancing Script")
+
+library(ggplot2)
+```
+
+## Ink & Paper
+
+* Complete themes
+* Geom element
+* Use in layers
+
+---
+
+### Complete themes
+
+```{r}
+library(ggplot2)
+
+p <- ggplot(mpg) +
+  aes(displ, hwy) +
+  geom_point() +
+  geom_smooth(
+    aes(displ, hwy),
+    formula = y ~ x, method = "lm",
+    inherit.aes = FALSE
+  ) +
+  facet_wrap(~ drv) +
+  labs(dictionary = c(
+      cty = "City\nEfficiency",
+      hwy = "Highway Efficiency",
+      displ = "Engine Displacement",
+      year = "Year",
+      "factor(year)" = "Year",
+      class = "Class"
+  ))
+p
+```
+
+---
+
+### Complete themes
+
+`ink` affects all foreground elements and parts of layers.
+
+```{r}
+#| output-location: default
+#| fig-width: 12
+p + theme_gray(ink = "red")
+```
+
+---
+
+### Complete themes
+
+`paper` affects all background elements and parts of layers.
+
+```{r}
+#| output-location: default
+#| fig-width: 12
+p + theme_minimal(paper = "cornsilk")
+```
+
+---
+
+### Complete themes
+
+`ink` and `paper` can be combined to recolour a plot.
+
+```{r}
+#| output-location: default
+#| fig-width: 12
+p + theme_bw(paper = "cornsilk", ink = "navy")
+```
+
+---
+
+### Complete themes
+
+`accent` has niche application in `geom_smooth()` and `geom_contour()`.
+
+```{r}
+#| output-location: default
+#| fig-width: 12
+p + theme_classic(accent = "red")
+```
+
+
+---
+
+### Geom elements
+
+`theme(geom)` accommodates the layer settings
+
+```{r}
+p + theme(geom = element_geom(
+  ink    = "red", 
+  accent = "black"
+))
+```
+
+---
+
+### Geom elements
+
+`ink`/`paper`/`accent` act as described for complete themes
+
+```{r}
+#| code-line-numbers: "3-5"
+#| collapse: true
+element_geom()
+```
+
+---
+
+### Geom elements
+
+For lines, we distinguish borders (of polygons) and 'naked' lines.
+
+```{r}
+#| code-line-numbers: "6-9"
+#| collapse: true
+element_geom()
+```
+
+---
+
+### Geom elements
+
+Illustration of polygon border versus naked line
+
+```{r}
+#| code-line-numbers: "9-16"
+binwidth <- 2
+ggplot(faithful, aes(waiting)) +
+  geom_histogram(
+    colour = "black", binwidth = binwidth
+  ) +
+  geom_density(
+    aes(y = after_stat(count * binwidth))
+  ) +
+  theme(geom = element_geom(
+    # Affects histogram
+    borderwidth = 0.5,
+    bordertype  = "solid",
+    # Affects density line
+    linewidth = 2,
+    linetype  = "dotted"
+  ))
+```
+
+---
+
+### Geom elements
+
+For text, we can set `family` and `fontsize`
+
+```{r}
+#| code-line-numbers: "10-11"
+#| collapse: true
+element_geom()
+```
+
+---
+
+### Geom elements
+
+For text, we can set `family` and `fontsize`
+
+```{r}
+#| code-line-numbers: "5-8"
+ggplot(mtcars) +
+  aes(disp, mpg, label = rownames(mtcars)) +
+  geom_label() +
+  theme(
+    geom = element_geom(
+      family = "Barrio",
+      fontsize = 12
+    )
+  )
+```
+
+---
+
+### Geom elements
+
+For points, we can set `pointsize` and `fontshape`
+
+```{r}
+#| code-line-numbers: "12-13"
+#| collapse: true
+element_geom()
+```
+
+---
+
+### Geom elements
+
+For points, we can set `pointsize` and `fontshape`
+
+```{r}
+p + theme(geom = element_geom(
+  pointsize  = 3,
+  pointshape = "triangle"
+))
+```
+
+---
+
+### Geom elements
+
+There is also the familiar `colour` and `fill`.
+
+```{r}
+#| code-line-numbers: "14-15"
+#| collapse: true
+element_geom()
+```
+
+---
+
+### Geom elements
+
+`colour` and `fill` are direct, but indiscriminate. Note how `accent` is now ignored.
+
+```{r}
+p + theme(geom = element_geom(
+  colour = "red", 
+  fill   = "cyan",
+  accent = "limegreen"
+))
+```
+
+---
+
+### Geom elements
+
+`colour` and `fill` are designed to tailor for individual geom types.
+
+```{r}
+p + theme(
+  geom.point  = element_geom(colour = "dodgerblue"),
+  geom.smooth = element_geom(colour = "navy")
+)
+```
+
+---
+
+## Default palettes
+
+Several ways to set a plot's colour palette
+
+* Directly add a scale
+    * `+ scale_colour_gradientn()`
+    * Not set as default scale
+* Using esoteric options
+    * `options(ggplot2.continuous.colour = scale_colour_gradientn)`
+    * Arcane
+* Overriding default scale
+    * `scale_colour_continuous <- scale_colour_gradientn`
+    * Messes with namespace
+* NEW: via `theme()`
+
+---
+
+### Controlling palettes
+
+A tour through various options
+
+```{r}
+#| fig-keep: last
+#| code-line-numbers: "8-9|11-14|16-19|21-22"
+my_palette <- hcl.colors(15, "sunset")
+custom_scale <- function(...) {
+  scale_colour_gradientn(colours = my_palette, ...)
+}
+
+p2 <- p + aes(colour = cty)
+
+# 1. Directly set a scale
+p2 + scale_colour_gradientn(colors = my_palette)
+
+# 2. Using options
+options(ggplot2.continuous.colour = custom_scale)
+p2
+options(ggplot2.continuous.colour = NULL) # reset
+
+# 3. Redefine scale
+scale_colour_continuous <- custom_scale
+p2
+scale_colour_continuous <- ggplot2::scale_colour_continuous # reset
+
+# 4. Using theme
+p2 + theme(palette.colour.continuous = my_palette)
+```
+
+---
+
+### Theme palettes
+
+The palette settings have the syntax `palette.{aesthetic}.{type}`, where `type` can be `"continuous"` or `"discrete"`.
+
+```{r}
+shapes <- c("triangle filled", "square filled")
+p +
+  aes(
+    fill = cty,
+    shape = factor(year)
+  ) +
+  theme(
+    palette.shape.discrete = shapes,
+    palette.fill.continuous = "sunset"
+  )
+  
+```
+
+---
+
+### Palette input
+
+The palatable palettes are those that can pass through `scales::as_continuous_pal()` and `scales::as_discrete_pal()` respectively.
+
+```{r}
+#| collapse: true
+library(scales)
+
+# Discrete palettes
+pal <- as_discrete_pal(c("foo", "bar", "qux"))
+pal(2)
+palette_type(pal)
+palette_nlevels(pal)
+
+# Colours as continuous palette
+pal <- as_continuous_pal(c("magenta", "green"))
+pal(c(0, 0.5, 1))
+palette_type(pal)
+```
+
+---
+
+### Palette input
+
+With the right metadata, we can interchange discrete and continuous palettes.
+
+```{r}
+#| collapse: true
+pal <- new_discrete_palette(
+  pal_manual(c("magenta", "cyan", "green")),
+  type = "colour", nlevels = 3
+)
+
+is_continuous_pal(pal)
+
+con_pal <- as_continuous_pal(pal)
+is_continuous_pal(con_pal)
+
+show_col(con_pal(seq(0, 1, length.out = 6)))
+```
+
+---
+
+### Palette input
+
+Just because we can swap discrete and continuous palettes, doesn't mean we should!
+
+```{r}
+p2 + theme(
+  palette.colour.continuous = pal_brewer("qual")
+)
+```
+
+
+---
+
+## Build your own theme
+
+How do you intend to use a personal theme?
+
+* Adding it to individual plots
+* Adding it to all plots in a document
+
+---
+
+### Building a theme for all plots
+
+Capture your theme as a function.
+
+```{r}
+my_theme <- function(...) {
+  NULL
+}
+
+p + my_theme()
+```
+
+---
+
+### Building a theme for all plots
+
+Start with using a complete theme as base.
+
+```{r}
+my_theme <- function(...) {
+  theme_gray(...)
+}
+
+p + my_theme()
+```
+
+---
+
+### Building a theme for all plots
+
+Build your own customisations on top.
+
+```{r}
+my_theme <- function(...) {
+  theme_gray(...) +
+    theme(
+      axis.line = element_line(),
+      strip.background = element_blank()
+    )
+}
+
+p + my_theme()
+```
+
+---
+
+### Building a theme for all plots
+
+For custom fonts, put in guardrails for their possible absence.
+
+```{r}
+my_theme <- function(..., header_family = "Dancing Script") {
+  systemfonts::require_font(header_family)
+  theme_gray(..., header_family = header_family) +
+    theme(
+      axis.line = element_line(),
+      strip.background = element_blank()
+    )
+}
+
+p + my_theme()
+```
+
+---
+
+### Building a theme for all plots
+
+You can coordinate your `ink` and default palettes, along with `geom`.
+
+```{r}
+my_theme <- function(
+  ...,
+  ink = "hotpink",
+  accent = "black",
+  header_family = "Dancing Script"
+) {
+  systemfonts::require_font(header_family)
+  theme_gray(..., ink = ink, accent = accent, header_family = header_family) +
+    theme(
+      geom = element_geom(pointshape = "♥", pointsize = 3),
+      axis.line = element_line(),
+      strip.background = element_blank(),
+      palette.colour.continuous = c("hotpink", "pink", "white")
+    )
+}
+
+p2 + my_theme()
+```
+
+---
+
+### Building a theme for all plots
+
+You can activate your theme for all plots in your document by using `set_theme()`.
+
+```{r}
+set_theme(my_theme())
+p2
+```
+
+
+---
+
+### Building a theme for all plots
+
+But for now, we'll reset it to something familiar.
+
+```{r}
+theme_set(theme_gray())
+p2
+```
+
+---
+
+### Building themes for individual plots
+
+For individual plots, the same advice holds for building a theme function.
+
+However, you can have partial theme 'shortcuts'.
+
+### Partial theme
+
+```{r}
+horizontal_grid <- function() {
+  theme_sub_panel(
+    grid.major.x = element_blank(),
+    grid.minor.x = element_blank(),
+    grid.major.y = element_line(),
+    grid.minor.y = element_line()
+  )
+}
+
+p + horizontal_grid()
+```
+
+---
+
+## Custom guides
+
+ggplot2 has more guides than colour bars and legends.
+
+* axes
+* binned guides
+
+### Base guides
+
+A guide can be specified in `guides()` or in the `scale_*(guide)` argument.
+
+```{r}
+p +
+  aes(size = cty) +
+  scale_size_continuous(guide = "bins") +
+  guides(x = guide_axis(minor.ticks = TRUE))
+```
+
+### Styling guides
+
+Guides can have their own local themes for customisation.
+
+```{r}
+p + aes(shape = factor(year), colour = class) +
+  guides(
+    x = guide_axis(theme = theme_classic(ink = "red")),
+    y = guide_axis(theme = theme_minimal(ink = "blue")),
+    shape = guide_legend(theme = theme_gray(paper= "cornsilk")),
+    colour = guide_legend(theme = theme(legend.text.position = "left"))
+  )
+```
+
+---
+
+### Guide extensions
+
+Specialised guides for niche applications, like periodical data.
+
+```{r}
+library(legendry)
+
+dplyr::filter(txhousing, city == "Houston") |>
+  ggplot(aes(date, median, colour = month)) +
+  geom_line(linewidth = 2, lineend = "round") +
+  scico::scale_colour_scico(
+    breaks = 1:12, limits = c(0, 12),
+    palette = "romaO",
+    guide = "colring"
+  )
+```
+
+---
+
+### Guide extensions
+
+Guides can be specified flexibly to at least the degree of secondary axes.
+
+```{r}
+# Translate Celsius range to Fahrenheit
+deg_C <- range(pressure$temperature)
+deg_F <- (deg_C * 9 / 5) + 32
+# Compute breaks and translate back to Celsius
+deg_F <- scales::extended_breaks()(deg_F)
+deg_C <- (deg_F - 32) * 5 / 9
+
+fahrenheit_axis <- guide_axis_base(
+  key = key_manual(aesthetic = deg_C, label = deg_F)
+)
+
+p3 <- ggplot(pressure) +
+  aes(temperature, pressure) +
+  geom_line() +
+  theme(axis.line.x = element_line())
+
+p3 + guides(x.sec = fahrenheit_axis)
+```
+
+---
+
+### Guide extensions
+
+In addition, many guides can be composed like stacking the Celsius and Fahrenheit guide.
+
+```{r}
+stacked <- compose_stack(
+  "axis",
+  fahrenheit_axis,
+  side.titles = c("°C", "°F")
+)
+
+p3 + guides(x = stacked)
+```
+
+
+
