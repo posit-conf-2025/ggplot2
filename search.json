@@ -123,7 +123,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 167\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpcyCOpe/Barrio-regular.ttf\", \"/tmp/RtmpcyCOpe/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"Book Obliq…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, normal, normal, bold, s…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 167\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/Rtmp8hRCoD/Barrio-regular.ttf\", \"/tmp/Rtmp8hRCoD/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"Book Obliq…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, normal, normal, bold, s…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
@@ -418,6 +418,34 @@
     "title": "Mastering Data Visualization with ggplot2",
     "section": "Practical information",
     "text": "Practical information\nTBD"
+  },
+  {
+    "objectID": "slides/4_theme_guide.html#ink-paper",
+    "href": "slides/4_theme_guide.html#ink-paper",
+    "title": "Styling your plot",
+    "section": "Ink & Paper",
+    "text": "Ink & Paper\n\nComplete themes\nGeom element\nUse in layers"
+  },
+  {
+    "objectID": "slides/4_theme_guide.html#default-palettes",
+    "href": "slides/4_theme_guide.html#default-palettes",
+    "title": "Styling your plot",
+    "section": "Default palettes",
+    "text": "Default palettes\nSeveral ways to set a plot’s colour palette\n\nDirectly add a scale\n\n+ scale_colour_gradientn()\nNot set as default scale\n\nUsing esoteric options\n\noptions(ggplot2.continuous.colour = scale_colour_gradientn)\nArcane\n\nOverriding default scale\n\nscale_colour_continuous &lt;- scale_colour_gradientn\nMesses with namespace\n\nNEW: via theme()"
+  },
+  {
+    "objectID": "slides/4_theme_guide.html#build-your-own-theme",
+    "href": "slides/4_theme_guide.html#build-your-own-theme",
+    "title": "Styling your plot",
+    "section": "Build your own theme",
+    "text": "Build your own theme\nHow do you intend to use a personal theme?\n\nAdding it to individual plots\nAdding it to all plots in a document"
+  },
+  {
+    "objectID": "slides/4_theme_guide.html#custom-guides",
+    "href": "slides/4_theme_guide.html#custom-guides",
+    "title": "Styling your plot",
+    "section": "Custom guides",
+    "text": "Custom guides\nggplot2 has more guides than colour bars and legends.\n\naxes\nbinned guides\n\nBase guides\nA guide can be specified in guides() or in the scale_*(guide) argument.\n\n\np +\n  aes(size = cty) +\n  scale_size_continuous(guide = \"bins\") +\n  guides(x = guide_axis(minor.ticks = TRUE))\n\n\n\n\n\n\n\n\n\nStyling guides\nGuides can have their own local themes for customisation.\n\n\np + aes(shape = factor(year), colour = class) +\n  guides(\n    x = guide_axis(theme = theme_classic(ink = \"red\")),\n    y = guide_axis(theme = theme_minimal(ink = \"blue\")),\n    shape = guide_legend(theme = theme_gray(paper= \"cornsilk\")),\n    colour = guide_legend(theme = theme(legend.text.position = \"left\"))\n  )"
   },
   {
     "objectID": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",

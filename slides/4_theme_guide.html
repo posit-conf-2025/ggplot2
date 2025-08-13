@@ -28,6 +28,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #d8dee9; background-color: #2e3440; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #d8dee9; } /* Normal */
+    code span.al { color: #bf616a; background-color: #3b4252; font-weight: bold; } /* Alert */
+    code span.an { color: #d08770; } /* Annotation */
+    code span.at { color: #8fbcbb; } /* Attribute */
+    code span.bn { color: #b48ead; } /* BaseN */
+    code span.bu { color: #88c0d0; font-style: italic; } /* BuiltIn */
+    code span.cf { color: #81a1c1; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #ebcb8b; } /* Char */
+    code span.cn { color: #eceff4; font-weight: bold; } /* Constant */
+    code span.co { color: #616e88; } /* Comment */
+    code span.cv { color: #e5e9f0; } /* CommentVar */
+    code span.do { color: #5e81ac; } /* Documentation */
+    code span.dt { color: #81a1c1; } /* DataType */
+    code span.dv { color: #b48ead; } /* DecVal */
+    code span.er { color: #bf616a; text-decoration: underline; } /* Error */
+    code span.ex { color: #8fbcbb; font-weight: bold; } /* Extension */
+    code span.fl { color: #b48ead; } /* Float */
+    code span.fu { color: #88c0d0; } /* Function */
+    code span.im { color: #a3be8c; } /* Import */
+    code span.in { color: #ebcb8b; } /* Information */
+    code span.kw { color: #81a1c1; font-weight: bold; } /* Keyword */
+    code span.op { color: #81a1c1; } /* Operator */
+    code span.ot { color: #8fbcbb; } /* Other */
+    code span.pp { color: #5e81ac; } /* Preprocessor */
+    code span.re { color: #88c0d0; background-color: #3b4252; } /* RegionMarker */
+    code span.sc { color: #ebcb8b; } /* SpecialChar */
+    code span.ss { color: #d08770; } /* SpecialString */
+    code span.st { color: #a3be8c; } /* String */
+    code span.va { color: #5e81ac; } /* Variable */
+    code span.vs { color: #a3be8c; } /* VerbatimString */
+    code span.wa { color: #bf616a; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-533d6c76c08492e31a51aaad62ff101b.css">
   <link rel="stylesheet" href="styles.css">
@@ -139,8 +205,833 @@ Teun van den Brand
 </div>
 
 </section>
+<section id="ink-paper" class="slide level2">
+<h2>Ink &amp; Paper</h2>
+<ul>
+<li>Complete themes</li>
+<li>Geom element</li>
+<li>Use in layers</li>
+</ul>
+</section>
 <section class="slide level2">
 
+<h3 id="complete-themes">Complete themes</h3>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
+<span id="cb1-4"><a></a>  <span class="fu">aes</span>(displ, hwy) <span class="sc">+</span></span>
+<span id="cb1-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1-6"><a></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb1-7"><a></a>    <span class="fu">aes</span>(displ, hwy),</span>
+<span id="cb1-8"><a></a>    <span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb1-9"><a></a>    <span class="at">inherit.aes =</span> <span class="cn">FALSE</span></span>
+<span id="cb1-10"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb1-11"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> drv) <span class="sc">+</span></span>
+<span id="cb1-12"><a></a>  <span class="fu">labs</span>(<span class="at">dictionary =</span> <span class="fu">c</span>(</span>
+<span id="cb1-13"><a></a>      <span class="at">cty =</span> <span class="st">"City</span><span class="sc">\n</span><span class="st">Efficiency"</span>,</span>
+<span id="cb1-14"><a></a>      <span class="at">hwy =</span> <span class="st">"Highway Efficiency"</span>,</span>
+<span id="cb1-15"><a></a>      <span class="at">displ =</span> <span class="st">"Engine Displacement"</span>,</span>
+<span id="cb1-16"><a></a>      <span class="at">year =</span> <span class="st">"Year"</span>,</span>
+<span id="cb1-17"><a></a>      <span class="st">"factor(year)"</span> <span class="ot">=</span> <span class="st">"Year"</span>,</span>
+<span id="cb1-18"><a></a>      <span class="at">class =</span> <span class="st">"Class"</span></span>
+<span id="cb1-19"><a></a>  ))</span>
+<span id="cb1-20"><a></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="complete-themes-1">Complete themes</h3>
+<p><code>ink</code> affects all foreground elements and parts of layers.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>p <span class="sc">+</span> <span class="fu">theme_gray</span>(<span class="at">ink =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-3-1.png" width="1152" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="complete-themes-2">Complete themes</h3>
+<p><code>paper</code> affects all background elements and parts of layers.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>p <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">paper =</span> <span class="st">"cornsilk"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-4-1.png" width="1152" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="complete-themes-3">Complete themes</h3>
+<p><code>ink</code> and <code>paper</code> can be combined to recolour a plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>p <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">paper =</span> <span class="st">"cornsilk"</span>, <span class="at">ink =</span> <span class="st">"navy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-5-1.png" width="1152" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="complete-themes-4">Complete themes</h3>
+<p><code>accent</code> has niche application in <code>geom_smooth()</code> and <code>geom_contour()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>p <span class="sc">+</span> <span class="fu">theme_classic</span>(<span class="at">accent =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-6-1.png" width="1152" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="geom-elements">Geom elements</h3>
+<p><code>theme(geom)</code> accommodates the layer settings</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>p <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">geom =</span> <span class="fu">element_geom</span>(</span>
+<span id="cb6-2"><a></a>  <span class="at">ink    =</span> <span class="st">"red"</span>, </span>
+<span id="cb6-3"><a></a>  <span class="at">accent =</span> <span class="st">"black"</span></span>
+<span id="cb6-4"><a></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="geom-elements-1">Geom elements</h3>
+<p><code>ink</code>/<code>paper</code>/<code>accent</code> act as described for complete themes</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="3-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">element_geom</span>()</span>
+<span id="cb7-2"><a></a><span class="do">## &lt;ggplot2::element_geom&gt;</span></span>
+<span id="cb7-3"><a></a><span class="do">##  @ ink        : NULL</span></span>
+<span id="cb7-4"><a></a><span class="do">##  @ paper      : NULL</span></span>
+<span id="cb7-5"><a></a><span class="do">##  @ accent     : NULL</span></span>
+<span id="cb7-6"><a></a><span class="do">##  @ linewidth  : NULL</span></span>
+<span id="cb7-7"><a></a><span class="do">##  @ borderwidth: NULL</span></span>
+<span id="cb7-8"><a></a><span class="do">##  @ linetype   : NULL</span></span>
+<span id="cb7-9"><a></a><span class="do">##  @ bordertype : NULL</span></span>
+<span id="cb7-10"><a></a><span class="do">##  @ family     : NULL</span></span>
+<span id="cb7-11"><a></a><span class="do">##  @ fontsize   : NULL</span></span>
+<span id="cb7-12"><a></a><span class="do">##  @ pointsize  : NULL</span></span>
+<span id="cb7-13"><a></a><span class="do">##  @ pointshape : NULL</span></span>
+<span id="cb7-14"><a></a><span class="do">##  @ colour     : NULL</span></span>
+<span id="cb7-15"><a></a><span class="do">##  @ fill       : NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="geom-elements-2">Geom elements</h3>
+<p>For lines, we distinguish borders (of polygons) and ‘naked’ lines.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="6-9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">element_geom</span>()</span>
+<span id="cb8-2"><a></a><span class="do">## &lt;ggplot2::element_geom&gt;</span></span>
+<span id="cb8-3"><a></a><span class="do">##  @ ink        : NULL</span></span>
+<span id="cb8-4"><a></a><span class="do">##  @ paper      : NULL</span></span>
+<span id="cb8-5"><a></a><span class="do">##  @ accent     : NULL</span></span>
+<span id="cb8-6"><a></a><span class="do">##  @ linewidth  : NULL</span></span>
+<span id="cb8-7"><a></a><span class="do">##  @ borderwidth: NULL</span></span>
+<span id="cb8-8"><a></a><span class="do">##  @ linetype   : NULL</span></span>
+<span id="cb8-9"><a></a><span class="do">##  @ bordertype : NULL</span></span>
+<span id="cb8-10"><a></a><span class="do">##  @ family     : NULL</span></span>
+<span id="cb8-11"><a></a><span class="do">##  @ fontsize   : NULL</span></span>
+<span id="cb8-12"><a></a><span class="do">##  @ pointsize  : NULL</span></span>
+<span id="cb8-13"><a></a><span class="do">##  @ pointshape : NULL</span></span>
+<span id="cb8-14"><a></a><span class="do">##  @ colour     : NULL</span></span>
+<span id="cb8-15"><a></a><span class="do">##  @ fill       : NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="geom-elements-3">Geom elements</h3>
+<p>Illustration of polygon border versus naked line</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="9-16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>binwidth <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb9-2"><a></a><span class="fu">ggplot</span>(faithful, <span class="fu">aes</span>(waiting)) <span class="sc">+</span></span>
+<span id="cb9-3"><a></a>  <span class="fu">geom_histogram</span>(</span>
+<span id="cb9-4"><a></a>    <span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">binwidth =</span> binwidth</span>
+<span id="cb9-5"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb9-6"><a></a>  <span class="fu">geom_density</span>(</span>
+<span id="cb9-7"><a></a>    <span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(count <span class="sc">*</span> binwidth))</span>
+<span id="cb9-8"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb9-9"><a></a>  <span class="fu">theme</span>(<span class="at">geom =</span> <span class="fu">element_geom</span>(</span>
+<span id="cb9-10"><a></a>    <span class="co"># Affects histogram</span></span>
+<span id="cb9-11"><a></a>    <span class="at">borderwidth =</span> <span class="fl">0.5</span>,</span>
+<span id="cb9-12"><a></a>    <span class="at">bordertype  =</span> <span class="st">"solid"</span>,</span>
+<span id="cb9-13"><a></a>    <span class="co"># Affects density line</span></span>
+<span id="cb9-14"><a></a>    <span class="at">linewidth =</span> <span class="dv">2</span>,</span>
+<span id="cb9-15"><a></a>    <span class="at">linetype  =</span> <span class="st">"dotted"</span></span>
+<span id="cb9-16"><a></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="geom-elements-4">Geom elements</h3>
+<p>For text, we can set <code>family</code> and <code>fontsize</code></p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="10-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">element_geom</span>()</span>
+<span id="cb10-2"><a></a><span class="do">## &lt;ggplot2::element_geom&gt;</span></span>
+<span id="cb10-3"><a></a><span class="do">##  @ ink        : NULL</span></span>
+<span id="cb10-4"><a></a><span class="do">##  @ paper      : NULL</span></span>
+<span id="cb10-5"><a></a><span class="do">##  @ accent     : NULL</span></span>
+<span id="cb10-6"><a></a><span class="do">##  @ linewidth  : NULL</span></span>
+<span id="cb10-7"><a></a><span class="do">##  @ borderwidth: NULL</span></span>
+<span id="cb10-8"><a></a><span class="do">##  @ linetype   : NULL</span></span>
+<span id="cb10-9"><a></a><span class="do">##  @ bordertype : NULL</span></span>
+<span id="cb10-10"><a></a><span class="do">##  @ family     : NULL</span></span>
+<span id="cb10-11"><a></a><span class="do">##  @ fontsize   : NULL</span></span>
+<span id="cb10-12"><a></a><span class="do">##  @ pointsize  : NULL</span></span>
+<span id="cb10-13"><a></a><span class="do">##  @ pointshape : NULL</span></span>
+<span id="cb10-14"><a></a><span class="do">##  @ colour     : NULL</span></span>
+<span id="cb10-15"><a></a><span class="do">##  @ fill       : NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="geom-elements-5">Geom elements</h3>
+<p>For text, we can set <code>family</code> and <code>fontsize</code></p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="5-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(mtcars) <span class="sc">+</span></span>
+<span id="cb11-2"><a></a>  <span class="fu">aes</span>(disp, mpg, <span class="at">label =</span> <span class="fu">rownames</span>(mtcars)) <span class="sc">+</span></span>
+<span id="cb11-3"><a></a>  <span class="fu">geom_label</span>() <span class="sc">+</span></span>
+<span id="cb11-4"><a></a>  <span class="fu">theme</span>(</span>
+<span id="cb11-5"><a></a>    <span class="at">geom =</span> <span class="fu">element_geom</span>(</span>
+<span id="cb11-6"><a></a>      <span class="at">family =</span> <span class="st">"Barrio"</span>,</span>
+<span id="cb11-7"><a></a>      <span class="at">fontsize =</span> <span class="dv">12</span></span>
+<span id="cb11-8"><a></a>    )</span>
+<span id="cb11-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="geom-elements-6">Geom elements</h3>
+<p>For points, we can set <code>pointsize</code> and <code>fontshape</code></p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="12-13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">element_geom</span>()</span>
+<span id="cb12-2"><a></a><span class="do">## &lt;ggplot2::element_geom&gt;</span></span>
+<span id="cb12-3"><a></a><span class="do">##  @ ink        : NULL</span></span>
+<span id="cb12-4"><a></a><span class="do">##  @ paper      : NULL</span></span>
+<span id="cb12-5"><a></a><span class="do">##  @ accent     : NULL</span></span>
+<span id="cb12-6"><a></a><span class="do">##  @ linewidth  : NULL</span></span>
+<span id="cb12-7"><a></a><span class="do">##  @ borderwidth: NULL</span></span>
+<span id="cb12-8"><a></a><span class="do">##  @ linetype   : NULL</span></span>
+<span id="cb12-9"><a></a><span class="do">##  @ bordertype : NULL</span></span>
+<span id="cb12-10"><a></a><span class="do">##  @ family     : NULL</span></span>
+<span id="cb12-11"><a></a><span class="do">##  @ fontsize   : NULL</span></span>
+<span id="cb12-12"><a></a><span class="do">##  @ pointsize  : NULL</span></span>
+<span id="cb12-13"><a></a><span class="do">##  @ pointshape : NULL</span></span>
+<span id="cb12-14"><a></a><span class="do">##  @ colour     : NULL</span></span>
+<span id="cb12-15"><a></a><span class="do">##  @ fill       : NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="geom-elements-7">Geom elements</h3>
+<p>For points, we can set <code>pointsize</code> and <code>fontshape</code></p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>p <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">geom =</span> <span class="fu">element_geom</span>(</span>
+<span id="cb13-2"><a></a>  <span class="at">pointsize  =</span> <span class="dv">3</span>,</span>
+<span id="cb13-3"><a></a>  <span class="at">pointshape =</span> <span class="st">"triangle"</span></span>
+<span id="cb13-4"><a></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="geom-elements-8">Geom elements</h3>
+<p>There is also the familiar <code>colour</code> and <code>fill</code>.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb14" data-code-line-numbers="14-15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">element_geom</span>()</span>
+<span id="cb14-2"><a></a><span class="do">## &lt;ggplot2::element_geom&gt;</span></span>
+<span id="cb14-3"><a></a><span class="do">##  @ ink        : NULL</span></span>
+<span id="cb14-4"><a></a><span class="do">##  @ paper      : NULL</span></span>
+<span id="cb14-5"><a></a><span class="do">##  @ accent     : NULL</span></span>
+<span id="cb14-6"><a></a><span class="do">##  @ linewidth  : NULL</span></span>
+<span id="cb14-7"><a></a><span class="do">##  @ borderwidth: NULL</span></span>
+<span id="cb14-8"><a></a><span class="do">##  @ linetype   : NULL</span></span>
+<span id="cb14-9"><a></a><span class="do">##  @ bordertype : NULL</span></span>
+<span id="cb14-10"><a></a><span class="do">##  @ family     : NULL</span></span>
+<span id="cb14-11"><a></a><span class="do">##  @ fontsize   : NULL</span></span>
+<span id="cb14-12"><a></a><span class="do">##  @ pointsize  : NULL</span></span>
+<span id="cb14-13"><a></a><span class="do">##  @ pointshape : NULL</span></span>
+<span id="cb14-14"><a></a><span class="do">##  @ colour     : NULL</span></span>
+<span id="cb14-15"><a></a><span class="do">##  @ fill       : NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="geom-elements-9">Geom elements</h3>
+<p><code>colour</code> and <code>fill</code> are direct, but indiscriminate. Note how <code>accent</code> is now ignored.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>p <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">geom =</span> <span class="fu">element_geom</span>(</span>
+<span id="cb15-2"><a></a>  <span class="at">colour =</span> <span class="st">"red"</span>, </span>
+<span id="cb15-3"><a></a>  <span class="at">fill   =</span> <span class="st">"cyan"</span>,</span>
+<span id="cb15-4"><a></a>  <span class="at">accent =</span> <span class="st">"limegreen"</span></span>
+<span id="cb15-5"><a></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="geom-elements-10">Geom elements</h3>
+<p><code>colour</code> and <code>fill</code> are designed to tailor for individual geom types.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>p <span class="sc">+</span> <span class="fu">theme</span>(</span>
+<span id="cb16-2"><a></a>  <span class="at">geom.point  =</span> <span class="fu">element_geom</span>(<span class="at">colour =</span> <span class="st">"dodgerblue"</span>),</span>
+<span id="cb16-3"><a></a>  <span class="at">geom.smooth =</span> <span class="fu">element_geom</span>(<span class="at">colour =</span> <span class="st">"navy"</span>)</span>
+<span id="cb16-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="default-palettes" class="slide level2">
+<h2>Default palettes</h2>
+<p>Several ways to set a plot’s colour palette</p>
+<ul>
+<li>Directly add a scale
+<ul>
+<li><code>+ scale_colour_gradientn()</code></li>
+<li>Not set as default scale</li>
+</ul></li>
+<li>Using esoteric options
+<ul>
+<li><code>options(ggplot2.continuous.colour = scale_colour_gradientn)</code></li>
+<li>Arcane</li>
+</ul></li>
+<li>Overriding default scale
+<ul>
+<li><code>scale_colour_continuous &lt;- scale_colour_gradientn</code></li>
+<li>Messes with namespace</li>
+</ul></li>
+<li>NEW: via <code>theme()</code></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="controlling-palettes">Controlling palettes</h3>
+<p>A tour through various options</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb17" data-code-line-numbers="8-9|11-14|16-19|21-22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>my_palette <span class="ot">&lt;-</span> <span class="fu">hcl.colors</span>(<span class="dv">15</span>, <span class="st">"sunset"</span>)</span>
+<span id="cb17-2"><a></a>custom_scale <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
+<span id="cb17-3"><a></a>  <span class="fu">scale_colour_gradientn</span>(<span class="at">colours =</span> my_palette, ...)</span>
+<span id="cb17-4"><a></a>}</span>
+<span id="cb17-5"><a></a></span>
+<span id="cb17-6"><a></a>p2 <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">colour =</span> cty)</span>
+<span id="cb17-7"><a></a></span>
+<span id="cb17-8"><a></a><span class="co"># 1. Directly set a scale</span></span>
+<span id="cb17-9"><a></a>p2 <span class="sc">+</span> <span class="fu">scale_colour_gradientn</span>(<span class="at">colors =</span> my_palette)</span>
+<span id="cb17-10"><a></a></span>
+<span id="cb17-11"><a></a><span class="co"># 2. Using options</span></span>
+<span id="cb17-12"><a></a><span class="fu">options</span>(<span class="at">ggplot2.continuous.colour =</span> custom_scale)</span>
+<span id="cb17-13"><a></a>p2</span>
+<span id="cb17-14"><a></a><span class="fu">options</span>(<span class="at">ggplot2.continuous.colour =</span> <span class="cn">NULL</span>) <span class="co"># reset</span></span>
+<span id="cb17-15"><a></a></span>
+<span id="cb17-16"><a></a><span class="co"># 3. Redefine scale</span></span>
+<span id="cb17-17"><a></a>scale_colour_continuous <span class="ot">&lt;-</span> custom_scale</span>
+<span id="cb17-18"><a></a>p2</span>
+<span id="cb17-19"><a></a>scale_colour_continuous <span class="ot">&lt;-</span> ggplot2<span class="sc">::</span>scale_colour_continuous <span class="co"># reset</span></span>
+<span id="cb17-20"><a></a></span>
+<span id="cb17-21"><a></a><span class="co"># 4. Using theme</span></span>
+<span id="cb17-22"><a></a>p2 <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">palette.colour.continuous =</span> my_palette)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="theme-palettes">Theme palettes</h3>
+<p>The palette settings have the syntax <code>palette.{aesthetic}.{type}</code>, where <code>type</code> can be <code>"continuous"</code> or <code>"discrete"</code>.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>shapes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"triangle filled"</span>, <span class="st">"square filled"</span>)</span>
+<span id="cb18-2"><a></a>p <span class="sc">+</span></span>
+<span id="cb18-3"><a></a>  <span class="fu">aes</span>(</span>
+<span id="cb18-4"><a></a>    <span class="at">fill =</span> cty,</span>
+<span id="cb18-5"><a></a>    <span class="at">shape =</span> <span class="fu">factor</span>(year)</span>
+<span id="cb18-6"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb18-7"><a></a>  <span class="fu">theme</span>(</span>
+<span id="cb18-8"><a></a>    <span class="at">palette.shape.discrete =</span> shapes,</span>
+<span id="cb18-9"><a></a>    <span class="at">palette.fill.continuous =</span> <span class="st">"sunset"</span></span>
+<span id="cb18-10"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="palette-input">Palette input</h3>
+<p>The palatable palettes are those that can pass through <code>scales::as_continuous_pal()</code> and <code>scales::as_discrete_pal()</code> respectively.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">library</span>(scales)</span>
+<span id="cb19-2"><a></a></span>
+<span id="cb19-3"><a></a><span class="co"># Discrete palettes</span></span>
+<span id="cb19-4"><a></a>pal <span class="ot">&lt;-</span> <span class="fu">as_discrete_pal</span>(<span class="fu">c</span>(<span class="st">"foo"</span>, <span class="st">"bar"</span>, <span class="st">"qux"</span>))</span>
+<span id="cb19-5"><a></a><span class="fu">pal</span>(<span class="dv">2</span>)</span>
+<span id="cb19-6"><a></a><span class="do">## [1] "foo" "bar"</span></span>
+<span id="cb19-7"><a></a><span class="fu">palette_type</span>(pal)</span>
+<span id="cb19-8"><a></a><span class="do">## [1] "character"</span></span>
+<span id="cb19-9"><a></a><span class="fu">palette_nlevels</span>(pal)</span>
+<span id="cb19-10"><a></a><span class="do">## [1] 3</span></span>
+<span id="cb19-11"><a></a></span>
+<span id="cb19-12"><a></a><span class="co"># Colours as continuous palette</span></span>
+<span id="cb19-13"><a></a>pal <span class="ot">&lt;-</span> <span class="fu">as_continuous_pal</span>(<span class="fu">c</span>(<span class="st">"magenta"</span>, <span class="st">"green"</span>))</span>
+<span id="cb19-14"><a></a><span class="fu">pal</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>))</span>
+<span id="cb19-15"><a></a><span class="do">## [1] "#FF00FF" "#C9B2A2" "#00FF00"</span></span>
+<span id="cb19-16"><a></a><span class="fu">palette_type</span>(pal)</span>
+<span id="cb19-17"><a></a><span class="do">## [1] "colour"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="palette-input-1">Palette input</h3>
+<p>With the right metadata, we can interchange discrete and continuous palettes.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>pal <span class="ot">&lt;-</span> <span class="fu">new_discrete_palette</span>(</span>
+<span id="cb20-2"><a></a>  <span class="fu">pal_manual</span>(<span class="fu">c</span>(<span class="st">"magenta"</span>, <span class="st">"cyan"</span>, <span class="st">"green"</span>)),</span>
+<span id="cb20-3"><a></a>  <span class="at">type =</span> <span class="st">"colour"</span>, <span class="at">nlevels =</span> <span class="dv">3</span></span>
+<span id="cb20-4"><a></a>)</span>
+<span id="cb20-5"><a></a></span>
+<span id="cb20-6"><a></a><span class="fu">is_continuous_pal</span>(pal)</span>
+<span id="cb20-7"><a></a><span class="do">## [1] FALSE</span></span>
+<span id="cb20-8"><a></a></span>
+<span id="cb20-9"><a></a>con_pal <span class="ot">&lt;-</span> <span class="fu">as_continuous_pal</span>(pal)</span>
+<span id="cb20-10"><a></a><span class="fu">is_continuous_pal</span>(con_pal)</span>
+<span id="cb20-11"><a></a><span class="do">## [1] TRUE</span></span>
+<span id="cb20-12"><a></a></span>
+<span id="cb20-13"><a></a><span class="fu">show_col</span>(<span class="fu">con_pal</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">6</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="palette-input-2">Palette input</h3>
+<p>Just because we can swap discrete and continuous palettes, doesn’t mean we should!</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>p2 <span class="sc">+</span> <span class="fu">theme</span>(</span>
+<span id="cb21-2"><a></a>  <span class="at">palette.colour.continuous =</span> <span class="fu">pal_brewer</span>(<span class="st">"qual"</span>)</span>
+<span id="cb21-3"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="build-your-own-theme" class="slide level2">
+<h2>Build your own theme</h2>
+<p>How do you intend to use a personal theme?</p>
+<ul>
+<li>Adding it to individual plots</li>
+<li>Adding it to all plots in a document</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="building-a-theme-for-all-plots">Building a theme for all plots</h3>
+<p>Capture your theme as a function.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>my_theme <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
+<span id="cb22-2"><a></a>  <span class="cn">NULL</span></span>
+<span id="cb22-3"><a></a>}</span>
+<span id="cb22-4"><a></a></span>
+<span id="cb22-5"><a></a>p <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="building-a-theme-for-all-plots-1">Building a theme for all plots</h3>
+<p>Start with using a complete theme as base.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>my_theme <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
+<span id="cb23-2"><a></a>  <span class="fu">theme_gray</span>(...)</span>
+<span id="cb23-3"><a></a>}</span>
+<span id="cb23-4"><a></a></span>
+<span id="cb23-5"><a></a>p <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="building-a-theme-for-all-plots-2">Building a theme for all plots</h3>
+<p>Build your own customisations on top.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>my_theme <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
+<span id="cb24-2"><a></a>  <span class="fu">theme_gray</span>(...) <span class="sc">+</span></span>
+<span id="cb24-3"><a></a>    <span class="fu">theme</span>(</span>
+<span id="cb24-4"><a></a>      <span class="at">axis.line =</span> <span class="fu">element_line</span>(),</span>
+<span id="cb24-5"><a></a>      <span class="at">strip.background =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb24-6"><a></a>    )</span>
+<span id="cb24-7"><a></a>}</span>
+<span id="cb24-8"><a></a></span>
+<span id="cb24-9"><a></a>p <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="building-a-theme-for-all-plots-3">Building a theme for all plots</h3>
+<p>For custom fonts, put in guardrails for their possible absence.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>my_theme <span class="ot">&lt;-</span> <span class="cf">function</span>(..., <span class="at">header_family =</span> <span class="st">"Dancing Script"</span>) {</span>
+<span id="cb25-2"><a></a>  systemfonts<span class="sc">::</span><span class="fu">require_font</span>(header_family)</span>
+<span id="cb25-3"><a></a>  <span class="fu">theme_gray</span>(..., <span class="at">header_family =</span> header_family) <span class="sc">+</span></span>
+<span id="cb25-4"><a></a>    <span class="fu">theme</span>(</span>
+<span id="cb25-5"><a></a>      <span class="at">axis.line =</span> <span class="fu">element_line</span>(),</span>
+<span id="cb25-6"><a></a>      <span class="at">strip.background =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb25-7"><a></a>    )</span>
+<span id="cb25-8"><a></a>}</span>
+<span id="cb25-9"><a></a></span>
+<span id="cb25-10"><a></a>p <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="building-a-theme-for-all-plots-4">Building a theme for all plots</h3>
+<p>You can coordinate your <code>ink</code> and default palettes, along with <code>geom</code>.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>my_theme <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
+<span id="cb26-2"><a></a>  ...,</span>
+<span id="cb26-3"><a></a>  <span class="at">ink =</span> <span class="st">"hotpink"</span>,</span>
+<span id="cb26-4"><a></a>  <span class="at">accent =</span> <span class="st">"black"</span>,</span>
+<span id="cb26-5"><a></a>  <span class="at">header_family =</span> <span class="st">"Dancing Script"</span></span>
+<span id="cb26-6"><a></a>) {</span>
+<span id="cb26-7"><a></a>  systemfonts<span class="sc">::</span><span class="fu">require_font</span>(header_family)</span>
+<span id="cb26-8"><a></a>  <span class="fu">theme_gray</span>(..., <span class="at">ink =</span> ink, <span class="at">accent =</span> accent, <span class="at">header_family =</span> header_family) <span class="sc">+</span></span>
+<span id="cb26-9"><a></a>    <span class="fu">theme</span>(</span>
+<span id="cb26-10"><a></a>      <span class="at">geom =</span> <span class="fu">element_geom</span>(<span class="at">pointshape =</span> <span class="st">"♥"</span>, <span class="at">pointsize =</span> <span class="dv">3</span>),</span>
+<span id="cb26-11"><a></a>      <span class="at">axis.line =</span> <span class="fu">element_line</span>(),</span>
+<span id="cb26-12"><a></a>      <span class="at">strip.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb26-13"><a></a>      <span class="at">palette.colour.continuous =</span> <span class="fu">c</span>(<span class="st">"hotpink"</span>, <span class="st">"pink"</span>, <span class="st">"white"</span>)</span>
+<span id="cb26-14"><a></a>    )</span>
+<span id="cb26-15"><a></a>}</span>
+<span id="cb26-16"><a></a></span>
+<span id="cb26-17"><a></a>p2 <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="building-a-theme-for-all-plots-5">Building a theme for all plots</h3>
+<p>You can activate your theme for all plots in your document by using <code>set_theme()</code>.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">set_theme</span>(<span class="fu">my_theme</span>())</span>
+<span id="cb27-2"><a></a>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="building-a-theme-for-all-plots-6">Building a theme for all plots</h3>
+<p>But for now, we’ll reset it to something familiar.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">theme_set</span>(<span class="fu">theme_gray</span>())</span>
+<span id="cb28-2"><a></a>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="building-themes-for-individual-plots">Building themes for individual plots</h3>
+<p>For individual plots, the same advice holds for building a theme function.</p>
+<p>However, you can have partial theme ‘shortcuts’.</p>
+<h3 id="partial-theme">Partial theme</h3>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>horizontal_grid <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb29-2"><a></a>  <span class="fu">theme_sub_panel</span>(</span>
+<span id="cb29-3"><a></a>    <span class="at">grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb29-4"><a></a>    <span class="at">grid.minor.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb29-5"><a></a>    <span class="at">grid.major.y =</span> <span class="fu">element_line</span>(),</span>
+<span id="cb29-6"><a></a>    <span class="at">grid.minor.y =</span> <span class="fu">element_line</span>()</span>
+<span id="cb29-7"><a></a>  )</span>
+<span id="cb29-8"><a></a>}</span>
+<span id="cb29-9"><a></a></span>
+<span id="cb29-10"><a></a>p <span class="sc">+</span> <span class="fu">horizontal_grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="custom-guides" class="slide level2">
+<h2>Custom guides</h2>
+<p>ggplot2 has more guides than colour bars and legends.</p>
+<ul>
+<li>axes</li>
+<li>binned guides</li>
+</ul>
+<h3 id="base-guides">Base guides</h3>
+<p>A guide can be specified in <code>guides()</code> or in the <code>scale_*(guide)</code> argument.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>p <span class="sc">+</span></span>
+<span id="cb30-2"><a></a>  <span class="fu">aes</span>(<span class="at">size =</span> cty) <span class="sc">+</span></span>
+<span id="cb30-3"><a></a>  <span class="fu">scale_size_continuous</span>(<span class="at">guide =</span> <span class="st">"bins"</span>) <span class="sc">+</span></span>
+<span id="cb30-4"><a></a>  <span class="fu">guides</span>(<span class="at">x =</span> <span class="fu">guide_axis</span>(<span class="at">minor.ticks =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+<h3 id="styling-guides">Styling guides</h3>
+<p>Guides can have their own local themes for customisation.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>p <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">shape =</span> <span class="fu">factor</span>(year), <span class="at">colour =</span> class) <span class="sc">+</span></span>
+<span id="cb31-2"><a></a>  <span class="fu">guides</span>(</span>
+<span id="cb31-3"><a></a>    <span class="at">x =</span> <span class="fu">guide_axis</span>(<span class="at">theme =</span> <span class="fu">theme_classic</span>(<span class="at">ink =</span> <span class="st">"red"</span>)),</span>
+<span id="cb31-4"><a></a>    <span class="at">y =</span> <span class="fu">guide_axis</span>(<span class="at">theme =</span> <span class="fu">theme_minimal</span>(<span class="at">ink =</span> <span class="st">"blue"</span>)),</span>
+<span id="cb31-5"><a></a>    <span class="at">shape =</span> <span class="fu">guide_legend</span>(<span class="at">theme =</span> <span class="fu">theme_gray</span>(<span class="at">paper=</span> <span class="st">"cornsilk"</span>)),</span>
+<span id="cb31-6"><a></a>    <span class="at">colour =</span> <span class="fu">guide_legend</span>(<span class="at">theme =</span> <span class="fu">theme</span>(<span class="at">legend.text.position =</span> <span class="st">"left"</span>))</span>
+<span id="cb31-7"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="guide-extensions">Guide extensions</h3>
+<p>Specialised guides for niche applications, like periodical data.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">library</span>(legendry)</span>
+<span id="cb32-2"><a></a></span>
+<span id="cb32-3"><a></a>dplyr<span class="sc">::</span><span class="fu">filter</span>(txhousing, city <span class="sc">==</span> <span class="st">"Houston"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb32-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(date, median, <span class="at">colour =</span> month)) <span class="sc">+</span></span>
+<span id="cb32-5"><a></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">2</span>, <span class="at">lineend =</span> <span class="st">"round"</span>) <span class="sc">+</span></span>
+<span id="cb32-6"><a></a>  scico<span class="sc">::</span><span class="fu">scale_colour_scico</span>(</span>
+<span id="cb32-7"><a></a>    <span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">12</span>),</span>
+<span id="cb32-8"><a></a>    <span class="at">palette =</span> <span class="st">"romaO"</span>,</span>
+<span id="cb32-9"><a></a>    <span class="at">guide =</span> <span class="st">"colring"</span></span>
+<span id="cb32-10"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="guide-extensions-1">Guide extensions</h3>
+<p>Guides can be specified flexibly to at least the degree of secondary axes.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="co"># Translate Celsius range to Fahrenheit</span></span>
+<span id="cb33-2"><a></a>deg_C <span class="ot">&lt;-</span> <span class="fu">range</span>(pressure<span class="sc">$</span>temperature)</span>
+<span id="cb33-3"><a></a>deg_F <span class="ot">&lt;-</span> (deg_C <span class="sc">*</span> <span class="dv">9</span> <span class="sc">/</span> <span class="dv">5</span>) <span class="sc">+</span> <span class="dv">32</span></span>
+<span id="cb33-4"><a></a><span class="co"># Compute breaks and translate back to Celsius</span></span>
+<span id="cb33-5"><a></a>deg_F <span class="ot">&lt;-</span> scales<span class="sc">::</span><span class="fu">extended_breaks</span>()(deg_F)</span>
+<span id="cb33-6"><a></a>deg_C <span class="ot">&lt;-</span> (deg_F <span class="sc">-</span> <span class="dv">32</span>) <span class="sc">*</span> <span class="dv">5</span> <span class="sc">/</span> <span class="dv">9</span></span>
+<span id="cb33-7"><a></a></span>
+<span id="cb33-8"><a></a>fahrenheit_axis <span class="ot">&lt;-</span> <span class="fu">guide_axis_base</span>(</span>
+<span id="cb33-9"><a></a>  <span class="at">key =</span> <span class="fu">key_manual</span>(<span class="at">aesthetic =</span> deg_C, <span class="at">label =</span> deg_F)</span>
+<span id="cb33-10"><a></a>)</span>
+<span id="cb33-11"><a></a></span>
+<span id="cb33-12"><a></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pressure) <span class="sc">+</span></span>
+<span id="cb33-13"><a></a>  <span class="fu">aes</span>(temperature, pressure) <span class="sc">+</span></span>
+<span id="cb33-14"><a></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb33-15"><a></a>  <span class="fu">theme</span>(<span class="at">axis.line.x =</span> <span class="fu">element_line</span>())</span>
+<span id="cb33-16"><a></a></span>
+<span id="cb33-17"><a></a>p3 <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">x.sec =</span> fahrenheit_axis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-34-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="guide-extensions-2">Guide extensions</h3>
+<p>In addition, many guides can be composed like stacking the Celsius and Fahrenheit guide.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>stacked <span class="ot">&lt;-</span> <span class="fu">compose_stack</span>(</span>
+<span id="cb34-2"><a></a>  <span class="st">"axis"</span>,</span>
+<span id="cb34-3"><a></a>  fahrenheit_axis,</span>
+<span id="cb34-4"><a></a>  <span class="at">side.titles =</span> <span class="fu">c</span>(<span class="st">"°C"</span>, <span class="st">"°F"</span>)</span>
+<span id="cb34-5"><a></a>)</span>
+<span id="cb34-6"><a></a></span>
+<span id="cb34-7"><a></a>p3 <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">x =</span> stacked)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-35-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
 
 
 </section>
@@ -359,6 +1250,44 @@ Teun van den Brand
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
