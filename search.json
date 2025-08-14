@@ -116,7 +116,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpgTs2Lw/Barrio-regular.ttf\", \"/tmp/RtmpgTs2Lw/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmplTwEzt/Barrio-regular.ttf\", \"/tmp/RtmplTwEzt/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
@@ -210,11 +210,11 @@
     "text": "Custom spans\n\n\ntext &lt;- \"\nSome {.red *red* text} and some {#00FF00 *green* text}\nwalked into a {.30 huge} bar and said to the {.person barman}:\n”Can I get a glass of H{.sub 2}O?”\n\"\n\ngrid::grid.draw(marquee_grob(text))"
   },
   {
-    "objectID": "slides/3_text_fonts.html#exercises",
-    "href": "slides/3_text_fonts.html#exercises",
+    "objectID": "slides/3_text_fonts.html#exercise-1",
+    "href": "slides/3_text_fonts.html#exercise-1",
     "title": "Text rendering and font use",
-    "section": "Exercises",
-    "text": "Exercises"
+    "section": "Exercise",
+    "text": "Exercise"
   },
   {
     "objectID": "slides/3_text_fonts.html#supercharged-images",
@@ -273,11 +273,11 @@
     "text": "Styling\n\n\ntext &lt;- \"\n{.fancy Readability is overrated}\n\n{.plot Even when it  \nc|2o|3n|2t|3[++]a|1i|2n|0[--]s|1[high [low  ]     data}\n\"\n\ngrid::grid.draw(\n  marquee_grob(text, new_style)\n)"
   },
   {
-    "objectID": "slides/3_text_fonts.html#exercises-1",
-    "href": "slides/3_text_fonts.html#exercises-1",
+    "objectID": "slides/3_text_fonts.html#exercise-2",
+    "href": "slides/3_text_fonts.html#exercise-2",
     "title": "Text rendering and font use",
-    "section": "Exercises",
-    "text": "Exercises"
+    "section": "Exercise",
+    "text": "Exercise"
   },
   {
     "objectID": "slides/3_text_fonts.html#what-about-ggplot2",
@@ -343,11 +343,18 @@
     "text": "guide_marquee()\n\n\nggplot(penguins) + \n  geom_point(aes(x = bill_len, y = flipper_len, colour = species)) + \n  scale_color_discrete(\n    name = \"\nOverview of how bill length and flipper length relate to each other\nin the penguin species {.1 *Adelie*}, {.2 *Chinstrap*}, and \n{.3 *Gentoo*}.\",\n    guide = guide_marquee(width = grid::unit(2.75, \"in\"))\n  )"
   },
   {
-    "objectID": "slides/3_text_fonts.html#exercises-2",
-    "href": "slides/3_text_fonts.html#exercises-2",
+    "objectID": "slides/3_text_fonts.html#exercise..exercises3_text_fonts.qmdusing-geom_marquee-in-ggplot2",
+    "href": "slides/3_text_fonts.html#exercise..exercises3_text_fonts.qmdusing-geom_marquee-in-ggplot2",
     "title": "Text rendering and font use",
-    "section": "Exercises",
-    "text": "Exercises"
+    "section": "[Exercise](../exercises/3_text_fonts.qmd#using-geom_marquee(-in-ggplot2)",
+    "text": "[Exercise](../exercises/3_text_fonts.qmd#using-geom_marquee(-in-ggplot2)"
+  },
+  {
+    "objectID": "slides/3_text_fonts.html#section-2",
+    "href": "slides/3_text_fonts.html#section-2",
+    "title": "Text rendering and font use",
+    "section": "",
+    "text": "Next session: Styling your plot"
   },
   {
     "objectID": "slides/2_ggplot2.html#headings",
@@ -508,35 +515,35 @@
     "href": "exercises/3_text_fonts.html",
     "title": "Exercises for session 3",
     "section": "",
-    "text": "Download this font file and add the font to your R session. You can confirm that is has been added by calling systemfonts::match_fonts(\"cirquee\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nUse systemfonts::add_fonts() to make systemfonts aware of the font file\nsystemfonts::add_fonts(______)\n\nsystemfonts::match_fonts(\"cirquee\")\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nsystemfonts::add_fonts(\"Cirquee.otf\")\n\nsystemfonts::match_fonts(\"cirquee\")\n\n\n\n\n\n\n\nFind and install a font from Google Fonts or Font Squirrel using systemfonts. Again, verify it has been added using match_fonts()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nIf you use Google font you need to use get_from_font_squirrel()\nsystemfonts::get_from_font_squirrel(______)\n\nsystemfonts::match_fonts(______)\nIf you use Google font you need to use get_from_google_fonts()\nsystemfonts::get_from_google_fonts(______)\n\nsystemfonts::match_fonts(______)\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nsystemfonts::get_from_font_squirrel(\"Raleway\")\n\nsystemfonts::match_fonts(\"Raleway\")\nor\nsystemfonts::get_from_google_fonts(\"Raleway\")\n\nsystemfonts::match_fonts(\"Raleway\")\nIf you chose to get the Raleway font\n\n\n\n\nRead the documentation of systemfonts::get_from_google_fonts() and systemfonts::require_font(). How do they differ in where they place the font file and what consequence does it have?\n\n\n\nUse the two new fonts to style the following plot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nYou can use the family name of the new fonts inside element_text() in the theme specification\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nggplot(mpg) + \n  geom_bar(aes(class, fill = factor(cyl)), position = \"dodge\") + \n  theme(\n    text = element_text(\"Raleway\"),\n    title = element_text(\"Cirquee\")\n  )"
+    "text": "The codeblocks here are interactive and can be executed in the browser. You can also copy them over and solve the exercises locally. In the existing code ______ denotes areas that need to be substituted with your own code to solve the exercise.\nEach exercise has one or more hints, as well as a full solution if you click through all the hints. Do try to solve the exercises on your own first."
   },
   {
     "objectID": "exercises/3_text_fonts.html#working-with-fonts",
     "href": "exercises/3_text_fonts.html#working-with-fonts",
     "title": "Exercises for session 3",
-    "section": "",
-    "text": "Download this font file and add the font to your R session. You can confirm that is has been added by calling systemfonts::match_fonts(\"cirquee\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nUse systemfonts::add_fonts() to make systemfonts aware of the font file\nsystemfonts::add_fonts(______)\n\nsystemfonts::match_fonts(\"cirquee\")\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nsystemfonts::add_fonts(\"Cirquee.otf\")\n\nsystemfonts::match_fonts(\"cirquee\")\n\n\n\n\n\n\n\nFind and install a font from Google Fonts or Font Squirrel using systemfonts. Again, verify it has been added using match_fonts()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nIf you use Google font you need to use get_from_font_squirrel()\nsystemfonts::get_from_font_squirrel(______)\n\nsystemfonts::match_fonts(______)\nIf you use Google font you need to use get_from_google_fonts()\nsystemfonts::get_from_google_fonts(______)\n\nsystemfonts::match_fonts(______)\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nsystemfonts::get_from_font_squirrel(\"Raleway\")\n\nsystemfonts::match_fonts(\"Raleway\")\nor\nsystemfonts::get_from_google_fonts(\"Raleway\")\n\nsystemfonts::match_fonts(\"Raleway\")\nIf you chose to get the Raleway font\n\n\n\n\nRead the documentation of systemfonts::get_from_google_fonts() and systemfonts::require_font(). How do they differ in where they place the font file and what consequence does it have?\n\n\n\nUse the two new fonts to style the following plot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nYou can use the family name of the new fonts inside element_text() in the theme specification\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nggplot(mpg) + \n  geom_bar(aes(class, fill = factor(cyl)), position = \"dodge\") + \n  theme(\n    text = element_text(\"Raleway\"),\n    title = element_text(\"Cirquee\")\n  )"
+    "section": "3.1 Working with fonts",
+    "text": "3.1 Working with fonts\n\nExercise 3.1.1\nDownload this font file and add the font to your R session. You can confirm that is has been added by calling systemfonts::match_fonts(\"cirquee\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nUse systemfonts::add_fonts() to make systemfonts aware of the font file\nsystemfonts::add_fonts(______)\n\nsystemfonts::match_fonts(\"cirquee\")\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nsystemfonts::add_fonts(\"Cirquee.otf\")\n\nsystemfonts::match_fonts(\"cirquee\")\n\n\n\n\n\n\nExercise 3.1.2\nFind and install a font from Google Fonts or Font Squirrel using systemfonts. Again, verify it has been added using match_fonts()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nIf you use Google font you need to use get_from_font_squirrel()\nsystemfonts::get_from_font_squirrel(______)\n\nsystemfonts::match_fonts(______)\nIf you use Google font you need to use get_from_google_fonts()\nsystemfonts::get_from_google_fonts(______)\n\nsystemfonts::match_fonts(______)\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nsystemfonts::get_from_font_squirrel(\"Raleway\")\n\nsystemfonts::match_fonts(\"Raleway\")\nor\nsystemfonts::get_from_google_fonts(\"Raleway\")\n\nsystemfonts::match_fonts(\"Raleway\")\nIf you chose to get the Raleway font\n\n\n\n\nRead the documentation of systemfonts::get_from_google_fonts() and systemfonts::require_font(). How do they differ in where they place the font file and what consequence does it have?\n\n\nExercise 3.1.3\nUse the two new fonts to style the following plot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nYou can use the family name of the new fonts inside element_text() in the theme specification\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nggplot(mpg) + \n  geom_bar(aes(class, fill = factor(cyl)), position = \"dodge\") + \n  theme(\n    text = element_text(\"Raleway\"),\n    title = element_text(\"Cirquee\")\n  )"
   },
   {
-    "objectID": "exercises/3_text_fonts.html#exercise-2-basic-markdown-formatting-with-marquee",
-    "href": "exercises/3_text_fonts.html#exercise-2-basic-markdown-formatting-with-marquee",
+    "objectID": "exercises/3_text_fonts.html#basic-markdown-formatting-with-marquee",
+    "href": "exercises/3_text_fonts.html#basic-markdown-formatting-with-marquee",
     "title": "Exercises for session 3",
-    "section": "Exercise 2: Basic markdown formatting with marquee",
-    "text": "Exercise 2: Basic markdown formatting with marquee\n\nA\nCreate a marquee text that uses various formatting options like bold, italic, lists, and emojis. Display it using grid::grid.draw(marquee_grob()). Include at least three different types of formatting.\n\n\nB\nCreate a marquee text that uses custom spans to change text colors, sizes, and add superscripts or subscripts. Create a chemistry formula (like H₂O or CO₂) using subscripts."
+    "section": "3.2 Basic markdown formatting with marquee",
+    "text": "3.2 Basic markdown formatting with marquee\n\nExercise 3.2.1\nCreate a marquee text that uses various formatting options like bold, italic, lists, and code blocks. Display it using grid::grid.draw(marquee_grob()). Include at least three different types of formatting.\n\n\n\n\n\n\n\n\n\n\nExercise 3.2.2\nCreate a marquee text that uses custom spans to change text colors, sizes, and add superscripts or subscripts. Try to show that styles inherits from their parent by placing spans inside spans"
   },
   {
-    "objectID": "exercises/3_text_fonts.html#exercise-3-advanced-marquee-styling",
-    "href": "exercises/3_text_fonts.html#exercise-3-advanced-marquee-styling",
+    "objectID": "exercises/3_text_fonts.html#advanced-marquee-styling",
+    "href": "exercises/3_text_fonts.html#advanced-marquee-styling",
     "title": "Exercises for session 3",
-    "section": "Exercise 3: Advanced marquee styling",
-    "text": "Exercise 3: Advanced marquee styling\n\nA\nCreate a custom style by modifying classic_style(). Change at least three properties including font family, size, and color. Apply this style to a markdown text that demonstrates the changes.\n\n\nB\nCreate a marquee text that includes either an image (like a plot) or a table. If using a plot, create a simple scatterplot first, then include it in your marquee text."
+    "section": "3.3 Advanced marquee styling",
+    "text": "3.3 Advanced marquee styling\n\nA\nCreate a custom style by modifying classic_style(). Change at least three properties including font family, size, and color. Apply this style to a markdown text that demonstrates the changes.\n\n\nB\nCreate a marquee text that includes either an image (like a plot) or a table. If using a plot, create a simple scatterplot first, then include it in your marquee text."
   },
   {
-    "objectID": "exercises/3_text_fonts.html#exercise-4-using-geom_marquee-in-ggplot2",
-    "href": "exercises/3_text_fonts.html#exercise-4-using-geom_marquee-in-ggplot2",
+    "objectID": "exercises/3_text_fonts.html#using-geom_marquee-in-ggplot2",
+    "href": "exercises/3_text_fonts.html#using-geom_marquee-in-ggplot2",
     "title": "Exercises for session 3",
-    "section": "Exercise 4: Using geom_marquee() in ggplot2",
-    "text": "Exercise 4: Using geom_marquee() in ggplot2\n\nA\nCreate a scatter plot of bill length vs flipper length from the penguins dataset. Use geom_marquee() to label at least two points with formatted text (including italics or bold).\n\n\nB\nCreate a plot with element_marquee() to customize the plot title, subtitle, and axis titles. Make the title include formatted text (like bold or italic words) and use a custom font."
+    "section": "3.4 Using geom_marquee() in ggplot2",
+    "text": "3.4 Using geom_marquee() in ggplot2\n\nA\nCreate a scatter plot of bill length vs flipper length from the penguins dataset. Use geom_marquee() to label at least two points with formatted text (including italics or bold).\n\n\nB\nCreate a plot with element_marquee() to customize the plot title, subtitle, and axis titles. Make the title include formatted text (like bold or italic words) and use a custom font."
   },
   {
     "objectID": "exercises/3_text_fonts.html#exercise-5-advanced-ggplot2-integration",
