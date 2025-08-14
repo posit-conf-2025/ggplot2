@@ -15,7 +15,11 @@ webr:
 
 {{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
 
-## Working with fonts
+The codeblocks here are interactive and can be executed in the browser. You can also copy them over and solve the exercises locally. In the existing code `______` denotes areas that need to be substituted with your own code to solve the exercise.
+
+Each exercise has one or more hints, as well as a full solution if you click through all the hints. Do try to solve the exercises on your own first.
+
+## 3.1 Working with fonts
 
 ### Exercise 3.1.1
 Download [this font file](https://github.com/posit-conf-2025/ggplot2/raw/refs/heads/main/assets/Cirquee.otf) and add the font to your R session. You can confirm that is has been added by calling `systemfonts::match_fonts("cirquee")`
@@ -24,10 +28,13 @@ Download [this font file](https://github.com/posit-conf-2025/ggplot2/raw/refs/he
 #| exercise: ex_3_1_1
 # Instead of downloading it be clicking the link you can do it 
 # programmtically
-download.file("https://raw.githubusercontent.com/posit-conf-2025/ggplot2/refs/heads/main/assets/Cirquee.otf", "Cirquee.otf")
+download.file(
+  "https://raw.githubusercontent.com/posit-conf-2025/ggplot2/refs/heads/main/assets/Cirquee.otf", 
+  "Cirquee.otf"
+)
 # Font now lives in Cirquee.otf
 
-______
+______ # Replace this part with your solution
 
 systemfonts::match_fonts("cirquee")
 ```
@@ -139,15 +146,29 @@ ggplot(mpg) +
 :::
 :::
 
-## Exercise 2: Basic markdown formatting with marquee
+## 3.2 Basic markdown formatting with marquee
 
-### A
-Create a marquee text that uses various formatting options like bold, italic, lists, and emojis. Display it using `grid::grid.draw(marquee_grob())`. Include at least three different types of formatting.
+### Exercise 3.2.1
+Create a marquee text that uses various formatting options like bold, italic, lists, and code blocks. Display it using `grid::grid.draw(marquee_grob())`. Include at least three different types of formatting.
 
-### B
-Create a marquee text that uses custom spans to change text colors, sizes, and add superscripts or subscripts. Create a chemistry formula (like H₂O or CO₂) using subscripts.
+```{webr}
+#| exercise: ex_3_2_1
+text <- ______
 
-## Exercise 3: Advanced marquee styling
+grid::grid.draw(marquee_grob(text))
+```
+
+### Exercise 3.2.2
+Create a marquee text that uses custom spans to change text colors, sizes, and add superscripts or subscripts. Try to show that styles inherits from their parent by placing spans inside spans
+
+```{webr}
+#| exercise: ex_3_2_2
+text <- ______
+
+grid::grid.draw(marquee_grob(text))
+```
+
+## 3.3 Advanced marquee styling
 
 ### A
 Create a custom style by modifying `classic_style()`. Change at least three properties including font family, size, and color. Apply this style to a markdown text that demonstrates the changes.
@@ -155,7 +176,7 @@ Create a custom style by modifying `classic_style()`. Change at least three prop
 ### B
 Create a marquee text that includes either an image (like a plot) or a table. If using a plot, create a simple scatterplot first, then include it in your marquee text.
 
-## Exercise 4: Using geom_marquee() in ggplot2
+## 3.4 Using geom_marquee() in ggplot2
 
 ### A
 Create a scatter plot of bill length vs flipper length from the penguins dataset. Use `geom_marquee()` to label at least two points with formatted text (including italics or bold). 
