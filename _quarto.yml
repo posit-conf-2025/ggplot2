@@ -9,26 +9,22 @@ website:
         text: Home
       - text: Sessions
         menu:
-        - text: Session 1
         - href: sessions/1_introduction.qmd
-          text: Introduction
+          text: 1. Introduction
         - href: sessions/2_ggplot2.qmd
-          text: Modern ggplot2
-        - text: Session 2
+          text: 2. Modern ggplot2
         - href: sessions/3_text_fonts.qmd
-          text: Text rendering and font use
+          text: 3. Text rendering and font use
         - href: sessions/4_theme_guide.qmd
-          text: Styling your plot
-        - text: Session 3
+          text: 4. Styling your plot
         - href: sessions/5_composition.qmd
-          text: Plot composition
+          text: 5. Plot composition
         - href: sessions/6_interaction.qmd
-          text: Interactive plots
-        - text: Session 4
+          text: 6. Interactive plots
         - href: sessions/7_extensions.qmd
-          text: Creating extensions
+          text: 7. Creating extensions
         - href: sessions/8_fun.qmd
-          text: Spice up your plot
+          text: 8. Spice up your plot
 
 format:
   html:

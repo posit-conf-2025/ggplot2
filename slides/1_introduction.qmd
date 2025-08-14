@@ -19,7 +19,7 @@
 
 &nbsp;
 
-#### TAs
+#### TA
 **Kara Woo**
 
 ## Today
@@ -34,5 +34,7 @@
 8. Spice up your plot
 
 ## Practical information
+
+https://posit-conf-2025.github.io/ggplot2/
 
 TBD

@@ -1,15 +1,172 @@
 ---
 title: Exercises for session 3
+format: live-html
+engine: knitr
+webr:
+  cell-options:
+    canvas: false
+    autorun: false
+  packages:
+    - ggplot2
+    - ragg
+    - systemfonts
+    - marquee
 ---
 
-## Exercise 1
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+
+## Working with fonts
+
+### Exercise 3.1.1
+Download [this font file](https://github.com/posit-conf-2025/ggplot2/raw/refs/heads/main/assets/Cirquee.otf) and add the font to your R session. You can confirm that is has been added by calling `systemfonts::match_fonts("cirquee")`
+
+```{webr}
+#| exercise: ex_3_1_1
+# Instead of downloading it be clicking the link you can do it 
+# programmtically
+download.file("https://raw.githubusercontent.com/posit-conf-2025/ggplot2/refs/heads/main/assets/Cirquee.otf", "Cirquee.otf")
+# Font now lives in Cirquee.otf
+
+______
+
+systemfonts::match_fonts("cirquee")
+```
+
+::: {.hint exercise="ex_3_1_1"}
+::: {.callout-note collapse="false"}
+Use `systemfonts::add_fonts()` to make systemfonts aware of the font file
+
+```r
+systemfonts::add_fonts(______)
+
+systemfonts::match_fonts("cirquee")
+```
+:::
+:::
+
+::: {.solution exercise="ex_3_1_1"}
+::: {.callout-note collapse="false"}
+```r
+systemfonts::add_fonts("Cirquee.otf")
+
+systemfonts::match_fonts("cirquee")
+```
+:::
+:::
+
+### Exercise 3.1.2
+Find and install a font from [Google Fonts](https://fonts.google.com/) or [Font Squirrel](https://www.fontsquirrel.com) using systemfonts. Again, verify it has been added using `match_fonts()`
+
+```{webr}
+#| exercise: ex_3_1_2
+______
+
+systemfonts::match_fonts(______)
+```
+
+::: {.hint exercise="ex_3_1_2"}
+::: {.callout-note collapse="false"}
+If you use Google font you need to use `get_from_font_squirrel()`
+```r
+systemfonts::get_from_font_squirrel(______)
+
+systemfonts::match_fonts(______)
+```
+
+If you use Google font you need to use `get_from_google_fonts()`
+
+```r
+systemfonts::get_from_google_fonts(______)
+
+systemfonts::match_fonts(______)
+```
+:::
+:::
+
+::: {.solution exercise="ex_3_1_2"}
+::: {.callout-note collapse="false"}
+```r
+systemfonts::get_from_font_squirrel("Raleway")
+
+systemfonts::match_fonts("Raleway")
+```
+
+or
+
+```r
+systemfonts::get_from_google_fonts("Raleway")
+
+systemfonts::match_fonts("Raleway")
+```
+
+If you chose to get the Raleway font
+:::
+:::
+
+Read the documentation of `systemfonts::get_from_google_fonts()` and `systemfonts::require_font()`. How do they differ in where they place the font file and what consequence does it have?
+
+### Exercise 3.1.3
+Use the two new fonts to style the following plot
+
+```{webr}
+#| exercise: ex_3_1_3
+library(ggplot2)
+
+ggplot(mpg) + 
+  geom_bar(aes(class, fill = factor(cyl)), position = "dodge") + 
+  theme(
+    text = ______,
+    title = ______
+  )
+```
+
+::: {.hint exercise="ex_3_1_3"}
+::: {.callout-note collapse="false"}
+You can use the family name of the new fonts inside `element_text()` in the theme specification
+:::
+:::
+
+::: {.solution exercise="ex_3_1_3"}
+::: {.callout-note collapse="false"}
+```r
+ggplot(mpg) + 
+  geom_bar(aes(class, fill = factor(cyl)), position = "dodge") + 
+  theme(
+    text = element_text("Raleway"),
+    title = element_text("Cirquee")
+  )
+```
+:::
+:::
+
+## Exercise 2: Basic markdown formatting with marquee
 
 ### A
+Create a marquee text that uses various formatting options like bold, italic, lists, and emojis. Display it using `grid::grid.draw(marquee_grob())`. Include at least three different types of formatting.
 
 ### B
+Create a marquee text that uses custom spans to change text colors, sizes, and add superscripts or subscripts. Create a chemistry formula (like H₂O or CO₂) using subscripts.
 
-## Exercise 2
+## Exercise 3: Advanced marquee styling
 
 ### A
+Create a custom style by modifying `classic_style()`. Change at least three properties including font family, size, and color. Apply this style to a markdown text that demonstrates the changes.
 
 ### B
+Create a marquee text that includes either an image (like a plot) or a table. If using a plot, create a simple scatterplot first, then include it in your marquee text.
+
+## Exercise 4: Using geom_marquee() in ggplot2
+
+### A
+Create a scatter plot of bill length vs flipper length from the penguins dataset. Use `geom_marquee()` to label at least two points with formatted text (including italics or bold). 
+
+### B
+Create a plot with `element_marquee()` to customize the plot title, subtitle, and axis titles. Make the title include formatted text (like bold or italic words) and use a custom font.
+
+## Exercise 5: Advanced ggplot2 integration
+
+### A
+Create a scatter plot with a color aesthetic for species. Use `guide_marquee()` to create a custom legend that includes formatted text describing the penguin species.
+
+### B
+Create a complete visualization that combines multiple marquee elements: use `geom_marquee()` for labels, `element_marquee()` for titles, and `guide_marquee()` for the legend. Make sure to use different styling for each component.
