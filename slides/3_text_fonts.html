@@ -237,13 +237,7 @@ Thomas Lin Pedersen
 <span id="cb1-2"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_len, <span class="at">y =</span> body_mass)) <span class="sc">+</span></span>
 <span id="cb1-3"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"FANCY FONT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="selecting-the-right-typeface-1" class="slide level2">
-<h2>Selecting the right typeface</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb2-2"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_len, <span class="at">y =</span> body_mass)) <span class="sc">+</span></span>
-<span id="cb2-3"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"FANCY FONT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
 (`geom_point()`).</code></pre>
@@ -358,7 +352,7 @@ font family 'FANCY FONT' not found in PostScript font database</code></pre>
 </section>
 <section id="the-impossible-life-of-a-graphics-device" class="slide level2">
 <h2>The impossible life of a graphics device</h2>
-<p>&nbsp;</p>
+<div class="center-y">
 <p><em>Here is a family name and some text — go fetch</em></p>
 <div class="fragment">
 <ul>
@@ -367,6 +361,7 @@ font family 'FANCY FONT' not found in PostScript font database</code></pre>
 <li>How do I determine which font to use</li>
 <li>How do I even render text???</li>
 </ul>
+</div>
 </div>
 </section>
 <section id="the-impossible-life-of-a-graphics-device-1" class="slide level2">
@@ -387,18 +382,18 @@ font family 'FANCY FONT' not found in PostScript font database</code></pre>
 <h2>systemfonts</h2>
 <h4 id="it-should-just-work">It (should) just work</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(systemfonts)</span>
-<span id="cb9-2"><a></a></span>
-<span id="cb9-3"><a></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(<span class="fu">system_fonts</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(systemfonts)</span>
+<span id="cb8-2"><a></a></span>
+<span id="cb8-3"><a></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(<span class="fu">system_fonts</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 167
+<pre><code>Rows: 181
 Columns: 9
-$ path      &lt;chr&gt; "/tmp/RtmpITIf3Z/Barrio-regular.ttf", "/tmp/RtmpITIf3Z/Monte…
+$ path      &lt;chr&gt; "/tmp/RtmpgTs2Lw/Barrio-regular.ttf", "/tmp/RtmpgTs2Lw/Monte…
 $ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
 $ name      &lt;chr&gt; "Barrio-Regular", "MonteCarlo-Regular", "Datalegreya-Thin", …
 $ family    &lt;chr&gt; "Barrio", "MonteCarlo", "Datalegreya", "Datalegreya", "Datal…
-$ style     &lt;chr&gt; "Regular", "Regular", "Thin", "Gradient", "Dot", "Book Obliq…
-$ weight    &lt;ord&gt; normal, normal, light, normal, bold, normal, normal, bold, s…
+$ style     &lt;chr&gt; "Regular", "Regular", "Thin", "Gradient", "Dot", "ExtraLight…
+$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…
 $ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…
 $ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…
 $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…</code></pre>
@@ -410,21 +405,21 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <h4 id="it-should-just-work-1">It (should) just work</h4>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb11-2"><a></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb11-3"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb11-4"><a></a>      <span class="at">x =</span> bill_len,</span>
-<span id="cb11-5"><a></a>      <span class="at">y =</span> body_mass</span>
-<span id="cb11-6"><a></a>    )</span>
-<span id="cb11-7"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb11-8"><a></a>  <span class="fu">theme_minimal</span>(</span>
-<span id="cb11-9"><a></a>    <span class="at">base_family =</span> <span class="st">"Barrio"</span></span>
-<span id="cb11-10"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb10-2"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb10-3"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb10-4"><a></a>      <span class="at">x =</span> bill_len,</span>
+<span id="cb10-5"><a></a>      <span class="at">y =</span> body_mass</span>
+<span id="cb10-6"><a></a>    )</span>
+<span id="cb10-7"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb10-8"><a></a>  <span class="fu">theme_minimal</span>(</span>
+<span id="cb10-9"><a></a>    <span class="at">base_family =</span> <span class="st">"Barrio"</span></span>
+<span id="cb10-10"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="3_text_fonts_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+<p><img data-src="3_text_fonts_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -435,24 +430,24 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <h4 id="it-should-just-work-2">It (should) just work</h4>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb12-2"><a></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb12-3"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb12-4"><a></a>      <span class="at">x =</span> bill_len,</span>
-<span id="cb12-5"><a></a>      <span class="at">y =</span> body_mass</span>
-<span id="cb12-6"><a></a>    )</span>
-<span id="cb12-7"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb12-8"><a></a>  <span class="fu">theme_minimal</span>(</span>
-<span id="cb12-9"><a></a>    <span class="at">base_family =</span> <span class="st">"Barrio"</span></span>
-<span id="cb12-10"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb12-11"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb12-12"><a></a>    <span class="at">title =</span> <span class="st">"I speak emoji 🤓"</span></span>
-<span id="cb12-13"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb11-2"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb11-3"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb11-4"><a></a>      <span class="at">x =</span> bill_len,</span>
+<span id="cb11-5"><a></a>      <span class="at">y =</span> body_mass</span>
+<span id="cb11-6"><a></a>    )</span>
+<span id="cb11-7"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb11-8"><a></a>  <span class="fu">theme_minimal</span>(</span>
+<span id="cb11-9"><a></a>    <span class="at">base_family =</span> <span class="st">"Barrio"</span></span>
+<span id="cb11-10"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb11-11"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb11-12"><a></a>    <span class="at">title =</span> <span class="st">"I speak emoji 🤓"</span></span>
+<span id="cb11-13"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="3_text_fonts_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+<p><img data-src="3_text_fonts_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -562,27 +557,27 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <h2>marquee</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">library</span>(marquee)</span>
-<span id="cb13-2"><a></a></span>
-<span id="cb13-3"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
-<span id="cb13-4"><a></a><span class="st">Now you too can **sound like an llm**</span></span>
-<span id="cb13-5"><a></a></span>
-<span id="cb13-6"><a></a><span class="st">_Here is what you need:_</span></span>
-<span id="cb13-7"><a></a></span>
-<span id="cb13-8"><a></a><span class="st">* Add boldness to text at random</span></span>
-<span id="cb13-9"><a></a><span class="st">* Put everything in lists  </span></span>
-<span id="cb13-10"><a></a><span class="st">✅ Make those lists use emojis</span></span>
-<span id="cb13-11"><a></a></span>
-<span id="cb13-12"><a></a><span class="st">Remember to delve into the intricate </span></span>
-<span id="cb13-13"><a></a><span class="st">words that **underscore your potential**</span></span>
-<span id="cb13-14"><a></a><span class="st">"</span></span>
-<span id="cb13-15"><a></a></span>
-<span id="cb13-16"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">library</span>(marquee)</span>
+<span id="cb12-2"><a></a></span>
+<span id="cb12-3"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb12-4"><a></a><span class="st">Now you too can **sound like an llm**</span></span>
+<span id="cb12-5"><a></a></span>
+<span id="cb12-6"><a></a><span class="st">_Here is what you need:_</span></span>
+<span id="cb12-7"><a></a></span>
+<span id="cb12-8"><a></a><span class="st">* Add boldness to text at random</span></span>
+<span id="cb12-9"><a></a><span class="st">* Put everything in lists  </span></span>
+<span id="cb12-10"><a></a><span class="st">✅ Make those lists use emojis</span></span>
+<span id="cb12-11"><a></a></span>
+<span id="cb12-12"><a></a><span class="st">Remember to delve into the intricate </span></span>
+<span id="cb12-13"><a></a><span class="st">words that **underscore your potential**</span></span>
+<span id="cb12-14"><a></a><span class="st">"</span></span>
+<span id="cb12-15"><a></a></span>
+<span id="cb12-16"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="3_text_fonts_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+<p><img data-src="3_text_fonts_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -606,18 +601,18 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <h2>Custom spans</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
-<span id="cb14-2"><a></a><span class="st">Some {.red *red* text} and some {#00FF00 *green* text}</span></span>
-<span id="cb14-3"><a></a><span class="st">walked into a {.30 huge} bar and said to the {.person barman}:</span></span>
-<span id="cb14-4"><a></a><span class="st">”Can I get a glass of H{.sub 2}O?”</span></span>
-<span id="cb14-5"><a></a><span class="st">"</span></span>
-<span id="cb14-6"><a></a></span>
-<span id="cb14-7"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb13-2"><a></a><span class="st">Some {.red *red* text} and some {#00FF00 *green* text}</span></span>
+<span id="cb13-3"><a></a><span class="st">walked into a {.30 huge} bar and said to the {.person barman}:</span></span>
+<span id="cb13-4"><a></a><span class="st">”Can I get a glass of H{.sub 2}O?”</span></span>
+<span id="cb13-5"><a></a><span class="st">"</span></span>
+<span id="cb13-6"><a></a></span>
+<span id="cb13-7"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="3_text_fonts_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+<p><img data-src="3_text_fonts_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -630,23 +625,23 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <h2>Supercharged images</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">last_plot</span>()</span>
-<span id="cb15-2"><a></a>point <span class="ot">&lt;-</span> grid<span class="sc">::</span><span class="fu">pointsGrob</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>)</span>
-<span id="cb15-3"><a></a></span>
-<span id="cb15-4"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
-<span id="cb15-5"><a></a><span class="st">We made a *plot* earlier. Let's have a look:</span></span>
-<span id="cb15-6"><a></a></span>
-<span id="cb15-7"><a></a><span class="st">![](p)</span></span>
-<span id="cb15-8"><a></a></span>
-<span id="cb15-9"><a></a><span class="st">It can even work with grobs: ![](point)</span></span>
-<span id="cb15-10"><a></a><span class="st">"</span></span>
-<span id="cb15-11"><a></a></span>
-<span id="cb15-12"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">last_plot</span>()</span>
+<span id="cb14-2"><a></a>point <span class="ot">&lt;-</span> grid<span class="sc">::</span><span class="fu">pointsGrob</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>)</span>
+<span id="cb14-3"><a></a></span>
+<span id="cb14-4"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb14-5"><a></a><span class="st">We made a *plot* earlier. Let's have a look:</span></span>
+<span id="cb14-6"><a></a></span>
+<span id="cb14-7"><a></a><span class="st">![](p)</span></span>
+<span id="cb14-8"><a></a></span>
+<span id="cb14-9"><a></a><span class="st">It can even work with grobs: ![](point)</span></span>
+<span id="cb14-10"><a></a><span class="st">"</span></span>
+<span id="cb14-11"><a></a></span>
+<span id="cb14-12"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="3_text_fonts_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+<p><img data-src="3_text_fonts_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -657,20 +652,20 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <p>No markdown table support, but…</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>table <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">gt</span>(penguins[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span>
-<span id="cb16-2"><a></a></span>
-<span id="cb16-3"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
-<span id="cb16-4"><a></a><span class="st">Why use markdown when you have gt</span></span>
-<span id="cb16-5"><a></a></span>
-<span id="cb16-6"><a></a><span class="st">![](table)</span></span>
-<span id="cb16-7"><a></a><span class="st">"</span></span>
-<span id="cb16-8"><a></a></span>
-<span id="cb16-9"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>table <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">gt</span>(penguins[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span>
+<span id="cb15-2"><a></a></span>
+<span id="cb15-3"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb15-4"><a></a><span class="st">Why use markdown when you have gt</span></span>
+<span id="cb15-5"><a></a></span>
+<span id="cb15-6"><a></a><span class="st">![](table)</span></span>
+<span id="cb15-7"><a></a><span class="st">"</span></span>
+<span id="cb15-8"><a></a></span>
+<span id="cb15-9"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="3_text_fonts_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+<p><img data-src="3_text_fonts_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -682,10 +677,10 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <li><p>So far we have used the default style which matches standard (GitHub) markdown rendering</p></li>
 <li><p>marquee provides a simple but powerful styling system</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">classic_style</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">classic_style</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;marquee_style_set[1]&gt;
-[1] &lt;base, body, ul, ol, li, hr, h1, h2, h3, h4, h5, h6, cb, p, qb, em, str, a, code, u, del, img, sub, sup&gt;</code></pre>
+[1] &lt;base, body, ul, ol, li, hr, h1, h2, h3, h4, h5, h6, cb, p, qb, em, str, a, code, u, del, img, sub, sup, out&gt;</code></pre>
 </div>
 </div></li>
 </ul>
@@ -695,7 +690,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <ul>
 <li><p>Each tag can be styled with 37 different properties</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">names</span>(<span class="fu">classic_style</span>()[[<span class="dv">1</span>]]<span class="sc">$</span>base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">names</span>(<span class="fu">classic_style</span>()[[<span class="dv">1</span>]]<span class="sc">$</span>base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "size"               "background"         "color"             
  [4] "family"             "weight"             "italic"            
@@ -706,8 +701,10 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 [19] "padding_right"      "padding_bottom"     "padding_left"      
 [22] "border"             "border_size_top"    "border_size_right" 
 [25] "border_size_bottom" "border_size_left"   "border_radius"     
-[28] "bullets"            "underline"          "strikethrough"     
-[31] "baseline"           "img_asp"            "text_direction"    </code></pre>
+[28] "outline"            "outline_width"      "outline_join"      
+[31] "outline_mitre"      "bullets"            "underline"         
+[34] "strikethrough"      "baseline"           "img_asp"           
+[37] "text_direction"    </code></pre>
 </div>
 </div></li>
 </ul>
@@ -732,43 +729,43 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <section id="styling-3" class="slide level2">
 <h2>Styling</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>new_style <span class="ot">&lt;-</span> <span class="fu">classic_style</span>(<span class="at">base_size =</span> <span class="dv">30</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb21-2"><a></a>  <span class="fu">modify_style</span>(</span>
-<span id="cb21-3"><a></a>    <span class="st">"fancy"</span>,</span>
-<span id="cb21-4"><a></a>    <span class="at">family =</span> <span class="st">"MonteCarlo"</span>,</span>
-<span id="cb21-5"><a></a>    <span class="at">weight =</span> <span class="st">"light"</span>,</span>
-<span id="cb21-6"><a></a>    <span class="at">features =</span> <span class="fu">font_feature</span>(</span>
-<span id="cb21-7"><a></a>      <span class="at">ligatures =</span> <span class="fu">c</span>(<span class="st">"contextual"</span>, <span class="st">"discretionary"</span>),</span>
-<span id="cb21-8"><a></a>      <span class="at">letters =</span> <span class="fu">c</span>(<span class="st">"swash"</span>, <span class="st">"stylistic"</span>),</span>
-<span id="cb21-9"><a></a>      <span class="at">swsh =</span> <span class="dv">1</span></span>
-<span id="cb21-10"><a></a>    )</span>
-<span id="cb21-11"><a></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb21-12"><a></a>  <span class="fu">modify_style</span>(</span>
-<span id="cb21-13"><a></a>    <span class="st">"plot"</span>,</span>
-<span id="cb21-14"><a></a>    <span class="at">family =</span> <span class="st">"Datalegreya"</span>,</span>
-<span id="cb21-15"><a></a>    <span class="at">weight =</span> <span class="st">"bold"</span></span>
-<span id="cb21-16"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>new_style <span class="ot">&lt;-</span> <span class="fu">classic_style</span>(<span class="at">base_size =</span> <span class="dv">30</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a></a>  <span class="fu">modify_style</span>(</span>
+<span id="cb20-3"><a></a>    <span class="st">"fancy"</span>,</span>
+<span id="cb20-4"><a></a>    <span class="at">family =</span> <span class="st">"MonteCarlo"</span>,</span>
+<span id="cb20-5"><a></a>    <span class="at">weight =</span> <span class="st">"light"</span>,</span>
+<span id="cb20-6"><a></a>    <span class="at">features =</span> <span class="fu">font_feature</span>(</span>
+<span id="cb20-7"><a></a>      <span class="at">ligatures =</span> <span class="fu">c</span>(<span class="st">"contextual"</span>, <span class="st">"discretionary"</span>),</span>
+<span id="cb20-8"><a></a>      <span class="at">letters =</span> <span class="fu">c</span>(<span class="st">"swash"</span>, <span class="st">"stylistic"</span>),</span>
+<span id="cb20-9"><a></a>      <span class="at">swsh =</span> <span class="dv">1</span></span>
+<span id="cb20-10"><a></a>    )</span>
+<span id="cb20-11"><a></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb20-12"><a></a>  <span class="fu">modify_style</span>(</span>
+<span id="cb20-13"><a></a>    <span class="st">"plot"</span>,</span>
+<span id="cb20-14"><a></a>    <span class="at">family =</span> <span class="st">"Datalegreya"</span>,</span>
+<span id="cb20-15"><a></a>    <span class="at">weight =</span> <span class="st">"bold"</span></span>
+<span id="cb20-16"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="styling-4" class="slide level2">
 <h2>Styling</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
-<span id="cb22-2"><a></a><span class="st">{.fancy Readability is overrated}</span></span>
-<span id="cb22-3"><a></a></span>
-<span id="cb22-4"><a></a><span class="st">{.plot Even when it  </span></span>
-<span id="cb22-5"><a></a><span class="st">c|2o|3n|2t|3[++]a|1i|2n|0[--]s|1[high [low  ]     data}</span></span>
-<span id="cb22-6"><a></a><span class="st">"</span></span>
-<span id="cb22-7"><a></a></span>
-<span id="cb22-8"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(</span>
-<span id="cb22-9"><a></a>  <span class="fu">marquee_grob</span>(text, new_style)</span>
-<span id="cb22-10"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb21-2"><a></a><span class="st">{.fancy Readability is overrated}</span></span>
+<span id="cb21-3"><a></a></span>
+<span id="cb21-4"><a></a><span class="st">{.plot Even when it  </span></span>
+<span id="cb21-5"><a></a><span class="st">c|2o|3n|2t|3[++]a|1i|2n|0[--]s|1[high [low  ]     data}</span></span>
+<span id="cb21-6"><a></a><span class="st">"</span></span>
+<span id="cb21-7"><a></a></span>
+<span id="cb21-8"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(</span>
+<span id="cb21-9"><a></a>  <span class="fu">marquee_grob</span>(text, new_style)</span>
+<span id="cb21-10"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="3_text_fonts_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+<p><img data-src="3_text_fonts_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -791,6 +788,166 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 </section>
 <section id="geom_marquee" class="slide level2">
 <h2><code>geom_marquee()</code></h2>
+<ul>
+<li>Replacement for <code>geom_text()</code>/<code>geom_label()</code></li>
+<li>How do you reconcile the <code>style</code> aesthetic with the other text-related aesthetics?</li>
+<li>Be aware of markdown (single linebreak is ignored)</li>
+</ul>
+</section>
+<section id="geom_marquee-1" class="slide level2">
+<h2><code>geom_marquee()</code></h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb22" data-code-line-numbers="|16-22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>penguins<span class="sc">$</span>outlier <span class="ot">&lt;-</span> penguins<span class="sc">$</span>bill_len <span class="sc">&gt;</span> <span class="dv">55</span> <span class="sc">&amp;</span> </span>
+<span id="cb22-2"><a></a>  penguins<span class="sc">$</span>flipper_len <span class="sc">&lt;</span> <span class="dv">190</span></span>
+<span id="cb22-3"><a></a>penguins<span class="sc">$</span>text <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb22-4"><a></a>  <span class="st">"Suspecious *Pygoscelis "</span>, </span>
+<span id="cb22-5"><a></a>  <span class="fu">tolower</span>(penguins<span class="sc">$</span>species), </span>
+<span id="cb22-6"><a></a>  <span class="st">"*"</span></span>
+<span id="cb22-7"><a></a>)</span>
+<span id="cb22-8"><a></a>style <span class="ot">&lt;-</span> <span class="fu">classic_style</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb22-9"><a></a>  <span class="fu">modify_style</span>(<span class="st">"body"</span>, <span class="at">outline =</span> <span class="st">"white"</span>)</span>
+<span id="cb22-10"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb22-11"><a></a>  penguins, </span>
+<span id="cb22-12"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> bill_len, <span class="at">y =</span> flipper_len)</span>
+<span id="cb22-13"><a></a>) <span class="sc">+</span> </span>
+<span id="cb22-14"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb22-15"><a></a>    <span class="fu">aes</span>(<span class="at">colour =</span> <span class="fu">I</span>(<span class="fu">ifelse</span>(outlier, <span class="st">"red"</span>, <span class="st">"black"</span>)))</span>
+<span id="cb22-16"><a></a>  ) <span class="sc">+</span> </span>
+<span id="cb22-17"><a></a>  <span class="fu">geom_marquee</span>(</span>
+<span id="cb22-18"><a></a>    <span class="fu">aes</span>(<span class="at">label =</span> text), </span>
+<span id="cb22-19"><a></a>    <span class="at">data =</span> penguins[penguins<span class="sc">$</span>outlier,],</span>
+<span id="cb22-20"><a></a>    <span class="at">style =</span> style,</span>
+<span id="cb22-21"><a></a>    <span class="at">hjust =</span> <span class="dv">1</span>,</span>
+<span id="cb22-22"><a></a>    <span class="at">vjust =</span> <span class="dv">1</span></span>
+<span id="cb22-23"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="3_text_fonts_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geom_marquee-2" class="slide level2">
+<h2><code>geom_marquee()</code></h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb23-2"><a></a>  penguins, </span>
+<span id="cb23-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> bill_len, <span class="at">y =</span> flipper_len)</span>
+<span id="cb23-4"><a></a>) <span class="sc">+</span> </span>
+<span id="cb23-5"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb23-6"><a></a>    <span class="fu">aes</span>(<span class="at">colour =</span> <span class="fu">I</span>(<span class="fu">ifelse</span>(outlier, <span class="st">"red"</span>, <span class="st">"black"</span>)))</span>
+<span id="cb23-7"><a></a>  ) <span class="sc">+</span> </span>
+<span id="cb23-8"><a></a>  <span class="fu">geom_marquee</span>(</span>
+<span id="cb23-9"><a></a>    <span class="fu">aes</span>(<span class="at">label =</span> text), </span>
+<span id="cb23-10"><a></a>    <span class="at">data =</span> penguins[penguins<span class="sc">$</span>outlier,],</span>
+<span id="cb23-11"><a></a>    <span class="at">style =</span> style,</span>
+<span id="cb23-12"><a></a>    <span class="at">hjust =</span> <span class="st">"right-ink"</span>,</span>
+<span id="cb23-13"><a></a>    <span class="at">vjust =</span> <span class="dv">1</span>,</span>
+<span id="cb23-14"><a></a>    <span class="at">width =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">5</span>, <span class="st">"cm"</span>)</span>
+<span id="cb23-15"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="3_text_fonts_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="element_marquee" class="slide level2">
+<h2><code>element_marquee()</code></h2>
+<ul>
+<li>Replacement for `element_text()``</li>
+<li>Properties are added to the <code>base</code> element in style</li>
+<li>Automatic text wrapping (with some caveats)</li>
+</ul>
+</section>
+<section id="element_marquee-1" class="slide level2">
+<h2><code>element_marquee()</code></h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb24-2"><a></a>  penguins, </span>
+<span id="cb24-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> bill_len, <span class="at">y =</span> flipper_len)</span>
+<span id="cb24-4"><a></a>) <span class="sc">+</span> </span>
+<span id="cb24-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb24-6"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb24-7"><a></a>    <span class="at">title =</span> <span class="st">"An overview of various *Pygoscelis* (penguin) species"</span></span>
+<span id="cb24-8"><a></a>  ) <span class="sc">+</span> </span>
+<span id="cb24-9"><a></a>  <span class="fu">theme</span>(</span>
+<span id="cb24-10"><a></a>    <span class="at">plot.title =</span> <span class="fu">element_marquee</span>(<span class="at">family =</span> <span class="st">"Spectral"</span>)</span>
+<span id="cb24-11"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="3_text_fonts_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="guide_marquee" class="slide level2">
+<h2><code>guide_marquee()</code></h2>
+<ul>
+<li>A special guide for mixing long free-form text with legends</li>
+<li>Conceptually a mix between a subtitle and a guide</li>
+</ul>
+</section>
+<section id="guide_marquee-1" class="slide level2">
+<h2><code>guide_marquee()</code></h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span> </span>
+<span id="cb25-2"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_len, <span class="at">y =</span> flipper_len, <span class="at">colour =</span> species)) <span class="sc">+</span> </span>
+<span id="cb25-3"><a></a>  <span class="fu">scale_color_discrete</span>(</span>
+<span id="cb25-4"><a></a>    <span class="at">name =</span> <span class="st">"</span></span>
+<span id="cb25-5"><a></a><span class="st">Overview of how bill length and flipper length relate to each other</span></span>
+<span id="cb25-6"><a></a><span class="st">in the penguin species *Adelie* &lt;&lt;1&gt;&gt;, *Chinstrap* &lt;&lt;2&gt;&gt;, and </span></span>
+<span id="cb25-7"><a></a><span class="st">*Gentoo* &lt;&lt;3&gt;&gt;."</span>,</span>
+<span id="cb25-8"><a></a>    <span class="at">guide =</span> <span class="fu">guide_marquee</span>(<span class="at">width =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="fl">2.75</span>, <span class="st">"in"</span>))</span>
+<span id="cb25-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="3_text_fonts_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="guide_marquee-2" class="slide level2">
+<h2><code>guide_marquee()</code></h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span> </span>
+<span id="cb26-2"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_len, <span class="at">y =</span> flipper_len, <span class="at">colour =</span> species)) <span class="sc">+</span> </span>
+<span id="cb26-3"><a></a>  <span class="fu">scale_color_discrete</span>(</span>
+<span id="cb26-4"><a></a>    <span class="at">name =</span> <span class="st">"</span></span>
+<span id="cb26-5"><a></a><span class="st">Overview of how bill length and flipper length relate to each other</span></span>
+<span id="cb26-6"><a></a><span class="st">in the penguin species {.1 *Adelie*}, {.2 *Chinstrap*}, and </span></span>
+<span id="cb26-7"><a></a><span class="st">{.3 *Gentoo*}."</span>,</span>
+<span id="cb26-8"><a></a>    <span class="at">guide =</span> <span class="fu">guide_marquee</span>(<span class="at">width =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="fl">2.75</span>, <span class="st">"in"</span>))</span>
+<span id="cb26-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="3_text_fonts_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="exercises-2" class="slide level2 center" style="text-align:center;">
+<h2>Exercises</h2>
 
 
 </section>
