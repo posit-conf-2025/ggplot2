@@ -9,6 +9,7 @@ author: "Thomas Lin Pedersen"
 systemfonts::require_font("Barrio")
 systemfonts::require_font("MonteCarlo")
 systemfonts::require_font("Datalegreya")
+systemfonts::require_font("Spectral")
 
 library(ggplot2)
 ```
@@ -33,22 +34,11 @@ library(ggplot2)
 ## Selecting the right typeface
 
 ```{r}
-#| eval: false
-#| output-location: default
-
-ggplot(penguins) +
-  geom_point(aes(x = bill_len, y = body_mass)) +
-  theme_minimal(base_family = "FANCY FONT")
-```
-
-## Selecting the right typeface
-
-```{r}
 #| fig.keep: none
 #| warning: true
 #| dev: quartz
 #| dev.args: ~
-#| output-location: default
+#| output-location: fragment
 
 ggplot(penguins) +
   geom_point(aes(x = bill_len, y = body_mass)) +
@@ -57,16 +47,16 @@ ggplot(penguins) +
 
 ## The impossible life of a graphics device
 
-&nbsp;
-
+::: {.center-y}
 *Here is a family name and some text — go fetch*
 
-. . .
-
+:::::: {.fragment}
 * Where are the font files (OS dependent)
 * How do I read them once I find them
 * How do I determine which font to use
 * How do I even render text???
+::::::
+:::
 
 ## The impossible life of a graphics device
 
@@ -371,4 +361,112 @@ grid::grid.draw(
 
 ## `geom_marquee()`
 
+* Replacement for `geom_text()`/`geom_label()`
+* How do you reconcile the `style` aesthetic with the other text-related aesthetics?
+* Be aware of markdown (single linebreak is ignored)
 
+## `geom_marquee()`
+
+```{r}
+#| code-line-numbers: "|16-22"
+penguins$outlier <- penguins$bill_len > 55 & 
+  penguins$flipper_len < 190
+penguins$text <- paste0(
+  "Suspecious *Pygoscelis ", 
+  tolower(penguins$species), 
+  "*"
+)
+style <- classic_style() |> 
+  modify_style("body", outline = "white")
+ggplot(
+  penguins, 
+  aes(x = bill_len, y = flipper_len)
+) + 
+  geom_point(
+    aes(colour = I(ifelse(outlier, "red", "black")))
+  ) + 
+  geom_marquee(
+    aes(label = text), 
+    data = penguins[penguins$outlier,],
+    style = style,
+    hjust = 1,
+    vjust = 1
+  )
+```
+
+## `geom_marquee()`
+
+```{r}
+ggplot(
+  penguins, 
+  aes(x = bill_len, y = flipper_len)
+) + 
+  geom_point(
+    aes(colour = I(ifelse(outlier, "red", "black")))
+  ) + 
+  geom_marquee(
+    aes(label = text), 
+    data = penguins[penguins$outlier,],
+    style = style,
+    hjust = "right-ink",
+    vjust = 1,
+    width = grid::unit(5, "cm")
+  )
+```
+
+## `element_marquee()`
+
+* Replacement for `element_text()``
+* Properties are added to the `base` element in style
+* Automatic text wrapping (with some caveats)
+
+## `element_marquee()`
+
+```{r}
+ggplot(
+  penguins, 
+  aes(x = bill_len, y = flipper_len)
+) + 
+  geom_point() +
+  labs(
+    title = "An overview of various *Pygoscelis* (penguin) species"
+  ) + 
+  theme(
+    plot.title = element_marquee(family = "Spectral")
+  )
+```
+
+## `guide_marquee()`
+
+* A special guide for mixing long free-form text with legends
+* Conceptually a mix between a subtitle and a guide
+
+## `guide_marquee()`
+
+```{r}
+ggplot(penguins) + 
+  geom_point(aes(x = bill_len, y = flipper_len, colour = species)) + 
+  scale_color_discrete(
+    name = "
+Overview of how bill length and flipper length relate to each other
+in the penguin species *Adelie* <<1>>, *Chinstrap* <<2>>, and 
+*Gentoo* <<3>>.",
+    guide = guide_marquee(width = grid::unit(2.75, "in"))
+  )
+```
+
+## `guide_marquee()`
+
+```{r}
+ggplot(penguins) + 
+  geom_point(aes(x = bill_len, y = flipper_len, colour = species)) + 
+  scale_color_discrete(
+    name = "
+Overview of how bill length and flipper length relate to each other
+in the penguin species {.1 *Adelie*}, {.2 *Chinstrap*}, and 
+{.3 *Gentoo*}.",
+    guide = guide_marquee(width = grid::unit(2.75, "in"))
+  )
+```
+
+## Exercises {.center style="text-align:center;"}
