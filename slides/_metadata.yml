@@ -1,7 +1,7 @@
 format:
   revealjs:
     theme: serif
-    footer: posit::conf(2025) — Atlanta — September 16, 2025
+    footer: "[posit::conf(2025) — Atlanta — September 16, 2025](https://posit-conf-2025.github.io/ggplot2/)"
     fig-height: 9
     fig-align: center
     output-location: column
@@ -11,6 +11,7 @@ format:
     transition: fade
     transition-speed: fast
     highlight-style: nord
+    preview-links: auto
 
 knitr:
   opts_chunk:
