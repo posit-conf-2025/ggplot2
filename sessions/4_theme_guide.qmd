@@ -13,7 +13,7 @@ In this session, we learn about the following topics:
 ::: {.text-center .plain}
 :::::: {.btn-group}
 [Slides](../slides/4_theme_guide.qmd){.btn .btn-primary role="button"}
-[Exercises](){.btn .btn-success .disabled role="button"}
+[Exercises](../exercises/4_theme_guide.qmd){.btn .btn-success .disabled role="button"}
 ::::::
 :::
 
