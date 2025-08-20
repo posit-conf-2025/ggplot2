@@ -2,3 +2,173 @@
 title: "Plot composition"
 author: "Thomas Lin Pedersen"
 ---
+
+```{r}
+#| include: false
+
+library(ggplot2)
+library(patchwork)
+```
+
+## Key takeaway today
+
+::: {.center-y}
+> Composing plots are no harder than adding a new layer to your plot
+:::
+
+## Today
+
+* Introduce patchwork for plot composition
+  * Key design principles
+  * 
+* From simple to complex layouts
+* The non-panel stuff
+
+## {.center}
+
+::: {.r-stack}
+![](https://github.com/rstudio/hex-stickers/blob/main/PNG/patchwork.png?raw=true){width="400"}
+:::
+
+## Patchwork
+
+* Composition should have a composable API
+* The API should feel natural and easy to reason about in order to invite 
+  experimentation
+* Assume alignment but give escape hatch
+
+::: {style="text-align:center;"}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mtUKYGvkXm8?si=uTD_S9Scp7-yky5b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+## Patchwork *in a nutshell*
+
+```{r}
+p1 <- ggplot(penguins) + 
+  geom_point(aes(x = flipper_len, y = bill_len))
+
+p2 <- ggplot(penguins) + 
+  geom_histogram(aes(flipper_len))
+
+p1 + p2
+```
+
+## Patchwork *in a nutshell*
+
+```{r}
+p3 <- ggplot(penguins) + 
+  geom_boxplot(aes(species, bill_len))
+
+p1 | (p2 / p3)
+```
+
+## Patchwork *in a nutshell*
+
+```{r}
+ggplot(penguins) + 
+  geom_point(aes(x = flipper_len, y = bill_len)) + 
+  ggplot(penguins) + 
+  geom_histogram(aes(flipper_len))
+```
+
+## Patchwork *in a nutshell*
+
+```{r}
+p1 + p2 +
+  geom_density(
+    aes(flipper_len, after_stat(count))
+  )
+```
+
+## [Exercise](../exercises/3_text_fonts.qmd#working-with-fonts) {.center style="text-align:center;"}
+
+## More layout options
+
+```{r}
+p4 <- ggplot(penguins) + 
+  geom_bar(
+    aes(species, fill = sex), 
+    position = "dodge"
+  )
+
+wrap_plots(p1, p2, p3, p4, widths = c(1, 2))
+```
+
+## More layout options
+
+```{r}
+p1 + p2 + p3 + p4 + plot_layout(widths = c(1, 2))
+```
+
+## More layout options
+
+```{r}
+layout <- "
+A#B
+#CC
+DD#
+"
+p1 + p2 + p3 + p4 + 
+  plot_layout(design = layout)
+```
+
+## More layout options
+
+```{r}
+layout <- c(
+  area(1, 1, 2, 3),
+  area(2, 2, 3, 3)
+)
+p1 + p2 + 
+  plot_layout(design = layout)
+```
+
+## [Exercise](../exercises/3_text_fonts.qmd#working-with-fonts) {.center style="text-align:center;"}
+
+## Layout modifiers
+
+* The composition consists of a grid
+* Panels are placed in one or more neighboring cells
+* Everything outside the panels are placed in the gutter which expands to
+  contain all
+
+* What if you don't want that?
+
+## Layout modifiers - Insets
+
+```{r}
+p1 + inset_element(
+  p2, 
+  left = 0.5, 
+  bottom = 0.5, 
+  right = grid::unit(1, "npc") - grid::unit(6, "mm"),
+  top = grid::unit(1, "npc") - grid::unit(6, "mm"),
+)
+```
+
+## Layout modifiers - Free
+
+```{r}
+p3a <- p3 + 
+  guides(x = guide_axis(angle = 45))
+p1 + p3a
+```
+
+## Layout modifiers - Free
+
+```{r}
+p1 + free(p3a, side = "b")
+```
+
+## Layout modifiers - Free
+
+```{r}
+free(p1, "label", side = "b") + p3a
+```
+
+## [Exercise](../exercises/3_text_fonts.qmd#working-with-fonts) {.center style="text-align:center;"}
+
+## Annotations
+
+* Once composed, the parts will constitute a new graphic
+

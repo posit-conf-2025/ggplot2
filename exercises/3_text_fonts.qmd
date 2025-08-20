@@ -362,7 +362,7 @@ its styling. Consider using the `features` argument as a means to that end.
 Test out the new style on a piece of text of your own choice
 
 ```{webr}
-#| exercise: ex_3_3_3
+#| exercise: ex_3_3_3
 style <- classic_style() |>
   modify_style(
     "fancy",
