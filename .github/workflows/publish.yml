@@ -30,7 +30,7 @@ jobs:
             r-lib/marquee
             any::systemfonts
             any::ggiraph
-            any::legendry
+            teunbrand/legendry
             any::ggfx
             any::ggpattern
             any::gridpattern

@@ -71,7 +71,7 @@ p + theme_gray(ink = "red")
 ```{r}
 #| output-location: default
 #| fig-width: 12
-p + theme_minimal(paper = "cornsilk")
+p + theme_bw(paper = "cornsilk")
 ```
 
 ---
@@ -83,7 +83,7 @@ p + theme_minimal(paper = "cornsilk")
 ```{r}
 #| output-location: default
 #| fig-width: 12
-p + theme_bw(paper = "cornsilk", ink = "navy")
+p + theme_minimal(paper = "cornsilk", ink = "navy")
 ```
 
 ---
@@ -154,10 +154,10 @@ ggplot(faithful, aes(waiting)) +
   ) +
   theme(geom = element_geom(
     # Affects histogram
-    borderwidth = 0.5,
+    borderwidth = 0.3,
     bordertype  = "solid",
     # Affects density line
-    linewidth = 2,
+    linewidth = 1,
     linetype  = "dotted"
   ))
 ```
@@ -188,7 +188,7 @@ ggplot(mtcars) +
   theme(
     geom = element_geom(
       family = "Barrio",
-      fontsize = 12
+      fontsize = 10
     )
   )
 ```
@@ -213,7 +213,7 @@ For points, we can set `pointsize` and `fontshape`
 
 ```{r}
 p + theme(geom = element_geom(
-  pointsize  = 3,
+  pointsize  = 2,
   pointshape = "triangle"
 ))
 ```
@@ -256,6 +256,17 @@ p + theme(
   geom.smooth = element_geom(colour = "navy")
 )
 ```
+
+---
+
+### Ink & Paper: summary
+
+* Complete themes can be used to coordinate a colour scheme quickly.
+    * `theme_complete(ink, paper, accent)`
+* Most layer defaults can be set in the theme.
+    * `theme(geom = element_geom(...))`
+    
+⏲️ Exercise 4.1
 
 ---
 
@@ -378,10 +389,20 @@ Just because we can swap discrete and continuous palettes, doesn't mean we shoul
 
 ```{r}
 p2 + theme(
+  # No! What have I done?!
   palette.colour.continuous = pal_brewer("qual")
 )
 ```
 
+---
+
+### Default palettes: summary
+
+* New theme arguments to set default palettes: `palette.{aes}.{type}`.
+* Input for discrete palettes `scales::as_discrete_palette()`.
+* Input for continuous palettes `scales::as_continuous_palette()`.
+
+⏲️ Exercise 4.2
 
 ---
 
@@ -389,12 +410,12 @@ p2 + theme(
 
 How do you intend to use a personal theme?
 
-* Adding it to individual plots
-* Adding it to all plots in a document
+* Complete theme
+* Partial theme
 
 ---
 
-### Building a theme for all plots
+### Building a complete theme
 
 Capture your theme as a function.
 
@@ -408,7 +429,7 @@ p + my_theme()
 
 ---
 
-### Building a theme for all plots
+### Building a complete theme
 
 Start with using a complete theme as base.
 
@@ -422,7 +443,7 @@ p + my_theme()
 
 ---
 
-### Building a theme for all plots
+### Building a complete theme
 
 Build your own customisations on top.
 
@@ -440,7 +461,7 @@ p + my_theme()
 
 ---
 
-### Building a theme for all plots
+### Building a complete theme
 
 For custom fonts, put in guardrails for their possible absence.
 
@@ -459,9 +480,34 @@ p + my_theme()
 
 ---
 
-### Building a theme for all plots
+### Building a complete theme
 
-You can coordinate your `ink` and default palettes, along with `geom`.
+You can coordinate the `ink`/`paper`/`accent` settings, along with the `geom` argument.
+
+```{r}
+my_theme <- function(
+  ...,
+  ink = "hotpink",
+  accent = "black",
+  header_family = "Dancing Script"
+) {
+  systemfonts::require_font(header_family)
+  theme_gray(..., ink = ink, accent = accent, header_family = header_family) +
+    theme(
+      geom = element_geom(pointshape = "♥", pointsize = 3),
+      axis.line = element_line(),
+      strip.background = element_blank()
+    )
+}
+
+p + my_theme()
+```
+
+---
+
+### Building a complete theme
+
+If you have flamboyant `ink` or `paper` colours, you may also want to direct the `palette.colour.continuous` and `palette.colour.discrete` palettes.
 
 ```{r}
 my_theme <- function(
@@ -485,19 +531,20 @@ p2 + my_theme()
 
 ---
 
-### Building a theme for all plots
+### Building a complete theme
 
 You can activate your theme for all plots in your document by using `set_theme()`.
 
 ```{r}
 set_theme(my_theme())
+# Now all plots will be rendered with your theme
 p2
 ```
 
 
 ---
 
-### Building a theme for all plots
+### Building a complete theme
 
 But for now, we'll reset it to something familiar.
 
@@ -508,13 +555,16 @@ p2
 
 ---
 
-### Building themes for individual plots
+### Building a partial theme
 
 For individual plots, the same advice holds for building a theme function.
 
 However, you can have partial theme 'shortcuts'.
 
-### Partial theme
+### Building a partial theme
+
+You still call a `theme()` or `theme_sub()` function to initiate a fresh, (incomplete) theme.
+No need to start with a complete theme base.
 
 ```{r}
 horizontal_grid <- function() {
@@ -531,12 +581,29 @@ p + horizontal_grid()
 
 ---
 
+### Building your own theme: summary
+
+* Implement as function.
+* Use complete theme as basis
+* Add on your tweaks
+* (Guard custom fonts)
+* (Coordinate colour & palettes)
+
+⏲️ Exercise 4.3
+
+---
+
 ## Custom guides
 
 ggplot2 has more guides than colour bars and legends.
 
 * axes
-* binned guides
+* colour bar
+* colour steps
+* legend
+* binned guide
+
+---
 
 ### Base guides
 
@@ -579,7 +646,8 @@ dplyr::filter(txhousing, city == "Houston") |>
     breaks = 1:12, limits = c(0, 12),
     palette = "romaO",
     guide = "colring"
-  )
+  ) +
+  theme(legend.key.size = unit(5, "mm"))
 ```
 
 ---
@@ -624,5 +692,55 @@ stacked <- compose_stack(
 p3 + guides(x = stacked)
 ```
 
+---
+
+### Guide extensions
+
+legendry has re-imagined some guides as compositions.
+
+```{r}
+p3 + aes(colour = temperature) +
+  guides(colour = guide_colbar(
+    second_guide = fahrenheit_axis,
+    suppress_labels = "none"
+  ))
+```
 
 
+---
+
+### Guide extensions
+
+Aside from composability, re-imagined guides come with extra features.
+
+```{r}
+#| dev: svglite
+p3 + aes(colour = temperature) +
+  scale_colour_viridis_c(
+    limits = c(100, 300),
+    guide = "colbar"
+  )
+```
+
+### Guide extensions
+
+Aside from composability, re-imagined guides come with extra features.
+
+```{r}
+p3 + aes(colour = temperature) +
+  scale_colour_viridis_c(
+    limits = c(NA, 300),
+    guide = "colbar",
+    oob = scales::oob_squish
+  )
+```
+
+---
+
+### Custom guides: summary
+
+* Guides give your plots meaning
+* Guides can have local themes for individually tweaking them
+* Guide extensions, such as those in the legendry package, expand your arsenal.
+
+⏲️ Exercise 4.4
