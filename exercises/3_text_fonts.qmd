@@ -11,6 +11,7 @@ webr:
     - ragg
     - systemfonts
     - marquee
+    - gt
 ---
 
 {{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
@@ -158,6 +159,26 @@ text <- ______
 grid::grid.draw(marquee_grob(text))
 ```
 
+::: {.solution exercise="ex_3_2_1"}
+::: {.callout-note collapse="false"}
+````r
+text <- "
+# Headings are important
+However, *noone* wants to miss a `nice piece of code`
+
+```
+1 + 1
+#> [1] 2
+```
+
+**WOW**
+"
+
+grid::grid.draw(marquee_grob(text))
+````
+:::
+:::
+
 ### Exercise 3.2.2
 Create a marquee text that uses custom spans to change text colors, sizes, and add superscripts or subscripts. Try to show that styles inherits from their parent by placing spans inside spans
 
@@ -168,26 +189,368 @@ text <- ______
 grid::grid.draw(marquee_grob(text))
 ```
 
-## 3.3 Advanced marquee styling
+::: {.hint exercise="ex_3_2_2"}
+::: {.callout-note collapse="false"}
+Custom spans are added using the `{.<class> ...}` syntax. If `<class>` is a valid color name (from `colors()`) or a hex color code (in which case the preceeding `.` is changed to a `#`) than the given color is applied to the span. If `<class>` is an integer then that text size is applied to the span
+:::
+:::
 
-### A
-Create a custom style by modifying `classic_style()`. Change at least three properties including font family, size, and color. Apply this style to a markdown text that demonstrates the changes.
+::: {.solution exercise="ex_3_2_2"}
+::: {.callout-note collapse="false"}
+```r
+text <- "
+Styling {.red can be {.20 nested}}. This is *also {#123456 true}* when you mix
+custom and standard syntax
+"
 
-### B
+grid::grid.draw(marquee_grob(text))
+```
+:::
+:::
+
+### Exercise 3.2.3
 Create a marquee text that includes either an image (like a plot) or a table. If using a plot, create a simple scatterplot first, then include it in your marquee text.
+
+```{webr}
+#| exercise: ex_3_2_3
+text <- ______
+
+grid::grid.draw(marquee_grob(text))
+```
+
+::: {.hint exercise="ex_3_2_3"}
+::: {.callout-note collapse="false"}
+Use the standard markdown image syntax but provide the name of a variable 
+holding a plot, grob, or table instead of the path/URL to an image. 
+:::
+:::
+
+::: {.solution exercise="ex_3_2_3"}
+::: {.callout-note collapse="false"}
+```r
+library(gt)
+start_date <- "2010-06-07"
+end_date <- "2010-06-14"
+tbl <- sp500[sp500$date >= start_date & sp500$date <= end_date, 1:6] |>
+  gt() |>
+  tab_header(
+    title = "S&P 500",
+    subtitle = glue::glue("{start_date} to {end_date}")
+  ) |>
+  fmt_currency() |>
+  fmt_date(columns = date, date_style = "wd_m_day_year") |>
+  fmt_number(columns = volume, suffixing = TRUE)
+
+text <- "
+`{gt}` is much more powerful than any markdown table syntax! 
+
+*Just look at this:*
+
+![](tbl)
+
+Pretty neat, huh!
+"
+
+grid::grid.draw(marquee_grob(text))
+```
+:::
+:::
+
+## 3.3 marquee styling
+
+### Exercise 3.3.1
+Read the documentation of `marquee::classic_style()` and experiment with how different a look you can get by only modifying the arguments that it takes
+
+```{webr}
+#| exercise: ex_3_3_1
+style <- classic_style(______)
+
+text <- "
+# This is a test
+In the following we will test a number of things
+
+* Bullet lists
+* Inline `code`
+* Some fancy mix of *italic* ***and*** **bold**
+
+```
+As well as code blocks
+```
+
+>And notes
+"
+
+grid::grid.draw(marquee_grob(text, style = style))
+```
+
+::: {.solution exercise="ex_3_3_1"}
+::: {.callout-note collapse="false"}
+No wrong answers here. Just experiment with the various arguments and its effect
+on the provided text
+:::
+:::
+
+### Exercise 3.3.2
+Change the look of inline code so that it is displayed with an outlined serif
+font on a transparent background with a lightblue border. You can read the 
+documentation for `marquee_parse()` to see the tags that are asigned to various
+markdown elements.
+
+```{webr}
+#| exercise: ex_3_3_2
+style <- classic_style(base_size = 20) |>
+  modify_style(
+    ______
+  )
+
+text <- "Some `inline code to test with`."
+
+grid::grid.draw(marquee_grob(text, style = style))
+```
+
+::: {.hint exercise="ex_3_3_2"}
+::: {.callout-note collapse="false"}
+Inline code uses the `"code"` tag. See the documentation for `style()` to figure
+out the different styles that needs to be changed to get the requested look
+:::
+:::
+
+::: {.solution exercise="ex_3_3_2"}
+::: {.callout-note collapse="false"}
+There are two ways to call `modify_style()`. Either pass the different styles
+directly:
+
+```r
+style <- classic_style(base_size = 20) |>
+  modify_style(
+    "code",
+    family = "serif",
+    color = "white",
+    background = NA,
+    border = "lightblue",
+    border_size = trbl(grid::unit(1, "pt")),
+    outline = "black"
+  )
+```
+
+or pass in a style object as the first argument after the tag name
+
+```r
+style <- classic_style(base_size = 20) |>
+  modify_style(
+    "code",
+    style(
+      family = "serif",
+      color = "white",
+      background = NA,
+      border = "lightblue",
+      border_size = trbl(grid::unit(1, "pt")),
+      outline = "black"
+    )
+  )
+```
+
+Can you see what the difference is between the two approaches (it's described in
+the documentation for `modify_style()`)
+:::
+:::
+
+### Exercise 3.3.3
+Define a new tag (`"fancy"`), which makes text over-the-top unreadable due to
+its styling. Consider using the `features` argument as a means to that end. 
+
+Test out the new style on a piece of text of your own choice
+
+```{webr}
+#| exercise: ex_3_3_3
+style <- classic_style() |>
+  modify_style(
+    "fancy",
+    ______
+  )
+
+text <- ______
+
+grid::grid.draw(marquee_grob(text, style = style))
+```
+
+::: {.hint exercise="ex_3_3_3"}
+::: {.callout-note collapse="false"}
+Font features are a huge subject and if you have never heard of it before you 
+may choose to use other arguments to make the text over-the-top. If you do use
+the `features` argument, remember that not all fonts support all features. You
+can see which features are supported by a font using 
+`textshaping::get_font_features()`
+:::
+:::
+
+::: {.solution exercise="ex_3_3_3"}
+::: {.callout-note collapse="false"}
+An example of a horrible style could be
+
+```r
+systemfonts::require_font("EB Garamond")
+style <- classic_style(base_size = 20) |>
+  modify_style(
+    "fancy",
+    family = "EB Garamond", 
+    weight = "ultrabold",
+    features = systemfonts::font_feature(
+      swsh = 0, 
+      dlig = 1, 
+      hlig = 1, 
+      hist = 1, 
+      kern = 0, 
+      aalt = 2
+    ), 
+    outline = "black", 
+    color = "white", 
+    background = "green", 
+    tracking = 300
+  )
+
+text <- "{.fancy This is a test of readability (& style)}"
+```
+
+but I'm sure you can do it better/worse
+:::
+:::
 
 ## 3.4 Using geom_marquee() in ggplot2
 
-### A
-Create a scatter plot of bill length vs flipper length from the penguins dataset. Use `geom_marquee()` to label at least two points with formatted text (including italics or bold). 
+### Exercise 3.4.1
+Create a scatter plot of bill length vs flipper length from the penguins dataset. Use `geom_marquee()` to label at least two points with formatted text (including italics or bold). Experiment with the `width` aesthetic to force automatic line breaking
 
-### B
-Create a plot with `element_marquee()` to customize the plot title, subtitle, and axis titles. Make the title include formatted text (like bold or italic words) and use a custom font.
+```{webr}
+#| exercise: ex_3_4_1
 
-## Exercise 5: Advanced ggplot2 integration
+ggplot(penguins, aes(bill_len, flipper_len)) + 
+  geom_point(aes(color = species)) +
+  ______
+```
 
-### A
-Create a scatter plot with a color aesthetic for species. Use `guide_marquee()` to create a custom legend that includes formatted text describing the penguin species.
+::: {.hint exercise="ex_3_4_1"}
+::: {.callout-note collapse="false"}
+You can use `geom_marquee()` with some coordinates to place formatted text labels. To choose points to label, you might want to filter the penguins data for specific individuals.
+:::
+:::
 
-### B
-Create a complete visualization that combines multiple marquee elements: use `geom_marquee()` for labels, `element_marquee()` for titles, and `guide_marquee()` for the legend. Make sure to use different styling for each component.
+::: {.solution exercise="ex_3_4_1"}
+::: {.callout-note collapse="false"}
+```r
+# Find some interesting points to label
+adelie <- subset(penguins, species == "Adelie" & bill_len > 45)[1, ]
+gentoo <- subset(penguins, species == "Gentoo" & flipper_len > 230)[1, ]
+penguins2 <- rbind(adelie, gentoo)
+penguins2$label <- c(
+  "*Adelie* penguin with **large bill**",
+  "*Gentoo* penguin with **long flippers**"
+)
+
+ggplot(penguins, aes(bill_len, flipper_len)) + 
+  geom_point(aes(color = species)) +
+  geom_marquee(
+    aes(label = label), 
+    data = penguins2,
+    width = grid::unit(3, "cm"),
+    hjust = 0,
+    vjust = 1
+  ) + 
+  theme(legend.position = "bottom")
+```
+:::
+:::
+
+### Exercise 3.4.2
+Create a plot and use `element_marquee()` to customize the plot title, subtitle, and axis titles. Make the titles include formatted text (like bold or italic words) and use a custom font.
+
+```{webr}
+#| exercise: ex_3_4_2
+
+ggplot(penguins, aes(bill_len, flipper_len)) + 
+  geom_point(aes(color = species)) +
+  labs(
+    title = ______,
+    subtitle = ______,
+    x = ______,
+    y = ______
+  ) +
+  theme(
+    ______
+  )
+```
+
+::: {.hint exercise="ex_3_4_2"}
+::: {.callout-note collapse="false"}
+You can use `element_marquee()` to replace standard text elements in the theme. For example, `plot.title = element_marquee(...)` for the title. Remember to use markdown formatting in your text.
+:::
+:::
+
+::: {.solution exercise="ex_3_4_2"}
+::: {.callout-note collapse="false"}
+```r
+systemfonts::require_font("Spectral")
+systemfonts::require_font("Exo 2")
+
+ggplot(penguins, aes(bill_len, flipper_len)) + 
+  geom_point(aes(color = species)) +
+  labs(
+    title = "**Penguin** *Measurements*",
+    subtitle = "Analysis of *bill length* vs *flipper length*",
+    x = "*Bill Length* (mm)",
+    y = "*Flipper Length* (mm)"
+  ) +
+  theme(
+    plot.title = element_marquee(family = "Spectral", size = 16),
+    plot.subtitle = element_marquee(family = "Exo 2", size = 12),
+    axis.title.x = element_marquee(family = "Exo 2", size = 10),
+    axis.title.y = element_marquee(family = "Exo 2", size = 10)
+  )
+```
+:::
+:::
+
+### Exercise 3.4.3
+Create a scatter plot with a color aesthetic for species. Use `guide_marquee()` to create a custom legend that includes text describing the penguin species colouring the species name and includind the keys as well.
+
+```{webr}
+#| exercise: ex_3_4_3
+ggplot(penguins, aes(bill_len, flipper_len, color = species)) + 
+  geom_point() +
+  ______
+```
+
+::: {.hint exercise="ex_3_4_3"}
+::: {.callout-note collapse="false"}
+You need to take care of two things:
+
+1. Tell ggplot2 to use `guide_marquee()` for the color aesthetic
+2. Provide the markdown text that will be used for the legend
+:::
+:::
+
+::: {.hint exercise="ex_3_4_3"}
+::: {.callout-note collapse="false"}
+The two things can be accomplished in different ways
+
+1. The guide type can be specified with `guides()` or within `scale_color_*()`
+2. The text can be provided in the `guide_marquee()` constructor, in the scale
+   constructor, or with `labs()`
+:::
+:::
+
+::: {.solution exercise="ex_3_4_3"}
+::: {.callout-note collapse="false"}
+```r
+legend_text <- "
+An overview of the relationship between flipper and bill length between 
+{.Adelie *Adelie*} <<Adelie>>, {.Chinstrap *Chinstrap*} <<Chinstrap>>, and 
+{.Gentoo *Gentoo*} <<Gentoo>> penguins
+"
+ggplot(penguins, aes(bill_len, flipper_len, color = species)) + 
+  geom_point() +
+  guides(color = "marquee") + 
+  labs(color = legend_text)
+```
+:::
+:::

@@ -17,7 +17,7 @@ knitr:
   opts_chunk:
     dev: ragg_png
     dev.args:
-      scaling: 3
+      scaling: 2
 
 execute:
   echo: true
