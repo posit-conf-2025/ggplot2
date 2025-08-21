@@ -1,4 +1,467 @@
 ---
 title: "Interactive plots"
 author: "Teun van den Brand"
+knitr:
+  opts_chunk:
+    dev.args:
+      scaling: 2
 ---
+
+```{r}
+#| label: setup
+#| echo: false
+"padding:20px;background:black;color:white;border-radius:8px;text-align:left;font-size:36px" |>
+  ggiraph::girafe_css() |>
+  ggiraph::opts_tooltip() |>
+  ggiraph::set_girafe_defaults(opts_tooltip = _)
+```
+
+
+## Interactivity
+
+---
+
+### ggplot2's graphics ecosystem
+
+```{mermaid}
+%%| echo: false
+%%| output-location: default
+flowchart TD
+  A[ggplot2] --> B[grid]
+  B --> C[grDevices]
+  C --> D(devices)
+  D --> E([file])
+```
+
+## gganimate
+
+Renders animations of your plot to GIFs.
+
+```{mermaid}
+%%| echo: false
+%%| output-location: default
+flowchart TD
+  A[ggplot2] --> B[grid]
+  B --> C[grDevices]
+  C --> D(devices)
+  D --> E([GIF])
+  F[gganimate] <--> A
+  F -.-> |"animate()"|D
+```
+
+---
+
+### basic plot
+
+```{r}
+#| output-location: default
+suppressPackageStartupMessages({
+  library(ggplot2)
+  library(gganimate)
+  library(gapminder)
+})
+
+gapminder <- gapminder |>
+  # inoculate against apostrophe in Cote d'Ivoire
+  dplyr::mutate(country = gsub("'", "’", country))
+
+gap2007 <- dplyr::filter(gapminder, year == 2007)
+
+gaps <- ggplot(gapminder) +
+  aes(
+    gdpPercap, lifeExp, 
+    size = pop, 
+    group = country, 
+    colour = continent
+  ) +
+  geom_point(alpha = 0.7) +
+  scale_x_log10(
+    guide = "axis_logticks", 
+    labels = scales::label_log(),
+    minor_breaks = scales::minor_breaks_log(detail = 5),
+    limits = range(gapminder$gdpPercap)
+  ) +
+  scale_colour_manual(values = continent_colors) +
+  scale_size_area(
+    max_size = 12, 
+    guide = legendry::guide_circles(),
+    breaks = c(100, 500, 1000) * 1e6,
+    labels = c("100M", "500M", "1B")
+  ) +
+  labs(dictionary = c(
+    gdpPercap = "Gross Domestic Product per capita",
+    lifeExp   = "Life Expentancy",
+    continent = "Continent",
+    pop       = "Population"
+  )) +
+  theme(
+    legend.key.size = unit(12, "pt"),
+    legend.spacing = rel(1)
+  )
+```
+
+---
+
+### basic plot
+
+```{r}
+(my_plot <- gaps + gap2007)
+```
+
+---
+
+### animating
+
+```{r}
+anim <- gaps + 
+  transition_time(year)
+
+animate(anim, device = "ragg_png")
+```
+
+
+---
+
+## plotly
+
+```{mermaid}
+%%| echo: false
+%%| output-location: default
+flowchart TD
+  A[ggplot2] --> B[grid]
+  B --> C[grDevices]
+  C --> D(devices)
+  D --> E([file])
+  A --> |"`plotly::ggplotly()`"|F(plotly.js)
+  F --> G["htmlwidgets (R)"]
+  G --> H([html])
+```
+
+---
+
+### Rendering plotly
+
+Using `plotly::ggplotly()` to render interactive plot.
+
+```{r}
+suppressPackageStartupMessages(library(plotly))
+ggplotly(my_plot)
+```
+
+
+---
+
+### The `text` plotly aesthetic 
+
+The `tooltip` argument gives the aesthetics that contribute to the hover information.
+There is an understanding of the `text` aesthetic (note: not `label`).
+
+```{r}
+ggplotly(
+  my_plot + aes(text = country),
+  tooltip = "text"
+)
+```
+
+
+---
+
+### The `frame` plotly aesthetic
+
+To animate a plotly graph, use the `frame` aesthetic.
+
+```{r}
+ggplotly(
+  gaps + aes(frame = year, text = country),
+  tooltip = 'text'
+)
+```
+
+
+
+---
+
+## ggiraph
+
+```{mermaid}
+%%| echo: false
+%%| output-location: default
+flowchart TD
+  A[ggplot2] --> B[grid]
+  B --> C[grDevices]
+  C --> D("ggiraph::dsvg()")
+  D --> E([SVG])
+  F[ggiraph] <--> A
+  F -.-> |"ggirafe()"|D
+```
+
+---
+
+### Overview ggiraph
+
+* Parallel functions for interactivity
+  * `geom_point_interactive()`
+  * `element_text_interactive()`
+  * `facet_wrap_interactive()`
+  * `guide_legend_interactive()`
+  * `scale_colour_manual_interactive()`
+* Specialist aesthetics/options
+  * Aesthetics `tooltip`, `data_id`, `onclick`
+  * `ggirafe(options)`
+
+---
+
+### `tooltip` aesthetic
+
+Swapping out `geom_point()` for `geom_point_interactive()`.
+
+```{r}
+#| output-location: slide
+#| code-line-numbers: 9-12
+#| fig-height: 4
+library(ggiraph)
+
+gaps <- ggplot(gap2007) +
+  aes(
+    gdpPercap, lifeExp, 
+    size = pop, 
+    colour = continent,
+  ) +
+  geom_point_interactive(
+    aes(tooltip = country),
+    alpha = 0.7
+  ) +
+  scale_x_log10(
+    limits = range(gapminder$gdpPercap),
+    guide = "axis_logticks", 
+    labels = scales::label_log(),
+    minor_breaks = scales::minor_breaks_log(detail = 5)
+  ) +
+  scale_colour_manual(values = continent_colors) +
+  scale_size_area(
+    max_size = 12, 
+    guide = legendry::guide_circles(),
+    breaks = c(100, 500, 1000) * 1e6,
+    labels = c("100M", "500M", "1B")
+  ) +
+  labs(dictionary = c(
+    gdpPercap = "Gross Domestic Product per capita",
+    lifeExp   = "Life Expentancy",
+    continent = "Continent",
+    pop       = "Population"
+  )) +
+  theme(
+    legend.key.size = unit(12, "pt"),
+    legend.spacing = rel(1)
+  )
+
+girafe(ggobj = gaps)
+```
+
+---
+
+### non-aesthetic `tooltip`
+
+Scales can display tooltips in legends.
+N.B.: ensure `breaks` and `tooltip` are parallel!
+
+```{r}
+#| output-location: slide
+#| fig-height: 4
+#| warning: false
+#| collapse: true
+scale_tooltip <- split(gap2007$country, gap2007$continent) |>
+  vapply(paste, character(1), collapse = ", ")
+str(scale_tooltip)
+
+new_scale <- scale_colour_manual_interactive(
+  values  = continent_colors,
+  breaks  = names(scale_tooltip),
+  tooltip = scale_tooltip
+)
+
+girafe(ggobj = gaps + new_scale)
+```
+
+---
+
+### `data_id` aesthetic
+
+Using 1:1 IDs
+
+```{r}
+#| output-location: default
+#| fig-height: 4
+girafe(ggobj = gaps + aes(data_id = country))
+```
+
+---
+
+### `data_id` aesthetic
+
+Using 1:many IDs
+
+```{r}
+#| output-location: default
+#| fig-height: 4
+girafe(ggobj = gaps + aes(data_id = continent))
+```
+
+---
+
+### `data_id` aesthetic
+
+Using many:1 IDs
+
+```{r}
+gappairs <- gap2007 |>
+  mutate(
+    logGDP = log10(gdpPercap),
+    logPop = log10(pop)
+  ) |>
+  ggplot() +
+  geom_point_interactive(
+    aes(
+      x = .panel_x,
+      y = .panel_y,
+      data_id = country,
+      tooltip = country,
+      colour = continent
+    )
+  ) +
+  scale_colour_manual(values = continent_colors) +
+  ggforce::facet_matrix(vars(lifeExp, logGDP, logPop))
+
+girafe(ggobj = gappairs)
+```
+
+---
+
+### `data_id` aesthetic
+
+Let's make a second plot sharing some countries with the first.
+
+```{r}
+countries <- c(
+  "Senegal", "Mozambique", "Egypt", "Bolivia", "United States", 
+  "Brazil", "Czech Republic", "Romania", "Switzerland", "Cambodia", 
+  "Japan", "New Zealand", "India", "Australia"
+)
+
+heatgap <- gapminder |>
+  filter(country %in% countries) |>
+  ggplot() +
+  aes(
+    year, country,
+    fill = lifeExp,
+    tooltip = round(lifeExp, digits = 1)
+  ) +
+  geom_tile_interactive() +
+  scale_fill_viridis_c()
+
+girafe(ggobj = heatgap)
+```
+
+---
+
+### `data_id` aesthetic
+
+```{r}
+#| warning: false
+library(patchwork)
+
+combined <- 
+  gaps + heatgap & 
+  aes(data_id = country) &
+  theme(legend.position = "none")
+
+girafe(ggobj = combined)
+```
+
+---
+
+### Customising ggiraph: tooltips
+
+```{r}
+girafe(
+  ggobj = gaps,
+  options = list(
+    opts_tooltip(
+      css = girafe_css("border-radius:16px;padding:8px;border-color:white;border-style:solid"),
+      use_fill = TRUE
+    )
+  )
+)
+```
+
+---
+
+### Customising ggiraph: hovering
+
+```{r}
+girafe(
+  ggobj = gaps + aes(data_id = country),
+  options = list(
+    opts_hover(css = girafe_css("fill:white;")),
+    opts_hover_inv(css = girafe_css("opacity:0.1;"))
+  )
+)
+```
+
+---
+
+### Customising ggiraph: linking
+
+```{r}
+p <- gaps +
+  labs(caption = "Source: https://www.gapminder.org/data/") +
+  theme(plot.caption = element_text_interactive(
+    colour = "darkblue",
+    data_id = "any_unique_id",
+    hover_css = "fill:blue;stroke:none;text-decoration:underline;",
+    onclick = 'window.open("https://www.gapminder.org/data/")'
+  ))
+
+girafe(ggobj = p)
+```
+
+---
+
+### Customising ggiraph: zooming
+
+```{r}
+girafe(
+  ggobj = gaps, 
+  options = list(opts_zoom(min = 0.5, max = 5))
+)
+```
+
+
+---
+
+### Customising ggiraph: selections
+
+```{r}
+girafe(
+  ggobj = gappairs, 
+  options = list(
+    opts_selection(
+      type = "multiple", 
+      only_shiny = FALSE,
+      css = "fill:white;"
+    )
+  )
+)
+```
+
+---
+
+## Summary
+
+Each package has strengths and weaknesses.
+
+package   | Fidelity | Animation | Tooltips
+----------|----------|-----------|---------
+gganimate | Yes      | Yes       | No
+plotly    | No       | Yes       | Yes
+ggiraph   | Yes      | No        | Yes
