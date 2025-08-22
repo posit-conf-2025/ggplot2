@@ -410,7 +410,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpqhYFuq/Barrio-regular.ttf\", \"/tmp/RtmpqhYFuq/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpeJDAYx/Barrio-regular.ttf\", \"/tmp/RtmpeJDAYx/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
@@ -649,6 +649,41 @@
     "title": "Text rendering and font use",
     "section": "",
     "text": "Next session: Styling your plot"
+  },
+  {
+    "objectID": "slides/6_interaction.html#interactivity",
+    "href": "slides/6_interaction.html#interactivity",
+    "title": "Interactive plots",
+    "section": "Interactivity",
+    "text": "Interactivity"
+  },
+  {
+    "objectID": "slides/6_interaction.html#gganimate",
+    "href": "slides/6_interaction.html#gganimate",
+    "title": "Interactive plots",
+    "section": "gganimate",
+    "text": "gganimate\nRenders animations of your plot to GIFs.\n\n\n\n\n\nflowchart TD\n  A[ggplot2] --&gt; B[grid]\n  B --&gt; C[grDevices]\n  C --&gt; D(devices)\n  D --&gt; E([GIF])\n  F[gganimate] &lt;--&gt; A\n  F -.-&gt; |\"animate()\"|D"
+  },
+  {
+    "objectID": "slides/6_interaction.html#plotly",
+    "href": "slides/6_interaction.html#plotly",
+    "title": "Interactive plots",
+    "section": "plotly",
+    "text": "plotly\n\n\n\n\n\nflowchart TD\n  A[ggplot2] --&gt; B[grid]\n  B --&gt; C[grDevices]\n  C --&gt; D(devices)\n  D --&gt; E([file])\n  A --&gt; |\"`plotly::ggplotly()`\"|F(plotly.js)\n  F --&gt; G[\"htmlwidgets (R)\"]\n  G --&gt; H([html])"
+  },
+  {
+    "objectID": "slides/6_interaction.html#ggiraph",
+    "href": "slides/6_interaction.html#ggiraph",
+    "title": "Interactive plots",
+    "section": "ggiraph",
+    "text": "ggiraph\n\n\n\n\n\nflowchart TD\n  A[ggplot2] --&gt; B[grid]\n  B --&gt; C[grDevices]\n  C --&gt; D(\"ggiraph::dsvg()\")\n  D --&gt; E([SVG])\n  F[ggiraph] &lt;--&gt; A\n  F -.-&gt; |\"ggirafe()\"|D"
+  },
+  {
+    "objectID": "slides/6_interaction.html#summary",
+    "href": "slides/6_interaction.html#summary",
+    "title": "Interactive plots",
+    "section": "Summary",
+    "text": "Summary\nEach package has strengths and weaknesses.\n\n\n\npackage\nFidelity\nAnimation\nTooltips\n\n\n\n\ngganimate\nYes\nYes\nNo\n\n\nplotly\nNo\nYes\nYes\n\n\nggiraph\nYes\nNo\nYes"
   },
   {
     "objectID": "exercises/4_theme_guide.html",
