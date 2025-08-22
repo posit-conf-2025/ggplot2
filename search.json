@@ -35,340 +35,109 @@
     "text": "Instructor(s)\nThomas Lin Pedersen (thomas.pedersen@posit.co)\nThomas is a software engineer at Posit where he is in charge of most things related to R graphics. He is the maintainer of ggplot2 and author of numerous packages that improves the graphics capabilities of R. On the side, Thomas is a generative artist making computational art using R, JavaScript, and GLSL. A not insignificant number of packages or features has been born from artistic needs.\nTeun van den Brand (teun.vandenbrand@posit.co) Teun is a contractor working for Posit. He contributes mostly to the ggplot2 and scales packages and has been in charge of most of the new features in the latest releases. He has authored other packages such as legendry, ggh4x and ggarrow — all building on the ggplot2 framework.\n\n This work is licensed under a Creative Commons Attribution 4.0 International License."
   },
   {
-    "objectID": "exercises/2_ggplot2.html",
-    "href": "exercises/2_ggplot2.html",
-    "title": "Exercises for session 1.2",
+    "objectID": "exercises/3_text_fonts.html",
+    "href": "exercises/3_text_fonts.html",
+    "title": "Exercises for session 3",
     "section": "",
-    "text": "library(ggplot2)\nlibrary(grid)\n\n# Some graphics devices don't support gradients and patterns. We set the\n# device to ragg, which does support these.\nknitr::opts_chunk$set(dev = \"ragg_png\")"
+    "text": "The codeblocks here are interactive and can be executed in the browser. You can also copy them over and solve the exercises locally. In the existing code ______ denotes areas that need to be substituted with your own code to solve the exercise.\nEach exercise has one or more hints, as well as a full solution if you click through all the hints. Do try to solve the exercises on your own first."
   },
   {
-    "objectID": "exercises/2_ggplot2.html#headings",
-    "href": "exercises/2_ggplot2.html#headings",
-    "title": "Exercises for session 1.2",
-    "section": "Headings",
-    "text": "Headings\n\nExercise 1.2.1\nWe can use the label attribute in columns to automatically label a variable. Complete the chunk below to set a label attribute for the unemploy column in the economics dataset. Per ?economics, the unemploy variable gives the number of unemployed people in thousands.\n\nattr(economics$date, \"label\") &lt;- \"Year\"\n...\n\n\nggplot(economics, aes(date, unemploy)) +\n  geom_area(alpha = 0.4, colour = \"black\")\n\n\n\n\n\n\n\n\n\n\nExercise 1.2.2\nIf don’t have pre-set labels, we can also use the labs(dictionary) argument to populate column-label pairs. Use this argument to label the variables in the plot below. You can use ?mpg to find out what the columns are.\n\nggplot(mpg, aes(displ, hwy, colour = drv)) +\n  geom_point() +\n  labs(dictionary = ...)"
+    "objectID": "exercises/3_text_fonts.html#working-with-fonts",
+    "href": "exercises/3_text_fonts.html#working-with-fonts",
+    "title": "Exercises for session 3",
+    "section": "3.1 Working with fonts",
+    "text": "3.1 Working with fonts\n\nExercise 3.1.1\nDownload this font file and add the font to your R session. You can confirm that is has been added by calling systemfonts::match_fonts(\"cirquee\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nUse systemfonts::add_fonts() to make systemfonts aware of the font file\nsystemfonts::add_fonts(______)\n\nsystemfonts::match_fonts(\"cirquee\")\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nsystemfonts::add_fonts(\"Cirquee.otf\")\n\nsystemfonts::match_fonts(\"cirquee\")\n\n\n\n\n\n\nExercise 3.1.2\nFind and install a font from Google Fonts or Font Squirrel using systemfonts. Again, verify it has been added using match_fonts()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nIf you use Google font you need to use get_from_font_squirrel()\nsystemfonts::get_from_font_squirrel(______)\n\nsystemfonts::match_fonts(______)\nIf you use Google font you need to use get_from_google_fonts()\nsystemfonts::get_from_google_fonts(______)\n\nsystemfonts::match_fonts(______)\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nsystemfonts::get_from_font_squirrel(\"Raleway\")\n\nsystemfonts::match_fonts(\"Raleway\")\nor\nsystemfonts::get_from_google_fonts(\"Raleway\")\n\nsystemfonts::match_fonts(\"Raleway\")\nIf you chose to get the Raleway font\n\n\n\n\nRead the documentation of systemfonts::get_from_google_fonts() and systemfonts::require_font(). How do they differ in where they place the font file and what consequence does it have?\n\n\nExercise 3.1.3\nUse the two new fonts to style the following plot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nYou can use the family name of the new fonts inside element_text() in the theme specification\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nggplot(mpg) + \n  geom_bar(aes(class, fill = factor(cyl)), position = \"dodge\") + \n  theme(\n    text = element_text(\"Raleway\"),\n    title = element_text(\"Cirquee\")\n  )"
   },
   {
-    "objectID": "exercises/2_ggplot2.html#patterns-and-gradients",
-    "href": "exercises/2_ggplot2.html#patterns-and-gradients",
-    "title": "Exercises for session 1.2",
-    "section": "Patterns and gradients",
-    "text": "Patterns and gradients\n\nExercise 1.2.3\nUse grid::linearGradient() to set up a horizontal colour gradient. Which arguments do you have to tweak to change the default diagonal gradient to a horizontal one? How would you set a vertical gradient instead?\n\ngradient &lt;- ...\n\nggplot(economics, aes(date, unemploy)) +\n  geom_area(fill = list(gradient), colour = \"black\")\n\n\n\nExercise 1.2.4\nThe following code sets up a crosshatch pattern that can be used as the fill aesthetic.\n\nwidth &lt;- height &lt;- unit(3, \"mm\")\ncrosshatch &lt;- pattern(\n  segmentsGrob(\n    x0 = c(0, 1), x1 = c(1, 0), \n    y0 = c(0, 0), y1 = c(1, 1),\n    gp = gg_par(col = \"black\", lwd = 0.5),\n    vp = viewport(width = width, height = height)\n  ),\n  width = width, height = height,\n  extend = \"repeat\"\n)\n\nggplot(economics, aes(date, unemploy)) +\n  geom_area(fill = crosshatch, colour = \"black\")\n\n\n\n\n\n\n\n\nCreate a new pattern of your liking. Can you design a polka-dot or checkerboard pattern? You can use grid::circleGrob() and grid::rectGrob() for circles and rectangles respectively. We’ll use it to create a manual fill scale of patterns.\n\nmy_pattern &lt;- pattern(\n  ...\n)\n\npatterns &lt;- list(\n  crosshatch,\n  gradient,\n  my_pattern\n)\n\nggplot(palmerpenguins::penguins) +\n  aes(species, fill = island) +\n  geom_bar() +\n  scale_fill_manual(values = patterns)"
+    "objectID": "exercises/3_text_fonts.html#basic-markdown-formatting-with-marquee",
+    "href": "exercises/3_text_fonts.html#basic-markdown-formatting-with-marquee",
+    "title": "Exercises for session 3",
+    "section": "3.2 Basic markdown formatting with marquee",
+    "text": "3.2 Basic markdown formatting with marquee\n\nExercise 3.2.1\nCreate a marquee text that uses various formatting options like bold, italic, lists, and code blocks. Display it using grid::grid.draw(marquee_grob()). Include at least three different types of formatting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\ntext &lt;- \"\n# Headings are important\nHowever, *noone* wants to miss a `nice piece of code`\n\n```\n1 + 1\n#&gt; [1] 2\n```\n\n**WOW**\n\"\n\ngrid::grid.draw(marquee_grob(text))\n\n\n\n\n\n\nExercise 3.2.2\nCreate a marquee text that uses custom spans to change text colors, sizes, and add superscripts or subscripts. Try to show that styles inherits from their parent by placing spans inside spans\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nCustom spans are added using the {.&lt;class&gt; ...} syntax. If &lt;class&gt; is a valid color name (from colors()) or a hex color code (in which case the preceeding . is changed to a #) than the given color is applied to the span. If &lt;class&gt; is an integer then that text size is applied to the span\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\ntext &lt;- \"\nStyling {.red can be {.20 nested}}. This is *also {#123456 true}* when you mix\ncustom and standard syntax\n\"\n\ngrid::grid.draw(marquee_grob(text))\n\n\n\n\n\n\nExercise 3.2.3\nCreate a marquee text that includes either an image (like a plot) or a table. If using a plot, create a simple scatterplot first, then include it in your marquee text.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nUse the standard markdown image syntax but provide the name of a variable holding a plot, grob, or table instead of the path/URL to an image.\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nlibrary(gt)\nstart_date &lt;- \"2010-06-07\"\nend_date &lt;- \"2010-06-14\"\ntbl &lt;- sp500[sp500$date &gt;= start_date & sp500$date &lt;= end_date, 1:6] |&gt;\n  gt() |&gt;\n  tab_header(\n    title = \"S&P 500\",\n    subtitle = glue::glue(\"{start_date} to {end_date}\")\n  ) |&gt;\n  fmt_currency() |&gt;\n  fmt_date(columns = date, date_style = \"wd_m_day_year\") |&gt;\n  fmt_number(columns = volume, suffixing = TRUE)\n\ntext &lt;- \"\n`{gt}` is much more powerful than any markdown table syntax! \n\n*Just look at this:*\n\n![](tbl)\n\nPretty neat, huh!\n\"\n\ngrid::grid.draw(marquee_grob(text))"
   },
   {
-    "objectID": "exercises/2_ggplot2.html#delayed-evaluation",
-    "href": "exercises/2_ggplot2.html#delayed-evaluation",
-    "title": "Exercises for session 1.2",
-    "section": "Delayed evaluation",
-    "text": "Delayed evaluation\n\nExercise 1.2.5\nIn the plot below, can you redirect the alpha aesthetic to represent the count computed variable? You can set the fill aesthetic to a fixed colour like \"black\". For an extra challenge, can you use scale_alpha_continuous() to anchor 0 at complete transparency?\n\nggplot(diamonds) +\n  aes(carat, price) +\n  stat_bin_2d(\n    binwidth = c(0.05, 200)\n  )"
+    "objectID": "exercises/3_text_fonts.html#marquee-styling",
+    "href": "exercises/3_text_fonts.html#marquee-styling",
+    "title": "Exercises for session 3",
+    "section": "3.3 marquee styling",
+    "text": "3.3 marquee styling\n\nExercise 3.3.1\nRead the documentation of marquee::classic_style() and experiment with how different a look you can get by only modifying the arguments that it takes\n\n\n\n\n\n\n\n\nAs well as code blocks\n\n&gt;And notes\n\"\n\ngrid::grid.draw(marquee_grob(text, style = style))\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nNo wrong answers here. Just experiment with the various arguments and its effect on the provided text\n\n\n\n\n\n\nExercise 3.3.2\nChange the look of inline code so that it is displayed with an outlined serif font on a transparent background with a lightblue border. You can read the documentation for marquee_parse() to see the tags that are asigned to various markdown elements.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nInline code uses the \"code\" tag. See the documentation for style() to figure out the different styles that needs to be changed to get the requested look\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThere are two ways to call modify_style(). Either pass the different styles directly:\nstyle &lt;- classic_style(base_size = 20) |&gt;\n  modify_style(\n    \"code\",\n    family = \"serif\",\n    color = \"white\",\n    background = NA,\n    border = \"lightblue\",\n    border_size = trbl(grid::unit(1, \"pt\")),\n    outline = \"black\"\n  )\nor pass in a style object as the first argument after the tag name\nstyle &lt;- classic_style(base_size = 20) |&gt;\n  modify_style(\n    \"code\",\n    style(\n      family = \"serif\",\n      color = \"white\",\n      background = NA,\n      border = \"lightblue\",\n      border_size = trbl(grid::unit(1, \"pt\")),\n      outline = \"black\"\n    )\n  )\nCan you see what the difference is between the two approaches (it’s described in the documentation for modify_style())\n\n\n\n\n\n\nExercise 3.3.3\nDefine a new tag (\"fancy\"), which makes text over-the-top unreadable due to its styling. Consider using the features argument as a means to that end.\nTest out the new style on a piece of text of your own choice\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nFont features are a huge subject and if you have never heard of it before you may choose to use other arguments to make the text over-the-top. If you do use the features argument, remember that not all fonts support all features. You can see which features are supported by a font using textshaping::get_font_features()\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nAn example of a horrible style could be\nsystemfonts::require_font(\"EB Garamond\")\nstyle &lt;- classic_style(base_size = 20) |&gt;\n  modify_style(\n    \"fancy\",\n    family = \"EB Garamond\", \n    weight = \"ultrabold\",\n    features = systemfonts::font_feature(\n      swsh = 0, \n      dlig = 1, \n      hlig = 1, \n      hist = 1, \n      kern = 0, \n      aalt = 2\n    ), \n    outline = \"black\", \n    color = \"white\", \n    background = \"green\", \n    tracking = 300\n  )\n\ntext &lt;- \"{.fancy This is a test of readability (& style)}\"\nbut I’m sure you can do it better/worse"
   },
   {
-    "objectID": "exercises/2_ggplot2.html#polar-coordinates",
-    "href": "exercises/2_ggplot2.html#polar-coordinates",
-    "title": "Exercises for session 1.2",
-    "section": "Polar coordinates",
-    "text": "Polar coordinates\n\nExercise 1.2.6\nPlot p displays a Cartesian bar chart of car manufacturers. Add a coord_radial() with arguments to p to make a half-ring shape coxcomb/windrose chart with nicely displayed text.\n\np &lt;- ggplot(mpg) +\n  aes(manufacturer, label = manufacturer) +\n  geom_bar() +\n  geom_text(\n    aes(y = 37),\n    # Prevent duplicated labels\n    data = ~ dplyr::filter(.x, !duplicated(manufacturer)),\n    angle = 90, hjust = 1\n  ) +\n  scale_x_discrete(guide = \"none\")\np"
+    "objectID": "exercises/3_text_fonts.html#using-geom_marquee-in-ggplot2",
+    "href": "exercises/3_text_fonts.html#using-geom_marquee-in-ggplot2",
+    "title": "Exercises for session 3",
+    "section": "3.4 Using geom_marquee() in ggplot2",
+    "text": "3.4 Using geom_marquee() in ggplot2\n\nExercise 3.4.1\nCreate a scatter plot of bill length vs flipper length from the penguins dataset. Use geom_marquee() to label at least two points with formatted text (including italics or bold). Experiment with the width aesthetic to force automatic line breaking\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nYou can use geom_marquee() with some coordinates to place formatted text labels. To choose points to label, you might want to filter the penguins data for specific individuals.\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\n# Find some interesting points to label\nadelie &lt;- subset(penguins, species == \"Adelie\" & bill_len &gt; 45)[1, ]\ngentoo &lt;- subset(penguins, species == \"Gentoo\" & flipper_len &gt; 230)[1, ]\npenguins2 &lt;- rbind(adelie, gentoo)\npenguins2$label &lt;- c(\n  \"*Adelie* penguin with **large bill**\",\n  \"*Gentoo* penguin with **long flippers**\"\n)\n\nggplot(penguins, aes(bill_len, flipper_len)) + \n  geom_point(aes(color = species)) +\n  geom_marquee(\n    aes(label = label), \n    data = penguins2,\n    width = grid::unit(3, \"cm\"),\n    hjust = 0,\n    vjust = 1\n  ) + \n  theme(legend.position = \"bottom\")\n\n\n\n\n\n\nExercise 3.4.2\nCreate a plot and use element_marquee() to customize the plot title, subtitle, and axis titles. Make the titles include formatted text (like bold or italic words) and use a custom font.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nYou can use element_marquee() to replace standard text elements in the theme. For example, plot.title = element_marquee(...) for the title. Remember to use markdown formatting in your text.\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nsystemfonts::require_font(\"Spectral\")\nsystemfonts::require_font(\"Exo 2\")\n\nggplot(penguins, aes(bill_len, flipper_len)) + \n  geom_point(aes(color = species)) +\n  labs(\n    title = \"**Penguin** *Measurements*\",\n    subtitle = \"Analysis of *bill length* vs *flipper length*\",\n    x = \"*Bill Length* (mm)\",\n    y = \"*Flipper Length* (mm)\"\n  ) +\n  theme(\n    plot.title = element_marquee(family = \"Spectral\", size = 16),\n    plot.subtitle = element_marquee(family = \"Exo 2\", size = 12),\n    axis.title.x = element_marquee(family = \"Exo 2\", size = 10),\n    axis.title.y = element_marquee(family = \"Exo 2\", size = 10)\n  )\n\n\n\n\n\n\nExercise 3.4.3\nCreate a scatter plot with a color aesthetic for species. Use guide_marquee() to create a custom legend that includes text describing the penguin species colouring the species name and includind the keys as well.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nYou need to take care of two things:\n\nTell ggplot2 to use guide_marquee() for the color aesthetic\nProvide the markdown text that will be used for the legend\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThe two things can be accomplished in different ways\n\nThe guide type can be specified with guides() or within scale_color_*()\nThe text can be provided in the guide_marquee() constructor, in the scale constructor, or with labs()\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nlegend_text &lt;- \"\nAn overview of the relationship between flipper and bill length between \n{.Adelie *Adelie*} &lt;&lt;Adelie&gt;&gt;, {.Chinstrap *Chinstrap*} &lt;&lt;Chinstrap&gt;&gt;, and \n{.Gentoo *Gentoo*} &lt;&lt;Gentoo&gt;&gt; penguins\n\"\nggplot(penguins, aes(bill_len, flipper_len, color = species)) + \n  geom_point() +\n  guides(color = \"marquee\") + \n  labs(color = legend_text)"
   },
   {
-    "objectID": "exercises/2_ggplot2.html#facets",
-    "href": "exercises/2_ggplot2.html#facets",
-    "title": "Exercises for session 1.2",
-    "section": "Facets",
-    "text": "Facets\n\nExercise 1.2.7\nGiven the following code, adapt the facet_wrap() statement to:\n\nMirror the facet order\nPlace labelled axes at the bottom of every panel\nPlace axis ticks on all y-axes\n\n\nggplot(diamonds) +\n  aes(carat, price) +\n  geom_point(shape = \".\") +\n  facet_wrap(~ cut, dir = \"lt\")"
+    "objectID": "exercises/4_theme_guide.html",
+    "href": "exercises/4_theme_guide.html",
+    "title": "Exercises for session 4",
+    "section": "",
+    "text": "library(ggplot2)\n# Emoji will not always render flawlessly with default device\nknitr::opts_chunk$set(dev = \"ragg_png\")"
   },
   {
-    "objectID": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
-    "href": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
-    "title": "Attribution-ShareAlike 4.0 International",
-    "section": "Creative Commons Attribution-ShareAlike 4.0 International Public License",
-    "text": "Creative Commons Attribution-ShareAlike 4.0 International Public License\nBy exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution-ShareAlike 4.0 International Public License (“Public License”). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.\n\nSection 1 – Definitions.\n\nAdapted Material means material subject to Copyright and Similar Rights that is derived from or based upon the Licensed Material and in which the Licensed Material is translated, altered, arranged, transformed, or otherwise modified in a manner requiring permission under the Copyright and Similar Rights held by the Licensor. For purposes of this Public License, where the Licensed Material is a musical work, performance, or sound recording, Adapted Material is always produced where the Licensed Material is synched in timed relation with a moving image.\nAdapter’s License means the license You apply to Your Copyright and Similar Rights in Your contributions to Adapted Material in accordance with the terms and conditions of this Public License.\nBY-SA Compatible License means a license listed at creativecommons.org/compatiblelicenses, approved by Creative Commons as essentially the equivalent of this Public License.\nCopyright and Similar Rights means copyright and/or similar rights closely related to copyright including, without limitation, performance, broadcast, sound recording, and Sui Generis Database Rights, without regard to how the rights are labeled or categorized. For purposes of this Public License, the rights specified in Section 2(b)(1)-(2) are not Copyright and Similar Rights.\nEffective Technological Measures means those measures that, in the absence of proper authority, may not be circumvented under laws fulfilling obligations under Article 11 of the WIPO Copyright Treaty adopted on December 20, 1996, and/or similar international agreements.\nExceptions and Limitations means fair use, fair dealing, and/or any other exception or limitation to Copyright and Similar Rights that applies to Your use of the Licensed Material.\nLicense Elements means the license attributes listed in the name of a Creative Commons Public License. The License Elements of this Public License are Attribution and ShareAlike.\nLicensed Material means the artistic or literary work, database, or other material to which the Licensor applied this Public License.\nLicensed Rights means the rights granted to You subject to the terms and conditions of this Public License, which are limited to all Copyright and Similar Rights that apply to Your use of the Licensed Material and that the Licensor has authority to license.\nLicensor means the individual(s) or entity(ies) granting rights under this Public License.\nShare means to provide material to the public by any means or process that requires permission under the Licensed Rights, such as reproduction, public display, public performance, distribution, dissemination, communication, or importation, and to make material available to the public including in ways that members of the public may access the material from a place and at a time individually chosen by them.\nSui Generis Database Rights means rights other than copyright resulting from Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, as amended and/or succeeded, as well as other essentially equivalent rights anywhere in the world.\nYou means the individual or entity exercising the Licensed Rights under this Public License. Your has a corresponding meaning.\n\n\n\nSection 2 – Scope.\n\nLicense grant.\n\nSubject to the terms and conditions of this Public License, the Licensor hereby grants You a worldwide, royalty-free, non-sublicensable, non-exclusive, irrevocable license to exercise the Licensed Rights in the Licensed Material to:\nA. reproduce and Share the Licensed Material, in whole or in part; and\nB. produce, reproduce, and Share Adapted Material.\nExceptions and Limitations. For the avoidance of doubt, where Exceptions and Limitations apply to Your use, this Public License does not apply, and You do not need to comply with its terms and conditions.\nTerm. The term of this Public License is specified in Section 6(a).\nMedia and formats; technical modifications allowed. The Licensor authorizes You to exercise the Licensed Rights in all media and formats whether now known or hereafter created, and to make technical modifications necessary to do so. The Licensor waives and/or agrees not to assert any right or authority to forbid You from making technical modifications necessary to exercise the Licensed Rights, including technical modifications necessary to circumvent Effective Technological Measures. For purposes of this Public License, simply making modifications authorized by this Section 2(a)(4) never produces Adapted Material.\nDownstream recipients.\nA. Offer from the Licensor – Licensed Material. Every recipient of the Licensed Material automatically receives an offer from the Licensor to exercise the Licensed Rights under the terms and conditions of this Public License.\nB. __Additional offer from the Licensor – Adapted Material. Every recipient of Adapted Material from You automatically receives an offer from the Licensor to exercise the Licensed Rights in the Adapted Material under the conditions of the Adapter’s License You apply.\nC. No downstream restrictions. You may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, the Licensed Material if doing so restricts exercise of the Licensed Rights by any recipient of the Licensed Material.\nNo endorsement. Nothing in this Public License constitutes or may be construed as permission to assert or imply that You are, or that Your use of the Licensed Material is, connected with, or sponsored, endorsed, or granted official status by, the Licensor or others designated to receive attribution as provided in Section 3(a)(1)(A)(i).\n\nOther rights.\n\nMoral rights, such as the right of integrity, are not licensed under this Public License, nor are publicity, privacy, and/or other similar personality rights; however, to the extent possible, the Licensor waives and/or agrees not to assert any such rights held by the Licensor to the limited extent necessary to allow You to exercise the Licensed Rights, but not otherwise.\nPatent and trademark rights are not licensed under this Public License.\nTo the extent possible, the Licensor waives any right to collect royalties from You for the exercise of the Licensed Rights, whether directly or through a collecting society under any voluntary or waivable statutory or compulsory licensing scheme. In all other cases the Licensor expressly reserves any right to collect such royalties.\n\n\n\n\nSection 3 – License Conditions.\nYour exercise of the Licensed Rights is expressly made subject to the following conditions.\n\nAttribution.\n\nIf You Share the Licensed Material (including in modified form), You must:\nA. retain the following if it is supplied by the Licensor with the Licensed Material:\n\nidentification of the creator(s) of the Licensed Material and any others designated to receive attribution, in any reasonable manner requested by the Licensor (including by pseudonym if designated);\na copyright notice;\na notice that refers to this Public License;\na notice that refers to the disclaimer of warranties;\na URI or hyperlink to the Licensed Material to the extent reasonably practicable;\n\nB. indicate if You modified the Licensed Material and retain an indication of any previous modifications; and\nC. indicate the Licensed Material is licensed under this Public License, and include the text of, or the URI or hyperlink to, this Public License.\nYou may satisfy the conditions in Section 3(a)(1) in any reasonable manner based on the medium, means, and context in which You Share the Licensed Material. For example, it may be reasonable to satisfy the conditions by providing a URI or hyperlink to a resource that includes the required information.\nIf requested by the Licensor, You must remove any of the information required by Section 3(a)(1)(A) to the extent reasonably practicable.\n\nShareAlike.\n\nIn addition to the conditions in Section 3(a), if You Share Adapted Material You produce, the following conditions also apply.\n\nThe Adapter’s License You apply must be a Creative Commons license with the same License Elements, this version or later, or a BY-SA Compatible License.\nYou must include the text of, or the URI or hyperlink to, the Adapter’s License You apply. You may satisfy this condition in any reasonable manner based on the medium, means, and context in which You Share Adapted Material.\nYou may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, Adapted Material that restrict exercise of the rights granted under the Adapter’s License You apply.\n\n\n\nSection 4 – Sui Generis Database Rights.\nWhere the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:\n\nfor the avoidance of doubt, Section 2(a)(1) grants You the right to extract, reuse, reproduce, and Share all or a substantial portion of the contents of the database;\nif You include all or a substantial portion of the database contents in a database in which You have Sui Generis Database Rights, then the database in which You have Sui Generis Database Rights (but not its individual contents) is Adapted Material, including for purposes of Section 3(b); and\nYou must comply with the conditions in Section 3(a) if You Share all or a substantial portion of the contents of the database.\n\nFor the avoidance of doubt, this Section 4 supplements and does not replace Your obligations under this Public License where the Licensed Rights include other Copyright and Similar Rights.\n\n\nSection 5 – Disclaimer of Warranties and Limitation of Liability.\n\nUnless otherwise separately undertaken by the Licensor, to the extent possible, the Licensor offers the Licensed Material as-is and as-available, and makes no representations or warranties of any kind concerning the Licensed Material, whether express, implied, statutory, or other. This includes, without limitation, warranties of title, merchantability, fitness for a particular purpose, non-infringement, absence of latent or other defects, accuracy, or the presence or absence of errors, whether or not known or discoverable. Where disclaimers of warranties are not allowed in full or in part, this disclaimer may not apply to You.\nTo the extent possible, in no event will the Licensor be liable to You on any legal theory (including, without limitation, negligence) or otherwise for any direct, special, indirect, incidental, consequential, punitive, exemplary, or other losses, costs, expenses, or damages arising out of this Public License or use of the Licensed Material, even if the Licensor has been advised of the possibility of such losses, costs, expenses, or damages. Where a limitation of liability is not allowed in full or in part, this limitation may not apply to You.\nThe disclaimer of warranties and limitation of liability provided above shall be interpreted in a manner that, to the extent possible, most closely approximates an absolute disclaimer and waiver of all liability.\n\n\n\nSection 6 – Term and Termination.\n\nThis Public License applies for the term of the Copyright and Similar Rights licensed here. However, if You fail to comply with this Public License, then Your rights under this Public License terminate automatically.\nWhere Your right to use the Licensed Material has terminated under Section 6(a), it reinstates:\n\nautomatically as of the date the violation is cured, provided it is cured within 30 days of Your discovery of the violation; or\nupon express reinstatement by the Licensor.\n\nFor the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may have to seek remedies for Your violations of this Public License.\nFor the avoidance of doubt, the Licensor may also offer the Licensed Material under separate terms or conditions or stop distributing the Licensed Material at any time; however, doing so will not terminate this Public License.\nSections 1, 5, 6, 7, and 8 survive termination of this Public License.\n\n\n\nSection 7 – Other Terms and Conditions.\n\nThe Licensor shall not be bound by any additional or different terms or conditions communicated by You unless expressly agreed.\nAny arrangements, understandings, or agreements regarding the Licensed Material not stated herein are separate from and independent of the terms and conditions of this Public License.t stated herein are separate from and independent of the terms and conditions of this Public License.\n\n\n\nSection 8 – Interpretation.\n\nFor the avoidance of doubt, this Public License does not, and shall not be interpreted to, reduce, limit, restrict, or impose conditions on any use of the Licensed Material that could lawfully be made without permission under this Public License.\nTo the extent possible, if any provision of this Public License is deemed unenforceable, it shall be automatically reformed to the minimum extent necessary to make it enforceable. If the provision cannot be reformed, it shall be severed from this Public License without affecting the enforceability of the remaining terms and conditions.\nNo term or condition of this Public License will be waived and no failure to comply consented to unless expressly agreed to by the Licensor.\nNothing in this Public License constitutes or may be interpreted as a limitation upon, or waiver of, any privileges and immunities that apply to the Licensor or You, including from the legal processes of any jurisdiction or authority.\n\n\nCreative Commons is not a party to its public licenses. Notwithstanding, Creative Commons may elect to apply one of its public licenses to material it publishes and in those instances will be considered the “Licensor.” Except for the limited purpose of indicating that material is shared under a Creative Commons public license or as otherwise permitted by the Creative Commons policies published at creativecommons.org/policies, Creative Commons does not authorize the use of the trademark “Creative Commons” or any other trademark or logo of Creative Commons without its prior written consent including, without limitation, in connection with any unauthorized modifications to any of its public licenses or any other arrangements, understandings, or agreements concerning use of licensed material. For the avoidance of doubt, this paragraph does not form part of the public licenses.\nCreative Commons may be contacted at creativecommons.org"
-  },
-  {
-    "objectID": "slides/5_composition.html#key-takeaway-today",
-    "href": "slides/5_composition.html#key-takeaway-today",
-    "title": "Plot composition",
-    "section": "Key takeaway today",
-    "text": "Key takeaway today\n\n\nComposing plots are no harder than adding a new layer to your plot"
-  },
-  {
-    "objectID": "slides/5_composition.html#today",
-    "href": "slides/5_composition.html#today",
-    "title": "Plot composition",
-    "section": "Today",
-    "text": "Today\n\nIntroduce patchwork for plot composition\n\nKey design principles\n\n\nFrom simple to complex layouts\nThe non-panel stuff"
-  },
-  {
-    "objectID": "slides/5_composition.html#patchwork",
-    "href": "slides/5_composition.html#patchwork",
-    "title": "Plot composition",
-    "section": "Patchwork",
-    "text": "Patchwork\n\nComposition should have a composable API\nThe API should feel natural and easy to reason about in order to invite experimentation\nAssume alignment but give escape hatch"
-  },
-  {
-    "objectID": "slides/5_composition.html#patchwork-in-a-nutshell",
-    "href": "slides/5_composition.html#patchwork-in-a-nutshell",
-    "title": "Plot composition",
-    "section": "Patchwork in a nutshell",
-    "text": "Patchwork in a nutshell\n\n\np1 &lt;- ggplot(penguins) + \n  geom_point(aes(x = flipper_len, y = bill_len))\n\np2 &lt;- ggplot(penguins) + \n  geom_histogram(aes(flipper_len))\n\np1 + p2"
-  },
-  {
-    "objectID": "slides/5_composition.html#patchwork-in-a-nutshell-1",
-    "href": "slides/5_composition.html#patchwork-in-a-nutshell-1",
-    "title": "Plot composition",
-    "section": "Patchwork in a nutshell",
-    "text": "Patchwork in a nutshell\n\n\np3 &lt;- ggplot(penguins) + \n  geom_boxplot(aes(species, bill_len))\n\np1 | (p2 / p3)"
-  },
-  {
-    "objectID": "slides/5_composition.html#patchwork-in-a-nutshell-2",
-    "href": "slides/5_composition.html#patchwork-in-a-nutshell-2",
-    "title": "Plot composition",
-    "section": "Patchwork in a nutshell",
-    "text": "Patchwork in a nutshell\n\n\nggplot(penguins) + \n  geom_point(aes(x = flipper_len, y = bill_len)) + \n  ggplot(penguins) + \n  geom_histogram(aes(flipper_len))"
-  },
-  {
-    "objectID": "slides/5_composition.html#patchwork-in-a-nutshell-3",
-    "href": "slides/5_composition.html#patchwork-in-a-nutshell-3",
-    "title": "Plot composition",
-    "section": "Patchwork in a nutshell",
-    "text": "Patchwork in a nutshell\n\n\np1 + p2 +\n  geom_density(\n    aes(flipper_len, after_stat(count))\n  )"
-  },
-  {
-    "objectID": "slides/5_composition.html#exercise",
-    "href": "slides/5_composition.html#exercise",
-    "title": "Plot composition",
-    "section": "Exercise",
-    "text": "Exercise"
-  },
-  {
-    "objectID": "slides/5_composition.html#more-layout-options",
-    "href": "slides/5_composition.html#more-layout-options",
-    "title": "Plot composition",
-    "section": "More layout options",
-    "text": "More layout options\n\n\np4 &lt;- ggplot(penguins) + \n  geom_bar(\n    aes(species, fill = sex), \n    position = \"dodge\"\n  )\n\nwrap_plots(p1, p2, p3, p4, widths = c(1, 2))"
-  },
-  {
-    "objectID": "slides/5_composition.html#more-layout-options-1",
-    "href": "slides/5_composition.html#more-layout-options-1",
-    "title": "Plot composition",
-    "section": "More layout options",
-    "text": "More layout options\n\n\np1 + p2 + p3 + p4 + plot_layout(widths = c(1, 2))"
-  },
-  {
-    "objectID": "slides/5_composition.html#more-layout-options-2",
-    "href": "slides/5_composition.html#more-layout-options-2",
-    "title": "Plot composition",
-    "section": "More layout options",
-    "text": "More layout options\n\n\nlayout &lt;- \"\nA#B\n#CC\nDD#\n\"\np1 + p2 + p3 + p4 + \n  plot_layout(design = layout)"
-  },
-  {
-    "objectID": "slides/5_composition.html#more-layout-options-3",
-    "href": "slides/5_composition.html#more-layout-options-3",
-    "title": "Plot composition",
-    "section": "More layout options",
-    "text": "More layout options\n\n\nlayout &lt;- c(\n  area(1, 1, 2, 3),\n  area(2, 2, 3, 3)\n)\np1 + p2 + \n  plot_layout(design = layout)"
-  },
-  {
-    "objectID": "slides/5_composition.html#exercise-1",
-    "href": "slides/5_composition.html#exercise-1",
-    "title": "Plot composition",
-    "section": "Exercise",
-    "text": "Exercise"
-  },
-  {
-    "objectID": "slides/5_composition.html#layout-modifiers",
-    "href": "slides/5_composition.html#layout-modifiers",
-    "title": "Plot composition",
-    "section": "Layout modifiers",
-    "text": "Layout modifiers\n\nThe composition consists of a grid\nPanels are placed in one or more neighboring cells\nEverything outside the panels are placed in the gutter which expands to contain all\nWhat if you don’t want that?"
-  },
-  {
-    "objectID": "slides/5_composition.html#layout-modifiers---insets",
-    "href": "slides/5_composition.html#layout-modifiers---insets",
-    "title": "Plot composition",
-    "section": "Layout modifiers - Insets",
-    "text": "Layout modifiers - Insets\n\n\np1 + inset_element(\n  p2, \n  left = 0.5, \n  bottom = 0.5, \n  right = grid::unit(1, \"npc\") - grid::unit(6, \"mm\"),\n  top = grid::unit(1, \"npc\") - grid::unit(6, \"mm\"),\n)"
-  },
-  {
-    "objectID": "slides/5_composition.html#layout-modifiers---free",
-    "href": "slides/5_composition.html#layout-modifiers---free",
-    "title": "Plot composition",
-    "section": "Layout modifiers - Free",
-    "text": "Layout modifiers - Free\n\n\np3a &lt;- p3 + \n  guides(x = guide_axis(angle = 45))\np1 + p3a"
-  },
-  {
-    "objectID": "slides/5_composition.html#layout-modifiers---free-1",
-    "href": "slides/5_composition.html#layout-modifiers---free-1",
-    "title": "Plot composition",
-    "section": "Layout modifiers - Free",
-    "text": "Layout modifiers - Free\n\n\np1 + free(p3a, side = \"b\")"
-  },
-  {
-    "objectID": "slides/5_composition.html#layout-modifiers---free-2",
-    "href": "slides/5_composition.html#layout-modifiers---free-2",
-    "title": "Plot composition",
-    "section": "Layout modifiers - Free",
-    "text": "Layout modifiers - Free\n\n\nfree(p1, \"label\", side = \"b\") + p3a"
-  },
-  {
-    "objectID": "slides/5_composition.html#exercise-2",
-    "href": "slides/5_composition.html#exercise-2",
-    "title": "Plot composition",
-    "section": "Exercise",
-    "text": "Exercise"
-  },
-  {
-    "objectID": "slides/5_composition.html#annotations",
-    "href": "slides/5_composition.html#annotations",
-    "title": "Plot composition",
-    "section": "Annotations",
-    "text": "Annotations\n\nOnce composed, the parts will constitute a new graphic"
-  },
-  {
-    "objectID": "slides/4_theme_guide.html#ink-paper",
-    "href": "slides/4_theme_guide.html#ink-paper",
-    "title": "Styling your plot",
+    "objectID": "exercises/4_theme_guide.html#ink-paper",
+    "href": "exercises/4_theme_guide.html#ink-paper",
+    "title": "Exercises for session 4",
     "section": "Ink & Paper",
-    "text": "Ink & Paper\n\nComplete themes\nGeom element\nUse in layers"
+    "text": "Ink & Paper\n\nExercise 4.1\nWe’ll work with this plot of the penguins dataset.\n\np &lt;- ggplot(palmerpenguins::penguins) +\n  aes(body_mass_g, flipper_length_mm, shape = species) +\n  geom_point(na.rm = TRUE) +\n  labs(\n    x = \"Body Mass (g)\",\n    y = \"Flipper Length (mm)\",\n    shape = \"Species\"\n  )\np\n\n\n\n\n\n\n\n\nPick any of the pre-existing complete themes and make a ‘dark mode’ variant of it.\n\np + ...\n\n\n\nHint\n\nUse the ink and paper arguments in —for example— theme_gray().\n\n\nSolution\n\nA different theme choice is fine, but the important bit is to set paper to a dark colour and ink to a light colour.\n\np + theme_gray(ink = \"white\", paper = \"black\")"
   },
   {
-    "objectID": "slides/4_theme_guide.html#default-palettes",
-    "href": "slides/4_theme_guide.html#default-palettes",
-    "title": "Styling your plot",
+    "objectID": "exercises/4_theme_guide.html#default-palettes",
+    "href": "exercises/4_theme_guide.html#default-palettes",
+    "title": "Exercises for session 4",
     "section": "Default palettes",
-    "text": "Default palettes\nSeveral ways to set a plot’s colour palette\n\nDirectly add a scale\n\n+ scale_colour_gradientn()\nNot set as default scale\n\nUsing esoteric options\n\noptions(ggplot2.continuous.colour = scale_colour_gradientn)\nArcane\n\nOverriding default scale\n\nscale_colour_continuous &lt;- scale_colour_gradientn\nMesses with namespace\n\nNEW: via theme()"
+    "text": "Default palettes\n\nExercise 4.2\nThis plot has a shape scale with the default palette.\n\np &lt;- ggplot(mpg, aes(displ, hwy, shape = fl)) +\n  geom_point(size = 5) +\n  scale_shape_discrete(\n    breaks = c(\n      regular = \"r\",\n      ethanol = \"e\",\n      diesel  = \"d\",\n      premium = \"p\",\n      CNG     = \"c\"\n    )\n  ) +\n  labs(\n    x = \"Engine Displacement\",\n    y = \"Fuel efficiency\",\n    shape = \"Fuel type\"\n  )\np\n\n\n\n\n\n\n\n\nMake a discrete shape palette using emoji. You can pick a theme like ‘farm animals’, ‘bugs’, ‘flowers’ or other symbols. Set it as the default palette in the theme().\n\nmy_shape_pal &lt;- ...\n\np + theme(... = my_shape_pal)\n\n\n\nHint\n\nShapes can use emoji because these count as ‘single letter’ strings. The palette can be a character vector that is compatible with scales::as_discrete_pal().\n\n\nSolution\n\nThe important bit is to realise that one should populate the palette.shape.discrete argument.\n\nmy_shape_pal &lt;- c(\"🫛\", \"🍓\", \"🥕\", \"🍋\", \"🍇\")\n\np + theme(palette.shape.discrete = my_shape_pal)"
   },
   {
-    "objectID": "slides/4_theme_guide.html#build-your-own-theme",
-    "href": "slides/4_theme_guide.html#build-your-own-theme",
-    "title": "Styling your plot",
+    "objectID": "exercises/4_theme_guide.html#build-your-own-theme",
+    "href": "exercises/4_theme_guide.html#build-your-own-theme",
+    "title": "Exercises for session 4",
     "section": "Build your own theme",
-    "text": "Build your own theme\nHow do you intend to use a personal theme?\n\nComplete theme\nPartial theme"
+    "text": "Build your own theme\n\nExercise 4.3\nWe have the following contour plot of eruption measurements taken from the geyser ‘Old Faithful’.\n\np &lt;- ggplot(faithful) +\n  aes(waiting, eruptions) +\n  geom_density2d(bins = 8) +\n  geom_point() +\n  labs(\n    x = \"Waiting time (min)\",\n    y = \"Eruption time (min)\"\n  )\np\n\n\n\n\n\n\n\n\nPick some topic that has a strong association with a colour scheme. It can be a forest, the ocean, the desert or something you come up with. Create your own theme with that topic in mind that:\n\nIs a function\nPasses arguments to a base theme\nAdjusts layer defaults\n\n\nmy_theme &lt;- ...\n\np + my_theme()\n\n\n\nHint\n\nYou may want to pass an ink/paper/accent argument to the base theme. Layer defaults can be set using element_geom().\n\n\nSolution\n\nThis is more of an exercise without a ‘correct’ answer, but here is an example using the night sky as topic.\n\nmy_theme &lt;- function(ink = \"cornsilk\", paper = \"#000033\", accent = \"gold\", ...) {\n  theme_gray(ink = ink, paper = paper, accent = accent, ...) +\n    theme(\n      geom = element_geom(pointshape = \"\\u2605\", pointsize = 3, linewidth = 0.2)\n    )\n}\n\np + my_theme()"
   },
   {
-    "objectID": "slides/4_theme_guide.html#custom-guides",
-    "href": "slides/4_theme_guide.html#custom-guides",
-    "title": "Styling your plot",
+    "objectID": "exercises/4_theme_guide.html#custom-guides",
+    "href": "exercises/4_theme_guide.html#custom-guides",
+    "title": "Exercises for session 4",
     "section": "Custom guides",
-    "text": "Custom guides\nggplot2 has more guides than colour bars and legends.\n\naxes\ncolour bar\ncolour steps\nlegend\nbinned guide"
+    "text": "Custom guides\n\nExercise 4.4\nWe have the following unemployment data from the United States.\n\nlibrary(legendry)\n\np &lt;- ggplot(economics, aes(date, unemploy)) +\n  geom_area(colour = \"black\", alpha = 0.3) +\n  labs(\n    x = \"Date\",\n    y = \"Unemployment (x1000)\"\n  )\n\np\n\n\n\n\n\n\n\n\nPick some event or period in the range of the plot above. Create an axis annotation to indicate that event or period. You may need to construct the appropriate key argument for a custom guide.\n\nmy_annotation &lt;- ...\n\np + guides(x = compose_stack(\"axis\", my_annotation))\n\n\n\nHint 1\n\nIf you’re stuck without inspiration, here are some arbitrary events and periods:\n\nFirst release of ggplot2 (2007)\nMargaret Thatcher serves as the UK’s prime minister (1979-1990)\nRelease of the original Sony Walkman (1979)\nThe pop group ‘The Spice Girls’ (1994-2000)\nFall of the Berlin Wall (1989)\nRelease of the pinnacle of telecommunication, the Nokia 3310 (2000)\nThe British sitcom ‘Mr. Bean’ (1990-1995)\nThomas Lin Pederson was born (1985)\nDavid Tennant plays the 10th Doctor in ‘Doctor Who’ (2005-2010)\nThe American sitcom ‘Golden Girls’ (1985-1992)\nThe birth of Hadley Wickham (1979)\nTexas Instruments launches its first graphing calculator (1990)\n\n\n\nHint 2\n\nYou can combine legendry::primitive_bracket() + legendry::key_range_manual() for periods. You can use legendry::guide_axis_base() + legendry::key_manual() for point-events.\n\n\nSolution\n\nFor a range of dates:\n\nmy_annotation &lt;- primitive_bracket(\n  key = key_range_manual(\n    start = as.Date(\"1977-01-20\"),\n    end   = as.Date(\"1981-01-20\"), \n    name  = \"Carter administration\"\n  ),\n  bracket = \"square\"\n)\n\np + guides(x = compose_stack(\"axis\", my_annotation))\n\n\n\n\n\n\n\n\nFor an event:\n\nmy_annotation &lt;- guide_axis_base(\n  key = key_manual(\n    aesthetic = as.Date(\"1991-09-27\"),\n    label = \"Release 'Terminator 2'\"\n  ),\n  theme = theme(\n    axis.ticks.length = unit(6, \"mm\"),\n    axis.ticks = element_line(arrow = arrow(length = unit(1.5, \"mm\")))\n  )\n)\n\n# Swapping the composition is a little bit cheating on my end\np + guides(x = compose_ontop(\"axis\", my_annotation))"
   },
   {
-    "objectID": "slides/1_introduction.html#mastering-data-visualization-with-ggplot2",
-    "href": "slides/1_introduction.html#mastering-data-visualization-with-ggplot2",
-    "title": "Mastering Data Visualization with ggplot2",
-    "section": "Mastering Data Visualization with ggplot2",
-    "text": "Mastering Data Visualization with ggplot2\nLatest Techniques and Best Practices"
-  },
-  {
-    "objectID": "slides/1_introduction.html#the-team",
-    "href": "slides/1_introduction.html#the-team",
-    "title": "Mastering Data Visualization with ggplot2",
-    "section": "The Team",
-    "text": "The Team\n \nTeachers\nThomas Lin Pedersen (me)\nTeun van den Brand\n \nTA\nKara Woo"
-  },
-  {
-    "objectID": "slides/1_introduction.html#today",
-    "href": "slides/1_introduction.html#today",
-    "title": "Mastering Data Visualization with ggplot2",
-    "section": "Today",
-    "text": "Today\n\nIntroduction\nModern ggplot2\nText rendering and font use\nStyling your plot\nPlot composition\nInteractive plots\nCreating extensions\nSpice up your plot"
-  },
-  {
-    "objectID": "slides/1_introduction.html#practical-information",
-    "href": "slides/1_introduction.html#practical-information",
-    "title": "Mastering Data Visualization with ggplot2",
-    "section": "Practical information",
-    "text": "Practical information\nhttps://posit-conf-2025.github.io/ggplot2/\nTBD"
-  },
-  {
-    "objectID": "sessions/5_composition.html",
-    "href": "sessions/5_composition.html",
-    "title": "Plot composition",
-    "section": "",
-    "text": "In this session we will dive into how you present multiple plots in the same figure. The key package here is patchwork and you will learn (almost) all there is to now about how to harness its power.\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
-  },
-  {
-    "objectID": "sessions/7_extensions.html",
-    "href": "sessions/7_extensions.html",
-    "title": "Creating extensions",
-    "section": "",
-    "text": "Here we talk about creating reusable pieces of code that fit into the grammar:\n\nClasses\nConstructors\nPatterns\n\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
-  },
-  {
-    "objectID": "sessions/4_theme_guide.html",
-    "href": "sessions/4_theme_guide.html",
-    "title": "Styling your plot",
-    "section": "",
-    "text": "In this session, we learn about the following topics:\n\nInk and paper\nPalettes in themes\nBuilding your own theme\nCustomising guides\n\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
-  },
-  {
-    "objectID": "sessions/1_introduction.html",
-    "href": "sessions/1_introduction.html",
-    "title": "Introduction",
-    "section": "",
-    "text": "This session will briefly introduce the rest of the day, giving an overview of the schedule and any practical information that may be relevant.\nKey points: * Agenda * Who we are * Practical info * Toilets * Ribbons * Etc\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
-  },
-  {
-    "objectID": "sessions/8_fun.html",
-    "href": "sessions/8_fun.html",
-    "title": "Spice up your plot",
-    "section": "",
-    "text": "In this last session we will (if time permits) spend some time showcasing things you can do with ggplots and its extensions that may make Tufte roll over, but on the other hand can help you create memorable visualisations with a lot of personality\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
-  },
-  {
-    "objectID": "sessions/2_ggplot2.html",
-    "href": "sessions/2_ggplot2.html",
-    "title": "Modern ggplot2",
-    "section": "",
-    "text": "The goal of this session is to get you up to speed with the latest developments from ggplot2 3.5.0 onwards.\n\nHeadings\nPatterns and gradients\nDelayed evaluation\nPolar coordinates\nFacets\n\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
-  },
-  {
-    "objectID": "sessions/3_text_fonts.html",
-    "href": "sessions/3_text_fonts.html",
-    "title": "Text rendering and font use",
-    "section": "",
-    "text": "In this session we will dive into working with text in ggplot2. There are two areas of special interest here: How to access the typeface (font) you want to use, and how to add rich formatting to your text. You will be introduced to two key packages that work in unison, namely systemfonts and marquee. Further, you will get an understanding of why selecting the right graphics device is paramount when it comes to text, moreso than for most other graphics features.\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
-  },
-  {
-    "objectID": "sessions/6_interaction.html",
-    "href": "sessions/6_interaction.html",
+    "objectID": "slides/6_interaction.html#interactivity",
+    "href": "slides/6_interaction.html#interactivity",
     "title": "Interactive plots",
-    "section": "",
-    "text": "Here we learn about sprucing up your plots for the digital world:\n\nplotly\nggiraph\ngganimate\n\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
+    "section": "Interactivity",
+    "text": "Interactivity"
   },
   {
-    "objectID": "slides/2_ggplot2.html#headings",
-    "href": "slides/2_ggplot2.html#headings",
-    "title": "Modern ggplot2",
-    "section": "Headings",
-    "text": "Headings\n\nColumn metadata\nData dictionary"
+    "objectID": "slides/6_interaction.html#gganimate",
+    "href": "slides/6_interaction.html#gganimate",
+    "title": "Interactive plots",
+    "section": "gganimate",
+    "text": "gganimate\nRenders animations of your plot to GIFs.\n\n\n\n\n\nflowchart TD\n  A[ggplot2] --&gt; B[grid]\n  B --&gt; C[grDevices]\n  C --&gt; D(devices)\n  D --&gt; E([GIF])\n  F[gganimate] &lt;--&gt; A\n  F -.-&gt; |\"animate()\"|D"
   },
   {
-    "objectID": "slides/2_ggplot2.html#patterns-and-gradients",
-    "href": "slides/2_ggplot2.html#patterns-and-gradients",
-    "title": "Modern ggplot2",
-    "section": "Patterns and gradients",
-    "text": "Patterns and gradients\nIn R 4.1 the grid package introduced patterns and gradients.\n\ngrid::linearGradient()\ngrid::radialGradient()\ngrid::pattern()\n\nWe allow these as fill aesthetic in ggplot2.\nPatterns can aid in cases of colour vision deficiency."
+    "objectID": "slides/6_interaction.html#plotly",
+    "href": "slides/6_interaction.html#plotly",
+    "title": "Interactive plots",
+    "section": "plotly",
+    "text": "plotly\n\n\n\n\n\nflowchart TD\n  A[ggplot2] --&gt; B[grid]\n  B --&gt; C[grDevices]\n  C --&gt; D(devices)\n  D --&gt; E([file])\n  A --&gt; |\"`plotly::ggplotly()`\"|F(plotly.js)\n  F --&gt; G[\"htmlwidgets (R)\"]\n  G --&gt; H([html])"
   },
   {
-    "objectID": "slides/2_ggplot2.html#delayed-evaluation",
-    "href": "slides/2_ggplot2.html#delayed-evaluation",
-    "title": "Modern ggplot2",
-    "section": "Delayed evaluation",
-    "text": "Delayed evaluation\nWith regards to evaluation, there are three stages:\n\nDirect input at start\nAfter computing stat\nAfter scale mapping"
+    "objectID": "slides/6_interaction.html#ggiraph",
+    "href": "slides/6_interaction.html#ggiraph",
+    "title": "Interactive plots",
+    "section": "ggiraph",
+    "text": "ggiraph\n\n\n\n\n\nflowchart TD\n  A[ggplot2] --&gt; B[grid]\n  B --&gt; C[grDevices]\n  C --&gt; D(\"ggiraph::dsvg()\")\n  D --&gt; E([SVG])\n  F[ggiraph] &lt;--&gt; A\n  F -.-&gt; |\"ggirafe()\"|D"
   },
   {
-    "objectID": "slides/2_ggplot2.html#polar-coordinates",
-    "href": "slides/2_ggplot2.html#polar-coordinates",
-    "title": "Modern ggplot2",
-    "section": "Polar coordinates",
-    "text": "Polar coordinates\nThe classic coord_polar() is succeeded by coord_radial().\n\nexpand parameter\nArbitrary sectors\nDonuts"
-  },
-  {
-    "objectID": "slides/2_ggplot2.html#facets",
-    "href": "slides/2_ggplot2.html#facets",
-    "title": "Modern ggplot2",
-    "section": "Facets",
-    "text": "Facets\n\nDisplay of inner axes\nLayer layout\nPanel ordering"
+    "objectID": "slides/6_interaction.html#summary",
+    "href": "slides/6_interaction.html#summary",
+    "title": "Interactive plots",
+    "section": "Summary",
+    "text": "Summary\nEach package has strengths and weaknesses.\n\n\n\npackage\nFidelity\nAnimation\nTooltips\n\n\n\n\ngganimate\nYes\nYes\nNo\n\n\nplotly\nNo\nYes\nYes\n\n\nggiraph\nYes\nNo\nYes"
   },
   {
     "objectID": "slides/3_text_fonts.html#key-takeaway-today",
@@ -410,7 +179,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpeJDAYx/Barrio-regular.ttf\", \"/tmp/RtmpeJDAYx/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/Rtmp1edjnv/Barrio-regular.ttf\", \"/tmp/Rtmp1edjnv/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
@@ -651,108 +420,346 @@
     "text": "Next session: Styling your plot"
   },
   {
-    "objectID": "slides/6_interaction.html#interactivity",
-    "href": "slides/6_interaction.html#interactivity",
-    "title": "Interactive plots",
-    "section": "Interactivity",
-    "text": "Interactivity"
+    "objectID": "slides/2_ggplot2.html#headings",
+    "href": "slides/2_ggplot2.html#headings",
+    "title": "Modern ggplot2",
+    "section": "Headings",
+    "text": "Headings\n\nColumn metadata\nData dictionary"
   },
   {
-    "objectID": "slides/6_interaction.html#gganimate",
-    "href": "slides/6_interaction.html#gganimate",
-    "title": "Interactive plots",
-    "section": "gganimate",
-    "text": "gganimate\nRenders animations of your plot to GIFs.\n\n\n\n\n\nflowchart TD\n  A[ggplot2] --&gt; B[grid]\n  B --&gt; C[grDevices]\n  C --&gt; D(devices)\n  D --&gt; E([GIF])\n  F[gganimate] &lt;--&gt; A\n  F -.-&gt; |\"animate()\"|D"
+    "objectID": "slides/2_ggplot2.html#patterns-and-gradients",
+    "href": "slides/2_ggplot2.html#patterns-and-gradients",
+    "title": "Modern ggplot2",
+    "section": "Patterns and gradients",
+    "text": "Patterns and gradients\nIn R 4.1 the grid package introduced patterns and gradients.\n\ngrid::linearGradient()\ngrid::radialGradient()\ngrid::pattern()\n\nWe allow these as fill aesthetic in ggplot2.\nPatterns can aid in cases of colour vision deficiency."
   },
   {
-    "objectID": "slides/6_interaction.html#plotly",
-    "href": "slides/6_interaction.html#plotly",
-    "title": "Interactive plots",
-    "section": "plotly",
-    "text": "plotly\n\n\n\n\n\nflowchart TD\n  A[ggplot2] --&gt; B[grid]\n  B --&gt; C[grDevices]\n  C --&gt; D(devices)\n  D --&gt; E([file])\n  A --&gt; |\"`plotly::ggplotly()`\"|F(plotly.js)\n  F --&gt; G[\"htmlwidgets (R)\"]\n  G --&gt; H([html])"
+    "objectID": "slides/2_ggplot2.html#delayed-evaluation",
+    "href": "slides/2_ggplot2.html#delayed-evaluation",
+    "title": "Modern ggplot2",
+    "section": "Delayed evaluation",
+    "text": "Delayed evaluation\nWith regards to evaluation, there are three stages:\n\nDirect input at start\nAfter computing stat\nAfter scale mapping"
   },
   {
-    "objectID": "slides/6_interaction.html#ggiraph",
-    "href": "slides/6_interaction.html#ggiraph",
-    "title": "Interactive plots",
-    "section": "ggiraph",
-    "text": "ggiraph\n\n\n\n\n\nflowchart TD\n  A[ggplot2] --&gt; B[grid]\n  B --&gt; C[grDevices]\n  C --&gt; D(\"ggiraph::dsvg()\")\n  D --&gt; E([SVG])\n  F[ggiraph] &lt;--&gt; A\n  F -.-&gt; |\"ggirafe()\"|D"
+    "objectID": "slides/2_ggplot2.html#polar-coordinates",
+    "href": "slides/2_ggplot2.html#polar-coordinates",
+    "title": "Modern ggplot2",
+    "section": "Polar coordinates",
+    "text": "Polar coordinates\nThe classic coord_polar() is succeeded by coord_radial().\n\nexpand parameter\nArbitrary sectors\nDonuts"
   },
   {
-    "objectID": "slides/6_interaction.html#summary",
-    "href": "slides/6_interaction.html#summary",
-    "title": "Interactive plots",
-    "section": "Summary",
-    "text": "Summary\nEach package has strengths and weaknesses.\n\n\n\npackage\nFidelity\nAnimation\nTooltips\n\n\n\n\ngganimate\nYes\nYes\nNo\n\n\nplotly\nNo\nYes\nYes\n\n\nggiraph\nYes\nNo\nYes"
+    "objectID": "slides/2_ggplot2.html#facets",
+    "href": "slides/2_ggplot2.html#facets",
+    "title": "Modern ggplot2",
+    "section": "Facets",
+    "text": "Facets\n\nDisplay of inner axes\nLayer layout\nPanel ordering"
   },
   {
-    "objectID": "exercises/4_theme_guide.html",
-    "href": "exercises/4_theme_guide.html",
-    "title": "Exercises for session 4",
+    "objectID": "sessions/6_interaction.html",
+    "href": "sessions/6_interaction.html",
+    "title": "Interactive plots",
     "section": "",
-    "text": "library(ggplot2)\n# Emoji will not always render flawlessly with default device\nknitr::opts_chunk$set(dev = \"ragg_png\")"
+    "text": "Here we learn about sprucing up your plots for the digital world:\n\nplotly\nggiraph\ngganimate\n\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
   },
   {
-    "objectID": "exercises/4_theme_guide.html#ink-paper",
-    "href": "exercises/4_theme_guide.html#ink-paper",
-    "title": "Exercises for session 4",
+    "objectID": "sessions/3_text_fonts.html",
+    "href": "sessions/3_text_fonts.html",
+    "title": "Text rendering and font use",
+    "section": "",
+    "text": "In this session we will dive into working with text in ggplot2. There are two areas of special interest here: How to access the typeface (font) you want to use, and how to add rich formatting to your text. You will be introduced to two key packages that work in unison, namely systemfonts and marquee. Further, you will get an understanding of why selecting the right graphics device is paramount when it comes to text, moreso than for most other graphics features.\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/2_ggplot2.html",
+    "href": "sessions/2_ggplot2.html",
+    "title": "Modern ggplot2",
+    "section": "",
+    "text": "The goal of this session is to get you up to speed with the latest developments from ggplot2 3.5.0 onwards.\n\nHeadings\nPatterns and gradients\nDelayed evaluation\nPolar coordinates\nFacets\n\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/8_fun.html",
+    "href": "sessions/8_fun.html",
+    "title": "Spice up your plot",
+    "section": "",
+    "text": "In this last session we will (if time permits) spend some time showcasing things you can do with ggplots and its extensions that may make Tufte roll over, but on the other hand can help you create memorable visualisations with a lot of personality\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/1_introduction.html",
+    "href": "sessions/1_introduction.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "This session will briefly introduce the rest of the day, giving an overview of the schedule and any practical information that may be relevant.\nKey points: * Agenda * Who we are * Practical info * Toilets * Ribbons * Etc\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/4_theme_guide.html",
+    "href": "sessions/4_theme_guide.html",
+    "title": "Styling your plot",
+    "section": "",
+    "text": "In this session, we learn about the following topics:\n\nInk and paper\nPalettes in themes\nBuilding your own theme\nCustomising guides\n\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/7_extensions.html",
+    "href": "sessions/7_extensions.html",
+    "title": "Creating extensions",
+    "section": "",
+    "text": "Here we talk about creating reusable pieces of code that fit into the grammar:\n\nClasses\nConstructors\nPatterns\n\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/5_composition.html",
+    "href": "sessions/5_composition.html",
+    "title": "Plot composition",
+    "section": "",
+    "text": "In this session we will dive into how you present multiple plots in the same figure. The key package here is patchwork and you will learn (almost) all there is to now about how to harness its power.\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "slides/1_introduction.html#mastering-data-visualization-with-ggplot2",
+    "href": "slides/1_introduction.html#mastering-data-visualization-with-ggplot2",
+    "title": "Mastering Data Visualization with ggplot2",
+    "section": "Mastering Data Visualization with ggplot2",
+    "text": "Mastering Data Visualization with ggplot2\nLatest Techniques and Best Practices"
+  },
+  {
+    "objectID": "slides/1_introduction.html#the-team",
+    "href": "slides/1_introduction.html#the-team",
+    "title": "Mastering Data Visualization with ggplot2",
+    "section": "The Team",
+    "text": "The Team\n \nTeachers\nThomas Lin Pedersen (me)\nTeun van den Brand\n \nTA\nKara Woo"
+  },
+  {
+    "objectID": "slides/1_introduction.html#today",
+    "href": "slides/1_introduction.html#today",
+    "title": "Mastering Data Visualization with ggplot2",
+    "section": "Today",
+    "text": "Today\n\nIntroduction\nModern ggplot2\nText rendering and font use\nStyling your plot\nPlot composition\nInteractive plots\nCreating extensions\nSpice up your plot"
+  },
+  {
+    "objectID": "slides/1_introduction.html#practical-information",
+    "href": "slides/1_introduction.html#practical-information",
+    "title": "Mastering Data Visualization with ggplot2",
+    "section": "Practical information",
+    "text": "Practical information\nhttps://posit-conf-2025.github.io/ggplot2/\nTBD"
+  },
+  {
+    "objectID": "slides/4_theme_guide.html#ink-paper",
+    "href": "slides/4_theme_guide.html#ink-paper",
+    "title": "Styling your plot",
     "section": "Ink & Paper",
-    "text": "Ink & Paper\n\nExercise 4.1\nWe’ll work with this plot of the penguins dataset.\n\np &lt;- ggplot(palmerpenguins::penguins) +\n  aes(body_mass_g, flipper_length_mm, shape = species) +\n  geom_point(na.rm = TRUE) +\n  labs(\n    x = \"Body Mass (g)\",\n    y = \"Flipper Length (mm)\",\n    shape = \"Species\"\n  )\np\n\n\n\n\n\n\n\n\nPick any of the pre-existing complete themes and make a ‘dark mode’ variant of it.\n\np + ...\n\n\n\nHint\n\nUse the ink and paper arguments in —for example— theme_gray().\n\n\nSolution\n\nA different theme choice is fine, but the important bit is to set paper to a dark colour and ink to a light colour.\n\np + theme_gray(ink = \"white\", paper = \"black\")"
+    "text": "Ink & Paper\n\nComplete themes\nGeom element\nUse in layers"
   },
   {
-    "objectID": "exercises/4_theme_guide.html#default-palettes",
-    "href": "exercises/4_theme_guide.html#default-palettes",
-    "title": "Exercises for session 4",
+    "objectID": "slides/4_theme_guide.html#default-palettes",
+    "href": "slides/4_theme_guide.html#default-palettes",
+    "title": "Styling your plot",
     "section": "Default palettes",
-    "text": "Default palettes\n\nExercise 4.2\nThis plot has a shape scale with the default palette.\n\np &lt;- ggplot(mpg, aes(displ, hwy, shape = fl)) +\n  geom_point(size = 5) +\n  scale_shape_discrete(\n    breaks = c(\n      regular = \"r\",\n      ethanol = \"e\",\n      diesel  = \"d\",\n      premium = \"p\",\n      CNG     = \"c\"\n    )\n  ) +\n  labs(\n    x = \"Engine Displacement\",\n    y = \"Fuel efficiency\",\n    shape = \"Fuel type\"\n  )\np\n\n\n\n\n\n\n\n\nMake a discrete shape palette using emoji. You can pick a theme like ‘farm animals’, ‘bugs’, ‘flowers’ or other symbols. Set it as the default palette in the theme().\n\nmy_shape_pal &lt;- ...\n\np + theme(... = my_shape_pal)\n\n\n\nHint\n\nShapes can use emoji because these count as ‘single letter’ strings. The palette can be a character vector that is compatible with scales::as_discrete_pal().\n\n\nSolution\n\nThe important bit is to realise that one should populate the palette.shape.discrete argument.\n\nmy_shape_pal &lt;- c(\"🫛\", \"🍓\", \"🥕\", \"🍋\", \"🍇\")\n\np + theme(palette.shape.discrete = my_shape_pal)"
+    "text": "Default palettes\nSeveral ways to set a plot’s colour palette\n\nDirectly add a scale\n\n+ scale_colour_gradientn()\nNot set as default scale\n\nUsing esoteric options\n\noptions(ggplot2.continuous.colour = scale_colour_gradientn)\nArcane\n\nOverriding default scale\n\nscale_colour_continuous &lt;- scale_colour_gradientn\nMesses with namespace\n\nNEW: via theme()"
   },
   {
-    "objectID": "exercises/4_theme_guide.html#build-your-own-theme",
-    "href": "exercises/4_theme_guide.html#build-your-own-theme",
-    "title": "Exercises for session 4",
+    "objectID": "slides/4_theme_guide.html#build-your-own-theme",
+    "href": "slides/4_theme_guide.html#build-your-own-theme",
+    "title": "Styling your plot",
     "section": "Build your own theme",
-    "text": "Build your own theme\n\nExercise 4.3\nWe have the following contour plot of eruption measurements taken from the geyser ‘Old Faithful’.\n\np &lt;- ggplot(faithful) +\n  aes(waiting, eruptions) +\n  geom_density2d(bins = 8) +\n  geom_point() +\n  labs(\n    x = \"Waiting time (min)\",\n    y = \"Eruption time (min)\"\n  )\np\n\n\n\n\n\n\n\n\nPick some topic that has a strong association with a colour scheme. It can be a forest, the ocean, the desert or something you come up with. Create your own theme with that topic in mind that:\n\nIs a function\nPasses arguments to a base theme\nAdjusts layer defaults\n\n\nmy_theme &lt;- ...\n\np + my_theme()\n\n\n\nHint\n\nYou may want to pass an ink/paper/accent argument to the base theme. Layer defaults can be set using element_geom().\n\n\nSolution\n\nThis is more of an exercise without a ‘correct’ answer, but here is an example using the night sky as topic.\n\nmy_theme &lt;- function(ink = \"cornsilk\", paper = \"#000033\", accent = \"gold\", ...) {\n  theme_gray(ink = ink, paper = paper, accent = accent, ...) +\n    theme(\n      geom = element_geom(pointshape = \"\\u2605\", pointsize = 3, linewidth = 0.2)\n    )\n}\n\np + my_theme()"
+    "text": "Build your own theme\nHow do you intend to use a personal theme?\n\nComplete theme\nPartial theme"
   },
   {
-    "objectID": "exercises/4_theme_guide.html#custom-guides",
-    "href": "exercises/4_theme_guide.html#custom-guides",
-    "title": "Exercises for session 4",
+    "objectID": "slides/4_theme_guide.html#custom-guides",
+    "href": "slides/4_theme_guide.html#custom-guides",
+    "title": "Styling your plot",
     "section": "Custom guides",
-    "text": "Custom guides\n\nExercise 4.4\nWe have the following unemployment data from the United States.\n\nlibrary(legendry)\n\np &lt;- ggplot(economics, aes(date, unemploy)) +\n  geom_area(colour = \"black\", alpha = 0.3) +\n  labs(\n    x = \"Date\",\n    y = \"Unemployment (x1000)\"\n  )\n\np\n\n\n\n\n\n\n\n\nPick some event or period in the range of the plot above. Create an axis annotation to indicate that event or period. You may need to construct the appropriate key argument for a custom guide.\n\nmy_annotation &lt;- ...\n\np + guides(x = compose_stack(\"axis\", my_annotation))\n\n\n\nHint 1\n\nIf you’re stuck without inspiration, here are some arbitrary events and periods:\n\nFirst release of ggplot2 (2007)\nMargaret Thatcher serves as the UK’s prime minister (1979-1990)\nRelease of the original Sony Walkman (1979)\nThe pop group ‘The Spice Girls’ (1994-2000)\nFall of the Berlin Wall (1989)\nRelease of the pinnacle of telecommunication, the Nokia 3310 (2000)\nThe British sitcom ‘Mr. Bean’ (1990-1995)\nThomas Lin Pederson was born (1985)\nDavid Tennant plays the 10th Doctor in ‘Doctor Who’ (2005-2010)\nThe American sitcom ‘Golden Girls’ (1985-1992)\nThe birth of Hadley Wickham (1979)\nTexas Instruments launches its first graphing calculator (1990)\n\n\n\nHint 2\n\nYou can combine legendry::primitive_bracket() + legendry::key_range_manual() for periods. You can use legendry::guide_axis_base() + legendry::key_manual() for point-events.\n\n\nSolution\n\nFor a range of dates:\n\nmy_annotation &lt;- primitive_bracket(\n  key = key_range_manual(\n    start = as.Date(\"1977-01-20\"),\n    end   = as.Date(\"1981-01-20\"), \n    name  = \"Carter administration\"\n  ),\n  bracket = \"square\"\n)\n\np + guides(x = compose_stack(\"axis\", my_annotation))\n\n\n\n\n\n\n\n\nFor an event:\n\nmy_annotation &lt;- guide_axis_base(\n  key = key_manual(\n    aesthetic = as.Date(\"1991-09-27\"),\n    label = \"Release 'Terminator 2'\"\n  ),\n  theme = theme(\n    axis.ticks.length = unit(6, \"mm\"),\n    axis.ticks = element_line(arrow = arrow(length = unit(1.5, \"mm\")))\n  )\n)\n\n# Swapping the composition is a little bit cheating on my end\np + guides(x = compose_ontop(\"axis\", my_annotation))"
+    "text": "Custom guides\nggplot2 has more guides than colour bars and legends.\n\naxes\ncolour bar\ncolour steps\nlegend\nbinned guide"
   },
   {
-    "objectID": "exercises/3_text_fonts.html",
-    "href": "exercises/3_text_fonts.html",
-    "title": "Exercises for session 3",
+    "objectID": "slides/5_composition.html#key-takeaway-today",
+    "href": "slides/5_composition.html#key-takeaway-today",
+    "title": "Plot composition",
+    "section": "Key takeaway today",
+    "text": "Key takeaway today\n\n\nComposing plots are no harder than adding a new layer to your plot"
+  },
+  {
+    "objectID": "slides/5_composition.html#today",
+    "href": "slides/5_composition.html#today",
+    "title": "Plot composition",
+    "section": "Today",
+    "text": "Today\n\nIntroduce patchwork for plot composition\n\nKey design principles\n\n\nFrom simple to complex layouts\nThe non-panel stuff"
+  },
+  {
+    "objectID": "slides/5_composition.html#patchwork",
+    "href": "slides/5_composition.html#patchwork",
+    "title": "Plot composition",
+    "section": "Patchwork",
+    "text": "Patchwork\n\nComposition should have a composable API\nThe API should feel natural and easy to reason about in order to invite experimentation\nAssume alignment but give escape hatch"
+  },
+  {
+    "objectID": "slides/5_composition.html#patchwork-in-a-nutshell",
+    "href": "slides/5_composition.html#patchwork-in-a-nutshell",
+    "title": "Plot composition",
+    "section": "Patchwork in a nutshell",
+    "text": "Patchwork in a nutshell\n\n\np1 &lt;- ggplot(penguins) + \n  geom_point(aes(x = flipper_len, y = bill_len))\n\np2 &lt;- ggplot(penguins) + \n  geom_histogram(aes(flipper_len))\n\np1 + p2"
+  },
+  {
+    "objectID": "slides/5_composition.html#patchwork-in-a-nutshell-1",
+    "href": "slides/5_composition.html#patchwork-in-a-nutshell-1",
+    "title": "Plot composition",
+    "section": "Patchwork in a nutshell",
+    "text": "Patchwork in a nutshell\n\n\np3 &lt;- ggplot(penguins) + \n  geom_boxplot(aes(species, bill_len))\n\np1 | (p2 / p3)"
+  },
+  {
+    "objectID": "slides/5_composition.html#patchwork-in-a-nutshell-2",
+    "href": "slides/5_composition.html#patchwork-in-a-nutshell-2",
+    "title": "Plot composition",
+    "section": "Patchwork in a nutshell",
+    "text": "Patchwork in a nutshell\n\n\nggplot(penguins) + \n  geom_point(aes(x = flipper_len, y = bill_len)) + \n  ggplot(penguins) + \n  geom_histogram(aes(flipper_len))"
+  },
+  {
+    "objectID": "slides/5_composition.html#patchwork-in-a-nutshell-3",
+    "href": "slides/5_composition.html#patchwork-in-a-nutshell-3",
+    "title": "Plot composition",
+    "section": "Patchwork in a nutshell",
+    "text": "Patchwork in a nutshell\n\n\np1 + p2 +\n  geom_density(\n    aes(flipper_len, after_stat(count))\n  )"
+  },
+  {
+    "objectID": "slides/5_composition.html#exercise",
+    "href": "slides/5_composition.html#exercise",
+    "title": "Plot composition",
+    "section": "Exercise",
+    "text": "Exercise"
+  },
+  {
+    "objectID": "slides/5_composition.html#more-layout-options",
+    "href": "slides/5_composition.html#more-layout-options",
+    "title": "Plot composition",
+    "section": "More layout options",
+    "text": "More layout options\n\n\np4 &lt;- ggplot(penguins) + \n  geom_bar(\n    aes(species, fill = sex), \n    position = \"dodge\"\n  )\n\nwrap_plots(p1, p2, p3, p4, widths = c(1, 2))"
+  },
+  {
+    "objectID": "slides/5_composition.html#more-layout-options-1",
+    "href": "slides/5_composition.html#more-layout-options-1",
+    "title": "Plot composition",
+    "section": "More layout options",
+    "text": "More layout options\n\n\np1 + p2 + p3 + p4 + plot_layout(widths = c(1, 2))"
+  },
+  {
+    "objectID": "slides/5_composition.html#more-layout-options-2",
+    "href": "slides/5_composition.html#more-layout-options-2",
+    "title": "Plot composition",
+    "section": "More layout options",
+    "text": "More layout options\n\n\nlayout &lt;- \"\nA#B\n#CC\nDD#\n\"\np1 + p2 + p3 + p4 + \n  plot_layout(design = layout)"
+  },
+  {
+    "objectID": "slides/5_composition.html#more-layout-options-3",
+    "href": "slides/5_composition.html#more-layout-options-3",
+    "title": "Plot composition",
+    "section": "More layout options",
+    "text": "More layout options\n\n\nlayout &lt;- c(\n  area(1, 1, 2, 3),\n  area(2, 2, 3, 3)\n)\np1 + p2 + \n  plot_layout(design = layout)"
+  },
+  {
+    "objectID": "slides/5_composition.html#exercise-1",
+    "href": "slides/5_composition.html#exercise-1",
+    "title": "Plot composition",
+    "section": "Exercise",
+    "text": "Exercise"
+  },
+  {
+    "objectID": "slides/5_composition.html#layout-modifiers",
+    "href": "slides/5_composition.html#layout-modifiers",
+    "title": "Plot composition",
+    "section": "Layout modifiers",
+    "text": "Layout modifiers\n\nThe composition consists of a grid\nPanels are placed in one or more neighboring cells\nEverything outside the panels are placed in the gutter which expands to contain all\nWhat if you don’t want that?"
+  },
+  {
+    "objectID": "slides/5_composition.html#layout-modifiers---insets",
+    "href": "slides/5_composition.html#layout-modifiers---insets",
+    "title": "Plot composition",
+    "section": "Layout modifiers - Insets",
+    "text": "Layout modifiers - Insets\n\n\np1 + inset_element(\n  p2, \n  left = 0.5, \n  bottom = 0.5, \n  right = grid::unit(1, \"npc\") - grid::unit(6, \"mm\"),\n  top = grid::unit(1, \"npc\") - grid::unit(6, \"mm\"),\n)"
+  },
+  {
+    "objectID": "slides/5_composition.html#layout-modifiers---free",
+    "href": "slides/5_composition.html#layout-modifiers---free",
+    "title": "Plot composition",
+    "section": "Layout modifiers - Free",
+    "text": "Layout modifiers - Free\n\n\np3a &lt;- p3 + \n  guides(x = guide_axis(angle = 45))\np1 + p3a"
+  },
+  {
+    "objectID": "slides/5_composition.html#layout-modifiers---free-1",
+    "href": "slides/5_composition.html#layout-modifiers---free-1",
+    "title": "Plot composition",
+    "section": "Layout modifiers - Free",
+    "text": "Layout modifiers - Free\n\n\np1 + free(p3a, side = \"b\")"
+  },
+  {
+    "objectID": "slides/5_composition.html#layout-modifiers---free-2",
+    "href": "slides/5_composition.html#layout-modifiers---free-2",
+    "title": "Plot composition",
+    "section": "Layout modifiers - Free",
+    "text": "Layout modifiers - Free\n\n\nfree(p1, \"label\", side = \"b\") + p3a"
+  },
+  {
+    "objectID": "slides/5_composition.html#exercise-2",
+    "href": "slides/5_composition.html#exercise-2",
+    "title": "Plot composition",
+    "section": "Exercise",
+    "text": "Exercise"
+  },
+  {
+    "objectID": "slides/5_composition.html#annotations",
+    "href": "slides/5_composition.html#annotations",
+    "title": "Plot composition",
+    "section": "Annotations",
+    "text": "Annotations\n\nOnce composed, the parts will constitute a new graphic"
+  },
+  {
+    "objectID": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
+    "href": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
+    "title": "Attribution-ShareAlike 4.0 International",
+    "section": "Creative Commons Attribution-ShareAlike 4.0 International Public License",
+    "text": "Creative Commons Attribution-ShareAlike 4.0 International Public License\nBy exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution-ShareAlike 4.0 International Public License (“Public License”). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.\n\nSection 1 – Definitions.\n\nAdapted Material means material subject to Copyright and Similar Rights that is derived from or based upon the Licensed Material and in which the Licensed Material is translated, altered, arranged, transformed, or otherwise modified in a manner requiring permission under the Copyright and Similar Rights held by the Licensor. For purposes of this Public License, where the Licensed Material is a musical work, performance, or sound recording, Adapted Material is always produced where the Licensed Material is synched in timed relation with a moving image.\nAdapter’s License means the license You apply to Your Copyright and Similar Rights in Your contributions to Adapted Material in accordance with the terms and conditions of this Public License.\nBY-SA Compatible License means a license listed at creativecommons.org/compatiblelicenses, approved by Creative Commons as essentially the equivalent of this Public License.\nCopyright and Similar Rights means copyright and/or similar rights closely related to copyright including, without limitation, performance, broadcast, sound recording, and Sui Generis Database Rights, without regard to how the rights are labeled or categorized. For purposes of this Public License, the rights specified in Section 2(b)(1)-(2) are not Copyright and Similar Rights.\nEffective Technological Measures means those measures that, in the absence of proper authority, may not be circumvented under laws fulfilling obligations under Article 11 of the WIPO Copyright Treaty adopted on December 20, 1996, and/or similar international agreements.\nExceptions and Limitations means fair use, fair dealing, and/or any other exception or limitation to Copyright and Similar Rights that applies to Your use of the Licensed Material.\nLicense Elements means the license attributes listed in the name of a Creative Commons Public License. The License Elements of this Public License are Attribution and ShareAlike.\nLicensed Material means the artistic or literary work, database, or other material to which the Licensor applied this Public License.\nLicensed Rights means the rights granted to You subject to the terms and conditions of this Public License, which are limited to all Copyright and Similar Rights that apply to Your use of the Licensed Material and that the Licensor has authority to license.\nLicensor means the individual(s) or entity(ies) granting rights under this Public License.\nShare means to provide material to the public by any means or process that requires permission under the Licensed Rights, such as reproduction, public display, public performance, distribution, dissemination, communication, or importation, and to make material available to the public including in ways that members of the public may access the material from a place and at a time individually chosen by them.\nSui Generis Database Rights means rights other than copyright resulting from Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, as amended and/or succeeded, as well as other essentially equivalent rights anywhere in the world.\nYou means the individual or entity exercising the Licensed Rights under this Public License. Your has a corresponding meaning.\n\n\n\nSection 2 – Scope.\n\nLicense grant.\n\nSubject to the terms and conditions of this Public License, the Licensor hereby grants You a worldwide, royalty-free, non-sublicensable, non-exclusive, irrevocable license to exercise the Licensed Rights in the Licensed Material to:\nA. reproduce and Share the Licensed Material, in whole or in part; and\nB. produce, reproduce, and Share Adapted Material.\nExceptions and Limitations. For the avoidance of doubt, where Exceptions and Limitations apply to Your use, this Public License does not apply, and You do not need to comply with its terms and conditions.\nTerm. The term of this Public License is specified in Section 6(a).\nMedia and formats; technical modifications allowed. The Licensor authorizes You to exercise the Licensed Rights in all media and formats whether now known or hereafter created, and to make technical modifications necessary to do so. The Licensor waives and/or agrees not to assert any right or authority to forbid You from making technical modifications necessary to exercise the Licensed Rights, including technical modifications necessary to circumvent Effective Technological Measures. For purposes of this Public License, simply making modifications authorized by this Section 2(a)(4) never produces Adapted Material.\nDownstream recipients.\nA. Offer from the Licensor – Licensed Material. Every recipient of the Licensed Material automatically receives an offer from the Licensor to exercise the Licensed Rights under the terms and conditions of this Public License.\nB. __Additional offer from the Licensor – Adapted Material. Every recipient of Adapted Material from You automatically receives an offer from the Licensor to exercise the Licensed Rights in the Adapted Material under the conditions of the Adapter’s License You apply.\nC. No downstream restrictions. You may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, the Licensed Material if doing so restricts exercise of the Licensed Rights by any recipient of the Licensed Material.\nNo endorsement. Nothing in this Public License constitutes or may be construed as permission to assert or imply that You are, or that Your use of the Licensed Material is, connected with, or sponsored, endorsed, or granted official status by, the Licensor or others designated to receive attribution as provided in Section 3(a)(1)(A)(i).\n\nOther rights.\n\nMoral rights, such as the right of integrity, are not licensed under this Public License, nor are publicity, privacy, and/or other similar personality rights; however, to the extent possible, the Licensor waives and/or agrees not to assert any such rights held by the Licensor to the limited extent necessary to allow You to exercise the Licensed Rights, but not otherwise.\nPatent and trademark rights are not licensed under this Public License.\nTo the extent possible, the Licensor waives any right to collect royalties from You for the exercise of the Licensed Rights, whether directly or through a collecting society under any voluntary or waivable statutory or compulsory licensing scheme. In all other cases the Licensor expressly reserves any right to collect such royalties.\n\n\n\n\nSection 3 – License Conditions.\nYour exercise of the Licensed Rights is expressly made subject to the following conditions.\n\nAttribution.\n\nIf You Share the Licensed Material (including in modified form), You must:\nA. retain the following if it is supplied by the Licensor with the Licensed Material:\n\nidentification of the creator(s) of the Licensed Material and any others designated to receive attribution, in any reasonable manner requested by the Licensor (including by pseudonym if designated);\na copyright notice;\na notice that refers to this Public License;\na notice that refers to the disclaimer of warranties;\na URI or hyperlink to the Licensed Material to the extent reasonably practicable;\n\nB. indicate if You modified the Licensed Material and retain an indication of any previous modifications; and\nC. indicate the Licensed Material is licensed under this Public License, and include the text of, or the URI or hyperlink to, this Public License.\nYou may satisfy the conditions in Section 3(a)(1) in any reasonable manner based on the medium, means, and context in which You Share the Licensed Material. For example, it may be reasonable to satisfy the conditions by providing a URI or hyperlink to a resource that includes the required information.\nIf requested by the Licensor, You must remove any of the information required by Section 3(a)(1)(A) to the extent reasonably practicable.\n\nShareAlike.\n\nIn addition to the conditions in Section 3(a), if You Share Adapted Material You produce, the following conditions also apply.\n\nThe Adapter’s License You apply must be a Creative Commons license with the same License Elements, this version or later, or a BY-SA Compatible License.\nYou must include the text of, or the URI or hyperlink to, the Adapter’s License You apply. You may satisfy this condition in any reasonable manner based on the medium, means, and context in which You Share Adapted Material.\nYou may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, Adapted Material that restrict exercise of the rights granted under the Adapter’s License You apply.\n\n\n\nSection 4 – Sui Generis Database Rights.\nWhere the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:\n\nfor the avoidance of doubt, Section 2(a)(1) grants You the right to extract, reuse, reproduce, and Share all or a substantial portion of the contents of the database;\nif You include all or a substantial portion of the database contents in a database in which You have Sui Generis Database Rights, then the database in which You have Sui Generis Database Rights (but not its individual contents) is Adapted Material, including for purposes of Section 3(b); and\nYou must comply with the conditions in Section 3(a) if You Share all or a substantial portion of the contents of the database.\n\nFor the avoidance of doubt, this Section 4 supplements and does not replace Your obligations under this Public License where the Licensed Rights include other Copyright and Similar Rights.\n\n\nSection 5 – Disclaimer of Warranties and Limitation of Liability.\n\nUnless otherwise separately undertaken by the Licensor, to the extent possible, the Licensor offers the Licensed Material as-is and as-available, and makes no representations or warranties of any kind concerning the Licensed Material, whether express, implied, statutory, or other. This includes, without limitation, warranties of title, merchantability, fitness for a particular purpose, non-infringement, absence of latent or other defects, accuracy, or the presence or absence of errors, whether or not known or discoverable. Where disclaimers of warranties are not allowed in full or in part, this disclaimer may not apply to You.\nTo the extent possible, in no event will the Licensor be liable to You on any legal theory (including, without limitation, negligence) or otherwise for any direct, special, indirect, incidental, consequential, punitive, exemplary, or other losses, costs, expenses, or damages arising out of this Public License or use of the Licensed Material, even if the Licensor has been advised of the possibility of such losses, costs, expenses, or damages. Where a limitation of liability is not allowed in full or in part, this limitation may not apply to You.\nThe disclaimer of warranties and limitation of liability provided above shall be interpreted in a manner that, to the extent possible, most closely approximates an absolute disclaimer and waiver of all liability.\n\n\n\nSection 6 – Term and Termination.\n\nThis Public License applies for the term of the Copyright and Similar Rights licensed here. However, if You fail to comply with this Public License, then Your rights under this Public License terminate automatically.\nWhere Your right to use the Licensed Material has terminated under Section 6(a), it reinstates:\n\nautomatically as of the date the violation is cured, provided it is cured within 30 days of Your discovery of the violation; or\nupon express reinstatement by the Licensor.\n\nFor the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may have to seek remedies for Your violations of this Public License.\nFor the avoidance of doubt, the Licensor may also offer the Licensed Material under separate terms or conditions or stop distributing the Licensed Material at any time; however, doing so will not terminate this Public License.\nSections 1, 5, 6, 7, and 8 survive termination of this Public License.\n\n\n\nSection 7 – Other Terms and Conditions.\n\nThe Licensor shall not be bound by any additional or different terms or conditions communicated by You unless expressly agreed.\nAny arrangements, understandings, or agreements regarding the Licensed Material not stated herein are separate from and independent of the terms and conditions of this Public License.t stated herein are separate from and independent of the terms and conditions of this Public License.\n\n\n\nSection 8 – Interpretation.\n\nFor the avoidance of doubt, this Public License does not, and shall not be interpreted to, reduce, limit, restrict, or impose conditions on any use of the Licensed Material that could lawfully be made without permission under this Public License.\nTo the extent possible, if any provision of this Public License is deemed unenforceable, it shall be automatically reformed to the minimum extent necessary to make it enforceable. If the provision cannot be reformed, it shall be severed from this Public License without affecting the enforceability of the remaining terms and conditions.\nNo term or condition of this Public License will be waived and no failure to comply consented to unless expressly agreed to by the Licensor.\nNothing in this Public License constitutes or may be interpreted as a limitation upon, or waiver of, any privileges and immunities that apply to the Licensor or You, including from the legal processes of any jurisdiction or authority.\n\n\nCreative Commons is not a party to its public licenses. Notwithstanding, Creative Commons may elect to apply one of its public licenses to material it publishes and in those instances will be considered the “Licensor.” Except for the limited purpose of indicating that material is shared under a Creative Commons public license or as otherwise permitted by the Creative Commons policies published at creativecommons.org/policies, Creative Commons does not authorize the use of the trademark “Creative Commons” or any other trademark or logo of Creative Commons without its prior written consent including, without limitation, in connection with any unauthorized modifications to any of its public licenses or any other arrangements, understandings, or agreements concerning use of licensed material. For the avoidance of doubt, this paragraph does not form part of the public licenses.\nCreative Commons may be contacted at creativecommons.org"
+  },
+  {
+    "objectID": "exercises/2_ggplot2.html",
+    "href": "exercises/2_ggplot2.html",
+    "title": "Exercises for session 1.2",
     "section": "",
-    "text": "The codeblocks here are interactive and can be executed in the browser. You can also copy them over and solve the exercises locally. In the existing code ______ denotes areas that need to be substituted with your own code to solve the exercise.\nEach exercise has one or more hints, as well as a full solution if you click through all the hints. Do try to solve the exercises on your own first."
+    "text": "library(ggplot2)\nlibrary(grid)\n\n# Some graphics devices don't support gradients and patterns. We set the\n# device to ragg, which does support these.\nknitr::opts_chunk$set(dev = \"ragg_png\")"
   },
   {
-    "objectID": "exercises/3_text_fonts.html#working-with-fonts",
-    "href": "exercises/3_text_fonts.html#working-with-fonts",
-    "title": "Exercises for session 3",
-    "section": "3.1 Working with fonts",
-    "text": "3.1 Working with fonts\n\nExercise 3.1.1\nDownload this font file and add the font to your R session. You can confirm that is has been added by calling systemfonts::match_fonts(\"cirquee\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nUse systemfonts::add_fonts() to make systemfonts aware of the font file\nsystemfonts::add_fonts(______)\n\nsystemfonts::match_fonts(\"cirquee\")\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nsystemfonts::add_fonts(\"Cirquee.otf\")\n\nsystemfonts::match_fonts(\"cirquee\")\n\n\n\n\n\n\nExercise 3.1.2\nFind and install a font from Google Fonts or Font Squirrel using systemfonts. Again, verify it has been added using match_fonts()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nIf you use Google font you need to use get_from_font_squirrel()\nsystemfonts::get_from_font_squirrel(______)\n\nsystemfonts::match_fonts(______)\nIf you use Google font you need to use get_from_google_fonts()\nsystemfonts::get_from_google_fonts(______)\n\nsystemfonts::match_fonts(______)\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nsystemfonts::get_from_font_squirrel(\"Raleway\")\n\nsystemfonts::match_fonts(\"Raleway\")\nor\nsystemfonts::get_from_google_fonts(\"Raleway\")\n\nsystemfonts::match_fonts(\"Raleway\")\nIf you chose to get the Raleway font\n\n\n\n\nRead the documentation of systemfonts::get_from_google_fonts() and systemfonts::require_font(). How do they differ in where they place the font file and what consequence does it have?\n\n\nExercise 3.1.3\nUse the two new fonts to style the following plot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nYou can use the family name of the new fonts inside element_text() in the theme specification\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nggplot(mpg) + \n  geom_bar(aes(class, fill = factor(cyl)), position = \"dodge\") + \n  theme(\n    text = element_text(\"Raleway\"),\n    title = element_text(\"Cirquee\")\n  )"
+    "objectID": "exercises/2_ggplot2.html#headings",
+    "href": "exercises/2_ggplot2.html#headings",
+    "title": "Exercises for session 1.2",
+    "section": "Headings",
+    "text": "Headings\n\nExercise 1.2.1\nWe can use the label attribute in columns to automatically label a variable. Complete the chunk below to set a label attribute for the unemploy column in the economics dataset. Per ?economics, the unemploy variable gives the number of unemployed people in thousands.\n\nattr(economics$date, \"label\") &lt;- \"Year\"\n...\n\n\nggplot(economics, aes(date, unemploy)) +\n  geom_area(alpha = 0.4, colour = \"black\")\n\n\n\n\n\n\n\n\n\n\nExercise 1.2.2\nIf don’t have pre-set labels, we can also use the labs(dictionary) argument to populate column-label pairs. Use this argument to label the variables in the plot below. You can use ?mpg to find out what the columns are.\n\nggplot(mpg, aes(displ, hwy, colour = drv)) +\n  geom_point() +\n  labs(dictionary = ...)"
   },
   {
-    "objectID": "exercises/3_text_fonts.html#basic-markdown-formatting-with-marquee",
-    "href": "exercises/3_text_fonts.html#basic-markdown-formatting-with-marquee",
-    "title": "Exercises for session 3",
-    "section": "3.2 Basic markdown formatting with marquee",
-    "text": "3.2 Basic markdown formatting with marquee\n\nExercise 3.2.1\nCreate a marquee text that uses various formatting options like bold, italic, lists, and code blocks. Display it using grid::grid.draw(marquee_grob()). Include at least three different types of formatting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\ntext &lt;- \"\n# Headings are important\nHowever, *noone* wants to miss a `nice piece of code`\n\n```\n1 + 1\n#&gt; [1] 2\n```\n\n**WOW**\n\"\n\ngrid::grid.draw(marquee_grob(text))\n\n\n\n\n\n\nExercise 3.2.2\nCreate a marquee text that uses custom spans to change text colors, sizes, and add superscripts or subscripts. Try to show that styles inherits from their parent by placing spans inside spans\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nCustom spans are added using the {.&lt;class&gt; ...} syntax. If &lt;class&gt; is a valid color name (from colors()) or a hex color code (in which case the preceeding . is changed to a #) than the given color is applied to the span. If &lt;class&gt; is an integer then that text size is applied to the span\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\ntext &lt;- \"\nStyling {.red can be {.20 nested}}. This is *also {#123456 true}* when you mix\ncustom and standard syntax\n\"\n\ngrid::grid.draw(marquee_grob(text))\n\n\n\n\n\n\nExercise 3.2.3\nCreate a marquee text that includes either an image (like a plot) or a table. If using a plot, create a simple scatterplot first, then include it in your marquee text.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nUse the standard markdown image syntax but provide the name of a variable holding a plot, grob, or table instead of the path/URL to an image.\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nlibrary(gt)\nstart_date &lt;- \"2010-06-07\"\nend_date &lt;- \"2010-06-14\"\ntbl &lt;- sp500[sp500$date &gt;= start_date & sp500$date &lt;= end_date, 1:6] |&gt;\n  gt() |&gt;\n  tab_header(\n    title = \"S&P 500\",\n    subtitle = glue::glue(\"{start_date} to {end_date}\")\n  ) |&gt;\n  fmt_currency() |&gt;\n  fmt_date(columns = date, date_style = \"wd_m_day_year\") |&gt;\n  fmt_number(columns = volume, suffixing = TRUE)\n\ntext &lt;- \"\n`{gt}` is much more powerful than any markdown table syntax! \n\n*Just look at this:*\n\n![](tbl)\n\nPretty neat, huh!\n\"\n\ngrid::grid.draw(marquee_grob(text))"
+    "objectID": "exercises/2_ggplot2.html#patterns-and-gradients",
+    "href": "exercises/2_ggplot2.html#patterns-and-gradients",
+    "title": "Exercises for session 1.2",
+    "section": "Patterns and gradients",
+    "text": "Patterns and gradients\n\nExercise 1.2.3\nUse grid::linearGradient() to set up a horizontal colour gradient. Which arguments do you have to tweak to change the default diagonal gradient to a horizontal one? How would you set a vertical gradient instead?\n\ngradient &lt;- ...\n\nggplot(economics, aes(date, unemploy)) +\n  geom_area(fill = list(gradient), colour = \"black\")\n\n\n\nExercise 1.2.4\nThe following code sets up a crosshatch pattern that can be used as the fill aesthetic.\n\nwidth &lt;- height &lt;- unit(3, \"mm\")\ncrosshatch &lt;- pattern(\n  segmentsGrob(\n    x0 = c(0, 1), x1 = c(1, 0), \n    y0 = c(0, 0), y1 = c(1, 1),\n    gp = gg_par(col = \"black\", lwd = 0.5),\n    vp = viewport(width = width, height = height)\n  ),\n  width = width, height = height,\n  extend = \"repeat\"\n)\n\nggplot(economics, aes(date, unemploy)) +\n  geom_area(fill = crosshatch, colour = \"black\")\n\n\n\n\n\n\n\n\nCreate a new pattern of your liking. Can you design a polka-dot or checkerboard pattern? You can use grid::circleGrob() and grid::rectGrob() for circles and rectangles respectively. We’ll use it to create a manual fill scale of patterns.\n\nmy_pattern &lt;- pattern(\n  ...\n)\n\npatterns &lt;- list(\n  crosshatch,\n  gradient,\n  my_pattern\n)\n\nggplot(palmerpenguins::penguins) +\n  aes(species, fill = island) +\n  geom_bar() +\n  scale_fill_manual(values = patterns)"
   },
   {
-    "objectID": "exercises/3_text_fonts.html#marquee-styling",
-    "href": "exercises/3_text_fonts.html#marquee-styling",
-    "title": "Exercises for session 3",
-    "section": "3.3 marquee styling",
-    "text": "3.3 marquee styling\n\nExercise 3.3.1\nRead the documentation of marquee::classic_style() and experiment with how different a look you can get by only modifying the arguments that it takes\n\n\n\n\n\n\n\n\nAs well as code blocks\n\n&gt;And notes\n\"\n\ngrid::grid.draw(marquee_grob(text, style = style))\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nNo wrong answers here. Just experiment with the various arguments and its effect on the provided text\n\n\n\n\n\n\nExercise 3.3.2\nChange the look of inline code so that it is displayed with an outlined serif font on a transparent background with a lightblue border. You can read the documentation for marquee_parse() to see the tags that are asigned to various markdown elements.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nInline code uses the \"code\" tag. See the documentation for style() to figure out the different styles that needs to be changed to get the requested look\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThere are two ways to call modify_style(). Either pass the different styles directly:\nstyle &lt;- classic_style(base_size = 20) |&gt;\n  modify_style(\n    \"code\",\n    family = \"serif\",\n    color = \"white\",\n    background = NA,\n    border = \"lightblue\",\n    border_size = trbl(grid::unit(1, \"pt\")),\n    outline = \"black\"\n  )\nor pass in a style object as the first argument after the tag name\nstyle &lt;- classic_style(base_size = 20) |&gt;\n  modify_style(\n    \"code\",\n    style(\n      family = \"serif\",\n      color = \"white\",\n      background = NA,\n      border = \"lightblue\",\n      border_size = trbl(grid::unit(1, \"pt\")),\n      outline = \"black\"\n    )\n  )\nCan you see what the difference is between the two approaches (it’s described in the documentation for modify_style())\n\n\n\n\n\n\nExercise 3.3.3\nDefine a new tag (\"fancy\"), which makes text over-the-top unreadable due to its styling. Consider using the features argument as a means to that end.\nTest out the new style on a piece of text of your own choice\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nFont features are a huge subject and if you have never heard of it before you may choose to use other arguments to make the text over-the-top. If you do use the features argument, remember that not all fonts support all features. You can see which features are supported by a font using textshaping::get_font_features()\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nAn example of a horrible style could be\nsystemfonts::require_font(\"EB Garamond\")\nstyle &lt;- classic_style(base_size = 20) |&gt;\n  modify_style(\n    \"fancy\",\n    family = \"EB Garamond\", \n    weight = \"ultrabold\",\n    features = systemfonts::font_feature(\n      swsh = 0, \n      dlig = 1, \n      hlig = 1, \n      hist = 1, \n      kern = 0, \n      aalt = 2\n    ), \n    outline = \"black\", \n    color = \"white\", \n    background = \"green\", \n    tracking = 300\n  )\n\ntext &lt;- \"{.fancy This is a test of readability (& style)}\"\nbut I’m sure you can do it better/worse"
+    "objectID": "exercises/2_ggplot2.html#delayed-evaluation",
+    "href": "exercises/2_ggplot2.html#delayed-evaluation",
+    "title": "Exercises for session 1.2",
+    "section": "Delayed evaluation",
+    "text": "Delayed evaluation\n\nExercise 1.2.5\nIn the plot below, can you redirect the alpha aesthetic to represent the count computed variable? You can set the fill aesthetic to a fixed colour like \"black\". For an extra challenge, can you use scale_alpha_continuous() to anchor 0 at complete transparency?\n\nggplot(diamonds) +\n  aes(carat, price) +\n  stat_bin_2d(\n    binwidth = c(0.05, 200)\n  )"
   },
   {
-    "objectID": "exercises/3_text_fonts.html#using-geom_marquee-in-ggplot2",
-    "href": "exercises/3_text_fonts.html#using-geom_marquee-in-ggplot2",
-    "title": "Exercises for session 3",
-    "section": "3.4 Using geom_marquee() in ggplot2",
-    "text": "3.4 Using geom_marquee() in ggplot2\n\nExercise 3.4.1\nCreate a scatter plot of bill length vs flipper length from the penguins dataset. Use geom_marquee() to label at least two points with formatted text (including italics or bold). Experiment with the width aesthetic to force automatic line breaking\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nYou can use geom_marquee() with some coordinates to place formatted text labels. To choose points to label, you might want to filter the penguins data for specific individuals.\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\n# Find some interesting points to label\nadelie &lt;- subset(penguins, species == \"Adelie\" & bill_len &gt; 45)[1, ]\ngentoo &lt;- subset(penguins, species == \"Gentoo\" & flipper_len &gt; 230)[1, ]\npenguins2 &lt;- rbind(adelie, gentoo)\npenguins2$label &lt;- c(\n  \"*Adelie* penguin with **large bill**\",\n  \"*Gentoo* penguin with **long flippers**\"\n)\n\nggplot(penguins, aes(bill_len, flipper_len)) + \n  geom_point(aes(color = species)) +\n  geom_marquee(\n    aes(label = label), \n    data = penguins2,\n    width = grid::unit(3, \"cm\"),\n    hjust = 0,\n    vjust = 1\n  ) + \n  theme(legend.position = \"bottom\")\n\n\n\n\n\n\nExercise 3.4.2\nCreate a plot and use element_marquee() to customize the plot title, subtitle, and axis titles. Make the titles include formatted text (like bold or italic words) and use a custom font.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nYou can use element_marquee() to replace standard text elements in the theme. For example, plot.title = element_marquee(...) for the title. Remember to use markdown formatting in your text.\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nsystemfonts::require_font(\"Spectral\")\nsystemfonts::require_font(\"Exo 2\")\n\nggplot(penguins, aes(bill_len, flipper_len)) + \n  geom_point(aes(color = species)) +\n  labs(\n    title = \"**Penguin** *Measurements*\",\n    subtitle = \"Analysis of *bill length* vs *flipper length*\",\n    x = \"*Bill Length* (mm)\",\n    y = \"*Flipper Length* (mm)\"\n  ) +\n  theme(\n    plot.title = element_marquee(family = \"Spectral\", size = 16),\n    plot.subtitle = element_marquee(family = \"Exo 2\", size = 12),\n    axis.title.x = element_marquee(family = \"Exo 2\", size = 10),\n    axis.title.y = element_marquee(family = \"Exo 2\", size = 10)\n  )\n\n\n\n\n\n\nExercise 3.4.3\nCreate a scatter plot with a color aesthetic for species. Use guide_marquee() to create a custom legend that includes text describing the penguin species colouring the species name and includind the keys as well.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nYou need to take care of two things:\n\nTell ggplot2 to use guide_marquee() for the color aesthetic\nProvide the markdown text that will be used for the legend\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThe two things can be accomplished in different ways\n\nThe guide type can be specified with guides() or within scale_color_*()\nThe text can be provided in the guide_marquee() constructor, in the scale constructor, or with labs()\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nlegend_text &lt;- \"\nAn overview of the relationship between flipper and bill length between \n{.Adelie *Adelie*} &lt;&lt;Adelie&gt;&gt;, {.Chinstrap *Chinstrap*} &lt;&lt;Chinstrap&gt;&gt;, and \n{.Gentoo *Gentoo*} &lt;&lt;Gentoo&gt;&gt; penguins\n\"\nggplot(penguins, aes(bill_len, flipper_len, color = species)) + \n  geom_point() +\n  guides(color = \"marquee\") + \n  labs(color = legend_text)"
+    "objectID": "exercises/2_ggplot2.html#polar-coordinates",
+    "href": "exercises/2_ggplot2.html#polar-coordinates",
+    "title": "Exercises for session 1.2",
+    "section": "Polar coordinates",
+    "text": "Polar coordinates\n\nExercise 1.2.6\nPlot p displays a Cartesian bar chart of car manufacturers. Add a coord_radial() with arguments to p to make a half-ring shape coxcomb/windrose chart with nicely displayed text.\n\np &lt;- ggplot(mpg) +\n  aes(manufacturer, label = manufacturer) +\n  geom_bar() +\n  geom_text(\n    aes(y = 37),\n    # Prevent duplicated labels\n    data = ~ dplyr::filter(.x, !duplicated(manufacturer)),\n    angle = 90, hjust = 1\n  ) +\n  scale_x_discrete(guide = \"none\")\np"
+  },
+  {
+    "objectID": "exercises/2_ggplot2.html#facets",
+    "href": "exercises/2_ggplot2.html#facets",
+    "title": "Exercises for session 1.2",
+    "section": "Facets",
+    "text": "Facets\n\nExercise 1.2.7\nGiven the following code, adapt the facet_wrap() statement to:\n\nMirror the facet order\nPlace labelled axes at the bottom of every panel\nPlace axis ticks on all y-axes\n\n\nggplot(diamonds) +\n  aes(carat, price) +\n  geom_point(shape = \".\") +\n  facet_wrap(~ cut, dir = \"lt\")"
+  },
+  {
+    "objectID": "exercises/6_interaction.html",
+    "href": "exercises/6_interaction.html",
+    "title": "Exercises for session 6",
+    "section": "",
+    "text": "library(ggplot2)\nlibrary(ggiraph)\nlibrary(patchwork)\n# Emoji will not always render flawlessly with default device\nknitr::opts_chunk$set(dev = \"ragg_png\")\n\n\nExercise 6.1\nWe have two plots. One is a plot of the gapminder data.\n\n# Wrangle data to add country codes\ngapdata &lt;- gapminder::gapminder_unfiltered |&gt;\n  dplyr::filter(year == 2007) |&gt;\n  dplyr::left_join(gapminder::country_codes, by = \"country\")\n\ngapplot &lt;- ggplot(gapdata) +\n  aes(\n    gdpPercap, lifeExp, size = pop, \n    colour = continent, alpha = I(0.7)\n  ) +\n  scale_colour_manual(\n    guide = \"none\",\n    values = gapminder::continent_colors\n  ) +\n  scale_x_log10() +\n  scale_size_area(max_size = 12, guide = \"none\")\n\ngapplot + geom_point()\n\n\n\n\n\n\n\n\nThe second plot is a world map.\n\nworld &lt;- rnaturalearth::ne_countries()\n\nworldmap &lt;- ggplot(world) +\n  aes(colour = region_un, fill = after_scale(alpha(colour, 0.7))) +\n  scale_colour_manual(\n    guide = \"none\",\n    values = gapminder::continent_colors\n  )\n\nworldmap + geom_sf()\n\n\n\n\n\n\n\n\nNote that the gapplot and worldmap ggplot objects don’t have any layers. Add interactive layers to these two plots, and coordinate them such that hovering over a country in one plot will highlight that country in the other plot too. Assume that the world$iso_a3_eh and gapdata$iso_alpha are compatible identifiers for countries. Optionally, you may also add a tooltip to display the country name (in world$name and gapdata$country).\n\ni_gapplot &lt;- gapplot + ...\n\ni_worldmap &lt;- worldmap + ...\n\ngirafe(ggobj = i_gapplot / i_worldmap)\n\n\n\nHint\n\nThe geom_point() and geom_sf() layers have parallel ggiraph::geom_point_interactive() and ggiraph::geom_sf_interactive() layers for interactive use.\nThe coordination should take place on the level of the data_id aesthetic.\n\n\nSolution\n\n\ni_gapplot &lt;- gapplot +\n  geom_point_interactive(aes(\n    data_id = iso_alpha, \n    tooltip = country\n  ))\n\ni_worldmap &lt;- worldmap +\n  geom_sf_interactive(aes(\n    data_id = iso_a3_eh, \n    tooltip = name\n  ))\n\ngirafe(ggobj = i_gapplot / i_worldmap)\n\n\n\n\n\n\n\n\n\nExercise 6.2\nWe have battleship placements on a grid.\n\nbattleships &lt;- tibble::tribble(\n  ~x,  ~y,\n  # Patrol Boat\n  \"A\", 1,\n  \"B\", 1,\n  # Destroyer\n  \"D\", 1,\n  \"D\", 2,\n  \"D\", 3,\n  # Destroyer\n  \"F\", 3,\n  \"G\", 3,\n  \"H\", 3,\n  # Battleship\n  \"G\", 1,\n  \"H\", 1,\n  \"I\", 1,\n  \"J\", 1,\n  # Patrol Boat\n  \"J\", 3,\n  \"J\", 4,\n  # Battleship\n  \"A\", 3,\n  \"A\", 4,\n  \"A\", 5,\n  \"A\", 6,\n  # Patrol Boat\n  \"A\", 8,\n  \"B\", 8,\n  # Patrol Boat\n  \"F\", 6,\n  \"F\", 7,\n  # Destroyer\n  \"J\", 6,\n  \"J\", 7,\n  \"J\", 8,\n  # Carrier\n  \"E\", 10,\n  \"F\", 10,\n  \"G\", 10,\n  \"H\", 10,\n  \"I\", 10,\n  \"J\", 10,\n)\n\nWe visualise these battleships with explosions in a plot. Ignore the horizontal justification for now, this is in anticipation of girafe()’s custom SVG device.\n\ngrid &lt;- expand.grid(y = 1:10, x = LETTERS[1:10])\n\np &lt;- ggplot(grid, aes(x, factor(y))) +\n  geom_text(\n    aes(label = \"Hit!\"), \n    data = battleships,\n    size = 8, hjust = 1\n  ) +\n  geom_text(\n    aes(label = \"Miss...\"), \n    data = vctrs::vec_set_difference(grid, battleships),\n    size = 8, hjust = 1\n  ) +\n  discrete_scale(\n    name = \"💣\",\n    aesthetics = \"label\", \n    palette = scales::pal_manual(c(\"💥\", \"🌊\"))\n  ) +\n  scale_y_discrete(limits = as.character(10:1)) +\n  theme(legend.title = element_text(size = 25))\n\np\n\n\n\n\n\n\n\n\nCan you add interactive tiles that cover up the emoji and disappear when selected? The selection mechanisms go into girafe(options).\n\np_i &lt;- p + ...\n\ngirafe(\n  ggobj = p_i,\n  options = list(\n    ...\n  )\n)\n\n\n\nHint\n\nYou need to set the data_id aesthetic in geom_tile_interactive() so that every cell has a unique ID. For activating the selection mechanic you can use opts_selection(css = ..., type = \"multiple\", only_shiny = FALSE). To make the cells disappear you have to fill in the correct css argument.\n\n\nSolution\n\n\np_i &lt;- p + geom_tile_interactive(\n  aes(data_id = seq_along(x)),\n  # Optional styling\n  fill = \"#EBEBEB\", colour = \"white\", linewidth = 0.5\n)\n\ngirafe(\n  ggobj = p_i,\n  options = list(\n    # Hover is optional to make it clearer which cell you're about to hide\n    opts_hover(css = girafe_css(css = \"fill:#888888;\")),\n    # Trick is to use 0 opacity for selected cells\n    opts_selection(css = \"opacity:0;\", type = \"multiple\", only_shiny = FALSE)\n  )\n)\n\n\n\n\n\n\n\nWithout cheating and looking at static plot or the battleships data frame, how many clicks does it take you find:\n\n1 Carrier (5 cells)\n2 Battleships (4 cells)\n3 Destroyers (3 cells)\n4 Patrol boats (2 cells)"
   }
 ]
