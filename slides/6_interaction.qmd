@@ -380,6 +380,18 @@ girafe(ggobj = combined)
 
 ---
 
+### Summary: `data_id`
+
+* The `data_id` aesthetic can be used to link up data.
+    * 1:1 single points
+    * 1:many highlight groups
+    * many:1 single datum represented multiple times
+* It can be used to link across composed plots.
+
+⏲️ Exercise 6.1
+
+---
+
 ### Customising ggiraph: tooltips
 
 ```{r}
@@ -410,23 +422,6 @@ girafe(
 
 ---
 
-### Customising ggiraph: linking
-
-```{r}
-p <- gaps +
-  labs(caption = "Source: https://www.gapminder.org/data/") +
-  theme(plot.caption = element_text_interactive(
-    colour = "darkblue",
-    data_id = "any_unique_id",
-    hover_css = "fill:blue;stroke:none;text-decoration:underline;",
-    onclick = 'window.open("https://www.gapminder.org/data/")'
-  ))
-
-girafe(ggobj = p)
-```
-
----
-
 ### Customising ggiraph: zooming
 
 ```{r}
@@ -453,6 +448,36 @@ girafe(
   )
 )
 ```
+
+---
+
+### Customising ggiraph: linking
+
+```{r}
+p <- gaps +
+  labs(caption = "Source: https://www.gapminder.org/data/") +
+  theme(plot.caption = element_text_interactive(
+    colour = "darkblue",
+    data_id = "any_unique_id",
+    hover_css = "fill:blue;stroke:none;text-decoration:underline;",
+    onclick = 'window.open("https://www.gapminder.org/data/")'
+  ))
+
+girafe(ggobj = p)
+```
+
+---
+
+### Summary: customisation
+
+* In `girafe(options)` you can customise the following:
+    * Tooltips via `opts_tooltip()`
+    * Hovering via `opts_hover()`/`opts_hover_inv()`
+    * Zooming via `opts_zoom()`
+    * Selections via `opts_selection()`/`opts_selection_inv()`
+* The `onclick` property can be used to link execute JavaScript.
+
+⏲️ Exercise 6.2
 
 ---
 
