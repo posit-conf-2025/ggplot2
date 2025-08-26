@@ -61,25 +61,25 @@ If you have trouble installing any of these packages please contact the instruct
 
 | Time          | Activity                                                   |
 | :------------ | :--------------------------------------------------------- |
-| 09:00 - 9:30  | [Introduction](sessions/1_introduction.qmd)              |
-| 09:30 - 10:30 | [Modern ggplot2](sessions/2_ggplot2.qmd)                 |
+| 09:00 - 9:30  | [Introduction](sessions/1_introduction.qmd)                |
+| 09:30 - 10:30 | [Modern ggplot2](sessions/2_ggplot2.qmd)                   |
 | 10:30 - 11:00 | *Coffee break*                                             |
-| 11:00 - 11:45 | [Text rendering and font use](sessions/3_text_fonts.qmd) |
-| 11:45 - 12:30 | [Styling your plot](sessions/4_theme_guide.qmd)          |
+| 11:00 - 12:30 | [Text rendering and font use](sessions/3_text_fonts.qmd)   |
 | 12:30 - 13:30 | *Lunch break*                                              |
-| 13:30 - 14:15 | [Plot Composition](sessions/5_composition.qmd)           |
-| 14:15 - 15:00 | [Interactive plots](sessions/6_interaction.qmd)          |
+| 13:30 - 14:30 | [Styling your plot](sessions/4_theme_guide.qmd)            |
+| 14:30 - 15:00 | [Plot Composition](sessions/5_composition.qmd)             |
 | 15:00 - 15:30 | *Coffee break*                                             |
-| 15:30 - 16:30 | [Creating extensions](sessions/7_extensions.qmd)         |
-| 16:30 - 17:00 | [Spice up your plot](sessions/8_fun.qmd)                 |
+| 15:30 - 16:30 | [Plot Composition](sessions/5_composition.qmd)             |
+| 16:30 - 17:00 | [Creating extensions](sessions/6_extensions.qmd) / [Spice up your plot](sessions/7_fun.qmd) |
 
-## Instructor(s)
+## Instructor
 
 **Thomas Lin Pedersen** (thomas.pedersen@posit.co)
 
 Thomas is a software engineer at Posit where he is in charge of most things related to R graphics. He is the maintainer of ggplot2 and author of numerous packages that improves the graphics capabilities of R. On the side, Thomas is a generative artist making computational art using R, JavaScript, and GLSL. A not insignificant number of packages or features has been born from artistic needs.
 
 **Teun van den Brand** (teun.vandenbrand@posit.co)
+
 Teun is a contractor working for Posit. He contributes mostly to the ggplot2 and scales packages and has been in charge of most of the new features in the latest releases. He has authored other packages such as legendry, ggh4x and ggarrow — all building on the ggplot2 framework.
 
 -----
