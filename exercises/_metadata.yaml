@@ -1,5 +1,8 @@
 format:
   live-html:
+    theme:
+      - yeti
+      - brand
     css: styles.css
 engine: knitr
 webr:
