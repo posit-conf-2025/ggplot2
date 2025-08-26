@@ -25,14 +25,14 @@
     "href": "index.html#schedule",
     "title": "Mastering Data Visualization with ggplot2",
     "section": "Schedule",
-    "text": "Schedule\n\n\n\nTime\nActivity\n\n\n\n\n09:00 - 9:30\nIntroduction\n\n\n09:30 - 10:30\nModern ggplot2\n\n\n10:30 - 11:00\nCoffee break\n\n\n11:00 - 11:45\nText rendering and font use\n\n\n11:45 - 12:30\nStyling your plot\n\n\n12:30 - 13:30\nLunch break\n\n\n13:30 - 14:15\nPlot Composition\n\n\n14:15 - 15:00\nInteractive plots\n\n\n15:00 - 15:30\nCoffee break\n\n\n15:30 - 16:30\nCreating extensions\n\n\n16:30 - 17:00\nSpice up your plot"
+    "text": "Schedule\n\n\n\nTime\nActivity\n\n\n\n\n09:00 - 9:30\nIntroduction\n\n\n09:30 - 10:30\nModern ggplot2\n\n\n10:30 - 11:00\nCoffee break\n\n\n11:00 - 12:30\nText rendering and font use\n\n\n12:30 - 13:30\nLunch break\n\n\n13:30 - 14:30\nStyling your plot\n\n\n14:30 - 15:00\nPlot Composition\n\n\n15:00 - 15:30\nCoffee break\n\n\n15:30 - 16:30\nPlot Composition\n\n\n16:30 - 17:00\nCreating extensions / Spice up your plot"
   },
   {
-    "objectID": "index.html#instructors",
-    "href": "index.html#instructors",
+    "objectID": "index.html#instructor",
+    "href": "index.html#instructor",
     "title": "Mastering Data Visualization with ggplot2",
-    "section": "Instructor(s)",
-    "text": "Instructor(s)\nThomas Lin Pedersen (thomas.pedersen@posit.co)\nThomas is a software engineer at Posit where he is in charge of most things related to R graphics. He is the maintainer of ggplot2 and author of numerous packages that improves the graphics capabilities of R. On the side, Thomas is a generative artist making computational art using R, JavaScript, and GLSL. A not insignificant number of packages or features has been born from artistic needs.\nTeun van den Brand (teun.vandenbrand@posit.co) Teun is a contractor working for Posit. He contributes mostly to the ggplot2 and scales packages and has been in charge of most of the new features in the latest releases. He has authored other packages such as legendry, ggh4x and ggarrow — all building on the ggplot2 framework.\n\n This work is licensed under a Creative Commons Attribution 4.0 International License."
+    "section": "Instructor",
+    "text": "Instructor\nThomas Lin Pedersen (thomas.pedersen@posit.co)\nThomas is a software engineer at Posit where he is in charge of most things related to R graphics. He is the maintainer of ggplot2 and author of numerous packages that improves the graphics capabilities of R. On the side, Thomas is a generative artist making computational art using R, JavaScript, and GLSL. A not insignificant number of packages or features has been born from artistic needs.\nTeun van den Brand (teun.vandenbrand@posit.co)\nTeun is a contractor working for Posit. He contributes mostly to the ggplot2 and scales packages and has been in charge of most of the new features in the latest releases. He has authored other packages such as legendry, ggh4x and ggarrow — all building on the ggplot2 framework.\n\n This work is licensed under a Creative Commons Attribution 4.0 International License."
   },
   {
     "objectID": "exercises/3_text_fonts.html",
@@ -105,36 +105,36 @@
     "text": "Custom guides\n\nExercise 4.4\nWe have the following unemployment data from the United States.\n\nlibrary(legendry)\n\np &lt;- ggplot(economics, aes(date, unemploy)) +\n  geom_area(colour = \"black\", alpha = 0.3) +\n  labs(\n    x = \"Date\",\n    y = \"Unemployment (x1000)\"\n  )\n\np\n\n\n\n\n\n\n\n\nPick some event or period in the range of the plot above. Create an axis annotation to indicate that event or period. You may need to construct the appropriate key argument for a custom guide.\n\nmy_annotation &lt;- ...\n\np + guides(x = compose_stack(\"axis\", my_annotation))\n\n\n\nHint 1\n\nIf you’re stuck without inspiration, here are some arbitrary events and periods:\n\nFirst release of ggplot2 (2007)\nMargaret Thatcher serves as the UK’s prime minister (1979-1990)\nRelease of the original Sony Walkman (1979)\nThe pop group ‘The Spice Girls’ (1994-2000)\nFall of the Berlin Wall (1989)\nRelease of the pinnacle of telecommunication, the Nokia 3310 (2000)\nThe British sitcom ‘Mr. Bean’ (1990-1995)\nThomas Lin Pederson was born (1985)\nDavid Tennant plays the 10th Doctor in ‘Doctor Who’ (2005-2010)\nThe American sitcom ‘Golden Girls’ (1985-1992)\nThe birth of Hadley Wickham (1979)\nTexas Instruments launches its first graphing calculator (1990)\n\n\n\nHint 2\n\nYou can combine legendry::primitive_bracket() + legendry::key_range_manual() for periods. You can use legendry::guide_axis_base() + legendry::key_manual() for point-events.\n\n\nSolution\n\nFor a range of dates:\n\nmy_annotation &lt;- primitive_bracket(\n  key = key_range_manual(\n    start = as.Date(\"1977-01-20\"),\n    end   = as.Date(\"1981-01-20\"), \n    name  = \"Carter administration\"\n  ),\n  bracket = \"square\"\n)\n\np + guides(x = compose_stack(\"axis\", my_annotation))\n\n\n\n\n\n\n\n\nFor an event:\n\nmy_annotation &lt;- guide_axis_base(\n  key = key_manual(\n    aesthetic = as.Date(\"1991-09-27\"),\n    label = \"Release 'Terminator 2'\"\n  ),\n  theme = theme(\n    axis.ticks.length = unit(6, \"mm\"),\n    axis.ticks = element_line(arrow = arrow(length = unit(1.5, \"mm\")))\n  )\n)\n\n# Swapping the composition is a little bit cheating on my end\np + guides(x = compose_ontop(\"axis\", my_annotation))"
   },
   {
-    "objectID": "slides/6_interaction.html#interactivity",
-    "href": "slides/6_interaction.html#interactivity",
+    "objectID": "slides/interaction.html#interactivity",
+    "href": "slides/interaction.html#interactivity",
     "title": "Interactive plots",
     "section": "Interactivity",
     "text": "Interactivity"
   },
   {
-    "objectID": "slides/6_interaction.html#gganimate",
-    "href": "slides/6_interaction.html#gganimate",
+    "objectID": "slides/interaction.html#gganimate",
+    "href": "slides/interaction.html#gganimate",
     "title": "Interactive plots",
     "section": "gganimate",
     "text": "gganimate\nRenders animations of your plot to GIFs.\n\n\n\n\n\nflowchart TD\n  A[ggplot2] --&gt; B[grid]\n  B --&gt; C[grDevices]\n  C --&gt; D(devices)\n  D --&gt; E([GIF])\n  F[gganimate] &lt;--&gt; A\n  F -.-&gt; |\"animate()\"|D"
   },
   {
-    "objectID": "slides/6_interaction.html#plotly",
-    "href": "slides/6_interaction.html#plotly",
+    "objectID": "slides/interaction.html#plotly",
+    "href": "slides/interaction.html#plotly",
     "title": "Interactive plots",
     "section": "plotly",
     "text": "plotly\n\n\n\n\n\nflowchart TD\n  A[ggplot2] --&gt; B[grid]\n  B --&gt; C[grDevices]\n  C --&gt; D(devices)\n  D --&gt; E([file])\n  A --&gt; |\"`plotly::ggplotly()`\"|F(plotly.js)\n  F --&gt; G[\"htmlwidgets (R)\"]\n  G --&gt; H([html])"
   },
   {
-    "objectID": "slides/6_interaction.html#ggiraph",
-    "href": "slides/6_interaction.html#ggiraph",
+    "objectID": "slides/interaction.html#ggiraph",
+    "href": "slides/interaction.html#ggiraph",
     "title": "Interactive plots",
     "section": "ggiraph",
     "text": "ggiraph\n\n\n\n\n\nflowchart TD\n  A[ggplot2] --&gt; B[grid]\n  B --&gt; C[grDevices]\n  C --&gt; D(\"ggiraph::dsvg()\")\n  D --&gt; E([SVG])\n  F[ggiraph] &lt;--&gt; A\n  F -.-&gt; |\"ggirafe()\"|D"
   },
   {
-    "objectID": "slides/6_interaction.html#summary",
-    "href": "slides/6_interaction.html#summary",
+    "objectID": "slides/interaction.html#summary",
+    "href": "slides/interaction.html#summary",
     "title": "Interactive plots",
     "section": "Summary",
     "text": "Summary\nEach package has strengths and weaknesses.\n\n\n\npackage\nFidelity\nAnimation\nTooltips\n\n\n\n\ngganimate\nYes\nYes\nNo\n\n\nplotly\nNo\nYes\nYes\n\n\nggiraph\nYes\nNo\nYes"
@@ -179,7 +179,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpmiEdiH/Barrio-regular.ttf\", \"/tmp/RtmpmiEdiH/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/Rtmpi41EzL/Barrio-regular.ttf\", \"/tmp/Rtmpi41EzL/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
@@ -420,43 +420,36 @@
     "text": "Next session: Styling your plot"
   },
   {
-    "objectID": "slides/2_ggplot2.html#headings",
-    "href": "slides/2_ggplot2.html#headings",
-    "title": "Modern ggplot2",
-    "section": "Headings",
-    "text": "Headings\n\nColumn metadata\nData dictionary"
+    "objectID": "slides/4_theme_guide.html#ink-paper",
+    "href": "slides/4_theme_guide.html#ink-paper",
+    "title": "Styling your plot",
+    "section": "Ink & Paper",
+    "text": "Ink & Paper\n\nComplete themes\nGeom element\nUse in layers"
   },
   {
-    "objectID": "slides/2_ggplot2.html#patterns-and-gradients",
-    "href": "slides/2_ggplot2.html#patterns-and-gradients",
-    "title": "Modern ggplot2",
-    "section": "Patterns and gradients",
-    "text": "Patterns and gradients\nIn R 4.1 the grid package introduced patterns and gradients.\n\ngrid::linearGradient()\ngrid::radialGradient()\ngrid::pattern()\n\nWe allow these as fill aesthetic in ggplot2.\nPatterns can aid in cases of colour vision deficiency."
+    "objectID": "slides/4_theme_guide.html#default-palettes",
+    "href": "slides/4_theme_guide.html#default-palettes",
+    "title": "Styling your plot",
+    "section": "Default palettes",
+    "text": "Default palettes\nSeveral ways to set a plot’s colour palette\n\nDirectly add a scale\n\n+ scale_colour_gradientn()\nNot set as default scale\n\nUsing esoteric options\n\noptions(ggplot2.continuous.colour = scale_colour_gradientn)\nArcane\n\nOverriding default scale\n\nscale_colour_continuous &lt;- scale_colour_gradientn\nMesses with namespace\n\nNEW: via theme()"
   },
   {
-    "objectID": "slides/2_ggplot2.html#delayed-evaluation",
-    "href": "slides/2_ggplot2.html#delayed-evaluation",
-    "title": "Modern ggplot2",
-    "section": "Delayed evaluation",
-    "text": "Delayed evaluation\nWith regards to evaluation, there are three stages:\n\nDirect input at start\nAfter computing stat\nAfter scale mapping"
+    "objectID": "slides/4_theme_guide.html#build-your-own-theme",
+    "href": "slides/4_theme_guide.html#build-your-own-theme",
+    "title": "Styling your plot",
+    "section": "Build your own theme",
+    "text": "Build your own theme\nHow do you intend to use a personal theme?\n\nComplete theme\nPartial theme"
   },
   {
-    "objectID": "slides/2_ggplot2.html#polar-coordinates",
-    "href": "slides/2_ggplot2.html#polar-coordinates",
-    "title": "Modern ggplot2",
-    "section": "Polar coordinates",
-    "text": "Polar coordinates\nThe classic coord_polar() is succeeded by coord_radial().\n\nexpand parameter\nArbitrary sectors\nDonuts"
+    "objectID": "slides/4_theme_guide.html#custom-guides",
+    "href": "slides/4_theme_guide.html#custom-guides",
+    "title": "Styling your plot",
+    "section": "Custom guides",
+    "text": "Custom guides\nggplot2 has more guides than colour bars and legends.\n\naxes\ncolour bar\ncolour steps\nlegend\nbinned guide"
   },
   {
-    "objectID": "slides/2_ggplot2.html#facets",
-    "href": "slides/2_ggplot2.html#facets",
-    "title": "Modern ggplot2",
-    "section": "Facets",
-    "text": "Facets\n\nDisplay of inner axes\nLayer layout\nPanel ordering"
-  },
-  {
-    "objectID": "sessions/6_interaction.html",
-    "href": "sessions/6_interaction.html",
+    "objectID": "sessions/interaction.html",
+    "href": "sessions/interaction.html",
     "title": "Interactive plots",
     "section": "",
     "text": "Here we learn about sprucing up your plots for the digital world:\n\nplotly\nggiraph\ngganimate\n\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
@@ -469,15 +462,15 @@
     "text": "In this session we will dive into working with text in ggplot2. There are two areas of special interest here: How to access the typeface (font) you want to use, and how to add rich formatting to your text. You will be introduced to two key packages that work in unison, namely systemfonts and marquee. Further, you will get an understanding of why selecting the right graphics device is paramount when it comes to text, moreso than for most other graphics features.\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
   },
   {
-    "objectID": "sessions/2_ggplot2.html",
-    "href": "sessions/2_ggplot2.html",
-    "title": "Modern ggplot2",
+    "objectID": "sessions/4_theme_guide.html",
+    "href": "sessions/4_theme_guide.html",
+    "title": "Styling your plot",
     "section": "",
-    "text": "The goal of this session is to get you up to speed with the latest developments from ggplot2 3.5.0 onwards.\n\nHeadings\nPatterns and gradients\nDelayed evaluation\nPolar coordinates\nFacets\n\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
+    "text": "In this session, we learn about the following topics:\n\nInk and paper\nPalettes in themes\nBuilding your own theme\nCustomising guides\n\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
   },
   {
-    "objectID": "sessions/8_fun.html",
-    "href": "sessions/8_fun.html",
+    "objectID": "sessions/7_fun.html",
+    "href": "sessions/7_fun.html",
     "title": "Spice up your plot",
     "section": "",
     "text": "In this last session we will (if time permits) spend some time showcasing things you can do with ggplots and its extensions that may make Tufte roll over, but on the other hand can help you create memorable visualisations with a lot of personality\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
@@ -490,18 +483,18 @@
     "text": "This session will briefly introduce the rest of the day, giving an overview of the schedule and any practical information that may be relevant.\nKey points: * Agenda * Who we are * Practical info * Toilets * Ribbons * Etc\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
   },
   {
-    "objectID": "sessions/4_theme_guide.html",
-    "href": "sessions/4_theme_guide.html",
-    "title": "Styling your plot",
-    "section": "",
-    "text": "In this session, we learn about the following topics:\n\nInk and paper\nPalettes in themes\nBuilding your own theme\nCustomising guides\n\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
-  },
-  {
-    "objectID": "sessions/7_extensions.html",
-    "href": "sessions/7_extensions.html",
+    "objectID": "sessions/6_extensions.html",
+    "href": "sessions/6_extensions.html",
     "title": "Creating extensions",
     "section": "",
     "text": "Here we talk about creating reusable pieces of code that fit into the grammar:\n\nClasses\nConstructors\nPatterns\n\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
+  },
+  {
+    "objectID": "sessions/2_ggplot2.html",
+    "href": "sessions/2_ggplot2.html",
+    "title": "Modern ggplot2",
+    "section": "",
+    "text": "The goal of this session is to get you up to speed with the latest developments from ggplot2 3.5.0 onwards.\n\nHeadings\nPatterns and gradients\nDelayed evaluation\nPolar coordinates\nFacets\n\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
   },
   {
     "objectID": "sessions/5_composition.html",
@@ -539,32 +532,39 @@
     "text": "Practical information\nhttps://posit-conf-2025.github.io/ggplot2/\nTBD"
   },
   {
-    "objectID": "slides/4_theme_guide.html#ink-paper",
-    "href": "slides/4_theme_guide.html#ink-paper",
-    "title": "Styling your plot",
-    "section": "Ink & Paper",
-    "text": "Ink & Paper\n\nComplete themes\nGeom element\nUse in layers"
+    "objectID": "slides/2_ggplot2.html#headings",
+    "href": "slides/2_ggplot2.html#headings",
+    "title": "Modern ggplot2",
+    "section": "Headings",
+    "text": "Headings\n\nColumn metadata\nData dictionary"
   },
   {
-    "objectID": "slides/4_theme_guide.html#default-palettes",
-    "href": "slides/4_theme_guide.html#default-palettes",
-    "title": "Styling your plot",
-    "section": "Default palettes",
-    "text": "Default palettes\nSeveral ways to set a plot’s colour palette\n\nDirectly add a scale\n\n+ scale_colour_gradientn()\nNot set as default scale\n\nUsing esoteric options\n\noptions(ggplot2.continuous.colour = scale_colour_gradientn)\nArcane\n\nOverriding default scale\n\nscale_colour_continuous &lt;- scale_colour_gradientn\nMesses with namespace\n\nNEW: via theme()"
+    "objectID": "slides/2_ggplot2.html#patterns-and-gradients",
+    "href": "slides/2_ggplot2.html#patterns-and-gradients",
+    "title": "Modern ggplot2",
+    "section": "Patterns and gradients",
+    "text": "Patterns and gradients\nIn R 4.1 the grid package introduced patterns and gradients.\n\ngrid::linearGradient()\ngrid::radialGradient()\ngrid::pattern()\n\nWe allow these as fill aesthetic in ggplot2.\nPatterns can aid in cases of colour vision deficiency."
   },
   {
-    "objectID": "slides/4_theme_guide.html#build-your-own-theme",
-    "href": "slides/4_theme_guide.html#build-your-own-theme",
-    "title": "Styling your plot",
-    "section": "Build your own theme",
-    "text": "Build your own theme\nHow do you intend to use a personal theme?\n\nComplete theme\nPartial theme"
+    "objectID": "slides/2_ggplot2.html#delayed-evaluation",
+    "href": "slides/2_ggplot2.html#delayed-evaluation",
+    "title": "Modern ggplot2",
+    "section": "Delayed evaluation",
+    "text": "Delayed evaluation\nWith regards to evaluation, there are three stages:\n\nDirect input at start\nAfter computing stat\nAfter scale mapping"
   },
   {
-    "objectID": "slides/4_theme_guide.html#custom-guides",
-    "href": "slides/4_theme_guide.html#custom-guides",
-    "title": "Styling your plot",
-    "section": "Custom guides",
-    "text": "Custom guides\nggplot2 has more guides than colour bars and legends.\n\naxes\ncolour bar\ncolour steps\nlegend\nbinned guide"
+    "objectID": "slides/2_ggplot2.html#polar-coordinates",
+    "href": "slides/2_ggplot2.html#polar-coordinates",
+    "title": "Modern ggplot2",
+    "section": "Polar coordinates",
+    "text": "Polar coordinates\nThe classic coord_polar() is succeeded by coord_radial().\n\nexpand parameter\nArbitrary sectors\nDonuts"
+  },
+  {
+    "objectID": "slides/2_ggplot2.html#facets",
+    "href": "slides/2_ggplot2.html#facets",
+    "title": "Modern ggplot2",
+    "section": "Facets",
+    "text": "Facets\n\nDisplay of inner axes\nLayer layout\nPanel ordering"
   },
   {
     "objectID": "slides/5_composition.html#key-takeaway-today",
@@ -756,8 +756,8 @@
     "text": "Facets\n\nExercise 1.2.7\nGiven the following code, adapt the facet_wrap() statement to:\n\nMirror the facet order\nPlace labelled axes at the bottom of every panel\nPlace axis ticks on all y-axes\n\n\nggplot(diamonds) +\n  aes(carat, price) +\n  geom_point(shape = \".\") +\n  facet_wrap(~ cut, dir = \"lt\")"
   },
   {
-    "objectID": "exercises/6_interaction.html",
-    "href": "exercises/6_interaction.html",
+    "objectID": "exercises/interaction.html",
+    "href": "exercises/interaction.html",
     "title": "Exercises for session 6",
     "section": "",
     "text": "library(ggplot2)\nlibrary(ggiraph)\nlibrary(patchwork)\n# Emoji will not always render flawlessly with default device\nknitr::opts_chunk$set(dev = \"ragg_png\")\n\n\nExercise 6.1\nWe have two plots. One is a plot of the gapminder data.\n\n# Wrangle data to add country codes\ngapdata &lt;- gapminder::gapminder_unfiltered |&gt;\n  dplyr::filter(year == 2007) |&gt;\n  dplyr::left_join(gapminder::country_codes, by = \"country\")\n\ngapplot &lt;- ggplot(gapdata) +\n  aes(\n    gdpPercap, lifeExp, size = pop, \n    colour = continent, alpha = I(0.7)\n  ) +\n  scale_colour_manual(\n    guide = \"none\",\n    values = gapminder::continent_colors\n  ) +\n  scale_x_log10() +\n  scale_size_area(max_size = 12, guide = \"none\")\n\ngapplot + geom_point()\n\n\n\n\n\n\n\n\nThe second plot is a world map.\n\nworld &lt;- rnaturalearth::ne_countries()\n\nworldmap &lt;- ggplot(world) +\n  aes(colour = region_un, fill = after_scale(alpha(colour, 0.7))) +\n  scale_colour_manual(\n    guide = \"none\",\n    values = gapminder::continent_colors\n  )\n\nworldmap + geom_sf()\n\n\n\n\n\n\n\n\nNote that the gapplot and worldmap ggplot objects don’t have any layers. Add interactive layers to these two plots, and coordinate them such that hovering over a country in one plot will highlight that country in the other plot too. Assume that the world$iso_a3_eh and gapdata$iso_alpha are compatible identifiers for countries. Optionally, you may also add a tooltip to display the country name (in world$name and gapdata$country).\n\ni_gapplot &lt;- gapplot + ...\n\ni_worldmap &lt;- worldmap + ...\n\ngirafe(ggobj = i_gapplot / i_worldmap)\n\n\n\nHint\n\nThe geom_point() and geom_sf() layers have parallel ggiraph::geom_point_interactive() and ggiraph::geom_sf_interactive() layers for interactive use.\nThe coordination should take place on the level of the data_id aesthetic.\n\n\nSolution\n\n\ni_gapplot &lt;- gapplot +\n  geom_point_interactive(aes(\n    data_id = iso_alpha, \n    tooltip = country\n  ))\n\ni_worldmap &lt;- worldmap +\n  geom_sf_interactive(aes(\n    data_id = iso_a3_eh, \n    tooltip = name\n  ))\n\ngirafe(ggobj = i_gapplot / i_worldmap)\n\n\n\n\n\n\n\n\n\nExercise 6.2\nWe have battleship placements on a grid.\n\nbattleships &lt;- tibble::tribble(\n  ~x,  ~y,\n  # Patrol Boat\n  \"A\", 1,\n  \"B\", 1,\n  # Destroyer\n  \"D\", 1,\n  \"D\", 2,\n  \"D\", 3,\n  # Destroyer\n  \"F\", 3,\n  \"G\", 3,\n  \"H\", 3,\n  # Battleship\n  \"G\", 1,\n  \"H\", 1,\n  \"I\", 1,\n  \"J\", 1,\n  # Patrol Boat\n  \"J\", 3,\n  \"J\", 4,\n  # Battleship\n  \"A\", 3,\n  \"A\", 4,\n  \"A\", 5,\n  \"A\", 6,\n  # Patrol Boat\n  \"A\", 8,\n  \"B\", 8,\n  # Patrol Boat\n  \"F\", 6,\n  \"F\", 7,\n  # Destroyer\n  \"J\", 6,\n  \"J\", 7,\n  \"J\", 8,\n  # Carrier\n  \"E\", 10,\n  \"F\", 10,\n  \"G\", 10,\n  \"H\", 10,\n  \"I\", 10,\n  \"J\", 10,\n)\n\nWe visualise these battleships with explosions in a plot. Ignore the horizontal justification for now, this is in anticipation of girafe()’s custom SVG device.\n\ngrid &lt;- expand.grid(y = 1:10, x = LETTERS[1:10])\n\np &lt;- ggplot(grid, aes(x, factor(y))) +\n  geom_text(\n    aes(label = \"Hit!\"), \n    data = battleships,\n    size = 8, hjust = 1\n  ) +\n  geom_text(\n    aes(label = \"Miss...\"), \n    data = vctrs::vec_set_difference(grid, battleships),\n    size = 8, hjust = 1\n  ) +\n  discrete_scale(\n    name = \"💣\",\n    aesthetics = \"label\", \n    palette = scales::pal_manual(c(\"💥\", \"🌊\"))\n  ) +\n  scale_y_discrete(limits = as.character(10:1)) +\n  theme(legend.title = element_text(size = 25))\n\np\n\n\n\n\n\n\n\n\nCan you add interactive tiles that cover up the emoji and disappear when selected? The selection mechanisms go into girafe(options).\n\np_i &lt;- p + ...\n\ngirafe(\n  ggobj = p_i,\n  options = list(\n    ...\n  )\n)\n\n\n\nHint\n\nYou need to set the data_id aesthetic in geom_tile_interactive() so that every cell has a unique ID. For activating the selection mechanic you can use opts_selection(css = ..., type = \"multiple\", only_shiny = FALSE). To make the cells disappear you have to fill in the correct css argument.\n\n\nSolution\n\n\np_i &lt;- p + geom_tile_interactive(\n  aes(data_id = seq_along(x)),\n  # Optional styling\n  fill = \"#EBEBEB\", colour = \"white\", linewidth = 0.5\n)\n\ngirafe(\n  ggobj = p_i,\n  options = list(\n    # Hover is optional to make it clearer which cell you're about to hide\n    opts_hover(css = girafe_css(css = \"fill:#888888;\")),\n    # Trick is to use 0 opacity for selected cells\n    opts_selection(css = \"opacity:0;\", type = \"multiple\", only_shiny = FALSE)\n  )\n)\n\n\n\n\n\n\n\nWithout cheating and looking at static plot or the battleships data frame, how many clicks does it take you find:\n\n1 Carrier (5 cells)\n2 Battleships (4 cells)\n3 Destroyers (3 cells)\n4 Patrol boats (2 cells)"
