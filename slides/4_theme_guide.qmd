@@ -561,6 +561,8 @@ For individual plots, the same advice holds for building a theme function.
 
 However, you can have partial theme 'shortcuts'.
 
+---
+
 ### Building a partial theme
 
 You still call a `theme()` or `theme_sub()` function to initiate a fresh, (incomplete) theme.
@@ -615,6 +617,8 @@ p +
   scale_size_continuous(guide = "bins") +
   guides(x = guide_axis(minor.ticks = TRUE))
 ```
+
+---
 
 ### Styling guides
 
@@ -721,6 +725,8 @@ p3 + aes(colour = temperature) +
     guide = "colbar"
   )
 ```
+
+---
 
 ### Guide extensions
 

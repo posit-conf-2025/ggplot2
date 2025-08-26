@@ -1,0 +1,230 @@
+---
+title: "Exercises for session 6"
+---
+
+```{r}
+#| label: setup
+library(ggplot2)
+library(ggiraph)
+library(patchwork)
+# Emoji will not always render flawlessly with default device
+knitr::opts_chunk$set(dev = "ragg_png")
+```
+
+### Exercise 6.1
+
+We have two plots. One is a plot of the gapminder data.
+
+```{r}
+# Wrangle data to add country codes
+gapdata <- gapminder::gapminder_unfiltered |>
+  dplyr::filter(year == 2007) |>
+  dplyr::left_join(gapminder::country_codes, by = "country")
+
+gapplot <- ggplot(gapdata) +
+  aes(
+    gdpPercap, lifeExp, size = pop, 
+    colour = continent, alpha = I(0.7)
+  ) +
+  scale_colour_manual(
+    guide = "none",
+    values = gapminder::continent_colors
+  ) +
+  scale_x_log10() +
+  scale_size_area(max_size = 12, guide = "none")
+
+gapplot + geom_point()
+```
+
+The second plot is a world map.
+
+```{r}
+world <- rnaturalearth::ne_countries()
+
+worldmap <- ggplot(world) +
+  aes(colour = region_un, fill = after_scale(alpha(colour, 0.7))) +
+  scale_colour_manual(
+    guide = "none",
+    values = gapminder::continent_colors
+  )
+
+worldmap + geom_sf()
+```
+
+Note that the `gapplot` and `worldmap` ggplot objects don't have any layers.
+Add interactive layers to these two plots, and coordinate them such that hovering over a country in one plot will highlight that country in the other plot too.
+Assume that the `world$iso_a3_eh` and `gapdata$iso_alpha` are compatible identifiers for countries.
+Optionally, you may also add a `tooltip` to display the country name (in `world$name` and `gapdata$country`).
+
+```{r}
+#| eval: false
+i_gapplot <- gapplot + ...
+
+i_worldmap <- worldmap + ...
+
+girafe(ggobj = i_gapplot / i_worldmap)
+```
+
+<details>
+<summary>Hint</summary>
+
+The `geom_point()` and `geom_sf()` layers have parallel `ggiraph::geom_point_interactive()` and `ggiraph::geom_sf_interactive()` layers for interactive use.
+
+The coordination should take place on the level of the `data_id` aesthetic.
+
+<details>
+<summary>Solution</summary>
+
+```{r}
+i_gapplot <- gapplot +
+  geom_point_interactive(aes(
+    data_id = iso_alpha, 
+    tooltip = country
+  ))
+
+i_worldmap <- worldmap +
+  geom_sf_interactive(aes(
+    data_id = iso_a3_eh, 
+    tooltip = name
+  ))
+
+girafe(ggobj = i_gapplot / i_worldmap)
+```
+
+</details>
+
+</details>
+
+### Exercise 6.2
+
+We have battleship placements on a grid.
+
+```{r}
+battleships <- tibble::tribble(
+  ~x,  ~y,
+  # Patrol Boat
+  "A", 1,
+  "B", 1,
+  # Destroyer
+  "D", 1,
+  "D", 2,
+  "D", 3,
+  # Destroyer
+  "F", 3,
+  "G", 3,
+  "H", 3,
+  # Battleship
+  "G", 1,
+  "H", 1,
+  "I", 1,
+  "J", 1,
+  # Patrol Boat
+  "J", 3,
+  "J", 4,
+  # Battleship
+  "A", 3,
+  "A", 4,
+  "A", 5,
+  "A", 6,
+  # Patrol Boat
+  "A", 8,
+  "B", 8,
+  # Patrol Boat
+  "F", 6,
+  "F", 7,
+  # Destroyer
+  "J", 6,
+  "J", 7,
+  "J", 8,
+  # Carrier
+  "E", 10,
+  "F", 10,
+  "G", 10,
+  "H", 10,
+  "I", 10,
+  "J", 10,
+)
+```
+
+We visualise these battleships with explosions in a plot.
+Ignore the horizontal justification for now, this is in anticipation of `girafe()`'s custom SVG device.
+
+```{r}
+grid <- expand.grid(y = 1:10, x = LETTERS[1:10])
+
+p <- ggplot(grid, aes(x, factor(y))) +
+  geom_text(
+    aes(label = "Hit!"), 
+    data = battleships,
+    size = 8, hjust = 1
+  ) +
+  geom_text(
+    aes(label = "Miss..."), 
+    data = vctrs::vec_set_difference(grid, battleships),
+    size = 8, hjust = 1
+  ) +
+  discrete_scale(
+    name = "💣",
+    aesthetics = "label", 
+    palette = scales::pal_manual(c("💥", "🌊"))
+  ) +
+  scale_y_discrete(limits = as.character(10:1)) +
+  theme(legend.title = element_text(size = 25))
+
+p
+```
+
+Can you add interactive tiles that cover up the emoji and disappear when selected?
+The selection mechanisms go into `girafe(options)`.
+
+```{r}
+#| eval: false
+p_i <- p + ...
+
+girafe(
+  ggobj = p_i,
+  options = list(
+    ...
+  )
+)
+```
+
+
+<details>
+<summary>Hint</summary>
+
+You need to set the `data_id` aesthetic in `geom_tile_interactive()` so that every cell has a unique ID.
+For activating the selection mechanic you can use `opts_selection(css = ..., type = "multiple", only_shiny = FALSE)`.
+To make the cells disappear you have to fill in the correct `css` argument.
+
+<details>
+<summary>Solution</summary>
+
+```{r}
+p_i <- p + geom_tile_interactive(
+  aes(data_id = seq_along(x)),
+  # Optional styling
+  fill = "#EBEBEB", colour = "white", linewidth = 0.5
+)
+
+girafe(
+  ggobj = p_i,
+  options = list(
+    # Hover is optional to make it clearer which cell you're about to hide
+    opts_hover(css = girafe_css(css = "fill:#888888;")),
+    # Trick is to use 0 opacity for selected cells
+    opts_selection(css = "opacity:0;", type = "multiple", only_shiny = FALSE)
+  )
+)
+```
+
+</details>
+
+</details>
+
+Without cheating and looking at static plot or the `battleships` data frame, how many clicks does it take you find:
+
+* 1 Carrier (5 cells)
+* 2 Battleships (4 cells)
+* 3 Destroyers (3 cells)
+* 4 Patrol boats (2 cells)

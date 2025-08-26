@@ -12,7 +12,7 @@ Here we learn about sprucing up your plots for the digital world:
 ::: {.text-center .plain}
 :::::: {.btn-group}
 [Slides](../slides/6_interaction.qmd){.btn .btn-primary role="button"}
-[Exercises](){.btn .btn-success .disabled role="button"}
+[Exercises](../exercises/6_interaction.qmd){.btn .btn-success role="button"}
 ::::::
 :::
 
