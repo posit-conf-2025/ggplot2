@@ -1,0 +1,11 @@
+format:
+  live-html:
+    css: styles.css
+engine: knitr
+webr:
+  cell-options:
+    canvas: false
+    autorun: false
+  packages:
+    - ggplot2
+    - ragg
