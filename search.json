@@ -179,7 +179,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/Rtmpi41EzL/Barrio-regular.ttf\", \"/tmp/Rtmpi41EzL/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpZ6a9Nt/Barrio-regular.ttf\", \"/tmp/RtmpZ6a9Nt/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
@@ -623,6 +623,41 @@
     "text": "Exercise"
   },
   {
+    "objectID": "slides/5_composition.html#patchwork-layout-model",
+    "href": "slides/5_composition.html#patchwork-layout-model",
+    "title": "Plot composition",
+    "section": "Patchwork layout model",
+    "text": "Patchwork layout model"
+  },
+  {
+    "objectID": "slides/5_composition.html#patchwork-layout-model-1",
+    "href": "slides/5_composition.html#patchwork-layout-model-1",
+    "title": "Plot composition",
+    "section": "Patchwork layout model",
+    "text": "Patchwork layout model"
+  },
+  {
+    "objectID": "slides/5_composition.html#patchwork-layout-model-2",
+    "href": "slides/5_composition.html#patchwork-layout-model-2",
+    "title": "Plot composition",
+    "section": "Patchwork layout model",
+    "text": "Patchwork layout model"
+  },
+  {
+    "objectID": "slides/5_composition.html#patchwork-layout-model-3",
+    "href": "slides/5_composition.html#patchwork-layout-model-3",
+    "title": "Plot composition",
+    "section": "Patchwork layout model",
+    "text": "Patchwork layout model"
+  },
+  {
+    "objectID": "slides/5_composition.html#patchwork-layout-model-4",
+    "href": "slides/5_composition.html#patchwork-layout-model-4",
+    "title": "Plot composition",
+    "section": "Patchwork layout model",
+    "text": "Patchwork layout model"
+  },
+  {
     "objectID": "slides/5_composition.html#more-layout-options",
     "href": "slides/5_composition.html#more-layout-options",
     "title": "Plot composition",
@@ -704,7 +739,126 @@
     "href": "slides/5_composition.html#annotations",
     "title": "Plot composition",
     "section": "Annotations",
-    "text": "Annotations\n\nOnce composed, the parts will constitute a new graphic"
+    "text": "Annotations\n\nOnce composed, the parts will constitute a new graphic\nLike the individual plots, this graphic can be annotated\n\n\n\np1 + p2 + plot_annotation(\n  title = \"The _full_ story of penguins\",\n  subtitle = \"*You won't believee what you'll find*\",\n  caption = \"source: The `penguins` dataset in R\",\n  theme = marquee::marquefy_theme(theme_gray())\n)"
+  },
+  {
+    "objectID": "slides/5_composition.html#annotations-1",
+    "href": "slides/5_composition.html#annotations-1",
+    "title": "Plot composition",
+    "section": "Annotations",
+    "text": "Annotations\n\nOnce composed, the parts will constitute a new graphic\nLike the individual plots, this graphic can be annotated\n\n\n\np1 + \n  labs(title = \"This is a plot title\") + \n  p2 + \n  plot_annotation(\n    title = \"The _full_ story of penguins\",\n    subtitle = \"*You won't believee what you'll find*\",\n    caption = \"source: The `penguins` dataset in R\",\n    theme = marquee::marquefy_theme(theme_gray())\n  )"
+  },
+  {
+    "objectID": "slides/5_composition.html#tagging",
+    "href": "slides/5_composition.html#tagging",
+    "title": "Plot composition",
+    "section": "Tagging",
+    "text": "Tagging\n\nWith multi-panel graphics you often need a way to refer to the subgraphics\n\n\n\np123 &lt;- (p1 | (p2 / p3)) & theme(\n  plot.tag = element_text(size = 8)\n)\n\np123 + \n  plot_annotation(\n    tag_levels = \"1\",\n    tag_suffix = \")\"\n  )"
+  },
+  {
+    "objectID": "slides/5_composition.html#tagging-1",
+    "href": "slides/5_composition.html#tagging-1",
+    "title": "Plot composition",
+    "section": "Tagging",
+    "text": "Tagging\n\nIt knows about nesting as well\n\n\n\np123[[2]] &lt;- p123[[2]] + \n  plot_layout(tag_level = \"new\")\n\np123 + \n  plot_annotation(\n    tag_levels = c(\"1\", \"a\"),\n    tag_suffix = \")\"\n  )"
+  },
+  {
+    "objectID": "slides/5_composition.html#exercise-3",
+    "href": "slides/5_composition.html#exercise-3",
+    "title": "Plot composition",
+    "section": "Exercise",
+    "text": "Exercise"
+  },
+  {
+    "objectID": "slides/5_composition.html#guide-handling",
+    "href": "slides/5_composition.html#guide-handling",
+    "title": "Plot composition",
+    "section": "Guide handling",
+    "text": "Guide handling\n\nGuides are often global instead of linked to a single subplot\n\n\n\np1 / p4"
+  },
+  {
+    "objectID": "slides/5_composition.html#guide-handling-1",
+    "href": "slides/5_composition.html#guide-handling-1",
+    "title": "Plot composition",
+    "section": "Guide handling",
+    "text": "Guide handling\n\nUse guides = \"collect\" to fetch all guides from subplots and place them at the top level\n\n\n\n(p1 / p4) + \n  plot_layout(guides = \"collect\")"
+  },
+  {
+    "objectID": "slides/5_composition.html#guide-handling-2",
+    "href": "slides/5_composition.html#guide-handling-2",
+    "title": "Plot composition",
+    "section": "Guide handling",
+    "text": "Guide handling\n\n\np1a &lt;- ggplot(penguins) + \n  geom_point(\n    aes(x = flipper_len, y = bill_len, shape = species)\n  )\n\np1a | p4"
+  },
+  {
+    "objectID": "slides/5_composition.html#guide-handling-3",
+    "href": "slides/5_composition.html#guide-handling-3",
+    "title": "Plot composition",
+    "section": "Guide handling",
+    "text": "Guide handling\n\n\n(p1a | p4) + \n  plot_layout(guides = \"collect\")"
+  },
+  {
+    "objectID": "slides/5_composition.html#guide-handling-4",
+    "href": "slides/5_composition.html#guide-handling-4",
+    "title": "Plot composition",
+    "section": "Guide handling",
+    "text": "Guide handling\n\nDuplicate guides are automatically removed\n\n\n\np2a &lt;- ggplot(penguins) + \n  geom_histogram(\n    aes(flipper_len, fill = sex)\n  )\n\n(p2a | p4) + \n  plot_layout(guides = \"collect\")"
+  },
+  {
+    "objectID": "slides/5_composition.html#guide-handling-5",
+    "href": "slides/5_composition.html#guide-handling-5",
+    "title": "Plot composition",
+    "section": "Guide handling",
+    "text": "Guide handling\n\nDuplicate guides are automatically removed\n\n\n\np2a &lt;- ggplot(penguins) + \n  geom_histogram(\n    aes(flipper_len, fill = sex)\n  )\n\np2a + p4 + p3 + guide_area() + \n  plot_layout(guides = \"collect\")"
+  },
+  {
+    "objectID": "slides/5_composition.html#guide-handling-6",
+    "href": "slides/5_composition.html#guide-handling-6",
+    "title": "Plot composition",
+    "section": "Guide handling",
+    "text": "Guide handling\n\nAxes are guides too\n\n\n\n(p3 / p4) + plot_layout(\n  axes = \"collect\",\n  guides = \"collect\"\n)"
+  },
+  {
+    "objectID": "slides/5_composition.html#exercise-4",
+    "href": "slides/5_composition.html#exercise-4",
+    "title": "Plot composition",
+    "section": "Exercise",
+    "text": "Exercise"
+  },
+  {
+    "objectID": "slides/5_composition.html#other-objects",
+    "href": "slides/5_composition.html#other-objects",
+    "title": "Plot composition",
+    "section": "Other objects",
+    "text": "Other objects\n\nSometimes you need something other than a ggplot (🤯)\npatchwork supports a range of different object types"
+  },
+  {
+    "objectID": "slides/5_composition.html#other-objects-1",
+    "href": "slides/5_composition.html#other-objects-1",
+    "title": "Plot composition",
+    "section": "Other objects",
+    "text": "Other objects\n\nTables created with gt"
+  },
+  {
+    "objectID": "slides/5_composition.html#other-objects-2",
+    "href": "slides/5_composition.html#other-objects-2",
+    "title": "Plot composition",
+    "section": "Other objects",
+    "text": "Other objects\n\nImages"
+  },
+  {
+    "objectID": "slides/5_composition.html#other-objects-3",
+    "href": "slides/5_composition.html#other-objects-3",
+    "title": "Plot composition",
+    "section": "Other objects",
+    "text": "Other objects\n\nBase graphics"
+  },
+  {
+    "objectID": "slides/5_composition.html#ggiraph-integration",
+    "href": "slides/5_composition.html#ggiraph-integration",
+    "title": "Plot composition",
+    "section": "ggiraph integration",
+    "text": "ggiraph integration"
   },
   {
     "objectID": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
