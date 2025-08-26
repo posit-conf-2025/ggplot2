@@ -82,6 +82,26 @@ p1 + p2 +
 
 ## [Exercise](../exercises/3_text_fonts.qmd#working-with-fonts) {.center style="text-align:center;"}
 
+## Patchwork layout model
+
+![](../assets/img/the_grid_1.svg)
+
+## Patchwork layout model
+
+![](../assets/img/the_grid_2.svg)
+
+## Patchwork layout model
+
+![](../assets/img/the_grid_nested_1.svg)
+
+## Patchwork layout model
+
+![](../assets/img/the_grid_nested_2.svg)
+
+## Patchwork layout model
+
+![](../assets/img/the_grid_nested_3.svg)
+
 ## More layout options
 
 ```{r}
@@ -171,4 +191,159 @@ free(p1, "label", side = "b") + p3a
 ## Annotations
 
 * Once composed, the parts will constitute a new graphic
+* Like the individual plots, this graphic can be annotated
 
+```{r}
+p1 + p2 + plot_annotation(
+  title = "The _full_ story of penguins",
+  subtitle = "*You won't believee what you'll find*",
+  caption = "source: The `penguins` dataset in R",
+  theme = marquee::marquefy_theme(theme_gray())
+)
+```
+
+## Annotations
+
+* Once composed, the parts will constitute a new graphic
+* Like the individual plots, this graphic can be annotated
+
+```{r}
+p1 + 
+  labs(title = "This is a plot title") + 
+  p2 + 
+  plot_annotation(
+    title = "The _full_ story of penguins",
+    subtitle = "*You won't believee what you'll find*",
+    caption = "source: The `penguins` dataset in R",
+    theme = marquee::marquefy_theme(theme_gray())
+  )
+```
+
+## Tagging
+
+* With multi-panel graphics you often need a way to refer to the subgraphics
+
+```{r}
+p123 <- (p1 | (p2 / p3)) & theme(
+  plot.tag = element_text(size = 8)
+)
+
+p123 + 
+  plot_annotation(
+    tag_levels = "1",
+    tag_suffix = ")"
+  )
+```
+
+## Tagging
+
+* It knows about nesting as well
+
+```{r}
+p123[[2]] <- p123[[2]] + 
+  plot_layout(tag_level = "new")
+
+p123 + 
+  plot_annotation(
+    tag_levels = c("1", "a"),
+    tag_suffix = ")"
+  )
+```
+
+## [Exercise](../exercises/3_text_fonts.qmd#working-with-fonts) {.center style="text-align:center;"}
+
+## Guide handling
+
+* Guides are often global instead of linked to a single subplot
+
+```{r}
+p1 / p4
+```
+
+## Guide handling
+
+* Use `guides = "collect"` to fetch all guides from subplots and place them at
+  the top level
+
+```{r}
+(p1 / p4) + 
+  plot_layout(guides = "collect")
+```
+
+## Guide handling
+
+```{r}
+p1a <- ggplot(penguins) + 
+  geom_point(
+    aes(x = flipper_len, y = bill_len, shape = species)
+  )
+
+p1a | p4
+```
+
+## Guide handling
+
+```{r}
+(p1a | p4) + 
+  plot_layout(guides = "collect")
+```
+
+## Guide handling
+
+* Duplicate guides are automatically removed
+
+```{r}
+p2a <- ggplot(penguins) + 
+  geom_histogram(
+    aes(flipper_len, fill = sex)
+  )
+
+(p2a | p4) + 
+  plot_layout(guides = "collect")
+```
+
+## Guide handling
+
+* Duplicate guides are automatically removed
+
+```{r}
+p2a <- ggplot(penguins) + 
+  geom_histogram(
+    aes(flipper_len, fill = sex)
+  )
+
+p2a + p4 + p3 + guide_area() + 
+  plot_layout(guides = "collect")
+```
+
+## Guide handling
+
+* Axes are guides too
+
+```{r}
+(p3 / p4) + plot_layout(
+  axes = "collect",
+  guides = "collect"
+)
+```
+
+## [Exercise](../exercises/3_text_fonts.qmd#working-with-fonts) {.center style="text-align:center;"}
+
+## Other objects
+
+* Sometimes you need something other than a ggplot (🤯)
+* patchwork supports a range of different object types
+
+## Other objects
+
+* Tables created with gt
+
+## Other objects
+
+* Images
+
+## Other objects
+
+* Base graphics
+
+## ggiraph integration
