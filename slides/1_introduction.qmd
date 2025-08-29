@@ -5,7 +5,7 @@
 ### *Latest Techniques and Best Practices*
 
 ::: r-stack
-![](https://github.com/rstudio/hex-stickers/blob/main/PNG/ggplot2.png?raw=true){width="400"}
+[![](https://github.com/rstudio/hex-stickers/blob/main/PNG/ggplot2.png?raw=true){width="400"}](https://ggplot2.tidyverse.org)
 :::
 
 ## The Team

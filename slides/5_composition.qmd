@@ -27,7 +27,7 @@ library(patchwork)
 ## {.center}
 
 ::: {.r-stack}
-![](https://github.com/rstudio/hex-stickers/blob/main/PNG/patchwork.png?raw=true){width="400"}
+[![](https://github.com/rstudio/hex-stickers/blob/main/PNG/patchwork.png?raw=true){width="400"}](https://patchwork.data-imaginist.com)
 :::
 
 ## Patchwork
@@ -398,7 +398,7 @@ p1 +
 ## {.center}
 
 ::: r-stack
-![](https://github.com/davidgohel/ggiraph/blob/master/man/figures/logo.svg?raw=true){width="400"}
+[![](https://github.com/davidgohel/ggiraph/blob/master/man/figures/logo.svg?raw=true){width="400"}](https://ardata.fr/ggiraph-book/)
 :::
 
 ## ggiraph integration
