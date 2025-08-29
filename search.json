@@ -718,7 +718,28 @@
     "href": "slides/5_composition.html#ggiraph-integration",
     "title": "Plot composition",
     "section": "ggiraph integration",
-    "text": "ggiraph integration"
+    "text": "ggiraph integration\n\nggiraph is a package that allows certain interactivity to ggplots\nYou create your plots as you always do, but add specific interactive geoms\nIf you combine them with patchwork, the interaction is linked"
+  },
+  {
+    "objectID": "slides/5_composition.html#ggiraph-integration-1",
+    "href": "slides/5_composition.html#ggiraph-integration-1",
+    "title": "Plot composition",
+    "section": "ggiraph integration",
+    "text": "ggiraph integration\n\n\nlibrary(ggiraph)\n\np1 &lt;- ggplot(penguins) + \n  geom_point_interactive(\n    aes(\n      x = flipper_len, \n      y = bill_len, \n      tooltip = species,\n      data_id = species\n    )\n  ) + \n  theme_grey(base_size = 24)\n\ngirafe(ggobj = p1)"
+  },
+  {
+    "objectID": "slides/5_composition.html#ggiraph-integration-2",
+    "href": "slides/5_composition.html#ggiraph-integration-2",
+    "title": "Plot composition",
+    "section": "ggiraph integration",
+    "text": "ggiraph integration\n\n\np2 &lt;- ggplot(penguins) + \n  geom_bar_interactive(\n    aes(\n      x = species,\n      data_id = species\n    )\n  ) + \n  theme_grey(base_size = 24)\n\ngirafe(ggobj = p2)"
+  },
+  {
+    "objectID": "slides/5_composition.html#ggiraph-integration-3",
+    "href": "slides/5_composition.html#ggiraph-integration-3",
+    "title": "Plot composition",
+    "section": "ggiraph integration",
+    "text": "ggiraph integration\n\n\ngirafe(\n  ggobj = p1 | p2\n)"
   },
   {
     "objectID": "slides/3_text_fonts.html#key-takeaway-today",
@@ -760,7 +781,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpymurUQ/Barrio-regular.ttf\", \"/tmp/RtmpymurUQ/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/Rtmp7eq9BA/Barrio-regular.ttf\", \"/tmp/Rtmp7eq9BA/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
