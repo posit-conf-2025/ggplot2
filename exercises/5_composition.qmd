@@ -65,9 +65,10 @@ ______
 ## Hints
 ::: {.hint exercise="ex_5_1_1"}
 Remember that:
-- `/` arranges plots vertically (top/bottom)
-- `|` arranges plots horizontally (left/right)
-- You can use parentheses to group plots
+
+* `/` arranges plots vertically (top/bottom)
+* `|` arranges plots horizontally (left/right)
+* You can use parentheses to group plots
 
 If you only use `+` you need to use `plot_layout() to define how they combine
 :::
@@ -596,7 +597,13 @@ summary <- penguins |>
     "Bill depth" = paste(range(bill_dep, na.rm = TRUE), collapse = " — "),
     "Flipper length" = paste(range(flipper_len, na.rm = TRUE), collapse = " — "),
     .by = species
-  )
+  ) |>
+  tibble::column_to_rownames("species") |>
+  t() |>
+  as.data.frame() |>
+  tibble::rownames_to_column("attribute")
+
+summary_table <- ______
 
 # Combine the plot and table
 ______
@@ -612,9 +619,23 @@ To align the table and the plot the species column needs to be moved out of the 
 ## Solution
 ::: {.solution exercise="ex_5_5_1"}
 ```r
-p1 + theme(axis.title.x = element_black(), axis.text.x = element_blank()) /
+# First we create the gt table with the rownames defined by the attribute
+# column
+summary_table <- gt::gt(summary, rowname_col = "attribute")
+
+# Then we modify p1 so it does not have an x axis and remove expansion
+# of the x scale to ensure proper alignment
+p1 <- p1 + 
+  theme(axis.title.x = element_blank(), axis.text.x = element_blank()) + 
+  coord_cartesian(expand = FALSE)
+
+# Then we combine it all. We free the left label so it is kept together
+# with the y axis
+free(p1, "label", "l") /
   wrap_table(summary_table, space = "fixed")
 ```
+
+It's possible to add much more styling to the table so it feels more like a part of the plot but that is more about gt than patchwork so we'll leave it at this
 :::
 
 ::::
