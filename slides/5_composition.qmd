@@ -395,4 +395,56 @@ p1 +
 
 ## [Exercise](../exercises/5_composition.qmd#other-objects) {.center style="text-align:center;"}
 
+## {.center}
+
+::: r-stack
+![](https://github.com/davidgohel/ggiraph/blob/master/man/figures/logo.svg?raw=true){width="400"}
+:::
+
 ## ggiraph integration
+
+* ggiraph is a package that allows certain interactivity to ggplots
+* You create your plots as you always do, but add specific interactive geoms
+* If you combine them with patchwork, the interaction is linked
+
+## ggiraph integration
+
+```{r}
+library(ggiraph)
+
+p1 <- ggplot(penguins) + 
+  geom_point_interactive(
+    aes(
+      x = flipper_len, 
+      y = bill_len, 
+      tooltip = species,
+      data_id = species
+    )
+  ) + 
+  theme_grey(base_size = 24)
+
+girafe(ggobj = p1)
+```
+
+## ggiraph integration
+
+```{r}
+p2 <- ggplot(penguins) + 
+  geom_bar_interactive(
+    aes(
+      x = species,
+      data_id = species
+    )
+  ) + 
+  theme_grey(base_size = 24)
+
+girafe(ggobj = p2)
+```
+
+## ggiraph integration
+
+```{r}
+girafe(
+  ggobj = p1 | p2
+)
+```
