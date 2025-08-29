@@ -332,7 +332,7 @@ p2a + p4 + p3 + guide_area() +
 )
 ```
 
-## [Exercise](../exercises/3_text_fonts.qmd#working-with-fonts) {.center style="text-align:center;"}
+## [Exercise](../exercises/5_composition.qmd#guide-handling) {.center style="text-align:center;"}
 
 ## Other objects
 
@@ -393,6 +393,6 @@ p1 +
   )
 ```
 
-## [Exercise](../exercises/3_text_fonts.qmd#working-with-fonts) {.center style="text-align:center;"}
+## [Exercise](../exercises/5_composition.qmd#other-objects) {.center style="text-align:center;"}
 
 ## ggiraph integration
