@@ -1,0 +1,663 @@
+---
+title: Exercises for session 5
+webr:
+  packages:
+    - ggplot2
+    - patchwork
+    - marquee
+    - gt
+    - dplyr
+---
+
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+
+The codeblocks here are interactive and can be executed in the browser. You can also copy them over and solve the exercises locally. In the existing code `______` denotes areas that need to be substituted with your own code to solve the exercise.
+
+Each exercise has one or more hints, as well as a full solution if you click through all the hints. Do try to solve the exercises on your own first.
+
+```{webr}
+#| setup: true
+#| exercise:
+#|   - ex_5_1_1
+#|   - ex_5_1_2
+#|   - ex_5_1_3
+#|   - ex_5_1_4
+#|   - ex_5_2_1
+#|   - ex_5_2_2
+#|   - ex_5_2_3
+#|   - ex_5_3_1
+#|   - ex_5_3_2
+#|   - ex_5_4_1
+#|   - ex_5_4_2
+#|   - ex_5_5_1
+#|   - ex_5_5_2
+library(ggplot2)
+library(patchwork)
+```
+
+## 5.1 Patchwork Composition
+
+:::: {.panel-tabset}
+
+## Exercise 5.1.1
+Combine the three plots into a single figure using patchwork. Place two plots side by side in the top row, and the third plot centered below them. Try to solve it both by only using `+` as well as by using other operators.
+
+```{webr}
+#| exercise: ex_5_1_1
+
+# Create three plots
+p1 <- ggplot(penguins) + 
+  geom_point(aes(x = flipper_len, y = bill_len, color = species)) +
+  labs(title = "Bill vs Flipper Length")
+
+p2 <- ggplot(penguins) + 
+  geom_histogram(aes(bill_len, fill = species)) +
+  labs(title = "Bill Length Distribution")
+
+p3 <- ggplot(penguins) + 
+  geom_boxplot(aes(species, flipper_len, fill = species)) +
+  labs(title = "Flipper Length by Species")
+
+# Combine them into the requested layout
+______
+```
+
+## Hints
+::: {.hint exercise="ex_5_1_1"}
+Remember that:
+- `/` arranges plots vertically (top/bottom)
+- `|` arranges plots horizontally (left/right)
+- You can use parentheses to group plots
+
+If you only use `+` you need to use `plot_layout() to define how they combine
+:::
+
+## Solution
+::: {.solution exercise="ex_5_1_1"}
+```r
+(p1 | p2) / p3
+
+# and
+
+(p1 + p2) + p3 + plot_layout(ncol = 1)
+```
+:::
+
+::::
+
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 5.1.2
+Combine the two plots below. Then use the patchwork operator syntax to add a geom to both plots simultaneously.
+
+```{webr}
+#| exercise: ex_5_1_2
+# Create two scatter plots
+p1 <- ggplot(penguins, aes(x = flipper_len, y = bill_len, color = species)) + 
+  geom_point()
+
+p2 <- ggplot(penguins, aes(x = flipper_len, y = bill_dep, color = species)) + 
+  geom_point()
+
+# Use patchwork to combine plots and add a geom to both
+______
+```
+
+## Hints
+::: {.hint exercise="ex_5_1_2"}
+In patchwork, you can add a geom (or another element) to all plots at once using `&` or `*`. Read `?plot_arithmetic` to figure out the difference between the two.
+
+For this exercise, try adding a smoothing line with `geom_smooth()` to both plots.
+:::
+
+## Solution
+::: {.solution exercise="ex_5_1_2"}
+```r
+p1 + p2 & geom_smooth(method = "lm")
+```
+:::
+
+::::
+
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 5.1.3
+Create a multi-panel figure with 4 plots using `wrap_plots()`, and customize the width of the plots so that the first column take up 1/3 of the width and the last column take up 2/3 of the width.
+
+```{webr}
+#| exercise: ex_5_1_3
+# Create four different plots
+p1 <- ggplot(penguins) + 
+  geom_point(aes(x = flipper_len, y = bill_len, color = species))
+
+p2 <- ggplot(penguins) + 
+  geom_histogram(aes(flipper_len, fill = species))
+
+p3 <- ggplot(penguins) + 
+  geom_boxplot(aes(species, bill_len, fill = species))
+
+p4 <- ggplot(penguins) + 
+  geom_bar(aes(species, fill = sex), position = "dodge")
+
+# Combine with custom widths
+______
+```
+
+## Hints
+::: {.hint exercise="ex_5_1_3"}
+The `wrap_plots()` function has a `widths` argument that control the relative or absolute width of panels in each column.
+:::
+
+## Solution
+::: {.solution exercise="ex_5_1_3"}
+```r
+# Create four different plots
+p1 <- ggplot(penguins) + 
+  geom_point(aes(x = flipper_len, y = bill_len, color = species))
+
+p2 <- ggplot(penguins) + 
+  geom_histogram(aes(flipper_len, fill = species))
+
+p3 <- ggplot(penguins) + 
+  geom_boxplot(aes(species, bill_len, fill = species))
+
+p4 <- ggplot(penguins) + 
+  geom_bar(aes(species, fill = sex), position = "dodge")
+
+# Combine with custom widths
+wrap_plots(p1, p2, p3, p4, ncol = 2, widths = c(1, 2))
+```
+:::
+
+::::
+
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 5.1.4
+Use the 4 plots from 5.1.3 and arrange them in a custom layout using the text-based design approach. Make a layout where the first plot spans the entire top row, two plots following plots share the middle row, and the last plot take up the right half side of the last row.
+
+Once you've succeeded, recreate the layout using `area()` specifications
+
+```{webr}
+#| setup: true
+#| exercise: ex_5_1_4
+p1 <- ggplot(penguins) + 
+  geom_point(aes(x = flipper_len, y = bill_len, color = species))
+
+p2 <- ggplot(penguins) + 
+  geom_histogram(aes(flipper_len, fill = species))
+
+p3 <- ggplot(penguins) + 
+  geom_boxplot(aes(species, bill_len, fill = species))
+
+p4 <- ggplot(penguins) + 
+  geom_bar(aes(species, fill = sex), position = "dodge")
+```
+
+```{webr}
+#| exercise: ex_5_1_4
+# Create a text-based layout design
+layout <- "______"
+
+# Combine plots with the layout
+p1 + p2 + p3 + p4 + 
+  ______
+```
+
+## Hints
+::: {.hint exercise="ex_5_1_4"}
+For the text-based design:
+- Each letter represents a plot
+- Each character position represents a cell in the grid
+- The same letter in multiple positions means that plot spans those cells
+- `#` represents an empty cell
+
+For a layout with the first plot spanning the top row and the other two sharing the bottom row, your layout might look something like:
+```
+AAA
+BCC
+```
+:::
+
+## Solution
+::: {.solution exercise="ex_5_1_4"}
+```r
+# Create a text-based layout design
+layout <- "
+AA
+BC
+#D
+"
+
+# Combine plots with the layout
+p1 + p2 + p3 + p4 + 
+  plot_layout(design = layout)
+
+
+# Replicate with area()
+layout <- c(
+  area(1, 1, 1, 1),
+  area(1, 2, 1, 2),
+  area(2, 1, 2, 2),
+  area(3, 2, 3, 2)
+)
+
+# Plotting code is the same as before
+p1 + p2 + p3 + p4 + 
+  plot_layout(design = layout)
+```
+:::
+
+::::
+
+## 5.2 Layout Modifiers
+
+:::: {.panel-tabset}
+
+## Exercise 5.2.1
+Use the two plots below and add them together in a way so the histogram is placed on top of the scatterplot in the top-right corner.
+
+```{webr}
+#| exercise: ex_5_2_1
+# Create two plots
+p1 <- ggplot(penguins) + 
+  geom_point(aes(x = flipper_len, y = bill_len, color = species)) +
+  theme(legend.position = "bottom")
+
+p2 <- ggplot(penguins) + 
+  geom_histogram(aes(flipper_len)) +
+  theme(plot.background = element_rect(fill = "white", color = "black"))
+
+# Add p2 on top of p1
+______
+```
+
+## Hints
+::: {.hint exercise="ex_5_2_1"}
+Use `inset_element()` to place p2 as an inset in p1. You'll need to specify the position with `left`, `bottom`, `right`, and `top` parameters.
+:::
+
+## Solution
+::: {.solution exercise="ex_5_2_1"}
+```r
+# Add p2 as an inset to p1
+p1 + inset_element(
+  p2,
+  left = 0.6,
+  bottom = 0.6,
+  right = 0.95,
+  top = 0.95
+)
+```
+:::
+
+::::
+
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 5.2.2
+Stack the three plots on top of each other. Experiment with `free()` to minimize the amount of empty space while preserving as much alignment as possible between the panels
+
+```{webr}
+#| exercise: ex_5_2_2
+p1 <- ggplot(penguins) + 
+  geom_bar(aes(y = species)) + 
+  scale_y_discrete(labels = function(x) paste0("Pygoscelis ", x))
+
+p2 <- ggplot(penguins) + 
+  geom_point(aes(bill_len, flipper_len, color = species))
+
+p3 <- ggplot(penguins) + 
+  geom_boxplot(aes(x = sex, y = flipper_len))
+
+# Combine the plots to minimize whitespace
+______
+```
+
+## Hints
+::: {.hint exercise="ex_5_2_2"}
+The `free()` function allows a plot to extend beyond its allocated space. You can specify which side of the plot should be freed using the `side` parameter.
+:::
+
+## Solution
+::: {.solution exercise="ex_5_2_2"}
+There are many combinations of `free()` that will eliminate the whitespace but if you want to ensure alignment where possible, free should be applied to the plots and sides that are causing the issues
+```r
+free(p1, side = "l") / 
+  free(p2, side = "r") / 
+  p3
+```
+:::
+
+::::
+
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 5.2.3
+Use `free()` to allow the long y-axis text to extend into the empty area next to it in the composition below where we reuse the plots from 5.2.2. We have not covered this mode of `free()` so look at the documentation for the function.
+
+```{webr}
+#| setup: true
+#| exercise: ex_5_2_3
+p1 <- ggplot(penguins) + 
+  geom_bar(aes(y = species)) + 
+  scale_y_discrete(labels = function(x) paste0("Pygoscelis ", x))
+
+p2 <- ggplot(penguins) + 
+  geom_point(aes(bill_len, flipper_len, color = species))
+
+p3 <- ggplot(penguins) + 
+  geom_boxplot(aes(x = sex, y = flipper_len))
+```
+
+```{webr}
+#| exercise: ex_5_2_3
+# Modify the following composition so the y-axis of p1 extends into the
+# empty area next to it without pushing p3 and p2 apart
+p3 + p2 + 
+  plot_spacer() + p1
+______
+```
+
+## Hints
+::: {.hint exercise="ex_5_2_3"}
+The `type` argument of the `free()` function controls the behavior. Read the docs and experiment with the different modes.
+:::
+
+## Solution
+::: {.solution exercise="ex_5_2_3"}
+```r
+p3 + p2 + 
+  plot_spacer() + free(p1, type = "space", side = "l")
+```
+:::
+
+::::
+
+## 5.3 Annotations and Tagging
+
+:::: {.panel-tabset}
+
+## Exercise 5.3.1
+Create a composition of three plots and add a title, subtitle, and caption to the entire composition using `plot_annotation()`. Use markdown formatting in your text and apply a custom theme to the annotation.
+
+```{webr}
+#| exercise: ex_5_3_1
+
+# Create three plots
+p1 <- ggplot(penguins) + 
+  geom_point(aes(flipper_len, bill_len, color = species))
+
+p2 <- ggplot(penguins) + 
+  geom_histogram(aes(bill_len, fill = species))
+
+p3 <- ggplot(penguins) + 
+  geom_boxplot(aes(species, flipper_len, fill = species))
+
+# Combine plots and add annotations
+(p1 | p2 / p3) + 
+  plot_annotation(
+    ______
+  )
+```
+
+## Hints
+::: {.hint exercise="ex_5_3_1"}
+Use `plot_annotation()` with:
+- `title`: The main title with markdown formatting
+- `subtitle`: A subtitle with markdown formatting
+- `caption`: A caption with markdown formatting
+- `theme`: A theme to apply to the annotation - try using `marquefy_theme()` from the marquee package
+```
+:::
+
+## Solution
+::: {.solution exercise="ex_5_3_1"}
+```r
+(p1 | p2 / p3) + 
+  plot_annotation(
+    title = "**Penguin** _Measurements_ Analysis",
+    subtitle = "*Exploring* relationships between bill and flipper dimensions",
+    caption = "Source: The `penguins` dataset in R",
+    theme = marquee::marquefy_theme(theme_minimal())
+  )
+```
+:::
+
+::::
+
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 5.3.2
+Create a multi-panel figure with nested plots and add automatic tagging with different levels for the main plots and nested plots.
+
+```{webr}
+#| exercise: ex_5_3_2
+library(ggplot2)
+library(patchwork)
+
+# Create basic plots
+p1 <- ggplot(penguins) + 
+  geom_point(aes(flipper_len, bill_len))
+
+p2 <- ggplot(penguins) + 
+  geom_histogram(aes(bill_len))
+
+p3 <- ggplot(penguins) + 
+  geom_histogram(aes(flipper_len))
+
+p4 <- ggplot(penguins) + 
+  geom_boxplot(aes(species, bill_len))
+
+# Create a nested layout where the nested part starts a new tag level
+p_nested <- ______
+
+# Add tagging to the entire composition
+p_nested + 
+  plot_annotation(
+    ______
+  )
+```
+
+## Hints
+::: {.hint exercise="ex_5_3_2"}
+1. For the nested layout, use something like: `(p1 | (p2 / p3)) / p4`
+2. To mark a nested area for different tag levels: `plot_layout(tag_level = "new")`
+3. For the tagging annotation, use:
+   ```r
+   plot_annotation(
+     tag_levels = c("1", "a"),
+     tag_suffix = ")"
+   )
+   ```
+:::
+
+## Solution
+::: {.solution exercise="ex_5_3_2"}
+```r
+# Create a nested layout
+p_nested <- ((p1 | (p2 / p3)) + plot_layout(tag_level = "new")) / p4
+
+# Add tagging to the entire composition
+p_nested + 
+  plot_annotation(
+    tag_levels = c("1", "a"),
+    tag_suffix = ")"
+  )
+```
+:::
+
+::::
+
+## 5.4 Guide Handling
+
+:::: {.panel-tabset}
+
+## Exercise 5.4.1
+Create two plots that share the same color aesthetic. Combine them and collect their legends into a single legend.
+
+```{webr}
+#| exercise: ex_5_4_1
+# Create two plots with the same color aesthetic
+p1 <- ggplot(penguins) + 
+  geom_bar(aes(species, fill = species))
+
+p2 <- ggplot(penguins) + 
+  geom_histogram(aes(bill_len, fill = species))
+
+# Combine plots and collect legends
+______
+```
+
+## Hints
+::: {.hint exercise="ex_5_4_1"}
+Use the `plot_layout(guides = "collect")` function to collect the legends from both plots into a single legend.
+:::
+
+## Solution
+::: {.solution exercise="ex_5_4_1"}
+```r
+# Combine plots and collect legends
+(p1 / p2) + plot_layout(guides = "collect")
+```
+:::
+
+::::
+
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 5.4.2
+Create two plots with shared x-axis categories. Combine them vertically and use `plot_layout()` to collect the axes so that the x-axis appears only once at the bottom. Also try to make it so that the axis titles are collected at the bottom while the ticks and labels are kept in each plot.
+
+```{webr}
+#| exercise: ex_5_4_2
+# Create two plots with the same x categories
+p1 <- ggplot(penguins) + 
+  geom_boxplot(aes(species, bill_len)) +
+  labs(y = "Bill Length")
+
+p2 <- ggplot(penguins) + 
+  geom_boxplot(aes(species, flipper_len)) +
+  labs(y = "Flipper Length")
+
+# Combine plots vertically and collect x-axis
+______
+```
+
+## Hints
+::: {.hint exercise="ex_5_4_2"}
+Use the `axes` argument in `plot_layout()` to collect shared axes. The `axis_titles` argument works the same way but only for the title
+:::
+
+## Solution
+::: {.solution exercise="ex_5_4_2"}
+```r
+# Combine plots vertically and collect x-axis
+(p1 / p2) + plot_layout(axes = "collect")
+
+# To only collect the titles, use the `axis_titles` argument instead
+(p1 / p2) + plot_layout(axis_titles = "collect")
+```
+:::
+
+::::
+
+## 5.5 Other Objects
+
+:::: {.panel-tabset}
+
+## Exercise 5.5.1
+Combine the plot and the table in a way where the table ends up making up for the x-axis of the plot
+
+```{webr}
+#| exercise: ex_5_5_1
+# Create a scatter plot
+p1 <- ggplot(penguins) + 
+  geom_bar(aes(species))
+
+# Create a gt table with summary statistics
+summary <- penguins |>
+  dplyr::summarise(
+    "Bill length" = paste(range(bill_len, na.rm = TRUE), collapse = " — "),
+    "Bill depth" = paste(range(bill_dep, na.rm = TRUE), collapse = " — "),
+    "Flipper length" = paste(range(flipper_len, na.rm = TRUE), collapse = " — "),
+    .by = species
+  )
+
+# Combine the plot and table
+______
+```
+
+## Hints
+::: {.hint exercise="ex_5_5_1"}
+If the table should make it out for the axis, then it needs to be placed below and the plot needs to have its x-axis removed.
+
+To align the table and the plot the species column needs to be moved out of the panel area. By default, row and column names are placed outside the panel region.
+:::
+
+## Solution
+::: {.solution exercise="ex_5_5_1"}
+```r
+p1 + theme(axis.title.x = element_black(), axis.text.x = element_blank()) /
+  wrap_table(summary_table, space = "fixed")
+```
+:::
+
+::::
+
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 5.5.2
+Create a scatter plot and add an image file in the lower right corner. For this exercise, use the patchwork logo image.
+
+```{webr}
+#| exercise: ex_5_5_2
+# Create a scatter plot
+p1 <- ggplot(penguins) + 
+  geom_point(aes(flipper_len, bill_len, color = species))
+
+# Load the logo image
+logo_path <- system.file("help/figures/logo.png", package = "patchwork")
+logo <- ______
+
+# Combine the plot and the logo image
+______
+```
+
+## Hints
+::: {.hint exercise="ex_5_5_2"}
+Use the `png::readPNG()` function to read the image file so that can be used in patchwork. Remember to set `raster = TRUE`.
+
+Use `inset()` to place it on top of the plot
+:::
+
+## Solution
+::: {.solution exercise="ex_5_5_2"}
+```r
+p1 + 
+  inset_element(logo, 0.65, 0.05, 0.95, 0.2)
+
+# Consider setting a transparent background on the inset
+p1 + 
+  inset_element(logo, 0.65, 0.05, 0.95, 0.2) + 
+  theme_void()
+```
+:::
+
+::::

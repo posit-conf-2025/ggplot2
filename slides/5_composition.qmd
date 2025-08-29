@@ -80,7 +80,12 @@ p1 + p2 +
   )
 ```
 
-## [Exercise](../exercises/3_text_fonts.qmd#working-with-fonts) {.center style="text-align:center;"}
+## Patchwork *in a nutshell*
+
+```{r}
+p1 + p2 &
+  theme_minimal()
+```
 
 ## Patchwork layout model
 
@@ -143,7 +148,7 @@ p1 + p2 +
   plot_layout(design = layout)
 ```
 
-## [Exercise](../exercises/3_text_fonts.qmd#working-with-fonts) {.center style="text-align:center;"}
+## [Exercise](../exercises/5_composition.qmd#patchwork-composition) {.center style="text-align:center;"}
 
 ## Layout modifiers
 
@@ -186,7 +191,7 @@ p1 + free(p3a, side = "b")
 free(p1, "label", side = "b") + p3a
 ```
 
-## [Exercise](../exercises/3_text_fonts.qmd#working-with-fonts) {.center style="text-align:center;"}
+## [Exercise](../exercises/5_composition.qmd#layout-modifiers) {.center style="text-align:center;"}
 
 ## Annotations
 
@@ -250,7 +255,7 @@ p123 +
   )
 ```
 
-## [Exercise](../exercises/3_text_fonts.qmd#working-with-fonts) {.center style="text-align:center;"}
+## [Exercise](../exercises/5_composition.qmd#annotations-and-tagging) {.center style="text-align:center;"}
 
 ## Guide handling
 
@@ -334,16 +339,60 @@ p2a + p4 + p3 + guide_area() +
 * Sometimes you need something other than a ggplot (🤯)
 * patchwork supports a range of different object types
 
-## Other objects
+## Other objects: gt
 
-* Tables created with gt
+```{r}
+table <- gt::gt(
+  penguins[
+    sample(nrow(penguins), 10), 
+    c("species", "flipper_len", "bill_len")
+  ]
+)
+p1 + table
+```
 
-## Other objects
+## Other objects: gt
 
-* Images
+```{r}
+p1 + 
+  wrap_table(table, panel = "full", space = "fixed")
+```
 
-## Other objects
+## Other objects: images
 
-* Base graphics
+```{r}
+logo <- system.file("help/figures/logo.png", package = "patchwork")
+logo <- png::readPNG(logo, native = TRUE)
+
+p1 + logo
+```
+
+## Other objects: grobs
+
+```{r}
+grob <- marquee::marquee_grob(textshaping::lorem_text("devanagari"))
+
+p1 + grob
+```
+
+
+## Other objects: base graphics
+
+```{r}
+p1 + ~plot(penguins$flipper_len, penguins$bill_len)
+```
+
+## Other objects: base graphics
+
+```{r}
+par(mar = c(0, 2, 0, 0), bg = NA)
+p1 + 
+  wrap_elements(
+    panel = ~plot(penguins$flipper_len, penguins$bill_len), 
+    clip = FALSE
+  )
+```
+
+## [Exercise](../exercises/3_text_fonts.qmd#working-with-fonts) {.center style="text-align:center;"}
 
 ## ggiraph integration

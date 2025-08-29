@@ -8,7 +8,7 @@ In this session we will dive into how you present multiple plots in the same fig
 ::: {.text-center .plain}
 :::::: {.btn-group}
 [Slides](../slides/5_composition.qmd){.btn .btn-primary role="button"}
-[Exercises](){.btn .btn-success .disabled role="button"}
+[Exercises](../exercises/5_composition.qmd){.btn .btn-success role="button"}
 ::::::
 :::
 

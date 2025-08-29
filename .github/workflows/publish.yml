@@ -41,6 +41,7 @@ jobs:
             any::gganimate
             any::plotly
             any::gifski
+            any::gridGraphics
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
