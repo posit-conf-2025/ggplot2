@@ -105,6 +105,90 @@
     "text": "Summary\nEach package has strengths and weaknesses.\n\n\n\npackage\nFidelity\nAnimation\nTooltips\n\n\n\n\ngganimate\nYes\nYes\nNo\n\n\nplotly\nNo\nYes\nYes\n\n\nggiraph\nYes\nNo\nYes"
   },
   {
+    "objectID": "slides/6_extensions.html#extension-points",
+    "href": "slides/6_extensions.html#extension-points",
+    "title": "Creating extensions",
+    "section": "Extension points",
+    "text": "Extension points\n\nThemes\nScales\nStats\nGeoms\nGuides\nCoords\nFacets"
+  },
+  {
+    "objectID": "slides/6_extensions.html#theme-extensions",
+    "href": "slides/6_extensions.html#theme-extensions",
+    "title": "Creating extensions",
+    "section": "Theme extensions",
+    "text": "Theme extensions\nUsually wrap some standard ggplot2 theme code.\n\ncowplot::theme_cowplot()\nggthemes::theme_economist()\nSession 4: Build your own theme\n\n\n\nlibrary(ggplot2)\n\nbland_plot &lt;- ggplot(mpg, aes(displ, hwy)) +\n  geom_point()\n\nmy_theme &lt;- function(...) {\n  theme_gray() + theme(geom = element_geom(ink = \"red\"))\n}\n\nbland_plot + my_theme()"
+  },
+  {
+    "objectID": "slides/6_extensions.html#scale-extensions",
+    "href": "slides/6_extensions.html#scale-extensions",
+    "title": "Creating extensions",
+    "section": "Scale extensions",
+    "text": "Scale extensions\nOften wrappers for novelty aesthetics or scale parameters.\n\ncontinuous_scale()\nbinned_scale()\ndiscrete_scale()\n\n\n\nscale_x_asinh &lt;- function(...) {\n  scale_x_continuous(transform = scales::transform_asinh())\n}\n\nbland_plot + scale_x_asinh()"
+  },
+  {
+    "objectID": "slides/6_extensions.html#the-dark-side-of-ggplot2-ggproto",
+    "href": "slides/6_extensions.html#the-dark-side-of-ggplot2-ggproto",
+    "title": "Creating extensions",
+    "section": "The dark side of ggplot2: ggproto",
+    "text": "The dark side of ggplot2: ggproto\n\n\n\nObject oriented system deliberately hidden from users\nSpecifically used in ggplot2 and extensions\nObjects build on top of environments\n\nModify-in-place, not copy-on-modify\nSimilar to R6/Reference Classes, not S3/S4/S7\n\nMethods encapsulated by class\n\n\n\nStatDensity\n#&gt; &lt;ggproto object: Class StatDensity, Stat, gg&gt;\n1#&gt;     aesthetics: function\n#&gt;     compute_group: function\n#&gt;     compute_layer: function\n#&gt;     compute_panel: function\n#&gt;     finish_layer: function\n#&gt;     parameters: function\n#&gt;     setup_data: function\n#&gt;     setup_params: function\n2#&gt;     default_aes: ggplot2::mapping, uneval, gg, S7_object\n#&gt;     dropped_aes: weight\n#&gt;     extra_params: na.rm orientation\n#&gt;     non_missing_aes:\n#&gt;     optional_aes:\n#&gt;     required_aes: x|y\n#&gt;     retransform: TRUE\n3#&gt;     super:  &lt;ggproto object: Class Stat, gg&gt;\n\n\n1\n\nMethods\n\n2\n\nFields\n\n3\n\nParent"
+  },
+  {
+    "objectID": "slides/6_extensions.html#ggproto-esoterica",
+    "href": "slides/6_extensions.html#ggproto-esoterica",
+    "title": "Creating extensions",
+    "section": "ggproto esoterica",
+    "text": "ggproto esoterica\nPrimer on modify-in-place\n\n# Creating modifiable copy of Stat\nStatGood &lt;- ggproto(NULL, Stat)\n\n# Changing a field\nStatGood &lt;- ggproto(NULL, Stat, required_aes = \"x\")\nStat$required_aes\n## character(0)\n\n# This does NOT copy Stat\nStatBad &lt;- Stat\n\n# Modify-in-place shenanigans\nStatBad$required_aes &lt;- \"x\"\nStat$required_aes\n## [1] \"x\"\n\n# Never circularly define a ggproto object\n# Stat &lt;- ggproto(NULL, Stat)"
+  },
+  {
+    "objectID": "slides/6_extensions.html#ggproto-esoterica-1",
+    "href": "slides/6_extensions.html#ggproto-esoterica-1",
+    "title": "Creating extensions",
+    "section": "ggproto esoterica",
+    "text": "ggproto esoterica\nMethods have access to the class object itself via a self variable if it is included as an argument in the method. It can be used to read fields and use other methods.\n\nStat$aesthetics\n## &lt;ggproto method&gt;\n##   &lt;Wrapper function&gt;\n##     function (...) \n## aesthetics(..., self = self)\n## \n##   &lt;Inner function (f)&gt;\n##     function (self) \n## {\n##     if (is.null(self$required_aes)) {\n##         required_aes &lt;- NULL\n##     }\n##     else {\n##         required_aes &lt;- unlist(strsplit(self$required_aes, \"|\", \n##             fixed = TRUE))\n##     }\n##     c(union(required_aes, names(self$default_aes)), self$optional_aes, \n##         \"group\")\n## }\n\nStatDensity$aesthetics()\n## [1] \"x\"      \"y\"      \"fill\"   \"weight\" \"group\""
+  },
+  {
+    "objectID": "slides/6_extensions.html#ggproto-esoterica-2",
+    "href": "slides/6_extensions.html#ggproto-esoterica-2",
+    "title": "Creating extensions",
+    "section": "ggproto esoterica",
+    "text": "ggproto esoterica\nExtendible classes are stateless: fields don’t mutate during plot building. State is primarily encoded in the data, and secondarily in params managed by ggplot2’s internals. Fields should be ‘read only’.\n\nAddNumber &lt;- ggproto(\n  \"AddNumber\",\n  state = 0,\n  add = function(self, number) {\n    # We read and write the 'state' field\n    # Do not do this!\n    self$state &lt;- self$state + number\n    self$state\n  }\n)\nAddNumber$add(10)\n## [1] 10\nAddNumber$add(5)\n## [1] 15"
+  },
+  {
+    "objectID": "slides/6_extensions.html#build-your-own-stat",
+    "href": "slides/6_extensions.html#build-your-own-stat",
+    "title": "Creating extensions",
+    "section": "Build your own Stat",
+    "text": "Build your own Stat\nInput is evaluated aesthetics in a data frame. Output is an amended data frame with computed variables.\n\nDefine a ‘compute’ function.\nEncapsulate that function in a Stat subclass.\nProvide a constructor."
+  },
+  {
+    "objectID": "slides/6_extensions.html#geom-extensions",
+    "href": "slides/6_extensions.html#geom-extensions",
+    "title": "Creating extensions",
+    "section": "Geom extensions",
+    "text": "Geom extensions\n\nLikely you’ll need to wield some grid code.\nHierarchy is like Stat classes:\n\ndraw_group()\ndraw_panel()\ndraw_layer()\n\nWorks with make_constructor() too.\nInput is position-adjusted data\nOutput are grobs (graphical objects)"
+  },
+  {
+    "objectID": "slides/6_extensions.html#guide-extensions",
+    "href": "slides/6_extensions.html#guide-extensions",
+    "title": "Creating extensions",
+    "section": "Guide extensions",
+    "text": "Guide extensions\n\nnew legend keys: draw_key_*() functions.\nvariations on:\n\naxes\nlegends\ncolour bars\n\npackages:\n\nlegendry\nggprism"
+  },
+  {
+    "objectID": "slides/6_extensions.html#coord-extensions",
+    "href": "slides/6_extensions.html#coord-extensions",
+    "title": "Creating extensions",
+    "section": "Coord extensions",
+    "text": "Coord extensions\n\nnew transformations\ndisplay of panels\ncontrol of axes\npackages:\n\n???"
+  },
+  {
+    "objectID": "slides/6_extensions.html#facet-extensions",
+    "href": "slides/6_extensions.html#facet-extensions",
+    "title": "Creating extensions",
+    "section": "Facet extensions",
+    "text": "Facet extensions\n\ndata extensions\n\nggforce::facet_matrix()\n\nlayout extensions\n\ngeofacet\nggragged\nggh4x::facet_manual()\n\ndecorations\n\nggh4x::facet_nested()"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Mastering Data Visualization with ggplot2",
@@ -781,7 +865,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/Rtmpms3lVb/Barrio-regular.ttf\", \"/tmp/Rtmpms3lVb/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpVaGbfw/Barrio-regular.ttf\", \"/tmp/RtmpVaGbfw/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
