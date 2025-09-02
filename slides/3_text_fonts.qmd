@@ -62,15 +62,15 @@ ggplot(penguins) +
 
 :::::: r-stack
 ::: {style="margin-left:40px"}
-![](https://github.com/rstudio/hex-stickers/blob/main/PNG/ragg.png?raw=true){width="400"}
+[![](https://github.com/rstudio/hex-stickers/blob/main/PNG/ragg.png?raw=true){width="400"}](https://ragg.r-lib.org)
 :::
 
 ::: {.fragment .fade-left}
-![](https://github.com/rstudio/hex-stickers/blob/main/PNG/systemfonts.png?raw=true){width="400"}
+[![](https://github.com/rstudio/hex-stickers/blob/main/PNG/systemfonts.png?raw=true){width="400"}](https://systemfonts.r-lib.org)
 :::
 
 ::: {.fragment .fade-left style="margin-right:40px"}
-![](https://github.com/rstudio/hex-stickers/blob/main/PNG/svglite.png?raw=true){width="400"}
+[![](https://github.com/rstudio/hex-stickers/blob/main/PNG/svglite.png?raw=true){width="400"}](https://svglite.r-lib.org)
 :::
 ::::::
 
@@ -193,7 +193,7 @@ ggplot(penguins) +
 ## {.center}
 
 ::::: r-stack
-![](https://github.com/rstudio/hex-stickers/blob/main/PNG/marquee.png?raw=true){width="400"}
+[![](https://github.com/rstudio/hex-stickers/blob/main/PNG/marquee.png?raw=true){width="400"}](https://marquee.r-lib.org)
 :::::
 
 ## marquee

@@ -5,33 +5,60 @@
 ### *Latest Techniques and Best Practices*
 
 ::: r-stack
-![](https://github.com/rstudio/hex-stickers/blob/main/PNG/ggplot2.png?raw=true){width="400"}
+[![](https://github.com/rstudio/hex-stickers/blob/main/PNG/ggplot2.png?raw=true){width="400"}](https://ggplot2.tidyverse.org)
 :::
 
 ## The Team
 
-&nbsp;
-
+::: {.center-y}
 #### Teachers
-**Thomas Lin Pedersen** (me)
+* Thomas Lin Pedersen (me)
 
-**Teun van den Brand**
-
-&nbsp;
+* Teun van den Brand
 
 #### TA
-**Kara Woo**
+* Kara Woo
+:::
+
+## You
+
+* Introduce yourself to the person next to you
+  - Your name
+  - What you do in 3 words
+  - Something you've done that made you proud
+* 3 minutes
+
+{{< countdown minutes=3 >}}
 
 ## Today
 
 1. Introduction
 2. Modern ggplot2
+
+   *Coffee break*
+
 3. Text rendering and font use
+
+   *Lunch*
+
 4. Styling your plot
 5. Plot composition
-6. Interactive plots
-7. Creating extensions
-8. Spice up your plot
+
+   *Coffee break*
+
+6. Creating extensions *or* Spice up your plot
+
+## Exercises
+
+* There will be exercises scattered throughout the day
+* If you get stuck:
+  - Ask the person next to you
+  - Ask for help (pink post-it on laptop)
+  - Use the hints
+  - (Don't ask an AI)
+* The exercises are for you, so give it your best shot
+* Once you're finished put the green post-it up
+* You may not have time for all of them — That is OK!
 
 ## Practical information
 

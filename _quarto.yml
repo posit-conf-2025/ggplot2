@@ -19,12 +19,10 @@ website:
           text: 4. Styling your plot
         - href: sessions/5_composition.qmd
           text: 5. Plot composition
-        - href: sessions/6_interaction.qmd
-          text: 6. Interactive plots
-        - href: sessions/7_extensions.qmd
-          text: 7. Creating extensions
-        - href: sessions/8_fun.qmd
-          text: 8. Spice up your plot
+        - href: sessions/6_extensions.qmd
+          text: 6. Creating extensions
+        - href: sessions/7_fun.qmd
+          text: 7. Spice up your plot
 
 format:
   html:

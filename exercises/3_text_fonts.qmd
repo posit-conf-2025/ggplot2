@@ -1,14 +1,7 @@
 ---
 title: Exercises for session 3
-format: live-html
-engine: knitr
 webr:
-  cell-options:
-    canvas: false
-    autorun: false
   packages:
-    - ggplot2
-    - ragg
     - systemfonts
     - marquee
     - gt
@@ -22,7 +15,9 @@ Each exercise has one or more hints, as well as a full solution if you click thr
 
 ## 3.1 Working with fonts
 
-### Exercise 3.1.1
+:::: {.panel-tabset}
+
+## Exercise 3.1.1
 Download [this font file](https://github.com/posit-conf-2025/ggplot2/raw/refs/heads/main/assets/Cirquee.otf) and add the font to your R session. You can confirm that is has been added by calling `systemfonts::match_fonts("cirquee")`
 
 ```{webr}
@@ -40,8 +35,8 @@ ______ # Replace this part with your solution
 systemfonts::match_fonts("cirquee")
 ```
 
+## Hints
 ::: {.hint exercise="ex_3_1_1"}
-::: {.callout-note collapse="false"}
 Use `systemfonts::add_fonts()` to make systemfonts aware of the font file
 
 ```r
@@ -50,19 +45,23 @@ systemfonts::add_fonts(______)
 systemfonts::match_fonts("cirquee")
 ```
 :::
-:::
 
+## Solution
 ::: {.solution exercise="ex_3_1_1"}
-::: {.callout-note collapse="false"}
 ```r
 systemfonts::add_fonts("Cirquee.otf")
 
 systemfonts::match_fonts("cirquee")
 ```
 :::
-:::
 
-### Exercise 3.1.2
+::::
+
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 3.1.2
 Find and install a font from [Google Fonts](https://fonts.google.com/) or [Font Squirrel](https://www.fontsquirrel.com) using systemfonts. Again, verify it has been added using `match_fonts()`
 
 ```{webr}
@@ -72,8 +71,10 @@ ______
 systemfonts::match_fonts(______)
 ```
 
+Read the documentation of `systemfonts::get_from_google_fonts()` and `systemfonts::require_font()`. How do they differ in where they place the font file and what consequence does it have?
+
+## Hints
 ::: {.hint exercise="ex_3_1_2"}
-::: {.callout-note collapse="false"}
 If you use Google font you need to use `get_from_font_squirrel()`
 ```r
 systemfonts::get_from_font_squirrel(______)
@@ -89,10 +90,9 @@ systemfonts::get_from_google_fonts(______)
 systemfonts::match_fonts(______)
 ```
 :::
-:::
 
+## Solution
 ::: {.solution exercise="ex_3_1_2"}
-::: {.callout-note collapse="false"}
 ```r
 systemfonts::get_from_font_squirrel("Raleway")
 
@@ -109,11 +109,14 @@ systemfonts::match_fonts("Raleway")
 
 If you chose to get the Raleway font
 :::
-:::
 
-Read the documentation of `systemfonts::get_from_google_fonts()` and `systemfonts::require_font()`. How do they differ in where they place the font file and what consequence does it have?
+::::
 
-### Exercise 3.1.3
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 3.1.3
 Use the two new fonts to style the following plot
 
 ```{webr}
@@ -128,14 +131,13 @@ ggplot(mpg) +
   )
 ```
 
+## Hints
 ::: {.hint exercise="ex_3_1_3"}
-::: {.callout-note collapse="false"}
 You can use the family name of the new fonts inside `element_text()` in the theme specification
 :::
-:::
 
+## Solution
 ::: {.solution exercise="ex_3_1_3"}
-::: {.callout-note collapse="false"}
 ```r
 ggplot(mpg) + 
   geom_bar(aes(class, fill = factor(cyl)), position = "dodge") + 
@@ -145,11 +147,14 @@ ggplot(mpg) +
   )
 ```
 :::
-:::
+
+::::
 
 ## 3.2 Basic markdown formatting with marquee
 
-### Exercise 3.2.1
+:::: {.panel-tabset}
+
+## Exercise 3.2.1
 Create a marquee text that uses various formatting options like bold, italic, lists, and code blocks. Display it using `grid::grid.draw(marquee_grob())`. Include at least three different types of formatting.
 
 ```{webr}
@@ -159,8 +164,8 @@ text <- ______
 grid::grid.draw(marquee_grob(text))
 ```
 
+## Solution
 ::: {.solution exercise="ex_3_2_1"}
-::: {.callout-note collapse="false"}
 ````r
 text <- "
 # Headings are important
@@ -177,9 +182,14 @@ However, *noone* wants to miss a `nice piece of code`
 grid::grid.draw(marquee_grob(text))
 ````
 :::
-:::
 
-### Exercise 3.2.2
+::::
+
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 3.2.2
 Create a marquee text that uses custom spans to change text colors, sizes, and add superscripts or subscripts. Try to show that styles inherits from their parent by placing spans inside spans
 
 ```{webr}
@@ -189,14 +199,13 @@ text <- ______
 grid::grid.draw(marquee_grob(text))
 ```
 
+## Hints
 ::: {.hint exercise="ex_3_2_2"}
-::: {.callout-note collapse="false"}
 Custom spans are added using the `{.<class> ...}` syntax. If `<class>` is a valid color name (from `colors()`) or a hex color code (in which case the preceeding `.` is changed to a `#`) than the given color is applied to the span. If `<class>` is an integer then that text size is applied to the span
 :::
-:::
 
+## Solution
 ::: {.solution exercise="ex_3_2_2"}
-::: {.callout-note collapse="false"}
 ```r
 text <- "
 Styling {.red can be {.20 nested}}. This is *also {#123456 true}* when you mix
@@ -206,9 +215,14 @@ custom and standard syntax
 grid::grid.draw(marquee_grob(text))
 ```
 :::
-:::
 
-### Exercise 3.2.3
+::::
+
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 3.2.3
 Create a marquee text that includes either an image (like a plot) or a table. If using a plot, create a simple scatterplot first, then include it in your marquee text.
 
 ```{webr}
@@ -218,15 +232,14 @@ text <- ______
 grid::grid.draw(marquee_grob(text))
 ```
 
+## Hints
 ::: {.hint exercise="ex_3_2_3"}
-::: {.callout-note collapse="false"}
 Use the standard markdown image syntax but provide the name of a variable 
 holding a plot, grob, or table instead of the path/URL to an image. 
 :::
-:::
 
+## Solution
 ::: {.solution exercise="ex_3_2_3"}
-::: {.callout-note collapse="false"}
 ```r
 library(gt)
 start_date <- "2010-06-07"
@@ -254,14 +267,17 @@ Pretty neat, huh!
 grid::grid.draw(marquee_grob(text))
 ```
 :::
-:::
+
+::::
 
 ## 3.3 marquee styling
 
-### Exercise 3.3.1
+:::: {.panel-tabset}
+
+## Exercise 3.3.1
 Read the documentation of `marquee::classic_style()` and experiment with how different a look you can get by only modifying the arguments that it takes
 
-```{webr}
+````{webr-r}
 #| exercise: ex_3_3_1
 style <- classic_style(______)
 
@@ -281,16 +297,21 @@ As well as code blocks
 "
 
 grid::grid.draw(marquee_grob(text, style = style))
-```
+````
 
+## Solution
 ::: {.solution exercise="ex_3_3_1"}
-::: {.callout-note collapse="false"}
 No wrong answers here. Just experiment with the various arguments and its effect
 on the provided text
 :::
-:::
 
-### Exercise 3.3.2
+::::
+
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 3.3.2
 Change the look of inline code so that it is displayed with an outlined serif
 font on a transparent background with a lightblue border. You can read the 
 documentation for `marquee_parse()` to see the tags that are asigned to various
@@ -308,15 +329,14 @@ text <- "Some `inline code to test with`."
 grid::grid.draw(marquee_grob(text, style = style))
 ```
 
+## Hints
 ::: {.hint exercise="ex_3_3_2"}
-::: {.callout-note collapse="false"}
 Inline code uses the `"code"` tag. See the documentation for `style()` to figure
 out the different styles that needs to be changed to get the requested look
 :::
-:::
 
+## Solution
 ::: {.solution exercise="ex_3_3_2"}
-::: {.callout-note collapse="false"}
 There are two ways to call `modify_style()`. Either pass the different styles
 directly:
 
@@ -351,11 +371,16 @@ style <- classic_style(base_size = 20) |>
 ```
 
 Can you see what the difference is between the two approaches (it's described in
-the documentation for `modify_style()`)
-:::
+the documentation for `modify_style()`)?
 :::
 
-### Exercise 3.3.3
+::::
+
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 3.3.3
 Define a new tag (`"fancy"`), which makes text over-the-top unreadable due to
 its styling. Consider using the `features` argument as a means to that end. 
 
@@ -374,18 +399,17 @@ text <- ______
 grid::grid.draw(marquee_grob(text, style = style))
 ```
 
+## Hints
 ::: {.hint exercise="ex_3_3_3"}
-::: {.callout-note collapse="false"}
 Font features are a huge subject and if you have never heard of it before you 
 may choose to use other arguments to make the text over-the-top. If you do use
 the `features` argument, remember that not all fonts support all features. You
 can see which features are supported by a font using 
 `textshaping::get_font_features()`
 :::
-:::
 
+## Solution
 ::: {.solution exercise="ex_3_3_3"}
-::: {.callout-note collapse="false"}
 An example of a horrible style could be
 
 ```r
@@ -414,11 +438,14 @@ text <- "{.fancy This is a test of readability (& style)}"
 
 but I'm sure you can do it better/worse
 :::
-:::
+
+::::
 
 ## 3.4 Using geom_marquee() in ggplot2
 
-### Exercise 3.4.1
+:::: {.panel-tabset}
+
+## Exercise 3.4.1
 Create a scatter plot of bill length vs flipper length from the penguins dataset. Use `geom_marquee()` to label at least two points with formatted text (including italics or bold). Experiment with the `width` aesthetic to force automatic line breaking
 
 ```{webr}
@@ -429,14 +456,13 @@ ggplot(penguins, aes(bill_len, flipper_len)) +
   ______
 ```
 
+## Hints
 ::: {.hint exercise="ex_3_4_1"}
-::: {.callout-note collapse="false"}
 You can use `geom_marquee()` with some coordinates to place formatted text labels. To choose points to label, you might want to filter the penguins data for specific individuals.
 :::
-:::
 
+## Solution
 ::: {.solution exercise="ex_3_4_1"}
-::: {.callout-note collapse="false"}
 ```r
 # Find some interesting points to label
 adelie <- subset(penguins, species == "Adelie" & bill_len > 45)[1, ]
@@ -459,9 +485,14 @@ ggplot(penguins, aes(bill_len, flipper_len)) +
   theme(legend.position = "bottom")
 ```
 :::
-:::
 
-### Exercise 3.4.2
+::::
+
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 3.4.2
 Create a plot and use `element_marquee()` to customize the plot title, subtitle, and axis titles. Make the titles include formatted text (like bold or italic words) and use a custom font.
 
 ```{webr}
@@ -480,14 +511,13 @@ ggplot(penguins, aes(bill_len, flipper_len)) +
   )
 ```
 
+## Hints
 ::: {.hint exercise="ex_3_4_2"}
-::: {.callout-note collapse="false"}
 You can use `element_marquee()` to replace standard text elements in the theme. For example, `plot.title = element_marquee(...)` for the title. Remember to use markdown formatting in your text.
 :::
-:::
 
+## Solution
 ::: {.solution exercise="ex_3_4_2"}
-::: {.callout-note collapse="false"}
 ```r
 systemfonts::require_font("Spectral")
 systemfonts::require_font("Exo 2")
@@ -508,9 +538,14 @@ ggplot(penguins, aes(bill_len, flipper_len)) +
   )
 ```
 :::
-:::
 
-### Exercise 3.4.3
+::::
+
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 3.4.3
 Create a scatter plot with a color aesthetic for species. Use `guide_marquee()` to create a custom legend that includes text describing the penguin species colouring the species name and includind the keys as well.
 
 ```{webr}
@@ -520,27 +555,24 @@ ggplot(penguins, aes(bill_len, flipper_len, color = species)) +
   ______
 ```
 
+## Hints
 ::: {.hint exercise="ex_3_4_3"}
-::: {.callout-note collapse="false"}
 You need to take care of two things:
 
 1. Tell ggplot2 to use `guide_marquee()` for the color aesthetic
 2. Provide the markdown text that will be used for the legend
 :::
-:::
 
 ::: {.hint exercise="ex_3_4_3"}
-::: {.callout-note collapse="false"}
 The two things can be accomplished in different ways
 
 1. The guide type can be specified with `guides()` or within `scale_color_*()`
 2. The text can be provided in the `guide_marquee()` constructor, in the scale
    constructor, or with `labs()`
 :::
-:::
 
+## Solution
 ::: {.solution exercise="ex_3_4_3"}
-::: {.callout-note collapse="false"}
 ```r
 legend_text <- "
 An overview of the relationship between flipper and bill length between 
@@ -553,4 +585,5 @@ ggplot(penguins, aes(bill_len, flipper_len, color = species)) +
   labs(color = legend_text)
 ```
 :::
-:::
+
+::::

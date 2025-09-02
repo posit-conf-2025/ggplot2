@@ -1,0 +1,14 @@
+format:
+  live-html:
+    theme:
+      - yeti
+      - brand
+    css: styles.css
+engine: knitr
+webr:
+  cell-options:
+    canvas: false
+    autorun: false
+  packages:
+    - ggplot2
+    - ragg

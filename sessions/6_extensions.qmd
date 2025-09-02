@@ -11,7 +11,7 @@ Here we talk about creating reusable pieces of code that fit into the grammar:
 
 ::: {.text-center .plain}
 :::::: {.btn-group}
-[Slides](../slides/7_extensions.qmd){.btn .btn-primary role="button"}
+[Slides](../slides/6_extensions.qmd){.btn .btn-primary role="button"}
 [Exercises](){.btn .btn-success .disabled role="button"}
 ::::::
 :::
@@ -19,7 +19,7 @@ Here we talk about creating reusable pieces of code that fit into the grammar:
 ---
 
 ::: {.d-flex .justify-content-between}
-[<i class="bi bi-caret-left"></i> Previous session](../sessions/6_interaction.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
+[<i class="bi bi-caret-left"></i> Previous session](../sessions/5_composition.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
 
-[Next session <i class="bi bi-caret-right"></i>](../sessions/8_fun.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
+[Next session <i class="bi bi-caret-right"></i>](../sessions/7_fun.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
 :::

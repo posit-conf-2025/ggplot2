@@ -8,7 +8,7 @@ In this session we will dive into how you present multiple plots in the same fig
 ::: {.text-center .plain}
 :::::: {.btn-group}
 [Slides](../slides/5_composition.qmd){.btn .btn-primary role="button"}
-[Exercises](){.btn .btn-success .disabled role="button"}
+[Exercises](../exercises/5_composition.qmd){.btn .btn-success role="button"}
 ::::::
 :::
 
@@ -17,5 +17,5 @@ In this session we will dive into how you present multiple plots in the same fig
 ::: {.d-flex .justify-content-between}
 [<i class="bi bi-caret-left"></i> Previous session](../sessions/4_theme_guide.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
 
-[Next session <i class="bi bi-caret-right"></i>](../sessions/6_interaction.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
+[Next session <i class="bi bi-caret-right"></i>](../sessions/6_extensions.qmd){.btn .btn-sm .btn-outline-secondary role="button"}
 :::

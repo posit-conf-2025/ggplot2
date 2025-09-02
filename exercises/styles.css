@@ -1,0 +1,23 @@
+hr {
+  background: grey;
+  border: 0;
+  height: 1px;
+  width: 20%;
+  position: relative;
+  margin: 30px auto;
+  overflow: visible;
+}
+hr:before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: grey;
+  display: inline-block;
+  border: 2px solid grey;
+  transform: rotate(45deg);
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  margin: 0 0 0 -4px;
+  box-sizing: unset;
+}
