@@ -1,4 +1,547 @@
 ---
 title: "Creating extensions"
 author: "Teun van den Brand"
+code-annotations: hover
 ---
+
+## Extension points
+
+* Themes
+* Scales
+* Stats
+* Geoms
+* Guides
+* Coords
+* Facets
+
+## Theme extensions
+
+Usually wrap some standard ggplot2 theme code.
+
+* `cowplot::theme_cowplot()`
+* `ggthemes::theme_economist()`
+* Session 4: Build your own theme
+
+```{r}
+library(ggplot2)
+
+bland_plot <- ggplot(mpg, aes(displ, hwy)) +
+  geom_point()
+
+my_theme <- function(...) {
+  theme_gray() + theme(geom = element_geom(ink = "red"))
+}
+
+bland_plot + my_theme()
+```
+
+## Scale extensions
+
+Often wrappers for novelty aesthetics or scale parameters.
+
+* `continuous_scale()`
+* `binned_scale()`
+* `discrete_scale()`
+
+```{r}
+scale_x_asinh <- function(...) {
+  scale_x_continuous(transform = scales::transform_asinh())
+}
+
+bland_plot + scale_x_asinh()
+```
+
+---
+
+## The dark side of ggplot2: ggproto
+
+::: {.columns}
+
+::::{.column}
+
+* Object oriented system deliberately hidden from users
+* Specifically used in ggplot2 and extensions
+* Objects build on top of environments
+   * Modify-in-place, not copy-on-modify
+   * Similar to R6/Reference Classes, not S3/S4/S7
+* Methods encapsulated by class
+
+::::
+
+::::{.column}
+
+```{r}
+#| output-location: default
+#| eval: false
+StatDensity
+#> <ggproto object: Class StatDensity, Stat, gg>
+#>     aesthetics: function                                 # <1>
+#>     compute_group: function                              # <1>
+#>     compute_layer: function                              # <1>
+#>     compute_panel: function                              # <1>
+#>     finish_layer: function                               # <1>
+#>     parameters: function                                 # <1>
+#>     setup_data: function                                 # <1> 
+#>     setup_params: function                               # <1>
+#>     default_aes: ggplot2::mapping, uneval, gg, S7_object # <2>
+#>     dropped_aes: weight                                  # <2>
+#>     extra_params: na.rm orientation                      # <2>
+#>     non_missing_aes:                                     # <2>
+#>     optional_aes:                                        # <2>
+#>     required_aes: x|y                                    # <2>
+#>     retransform: TRUE                                    # <2>
+#>     super:  <ggproto object: Class Stat, gg>             # <3>
+```
+1. Methods
+2. Fields
+3. Parent
+
+::::
+
+:::
+
+---
+
+## ggproto esoterica
+
+Primer on modify-in-place
+
+```{r}
+#| collapse: true
+#| output-location: default
+#| error: true
+# Creating modifiable copy of Stat
+StatGood <- ggproto(NULL, Stat)
+
+# Changing a field
+StatGood <- ggproto(NULL, Stat, required_aes = "x")
+Stat$required_aes
+
+# This does NOT copy Stat
+StatBad <- Stat
+
+# Modify-in-place shenanigans
+StatBad$required_aes <- "x"
+Stat$required_aes
+
+# Never circularly define a ggproto object
+# Stat <- ggproto(NULL, Stat)
+```
+
+## ggproto esoterica
+
+Methods have access to the class object itself via a `self` variable if it is included as an argument in the method.
+It can be used to read fields and use other methods.
+
+```{r}
+#| collapse: true
+#| output-location: default
+Stat$aesthetics
+
+StatDensity$aesthetics()
+```
+
+## ggproto esoterica
+
+Extendible classes are *stateless*: fields don't mutate during plot building.
+State is primarily encoded in the data, and secondarily in `params` managed by ggplot2's internals.
+Fields should be 'read only'.
+
+```{r}
+#| collapse: true
+#| output-location: default
+AddNumber <- ggproto(
+  "AddNumber",
+  state = 0,
+  add = function(self, number) {
+    # We read and write the 'state' field
+    # Do not do this!
+    self$state <- self$state + number
+    self$state
+  }
+)
+AddNumber$add(10)
+AddNumber$add(5)
+```
+
+---
+
+## Build your own Stat
+
+Input is evaluated aesthetics in a data frame.
+Output is an amended data frame with computed variables.
+
+1. Define a 'compute' function.
+2. Encapsulate that function in a Stat subclass.
+3. Provide a constructor.
+
+---
+
+### Defining a compute function
+
+This adds fitted values and residuals from a linear model to data as computed variables.
+Similar to a bare bone `broom::augment()`.
+It assumes the presence of an `x` and `y` variable.
+
+```{r}
+#| output-location: default
+residual_lines <- function(data, formula = y ~ x, ...) {
+  model <- lm(formula, data = data)
+  # Create computed variables
+  data$fitted <- predict(model)
+  data$residual <- residuals(model)
+  data
+}
+```
+
+---
+
+### Defining a compute function
+
+You can test the compute function outside ggplot to convince yourself it is doing the right thing.
+Using a separate function is also easier to debug.
+
+```{r}
+p <- ggplot(mtcars, aes(disp, mpg)) +
+  geom_smooth(
+    method = "lm", 
+    formula = y ~ x
+  ) +
+  geom_point()
+
+new_data <- mtcars |>
+  # Provide assumed `x` and `y` variables
+  dplyr::mutate(x = disp, y = mpg) |>
+  residual_lines()
+
+p + geom_segment(
+  data = new_data,
+  aes(yend = fitted)
+)
+```
+
+---
+
+### Encapsulating the compute function
+
+We create a Stat subclass using our function as the `compute_group` method.
+
+```{r}
+#| error: true
+StatResidual <- ggproto(
+  "StatResidual", # class name
+  Stat,           # parent
+  compute_group = residual_lines
+)
+
+p + geom_segment(stat = StatResidual)
+```
+
+---
+
+### Encapsulating the compute function
+
+To resolve friction, we can try fixing it on the user-side.
+
+```{r}
+#| code-line-numbers: "8"
+StatResidual <- ggproto(
+  "StatResidual", # class name
+  Stat,           # parent
+  compute_group = residual_lines
+)
+
+p + geom_segment(
+  aes(yend = after_stat(fitted)), 
+  stat = StatResidual
+)
+```
+
+---
+
+### Encapsulating the compute function
+
+But in this case we can provide the missing aesthetic as a default from the computed variables.
+
+```{r}
+#| code-line-numbers: 5-7
+StatResidual <- ggproto(
+  "StatResidual",
+  Stat,
+  compute_group = residual_lines,
+  default_aes = aes(
+    yend = after_stat(fitted)
+  )
+)
+
+p + geom_segment(stat = StatResidual)
+```
+
+---
+
+### Encapsulating the compute function
+
+We may need to formalise any required aesthetics, or in some cases: list optional aesthetics.
+
+```{r}
+#| code-line-numbers: 8-14
+StatResidual <- ggproto(
+  "StatResidual",
+  Stat,
+  compute_group = residual_lines,
+  default_aes = aes(
+    yend = after_stat(fitted)
+  ),
+  # As mentioned before, the compute 
+  # function assumes the presence 
+  # of `x` and `y` variables
+  required_aes = c("x", "y"),
+  # This example doesn't have 
+  # optional aesthetics
+  optional_aes = character() 
+)
+
+p + geom_segment(stat = StatResidual)
+```
+
+---
+
+### Encapsulating the compute function
+
+We can re-assure ourselves that our Stat behaves correctly when the data has groups.
+
+```{r}
+p + geom_segment(stat = StatResidual) +
+  aes(colour = factor(cyl))
+```
+
+---
+
+### Encapsulating the compute function
+
+A few considerations:
+
+* use `compute_group()` when group-level stats are required.
+* use `compute_panel()` when computing within single panels.
+    * by default delegates computation to `compute_group()`
+    * useful when between-group computations are needed.
+* don't use `compute_layer()` unless you have no other options.
+    * by default delegates computation to `compute_panel()`.
+    
+The methods can be debugged with `ggplot2:::ggproto_debug(StatResidual$compute_group)`.
+
+---
+
+### Making a constructor
+
+A good start is to use other constructors as a template.
+
+```{r}
+#| eval: false
+stat_boxplot
+#> function(
+#>   mapping = NULL,                # <1>
+#>   data = NULL,                   # <1>
+#>   geom = "boxplot",              # <1>
+#>   position = "dodge2",           # <1>
+#>   ...,          
+#>   orientation = NA,              # <2>
+#>   coef = 1.5,                    # <2>
+#>   na.rm = FALSE,                 # <3>
+#>   show.legend = NA,              # <3>
+#>   inherit.aes = TRUE             # <3>
+#> ) {
+#>   layer(
+#>     mapping = mapping,           # <4>
+#>     data = data,                 # <4>
+#>     geom = geom,                 # <4>
+#>     stat = "boxplot",            # <7>
+#>     position = position,         # <4>
+#>     show.legend = show.legend,   # <4>
+#>     inherit.aes = inherit.aes,   # <4>
+#>     params = list2(              # <5>
+#>       na.rm = na.rm,             # <6>
+#>       orientation = orientation, # <6>
+#>       coef = coef,               # <6>
+#>       ...                        # <6>
+#>     )
+#>   )
+#> }
+```
+1. Typically, the first two arguments are `mapping` and `data`. Every layer needs `geom`, `stat` and `position`. A `stat_*` constructor omits the `stat` argument because that will be provided for you. A `geom_*()` constructor omits the `geom` argument.
+2. Parameters for your Stat come after the `...` argument, which requires users to write the argument names out in full.
+3. The `na.rm`, `show.legend` and `inherit.aes` arguments come last and should have these default values in most cases. If you're making an `annotate_*()` layer, you may put `inherit.aes = FALSE` for example.
+4. You can look at the `?layer` documentation to see what are the standard arguments.
+5. We're using `rlang::list2()` because it supports argument splicing.
+6. The `na.rm` argument, all parameters to the Stat and `...` gets passed to the `layer(params)` argument.
+7. Note that in a `stat_*()` constructor, the `layer(stat)` argument is fixed. In a `geom_*()` constructor, the `layer(geom)` argument is fixed.
+
+---
+
+### Making a constructor
+
+When we make our own constructor, we follow the same rules.
+
+```{r}
+stat_residual <- function(
+  mapping = NULL,        # <1>
+  data = NULL,           # <1>
+  geom = "segment",      # <1>
+  position = "identity", # <1>
+  ...,
+  formula = y ~ x,       # <2>
+  na.rm = FALSE,         # <3>
+  show.legend = NA,      # <3>
+  inherit.aes = TRUE     # <3>
+) {
+  layer(
+    mapping = mapping,         # <4>
+    data = data,               # <4>
+    geom = geom,               # <4>
+    stat = StatResidual,       # <7>
+    position = position,       # <4>
+    show.legend = show.legend, # <4>
+    inherit.aes = inherit.aes, # <4>
+    params = rlang::list2(     # <5>
+      na.rm = na.rm,           # <6>
+      formula = formula,       # <6>
+      ...                      # <6>
+    )
+  )
+}
+
+p + stat_residual()
+```
+1. Typically, the first two arguments are `mapping` and `data`. Every layer needs `geom`, `stat` and `position`. A `stat_*` constructor omits the `stat` argument because that will be provided for you. A `geom_*()` constructor omits the `geom` argument.
+2. Parameters for your Stat come after the `...` argument, which requires users to write the argument names out in full.
+3. The `na.rm`, `show.legend` and `inherit.aes` arguments come last and should have these default values in most cases. If you're making an `annotate_*()` layer, you may put `inherit.aes = FALSE` for example.
+4. You can look at the `?layer` documentation to see what are the standard arguments.
+5. We're using `rlang::list2()` because it supports argument splicing.
+6. The `na.rm` argument, all parameters to the Stat and `...` gets passed to the `layer(params)` argument.
+7. Note that in a `stat_*()` constructor, the `layer(stat)` argument is fixed. In a `geom_*()` constructor, the `layer(geom)` argument is fixed.
+
+---
+
+### Making a constructor
+
+Instead of following all the rules, you can also use cookie-cutter `make_constructor()`.
+
+```{r}
+#| collapse: true
+stat_residual <- make_constructor(StatResidual, geom = "segment")
+print(stat_residual)
+
+p + stat_residual()
+```
+
+
+---
+
+### Additional considerations
+
+:::{.columns}
+
+::::{.column}
+
+You can use the `setup_params()` for:
+
+* Sanity checking
+   * `stat_smooth()` tries to find valid `method`.
+   * `stat_bin()` watches for deprecated arguments.
+* Initiating layer-level parameters
+   * `stat_contour()` tracks range of `z` aesthetic to re-use in group-level computation.
+* Setting up `orientation`
+   * Most bidirectional stats
+   
+::::
+
+::::{.column}
+   
+```{r}
+#| output-location: default
+#| collapse: true
+StatContour$setup_params
+```
+
+::::
+
+:::
+
+---
+
+### Additional considerations
+
+::: {.columns}
+
+:::: {.column}
+
+You can use the `setup_data()` method for:
+
+* Data wrangling at the layer-level
+   * `stat_boxplot()` removes `NA` values.
+   * Initiating optional aesthetics
+* Sanity checking
+   * `stat_contour()` cannot have duplicate data.
+
+::::
+
+:::: {.column}
+
+```{r}
+#| output-location: default
+#| collapse: true
+StatBoxplot$setup_data
+```
+::::
+
+:::
+
+---
+
+## Geom extensions
+
+* Likely you'll need to wield some grid code.
+* Hierarchy is like Stat classes:
+    * `draw_group()`
+    * `draw_panel()`
+    * `draw_layer()`
+* Works with `make_constructor()` too.
+* Input is position-adjusted data
+* Output are grobs ([gr]{.underline}aphical [ob]{.underline}jects)
+
+---
+
+## Guide extensions
+
+* new legend keys: `draw_key_*()` functions.
+* variations on:
+    * axes
+    * legends
+    * colour bars
+* packages:
+    * legendry
+    * ggprism
+    
+---
+
+## Coord extensions
+
+* new transformations
+* display of panels
+* control of axes
+* packages:
+    * ???
+
+---
+
+## Facet extensions
+
+* data extensions
+    * `ggforce::facet_matrix()`
+* layout extensions
+    * geofacet
+    * ggragged
+    * `ggh4x::facet_manual()`
+* decorations
+    * `ggh4x::facet_nested()`
+    
