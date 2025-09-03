@@ -25,7 +25,7 @@
     "href": "slides/1_introduction.html#today",
     "title": "Mastering Data Visualization with ggplot2",
     "section": "Today",
-    "text": "Today\n\nIntroduction\nModern ggplot2\nCoffee break\nText rendering and font use\nLunch\nStyling your plot\nPlot composition\nCoffee break\nCreating extensions or Spice up your plot"
+    "text": "Today\n\nIntroduction\nModern ggplot2\nCoffee break\nText rendering and font use\nLunch\nStyling your plot\nPlot composition\nCoffee break\nPlot composition (cont.)\nCreating extensions or Spice up your plot"
   },
   {
     "objectID": "slides/1_introduction.html#exercises",
@@ -39,7 +39,7 @@
     "href": "slides/1_introduction.html#practical-information",
     "title": "Mastering Data Visualization with ggplot2",
     "section": "Practical information",
-    "text": "Practical information\nhttps://posit-conf-2025.github.io/ggplot2/\nTBD"
+    "text": "Practical information\n\nWorkshop website: https://posit-conf-2025.github.io/ggplot2/\n \nGender neutral bathrooms: LL2, next to Chicago A\n \nMeditation / Prayer room: LL2, Chicago A\n \nMother’s / Lactation room: LL2, Chicago B\n \nRespect the red lanyards and any contact preferences"
   },
   {
     "objectID": "slides/4_theme_guide.html#ink-paper",
@@ -371,6 +371,34 @@
     "text": "Facets\n\nExercise 1.2.7\nGiven the following code, adapt the facet_wrap() statement to:\n\nMirror the facet order\nPlace labelled axes at the bottom of every panel\nPlace axis ticks on all y-axes\n\n\nggplot(diamonds) +\n  aes(carat, price) +\n  geom_point(shape = \".\") +\n  facet_wrap(~ cut, dir = \"lt\")"
   },
   {
+    "objectID": "exercises/7_fun.html",
+    "href": "exercises/7_fun.html",
+    "title": "Exercises for session 7",
+    "section": "",
+    "text": "The codeblocks here are interactive and can be executed in the browser. You can also copy them over and solve the exercises locally. In the existing code ______ denotes areas that need to be substituted with your own code to solve the exercise.\nEach exercise has one or more hints, as well as a full solution if you click through all the hints. Do try to solve the exercises on your own first."
+  },
+  {
+    "objectID": "exercises/7_fun.html#adding-effects-with-ggfx",
+    "href": "exercises/7_fun.html#adding-effects-with-ggfx",
+    "title": "Exercises for session 7",
+    "section": "7.1 Adding effects with ggfx",
+    "text": "7.1 Adding effects with ggfx\n\nExercise 7.1.1HintsSolution\n\n\nUse with_blur() to add a blur effect to a scatterplot of bill length vs. flipper length in the penguins dataset. Experiment with different values for the sigma parameter to see how it affects the appearance.\n\n\n\n\n\n\n\n\n\n\n\nYou need to use with_blur() to wrap around the geom_point() layer. The sigma parameter controls the amount of blur - try values between 1 and 5 using grid::unit() with ‘mm’ or ‘pt’ units.\n\n\n\n\nlibrary(ggplot2)\nlibrary(ggfx)\nlibrary(palmerpenguins)\ndata(penguins)\n\nggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +\n  with_blur(\n    geom_point(size = 3),\n    sigma = grid::unit(2, 'mm')\n  )\n\n\n\n\n\n\nExercise 7.1.2HintsSolution\n\n\nCreate a plot using as_reference() and with_blend() to create a masking effect. Make a density plot of bill depth vs. body mass, then overlay points that only appear within the density areas.\n\n\n\n\n\n\n\n\n\n\n\nFirst, use as_reference() to give your density plot an ID. Then, use with_blend() to make your points only appear where they overlap with the density plot. The key parameters are: - id in as_reference(): Give a name like “density” to your first layer - blend_type in with_blend(): Use “in” to only show points within the density areas - Pass the same ID name from as_reference() as the second argument to with_blend()\n\n\n\n\nlibrary(ggplot2)\nlibrary(ggfx)\nlibrary(palmerpenguins)\ndata(penguins)\n\nggplot(penguins, aes(x = bill_depth_mm, y = body_mass_g)) + \n  as_reference(\n    geom_density_2d_filled(alpha = 0.7),\n    id = \"density\"\n  ) +\n  with_blend(\n    geom_point(size = 2),\n    \"density\",\n    blend_type = \"in\",\n    flip_order = TRUE\n  )\n\n\n\n\n\n\nExercise 7.1.3HintsSolution\n\n\nCreate a plot with shadow effects using with_shadow() and as_group(). Add shadows to both a trend line and points in the same plot, either individually or as a group.\n\n\n\n\n\n\n\n\n\n\n\nYou can create shadows in two different ways: 1. Apply with_shadow() to each layer separately (smooth line and points) 2. Use as_group() to group multiple layers together, then apply a single with_shadow() to the group\nFor the shadow effect, try different values for the sigma parameter, which controls the shadow size.\n\n\n\n\nlibrary(ggplot2)\nlibrary(ggfx)\nlibrary(palmerpenguins)\ndata(penguins)\n\n# Method 1: Apply shadows separately to each layer\nggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + \n  with_shadow(geom_smooth(method = \"lm\", alpha = 0.7), sigma = grid::unit(1.5, \"mm\")) +\n  with_shadow(geom_point(size = 2), sigma = grid::unit(1, \"mm\"))\n\n# OR\n\n# Method 2: Group layers and apply shadow to the group\nggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + \n  as_group(\n    geom_smooth(method = \"lm\", alpha = 0.7),\n    geom_point(size = 2),\n    id = \"penguin_group\"\n  ) + \n  with_shadow(\"penguin_group\", sigma = grid::unit(1.2, \"mm\"))"
+  },
+  {
+    "objectID": "exercises/7_fun.html#working-with-ggforce",
+    "href": "exercises/7_fun.html#working-with-ggforce",
+    "title": "Exercises for session 7",
+    "section": "7.2 Working with ggforce",
+    "text": "7.2 Working with ggforce\n\nExercise 7.2.1HintsSolution\n\n\nUse geom_shape() from ggforce to create a polygon plot with rounded corners. Start with the positions data from the slides and experiment with different radius values.\n\n\n\n\n\n\n\n\n\n\n\nTo create rounded corners with geom_shape(), use the radius parameter. Try setting it to different values like grid::unit(0.1, \"npc\") or grid::unit(5, \"mm\"). Larger values create more rounded corners.\n\n\n\n\nlibrary(ggplot2)\nlibrary(ggforce)\n\n# Creating example data similar to what was shown in slides\nids &lt;- factor(c(\"1.1\", \"2.1\", \"1.2\", \"2.2\", \"1.3\", \"2.3\"))\n\nvalues &lt;- data.frame(\n  id = ids,\n  value = c(3, 3.1, 3.1, 3.2, 3.15, 3.5)\n)\n\npositions &lt;- data.frame(\n  id = rep(ids, each = 4),\n  x = c(2, 1, 1.1, 2.2, 1, 0, 0.3, 1.1, 2.2, 1.1, 1.2, 2.5, 1.1, 0.3,\n  0.5, 1.2, 2.5, 1.2, 1.3, 2.7, 1.2, 0.5, 0.6, 1.3),\n  y = c(-0.5, 0, 1, 0.5, 0, 0.5, 1.5, 1, 0.5, 1, 2.1, 1.7, 1, 1.5,\n  2.2, 2.1, 1.7, 2.1, 3.2, 2.8, 2.1, 2.2, 3.3, 3.2)\n)\n\nggplot(positions, aes(x = x, y = y, group = id)) +\n  geom_shape(\n    aes(fill = id), \n    radius = grid::unit(5, \"mm\")\n  )\n\n\n\n\n\n\nExercise 7.2.2HintsSolution\n\n\nUse the mark geoms from ggforce (geom_mark_ellipse(), geom_mark_circle(), geom_mark_hull(), etc.) to highlight groups in a scatter plot. Add informative labels and descriptions to at least one of the groups.\n\n\n\n\n\n\n\n\n\n\n\nUse one of the geom_mark_*() functions like geom_mark_ellipse(), geom_mark_hull(), or geom_mark_rect().\nIn the aes(), use: - filter to select only certain species (e.g., filter = species == \"Adelie\") - label for a short title - description for additional information\nYou can also set parameters like fill, color, and alpha to control appearance.\n\n\n\n\nlibrary(ggplot2)\nlibrary(ggforce)\nlibrary(palmerpenguins)\ndata(penguins)\n\n# Create base plot\nbase_plot &lt;- ggplot(na.omit(penguins), aes(x = bill_depth_mm, y = flipper_length_mm)) + \n  geom_point(aes(color = species))\n\n# Add marks to highlight groups\nbase_plot +\n  geom_mark_ellipse(\n    aes(\n      filter = species == \"Gentoo\", \n      label = \"Gentoo Penguins\", \n      description = \"Species with the longest flippers and medium bill depth\"\n    ),\n    fill = \"lightblue\",\n    color = \"blue\",\n    alpha = 0.2\n  ) +\n  geom_mark_ellipse(\n    aes(\n      filter = species == \"Chinstrap\", \n      label = \"Chinstrap Penguins\", \n      description = \"Species with the deepest bills\"\n    ),\n    fill = \"lightyellow\",\n    color = \"orange\",\n    alpha = 0.2\n  )\n\n\n\n\n\n\nExercise 7.2.3HintsSolution\n\n\nUse the link geoms (geom_link() or geom_link2()) to create a path with varying aesthetics. Create a plot that connects points with links where the width, alpha, or color changes along the path.\n\n\n\n\n\n\n\n\n\n\n\nTry using geom_link2() which allows you to create smooth paths between points. You can map aesthetic values like size, alpha, or linewidth to the width variable to make the lines change thickness along the path.\nThe parameter n controls the number of segments used to draw the path (higher number = smoother path).\n\n\n\n\nlibrary(ggplot2)\nlibrary(ggforce)\n\n# Create sample data for paths\npaths &lt;- data.frame(\n  x = c(1, 2, 3, 4, 5, 1, 2, 3, 4, 5),\n  y = c(1, 3, 2, 4, 3, 5, 3, 6, 4, 5),\n  group = c(rep(\"A\", 5), rep(\"B\", 5)),\n  width = c(1, 2, 3, 2, 1, 2, 3, 4, 3, 2)\n)\n\n# Create a plot with links that vary along the path\nggplot(paths, aes(x = x, y = y, group = group)) +\n  geom_link2(\n    aes(linewidth = width, color = group),\n    n = 100,\n    lineend = \"round\"\n  ) +\n  scale_linewidth(range = c(0.5, 3))\n\nAlternative solution with geom_link and index-based aesthetics\nggplot(paths, aes(x = x, y = y, group = group)) +\n  geom_link(\n    aes(alpha = after_stat(index), linewidth = after_stat(index), color = group),\n    n = 100\n  ) +\n  scale_linewidth(range = c(0.5, 3))"
+  },
+  {
+    "objectID": "exercises/7_fun.html#animating-with-gganimate",
+    "href": "exercises/7_fun.html#animating-with-gganimate",
+    "title": "Exercises for session 7",
+    "section": "7.3 Animating with gganimate",
+    "text": "7.3 Animating with gganimate\n\nExercise 7.3.1HintsSolution\n\n\nCreate an animated scatter plot of bill length vs. flipper length using transition_states() to transition between different penguin species. Add appropriate enter and exit effects.\n\n\n\n\n\n\n\n\n\n\n\nUse transition_states(species) to create transitions between different penguin species. Then add enter and exit effects like enter_fade(), enter_grow(), exit_fade(), or exit_shrink() to control how points appear and disappear during transitions.\nYou can also customize the animation speed using transition_length and state_length inside transition_states().\n\n\n\n\nlibrary(ggplot2)\nlibrary(gganimate)\nlibrary(palmerpenguins)\ndata(penguins)\n\np &lt;- ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +\n  geom_point() +\n  labs(title = \"Penguin Measurements: {closest_state}\")\n\n# Add animation components\np_animated &lt;- p +\n  transition_states(species, transition_length = 2, state_length = 1) +\n  enter_fade() +\n  exit_shrink()\n  \np_animated\n\n\n\n\n\n\nExercise 7.3.2HintsSolution\n\n\nCreate an animated bar chart that changes over time using transition_time(). Use the penguins dataset to show counts by island for each year.\n\n\n\n\n\n\n\n\n\n\n\nUse transition_time(year) to animate the plot through different years. In the title, use {frame_time} to show the current year.\nMake sure your aes mapping includes all the variables you need and that the title contains the correct placeholder for displaying the current year.\n\n\n\n\nlibrary(ggplot2)\nlibrary(gganimate)\nlibrary(palmerpenguins)\ndata(penguins)\n\np &lt;- ggplot(penguins, aes(x = island, fill = species)) +\n  geom_bar(position = \"dodge\") +\n  labs(title = \"Penguin counts by island in {frame_time}\", y = \"Count\")\n\n# Add animation component\np_animated &lt;- p +\n  transition_time(year)\n  \np_animated\n\n\n\n\n\n\nExercise 7.3.3HintsSolution\n\n\nCreate a line plot that gradually reveals itself over time using transition_reveal(). Use the penguins dataset to show how body mass changes across years for different species.\n\n\n\n\n\n\n\n\n\n\n\nIn your aesthetic mapping, map x = year, y = mean_mass, and color = species.\nThen use transition_reveal(year) to make the line plot reveal itself over time. This creates an effect where the lines are drawn progressively as the animation advances through the years.\n\n\n\n\nlibrary(ggplot2)\nlibrary(gganimate)\nlibrary(dplyr)\nlibrary(palmerpenguins)\ndata(penguins)\n\n# Prepare data - calculate mean body mass by year and species\npenguin_summary &lt;- penguins %&gt;%\n  group_by(year, species) %&gt;%\n  summarize(mean_mass = mean(body_mass_g, na.rm = TRUE), .groups = \"drop\")\n\n# Create plot\np &lt;- ggplot(penguin_summary, aes(x = year, y = mean_mass, color = species)) +\n  geom_line() +\n  geom_point() +\n  labs(title = \"Average penguin mass by year\", y = \"Body mass (g)\", x = \"Year\")\n\n# Add animation component\np_animated &lt;- p +\n  transition_reveal(year)\n  \np_animated"
+  },
+  {
     "objectID": "exercises/interaction.html",
     "href": "exercises/interaction.html",
     "title": "Exercises for session 6",
@@ -448,6 +476,230 @@
     "text": "Creative Commons Attribution-ShareAlike 4.0 International Public License\nBy exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution-ShareAlike 4.0 International Public License (“Public License”). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.\n\nSection 1 – Definitions.\n\nAdapted Material means material subject to Copyright and Similar Rights that is derived from or based upon the Licensed Material and in which the Licensed Material is translated, altered, arranged, transformed, or otherwise modified in a manner requiring permission under the Copyright and Similar Rights held by the Licensor. For purposes of this Public License, where the Licensed Material is a musical work, performance, or sound recording, Adapted Material is always produced where the Licensed Material is synched in timed relation with a moving image.\nAdapter’s License means the license You apply to Your Copyright and Similar Rights in Your contributions to Adapted Material in accordance with the terms and conditions of this Public License.\nBY-SA Compatible License means a license listed at creativecommons.org/compatiblelicenses, approved by Creative Commons as essentially the equivalent of this Public License.\nCopyright and Similar Rights means copyright and/or similar rights closely related to copyright including, without limitation, performance, broadcast, sound recording, and Sui Generis Database Rights, without regard to how the rights are labeled or categorized. For purposes of this Public License, the rights specified in Section 2(b)(1)-(2) are not Copyright and Similar Rights.\nEffective Technological Measures means those measures that, in the absence of proper authority, may not be circumvented under laws fulfilling obligations under Article 11 of the WIPO Copyright Treaty adopted on December 20, 1996, and/or similar international agreements.\nExceptions and Limitations means fair use, fair dealing, and/or any other exception or limitation to Copyright and Similar Rights that applies to Your use of the Licensed Material.\nLicense Elements means the license attributes listed in the name of a Creative Commons Public License. The License Elements of this Public License are Attribution and ShareAlike.\nLicensed Material means the artistic or literary work, database, or other material to which the Licensor applied this Public License.\nLicensed Rights means the rights granted to You subject to the terms and conditions of this Public License, which are limited to all Copyright and Similar Rights that apply to Your use of the Licensed Material and that the Licensor has authority to license.\nLicensor means the individual(s) or entity(ies) granting rights under this Public License.\nShare means to provide material to the public by any means or process that requires permission under the Licensed Rights, such as reproduction, public display, public performance, distribution, dissemination, communication, or importation, and to make material available to the public including in ways that members of the public may access the material from a place and at a time individually chosen by them.\nSui Generis Database Rights means rights other than copyright resulting from Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, as amended and/or succeeded, as well as other essentially equivalent rights anywhere in the world.\nYou means the individual or entity exercising the Licensed Rights under this Public License. Your has a corresponding meaning.\n\n\n\nSection 2 – Scope.\n\nLicense grant.\n\nSubject to the terms and conditions of this Public License, the Licensor hereby grants You a worldwide, royalty-free, non-sublicensable, non-exclusive, irrevocable license to exercise the Licensed Rights in the Licensed Material to:\nA. reproduce and Share the Licensed Material, in whole or in part; and\nB. produce, reproduce, and Share Adapted Material.\nExceptions and Limitations. For the avoidance of doubt, where Exceptions and Limitations apply to Your use, this Public License does not apply, and You do not need to comply with its terms and conditions.\nTerm. The term of this Public License is specified in Section 6(a).\nMedia and formats; technical modifications allowed. The Licensor authorizes You to exercise the Licensed Rights in all media and formats whether now known or hereafter created, and to make technical modifications necessary to do so. The Licensor waives and/or agrees not to assert any right or authority to forbid You from making technical modifications necessary to exercise the Licensed Rights, including technical modifications necessary to circumvent Effective Technological Measures. For purposes of this Public License, simply making modifications authorized by this Section 2(a)(4) never produces Adapted Material.\nDownstream recipients.\nA. Offer from the Licensor – Licensed Material. Every recipient of the Licensed Material automatically receives an offer from the Licensor to exercise the Licensed Rights under the terms and conditions of this Public License.\nB. __Additional offer from the Licensor – Adapted Material. Every recipient of Adapted Material from You automatically receives an offer from the Licensor to exercise the Licensed Rights in the Adapted Material under the conditions of the Adapter’s License You apply.\nC. No downstream restrictions. You may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, the Licensed Material if doing so restricts exercise of the Licensed Rights by any recipient of the Licensed Material.\nNo endorsement. Nothing in this Public License constitutes or may be construed as permission to assert or imply that You are, or that Your use of the Licensed Material is, connected with, or sponsored, endorsed, or granted official status by, the Licensor or others designated to receive attribution as provided in Section 3(a)(1)(A)(i).\n\nOther rights.\n\nMoral rights, such as the right of integrity, are not licensed under this Public License, nor are publicity, privacy, and/or other similar personality rights; however, to the extent possible, the Licensor waives and/or agrees not to assert any such rights held by the Licensor to the limited extent necessary to allow You to exercise the Licensed Rights, but not otherwise.\nPatent and trademark rights are not licensed under this Public License.\nTo the extent possible, the Licensor waives any right to collect royalties from You for the exercise of the Licensed Rights, whether directly or through a collecting society under any voluntary or waivable statutory or compulsory licensing scheme. In all other cases the Licensor expressly reserves any right to collect such royalties.\n\n\n\n\nSection 3 – License Conditions.\nYour exercise of the Licensed Rights is expressly made subject to the following conditions.\n\nAttribution.\n\nIf You Share the Licensed Material (including in modified form), You must:\nA. retain the following if it is supplied by the Licensor with the Licensed Material:\n\nidentification of the creator(s) of the Licensed Material and any others designated to receive attribution, in any reasonable manner requested by the Licensor (including by pseudonym if designated);\na copyright notice;\na notice that refers to this Public License;\na notice that refers to the disclaimer of warranties;\na URI or hyperlink to the Licensed Material to the extent reasonably practicable;\n\nB. indicate if You modified the Licensed Material and retain an indication of any previous modifications; and\nC. indicate the Licensed Material is licensed under this Public License, and include the text of, or the URI or hyperlink to, this Public License.\nYou may satisfy the conditions in Section 3(a)(1) in any reasonable manner based on the medium, means, and context in which You Share the Licensed Material. For example, it may be reasonable to satisfy the conditions by providing a URI or hyperlink to a resource that includes the required information.\nIf requested by the Licensor, You must remove any of the information required by Section 3(a)(1)(A) to the extent reasonably practicable.\n\nShareAlike.\n\nIn addition to the conditions in Section 3(a), if You Share Adapted Material You produce, the following conditions also apply.\n\nThe Adapter’s License You apply must be a Creative Commons license with the same License Elements, this version or later, or a BY-SA Compatible License.\nYou must include the text of, or the URI or hyperlink to, the Adapter’s License You apply. You may satisfy this condition in any reasonable manner based on the medium, means, and context in which You Share Adapted Material.\nYou may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, Adapted Material that restrict exercise of the rights granted under the Adapter’s License You apply.\n\n\n\nSection 4 – Sui Generis Database Rights.\nWhere the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:\n\nfor the avoidance of doubt, Section 2(a)(1) grants You the right to extract, reuse, reproduce, and Share all or a substantial portion of the contents of the database;\nif You include all or a substantial portion of the database contents in a database in which You have Sui Generis Database Rights, then the database in which You have Sui Generis Database Rights (but not its individual contents) is Adapted Material, including for purposes of Section 3(b); and\nYou must comply with the conditions in Section 3(a) if You Share all or a substantial portion of the contents of the database.\n\nFor the avoidance of doubt, this Section 4 supplements and does not replace Your obligations under this Public License where the Licensed Rights include other Copyright and Similar Rights.\n\n\nSection 5 – Disclaimer of Warranties and Limitation of Liability.\n\nUnless otherwise separately undertaken by the Licensor, to the extent possible, the Licensor offers the Licensed Material as-is and as-available, and makes no representations or warranties of any kind concerning the Licensed Material, whether express, implied, statutory, or other. This includes, without limitation, warranties of title, merchantability, fitness for a particular purpose, non-infringement, absence of latent or other defects, accuracy, or the presence or absence of errors, whether or not known or discoverable. Where disclaimers of warranties are not allowed in full or in part, this disclaimer may not apply to You.\nTo the extent possible, in no event will the Licensor be liable to You on any legal theory (including, without limitation, negligence) or otherwise for any direct, special, indirect, incidental, consequential, punitive, exemplary, or other losses, costs, expenses, or damages arising out of this Public License or use of the Licensed Material, even if the Licensor has been advised of the possibility of such losses, costs, expenses, or damages. Where a limitation of liability is not allowed in full or in part, this limitation may not apply to You.\nThe disclaimer of warranties and limitation of liability provided above shall be interpreted in a manner that, to the extent possible, most closely approximates an absolute disclaimer and waiver of all liability.\n\n\n\nSection 6 – Term and Termination.\n\nThis Public License applies for the term of the Copyright and Similar Rights licensed here. However, if You fail to comply with this Public License, then Your rights under this Public License terminate automatically.\nWhere Your right to use the Licensed Material has terminated under Section 6(a), it reinstates:\n\nautomatically as of the date the violation is cured, provided it is cured within 30 days of Your discovery of the violation; or\nupon express reinstatement by the Licensor.\n\nFor the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may have to seek remedies for Your violations of this Public License.\nFor the avoidance of doubt, the Licensor may also offer the Licensed Material under separate terms or conditions or stop distributing the Licensed Material at any time; however, doing so will not terminate this Public License.\nSections 1, 5, 6, 7, and 8 survive termination of this Public License.\n\n\n\nSection 7 – Other Terms and Conditions.\n\nThe Licensor shall not be bound by any additional or different terms or conditions communicated by You unless expressly agreed.\nAny arrangements, understandings, or agreements regarding the Licensed Material not stated herein are separate from and independent of the terms and conditions of this Public License.t stated herein are separate from and independent of the terms and conditions of this Public License.\n\n\n\nSection 8 – Interpretation.\n\nFor the avoidance of doubt, this Public License does not, and shall not be interpreted to, reduce, limit, restrict, or impose conditions on any use of the Licensed Material that could lawfully be made without permission under this Public License.\nTo the extent possible, if any provision of this Public License is deemed unenforceable, it shall be automatically reformed to the minimum extent necessary to make it enforceable. If the provision cannot be reformed, it shall be severed from this Public License without affecting the enforceability of the remaining terms and conditions.\nNo term or condition of this Public License will be waived and no failure to comply consented to unless expressly agreed to by the Licensor.\nNothing in this Public License constitutes or may be interpreted as a limitation upon, or waiver of, any privileges and immunities that apply to the Licensor or You, including from the legal processes of any jurisdiction or authority.\n\n\nCreative Commons is not a party to its public licenses. Notwithstanding, Creative Commons may elect to apply one of its public licenses to material it publishes and in those instances will be considered the “Licensor.” Except for the limited purpose of indicating that material is shared under a Creative Commons public license or as otherwise permitted by the Creative Commons policies published at creativecommons.org/policies, Creative Commons does not authorize the use of the trademark “Creative Commons” or any other trademark or logo of Creative Commons without its prior written consent including, without limitation, in connection with any unauthorized modifications to any of its public licenses or any other arrangements, understandings, or agreements concerning use of licensed material. For the avoidance of doubt, this paragraph does not form part of the public licenses.\nCreative Commons may be contacted at creativecommons.org"
   },
   {
+    "objectID": "slides/7_fun.html#key-takeaway-today",
+    "href": "slides/7_fun.html#key-takeaway-today",
+    "title": "Spice up your plot",
+    "section": "Key takeaway today:",
+    "text": "Key takeaway today:\n\n\nData visualizations can have personality and that’s OK"
+  },
+  {
+    "objectID": "slides/7_fun.html#today",
+    "href": "slides/7_fun.html#today",
+    "title": "Spice up your plot",
+    "section": "Today",
+    "text": "Today\n\nAdding effects with ggfx\nThe many weird functions of ggforce\nAnimate your plot with gganimate"
+  },
+  {
+    "objectID": "slides/7_fun.html#ggfx",
+    "href": "slides/7_fun.html#ggfx",
+    "title": "Spice up your plot",
+    "section": "ggfx",
+    "text": "ggfx\n\nPhotoshop for ggplot2 (kinda)\nAdd pixel-level effects to theme elements, layers, or the whole plot\nCan be both used and abused"
+  },
+  {
+    "objectID": "slides/7_fun.html#filters",
+    "href": "slides/7_fun.html#filters",
+    "title": "Spice up your plot",
+    "section": "Filters",
+    "text": "Filters\n\n\nlibrary(ggplot2)\nlibrary(ggfx)\n\nggplot(penguins, aes(x = flipper_len, y = bill_len)) +\n  with_blur(\n    geom_point(),\n    sigma = grid::unit(1, 'mm')\n  ) + \n  geom_smooth()"
+  },
+  {
+    "objectID": "slides/7_fun.html#filters-1",
+    "href": "slides/7_fun.html#filters-1",
+    "title": "Spice up your plot",
+    "section": "Filters",
+    "text": "Filters\n\n\np &lt;- ggplot(penguins, aes(x = flipper_len, y = bill_len)) +\n  geom_point() + \n  geom_smooth()\n\nwith_outer_glow(\n  p, \n  colour = \"steelblue\", \n  sigma = grid::unit(1, \"mm\")\n)"
+  },
+  {
+    "objectID": "slides/7_fun.html#filters-2",
+    "href": "slides/7_fun.html#filters-2",
+    "title": "Spice up your plot",
+    "section": "Filters",
+    "text": "Filters\n\n\nggplot(penguins, aes(x = flipper_len, y = bill_len)) +\n  geom_point() + \n  geom_smooth() + \n  theme(\n    axis.title = with_shadow(element_text())\n  )"
+  },
+  {
+    "objectID": "slides/7_fun.html#references",
+    "href": "slides/7_fun.html#references",
+    "title": "Spice up your plot",
+    "section": "References",
+    "text": "References\n\n\nggplot(penguins, aes(x = flipper_len, y = bill_len)) + \n  geom_density_2d_filled() +\n  geom_point()"
+  },
+  {
+    "objectID": "slides/7_fun.html#references-1",
+    "href": "slides/7_fun.html#references-1",
+    "title": "Spice up your plot",
+    "section": "References",
+    "text": "References\n\n\nggplot(penguins, aes(x = flipper_len, y = bill_len)) + \n  as_reference(\n    geom_density_2d_filled(), \n    id = \"density\"\n  ) +\n  with_blend(\n    geom_point(),\n    \"density\",\n    blend_type = \"in\",\n    flip_order = TRUE\n  )"
+  },
+  {
+    "objectID": "slides/7_fun.html#references-2",
+    "href": "slides/7_fun.html#references-2",
+    "title": "Spice up your plot",
+    "section": "References",
+    "text": "References\n\n\nggplot(penguins, aes(x = flipper_len, y = bill_len)) + \n  with_shadow(geom_smooth(alpha = 1, level = 0.99), sigma = grid::unit(0.5, \"mm\")) +\n  with_shadow(geom_point(), sigma = grid::unit(0.5, \"mm\"))"
+  },
+  {
+    "objectID": "slides/7_fun.html#references-3",
+    "href": "slides/7_fun.html#references-3",
+    "title": "Spice up your plot",
+    "section": "References",
+    "text": "References\n\n\nggplot(penguins, aes(x = flipper_len, y = bill_len)) + \n  as_group(\n    geom_smooth(alpha = 1, level = 0.99),\n    geom_point(),\n    id = \"group_1\"\n  ) + \n  with_shadow(\"group_1\", sigma = grid::unit(0.5, \"mm\"))"
+  },
+  {
+    "objectID": "slides/7_fun.html#moar-filters",
+    "href": "slides/7_fun.html#moar-filters",
+    "title": "Spice up your plot",
+    "section": "Moar filters",
+    "text": "Moar filters\n\n\n\nCustom blend\nBloom\nFully custom\nDisplacement\nDither\nInner glow\n\n\n\nInterpolate\nKernel\nMask\nMotion blur\nShading (bump mapping)\nVariable blur"
+  },
+  {
+    "objectID": "slides/7_fun.html#exercise",
+    "href": "slides/7_fun.html#exercise",
+    "title": "Spice up your plot",
+    "section": "Exercise",
+    "text": "Exercise"
+  },
+  {
+    "objectID": "slides/7_fun.html#ggforce",
+    "href": "slides/7_fun.html#ggforce",
+    "title": "Spice up your plot",
+    "section": "ggforce",
+    "text": "ggforce\n\nThis is my grab-back package. Expect some chaos\nMain focus on powerful building blocks"
+  },
+  {
+    "objectID": "slides/7_fun.html#shapes",
+    "href": "slides/7_fun.html#shapes",
+    "title": "Spice up your plot",
+    "section": "Shapes",
+    "text": "Shapes\n\nSuper-charged geom_polygon()\nRound corners\nExpand and subtract based on absolute sizes\n\n\n\nlibrary(ggforce)\nggplot(positions, aes(x = x, y = y, group = id)) +\n  geom_shape(aes(fill = id))"
+  },
+  {
+    "objectID": "slides/7_fun.html#shapes-1",
+    "href": "slides/7_fun.html#shapes-1",
+    "title": "Spice up your plot",
+    "section": "Shapes",
+    "text": "Shapes\n\n\nlibrary(ggforce)\nggplot(\n  positions, \n  aes(x = x, y = y, group = id)\n) +\n  geom_shape(\n    aes(fill = id), \n    radius = grid::unit(5, \"mm\")\n  )"
+  },
+  {
+    "objectID": "slides/7_fun.html#shapes-2",
+    "href": "slides/7_fun.html#shapes-2",
+    "title": "Spice up your plot",
+    "section": "Shapes",
+    "text": "Shapes\n\n\nggplot(\n  positions, \n  aes(x = x, y = y, group = id)\n) +\n  geom_shape(\n    aes(fill = id), \n    expand = -grid::unit(2, \"mm\")\n  )"
+  },
+  {
+    "objectID": "slides/7_fun.html#marks",
+    "href": "slides/7_fun.html#marks",
+    "title": "Spice up your plot",
+    "section": "Marks",
+    "text": "Marks\n\nThe reason geom_shape() exist\nHigh-level annotation in plots\n\n\n\np &lt;- ggplot(\n  na.omit(penguins), \n  aes(x = bill_dep, y = flipper_len)\n) + \n  geom_point()\np"
+  },
+  {
+    "objectID": "slides/7_fun.html#marks-1",
+    "href": "slides/7_fun.html#marks-1",
+    "title": "Spice up your plot",
+    "section": "Marks",
+    "text": "Marks\n\n\np + \n  geom_mark_circle(aes(fill = species))"
+  },
+  {
+    "objectID": "slides/7_fun.html#marks-2",
+    "href": "slides/7_fun.html#marks-2",
+    "title": "Spice up your plot",
+    "section": "Marks",
+    "text": "Marks\n\n\np + \n  geom_mark_rect(aes(fill = species))"
+  },
+  {
+    "objectID": "slides/7_fun.html#marks-3",
+    "href": "slides/7_fun.html#marks-3",
+    "title": "Spice up your plot",
+    "section": "Marks",
+    "text": "Marks\n\n\np + \n  geom_mark_ellipse(aes(fill = species))"
+  },
+  {
+    "objectID": "slides/7_fun.html#marks-4",
+    "href": "slides/7_fun.html#marks-4",
+    "title": "Spice up your plot",
+    "section": "Marks",
+    "text": "Marks\n\n\np + \n  geom_mark_hull(aes(fill = species))"
+  },
+  {
+    "objectID": "slides/7_fun.html#marks-5",
+    "href": "slides/7_fun.html#marks-5",
+    "title": "Spice up your plot",
+    "section": "Marks",
+    "text": "Marks\n\n\np + \n  geom_mark_ellipse(\n    aes(filter = species == \"Gentoo\"), \n    fill = \"steelblue\"\n  )"
+  },
+  {
+    "objectID": "slides/7_fun.html#marks-6",
+    "href": "slides/7_fun.html#marks-6",
+    "title": "Spice up your plot",
+    "section": "Marks",
+    "text": "Marks\n\n\np + \n  geom_mark_ellipse(\n    aes(\n      filter = species == \"Gentoo\",\n      label = \"Gentoo Penguins\",\n      description = \"This is by far the most interesting penguin\"\n    ), \n    fill = \"steelblue\"\n  )\n\n\n\n\n\n\n\n\n\n(geom_mark_*() is not yet marquee-aware)"
+  },
+  {
+    "objectID": "slides/7_fun.html#links",
+    "href": "slides/7_fun.html#links",
+    "title": "Spice up your plot",
+    "section": "Links",
+    "text": "Links\n\nSupercharged geom_segment() / `geom_path()``\nAllows interpolation of aesthetics between anchors\n\n\n\n# Lets make some data\nlines &lt;- data.frame(\n  x = c(5, 12, 15, 9, 6),\n  y = c(17, 20, 4, 15, 5),\n  xend = c(19, 17, 2, 9, 5),\n  yend = c(10, 18, 7, 12, 1),\n  width = c(1, 10, 6, 2, 3),\n  colour = letters[1:5]\n)\n\nggplot(lines, aes(x = x, y = y, xend = xend, yend = yend)) +\n  geom_link(\n    aes(\n      colour = colour, \n      alpha = after_stat(index), \n      linewidth = after_stat(index)\n    )\n  )"
+  },
+  {
+    "objectID": "slides/7_fun.html#links-1",
+    "href": "slides/7_fun.html#links-1",
+    "title": "Spice up your plot",
+    "section": "Links",
+    "text": "Links\n\n\nggplot(lines, aes(x = x, y = y)) +\n  geom_link2(\n    aes(\n      colour = colour, \n      linewidth = width,\n      group = 1\n    ),\n    lineend = \"round\"\n  )"
+  },
+  {
+    "objectID": "slides/7_fun.html#exercise-1",
+    "href": "slides/7_fun.html#exercise-1",
+    "title": "Spice up your plot",
+    "section": "Exercise",
+    "text": "Exercise"
+  },
+  {
+    "objectID": "slides/7_fun.html#gganimate",
+    "href": "slides/7_fun.html#gganimate",
+    "title": "Spice up your plot",
+    "section": "gganimate",
+    "text": "gganimate\n\nAn extension of the grammar to cover animation\nDoes not cover interaction\nIs not something we can get in depth in"
+  },
+  {
+    "objectID": "slides/7_fun.html#gganimate-1",
+    "href": "slides/7_fun.html#gganimate-1",
+    "title": "Spice up your plot",
+    "section": "gganimate",
+    "text": "gganimate\n\n\nlibrary(gganimate)\n\nggplot(penguins) + \n  geom_point(aes(bill_dep, flipper_len)) + \n  transition_states(species) + \n  enter_grow() + \n  exit_fade()"
+  },
+  {
+    "objectID": "slides/7_fun.html#key-concept",
+    "href": "slides/7_fun.html#key-concept",
+    "title": "Spice up your plot",
+    "section": "Key concept",
+    "text": "Key concept\n\n\nTransitions\nDefines the temporal interpretation of the data\nViews\nControls how position scales changes\nShadows\nAllows the display of data from other frames\n\nEasing\nDefines the shape of the interpolation\nEnter / Exit\nControls how data move in and out of the animation"
+  },
+  {
+    "objectID": "slides/7_fun.html#gganimate-2",
+    "href": "slides/7_fun.html#gganimate-2",
+    "title": "Spice up your plot",
+    "section": "gganimate",
+    "text": "gganimate\n\n\nggplot(penguins) + \n  geom_bar(aes(x = island, fill = after_stat(count))) + \n  transition_time(year) + \n  labs(title = \"{frame_time}\", x = NULL)"
+  },
+  {
+    "objectID": "slides/7_fun.html#gganimate-3",
+    "href": "slides/7_fun.html#gganimate-3",
+    "title": "Spice up your plot",
+    "section": "gganimate",
+    "text": "gganimate\n\n\nggplot(penguins) + \n  geom_smooth(\n    aes(\n      x = as.Date(as.character(year), format = \"%Y\"), \n      y = body_mass, \n      color = species\n    ),\n    method = \"lm\"\n  ) + \n  scale_x_date(name = NULL) + \n  transition_reveal(after_stat(x))"
+  },
+  {
+    "objectID": "slides/7_fun.html#exercise-2",
+    "href": "slides/7_fun.html#exercise-2",
+    "title": "Spice up your plot",
+    "section": "Exercise",
+    "text": "Exercise"
+  },
+  {
     "objectID": "slides/2_ggplot2.html#headings",
     "href": "slides/2_ggplot2.html#headings",
     "title": "Modern ggplot2",
@@ -494,7 +746,7 @@
     "href": "slides/5_composition.html#today",
     "title": "Plot composition",
     "section": "Today",
-    "text": "Today\n\nIntroduce patchwork for plot composition\n\nKey design principles\n\n\nFrom simple to complex layouts\nThe non-panel stuff"
+    "text": "Today\n\nIntroduce patchwork for plot composition\nFrom simple to complex layouts\n\nKey design principles\nOperators\nEscaping the grid\n\nThe non-panel stuff\n\nAnnotation\nGuide handling\n\nObject support\nInteractivity"
   },
   {
     "objectID": "slides/5_composition.html#patchwork",
@@ -861,11 +1113,18 @@
     "text": "The impossible life of a graphics device"
   },
   {
+    "objectID": "slides/3_text_fonts.html#embracing-ragg",
+    "href": "slides/3_text_fonts.html#embracing-ragg",
+    "title": "Text rendering and font use",
+    "section": "Embracing ragg",
+    "text": "Embracing ragg\n\nIn RStudio:\n\nIn Positron and with ggsave(): ragg will be used if installed\nIn Knitr/RMarkdown/Quarto: Set dev = \"ragg_png\"\nIn plumber: Use the agg_png serializer\nIn Shiny and plumber2: Used by default\n\nor\nragg::agg_png() # instead of calling png()"
+  },
+  {
     "objectID": "slides/3_text_fonts.html#systemfonts",
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/Rtmp2hhLmR/Barrio-regular.ttf\", \"/tmp/Rtmp2hhLmR/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpPfYE4f/Barrio-regular.ttf\", \"/tmp/RtmpPfYE4f/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
