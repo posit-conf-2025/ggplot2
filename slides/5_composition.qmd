@@ -19,10 +19,15 @@ library(patchwork)
 ## Today
 
 * Introduce patchwork for plot composition
-  * Key design principles
-  * 
 * From simple to complex layouts
+  - Key design principles
+  - Operators
+  - Escaping the grid
 * The non-panel stuff
+  - Annotation
+  - Guide handling
+* Object support
+* Interactivity
 
 ## {.center}
 
