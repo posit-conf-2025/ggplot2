@@ -1,0 +1,596 @@
+---
+title: Exercises for session 7
+webr:
+  packages:
+    - ggfx
+    - ggforce
+    - gganimate
+    - palmerpenguins
+    - dplyr
+---
+
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+
+The codeblocks here are interactive and can be executed in the browser. You can also copy them over and solve the exercises locally. In the existing code `______` denotes areas that need to be substituted with your own code to solve the exercise.
+
+Each exercise has one or more hints, as well as a full solution if you click through all the hints. Do try to solve the exercises on your own first.
+
+## 7.1 Adding effects with ggfx
+
+:::: {.panel-tabset}
+
+## Exercise 7.1.1
+Use `with_blur()` to add a blur effect to a scatterplot of bill length vs. flipper length in the penguins dataset. Experiment with different values for the `sigma` parameter to see how it affects the appearance.
+
+```{webr}
+#| exercise: ex_7_1_1
+library(ggplot2)
+library(ggfx)
+library(palmerpenguins)
+data(penguins)
+
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
+  ______(
+    geom_point(size = 3),
+    sigma = ______
+  )
+```
+
+## Hints
+::: {.hint exercise="ex_7_1_1"}
+You need to use `with_blur()` to wrap around the `geom_point()` layer. The `sigma` parameter controls the amount of blur - try values between 1 and 5 using `grid::unit()` with 'mm' or 'pt' units.
+:::
+
+## Solution
+::: {.solution exercise="ex_7_1_1"}
+```r
+library(ggplot2)
+library(ggfx)
+library(palmerpenguins)
+data(penguins)
+
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
+  with_blur(
+    geom_point(size = 3),
+    sigma = grid::unit(2, 'mm')
+  )
+```
+:::
+
+::::
+
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 7.1.2
+Create a plot using `as_reference()` and `with_blend()` to create a masking effect. Make a density plot of bill depth vs. body mass, then overlay points that only appear within the density areas.
+
+```{webr}
+#| exercise: ex_7_1_2
+library(ggplot2)
+library(ggfx)
+library(palmerpenguins)
+data(penguins)
+
+ggplot(penguins, aes(x = bill_depth_mm, y = body_mass_g)) + 
+  ______(
+    geom_density_2d_filled(alpha = 0.7),
+    id = ______
+  ) +
+  ______(
+    geom_point(size = 2),
+    ______,
+    blend_type = ______,
+    flip_order = TRUE
+  )
+```
+
+## Hints
+::: {.hint exercise="ex_7_1_2"}
+First, use `as_reference()` to give your density plot an ID. Then, use `with_blend()` to make your points only appear where they overlap with the density plot. The key parameters are:
+- `id` in `as_reference()`: Give a name like "density" to your first layer
+- `blend_type` in `with_blend()`: Use "in" to only show points within the density areas
+- Pass the same ID name from `as_reference()` as the second argument to `with_blend()`
+:::
+
+## Solution
+::: {.solution exercise="ex_7_1_2"}
+```r
+library(ggplot2)
+library(ggfx)
+library(palmerpenguins)
+data(penguins)
+
+ggplot(penguins, aes(x = bill_depth_mm, y = body_mass_g)) + 
+  as_reference(
+    geom_density_2d_filled(alpha = 0.7),
+    id = "density"
+  ) +
+  with_blend(
+    geom_point(size = 2),
+    "density",
+    blend_type = "in",
+    flip_order = TRUE
+  )
+```
+:::
+
+::::
+
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 7.1.3
+Create a plot with shadow effects using `with_shadow()` and `as_group()`. Add shadows to both a trend line and points in the same plot, either individually or as a group.
+
+```{webr}
+#| exercise: ex_7_1_3
+library(ggplot2)
+library(ggfx)
+library(palmerpenguins)
+data(penguins)
+
+# Method 1: Apply shadows separately to each layer
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + 
+  ______(______, sigma = grid::unit(______, "mm")) +
+  ______(______, sigma = grid::unit(______, "mm"))
+
+# OR
+
+# Method 2: Group layers and apply shadow to the group
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + 
+  ______(
+    ______,
+    ______,
+    id = ______
+  ) + 
+  ______(______, sigma = grid::unit(______, "mm"))
+```
+
+## Hints
+::: {.hint exercise="ex_7_1_3"}
+You can create shadows in two different ways:
+1. Apply `with_shadow()` to each layer separately (smooth line and points)
+2. Use `as_group()` to group multiple layers together, then apply a single `with_shadow()` to the group
+
+For the shadow effect, try different values for the `sigma` parameter, which controls the shadow size.
+:::
+
+## Solution
+::: {.solution exercise="ex_7_1_3"}
+```r
+library(ggplot2)
+library(ggfx)
+library(palmerpenguins)
+data(penguins)
+
+# Method 1: Apply shadows separately to each layer
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + 
+  with_shadow(geom_smooth(method = "lm", alpha = 0.7), sigma = grid::unit(1.5, "mm")) +
+  with_shadow(geom_point(size = 2), sigma = grid::unit(1, "mm"))
+
+# OR
+
+# Method 2: Group layers and apply shadow to the group
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + 
+  as_group(
+    geom_smooth(method = "lm", alpha = 0.7),
+    geom_point(size = 2),
+    id = "penguin_group"
+  ) + 
+  with_shadow("penguin_group", sigma = grid::unit(1.2, "mm"))
+```
+:::
+
+::::
+
+## 7.2 Working with ggforce
+
+:::: {.panel-tabset}
+
+## Exercise 7.2.1
+Use `geom_shape()` from ggforce to create a polygon plot with rounded corners. Start with the positions data from the slides and experiment with different radius values.
+
+```{webr}
+#| exercise: ex_7_2_1
+library(ggplot2)
+library(ggforce)
+
+# Creating example data similar to what was shown in slides
+ids <- factor(c("1.1", "2.1", "1.2", "2.2", "1.3", "2.3"))
+
+values <- data.frame(
+  id = ids,
+  value = c(3, 3.1, 3.1, 3.2, 3.15, 3.5)
+)
+
+positions <- data.frame(
+  id = rep(ids, each = 4),
+  x = c(2, 1, 1.1, 2.2, 1, 0, 0.3, 1.1, 2.2, 1.1, 1.2, 2.5, 1.1, 0.3,
+  0.5, 1.2, 2.5, 1.2, 1.3, 2.7, 1.2, 0.5, 0.6, 1.3),
+  y = c(-0.5, 0, 1, 0.5, 0, 0.5, 1.5, 1, 0.5, 1, 2.1, 1.7, 1, 1.5,
+  2.2, 2.1, 1.7, 2.1, 3.2, 2.8, 2.1, 2.2, 3.3, 3.2)
+)
+
+ggplot(positions, aes(x = x, y = y, group = id)) +
+  ______(
+    aes(fill = id), 
+    radius = ______
+  )
+```
+
+## Hints
+::: {.hint exercise="ex_7_2_1"}
+To create rounded corners with `geom_shape()`, use the `radius` parameter. Try setting it to different values like `grid::unit(0.1, "npc")` or `grid::unit(5, "mm")`. Larger values create more rounded corners.
+:::
+
+## Solution
+::: {.solution exercise="ex_7_2_1"}
+```r
+library(ggplot2)
+library(ggforce)
+
+# Creating example data similar to what was shown in slides
+ids <- factor(c("1.1", "2.1", "1.2", "2.2", "1.3", "2.3"))
+
+values <- data.frame(
+  id = ids,
+  value = c(3, 3.1, 3.1, 3.2, 3.15, 3.5)
+)
+
+positions <- data.frame(
+  id = rep(ids, each = 4),
+  x = c(2, 1, 1.1, 2.2, 1, 0, 0.3, 1.1, 2.2, 1.1, 1.2, 2.5, 1.1, 0.3,
+  0.5, 1.2, 2.5, 1.2, 1.3, 2.7, 1.2, 0.5, 0.6, 1.3),
+  y = c(-0.5, 0, 1, 0.5, 0, 0.5, 1.5, 1, 0.5, 1, 2.1, 1.7, 1, 1.5,
+  2.2, 2.1, 1.7, 2.1, 3.2, 2.8, 2.1, 2.2, 3.3, 3.2)
+)
+
+ggplot(positions, aes(x = x, y = y, group = id)) +
+  geom_shape(
+    aes(fill = id), 
+    radius = grid::unit(5, "mm")
+  )
+```
+:::
+
+::::
+
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 7.2.2
+Use the mark geoms from ggforce (`geom_mark_ellipse()`, `geom_mark_circle()`, `geom_mark_hull()`, etc.) to highlight groups in a scatter plot. Add informative labels and descriptions to at least one of the groups.
+
+```{webr}
+#| exercise: ex_7_2_2
+library(ggplot2)
+library(ggforce)
+library(palmerpenguins)
+data(penguins)
+
+# Create base plot
+base_plot <- ggplot(na.omit(penguins), aes(x = bill_depth_mm, y = flipper_length_mm)) + 
+  geom_point(aes(color = species))
+
+# Add marks to highlight groups
+base_plot +
+  ______(
+    aes(
+      filter = ______, 
+      label = ______, 
+      description = ______
+    ),
+    fill = ______,
+    ______
+  )
+```
+
+## Hints
+::: {.hint exercise="ex_7_2_2"}
+Use one of the `geom_mark_*()` functions like `geom_mark_ellipse()`, `geom_mark_hull()`, or `geom_mark_rect()`. 
+
+In the `aes()`, use:
+- `filter` to select only certain species (e.g., `filter = species == "Adelie"`)
+- `label` for a short title
+- `description` for additional information
+
+You can also set parameters like `fill`, `color`, and `alpha` to control appearance.
+:::
+
+## Solution
+::: {.solution exercise="ex_7_2_2"}
+```r
+library(ggplot2)
+library(ggforce)
+library(palmerpenguins)
+data(penguins)
+
+# Create base plot
+base_plot <- ggplot(na.omit(penguins), aes(x = bill_depth_mm, y = flipper_length_mm)) + 
+  geom_point(aes(color = species))
+
+# Add marks to highlight groups
+base_plot +
+  geom_mark_ellipse(
+    aes(
+      filter = species == "Gentoo", 
+      label = "Gentoo Penguins", 
+      description = "Species with the longest flippers and medium bill depth"
+    ),
+    fill = "lightblue",
+    color = "blue",
+    alpha = 0.2
+  ) +
+  geom_mark_ellipse(
+    aes(
+      filter = species == "Chinstrap", 
+      label = "Chinstrap Penguins", 
+      description = "Species with the deepest bills"
+    ),
+    fill = "lightyellow",
+    color = "orange",
+    alpha = 0.2
+  )
+```
+:::
+
+::::
+
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 7.2.3
+Use the link geoms (`geom_link()` or `geom_link2()`) to create a path with varying aesthetics. Create a plot that connects points with links where the width, alpha, or color changes along the path.
+
+```{webr}
+#| exercise: ex_7_2_3
+library(ggplot2)
+library(ggforce)
+
+# Create sample data for paths
+paths <- data.frame(
+  x = c(1, 2, 3, 4, 5, 1, 2, 3, 4, 5),
+  y = c(1, 3, 2, 4, 3, 5, 3, 6, 4, 5),
+  group = c(rep("A", 5), rep("B", 5)),
+  width = c(1, 2, 3, 2, 1, 2, 3, 4, 3, 2)
+)
+
+# Create a plot with links that vary along the path
+ggplot(paths, aes(x = x, y = y, group = group)) +
+  ______(
+    aes(______ = ______, color = group),
+    n = 100,
+    ______
+  )
+```
+
+## Hints
+::: {.hint exercise="ex_7_2_3"}
+Try using `geom_link2()` which allows you to create smooth paths between points. You can map aesthetic values like `size`, `alpha`, or `linewidth` to the `width` variable to make the lines change thickness along the path.
+
+The parameter `n` controls the number of segments used to draw the path (higher number = smoother path).
+:::
+
+## Solution
+::: {.solution exercise="ex_7_2_3"}
+```r
+library(ggplot2)
+library(ggforce)
+
+# Create sample data for paths
+paths <- data.frame(
+  x = c(1, 2, 3, 4, 5, 1, 2, 3, 4, 5),
+  y = c(1, 3, 2, 4, 3, 5, 3, 6, 4, 5),
+  group = c(rep("A", 5), rep("B", 5)),
+  width = c(1, 2, 3, 2, 1, 2, 3, 4, 3, 2)
+)
+
+# Create a plot with links that vary along the path
+ggplot(paths, aes(x = x, y = y, group = group)) +
+  geom_link2(
+    aes(linewidth = width, color = group),
+    n = 100,
+    lineend = "round"
+  ) +
+  scale_linewidth(range = c(0.5, 3))
+```
+
+# Alternative solution with geom_link and index-based aesthetics
+```r
+ggplot(paths, aes(x = x, y = y, group = group)) +
+  geom_link(
+    aes(alpha = after_stat(index), linewidth = after_stat(index), color = group),
+    n = 100
+  ) +
+  scale_linewidth(range = c(0.5, 3))
+```
+:::
+
+::::
+
+## 7.3 Animating with gganimate
+
+:::: {.panel-tabset}
+
+## Exercise 7.3.1
+Create an animated scatter plot of bill length vs. flipper length using `transition_states()` to transition between different penguin species. Add appropriate enter and exit effects.
+
+```{webr}
+#| exercise: ex_7_3_1
+library(ggplot2)
+library(gganimate)
+library(palmerpenguins)
+data(penguins)
+
+p <- ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
+  geom_point() +
+  labs(title = "Penguin Measurements: {closest_state}")
+
+# Add animation components
+p_animated <- p +
+  ______(______) +
+  ______(______) +
+  ______
+  
+p_animated
+```
+
+## Hints
+::: {.hint exercise="ex_7_3_1"}
+Use `transition_states(species)` to create transitions between different penguin species. Then add enter and exit effects like `enter_fade()`, `enter_grow()`, `exit_fade()`, or `exit_shrink()` to control how points appear and disappear during transitions.
+
+You can also customize the animation speed using `transition_length` and `state_length` inside `transition_states()`.
+:::
+
+## Solution
+::: {.solution exercise="ex_7_3_1"}
+```r
+library(ggplot2)
+library(gganimate)
+library(palmerpenguins)
+data(penguins)
+
+p <- ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
+  geom_point() +
+  labs(title = "Penguin Measurements: {closest_state}")
+
+# Add animation components
+p_animated <- p +
+  transition_states(species, transition_length = 2, state_length = 1) +
+  enter_fade() +
+  exit_shrink()
+  
+p_animated
+```
+:::
+
+::::
+
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 7.3.2
+Create an animated bar chart that changes over time using `transition_time()`. Use the penguins dataset to show counts by island for each year.
+
+```{webr}
+#| exercise: ex_7_3_2
+library(ggplot2)
+library(gganimate)
+library(palmerpenguins)
+data(penguins)
+
+p <- ggplot(penguins, aes(x = island, fill = species)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Penguin counts by island in {______}", y = "Count")
+
+# Add animation component
+p_animated <- p +
+  ______
+  
+p_animated
+```
+
+## Hints
+::: {.hint exercise="ex_7_3_2"}
+Use `transition_time(year)` to animate the plot through different years. In the title, use `{frame_time}` to show the current year.
+
+Make sure your aes mapping includes all the variables you need and that the title contains the correct placeholder for displaying the current year.
+:::
+
+## Solution
+::: {.solution exercise="ex_7_3_2"}
+```r
+library(ggplot2)
+library(gganimate)
+library(palmerpenguins)
+data(penguins)
+
+p <- ggplot(penguins, aes(x = island, fill = species)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Penguin counts by island in {frame_time}", y = "Count")
+
+# Add animation component
+p_animated <- p +
+  transition_time(year)
+  
+p_animated
+```
+:::
+
+::::
+
+* * *
+
+:::: {.panel-tabset}
+
+## Exercise 7.3.3
+Create a line plot that gradually reveals itself over time using `transition_reveal()`. Use the penguins dataset to show how body mass changes across years for different species.
+
+```{webr}
+#| exercise: ex_7_3_3
+library(ggplot2)
+library(gganimate)
+library(dplyr)
+library(palmerpenguins)
+data(penguins)
+
+# Prepare data - calculate mean body mass by year and species
+penguin_summary <- penguins %>%
+  group_by(year, species) %>%
+  summarize(mean_mass = mean(body_mass_g, na.rm = TRUE), .groups = "drop")
+
+# Create plot
+p <- ggplot(penguin_summary, aes(x = ______, y = ______, color = ______)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Average penguin mass by year", y = "Body mass (g)", x = "Year")
+
+# Add animation component
+p_animated <- p +
+  ______
+  
+p_animated
+```
+
+## Hints
+::: {.hint exercise="ex_7_3_3"}
+In your aesthetic mapping, map `x = year`, `y = mean_mass`, and `color = species`.
+
+Then use `transition_reveal(year)` to make the line plot reveal itself over time. This creates an effect where the lines are drawn progressively as the animation advances through the years.
+:::
+
+## Solution
+::: {.solution exercise="ex_7_3_3"}
+```r
+library(ggplot2)
+library(gganimate)
+library(dplyr)
+library(palmerpenguins)
+data(penguins)
+
+# Prepare data - calculate mean body mass by year and species
+penguin_summary <- penguins %>%
+  group_by(year, species) %>%
+  summarize(mean_mass = mean(body_mass_g, na.rm = TRUE), .groups = "drop")
+
+# Create plot
+p <- ggplot(penguin_summary, aes(x = year, y = mean_mass, color = species)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Average penguin mass by year", y = "Body mass (g)", x = "Year")
+
+# Add animation component
+p_animated <- p +
+  transition_reveal(year)
+  
+p_animated
+```
+:::
+
+::::
