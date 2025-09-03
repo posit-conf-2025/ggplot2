@@ -30,7 +30,7 @@ jobs:
             any::marquee
             any::systemfonts
             davidgohel/ggiraph#322
-            teunbrand/legendry
+            any::legendry
             any::ggfx
             any::ggpattern
             any::gridpattern
