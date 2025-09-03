@@ -31,7 +31,7 @@ jobs:
             any::systemfonts
             davidgohel/ggiraph#322
             any::legendry
-            any::ggfx
+            thomasp85/ggfx
             any::ggpattern
             any::gridpattern
             any::tibble
