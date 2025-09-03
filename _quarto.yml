@@ -24,7 +24,7 @@ website:
           text: 6. Creating extensions
         - href: sessions/7_fun.qmd
           text: 7. Spice up your plot
-    right:
+    tools:
       - icon: github
         href: https://github.com/posit-conf-2025/ggplot2
 
