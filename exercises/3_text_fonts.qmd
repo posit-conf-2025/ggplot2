@@ -1,6 +1,9 @@
 ---
 title: Exercises for session 3
 webr:
+  cell-options:
+    canvas: false
+    autorun: false
   packages:
     - systemfonts
     - marquee
