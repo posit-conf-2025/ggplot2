@@ -1,14 +1,18 @@
 ---
 title: Exercises for session 3
 webr:
+  repos:
+    - https://repo.r-wasm.org
+    - https://tidyverse.r-universe.dev
   cell-options:
     canvas: false
     autorun: false
   packages:
+    - ggplot2
+    - ragg
     - systemfonts
     - marquee
     - gt
-    - ragg
 ---
 
 {{< include ../_extensions/r-wasm/live/_knitr.qmd >}}

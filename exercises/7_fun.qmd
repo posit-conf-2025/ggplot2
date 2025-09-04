@@ -1,11 +1,18 @@
 ---
 title: Exercises for session 7
 webr:
+  repos:
+    - https://repo.r-wasm.org
+    - https://tidyverse.r-universe.dev
+  cell-options:
+    canvas: false
+    autorun: false
   packages:
+    - ggplot2
+    - ragg
     - ggfx
     - ggforce
     - gganimate
-    - palmerpenguins
     - dplyr
 ---
 
@@ -15,44 +22,46 @@ The codeblocks here are interactive and can be executed in the browser. You can 
 
 Each exercise has one or more hints, as well as a full solution if you click through all the hints. Do try to solve the exercises on your own first.
 
+```{webr}
+#| setup: true
+#| exercise:
+#|   - ex_7_1_1
+#|   - ex_7_1_2
+#|   - ex_7_2_1
+#|   - ex_7_2_2
+library(ggplot2)
+library(ggfx)
+library(ggforce)
+library(gganimate)
+penguins <- stats::na.omit(penguins)
+```
+
 ## 7.1 Adding effects with ggfx
 
 :::: {.panel-tabset}
 
 ## Exercise 7.1.1
-Use `with_blur()` to add a blur effect to a scatterplot of bill length vs. flipper length in the penguins dataset. Experiment with different values for the `sigma` parameter to see how it affects the appearance.
+Use `with_motion_blur()` to add directional blur to a scatterplot of bill length vs. flipper length in the penguins dataset. Experiment with different values for the `sigma` and `angle` arguments to see how it affects the appearance.
 
 ```{webr}
 #| exercise: ex_7_1_1
-library(ggplot2)
-library(ggfx)
-library(palmerpenguins)
-data(penguins)
-
-ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
-  ______(
-    geom_point(size = 3),
-    sigma = ______
-  )
+ggplot(penguins, aes(x = bill_len, y = flipper_len, color = species)) +
+  ______
 ```
 
 ## Hints
 ::: {.hint exercise="ex_7_1_1"}
-You need to use `with_blur()` to wrap around the `geom_point()` layer. The `sigma` parameter controls the amount of blur - try values between 1 and 5 using `grid::unit()` with 'mm' or 'pt' units.
+You need to use `with_motion_blur()` to wrap around the `geom_point()` layer. The `sigma` parameter controls the amount of blur - try values between 1 and 5 using `grid::unit()` with 'mm' or 'pt' units. Angle gives the direction of the blur
 :::
 
 ## Solution
 ::: {.solution exercise="ex_7_1_1"}
 ```r
-library(ggplot2)
-library(ggfx)
-library(palmerpenguins)
-data(penguins)
-
-ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
-  with_blur(
+ggplot(penguins, aes(x = bill_len, y = flipper_len, color = species)) +
+  with_motion_blur(
     geom_point(size = 3),
-    sigma = grid::unit(2, 'mm')
+    sigma = grid::unit(2, 'mm'),
+    angle = 35
   )
 ```
 :::
@@ -64,123 +73,39 @@ ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)
 :::: {.panel-tabset}
 
 ## Exercise 7.1.2
-Create a plot using `as_reference()` and `with_blend()` to create a masking effect. Make a density plot of bill depth vs. body mass, then overlay points that only appear within the density areas.
+Create a plot using `as_reference()` and use `with_blend()` to create a masking effect. Make a density plot of bill depth vs. body mass, then punch holes in it where the data points are
 
 ```{webr}
 #| exercise: ex_7_1_2
-library(ggplot2)
-library(ggfx)
-library(palmerpenguins)
-data(penguins)
 
-ggplot(penguins, aes(x = bill_depth_mm, y = body_mass_g)) + 
-  ______(
-    geom_density_2d_filled(alpha = 0.7),
-    id = ______
-  ) +
-  ______(
-    geom_point(size = 2),
-    ______,
-    blend_type = ______,
-    flip_order = TRUE
-  )
+ggplot(penguins, aes(x = bill_dep, y = body_mass)) + 
+  ______ + 
+  ______
 ```
 
 ## Hints
 ::: {.hint exercise="ex_7_1_2"}
-First, use `as_reference()` to give your density plot an ID. Then, use `with_blend()` to make your points only appear where they overlap with the density plot. The key parameters are:
-- `id` in `as_reference()`: Give a name like "density" to your first layer
-- `blend_type` in `with_blend()`: Use "in" to only show points within the density areas
-- Pass the same ID name from `as_reference()` as the second argument to `with_blend()`
+You'll need one layer inside an `as_reference()` and one layer inside a `with_blend()`. which layer you put in which depend on the value of `flip_order` in `with_blend()`
+:::
+
+## Hints
+::: {.hint exercise="ex_7_1_2"}
+The `"out"` blend mode only draws the content where the destination is empty
 :::
 
 ## Solution
 ::: {.solution exercise="ex_7_1_2"}
 ```r
-library(ggplot2)
-library(ggfx)
-library(palmerpenguins)
-data(penguins)
-
-ggplot(penguins, aes(x = bill_depth_mm, y = body_mass_g)) + 
+ggplot(penguins, aes(x = bill_dep, y = body_mass)) + 
   as_reference(
-    geom_density_2d_filled(alpha = 0.7),
-    id = "density"
+    geom_point(size = 2),
+    id = "points"
   ) +
   with_blend(
-    geom_point(size = 2),
-    "density",
-    blend_type = "in",
-    flip_order = TRUE
+    geom_density_2d_filled(),
+    "points",
+    blend_type = "out"
   )
-```
-:::
-
-::::
-
-* * *
-
-:::: {.panel-tabset}
-
-## Exercise 7.1.3
-Create a plot with shadow effects using `with_shadow()` and `as_group()`. Add shadows to both a trend line and points in the same plot, either individually or as a group.
-
-```{webr}
-#| exercise: ex_7_1_3
-library(ggplot2)
-library(ggfx)
-library(palmerpenguins)
-data(penguins)
-
-# Method 1: Apply shadows separately to each layer
-ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + 
-  ______(______, sigma = grid::unit(______, "mm")) +
-  ______(______, sigma = grid::unit(______, "mm"))
-
-# OR
-
-# Method 2: Group layers and apply shadow to the group
-ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + 
-  ______(
-    ______,
-    ______,
-    id = ______
-  ) + 
-  ______(______, sigma = grid::unit(______, "mm"))
-```
-
-## Hints
-::: {.hint exercise="ex_7_1_3"}
-You can create shadows in two different ways:
-1. Apply `with_shadow()` to each layer separately (smooth line and points)
-2. Use `as_group()` to group multiple layers together, then apply a single `with_shadow()` to the group
-
-For the shadow effect, try different values for the `sigma` parameter, which controls the shadow size.
-:::
-
-## Solution
-::: {.solution exercise="ex_7_1_3"}
-```r
-library(ggplot2)
-library(ggfx)
-library(palmerpenguins)
-data(penguins)
-
-# Method 1: Apply shadows separately to each layer
-ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + 
-  with_shadow(geom_smooth(method = "lm", alpha = 0.7), sigma = grid::unit(1.5, "mm")) +
-  with_shadow(geom_point(size = 2), sigma = grid::unit(1, "mm"))
-
-# OR
-
-# Method 2: Group layers and apply shadow to the group
-ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + 
-  as_group(
-    geom_smooth(method = "lm", alpha = 0.7),
-    geom_point(size = 2),
-    id = "penguin_group"
-  ) + 
-  with_shadow("penguin_group", sigma = grid::unit(1.2, "mm"))
 ```
 :::
 
@@ -195,9 +120,6 @@ Use `geom_shape()` from ggforce to create a polygon plot with rounded corners. S
 
 ```{webr}
 #| exercise: ex_7_2_1
-library(ggplot2)
-library(ggforce)
-
 # Creating example data similar to what was shown in slides
 ids <- factor(c("1.1", "2.1", "1.2", "2.2", "1.3", "2.3"))
 
@@ -214,40 +136,20 @@ positions <- data.frame(
   2.2, 2.1, 1.7, 2.1, 3.2, 2.8, 2.1, 2.2, 3.3, 3.2)
 )
 
-ggplot(positions, aes(x = x, y = y, group = id)) +
-  ______(
-    aes(fill = id), 
-    radius = ______
-  )
+ggplot(positions, aes(x = x, y = y, fill = id)) +
+  ______
 ```
 
 ## Hints
 ::: {.hint exercise="ex_7_2_1"}
 To create rounded corners with `geom_shape()`, use the `radius` parameter. Try setting it to different values like `grid::unit(0.1, "npc")` or `grid::unit(5, "mm")`. Larger values create more rounded corners.
+
+If the radius get's to large the shapes will disappear due to how it is implemented.
 :::
 
 ## Solution
 ::: {.solution exercise="ex_7_2_1"}
 ```r
-library(ggplot2)
-library(ggforce)
-
-# Creating example data similar to what was shown in slides
-ids <- factor(c("1.1", "2.1", "1.2", "2.2", "1.3", "2.3"))
-
-values <- data.frame(
-  id = ids,
-  value = c(3, 3.1, 3.1, 3.2, 3.15, 3.5)
-)
-
-positions <- data.frame(
-  id = rep(ids, each = 4),
-  x = c(2, 1, 1.1, 2.2, 1, 0, 0.3, 1.1, 2.2, 1.1, 1.2, 2.5, 1.1, 0.3,
-  0.5, 1.2, 2.5, 1.2, 1.3, 2.7, 1.2, 0.5, 0.6, 1.3),
-  y = c(-0.5, 0, 1, 0.5, 0, 0.5, 1.5, 1, 0.5, 1, 2.1, 1.7, 1, 1.5,
-  2.2, 2.1, 1.7, 2.1, 3.2, 2.8, 2.1, 2.2, 3.3, 3.2)
-)
-
 ggplot(positions, aes(x = x, y = y, group = id)) +
   geom_shape(
     aes(fill = id), 
@@ -340,78 +242,6 @@ base_plot +
 
 ::::
 
-* * *
-
-:::: {.panel-tabset}
-
-## Exercise 7.2.3
-Use the link geoms (`geom_link()` or `geom_link2()`) to create a path with varying aesthetics. Create a plot that connects points with links where the width, alpha, or color changes along the path.
-
-```{webr}
-#| exercise: ex_7_2_3
-library(ggplot2)
-library(ggforce)
-
-# Create sample data for paths
-paths <- data.frame(
-  x = c(1, 2, 3, 4, 5, 1, 2, 3, 4, 5),
-  y = c(1, 3, 2, 4, 3, 5, 3, 6, 4, 5),
-  group = c(rep("A", 5), rep("B", 5)),
-  width = c(1, 2, 3, 2, 1, 2, 3, 4, 3, 2)
-)
-
-# Create a plot with links that vary along the path
-ggplot(paths, aes(x = x, y = y, group = group)) +
-  ______(
-    aes(______ = ______, color = group),
-    n = 100,
-    ______
-  )
-```
-
-## Hints
-::: {.hint exercise="ex_7_2_3"}
-Try using `geom_link2()` which allows you to create smooth paths between points. You can map aesthetic values like `size`, `alpha`, or `linewidth` to the `width` variable to make the lines change thickness along the path.
-
-The parameter `n` controls the number of segments used to draw the path (higher number = smoother path).
-:::
-
-## Solution
-::: {.solution exercise="ex_7_2_3"}
-```r
-library(ggplot2)
-library(ggforce)
-
-# Create sample data for paths
-paths <- data.frame(
-  x = c(1, 2, 3, 4, 5, 1, 2, 3, 4, 5),
-  y = c(1, 3, 2, 4, 3, 5, 3, 6, 4, 5),
-  group = c(rep("A", 5), rep("B", 5)),
-  width = c(1, 2, 3, 2, 1, 2, 3, 4, 3, 2)
-)
-
-# Create a plot with links that vary along the path
-ggplot(paths, aes(x = x, y = y, group = group)) +
-  geom_link2(
-    aes(linewidth = width, color = group),
-    n = 100,
-    lineend = "round"
-  ) +
-  scale_linewidth(range = c(0.5, 3))
-```
-
-# Alternative solution with geom_link and index-based aesthetics
-```r
-ggplot(paths, aes(x = x, y = y, group = group)) +
-  geom_link(
-    aes(alpha = after_stat(index), linewidth = after_stat(index), color = group),
-    n = 100
-  ) +
-  scale_linewidth(range = c(0.5, 3))
-```
-:::
-
-::::
 
 ## 7.3 Animating with gganimate
 
