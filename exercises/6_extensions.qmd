@@ -1,0 +1,123 @@
+---
+title: Exercises for session 6
+webr:
+  repos:
+    - https://repo.r-wasm.org
+    - https://tidyverse.r-universe.dev
+  cell-options:
+    canvas: false
+    autorun: false
+  packages:
+    - ggplot2
+    - ragg
+---
+
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+
+## Exercise 6: Extension
+
+In the presentation, we saw the following Stat extension paired with `geom_segment()`.
+
+```{r}
+library(ggplot2)
+
+residual_lines <- function(data, formula = y ~ x, ...) {
+  model <- lm(formula, data = data)
+  data$fitted <- predict(model)
+  data$residual <- residuals(model)
+  data
+}
+
+StatResidual <- ggproto(
+  "StatResidual", # class name
+  Stat,           # parent
+  compute_group = residual_lines,
+  default_aes = aes(
+    yend = after_stat(fitted)
+  )
+)
+
+stat_residual <- make_constructor(StatResidual, geom = "segment")
+
+p <- ggplot(mtcars, aes(disp, mpg)) +
+  geom_smooth(
+    method = "lm", 
+    formula = y ~ x
+  )
+
+p + geom_point() +
+  stat_residual()
+```
+
+:::: {.panel-tabset}
+
+### Exercise
+
+Instead of pairing with `geom_segment()` and combining the stat with `geom_point()`, we want to have a line and a point in a single layer.
+Repurpose the Stat class and constructor to work with `geom_pointrange()` instead.
+
+```{webr}
+#| exercise: ex_6
+#| setup: true
+residual_lines <- function(data, formula = y ~ x, ...) {
+  model <- lm(formula, data = data)
+  # Create computed variables
+  data$fitted <- predict(model)
+  data$residual <- residuals(model)
+  data
+}
+
+p <- ggplot(mtcars, aes(disp, mpg)) +
+  geom_smooth(
+    method = "lm", 
+    formula = y ~ x
+  )
+```
+
+
+```{webr}
+#| exercise: ex_6
+StatResidual <- ggproto(
+  "StatResidual", # class name
+  Stat,           # parent
+  compute_group = residual_lines,
+  default_aes = aes(
+    ______
+  )
+)
+
+stat_residual <- make_constructor(______)
+
+p + stat_residual()
+```
+
+### Hints
+
+::: {.hint exercise="ex_6"}
+
+You can use `after_stat()` to set `ymin` to the `fitted` computed variable and `ymax` to `y`.
+
+:::
+
+### Solution
+
+::: {.solution exercise="ex_6"}
+
+```{r}
+StatResidual <- ggproto(
+  "StatResidual", # class name
+  Stat,           # parent
+  compute_group = residual_lines,
+  default_aes = aes(
+    ymin = after_stat(fitted),
+    ymax = after_stat(y)
+  )
+)
+
+stat_residual <- make_constructor(StatResidual, geom = "pointrange")
+
+p + stat_residual()
+```
+:::
+
+::::
