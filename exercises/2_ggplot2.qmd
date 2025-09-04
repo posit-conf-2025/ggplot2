@@ -1,5 +1,6 @@
 ---
-title: Exercises for session 1.2
+title: Exercises for session 2
+toc: true
 webr:
   repos:
     - https://repo.r-wasm.org
@@ -12,6 +13,7 @@ webr:
     - grid
     - palmerpenguins
     - ragg
+    - dplyr
 ---
 
 {{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
@@ -231,9 +233,9 @@ library(grid)
 width <- height <- unit(3, "mm")
 crosshatch <- pattern(
   segmentsGrob(
-    x0 = c(0, 1), x1 = c(1, 0),
+    x0 = c(0, 1), x1 = c(1, 0), 
     y0 = c(0, 0), y1 = c(1, 1),
-    # gp = gg_par(col = "black", lwd = 0.5),
+    gp = gg_par(col = "black", lwd = 0.5),
     vp = viewport(width = width, height = height)
   ),
   width = width, height = height,
