@@ -29,9 +29,9 @@ jobs:
             any::patchwork
             any::marquee
             any::systemfonts
-            davidgohel/ggiraph#322
+            davidgohel/ggiraph
             any::legendry
-            thomasp85/ggfx
+            any::ggfx
             any::ggpattern
             any::gridpattern
             any::tibble
