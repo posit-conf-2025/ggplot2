@@ -46,6 +46,7 @@
 
    *Coffee break*
 
+5. Plot composition (*cont.*)
 6. Creating extensions *or* Spice up your plot
 
 ## Exercises
@@ -62,6 +63,22 @@
 
 ## Practical information
 
-https://posit-conf-2025.github.io/ggplot2/
+::: {.center-y}
+**Workshop website:** <https://posit-conf-2025.github.io/ggplot2/>
 
-TBD
+&nbsp;
+
+**Gender neutral bathrooms:** LL2, next to Chicago A
+
+&nbsp;
+
+**Meditation / Prayer room:** LL2, Chicago A
+
+&nbsp;
+
+**Mother’s / Lactation room:** LL2, Chicago B
+
+&nbsp;
+
+**Respect the red lanyards and any contact preferences**
+:::

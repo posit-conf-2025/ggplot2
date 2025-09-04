@@ -74,6 +74,21 @@ ggplot(penguins) +
 :::
 ::::::
 
+## Embracing ragg
+
+* **In RStudio**:  
+  ![](https://i.imgur.com/4XgiPWy.png){width="500"}
+* **In Positron and with `ggsave()`**: ragg will be used if installed
+* **In Knitr/RMarkdown/Quarto**: Set `dev = "ragg_png"`
+* **In plumber**: Use the agg_png serializer
+* **In Shiny and plumber2**: Used by default
+
+or
+
+```r
+ragg::agg_png() # instead of calling png()
+```
+
 ## systemfonts
 
 #### It (should) just work

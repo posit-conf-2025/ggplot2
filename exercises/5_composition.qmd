@@ -1,8 +1,15 @@
 ---
 title: Exercises for session 5
 webr:
+  repos:
+    - https://repo.r-wasm.org
+    - https://tidyverse.r-universe.dev
+  cell-options:
+    canvas: false
+    autorun: false
   packages:
     - ggplot2
+    - ragg
     - patchwork
     - marquee
     - gt
@@ -33,6 +40,7 @@ Each exercise has one or more hints, as well as a full solution if you click thr
 #|   - ex_5_5_2
 library(ggplot2)
 library(patchwork)
+penguins <- stats::na.omit(penguins)
 ```
 
 ## 5.1 Patchwork Composition

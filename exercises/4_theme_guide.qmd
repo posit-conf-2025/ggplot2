@@ -1,7 +1,15 @@
 ---
 title: "Exercises for session 4"
 webr:
+  repos:
+    - https://repo.r-wasm.org
+    - https://tidyverse.r-universe.dev
+  cell-options:
+    canvas: false
+    autorun: false
   packages:
+    - ggplot2
+    - ragg
     - palmerpenguins
     - legendry
 ---

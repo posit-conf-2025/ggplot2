@@ -6,6 +6,9 @@ format:
     css: styles.css
 engine: knitr
 webr:
+  repos:
+    - https://repo.r-wasm.org
+    - https://tidyverse.r-universe.dev
   cell-options:
     canvas: false
     autorun: false

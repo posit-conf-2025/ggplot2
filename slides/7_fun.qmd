@@ -2,3 +2,398 @@
 title: "Spice up your plot"
 author: "Thomas Lin Pedersen"
 ---
+
+## Key takeaway today:
+
+::: {.center-y}
+> *Data visualizations can have personality and that's OK*
+:::
+
+## Today
+
+* Adding effects with ggfx
+* The many weird functions of ggforce
+* Animate your plot with gganimate
+
+## {.center}
+
+::: {.r-stack}
+[![](https://github.com/thomasp85/ggfx/blob/main/man/figures/logo.png?raw=true){width="400"}](https://ggfx.data-imaginist.com)
+:::
+
+## ggfx
+
+* Photoshop for ggplot2 (kinda)
+* Add pixel-level effects to theme elements, layers, or the whole plot
+* Can be both used and abused 
+
+## Filters
+
+```{r}
+library(ggplot2)
+library(ggfx)
+
+ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
+  with_blur(
+    geom_point(),
+    sigma = grid::unit(1, 'mm')
+  ) + 
+  geom_smooth()
+```
+
+## Filters
+
+```{r}
+p <- ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
+  geom_point() + 
+  geom_smooth()
+
+with_outer_glow(
+  p, 
+  colour = "steelblue", 
+  sigma = grid::unit(1, "mm")
+)
+```
+
+## Filters
+
+```{r}
+ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
+  geom_point() + 
+  geom_smooth() + 
+  theme(
+    axis.title = with_shadow(element_text())
+  )
+```
+
+## References
+
+```{r}
+ggplot(penguins, aes(x = flipper_len, y = bill_len)) + 
+  geom_density_2d_filled() +
+  geom_point()
+```
+
+## References
+
+```{r}
+ggplot(penguins, aes(x = flipper_len, y = bill_len)) + 
+  as_reference(
+    geom_density_2d_filled(), 
+    id = "density"
+  ) +
+  with_blend(
+    geom_point(),
+    "density",
+    blend_type = "in",
+    flip_order = TRUE
+  )
+```
+
+## References
+
+```{r}
+ggplot(penguins, aes(x = flipper_len, y = bill_len)) + 
+  with_shadow(geom_smooth(alpha = 1, level = 0.99), sigma = grid::unit(0.5, "mm")) +
+  with_shadow(geom_point(), sigma = grid::unit(0.5, "mm"))
+```
+
+## References
+
+```{r}
+ggplot(penguins, aes(x = flipper_len, y = bill_len)) + 
+  as_group(
+    geom_smooth(alpha = 1, level = 0.99),
+    geom_point(),
+    id = "group_1"
+  ) + 
+  with_shadow("group_1", sigma = grid::unit(0.5, "mm"))
+```
+
+## Moar filters
+
+:::: {.columns}
+
+::: {.column}
+* Custom blend
+* Bloom
+* Fully custom
+* Displacement
+* Dither
+* Inner glow
+:::
+
+::: {.column}
+* Interpolate
+* Kernel
+* Mask
+* Motion blur
+* Shading (bump mapping)
+* Variable blur
+:::
+
+::::
+
+## [Exercise](../exercises/7_fun.qmd) {.center style="text-align:center;"}
+
+## {.center}
+
+::: {.r-stack}
+[![](https://github.com/thomasp85/ggforce/blob/main/man/figures/logo.png?raw=true){width="400"}](https://ggforce.data-imaginist.com)
+:::
+
+## ggforce
+
+* This is my grab-back package. Expect some chaos
+* Main focus on powerful building blocks
+
+::: {.r-stack}
+![](https://www.data-imaginist.com/assets/img/ggforce_release020.png){width="800"}
+:::
+
+## Shapes
+
+* Super-charged `geom_polygon()`
+* Round corners
+* Expand and subtract based on absolute sizes
+
+```{r}
+#| include: false
+ids <- factor(c("1.1", "2.1", "1.2", "2.2", "1.3", "2.3"))
+
+values <- data.frame(
+  id = ids,
+  value = c(3, 3.1, 3.1, 3.2, 3.15, 3.5)
+)
+
+positions <- data.frame(
+  id = rep(ids, each = 4),
+  x = c(2, 1, 1.1, 2.2, 1, 0, 0.3, 1.1, 2.2, 1.1, 1.2, 2.5, 1.1, 0.3,
+  0.5, 1.2, 2.5, 1.2, 1.3, 2.7, 1.2, 0.5, 0.6, 1.3),
+  y = c(-0.5, 0, 1, 0.5, 0, 0.5, 1.5, 1, 0.5, 1, 2.1, 1.7, 1, 1.5,
+  2.2, 2.1, 1.7, 2.1, 3.2, 2.8, 2.1, 2.2, 3.3, 3.2)
+)
+```
+
+```{r}
+library(ggforce)
+ggplot(positions, aes(x = x, y = y, group = id)) +
+  geom_shape(aes(fill = id))
+```
+
+## Shapes
+
+```{r}
+library(ggforce)
+ggplot(
+  positions, 
+  aes(x = x, y = y, group = id)
+) +
+  geom_shape(
+    aes(fill = id), 
+    radius = grid::unit(5, "mm")
+  )
+```
+
+## Shapes
+
+```{r}
+ggplot(
+  positions, 
+  aes(x = x, y = y, group = id)
+) +
+  geom_shape(
+    aes(fill = id), 
+    expand = -grid::unit(2, "mm")
+  )
+```
+
+## Marks
+
+* The reason `geom_shape()` exist
+* High-level annotation in plots
+
+```{r}
+p <- ggplot(
+  na.omit(penguins), 
+  aes(x = bill_dep, y = flipper_len)
+) + 
+  geom_point()
+p
+```
+
+## Marks
+
+```{r}
+p + 
+  geom_mark_circle(aes(fill = species))
+```
+
+## Marks
+
+```{r}
+p + 
+  geom_mark_rect(aes(fill = species))
+```
+
+## Marks
+
+```{r}
+p + 
+  geom_mark_ellipse(aes(fill = species))
+```
+
+## Marks
+
+```{r}
+p + 
+  geom_mark_hull(aes(fill = species))
+```
+
+## Marks
+
+```{r}
+p + 
+  geom_mark_ellipse(
+    aes(filter = species == "Gentoo"), 
+    fill = "steelblue"
+  )
+```
+
+## Marks
+
+```{r}
+p + 
+  geom_mark_ellipse(
+    aes(
+      filter = species == "Gentoo",
+      label = "Gentoo Penguins",
+      description = "This is by far the most interesting penguin"
+    ), 
+    fill = "steelblue"
+  )
+```
+
+(`geom_mark_*()` is not yet marquee-aware)
+
+## Links
+
+* Supercharged `geom_segment()` / `geom_path()``
+* Allows interpolation of aesthetics between anchors
+
+```{r}
+# Lets make some data
+lines <- data.frame(
+  x = c(5, 12, 15, 9, 6),
+  y = c(17, 20, 4, 15, 5),
+  xend = c(19, 17, 2, 9, 5),
+  yend = c(10, 18, 7, 12, 1),
+  width = c(1, 10, 6, 2, 3),
+  colour = letters[1:5]
+)
+
+ggplot(lines, aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_link(
+    aes(
+      colour = colour, 
+      alpha = after_stat(index), 
+      linewidth = after_stat(index)
+    )
+  )
+```
+
+## Links
+
+```{r}
+ggplot(lines, aes(x = x, y = y)) +
+  geom_link2(
+    aes(
+      colour = colour, 
+      linewidth = width,
+      group = 1
+    ),
+    lineend = "round"
+  )
+```
+
+## [Exercise](../exercises/7_fun.qmd) {.center style="text-align:center;"}
+
+## {.center}
+
+::: {.r-stack}
+[![](https://github.com/rstudio/hex-stickers/blob/main/PNG/gganimate.png?raw=true){width="400"}](https://gganimate.com)
+:::
+
+## gganimate
+
+* An extension of the grammar to cover animation
+* Does not cover interaction
+* Is not something we can get in depth in
+
+::: {.r-stack}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/21ZWDrTukEs?si=nyQI63ONfaiAjOMT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+## gganimate
+
+```{r}
+library(gganimate)
+
+ggplot(penguins) + 
+  geom_point(aes(bill_dep, flipper_len)) + 
+  transition_states(species) + 
+  enter_grow() + 
+  exit_fade()
+```
+
+## Key concept
+
+:::: {.columns}
+
+::: {.column}
+##### Transitions
+Defines the temporal interpretation of the data
+
+##### Views
+Controls how position scales changes
+
+##### Shadows
+Allows the display of data from other frames
+:::
+
+::: {.column}
+##### Easing
+Defines the shape of the interpolation
+
+##### Enter / Exit
+Controls how data move in and out of the animation
+:::
+
+::::
+
+## gganimate
+
+```{r}
+ggplot(penguins) + 
+  geom_bar(aes(x = island, fill = after_stat(count))) + 
+  transition_time(year) + 
+  labs(title = "{frame_time}", x = NULL)
+```
+
+## gganimate
+
+```{r}
+ggplot(penguins) + 
+  geom_smooth(
+    aes(
+      x = as.Date(as.character(year), format = "%Y"), 
+      y = body_mass, 
+      color = species
+    ),
+    method = "lm"
+  ) + 
+  scale_x_date(name = NULL) + 
+  transition_reveal(after_stat(x))
+```
+
+## [Exercise](../exercises/7_fun.qmd) {.center style="text-align:center;"}

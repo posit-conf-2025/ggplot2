@@ -3,6 +3,7 @@ project:
 
 website:
   title: "Mastering Data Visualization with ggplot2"
+  favicon: assets/img/ggplot2.png
   navbar:
     left:
       - href: index.qmd
@@ -23,6 +24,9 @@ website:
           text: 6. Creating extensions
         - href: sessions/7_fun.qmd
           text: 7. Spice up your plot
+    tools:
+      - icon: github
+        href: https://github.com/posit-conf-2025/ggplot2
 
 format:
   html:
