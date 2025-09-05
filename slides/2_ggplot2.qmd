@@ -7,7 +7,30 @@ knitr:
       scaling: 2
 ---
 
+```{r setup}
+#| include: false
+library(ggplot2)
+# Harmonise the default gray theme's panel with the slide background.
+theme_set(
+  theme_gray() +
+    theme(
+      panel.background = element_rect(colour = NA, fill = "#F0F1EB")
+    )
+)
+```
+
+
+## Today's topics
+
+- Headings
+- Patterns & gradients
+- Delayed evaluation
+- Polar coordinates
+- Facets
+
 ## Headings
+
+Better default titles for variables
 
 - Column metadata
 - Data dictionary
@@ -84,9 +107,13 @@ Label attribute automatically detected.
 library(ggplot2)
 library(patchwork)
 
+df <- mtcars
+attr(df$mpg, "label") <- "Miles per gallon"
+
 ggplot(df, aes(mpg, disp)) +
   geom_point()
 ```
+
 ---
 
 ### Data dictionary
@@ -101,6 +128,7 @@ dict <- tibble::tribble(
   "cyl",   "Number of cylinders", "",       "",
   "disp",  "Engine Displacement", "in^3",   "",
   "am",    "Transmission",        "",       "0 = automatic, 1 = manual"
+  # Additional rows for the other variables
 )
 dict
 ```
@@ -108,6 +136,8 @@ dict
 ---
 
 ### Data dictionary
+
+Preparing the dictionary for ggplot2 labels
 
 ```{r}
 #| collapse: true
@@ -127,7 +157,7 @@ named_vec
 ```{r}
 #| code-line-numbers: "3"
 #| output-location: default
-#| fig-width: 12
+#| fig-width: 9
 ggplot(mtcars, aes(mpg, disp, colour = cyl)) +
   geom_point() +
   labs(dictionary = named_vec)
@@ -167,7 +197,7 @@ ggplot(mtcars, aes(cyl, mpg, group = cyl)) +
 * `attr(data$var, "label")`
 * `labs(dictionary)`
 
-⏲️ Exercise 1.2.1 & 1.2.2
+⏲️ Exercise 2.1.1 & 2.1.2
 
 ## Patterns and gradients
 
@@ -188,11 +218,26 @@ Simple examples of linear and radial gradients.
 
 ```{r}
 #| output-location: default
-colours <- hcl.colors(100, "Sunset")
+# A vector of 15 colours
+colours <- rev(hcl.colors(15, "Sunset"))
 
 library(grid)
-linear <- linearGradient(colours, x1 = 0.5, x2 = 0.5)
-radial <- radialGradient(rev(colours), cx1 = 0.8, cy1 = 0.8, group = FALSE)
+
+linear <- linearGradient(
+  colours = colours,
+  # Parametrised like a rectangle
+  x1 = 0.5, x2 = 0.5,
+  y1 = 0.0, y2 = 1.0
+)
+
+radial <- radialGradient(
+  colours = colours, 
+  # Parametrised like two circles
+  cx1 = 0.8, cy1 = 0.8, r1 = 0.2,
+  cx2 = 0.5, cy2 = 0.5, r2 = 0.5,
+  # Draw separately for every area
+  group = FALSE
+)
 ```
 
 ---
@@ -202,10 +247,26 @@ radial <- radialGradient(rev(colours), cx1 = 0.8, cy1 = 0.8, group = FALSE)
 Use these gradients by providing them as a list.
 
 ```{r}
-#| code-line-numbers: "3"
+#| code-line-numbers: "4"
 ggplot(mtcars) +
   aes(factor(vs)) +
-  geom_bar(fill = list(linear, radial))
+  geom_bar(
+    fill = list(linear, radial)
+  )
+```
+
+---
+
+### Ribbon gradient
+
+Ribbon geometries now render a varying `fill` aesthetic as a gradient.
+
+```{r}
+#| output-location: default
+#| fig-width: 9
+ggplot(economics) +
+  aes(date, unemploy, fill = uempmed) +
+  geom_area()
 ```
 
 ---
@@ -217,11 +278,14 @@ You may need to know a little bit of grid to get these right.
 Here we're using a diagonal line as a pattern.
 
 ```{r}
-#| code-line-numbers: "3-6,9"
+#| code-line-numbers: "3-9,12|1,8,13"
 #| output-location: default
 width <- height <- unit(3, "mm")
 
 inner_drawing <- segmentsGrob(
+  # Diagonal line
+  x0 = 0, x1 = 1,
+  y0 = 0, y1 = 1,
   gp = gpar(col = "black"),
   vp = viewport(width = width, height = height)
 )
@@ -242,9 +306,9 @@ Like gradients, patterns can be given as a list.
 ```{r}
 #| code-line-numbers: "4"
 ggplot(mtcars) +
-  aes(factor(vs)) +
+  aes(factor(cyl)) +
   geom_bar(
-    fill = list(hatching), 
+    fill = list(hatching),
     colour = "black"
   )
 ```
@@ -292,23 +356,11 @@ Using patterns as a scale.
 ```{r}
 #| code-line-numbers: "4-6"
 ggplot(mtcars) +
-  aes(cyl, disp, fill = factor(cyl)) +
-  geom_boxplot() +
+  aes(factor(cyl), fill = factor(cyl)) +
+  geom_bar(colour = "black") +
   scale_fill_manual(
     values = list(linear, radial, hatching)
   )
-```
-
----
-
-### Ribbon gradient
-
-Ribbon geometries now render a varying `fill` aesthetic as a gradient.
-
-```{r}
-ggplot(economics) +
-  aes(date, unemploy, fill = uempmed) +
-  geom_area()
 ```
 
 ---
@@ -318,9 +370,8 @@ ggplot(economics) +
 Using the gridpattern package to easily generate patterns.
 
 ```{r}
-#| output-location: default
 herringbone <- gridpattern::patternFill(
-  "polygon_tiling",
+  pattern = "polygon_tiling",
   type = "herringbone",
   spacing = 0.2,
   units = "cm",
@@ -328,7 +379,7 @@ herringbone <- gridpattern::patternFill(
   linewidth = 0.3
 )
 hexagons <- gridpattern::patternFill(
-  "polygon_tiling",
+  pattern = "polygon_tiling",
   type = "hexagonal",
   spacing = 0.2,
   units = "cm",
@@ -336,7 +387,7 @@ hexagons <- gridpattern::patternFill(
   linewidth = 0.3
 )
 waves <- gridpattern::patternFill(
-  "wave",
+  pattern = "wave",
   spacing = 0.2,
   units = "cm",
   colour = "grey40",
@@ -352,8 +403,8 @@ Using the gridpattern package to easily generate patterns.
 
 ```{r}
 ggplot(mtcars) +
-  aes(cyl, disp, fill = factor(cyl)) +
-  geom_boxplot() +
+  aes(factor(cyl), fill = factor(cyl)) +
+  geom_bar(colour = "grey40") +
   scale_fill_manual(
     values = list(herringbone, hexagons, waves)
   )
@@ -366,15 +417,18 @@ ggplot(mtcars) +
 Parametrised patterns with the ggpattern package.
 
 ```{r}
-#| code-line-numbers: "8|6|9-11"
+#| code-line-numbers: "8-11|6|12-14"
 library(ggpattern)
 
 ggplot(mtcars) +
   aes(
-    cyl, disp, group = cyl,
+    x = factor(cyl),
     pattern_spacing = cyl
   ) +
-  geom_boxplot_pattern(pattern_fill = "black") +
+  geom_bar_pattern(
+    pattern_fill = "black", 
+    colour = "black", fill = "white"
+  ) +
   scale_pattern_spacing_continuous(
     range = c(0.02, 0.05)
   )
@@ -389,7 +443,7 @@ Emoji isotype plot using text patterns.
 ```{r}
 #| code-fold: true
 #| output-location: default
-#| fig-width: 12
+#| fig-width: 16
 # Helper function
 width <- unit(20, "pt")
 patternise_text <- function(text) {
@@ -438,25 +492,16 @@ ggplot(df, aes(amount, animal, fill = animal)) +
 
 ### Patterns and gradients: summary
 
-#### Pure grid
+* **grid** for most control over patterns.
+    * `grid::pattern()`, `grid::linearGradient()`, `grid::radialGradient()`
+* **gridpattern** for preformatted patterns.
+    * `gridpattern::patternFill()`
+* **ggpattern** for mapping data to patterns.
+    * Aesthetics (`pattern_density`)
+    * Geom layers (`ggpattern::geom_boxplot_pattern()`)
+    * Scales (`ggpattern::scale_pattern_density_continuous()`)
 
-For most control over patterns.  
-`grid::pattern()`, `grid::linearGradient()`, `grid::radialGradient()`.
-
-#### gridpattern
-
-For great selection of preformatted patterns.  
-`gridpattern::patternFill()`
-
-#### ggpattern
-
-For mapping data to patterns.
-
-* Aesthetics (`pattern_density`)
-* Geom layers (`ggpattern::geom_boxplot_pattern()`)
-* Scales (`ggpattern::scale_pattern_density_continuous()`)
-
-⏲️ Exercise 1.2.3 & 1.2.4
+⏲️ Exercise 2.2.1 & 2.2.2
 
 ---
 
@@ -474,23 +519,25 @@ With regards to evaluation, there are three stages:
 
 Data available from the start, when mapped from data columns.
 
-```{r}
-#| eval: false
-aes(x = displ, y = hwy)
-```
 
-Unmapped aesthetics like `geom_bar(fill = "red")` are not direct input.  
-Data columns that are not mapped are not input.
-
+✅ `aes(x = displ, y = hwy)`  
+  
+❌ Unmapped aesthetics like `geom_bar(fill = "red")`    
+  
+❌ Data columns that are not included in `aes()`  
+  
 ---
 
 ### After computing stat
 
 In addition to aesthetics, *computed variables* become available.  
-These are listed in a documentation section in e.g. `?stat_density`.  
-Sometimes, these are used by default and can be recognised by the use of `after_stat()`.
+
+* Section in e.g. [`?stat_density`](https://ggplot2.tidyverse.org/reference/geom_density.html#computed-variables){target="_blank"}
+* Accessible via `after_stat()`
+* Redirection in `Stat*$default_aes`
 
 ```{r}
+# Inspect default aesthetics
 StatDensity$default_aes
 ```
 
@@ -498,10 +545,12 @@ StatDensity$default_aes
 
 ### After computing stat
 
-You can use `after_stat()` yourself to redirect or modify stat outputs.
+Using `after_stat()` yourself to redirect/modify computed variables.
 
 ```{r}
 #| code-line-numbers: "4"
+#| fig-width: 9
+#| output-location: default
 ggplot(mpg, aes(displ, drv)) +
   stat_density(
     geom = "tile", position = "identity",
@@ -516,8 +565,10 @@ ggplot(mpg, aes(displ, drv)) +
 You may have run into a histogram/density misalignment problem.
 
 ```{r}
+binwidth <- 2
+
 ggplot(faithful, aes(waiting)) +
-  geom_histogram(binwidth = 2) +
+  geom_histogram(binwidth = binwidth) +
   geom_density()
 ```
 
@@ -532,7 +583,7 @@ This can be fixed by using the `density` computed variable in the histogram.
 ggplot(faithful, aes(waiting)) +
   geom_histogram(
     aes(y = after_stat(density)), 
-    binwidth = 2
+    binwidth = binwidth
   ) +
   geom_density()
 ```
@@ -545,7 +596,6 @@ Or scaling the `count` computed variable in the density.
 
 ```{r}
 #| code-line-numbers: "5"
-binwidth <- 2
 ggplot(faithful, aes(waiting)) +
   geom_histogram(binwidth = binwidth) +
   geom_density(
@@ -557,9 +607,15 @@ ggplot(faithful, aes(waiting)) +
 
 ### After scales
 
-At this stage in the plot, the variables are mapped by the scales.  
-It means that the hex codes from colour scales are available, the sizes and shapes of points and other variables mapped by scales.  
-You can intervene by using the `after_scale()` function.
+At this stage in the plot, we have *mapped variables*.
+
+* Determined by scale's `palette`
+* Values now have graphical interpretation
+   * `colour`: `"#4B0055"`
+   * `size`: `12`
+   * `shape`: `"circle filled"`/`21`
+   * `linetype`: `"solid"`/`1`
+* Access via `after_scale()`
 
 --- 
 
@@ -624,7 +680,7 @@ ggplot(mpg, aes(drv, displ)) +
   geom_violin(
     aes(fill = stage(
       start = drv, 
-      after_scale = scales::col_mix(fill, "transparent")
+      after_scale = scales::col_mix(fill, "white")
     ))
   )
 ```
@@ -660,6 +716,7 @@ ggplot(mpg, aes(drv, displ, fill = drv)) +
 Staging function on their own are inert.
 
 ```{r}
+#| output-location: default
 #| collapse: true
 after_stat(10)
 
@@ -671,6 +728,7 @@ stage(10, "A", mpg)
 They need to be put in `aes()`.
 
 ```{r}
+#| output-location: default
 #| collapse: true
 aes(
   a = after_stat(10),
@@ -683,13 +741,13 @@ aes(
 
 ### Delayed evaluation: summary
 
-`after_stat()` to access variables computed by the stat part of the layer.
+* `after_stat()` to access *computed variables*.
 
-`after_scale()` to redirect aesthetics after scale mapping.
+* `after_scale()` to redirect *mapped values*.
 
-`stage()` to initiate a column and modify it during later stages
+* `stage()` to initiate and delay modification.
 
-⏲️ Exercise 1.2.5
+⏲️ Exercise 2.3.1
 
 ## Polar coordinates
 
@@ -818,13 +876,15 @@ p + coord_radial(
 )
 ```
 
+---
+
 ### Polar coordinates: summary
 
 * `coord_radial()` replaces `coord_polar()`
 * Partial circles: `start` & `end`
 * Donut: `inner.radius`
 
-⏲️ Exercise 1.2.6
+⏲️ Exercise 2.4.1
 
 ## Facets
 
@@ -952,4 +1012,4 @@ p + facet_wrap(panels, dir = "tr")
    * Two letter code determine start position
    * First letter determines growing direction
 
-⏲️ Exercise 1.2.7
+⏲️ Exercise 2.5.1
