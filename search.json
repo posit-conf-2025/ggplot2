@@ -721,11 +721,18 @@
     "text": "Exercise"
   },
   {
+    "objectID": "slides/2_ggplot2.html#todays-topics",
+    "href": "slides/2_ggplot2.html#todays-topics",
+    "title": "Modern ggplot2",
+    "section": "Today’s topics",
+    "text": "Today’s topics\n\nHeadings\nPatterns & gradients\nDelayed evaluation\nPolar coordinates\nFacets"
+  },
+  {
     "objectID": "slides/2_ggplot2.html#headings",
     "href": "slides/2_ggplot2.html#headings",
     "title": "Modern ggplot2",
     "section": "Headings",
-    "text": "Headings\n\nColumn metadata\nData dictionary"
+    "text": "Headings\nBetter default titles for variables\n\nColumn metadata\nData dictionary"
   },
   {
     "objectID": "slides/2_ggplot2.html#patterns-and-gradients",
@@ -1145,7 +1152,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpGmS960/Barrio-regular.ttf\", \"/tmp/RtmpGmS960/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/Rtmp09qNrc/Barrio-regular.ttf\", \"/tmp/Rtmp09qNrc/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
@@ -1229,7 +1236,7 @@
     "href": "slides/3_text_fonts.html#custom-spans",
     "title": "Text rendering and font use",
     "section": "Custom spans",
-    "text": "Custom spans\nmarquee uses cli-esque syntax for custom spans.\n\n{.red color me red} will change the color of text to red\n{#00FF00 color me green} will change the color to green\n{.30 make me big} will set the size to 30\n{.class put a class on it} will add the classclass` to the text\n\nthis will become relevant when we talk about styling\n\n{.sub supscript} and {.sup superscript} are predefined custom spans"
+    "text": "Custom spans\nmarquee uses cli-esque syntax for custom spans.\n\n{.red color me red} will change the color of text to red\n{#00FF00 color me green} will change the color to green\n{.30 make me big} will set the size to 30\n{.class put a class on it} will add the class class to the text\n\nthis will become relevant when we talk about styling\n\n{.sub subscript} and {.sup superscript} are predefined custom spans"
   },
   {
     "objectID": "slides/3_text_fonts.html#custom-spans-1",
