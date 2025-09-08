@@ -25,7 +25,7 @@ By the end of this workshop, you'll have a comprehensive understanding of the la
 ## Preparation
 This workshop expects familiarity with ggplot2 and the grammar of graphics. In order to have time for more advanced topics we will not spend time taking about how to use ggplot2 in general, nor its design philosophy and how it ties into the grammar of graphics. If you are not yet at this level we advise that you read through https://ggplot2-book.org to the extend possible.
 
-Participants are expected to bring their own laptop with a working installation of R (preferably the latest version), as well as the latest versions of the following packages:
+Participants are expected to bring their own laptop with a working installation of R (preferably the latest version), as well as the latest versions of the following packages (we unfortunately need the dev version of ggplot2 and ggiraph):
 
 * ggplot2
 * patchwork
@@ -35,6 +35,14 @@ Participants are expected to bring their own laptop with a working installation 
 * ggiraph
 * legendry
 * ggfx
+* ggpattern
+* gridpattern
+* tibble
+* dplyr
+* gapminder
+* gganimate
+* gifski
+* gridGraphics
 
 They can be installed with this code (if you don't have pak installed already you can do so with `install.packages("pak")`).
 
@@ -44,14 +52,22 @@ They can be installed with this code (if you don't have pak installed already yo
 
 # install.packages("pak")
 pak::pak(c(
-  "ggplot2",
+  "tidyverse/ggplot2",
   "patchwork",
   "marquee",
   "systemfonts",
   "ragg",
-  "ggiraph",
+  "davidgohel/ggiraph",
   "legendry",
-  "ggfx"
+  "ggfx",
+  "ggpattern",
+  "gridpattern",
+  "tibble",
+  "dplyr",
+  "gapminder",
+  "gganimate",
+  "gifski",
+  "gridGraphics"
 ))
 ```
 
