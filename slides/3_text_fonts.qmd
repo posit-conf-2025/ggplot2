@@ -392,7 +392,14 @@ penguins$text <- paste0(
   "*"
 )
 style <- classic_style() |> 
-  modify_style("body", outline = "white")
+  modify_style(
+    "body", 
+    border = "black",
+    border_width = trbl(1),
+    border_radius = 3,
+    padding = trbl(2),
+    margin = trbl(0)
+  )
 ggplot(
   penguins, 
   aes(x = bill_len, y = flipper_len)
@@ -403,6 +410,7 @@ ggplot(
   geom_marquee(
     aes(label = text), 
     data = penguins[penguins$outlier,],
+    fill = "white",
     style = style,
     hjust = 1,
     vjust = 1
