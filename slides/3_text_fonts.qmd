@@ -245,9 +245,9 @@ marquee uses cli-esque syntax for custom spans.
 * `{.red color me red}` will change the color of text to red
 * `{#00FF00 color me green}` will change the color to green
 * `{.30 make me big}` will set the size to 30
-* `{.class put a class on it} will add the class `class` to the text
+* `{.class put a class on it}` will add the class `class` to the text
   * this will become relevant when we talk about styling
-* `{.sub supscript}` and `{.sup superscript}` are predefined custom spans
+* `{.sub subscript}` and `{.sup superscript}` are predefined custom spans
 
 ## Custom spans
 

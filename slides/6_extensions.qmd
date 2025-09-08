@@ -498,6 +498,18 @@ StatBoxplot$setup_data
 
 ---
 
+## Summary: stat extensions
+
+* Make new `Stat*` ggproto class
+    * Overwrite `compute_layer()`/`compute_panel()`/`compute_group()` method
+    * Rewire computed variables in `default_aes`
+    * Optionally, edit `setup_data()`/`setup_params()`
+* Build constructor using `make_constructor()`
+
+⏲️ Exercise 6
+
+---
+
 ## Geom extensions
 
 * Likely you'll need to wield some grid code.
@@ -544,4 +556,5 @@ StatBoxplot$setup_data
     * `ggh4x::facet_manual()`
 * decorations
     * `ggh4x::facet_nested()`
+    
     

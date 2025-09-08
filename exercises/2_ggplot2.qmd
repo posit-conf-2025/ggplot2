@@ -1,7 +1,6 @@
 ---
-title: Exercises for session 1.2
-params:
-  answers: FALSE
+title: Exercises for session 2
+toc: true
 webr:
   repos:
     - https://repo.r-wasm.org
@@ -11,8 +10,13 @@ webr:
     autorun: false
   packages:
     - ggplot2
+    - grid
+    - palmerpenguins
     - ragg
+    - dplyr
 ---
+
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
 
 ```{r}
 #| label: setup
@@ -24,91 +28,175 @@ library(grid)
 knitr::opts_chunk$set(dev = "ragg_png")
 ```
 
-## Headings
+## Exercise 2.1: Headings
 
-### Exercise 1.2.1
+### Exercise 2.1.1
 
 We can use the `label` attribute in columns to automatically label a variable.
+
+:::: {.panel-tabset}
+
+#### Exercise
+
 Complete the chunk below to set a `label` attribute for the `unemploy` column in the `economics` dataset.
 Per `?economics`, the `unemploy` variable gives the number of unemployed people in thousands.
 
-```{r}
-#| eval: false
-#| label: ex-1.2.1
-attr(economics$date, "label") <- "Year"
-...
+```{webr}
+#| exercise: ex_211
+#| setup: true
+library(ggplot2)
 ```
 
-```{r}
-#| include: !expr isTRUE(params$answers)
-#| label: ex-1.2.1-solution
+```{webr}
+#| exercise: ex_211
 attr(economics$date, "label") <- "Year"
-attr(economics$unemploy, "label") <- "Unemployment (x1000)"
-```
+______
 
-```{r}
 ggplot(economics, aes(date, unemploy)) +
   geom_area(alpha = 0.4, colour = "black")
 ```
 
-### Exercise 1.2.2
+#### Hints
 
-If don't have pre-set labels, we can also use the `labs(dictionary)` argument to populate column-label pairs.
+::: {.hint exercise="ex_211"}
+
+Use the first line of code as a template to do the same for the `unemploy` column.
+
+:::
+
+#### Solution
+
+::: {.solution exercise="ex_211"}
+
+```{r}
+attr(economics$date, "label") <- "Year"
+attr(economics$unemploy, "label") <- "Unemployment (x1000)"
+
+ggplot(economics, aes(date, unemploy)) +
+  geom_area(alpha = 0.4, colour = "black")
+```
+
+:::
+
+::::
+
+### Exercise 2.1.2
+
+:::: {.panel-tabset}
+
+#### Exercise
+
+If we don't have pre-set labels, we can also use the `labs(dictionary)` argument to populate column-label pairs.
 Use this argument to label the variables in the plot below.
 You can use `?mpg` to find out what the columns are.
 
-```{r}
-#| eval: false
-#| label: ex-1.2.2
+```{webr}
+#| exercise: ex_212
+library(ggplot2)
+
 ggplot(mpg, aes(displ, hwy, colour = drv)) +
   geom_point() +
-  labs(dictionary = ...)
+  labs(dictionary = ______)
 ```
 
+#### Hints
+
+::: {.hint exercise="ex_212"}
+
+The `labs(dictionary)` argument takes a named character vector of labels. 
+The names of the labels correspond to column names.
+
+:::
+
+#### Solution
+
+::: {.solution exercise="ex_212"}
+
 ```{r}
-#| include: !expr isTRUE(params$answers)
-#| label: ex-1.2.2-solution
 ggplot(mpg, aes(displ, hwy, colour = drv)) +
   geom_point() +
   labs(dictionary = c(
     displ = "Displacement",
-    hwy = "Highway miles per gallon",
-    drv = "Drive train"
+    hwy   = "Highway miles per gallon",
+    drv   = "Drive train"
   ))
 ```
 
-## Patterns and gradients
+:::
 
-### Exercise 1.2.3
+::::
+
+## Exercise 2.2: Patterns and gradients
+
+### Exercise 2.2.1
+
+:::: {.panel-tabset}
+
+#### Exercise
 
 Use `grid::linearGradient()` to set up a horizontal colour gradient.
 Which arguments do you have to tweak to change the default diagonal gradient to a horizontal one?
 How would you set a vertical gradient instead?
 
-```{r}
-#| eval: false
-#| label: ex-1.2.3
-gradient <- ...
+```{webr}
+#| exercise: ex_221
+#| setup: true
+library(grid)
+library(ggplot2)
+```
+
+```{webr}
+#| exercise: ex_221
+gradient <- ______
 
 ggplot(economics, aes(date, unemploy)) +
   geom_area(fill = list(gradient), colour = "black")
 ```
 
-```{r}
-#| include: !expr isTRUE(params$answers)
-#| label: ex-1.2.3-solution
+#### Hints
 
+::: {.hint exercise="ex_221"}
+
+If you cannot find inspiration for a colour palette, you can use `colour = hcl.colors(100)`.
+
+:::
+
+#### Solution
+
+::: {.solution exercise="ex_221"}
+
+For a horizontal gradient, keep `y1` and `y2` the same. 
+The `default.units = "npc"`, meaning that numeric values you provide these arguments are relative to the panel where 0 means bottom and 1 means top.
+Which exact value doesn't really matter for this example, just that they are the same.
+
+```{r}
 gradient <- linearGradient(
   colours = hcl.colors(100),
-  y1 = 0, y2 = 0, # Make horizontal gradient by setting equal 'y's
-  group = FALSE
+  y1 = 0, y2 = 0
 )
 
 ggplot(economics, aes(date, unemploy)) +
   geom_area(fill = list(gradient), colour = "black")
 ```
 
-### Exercise 1.2.4
+For a vertical gradient, keep `x1` and `x2` the same.
+A numeric value of 0 is on the left and a value of 1 is on the right.
+
+```{r}
+gradient <- linearGradient(
+  colours = hcl.colors(100),
+  x1 = 0, x2 = 0
+)
+
+ggplot(economics, aes(date, unemploy)) +
+  geom_area(fill = list(gradient), colour = "black")
+```
+
+:::
+
+::::
+
+### Exercise 2.2.2
 
 The following code sets up a crosshatch pattern that can be used as the `fill` aesthetic.
 
@@ -129,16 +217,43 @@ ggplot(economics, aes(date, unemploy)) +
   geom_area(fill = crosshatch, colour = "black")
 ```
 
+:::: {.panel-tabset}
+
+#### Exercise
+
 Create a new pattern of your liking.
 Can you design a polka-dot or checkerboard pattern?
 You can use `grid::circleGrob()` and `grid::rectGrob()` for circles and rectangles respectively.
 We'll use it to create a manual fill scale of patterns.
 
-```{r}
-#| eval: false
-#| label: ex-1.2.4
+```{webr}
+#| setup: true
+#| exercise: ex_222
+library(grid)
+width <- height <- unit(3, "mm")
+crosshatch <- pattern(
+  segmentsGrob(
+    x0 = c(0, 1), x1 = c(1, 0), 
+    y0 = c(0, 0), y1 = c(1, 1),
+    gp = gg_par(col = "black", lwd = 0.5),
+    vp = viewport(width = width, height = height)
+  ),
+  width = width, height = height,
+  extend = "repeat"
+)
+gradient <- linearGradient(
+  colours = hcl.colors(100),
+  y1 = 0, y2 = 0
+)
+```
+
+
+
+```{webr}
+#| exercise: ex_222
+#| dev: ragg_png
 my_pattern <- pattern(
-  ...
+  ______
 )
 
 patterns <- list(
@@ -153,9 +268,29 @@ ggplot(palmerpenguins::penguins) +
   scale_fill_manual(values = patterns)
 ```
 
+#### Hints
+
+:::{.hint exercise="ex_222"}
+
+It helps to create a `viewport(width, height)` at the grob-level and coordinate this size with the `pattern(width, height)` arguments.
+
+:::
+
+:::{.hint exercise="ex_222"}
+
+It helps to create a `viewport(width, height)` at the grob-level and coordinate this size with the `pattern(width, height)` arguments.
+
+You can take the code to create the `crosshatch` pattern as a template and swap out the `segmentsGrob()` for another grob.
+
+:::
+
+#### Solution
+
+::: {.solution exercise="ex_222"}
+
+We're showing both a polkadot pattern and a checkboard pattern.
+
 ```{r}
-#| include: !expr isTRUE(params$answers)
-#| label: ex-1.2.4-solution
 polkadot <- pattern(
   circleGrob(
     x = c(0.2, 0.7), y = c(0.2, 0.7), r = 0.15,
@@ -178,10 +313,10 @@ checkerboard <- pattern(
 )
 
 patterns <- list(
-  crosshatch,
-  gradient,
   polkadot,
-  checkerboard
+  checkerboard,
+  crosshatch,
+  gradient
 )
 
 ggplot(palmerpenguins::penguins) +
@@ -190,26 +325,50 @@ ggplot(palmerpenguins::penguins) +
   scale_fill_manual(values = patterns)
 ```
 
-## Delayed evaluation
+:::
 
-### Exercise 1.2.5
+::::
+
+## Exercise 2.3.1: Delayed evaluation
+
+:::: {.panel-tabset}
+
+### Exercise
 
 In the plot below, can you redirect the `alpha` aesthetic to represent the `count` computed variable?
-You can set the `fill` aesthetic to a fixed colour like `"black"`.
 For an extra challenge, can you use `scale_alpha_continuous()` to anchor 0 at complete transparency?
 
-```{r}
-#| label: ex-1.2.5
+```{webr}
+#| exercise: ex_231
 ggplot(diamonds) +
   aes(carat, price) +
   stat_bin_2d(
+    ______,
     binwidth = c(0.05, 200)
   )
 ```
 
+### Hints
+
+::: {.hint exercise="ex_231"}
+
+You can use `after_stat(count)` inside an `aes()` statement to access the computed variable.
+
+:::
+
+::: {.hint exercise="ex_231"}
+
+You can use `after_stat(count)` inside an `aes()` statement to access the computed variable.
+
+To disable the default `fill` aesthetic, you can set `fill = "black"` outside `aes()`.
+
+:::
+
+### Solution
+
+::: {.solution exercise="ex_231"}
 
 ```{r}
-#| include: !expr isTRUE(params$answers)
 #| label: ex-1.2.5-solution
 ggplot(diamonds) +
   aes(carat, price) +
@@ -224,15 +383,15 @@ ggplot(diamonds) +
   )
 ```
 
-## Polar coordinates
+:::
 
-### Exercise 1.2.6
+::::
+
+## Exercise 2.4.1: Polar coordinates
 
 Plot `p` displays a Cartesian bar chart of car manufacturers.
-Add a `coord_radial()` with arguments to `p` to make a half-ring shape coxcomb/windrose chart with nicely displayed text.
 
 ```{r}
-#| label: ex-1.2.6
 p <- ggplot(mpg) +
   aes(manufacturer, label = manufacturer) +
   geom_bar() +
@@ -246,9 +405,48 @@ p <- ggplot(mpg) +
 p
 ```
 
+:::: {.panel-tabset}
+
+### Exercise
+
+Add a `coord_radial()` with arguments to `p` to make a half-ring shape coxcomb/windrose chart with nicely displayed text.
+
+```{webr}
+#| exercise: ex_241
+#| setup: true
+p <- ggplot(mpg) +
+  aes(manufacturer, label = manufacturer) +
+  geom_bar() +
+  geom_text(
+    aes(y = 37),
+    # Prevent duplicated labels
+    data = ~ dplyr::filter(.x, !duplicated(manufacturer)),
+    angle = 90, hjust = 1
+  ) +
+  scale_x_discrete(guide = "none")
+p
+```
+
+```{webr}
+#| exercise: ex_241
+p + ______
+```
+
+### Hints
+
+::: {.hint exercise="ex_241"}
+
+A windrose chart is a bar chart in polar coordinates where the base of the bars are anchored in the centre and bars radiate outward.
+
+To achieve a ring shape, you can set the `inner.radius` argument.
+
+:::
+
+### Solution
+
+::: {.solution exercise="ex_241"}
+
 ```{r}
-#| include: !expr isTRUE(params$answers)
-#| label: ex-1.2.6-solution
 p + coord_radial(
   rotate.angle = TRUE, 
   start = -0.5 * pi, end = 0.5 * pi,
@@ -256,9 +454,25 @@ p + coord_radial(
 )
 ```
 
-## Facets
+:::
 
-### Exercise 1.2.7
+::::
+
+## Exercise 2.5.1: Facets
+
+We have the following facetted plot:
+
+```{r}
+ggplot(diamonds) +
+  aes(carat, price) +
+  geom_point(shape = ".") +
+  facet_wrap(~ cut, dir = "lt")
+```
+
+
+:::: {.panel-tabset}
+
+### Exercise
 
 Given the following code, adapt the `facet_wrap()` statement to:
 
@@ -266,16 +480,35 @@ Given the following code, adapt the `facet_wrap()` statement to:
 * Place labelled axes at the bottom of every panel
 * Place axis ticks on all y-axes
 
-```{r}
-#| label: ex-1.2.7
+```{webr}
+#| exercise: ex_251
 ggplot(diamonds) +
   aes(carat, price) +
   geom_point(shape = ".") +
-  facet_wrap(~ cut, dir = "lt")
+  facet_wrap(~ cut, dir = "lt") # <- change me
 ```
 
+### Hints
+
+::: {.hint exercise="ex_251"}
+
+Note that the current order is to start at the top-left and facets are filled from left to right.
+We can understand this from the level order of the faceting variable.
+
 ```{r}
-#| include: !expr isTRUE(params$answers)
+#| collapse: true
+levels(diamonds$cut)
+```
+
+The mirrored order should start at the top-right and fill from right to left.
+
+:::
+
+### Solution
+
+::: {.solution exercise="ex_251"}
+
+```{r}
 #| label: ex-1.2.7-solution
 ggplot(diamonds) +
   aes(carat, price) +
@@ -288,3 +521,6 @@ ggplot(diamonds) +
   )
 ```
 
+:::
+
+::::

@@ -1,5 +1,6 @@
 ---
 title: "Exercises for session 4"
+toc: true
 webr:
   repos:
     - https://repo.r-wasm.org
@@ -12,6 +13,7 @@ webr:
     - ragg
     - palmerpenguins
     - legendry
+    - MASS
 ---
 
 {{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
@@ -116,6 +118,8 @@ p
 
 ### Exercise
 
+<!-- the webr example doesn't render emoji properly -->
+
 Make a discrete shape palette using emoji.
 You can pick a theme like 'farm animals', 'bugs', 'flowers' or other symbols.
 Set it as the default palette in the `theme()`.
@@ -217,6 +221,8 @@ p
 :::: {.panel-tabset}
 
 ### Exercise
+
+<!-- the webr example doesn't render unicode properly -->
 
 Pick some topic that has a strong association with a colour scheme.
 It can be a forest, the ocean, the desert or something you come up with.
