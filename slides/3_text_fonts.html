@@ -402,7 +402,7 @@ font family 'FANCY FONT' not found in PostScript font database</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 181
 Columns: 9
-$ path      &lt;chr&gt; "/tmp/Rtmp09qNrc/Barrio-regular.ttf", "/tmp/Rtmp09qNrc/Monte…
+$ path      &lt;chr&gt; "/tmp/RtmpfO9lQm/Barrio-regular.ttf", "/tmp/RtmpfO9lQm/Monte…
 $ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
 $ name      &lt;chr&gt; "Barrio-Regular", "MonteCarlo-Regular", "Datalegreya-Thin", …
 $ family    &lt;chr&gt; "Barrio", "MonteCarlo", "Datalegreya", "Datalegreya", "Datal…
@@ -706,19 +706,19 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">names</span>(<span class="fu">classic_style</span>()[[<span class="dv">1</span>]]<span class="sc">$</span>base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "size"               "background"         "color"             
- [4] "family"             "weight"             "italic"            
- [7] "width"              "features"           "lineheight"        
-[10] "align"              "tracking"           "indent"            
-[13] "hanging"            "margin_top"         "margin_right"      
-[16] "margin_bottom"      "margin_left"        "padding_top"       
-[19] "padding_right"      "padding_bottom"     "padding_left"      
-[22] "border"             "border_size_top"    "border_size_right" 
-[25] "border_size_bottom" "border_size_left"   "border_radius"     
-[28] "outline"            "outline_width"      "outline_join"      
-[31] "outline_mitre"      "bullets"            "underline"         
-[34] "strikethrough"      "baseline"           "img_asp"           
-[37] "text_direction"    </code></pre>
+<pre><code> [1] "size"                "background"          "color"              
+ [4] "family"              "weight"              "italic"             
+ [7] "width"               "features"            "lineheight"         
+[10] "align"               "tracking"            "indent"             
+[13] "hanging"             "margin_top"          "margin_right"       
+[16] "margin_bottom"       "margin_left"         "padding_top"        
+[19] "padding_right"       "padding_bottom"      "padding_left"       
+[22] "border"              "border_width_top"    "border_width_right" 
+[25] "border_width_bottom" "border_width_left"   "border_type"        
+[28] "border_radius"       "outline"             "outline_width"      
+[31] "outline_type"        "outline_join"        "outline_mitre"      
+[34] "bullets"             "underline"           "strikethrough"      
+[37] "baseline"            "img_asp"             "text_direction"     </code></pre>
 </div>
 </div></li>
 </ul>
@@ -820,21 +820,29 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <span id="cb23-6"><a></a>  <span class="st">"*"</span></span>
 <span id="cb23-7"><a></a>)</span>
 <span id="cb23-8"><a></a>style <span class="ot">&lt;-</span> <span class="fu">classic_style</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb23-9"><a></a>  <span class="fu">modify_style</span>(<span class="st">"body"</span>, <span class="at">outline =</span> <span class="st">"white"</span>)</span>
-<span id="cb23-10"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb23-11"><a></a>  penguins, </span>
-<span id="cb23-12"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> bill_len, <span class="at">y =</span> flipper_len)</span>
-<span id="cb23-13"><a></a>) <span class="sc">+</span> </span>
-<span id="cb23-14"><a></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb23-15"><a></a>    <span class="fu">aes</span>(<span class="at">colour =</span> <span class="fu">I</span>(<span class="fu">ifelse</span>(outlier, <span class="st">"red"</span>, <span class="st">"black"</span>)))</span>
-<span id="cb23-16"><a></a>  ) <span class="sc">+</span> </span>
-<span id="cb23-17"><a></a>  <span class="fu">geom_marquee</span>(</span>
-<span id="cb23-18"><a></a>    <span class="fu">aes</span>(<span class="at">label =</span> text), </span>
-<span id="cb23-19"><a></a>    <span class="at">data =</span> penguins[penguins<span class="sc">$</span>outlier,],</span>
-<span id="cb23-20"><a></a>    <span class="at">style =</span> style,</span>
-<span id="cb23-21"><a></a>    <span class="at">hjust =</span> <span class="dv">1</span>,</span>
-<span id="cb23-22"><a></a>    <span class="at">vjust =</span> <span class="dv">1</span></span>
-<span id="cb23-23"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-9"><a></a>  <span class="fu">modify_style</span>(</span>
+<span id="cb23-10"><a></a>    <span class="st">"body"</span>, </span>
+<span id="cb23-11"><a></a>    <span class="at">border =</span> <span class="st">"black"</span>,</span>
+<span id="cb23-12"><a></a>    <span class="at">border_width =</span> <span class="fu">trbl</span>(<span class="dv">1</span>),</span>
+<span id="cb23-13"><a></a>    <span class="at">border_radius =</span> <span class="dv">3</span>,</span>
+<span id="cb23-14"><a></a>    <span class="at">padding =</span> <span class="fu">trbl</span>(<span class="dv">2</span>),</span>
+<span id="cb23-15"><a></a>    <span class="at">margin =</span> <span class="fu">trbl</span>(<span class="dv">0</span>)</span>
+<span id="cb23-16"><a></a>  )</span>
+<span id="cb23-17"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb23-18"><a></a>  penguins, </span>
+<span id="cb23-19"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> bill_len, <span class="at">y =</span> flipper_len)</span>
+<span id="cb23-20"><a></a>) <span class="sc">+</span> </span>
+<span id="cb23-21"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb23-22"><a></a>    <span class="fu">aes</span>(<span class="at">colour =</span> <span class="fu">I</span>(<span class="fu">ifelse</span>(outlier, <span class="st">"red"</span>, <span class="st">"black"</span>)))</span>
+<span id="cb23-23"><a></a>  ) <span class="sc">+</span> </span>
+<span id="cb23-24"><a></a>  <span class="fu">geom_marquee</span>(</span>
+<span id="cb23-25"><a></a>    <span class="fu">aes</span>(<span class="at">label =</span> text), </span>
+<span id="cb23-26"><a></a>    <span class="at">data =</span> penguins[penguins<span class="sc">$</span>outlier,],</span>
+<span id="cb23-27"><a></a>    <span class="at">fill =</span> <span class="st">"white"</span>,</span>
+<span id="cb23-28"><a></a>    <span class="at">style =</span> style,</span>
+<span id="cb23-29"><a></a>    <span class="at">hjust =</span> <span class="dv">1</span>,</span>
+<span id="cb23-30"><a></a>    <span class="at">vjust =</span> <span class="dv">1</span></span>
+<span id="cb23-31"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>

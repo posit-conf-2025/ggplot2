@@ -227,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="preparation" class="level2">
 <h2 class="anchored" data-anchor-id="preparation">Preparation</h2>
 <p>This workshop expects familiarity with ggplot2 and the grammar of graphics. In order to have time for more advanced topics we will not spend time taking about how to use ggplot2 in general, nor its design philosophy and how it ties into the grammar of graphics. If you are not yet at this level we advise that you read through https://ggplot2-book.org to the extend possible.</p>
-<p>Participants are expected to bring their own laptop with a working installation of R (preferably the latest version), as well as the latest versions of the following packages:</p>
+<p>Participants are expected to bring their own laptop with a working installation of R (preferably the latest version), as well as the latest versions of the following packages (we unfortunately need the dev version of ggplot2 and ggiraph):</p>
 <ul>
 <li>ggplot2</li>
 <li>patchwork</li>
@@ -237,20 +237,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>ggiraph</li>
 <li>legendry</li>
 <li>ggfx</li>
+<li>ggpattern</li>
+<li>gridpattern</li>
+<li>tibble</li>
+<li>dplyr</li>
+<li>gapminder</li>
+<li>gganimate</li>
+<li>gifski</li>
+<li>gridGraphics</li>
 </ul>
 <p>They can be installed with this code (if you don’t have pak installed already you can do so with <code>install.packages("pak")</code>).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("pak")</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="fu">c</span>(</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ggplot2"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"tidyverse/ggplot2"</span>,</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"patchwork"</span>,</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"marquee"</span>,</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"systemfonts"</span>,</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ragg"</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ggiraph"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"davidgohel/ggiraph"</span>,</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"legendry"</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ggfx"</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ggfx"</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ggpattern"</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gridpattern"</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"tibble"</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"dplyr"</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gapminder"</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gganimate"</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gifski"</span>,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gridGraphics"</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If you have trouble installing any of these packages please contact the instructors so we can sort it out before the workshop starts.</p>
 </section>
