@@ -2,6 +2,11 @@
 title: Exercises for session 5
 ---
 
+```{r setup}
+library(ggplot2)
+library(ptchwork)
+```
+
 ## 5.1 Patchwork Composition
 
 ## Exercise 5.1.1
