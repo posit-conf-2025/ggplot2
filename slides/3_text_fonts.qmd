@@ -235,7 +235,7 @@ Now you too can **sound like an llm**
 
 _Here is what you need:_
 
-* Add boldness to text at random
+* Add **boldness** to text at *random*
 * Put everything in lists  
 ✅ Make those lists use emojis
 
@@ -261,9 +261,10 @@ marquee uses cli-esque syntax for custom spans.
 
 ```{r}
 text <- "
-Some {.red *red* text} and some {#00FF00 *green* text}
-walked into a {.30 huge} bar and said to the {.person barman}:
-”Can I get a glass of H{.sub 2}O?”
+Some {.red *red* text} and some {#00FF00 *green*
+text} walked into a {.30 huge} bar and said to 
+the {.person barman}: ”Can I get a glass of 
+H{.sub 2}O?”
 "
 
 grid::grid.draw(marquee_grob(text))
@@ -318,7 +319,7 @@ grid::grid.draw(marquee_grob(text))
 
 ## Styling
 
-* Each tag can be styled with 37 different properties
+* Each tag can be styled with `r length(classic_style()[[1]]$base)` different properties
   ```{r}
   #| output-location: default
 
@@ -394,7 +395,7 @@ grid::grid.draw(
 ## `geom_marquee()`
 
 ```{r}
-#| code-line-numbers: "|16-22"
+#| code-line-numbers: "|24-31"
 penguins$outlier <- penguins$bill_len > 55 & 
   penguins$flipper_len < 190
 penguins$text <- paste0(
@@ -486,7 +487,7 @@ ggplot(penguins) +
 Overview of how bill length and flipper length relate to each other
 in the penguin species *Adelie* <<1>>, *Chinstrap* <<2>>, and 
 *Gentoo* <<3>>.",
-    guide = guide_marquee(width = unit(2.75, "in"))
+    guide = guide_marquee(width = unit(4.2, "in"))
   )
 ```
 
@@ -500,7 +501,7 @@ ggplot(penguins) +
 Overview of how bill length and flipper length relate to each other
 in the penguin species {.1 *Adelie*}, {.2 *Chinstrap*}, and 
 {.3 *Gentoo*}.",
-    guide = guide_marquee(width = unit(2.75, "in"))
+    guide = guide_marquee(width = unit(4.2, "in"))
   )
 ```
 

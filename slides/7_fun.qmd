@@ -368,21 +368,21 @@ ggplot(penguins) +
 
 ::: {.column}
 ##### Transitions
-Defines the temporal interpretation of the data
+*Defines the temporal interpretation of the data*
 
 ##### Views
-Controls how position scales changes
+*Controls how position scales changes*
 
 ##### Shadows
-Allows the display of data from other frames
+*Allows the display of data from other frames*
 :::
 
 ::: {.column}
 ##### Easing
-Defines the shape of the interpolation
+*Defines the shape of the interpolation*
 
 ##### Enter / Exit
-Controls how data move in and out of the animation
+*Controls how data move in and out of the animation*
 :::
 
 ::::
