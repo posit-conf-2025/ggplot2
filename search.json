@@ -256,7 +256,7 @@
     "href": "index.html",
     "title": "Mastering Data Visualization with ggplot2",
     "section": "",
-    "text": "by Thomas Lin Pedersen and Teun van den Brand\n🗓   September 16, 2025 ⏰   09:00 - 17:00 🏨   ROOM TBD ✍️   pos.it/conf"
+    "text": "by Thomas Lin Pedersen and Teun van den Brand\n🗓   September 16, 2025 ⏰   09:00 - 17:00 🏨   Grand Hall East C ✍️   pos.it/conf"
   },
   {
     "objectID": "index.html#description",
@@ -648,18 +648,25 @@
     "href": "slides/7_fun.html#shapes",
     "title": "Spice up your plot",
     "section": "Shapes",
-    "text": "Shapes\n\nSuper-charged geom_polygon()\nRound corners\nExpand and subtract based on absolute sizes\n\n\n\nggplot(positions, aes(x = x, y = y, group = id)) +\n  geom_shape(aes(fill = id))"
+    "text": "Shapes\n\nSuper-charged geom_polygon()\nRound corners\nExpand and subtract based on absolute sizes"
   },
   {
     "objectID": "slides/7_fun.html#shapes-1",
     "href": "slides/7_fun.html#shapes-1",
     "title": "Spice up your plot",
     "section": "Shapes",
-    "text": "Shapes\n\n\nggplot(\n  positions, \n  aes(x = x, y = y, group = id)\n) +\n  geom_shape(\n    aes(fill = id), \n    radius = unit(5, \"mm\")\n  )"
+    "text": "Shapes\n\n\nggplot(positions, aes(x = x, y = y, group = id)) +\n  geom_shape(aes(fill = id))"
   },
   {
     "objectID": "slides/7_fun.html#shapes-2",
     "href": "slides/7_fun.html#shapes-2",
+    "title": "Spice up your plot",
+    "section": "Shapes",
+    "text": "Shapes\n\n\nggplot(\n  positions, \n  aes(x = x, y = y, group = id)\n) +\n  geom_shape(\n    aes(fill = id), \n    radius = unit(5, \"mm\")\n  )"
+  },
+  {
+    "objectID": "slides/7_fun.html#shapes-3",
+    "href": "slides/7_fun.html#shapes-3",
     "title": "Spice up your plot",
     "section": "Shapes",
     "text": "Shapes\n\n\nggplot(\n  positions, \n  aes(x = x, y = y, group = id)\n) +\n  geom_shape(\n    aes(fill = id), \n    expand = -unit(2, \"mm\")\n  )"
@@ -711,7 +718,7 @@
     "href": "slides/7_fun.html#marks-6",
     "title": "Spice up your plot",
     "section": "Marks",
-    "text": "Marks\n\n\np + \n  geom_mark_ellipse(\n    aes(\n      filter = species == \"Gentoo\",\n      label = \"Gentoo Penguins\",\n      description = \"This is by far the most interesting penguin\"\n    ), \n    fill = \"steelblue\"\n  )\n\n\n\n\n\n\n\n\n\n(geom_mark_*() is not yet marquee-aware)"
+    "text": "Marks\n\n\np + \n  geom_mark_ellipse(\n    aes(\n      filter = species == \"Gentoo\",\n      label = \"Gentoo Penguins\",\n      description = \"This is by far the most interesting penguin\"\n    ), \n    fill = \"steelblue\",\n    label.fontsize = 9\n  )\n\n\n\n\n\n\n\n\n\n(geom_mark_*() is not yet marquee-aware)"
   },
   {
     "objectID": "slides/7_fun.html#links",
@@ -1257,7 +1264,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpQ1NTQR/Barrio-regular.ttf\", \"/tmp/RtmpQ1NTQR/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmphSEJq1/Barrio-regular.ttf\", \"/tmp/RtmphSEJq1/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
