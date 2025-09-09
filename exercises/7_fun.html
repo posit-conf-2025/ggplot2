@@ -253,7 +253,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJjYW52YXMiOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> bill_len, <span class="at">y =</span> flipper_len, <span class="at">color =</span> species)) <span class="sc">+</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">with_motion_blur</span>(</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>),</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sigma =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">2</span>, <span class="st">'mm'</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sigma =</span> <span class="fu">unit</span>(<span class="dv">2</span>, <span class="st">'mm'</span>),</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">angle =</span> <span class="dv">35</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -333,7 +333,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJjYW52YXMiOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(positions, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">group =</span> id)) <span class="sc">+</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_shape</span>(</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">fill =</span> id), </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">radius =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">5</span>, <span class="st">"mm"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">radius =</span> <span class="fu">unit</span>(<span class="dv">5</span>, <span class="st">"mm"</span>)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>

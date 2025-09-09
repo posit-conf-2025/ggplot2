@@ -158,14 +158,14 @@
     "href": "slides/6_extensions.html#theme-extensions",
     "title": "Creating extensions",
     "section": "Theme extensions",
-    "text": "Theme extensions\nUsually wrap some standard ggplot2 theme code.\n\ncowplot::theme_cowplot()\nggthemes::theme_economist()\nSession 4: Build your own theme\n\n\n\nbland_plot &lt;- ggplot(mpg, aes(displ, hwy)) +\n  geom_point()\n\nmy_theme &lt;- function(...) {\n  theme_gray() + theme(geom = element_geom(ink = \"red\"))\n}\n\nbland_plot + my_theme()"
+    "text": "Theme extensions\nUsually wrap some standard ggplot2 theme code.\n\ncowplot::theme_cowplot()\nggthemes::theme_economist()\nSession 4: Build your own theme\n\n\n\nbland_plot &lt;- ggplot(mpg, aes(displ, hwy)) +\n  geom_point()\n\nmy_theme &lt;- function(...) {\n  theme_gray() + \n    theme(geom = element_geom(ink = \"red\"))\n}\n\nbland_plot + my_theme()"
   },
   {
     "objectID": "slides/6_extensions.html#scale-extensions",
     "href": "slides/6_extensions.html#scale-extensions",
     "title": "Creating extensions",
     "section": "Scale extensions",
-    "text": "Scale extensions\nOften wrappers for novelty aesthetics or scale parameters.\n\ncontinuous_scale()\nbinned_scale()\ndiscrete_scale()\n\n\n\nscale_x_asinh &lt;- function(...) {\n  scale_x_continuous(transform = scales::transform_asinh())\n}\n\nbland_plot + scale_x_asinh()"
+    "text": "Scale extensions\nOften wrappers for novelty aesthetics or scale parameters.\n\ncontinuous_scale()\nbinned_scale()\ndiscrete_scale()\n\n\n\nscale_x_asinh &lt;- function(...) {\n  scale_x_continuous(\n    transform = scales::transform_asinh()\n  )\n}\n\nbland_plot + scale_x_asinh()"
   },
   {
     "objectID": "slides/6_extensions.html#the-dark-side-of-ggplot2-ggproto",
@@ -193,7 +193,7 @@
     "href": "slides/6_extensions.html#ggproto-esoterica-2",
     "title": "Creating extensions",
     "section": "ggproto esoterica",
-    "text": "ggproto esoterica\nExtendible classes are stateless: fields don’t mutate during plot building. State is primarily encoded in the data, and secondarily in params managed by ggplot2’s internals. Fields should be ‘read only’.\n\nAddNumber &lt;- ggproto(\n  \"AddNumber\",\n  state = 0,\n  add = function(self, number) {\n    # We read and write the 'state' field\n    # Do not do this!\n    self$state &lt;- self$state + number\n    self$state\n  }\n)\nAddNumber$add(10)\n## [1] 10\nAddNumber$add(5)\n## [1] 15"
+    "text": "ggproto esoterica\nExtendible classes are stateless: fields don’t mutate during plot building. State is primarily encoded in the data, and secondarily in params managed by ggplot2’s internals. Fields should be ‘read only’.\n\nAddNumber &lt;- ggproto(\n  \"AddNumber\",\n  state = 0,\n  add = function(self, number) {\n    # We read and write the 'state' field\n    # Do not do this in serious code!\n    self$state &lt;- self$state + number\n    self$state\n  }\n)\nAddNumber$add(10)\n## [1] 10\nAddNumber$add(5)\n## [1] 15"
   },
   {
     "objectID": "slides/6_extensions.html#build-your-own-stat",
@@ -347,7 +347,7 @@
     "href": "exercises/3_text_fonts.html#using-geom_marquee-in-ggplot2",
     "title": "Exercises for session 3",
     "section": "3.4 Using geom_marquee in ggplot2",
-    "text": "3.4 Using geom_marquee in ggplot2\n\nExercise 3.4.1HintsSolution\n\n\nCreate a scatter plot of bill length vs flipper length from the penguins dataset. Use geom_marquee() to label at least two points with formatted text (including italics or bold). Experiment with the width aesthetic to force automatic line breaking\n\n\n\n\n\n\n\n\n\n\n\nYou can use geom_marquee() with some coordinates to place formatted text labels. To choose points to label, you might want to filter the penguins data for specific individuals.\n\n\n\n\n# Find some interesting points to label\nadelie &lt;- subset(penguins, species == \"Adelie\" & bill_len &gt; 45)[1, ]\ngentoo &lt;- subset(penguins, species == \"Gentoo\" & flipper_len &gt; 230)[1, ]\npenguins2 &lt;- rbind(adelie, gentoo)\npenguins2$label &lt;- c(\n  \"*Adelie* penguin with **large bill**\",\n  \"*Gentoo* penguin with **long flippers**\"\n)\n\nggplot(penguins, aes(bill_len, flipper_len)) + \n  geom_point(aes(color = species)) +\n  geom_marquee(\n    aes(label = label), \n    data = penguins2,\n    width = grid::unit(3, \"cm\"),\n    hjust = 0,\n    vjust = 1\n  ) + \n  theme(legend.position = \"bottom\")\n\n\n\n\n\n\nExercise 3.4.2HintsSolution\n\n\nCreate a plot and use element_marquee() to customize the plot title, subtitle, and axis titles. Make the titles include formatted text (like bold or italic words) and use a custom font.\n\n\n\n\n\n\n\n\n\n\n\nYou can use element_marquee() to replace standard text elements in the theme. For example, plot.title = element_marquee(...) for the title. Remember to use markdown formatting in your text.\n\n\n\n\nsystemfonts::require_font(\"Spectral\")\nsystemfonts::require_font(\"Exo 2\")\n\nggplot(penguins, aes(bill_len, flipper_len)) + \n  geom_point(aes(color = species)) +\n  labs(\n    title = \"**Penguin** *Measurements*\",\n    subtitle = \"Analysis of *bill length* vs *flipper length*\",\n    x = \"*Bill Length* (mm)\",\n    y = \"*Flipper Length* (mm)\"\n  ) +\n  theme(\n    plot.title = element_marquee(family = \"Spectral\", size = 16),\n    plot.subtitle = element_marquee(family = \"Exo 2\", size = 12),\n    axis.title.x = element_marquee(family = \"Exo 2\", size = 10),\n    axis.title.y = element_marquee(family = \"Exo 2\", size = 10)\n  )\n\n\n\n\n\n\nExercise 3.4.3HintsSolution\n\n\nCreate a scatter plot with a color aesthetic for species. Use guide_marquee() to create a custom legend that includes text describing the penguin species colouring the species name and includind the keys as well.\n\n\n\n\n\n\n\n\n\n\n\nYou need to take care of two things:\n\nTell ggplot2 to use guide_marquee() for the color aesthetic\nProvide the markdown text that will be used for the legend\n\n\n\nThe two things can be accomplished in different ways\n\nThe guide type can be specified with guides() or within scale_color_*()\nThe text can be provided in the guide_marquee() constructor, in the scale constructor, or with labs()\n\n\n\n\n\nlegend_text &lt;- \"\nAn overview of the relationship between flipper and bill length between \n{.Adelie *Adelie*} &lt;&lt;Adelie&gt;&gt;, {.Chinstrap *Chinstrap*} &lt;&lt;Chinstrap&gt;&gt;, and \n{.Gentoo *Gentoo*} &lt;&lt;Gentoo&gt;&gt; penguins\n\"\nggplot(penguins, aes(bill_len, flipper_len, color = species)) + \n  geom_point() +\n  guides(color = \"marquee\") + \n  labs(color = legend_text)"
+    "text": "3.4 Using geom_marquee in ggplot2\n\nExercise 3.4.1HintsSolution\n\n\nCreate a scatter plot of bill length vs flipper length from the penguins dataset. Use geom_marquee() to label at least two points with formatted text (including italics or bold). Experiment with the width aesthetic to force automatic line breaking\n\n\n\n\n\n\n\n\n\n\n\nYou can use geom_marquee() with some coordinates to place formatted text labels. To choose points to label, you might want to filter the penguins data for specific individuals.\n\n\n\n\n# Find some interesting points to label\nadelie &lt;- subset(penguins, species == \"Adelie\" & bill_len &gt; 45)[1, ]\ngentoo &lt;- subset(penguins, species == \"Gentoo\" & flipper_len &gt; 230)[1, ]\npenguins2 &lt;- rbind(adelie, gentoo)\npenguins2$label &lt;- c(\n  \"*Adelie* penguin with **large bill**\",\n  \"*Gentoo* penguin with **long flippers**\"\n)\n\nggplot(penguins, aes(bill_len, flipper_len)) + \n  geom_point(aes(color = species)) +\n  geom_marquee(\n    aes(label = label), \n    data = penguins2,\n    width = unit(3, \"cm\"),\n    hjust = 0,\n    vjust = 1\n  ) + \n  theme(legend.position = \"bottom\")\n\n\n\n\n\n\nExercise 3.4.2HintsSolution\n\n\nCreate a plot and use element_marquee() to customize the plot title, subtitle, and axis titles. Make the titles include formatted text (like bold or italic words) and use a custom font.\n\n\n\n\n\n\n\n\n\n\n\nYou can use element_marquee() to replace standard text elements in the theme. For example, plot.title = element_marquee(...) for the title. Remember to use markdown formatting in your text.\n\n\n\n\nsystemfonts::require_font(\"Spectral\")\nsystemfonts::require_font(\"Exo 2\")\n\nggplot(penguins, aes(bill_len, flipper_len)) + \n  geom_point(aes(color = species)) +\n  labs(\n    title = \"**Penguin** *Measurements*\",\n    subtitle = \"Analysis of *bill length* vs *flipper length*\",\n    x = \"*Bill Length* (mm)\",\n    y = \"*Flipper Length* (mm)\"\n  ) +\n  theme(\n    plot.title = element_marquee(family = \"Spectral\", size = 16),\n    plot.subtitle = element_marquee(family = \"Exo 2\", size = 12),\n    axis.title.x = element_marquee(family = \"Exo 2\", size = 10),\n    axis.title.y = element_marquee(family = \"Exo 2\", size = 10)\n  )\n\n\n\n\n\n\nExercise 3.4.3HintsSolution\n\n\nCreate a scatter plot with a color aesthetic for species. Use guide_marquee() to create a custom legend that includes text describing the penguin species colouring the species name and includind the keys as well.\n\n\n\n\n\n\n\n\n\n\n\nYou need to take care of two things:\n\nTell ggplot2 to use guide_marquee() for the color aesthetic\nProvide the markdown text that will be used for the legend\n\n\n\nThe two things can be accomplished in different ways\n\nThe guide type can be specified with guides() or within scale_color_*()\nThe text can be provided in the guide_marquee() constructor, in the scale constructor, or with labs()\n\n\n\n\n\nlegend_text &lt;- \"\nAn overview of the relationship between flipper and bill length between \n{.Adelie *Adelie*} &lt;&lt;Adelie&gt;&gt;, {.Chinstrap *Chinstrap*} &lt;&lt;Chinstrap&gt;&gt;, and \n{.Gentoo *Gentoo*} &lt;&lt;Gentoo&gt;&gt; penguins\n\"\nggplot(penguins, aes(bill_len, flipper_len, color = species)) + \n  geom_point() +\n  guides(color = \"marquee\") + \n  labs(color = legend_text)"
   },
   {
     "objectID": "exercises/5_composition.html",
@@ -445,14 +445,14 @@
     "href": "exercises/7_fun.html#adding-effects-with-ggfx",
     "title": "Exercises for session 7",
     "section": "7.1 Adding effects with ggfx",
-    "text": "7.1 Adding effects with ggfx\n\nExercise 7.1.1HintsSolution\n\n\nUse with_motion_blur() to add directional blur to a scatterplot of bill length vs. flipper length in the penguins dataset. Experiment with different values for the sigma and angle arguments to see how it affects the appearance.\n\n\n\n\n\n\n\n\n\n\n\nYou need to use with_motion_blur() to wrap around the geom_point() layer. The sigma parameter controls the amount of blur - try values between 1 and 5 using grid::unit() with ‘mm’ or ‘pt’ units. Angle gives the direction of the blur\n\n\n\n\nggplot(penguins, aes(x = bill_len, y = flipper_len, color = species)) +\n  with_motion_blur(\n    geom_point(size = 3),\n    sigma = grid::unit(2, 'mm'),\n    angle = 35\n  )\n\n\n\n\n\n\nExercise 7.1.2HintsHintsSolution\n\n\nCreate a plot using as_reference() and use with_blend() to create a masking effect. Make a density plot of bill depth vs. body mass, then punch holes in it where the data points are\n\n\n\n\n\n\n\n\n\n\n\nYou’ll need one layer inside an as_reference() and one layer inside a with_blend(). which layer you put in which depend on the value of flip_order in with_blend()\n\n\n\n\nThe \"out\" blend mode only draws the content where the destination is empty\n\n\n\n\nggplot(penguins, aes(x = bill_dep, y = body_mass)) + \n  as_reference(\n    geom_point(size = 2),\n    id = \"points\"\n  ) +\n  with_blend(\n    geom_density_2d_filled(),\n    \"points\",\n    blend_type = \"out\"\n  )"
+    "text": "7.1 Adding effects with ggfx\n\nExercise 7.1.1HintsSolution\n\n\nUse with_motion_blur() to add directional blur to a scatterplot of bill length vs. flipper length in the penguins dataset. Experiment with different values for the sigma and angle arguments to see how it affects the appearance.\n\n\n\n\n\n\n\n\n\n\n\nYou need to use with_motion_blur() to wrap around the geom_point() layer. The sigma parameter controls the amount of blur - try values between 1 and 5 using grid::unit() with ‘mm’ or ‘pt’ units. Angle gives the direction of the blur\n\n\n\n\nggplot(penguins, aes(x = bill_len, y = flipper_len, color = species)) +\n  with_motion_blur(\n    geom_point(size = 3),\n    sigma = unit(2, 'mm'),\n    angle = 35\n  )\n\n\n\n\n\n\nExercise 7.1.2HintsHintsSolution\n\n\nCreate a plot using as_reference() and use with_blend() to create a masking effect. Make a density plot of bill depth vs. body mass, then punch holes in it where the data points are\n\n\n\n\n\n\n\n\n\n\n\nYou’ll need one layer inside an as_reference() and one layer inside a with_blend(). which layer you put in which depend on the value of flip_order in with_blend()\n\n\n\n\nThe \"out\" blend mode only draws the content where the destination is empty\n\n\n\n\nggplot(penguins, aes(x = bill_dep, y = body_mass)) + \n  as_reference(\n    geom_point(size = 2),\n    id = \"points\"\n  ) +\n  with_blend(\n    geom_density_2d_filled(),\n    \"points\",\n    blend_type = \"out\"\n  )"
   },
   {
     "objectID": "exercises/7_fun.html#working-with-ggforce",
     "href": "exercises/7_fun.html#working-with-ggforce",
     "title": "Exercises for session 7",
     "section": "7.2 Working with ggforce",
-    "text": "7.2 Working with ggforce\n\nExercise 7.2.1HintsSolution\n\n\nUse geom_shape() from ggforce to create a polygon plot with rounded corners. Start with the positions data from the slides and experiment with different radius values.\n\n\n\n\n\n\n\n\n\n\n\nTo create rounded corners with geom_shape(), use the radius parameter. Try setting it to different values like grid::unit(0.1, \"npc\") or grid::unit(5, \"mm\"). Larger values create more rounded corners.\nIf the radius get’s to large the shapes will disappear due to how it is implemented.\n\n\n\n\nggplot(positions, aes(x = x, y = y, group = id)) +\n  geom_shape(\n    aes(fill = id), \n    radius = grid::unit(5, \"mm\")\n  )\n\n\n\n\n\n\nExercise 7.2.2HintsSolution\n\n\nUse the mark geoms from ggforce (geom_mark_ellipse(), geom_mark_circle(), geom_mark_hull(), etc.) to highlight groups in a scatter plot. Add informative labels and descriptions to at least one of the groups.\nExperiment with the various setings of the mark geom to alter its look\n\n\n\n\n\n\n\n\n\n\n\nUse one of the geom_mark_*() functions like geom_mark_ellipse(), geom_mark_hull(), or geom_mark_rect().\nIn the aes(), use: - filter to select only certain species (e.g., filter = species == \"Adelie\") - label for a short title - description for additional information\nYou can also set parameters like fill, color, and alpha to control appearance.\nIf no label appears try to resize the plot or make the text smaller\n\n\n\n\nbase_plot +\n  geom_mark_ellipse(\n    aes(\n      filter = species == \"Gentoo\", \n      label = paste0(species, \" Penguins\"), \n      description = \"Species with the longest flippers and shortest bill depth\",\n      group = species\n    ),\n    fill = \"lightblue\",\n    color = \"blue\",\n    alpha = 0.2\n  )"
+    "text": "7.2 Working with ggforce\n\nExercise 7.2.1HintsSolution\n\n\nUse geom_shape() from ggforce to create a polygon plot with rounded corners. Start with the positions data from the slides and experiment with different radius values.\n\n\n\n\n\n\n\n\n\n\n\nTo create rounded corners with geom_shape(), use the radius parameter. Try setting it to different values like grid::unit(0.1, \"npc\") or grid::unit(5, \"mm\"). Larger values create more rounded corners.\nIf the radius get’s to large the shapes will disappear due to how it is implemented.\n\n\n\n\nggplot(positions, aes(x = x, y = y, group = id)) +\n  geom_shape(\n    aes(fill = id), \n    radius = unit(5, \"mm\")\n  )\n\n\n\n\n\n\nExercise 7.2.2HintsSolution\n\n\nUse the mark geoms from ggforce (geom_mark_ellipse(), geom_mark_circle(), geom_mark_hull(), etc.) to highlight groups in a scatter plot. Add informative labels and descriptions to at least one of the groups.\nExperiment with the various setings of the mark geom to alter its look\n\n\n\n\n\n\n\n\n\n\n\nUse one of the geom_mark_*() functions like geom_mark_ellipse(), geom_mark_hull(), or geom_mark_rect().\nIn the aes(), use: - filter to select only certain species (e.g., filter = species == \"Adelie\") - label for a short title - description for additional information\nYou can also set parameters like fill, color, and alpha to control appearance.\nIf no label appears try to resize the plot or make the text smaller\n\n\n\n\nbase_plot +\n  geom_mark_ellipse(\n    aes(\n      filter = species == \"Gentoo\", \n      label = paste0(species, \" Penguins\"), \n      description = \"Species with the longest flippers and shortest bill depth\",\n      group = species\n    ),\n    fill = \"lightblue\",\n    color = \"blue\",\n    alpha = 0.2\n  )"
   },
   {
     "objectID": "exercises/7_fun.html#animating-with-gganimate",
@@ -578,14 +578,14 @@
     "href": "slides/7_fun.html#filters",
     "title": "Spice up your plot",
     "section": "Filters",
-    "text": "Filters\n\n\nggplot(penguins, aes(x = flipper_len, y = bill_len)) +\n  with_blur(\n    geom_point(),\n    sigma = grid::unit(1, 'mm')\n  ) + \n  geom_smooth()"
+    "text": "Filters\n\n\nggplot(penguins, aes(x = flipper_len, y = bill_len)) +\n  with_blur(\n    geom_point(),\n    sigma = unit(1, 'mm')\n  ) + \n  geom_smooth()"
   },
   {
     "objectID": "slides/7_fun.html#filters-1",
     "href": "slides/7_fun.html#filters-1",
     "title": "Spice up your plot",
     "section": "Filters",
-    "text": "Filters\n\n\np &lt;- ggplot(penguins, aes(x = flipper_len, y = bill_len)) +\n  geom_point() + \n  geom_smooth()\n\nwith_outer_glow(\n  p, \n  colour = \"steelblue\", \n  sigma = grid::unit(1, \"mm\")\n)"
+    "text": "Filters\n\n\np &lt;- ggplot(penguins, aes(x = flipper_len, y = bill_len)) +\n  geom_point() + \n  geom_smooth()\n\nwith_outer_glow(\n  p, \n  colour = \"steelblue\", \n  sigma = unit(1, \"mm\")\n)"
   },
   {
     "objectID": "slides/7_fun.html#filters-2",
@@ -613,14 +613,14 @@
     "href": "slides/7_fun.html#references-2",
     "title": "Spice up your plot",
     "section": "References",
-    "text": "References\n\n\nggplot(penguins, aes(x = flipper_len, y = bill_len)) + \n  with_shadow(geom_smooth(alpha = 1, level = 0.99), sigma = grid::unit(0.5, \"mm\")) +\n  with_shadow(geom_point(), sigma = grid::unit(0.5, \"mm\"))"
+    "text": "References\n\n\nggplot(penguins, aes(x = flipper_len, y = bill_len)) + \n  with_shadow(geom_smooth(alpha = 1, level = 0.99), sigma = unit(0.5, \"mm\")) +\n  with_shadow(geom_point(), sigma = unit(0.5, \"mm\"))"
   },
   {
     "objectID": "slides/7_fun.html#references-3",
     "href": "slides/7_fun.html#references-3",
     "title": "Spice up your plot",
     "section": "References",
-    "text": "References\n\n\nggplot(penguins, aes(x = flipper_len, y = bill_len)) + \n  as_group(\n    geom_smooth(alpha = 1, level = 0.99),\n    geom_point(),\n    id = \"group_1\"\n  ) + \n  with_shadow(\"group_1\", sigma = grid::unit(0.5, \"mm\"))"
+    "text": "References\n\n\nggplot(penguins, aes(x = flipper_len, y = bill_len)) + \n  as_group(\n    geom_smooth(alpha = 1, level = 0.99),\n    geom_point(),\n    id = \"group_1\"\n  ) + \n  with_shadow(\"group_1\", sigma = unit(0.5, \"mm\"))"
   },
   {
     "objectID": "slides/7_fun.html#moar-filters",
@@ -641,7 +641,7 @@
     "href": "slides/7_fun.html#ggforce",
     "title": "Spice up your plot",
     "section": "ggforce",
-    "text": "ggforce\n\nThis is my grab-back package. Expect some chaos\nMain focus on powerful building blocks"
+    "text": "ggforce\n\nThis is my grab-bag package. Expect some chaos\nMain focus on powerful building blocks"
   },
   {
     "objectID": "slides/7_fun.html#shapes",
@@ -655,14 +655,14 @@
     "href": "slides/7_fun.html#shapes-1",
     "title": "Spice up your plot",
     "section": "Shapes",
-    "text": "Shapes\n\n\nggplot(\n  positions, \n  aes(x = x, y = y, group = id)\n) +\n  geom_shape(\n    aes(fill = id), \n    radius = grid::unit(5, \"mm\")\n  )"
+    "text": "Shapes\n\n\nggplot(\n  positions, \n  aes(x = x, y = y, group = id)\n) +\n  geom_shape(\n    aes(fill = id), \n    radius = unit(5, \"mm\")\n  )"
   },
   {
     "objectID": "slides/7_fun.html#shapes-2",
     "href": "slides/7_fun.html#shapes-2",
     "title": "Spice up your plot",
     "section": "Shapes",
-    "text": "Shapes\n\n\nggplot(\n  positions, \n  aes(x = x, y = y, group = id)\n) +\n  geom_shape(\n    aes(fill = id), \n    expand = -grid::unit(2, \"mm\")\n  )"
+    "text": "Shapes\n\n\nggplot(\n  positions, \n  aes(x = x, y = y, group = id)\n) +\n  geom_shape(\n    aes(fill = id), \n    expand = -unit(2, \"mm\")\n  )"
   },
   {
     "objectID": "slides/7_fun.html#marks",
@@ -718,7 +718,7 @@
     "href": "slides/7_fun.html#links",
     "title": "Spice up your plot",
     "section": "Links",
-    "text": "Links\n\nSupercharged geom_segment() / `geom_path()``\nAllows interpolation of aesthetics between anchors\n\n\n\n# Lets make some data\nlines &lt;- data.frame(\n  x = c(5, 12, 15, 9, 6),\n  y = c(17, 20, 4, 15, 5),\n  xend = c(19, 17, 2, 9, 5),\n  yend = c(10, 18, 7, 12, 1),\n  width = c(1, 10, 6, 2, 3),\n  colour = letters[1:5]\n)\n\nggplot(lines, aes(x = x, y = y, xend = xend, yend = yend)) +\n  geom_link(\n    aes(\n      colour = colour, \n      alpha = after_stat(index), \n      linewidth = after_stat(index)\n    )\n  )"
+    "text": "Links\n\nSupercharged geom_segment() / geom_path()\nAllows interpolation of aesthetics between anchors\n\n\n\n# Lets make some data\nlines &lt;- data.frame(\n  x = c(5, 12, 15, 9, 6),\n  y = c(17, 20, 4, 15, 5),\n  xend = c(19, 17, 2, 9, 5),\n  yend = c(10, 18, 7, 12, 1),\n  width = c(1, 10, 6, 2, 3),\n  colour = letters[1:5]\n)\n\nggplot(lines, aes(x = x, y = y, xend = xend, yend = yend)) +\n  geom_link(\n    aes(\n      colour = colour, \n      alpha = after_stat(index), \n      linewidth = after_stat(index)\n    )\n  )"
   },
   {
     "objectID": "slides/7_fun.html#links-1",
@@ -1257,7 +1257,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpRKEcuh/Barrio-regular.ttf\", \"/tmp/RtmpRKEcuh/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpOrboGp/Barrio-regular.ttf\", \"/tmp/RtmpOrboGp/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
@@ -1446,7 +1446,7 @@
     "href": "slides/3_text_fonts.html#geom_marquee-2",
     "title": "Text rendering and font use",
     "section": "geom_marquee()",
-    "text": "geom_marquee()\n\n\nggplot(\n  penguins, \n  aes(x = bill_len, y = flipper_len)\n) + \n  geom_point(\n    aes(colour = I(ifelse(outlier, \"red\", \"black\")))\n  ) + \n  geom_marquee(\n    aes(label = text), \n    data = penguins[penguins$outlier,],\n    style = style,\n    fill = \"white\",\n    hjust = \"right-ink\",\n    vjust = 1,\n    width = grid::unit(5, \"cm\")\n  )"
+    "text": "geom_marquee()\n\n\nggplot(\n  penguins, \n  aes(x = bill_len, y = flipper_len)\n) + \n  geom_point(\n    aes(colour = I(ifelse(outlier, \"red\", \"black\")))\n  ) + \n  geom_marquee(\n    aes(label = text), \n    data = penguins[penguins$outlier,],\n    style = style,\n    fill = \"white\",\n    hjust = \"right-ink\",\n    vjust = 1,\n    width = unit(5, \"cm\")\n  )"
   },
   {
     "objectID": "slides/3_text_fonts.html#element_marquee",
@@ -1474,14 +1474,14 @@
     "href": "slides/3_text_fonts.html#guide_marquee-1",
     "title": "Text rendering and font use",
     "section": "guide_marquee()",
-    "text": "guide_marquee()\n\n\nggplot(penguins) + \n  geom_point(aes(x = bill_len, y = flipper_len, colour = species)) + \n  scale_color_discrete(\n    name = \"\nOverview of how bill length and flipper length relate to each other\nin the penguin species *Adelie* &lt;&lt;1&gt;&gt;, *Chinstrap* &lt;&lt;2&gt;&gt;, and \n*Gentoo* &lt;&lt;3&gt;&gt;.\",\n    guide = guide_marquee(width = grid::unit(2.75, \"in\"))\n  )"
+    "text": "guide_marquee()\n\n\nggplot(penguins) + \n  geom_point(aes(x = bill_len, y = flipper_len, colour = species)) + \n  scale_color_discrete(\n    name = \"\nOverview of how bill length and flipper length relate to each other\nin the penguin species *Adelie* &lt;&lt;1&gt;&gt;, *Chinstrap* &lt;&lt;2&gt;&gt;, and \n*Gentoo* &lt;&lt;3&gt;&gt;.\",\n    guide = guide_marquee(width = unit(2.75, \"in\"))\n  )"
   },
   {
     "objectID": "slides/3_text_fonts.html#guide_marquee-2",
     "href": "slides/3_text_fonts.html#guide_marquee-2",
     "title": "Text rendering and font use",
     "section": "guide_marquee()",
-    "text": "guide_marquee()\n\n\nggplot(penguins) + \n  geom_point(aes(x = bill_len, y = flipper_len, colour = species)) + \n  scale_color_discrete(\n    name = \"\nOverview of how bill length and flipper length relate to each other\nin the penguin species {.1 *Adelie*}, {.2 *Chinstrap*}, and \n{.3 *Gentoo*}.\",\n    guide = guide_marquee(width = grid::unit(2.75, \"in\"))\n  )"
+    "text": "guide_marquee()\n\n\nggplot(penguins) + \n  geom_point(aes(x = bill_len, y = flipper_len, colour = species)) + \n  scale_color_discrete(\n    name = \"\nOverview of how bill length and flipper length relate to each other\nin the penguin species {.1 *Adelie*}, {.2 *Chinstrap*}, and \n{.3 *Gentoo*}.\",\n    guide = guide_marquee(width = unit(2.75, \"in\"))\n  )"
   },
   {
     "objectID": "slides/3_text_fonts.html#exercise-3.4",

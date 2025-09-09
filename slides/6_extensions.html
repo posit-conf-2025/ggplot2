@@ -232,10 +232,11 @@ Teun van den Brand
 <span id="cb1-2"><a></a>  <span class="fu">geom_point</span>()</span>
 <span id="cb1-3"><a></a></span>
 <span id="cb1-4"><a></a>my_theme <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
-<span id="cb1-5"><a></a>  <span class="fu">theme_gray</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">geom =</span> <span class="fu">element_geom</span>(<span class="at">ink =</span> <span class="st">"red"</span>))</span>
-<span id="cb1-6"><a></a>}</span>
-<span id="cb1-7"><a></a></span>
-<span id="cb1-8"><a></a>bland_plot <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a></a>  <span class="fu">theme_gray</span>() <span class="sc">+</span> </span>
+<span id="cb1-6"><a></a>    <span class="fu">theme</span>(<span class="at">geom =</span> <span class="fu">element_geom</span>(<span class="at">ink =</span> <span class="st">"red"</span>))</span>
+<span id="cb1-7"><a></a>}</span>
+<span id="cb1-8"><a></a></span>
+<span id="cb1-9"><a></a>bland_plot <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -257,10 +258,12 @@ Teun van den Brand
 <div class="cell columns column-output-location">
 <div class="column">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>scale_x_asinh <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
-<span id="cb2-2"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">transform =</span> scales<span class="sc">::</span><span class="fu">transform_asinh</span>())</span>
-<span id="cb2-3"><a></a>}</span>
-<span id="cb2-4"><a></a></span>
-<span id="cb2-5"><a></a>bland_plot <span class="sc">+</span> <span class="fu">scale_x_asinh</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb2-3"><a></a>    <span class="at">transform =</span> scales<span class="sc">::</span><span class="fu">transform_asinh</span>()</span>
+<span id="cb2-4"><a></a>  )</span>
+<span id="cb2-5"><a></a>}</span>
+<span id="cb2-6"><a></a></span>
+<span id="cb2-7"><a></a>bland_plot <span class="sc">+</span> <span class="fu">scale_x_asinh</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -385,7 +388,7 @@ Teun van den Brand
 <span id="cb5-3"><a></a>  <span class="at">state =</span> <span class="dv">0</span>,</span>
 <span id="cb5-4"><a></a>  <span class="at">add =</span> <span class="cf">function</span>(self, number) {</span>
 <span id="cb5-5"><a></a>    <span class="co"># We read and write the 'state' field</span></span>
-<span id="cb5-6"><a></a>    <span class="co"># Do not do this!</span></span>
+<span id="cb5-6"><a></a>    <span class="co"># Do not do this in serious code!</span></span>
 <span id="cb5-7"><a></a>    self<span class="sc">$</span>state <span class="ot">&lt;-</span> self<span class="sc">$</span>state <span class="sc">+</span> number</span>
 <span id="cb5-8"><a></a>    self<span class="sc">$</span>state</span>
 <span id="cb5-9"><a></a>  }</span>
@@ -757,7 +760,7 @@ Caused by error in `compute_geom_1()`:
 <span id="cb14-7"><a></a><span class="do">##         position = position, show.legend = show.legend, inherit.aes = inherit.aes, </span></span>
 <span id="cb14-8"><a></a><span class="do">##         params = list2(na.rm = na.rm, formula = formula, ...))</span></span>
 <span id="cb14-9"><a></a><span class="do">## }</span></span>
-<span id="cb14-10"><a></a><span class="do">## &lt;environment: 0x5601bdc87fb0&gt;</span></span>
+<span id="cb14-10"><a></a><span class="do">## &lt;environment: 0x558f89f12d90&gt;</span></span>
 <span id="cb14-11"><a></a></span>
 <span id="cb14-12"><a></a>p <span class="sc">+</span> <span class="fu">stat_residual</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">

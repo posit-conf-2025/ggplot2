@@ -245,7 +245,7 @@ Thomas Lin Pedersen
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_len, <span class="at">y =</span> bill_len)) <span class="sc">+</span></span>
 <span id="cb1-2"><a></a>  <span class="fu">with_blur</span>(</span>
 <span id="cb1-3"><a></a>    <span class="fu">geom_point</span>(),</span>
-<span id="cb1-4"><a></a>    <span class="at">sigma =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">'mm'</span>)</span>
+<span id="cb1-4"><a></a>    <span class="at">sigma =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">'mm'</span>)</span>
 <span id="cb1-5"><a></a>  ) <span class="sc">+</span> </span>
 <span id="cb1-6"><a></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
@@ -269,7 +269,7 @@ Thomas Lin Pedersen
 <span id="cb2-5"><a></a><span class="fu">with_outer_glow</span>(</span>
 <span id="cb2-6"><a></a>  p, </span>
 <span id="cb2-7"><a></a>  <span class="at">colour =</span> <span class="st">"steelblue"</span>, </span>
-<span id="cb2-8"><a></a>  <span class="at">sigma =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"mm"</span>)</span>
+<span id="cb2-8"><a></a>  <span class="at">sigma =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"mm"</span>)</span>
 <span id="cb2-9"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
@@ -348,8 +348,8 @@ Thomas Lin Pedersen
 <div class="cell columns column-output-location">
 <div class="column">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_len, <span class="at">y =</span> bill_len)) <span class="sc">+</span> </span>
-<span id="cb6-2"><a></a>  <span class="fu">with_shadow</span>(<span class="fu">geom_smooth</span>(<span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">level =</span> <span class="fl">0.99</span>), <span class="at">sigma =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">"mm"</span>)) <span class="sc">+</span></span>
-<span id="cb6-3"><a></a>  <span class="fu">with_shadow</span>(<span class="fu">geom_point</span>(), <span class="at">sigma =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">"mm"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-2"><a></a>  <span class="fu">with_shadow</span>(<span class="fu">geom_smooth</span>(<span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">level =</span> <span class="fl">0.99</span>), <span class="at">sigma =</span> <span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">"mm"</span>)) <span class="sc">+</span></span>
+<span id="cb6-3"><a></a>  <span class="fu">with_shadow</span>(<span class="fu">geom_point</span>(), <span class="at">sigma =</span> <span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">"mm"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -370,7 +370,7 @@ Thomas Lin Pedersen
 <span id="cb7-4"><a></a>    <span class="fu">geom_point</span>(),</span>
 <span id="cb7-5"><a></a>    <span class="at">id =</span> <span class="st">"group_1"</span></span>
 <span id="cb7-6"><a></a>  ) <span class="sc">+</span> </span>
-<span id="cb7-7"><a></a>  <span class="fu">with_shadow</span>(<span class="st">"group_1"</span>, <span class="at">sigma =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">"mm"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-7"><a></a>  <span class="fu">with_shadow</span>(<span class="st">"group_1"</span>, <span class="at">sigma =</span> <span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">"mm"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -406,7 +406,7 @@ Thomas Lin Pedersen
 </section>
 <section id="exercise-7.1" class="slide level2 center" style="text-align:center;">
 <h2><a href="../exercises/7_fun.html#adding-effects-with-ggfx">Exercise 7.1</a></h2>
-<div id="timer_157123d51846720c7d4d0882ef850a2b811be642" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_77d0db06bf5d2da9f264790b2422ae4dbfc5fe11" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -423,7 +423,7 @@ Thomas Lin Pedersen
 <section id="ggforce" class="slide level2">
 <h2>ggforce</h2>
 <ul>
-<li>This is my grab-back package. Expect some chaos</li>
+<li>This is my grab-bag package. Expect some chaos</li>
 <li>Main focus on powerful building blocks</li>
 </ul>
 <div class="r-stack">
@@ -461,7 +461,7 @@ Thomas Lin Pedersen
 <span id="cb9-4"><a></a>) <span class="sc">+</span></span>
 <span id="cb9-5"><a></a>  <span class="fu">geom_shape</span>(</span>
 <span id="cb9-6"><a></a>    <span class="fu">aes</span>(<span class="at">fill =</span> id), </span>
-<span id="cb9-7"><a></a>    <span class="at">radius =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">5</span>, <span class="st">"mm"</span>)</span>
+<span id="cb9-7"><a></a>    <span class="at">radius =</span> <span class="fu">unit</span>(<span class="dv">5</span>, <span class="st">"mm"</span>)</span>
 <span id="cb9-8"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
@@ -483,7 +483,7 @@ Thomas Lin Pedersen
 <span id="cb10-4"><a></a>) <span class="sc">+</span></span>
 <span id="cb10-5"><a></a>  <span class="fu">geom_shape</span>(</span>
 <span id="cb10-6"><a></a>    <span class="fu">aes</span>(<span class="at">fill =</span> id), </span>
-<span id="cb10-7"><a></a>    <span class="at">expand =</span> <span class="sc">-</span>grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">2</span>, <span class="st">"mm"</span>)</span>
+<span id="cb10-7"><a></a>    <span class="at">expand =</span> <span class="sc">-</span><span class="fu">unit</span>(<span class="dv">2</span>, <span class="st">"mm"</span>)</span>
 <span id="cb10-8"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
@@ -629,7 +629,7 @@ Thomas Lin Pedersen
 <section id="links" class="slide level2">
 <h2>Links</h2>
 <ul>
-<li>Supercharged <code>geom_segment()</code> / `geom_path()``</li>
+<li>Supercharged <code>geom_segment()</code> / <code>geom_path()</code></li>
 <li>Allows interpolation of aesthetics between anchors</li>
 </ul>
 <div class="cell columns column-output-location">
@@ -687,7 +687,7 @@ Thomas Lin Pedersen
 </section>
 <section id="exercise-7.2" class="slide level2 center" style="text-align:center;">
 <h2><a href="../exercises/7_fun.html#working-with-ggforce">Exercise 7.2</a></h2>
-<div id="timer_157123d51846720c7d4d0882ef850a2b811be642" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_77d0db06bf5d2da9f264790b2422ae4dbfc5fe11" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -794,7 +794,7 @@ Thomas Lin Pedersen
 </section>
 <section id="exercise-7.3" class="slide level2 center" style="text-align:center;">
 <h2><a href="../exercises/7_fun.html#animating-with-gganimate">Exercise 7.3</a></h2>
-<div id="timer_157123d51846720c7d4d0882ef850a2b811be642" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_77d0db06bf5d2da9f264790b2422ae4dbfc5fe11" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
