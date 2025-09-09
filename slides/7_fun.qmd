@@ -159,7 +159,7 @@ ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
 
 ## ggforce
 
-* This is my grab-back package. Expect some chaos
+* This is my grab-bag package. Expect some chaos
 * Main focus on powerful building blocks
 
 ::: {.r-stack}
@@ -291,7 +291,7 @@ p +
 
 ## Links
 
-* Supercharged `geom_segment()` / `geom_path()``
+* Supercharged `geom_segment()` / `geom_path()`
 * Allows interpolation of aesthetics between anchors
 
 ```{r}
