@@ -8,6 +8,10 @@
   color: #4496AD;
 }
 
+.reveal code span.do {
+  color: #6C9DD6;
+}
+
 .center-y {
   margin: 0;
   position: absolute;

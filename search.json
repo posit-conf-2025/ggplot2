@@ -49,11 +49,25 @@
     "text": "Ink & Paper\n\nComplete themes\nGeom element\nUse in layers"
   },
   {
+    "objectID": "slides/4_theme_guide.html#exercise",
+    "href": "slides/4_theme_guide.html#exercise",
+    "title": "Styling your plot",
+    "section": "Exercise",
+    "text": "Exercise"
+  },
+  {
     "objectID": "slides/4_theme_guide.html#default-palettes",
     "href": "slides/4_theme_guide.html#default-palettes",
     "title": "Styling your plot",
     "section": "Default palettes",
     "text": "Default palettes\nSeveral ways to set a plot’s colour palette\n\nDirectly add a scale\n\n+ scale_colour_gradientn()\nNot set as default scale\n\nUsing esoteric options\n\noptions(ggplot2.continuous.colour = scale_colour_gradientn)\nArcane\n\nOverriding default scale\n\nscale_colour_continuous &lt;- scale_colour_gradientn\nMesses with namespace\n\nNEW: via theme()"
+  },
+  {
+    "objectID": "slides/4_theme_guide.html#exercise-1",
+    "href": "slides/4_theme_guide.html#exercise-1",
+    "title": "Styling your plot",
+    "section": "Exercise",
+    "text": "Exercise"
   },
   {
     "objectID": "slides/4_theme_guide.html#build-your-own-theme",
@@ -63,11 +77,32 @@
     "text": "Build your own theme\nHow do you intend to use a personal theme?\n\nComplete theme\nPartial theme"
   },
   {
+    "objectID": "slides/4_theme_guide.html#exercise-2",
+    "href": "slides/4_theme_guide.html#exercise-2",
+    "title": "Styling your plot",
+    "section": "Exercise",
+    "text": "Exercise"
+  },
+  {
     "objectID": "slides/4_theme_guide.html#custom-guides",
     "href": "slides/4_theme_guide.html#custom-guides",
     "title": "Styling your plot",
     "section": "Custom guides",
     "text": "Custom guides\nggplot2 has more guides than colour bars and legends.\n\naxes\ncolour bar\ncolour steps\nlegend\nbinned guide"
+  },
+  {
+    "objectID": "slides/4_theme_guide.html#exercise-3",
+    "href": "slides/4_theme_guide.html#exercise-3",
+    "title": "Styling your plot",
+    "section": "Exercise",
+    "text": "Exercise"
+  },
+  {
+    "objectID": "slides/4_theme_guide.html#section",
+    "href": "slides/4_theme_guide.html#section",
+    "title": "Styling your plot",
+    "section": "",
+    "text": "Next session: Plot composition"
   },
   {
     "objectID": "slides/interaction.html#interactivity",
@@ -165,7 +200,14 @@
     "href": "slides/6_extensions.html#summary-stat-extensions",
     "title": "Creating extensions",
     "section": "Summary: stat extensions",
-    "text": "Summary: stat extensions\n\nMake new Stat* ggproto class\n\nOverwrite compute_layer()/compute_panel()/compute_group() method\nRewire computed variables in default_aes\nOptionally, edit setup_data()/setup_params()\n\nBuild constructor using make_constructor()\n\n⏲️ Exercise 6"
+    "text": "Summary: stat extensions\n\nMake new Stat* ggproto class\n\nOverwrite compute_layer()/compute_panel()/compute_group() method\nRewire computed variables in default_aes\nOptionally, edit setup_data()/setup_params()\n\nBuild constructor using make_constructor()"
+  },
+  {
+    "objectID": "slides/6_extensions.html#exercise",
+    "href": "slides/6_extensions.html#exercise",
+    "title": "Creating extensions",
+    "section": "Exercise",
+    "text": "Exercise"
   },
   {
     "objectID": "slides/6_extensions.html#geom-extensions",
@@ -193,7 +235,14 @@
     "href": "slides/6_extensions.html#facet-extensions",
     "title": "Creating extensions",
     "section": "Facet extensions",
-    "text": "Facet extensions\n\ndata extensions\n\nggforce::facet_matrix()\n\nlayout extensions\n\ngeofacet\nggragged\nggh4x::facet_manual()\n\ndecorations\n\nggh4x::facet_nested()"
+    "text": "Facet extensions\n\ndata extensions\n\nggforce::facet_matrix()\nggraph::facet_nodes()\n\nlayout extensions\n\ngeofacet\nggragged\nggh4x::facet_manual()\n\ndecorations\n\nggh4x::facet_nested()\nggforce::facet_zoom()"
+  },
+  {
+    "objectID": "slides/6_extensions.html#section",
+    "href": "slides/6_extensions.html#section",
+    "title": "Creating extensions",
+    "section": "",
+    "text": "Next session: Spice up your plot"
   },
   {
     "objectID": "index.html",
@@ -1148,6 +1197,13 @@
     "text": "ggiraph integration\n\n\ngirafe(\n  ggobj = p1 | p2\n)"
   },
   {
+    "objectID": "slides/5_composition.html#section-2",
+    "href": "slides/5_composition.html#section-2",
+    "title": "Plot composition",
+    "section": "",
+    "text": "Next session: Creating extensions or Spice up your plot"
+  },
+  {
     "objectID": "slides/3_text_fonts.html#key-takeaway-today",
     "href": "slides/3_text_fonts.html#key-takeaway-today",
     "title": "Text rendering and font use",
@@ -1194,7 +1250,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpWgkdah/Barrio-regular.ttf\", \"/tmp/RtmpWgkdah/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/Rtmp6K8Tku/Barrio-regular.ttf\", \"/tmp/Rtmp6K8Tku/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
@@ -1348,7 +1404,7 @@
     "href": "slides/3_text_fonts.html#styling-4",
     "title": "Text rendering and font use",
     "section": "Styling",
-    "text": "Styling\n\n\ntext &lt;- \"\n{.fancy Readability is overrated}\n\n{.plot Even when it  \nc|2o|3n|2t|3[++]a|1i|2n|0[--]s|1[high [low  ]     data}\n\"\n\nsf &lt;- systemfonts::system_fonts()\nsf[grepl(\"monte\", sf$family, ignore.case = TRUE),]\n\n\n# A tibble: 1 × 9\n  path                    index name  family style weight width italic monospace\n  &lt;chr&gt;                   &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;ord&gt;  &lt;ord&gt; &lt;lgl&gt;  &lt;lgl&gt;    \n1 /tmp/RtmpWgkdah/MonteC…     0 Mont… Monte… Regu… normal norm… FALSE  FALSE    \n\ngrid::grid.draw(\n  marquee_grob(text, new_style)\n)"
+    "text": "Styling\n\n\ntext &lt;- \"\n{.fancy Readability is overrated}\n\n{.plot Even when it  \nc|2o|3n|2t|3[++]a|1i|2n|0[--]s|1[high [low  ]     data}\n\"\n\nsystemfonts::match_fonts(\"MonteCarlo\", weight = \"light\")\n\n\n# A tibble: 1 × 3\n  path                                                       index features  \n  &lt;chr&gt;                                                      &lt;int&gt; &lt;list&gt;    \n1 /usr/share/fonts/truetype/dejavu/DejaVuSans-ExtraLight.ttf     0 &lt;font_ftr&gt;\n\ngrid::grid.draw(\n  marquee_grob(text, new_style)\n)"
   },
   {
     "objectID": "slides/3_text_fonts.html#exercise-2",

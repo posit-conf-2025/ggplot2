@@ -440,7 +440,7 @@ Teun van den Brand
 <section class="slide level2">
 
 <h3 id="geom-elements-6">Geom elements</h3>
-<p>For points, we can set <code>pointsize</code> and <code>fontshape</code></p>
+<p>For points, we can set <code>pointsize</code> and <code>pointshape</code></p>
 <div class="cell columns column-output-location">
 <div class="column">
 <div class="sourceCode cell-code" id="cb12" data-code-line-numbers="12-13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">element_geom</span>()</span>
@@ -465,7 +465,7 @@ Teun van den Brand
 <section class="slide level2">
 
 <h3 id="geom-elements-7">Geom elements</h3>
-<p>For points, we can set <code>pointsize</code> and <code>fontshape</code></p>
+<p>For points, we can set <code>pointsize</code> and <code>pointshape</code></p>
 <div class="cell columns column-output-location">
 <div class="column">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>p <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">geom =</span> <span class="fu">element_geom</span>(</span>
@@ -561,7 +561,9 @@ Teun van den Brand
 <li><code>theme(geom = element_geom(...))</code></li>
 </ul></li>
 </ul>
-<p>⏲️ Exercise 4.1</p>
+</section>
+<section id="exercise" class="slide level2 center" style="text-align:center;">
+<h2><a href="../exercises/4_theme_guide.html#exercise-4.1-ink--paper">Exercise</a></h2>
 </section>
 <section id="default-palettes" class="slide level2">
 <h2>Default palettes</h2>
@@ -733,7 +735,9 @@ Teun van den Brand
 <li>Input for discrete palettes <code>scales::as_discrete_palette()</code>.</li>
 <li>Input for continuous palettes <code>scales::as_continuous_palette()</code>.</li>
 </ul>
-<p>⏲️ Exercise 4.2</p>
+</section>
+<section id="exercise-1" class="slide level2 center" style="text-align:center;">
+<h2><a href="../exercises/4_theme_guide.html#exercise-4.2-default-palettes">Exercise</a></h2>
 </section>
 <section id="build-your-own-theme" class="slide level2">
 <h2>Build your own theme</h2>
@@ -929,15 +933,10 @@ Teun van den Brand
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">theme_set</span>(<span class="fu">theme_gray</span>())</span>
 <span id="cb29-2"><a></a>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
-</figure>
-</div>
-</div>
+
 </div></div>
-</section>
+
+<img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-31-1.png" width="960" class="r-stretch"></section>
 <section class="slide level2">
 
 <h3 id="building-a-partial-theme">Building a partial theme</h3>
@@ -964,7 +963,7 @@ Teun van den Brand
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -980,7 +979,9 @@ Teun van den Brand
 <li>(Guard custom fonts)</li>
 <li>(Coordinate colour &amp; palettes)</li>
 </ul>
-<p>⏲️ Exercise 4.3</p>
+</section>
+<section id="exercise-2" class="slide level2 center" style="text-align:center;">
+<h2><a href="../exercises/4_theme_guide.html#exercise-4.3-build-your-own-theme">Exercise</a></h2>
 </section>
 <section id="custom-guides" class="slide level2">
 <h2>Custom guides</h2>
@@ -1007,7 +1008,7 @@ Teun van den Brand
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1023,14 +1024,14 @@ Teun van den Brand
 <span id="cb32-2"><a></a>  <span class="fu">guides</span>(</span>
 <span id="cb32-3"><a></a>    <span class="at">x =</span> <span class="fu">guide_axis</span>(<span class="at">theme =</span> <span class="fu">theme_classic</span>(<span class="at">ink =</span> <span class="st">"red"</span>)),</span>
 <span id="cb32-4"><a></a>    <span class="at">y =</span> <span class="fu">guide_axis</span>(<span class="at">theme =</span> <span class="fu">theme_minimal</span>(<span class="at">ink =</span> <span class="st">"blue"</span>)),</span>
-<span id="cb32-5"><a></a>    <span class="at">shape =</span> <span class="fu">guide_legend</span>(<span class="at">theme =</span> <span class="fu">theme_gray</span>(<span class="at">paper=</span> <span class="st">"cornsilk"</span>)),</span>
+<span id="cb32-5"><a></a>    <span class="at">shape =</span> <span class="fu">guide_legend</span>(<span class="at">theme =</span> <span class="fu">theme_gray</span>(<span class="at">paper =</span> <span class="st">"cornsilk"</span>)),</span>
 <span id="cb32-6"><a></a>    <span class="at">colour =</span> <span class="fu">guide_legend</span>(<span class="at">theme =</span> <span class="fu">theme</span>(<span class="at">legend.text.position =</span> <span class="st">"left"</span>))</span>
 <span id="cb32-7"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-34-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1057,7 +1058,7 @@ Teun van den Brand
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-34-1.png" width="960"></p>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-35-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1090,7 +1091,7 @@ Teun van den Brand
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-35-1.png" width="960"></p>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-36-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1113,7 +1114,7 @@ Teun van den Brand
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-36-1.png" width="960"></p>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-37-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1134,7 +1135,7 @@ Teun van den Brand
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-37-1.png" width="960"></p>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-38-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1155,7 +1156,7 @@ Teun van den Brand
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-38-1.svg" width="960"></p>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-39-1.svg" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1177,7 +1178,7 @@ Teun van den Brand
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-39-1.png" width="960"></p>
+<p><img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-40-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1191,7 +1192,13 @@ Teun van den Brand
 <li>Guides can have local themes for individually tweaking them</li>
 <li>Guide extensions, such as those in the legendry package, expand your arsenal.</li>
 </ul>
-<p>⏲️ Exercise 4.4</p>
+</section>
+<section id="exercise-3" class="slide level2 center" style="text-align:center;">
+<h2><a href="../exercises/4_theme_guide.html#exercise-4.4-custom-guides">Exercise</a></h2>
+</section>
+<section id="section" class="slide level2 center">
+<h2></h2>
+<p>Next session: <a href="../slides/5_composition.html">Plot composition</a></p>
 
 
 </section>

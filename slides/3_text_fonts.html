@@ -402,7 +402,7 @@ font family 'FANCY FONT' not found in PostScript font database</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 181
 Columns: 9
-$ path      &lt;chr&gt; "/tmp/RtmpWgkdah/Barrio-regular.ttf", "/tmp/RtmpWgkdah/Monte…
+$ path      &lt;chr&gt; "/tmp/Rtmp6K8Tku/Barrio-regular.ttf", "/tmp/Rtmp6K8Tku/Monte…
 $ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
 $ name      &lt;chr&gt; "Barrio-Regular", "MonteCarlo-Regular", "Datalegreya-Thin", …
 $ family    &lt;chr&gt; "Barrio", "MonteCarlo", "Datalegreya", "Datalegreya", "Datal…
@@ -772,14 +772,13 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <span id="cb22-5"><a></a><span class="st">c|2o|3n|2t|3[++]a|1i|2n|0[--]s|1[high [low  ]     data}</span></span>
 <span id="cb22-6"><a></a><span class="st">"</span></span>
 <span id="cb22-7"><a></a></span>
-<span id="cb22-8"><a></a>sf <span class="ot">&lt;-</span> systemfonts<span class="sc">::</span><span class="fu">system_fonts</span>()</span>
-<span id="cb22-9"><a></a>sf[<span class="fu">grepl</span>(<span class="st">"monte"</span>, sf<span class="sc">$</span>family, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-8"><a></a>systemfonts<span class="sc">::</span><span class="fu">match_fonts</span>(<span class="st">"MonteCarlo"</span>, <span class="at">weight =</span> <span class="st">"light"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 9
-  path                    index name  family style weight width italic monospace
-  &lt;chr&gt;                   &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;ord&gt;  &lt;ord&gt; &lt;lgl&gt;  &lt;lgl&gt;    
-1 /tmp/RtmpWgkdah/MonteC…     0 Mont… Monte… Regu… normal norm… FALSE  FALSE    </code></pre>
+<pre><code># A tibble: 1 × 3
+  path                                                       index features  
+  &lt;chr&gt;                                                      &lt;int&gt; &lt;list&gt;    
+1 /usr/share/fonts/truetype/dejavu/DejaVuSans-ExtraLight.ttf     0 &lt;font_ftr&gt;</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(</span>
 <span id="cb24-2"><a></a>  <span class="fu">marquee_grob</span>(text, new_style)</span>
