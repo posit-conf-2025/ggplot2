@@ -188,7 +188,9 @@ ggplot(penguins) +
   (this slideshow has `require_font("Barrio")` in the beginning so it can render everywhere)
 :::
 
-## [Exercise](../exercises/3_text_fonts.qmd#working-with-fonts) {.center style="text-align:center;"}
+## [Exercise 3.1](../exercises/3_text_fonts.qmd#working-with-fonts) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 >}}
 
 ## Apply rich formatting
 
@@ -267,7 +269,9 @@ walked into a {.30 huge} bar and said to the {.person barman}:
 grid::grid.draw(marquee_grob(text))
 ```
 
-## [Exercise](../exercises/3_text_fonts.qmd#basic-markdown-formatting-with-marquee) {.center style="text-align:center;"}
+## [Exercise 3.2](../exercises/3_text_fonts.qmd#basic-markdown-formatting-with-marquee) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 >}}
 
 ## Supercharged images
 
@@ -372,7 +376,9 @@ grid::grid.draw(
 )
 ```
 
-## [Exercise](../exercises/3_text_fonts.qmd#advanced-marquee-styling) {.center style="text-align:center;"}
+## [Exercise 3.3](../exercises/3_text_fonts.qmd#advanced-marquee-styling) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 >}}
 
 ## What about ggplot2
 
@@ -501,7 +507,9 @@ in the penguin species {.1 *Adelie*}, {.2 *Chinstrap*}, and
   )
 ```
 
-## [Exercise](../exercises/3_text_fonts.qmd#using-geom_marquee-in-ggplot2) {.center style="text-align:center;"}
+## [Exercise 3.4](../exercises/3_text_fonts.qmd#using-geom_marquee-in-ggplot2) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 >}}
 
 ## {.center}
 
