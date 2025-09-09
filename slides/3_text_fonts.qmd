@@ -346,7 +346,6 @@ new_style <- classic_style(base_size = 30) |>
   modify_style(
     "fancy",
     family = "MonteCarlo",
-    weight = "light",
     features = font_feature(
       ligatures = c("contextual", "discretionary"),
       letters = c("swash", "stylistic"),
@@ -368,8 +367,6 @@ text <- "
 {.plot Even when it  
 c|2o|3n|2t|3[++]a|1i|2n|0[--]s|1[high [low  ]     data}
 "
-
-systemfonts::match_fonts("MonteCarlo")
 
 grid::grid.draw(
   marquee_grob(text, new_style)
