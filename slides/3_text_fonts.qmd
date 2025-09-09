@@ -369,14 +369,14 @@ text <- "
 c|2o|3n|2t|3[++]a|1i|2n|0[--]s|1[high [low  ]     data}
 "
 
-systemfonts::match_fonts("MonteCarlo", weight = "light")
+systemfonts::match_fonts("MonteCarlo")
 
 grid::grid.draw(
   marquee_grob(text, new_style)
 )
 ```
 
-## [Exercise 3.3](../exercises/3_text_fonts.qmd#advanced-marquee-styling) {.center style="text-align:center;"}
+## [Exercise 3.3](../exercises/3_text_fonts.html#advanced-marquee-styling) {.center style="text-align:center;"}
 
 {{< countdown minutes=5 >}}
 
