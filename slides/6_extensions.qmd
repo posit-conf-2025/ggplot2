@@ -521,6 +521,8 @@ StatBoxplot$setup_data
 
 ## [Exercise](../exercises/6_extensions.qmd#exercise-6-extension) {.center style="text-align:center;"}
 
+{{< countdown minutes=5 >}}
+
 ---
 
 ## Geom extensions
