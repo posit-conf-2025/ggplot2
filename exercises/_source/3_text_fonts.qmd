@@ -1,0 +1,175 @@
+---
+title: Exercises for session 3
+---
+
+## 3.1 Working with fonts
+
+## Exercise 3.1.1
+Download [this font file](https://github.com/posit-conf-2025/ggplot2/raw/refs/heads/main/assets/Cirquee.otf) and add the font to your R session. You can confirm that is has been added by calling `systemfonts::match_fonts("cirquee")`
+
+```{r}
+# Instead of downloading it be clicking the link you can do it 
+# programmtically
+download.file(
+  "https://raw.githubusercontent.com/posit-conf-2025/ggplot2/refs/heads/main/assets/Cirquee.otf", 
+  "Cirquee.otf"
+)
+# Font now lives in Cirquee.otf
+
+# Replace this part with your solution
+______
+
+systemfonts::match_fonts("cirquee")
+```
+
+## Exercise 3.1.2
+Find and install a font from [Google Fonts](https://fonts.google.com/) or [Font Squirrel](https://www.fontsquirrel.com) using systemfonts. Again, verify it has been added using `match_fonts()`
+
+```{r}
+______
+
+systemfonts::match_fonts(______)
+```
+
+Read the documentation of `systemfonts::get_from_google_fonts()` and `systemfonts::require_font()`. How do they differ in where they place the font file and what consequence does it have?
+
+## Exercise 3.1.3
+Use the two new fonts to style the following plot
+
+```{r}
+library(ggplot2)
+
+ggplot(mpg) + 
+  geom_bar(aes(class, fill = factor(cyl)), position = "dodge") + 
+  theme(
+    text = ______,
+    title = ______
+  )
+```
+
+## 3.2 Basic markdown formatting with marquee
+
+## Exercise 3.2.1
+Create a marquee text that uses various formatting options like bold, italic, lists, and code blocks. Display it using `grid::grid.draw(marquee_grob())`. Include at least three different types of formatting.
+
+```{r}
+text <- ______
+
+grid::grid.draw(marquee_grob(text))
+```
+
+## Exercise 3.2.2
+Create a marquee text that uses custom spans to change text colors, sizes, and add superscripts or subscripts. Try to show that styles inherits from their parent by placing spans inside spans
+
+```{r}
+text <- ______
+
+grid::grid.draw(marquee_grob(text))
+```
+
+## Exercise 3.2.3
+Create a marquee text that includes either an image (like a plot) or a table. If using a plot, create a simple scatterplot first, then include it in your marquee text.
+
+```{r}
+text <- ______
+
+grid::grid.draw(marquee_grob(text))
+```
+
+## 3.3 marquee styling
+
+## Exercise 3.3.1
+Read the documentation of `marquee::classic_style()` and experiment with how different a look you can get by only modifying the arguments that it takes
+
+````{r}
+style <- classic_style(______)
+
+text <- "
+# This is a test
+In the following we will test a number of things
+
+* Bullet lists
+* Inline `code`
+* Some fancy mix of *italic* ***and*** **bold**
+
+```
+As well as code blocks
+```
+
+>And notes
+"
+
+grid::grid.draw(marquee_grob(text, style = style))
+````
+
+## Exercise 3.3.2
+Change the look of inline code so that it is displayed with an outlined serif
+font on a transparent background with a lightblue border. You can read the 
+documentation for `marquee_parse()` to see the tags that are asigned to various
+markdown elements.
+
+```{r}
+style <- classic_style(base_size = 20) |>
+  modify_style(
+    ______
+  )
+
+text <- "Some `inline code to test with`."
+
+grid::grid.draw(marquee_grob(text, style = style))
+```
+
+## Exercise 3.3.3
+Define a new tag (`"fancy"`), which makes text over-the-top unreadable due to
+its styling. Consider using the `features` argument as a means to that end. 
+
+Test out the new style on a piece of text of your own choice
+
+```{r}
+style <- classic_style() |>
+  modify_style(
+    "fancy",
+    ______
+  )
+
+text <- ______
+
+grid::grid.draw(marquee_grob(text, style = style))
+```
+
+## 3.4 Using `geom_marquee` in ggplot2
+
+## Exercise 3.4.1
+Create a scatter plot of bill length vs flipper length from the penguins dataset. Use `geom_marquee()` to label at least two points with formatted text (including italics or bold). Experiment with the `width` aesthetic to force automatic line breaking
+
+```{r}
+ggplot(penguins, aes(bill_len, flipper_len)) + 
+  geom_point(aes(color = species)) +
+  ______
+```
+
+## Exercise 3.4.2
+Create a plot and use `element_marquee()` to customize the plot title, subtitle, and axis titles. Make the titles include formatted text (like bold or italic words) and use a custom font.
+
+```{r}
+ggplot(penguins, aes(bill_len, flipper_len)) + 
+  geom_point(aes(color = species)) +
+  labs(
+    title = ______,
+    subtitle = ______,
+    x = ______,
+    y = ______
+  ) +
+  theme(
+    ______
+  )
+```
+
+## Exercise 3.4.3
+Create a scatter plot with a color aesthetic for species. Use `guide_marquee()` to create a custom legend that includes text describing the penguin species colouring the species name and includind the keys as well.
+
+```{r}
+ggplot(penguins, aes(bill_len, flipper_len, color = species)) + 
+  geom_point() +
+  ______
+```

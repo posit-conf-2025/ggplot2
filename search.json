@@ -42,6 +42,13 @@
     "text": "Practical information\n\nWorkshop website: https://posit-conf-2025.github.io/ggplot2/\n \nGender neutral bathrooms: LL2, next to Chicago A\n \nMeditation / Prayer room: LL2, Chicago A\n \nMother’s / Lactation room: LL2, Chicago B\n \nRespect the red lanyards and any contact preferences"
   },
   {
+    "objectID": "slides/4_theme_guide.html#the-theme-menu",
+    "href": "slides/4_theme_guide.html#the-theme-menu",
+    "title": "Styling your plot",
+    "section": "The theme menu",
+    "text": "The theme menu\n\nInk & Paper\nDefault palettes\nBuild your own theme\nCustom guides"
+  },
+  {
     "objectID": "slides/4_theme_guide.html#ink-paper",
     "href": "slides/4_theme_guide.html#ink-paper",
     "title": "Styling your plot",
@@ -536,7 +543,7 @@
     "href": "sessions/3_text_fonts.html",
     "title": "Text rendering and font use",
     "section": "",
-    "text": "In this session we will dive into working with text in ggplot2. There are two areas of special interest here: How to access the typeface (font) you want to use, and how to add rich formatting to your text. You will be introduced to two key packages that work in unison, namely systemfonts and marquee. Further, you will get an understanding of why selecting the right graphics device is paramount when it comes to text, moreso than for most other graphics features.\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
+    "text": "In this session we will dive into working with text in ggplot2. There are two areas of special interest here: How to access the typeface (font) you want to use, and how to add rich formatting to your text. You will be introduced to two key packages that work in unison, namely systemfonts and marquee. Further, you will get an understanding of why selecting the right graphics device is paramount when it comes to text, moreso than for most other graphics features.\n\n\nSlides Exercises Source\n\n\n\n\n Previous session\nNext session"
   },
   {
     "objectID": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
@@ -991,7 +998,7 @@
     "href": "slides/5_composition.html#layout-modifiers---insets",
     "title": "Plot composition",
     "section": "Layout modifiers - Insets",
-    "text": "Layout modifiers - Insets\n\n\np1 + inset_element(\n  p2, \n  left = 0.5, \n  bottom = 0.5, \n  right = grid::unit(1, \"npc\") - grid::unit(6, \"mm\"),\n  top = grid::unit(1, \"npc\") - grid::unit(6, \"mm\"),\n)"
+    "text": "Layout modifiers - Insets\n\n\np1 + inset_element(\n  p2, \n  left = 0.5, \n  bottom = 0.5, \n  right = unit(1, \"npc\") - unit(6, \"mm\"),\n  top = unit(1, \"npc\") - unit(6, \"mm\"),\n)"
   },
   {
     "objectID": "slides/5_composition.html#layout-modifiers---free",
@@ -1040,14 +1047,14 @@
     "href": "slides/5_composition.html#tagging",
     "title": "Plot composition",
     "section": "Tagging",
-    "text": "Tagging\n\nWith multi-panel graphics you often need a way to refer to the subgraphics\n\n\n\np123 &lt;- (p1 | (p2 / p3)) & theme(\n  plot.tag = element_text(size = 8)\n)\n\np123 + \n  plot_annotation(\n    tag_levels = \"1\",\n    tag_suffix = \")\"\n  )"
+    "text": "Tagging\nWith multi-panel graphics you often need a way to refer to the subgraphics\n\n\np123 &lt;- (p1 | (p2 / p3)) & theme(\n  plot.tag = element_text(size = 8)\n)\n\np123 + \n  plot_annotation(\n    tag_levels = \"1\",\n    tag_suffix = \")\"\n  )"
   },
   {
     "objectID": "slides/5_composition.html#tagging-1",
     "href": "slides/5_composition.html#tagging-1",
     "title": "Plot composition",
     "section": "Tagging",
-    "text": "Tagging\n\nIt knows about nesting as well\n\n\n\np123[[2]] &lt;- p123[[2]] + \n  plot_layout(tag_level = \"new\")\n\np123 + \n  plot_annotation(\n    tag_levels = c(\"1\", \"a\"),\n    tag_suffix = \")\"\n  )"
+    "text": "Tagging\nIt knows about nesting as well\n\n\np123[[2]] &lt;- p123[[2]] + \n  plot_layout(tag_level = \"new\")\n\np123 + \n  plot_annotation(\n    tag_levels = c(\"1\", \"a\"),\n    tag_suffix = \")\"\n  )"
   },
   {
     "objectID": "slides/5_composition.html#exercise-5.3",
@@ -1061,14 +1068,14 @@
     "href": "slides/5_composition.html#guide-handling",
     "title": "Plot composition",
     "section": "Guide handling",
-    "text": "Guide handling\n\nGuides are often global instead of linked to a single subplot\n\n\n\np1 / p4"
+    "text": "Guide handling\nGuides are often global instead of linked to a single subplot\n\n\np1 / p4"
   },
   {
     "objectID": "slides/5_composition.html#guide-handling-1",
     "href": "slides/5_composition.html#guide-handling-1",
     "title": "Plot composition",
     "section": "Guide handling",
-    "text": "Guide handling\n\nUse guides = \"collect\" to fetch all guides from subplots and place them at the top level\n\n\n\n(p1 / p4) + \n  plot_layout(guides = \"collect\")"
+    "text": "Guide handling\nUse guides = \"collect\" to fetch all guides from subplots and place them at the top level\n\n\n(p1 / p4) + \n  plot_layout(guides = \"collect\")"
   },
   {
     "objectID": "slides/5_composition.html#guide-handling-2",
@@ -1089,21 +1096,21 @@
     "href": "slides/5_composition.html#guide-handling-4",
     "title": "Plot composition",
     "section": "Guide handling",
-    "text": "Guide handling\n\nDuplicate guides are automatically removed\n\n\n\np2a &lt;- ggplot(penguins) + \n  geom_histogram(\n    aes(flipper_len, fill = sex)\n  )\n\n(p2a | p4) + \n  plot_layout(guides = \"collect\")"
+    "text": "Guide handling\nDuplicate guides are automatically removed\n\n\np2a &lt;- ggplot(penguins) + \n  geom_histogram(\n    aes(flipper_len, fill = sex)\n  )\n\n(p2a | p4) + \n  plot_layout(guides = \"collect\")"
   },
   {
     "objectID": "slides/5_composition.html#guide-handling-5",
     "href": "slides/5_composition.html#guide-handling-5",
     "title": "Plot composition",
     "section": "Guide handling",
-    "text": "Guide handling\n\nDuplicate guides are automatically removed\n\n\n\np2a &lt;- ggplot(penguins) + \n  geom_histogram(\n    aes(flipper_len, fill = sex)\n  )\n\np2a + p4 + p3 + guide_area() + \n  plot_layout(guides = \"collect\")"
+    "text": "Guide handling\nDuplicate guides are automatically removed\n\n\np2a &lt;- ggplot(penguins) + \n  geom_histogram(\n    aes(flipper_len, fill = sex)\n  )\n\np2a + p4 + p3 + guide_area() + \n  plot_layout(guides = \"collect\")"
   },
   {
     "objectID": "slides/5_composition.html#guide-handling-6",
     "href": "slides/5_composition.html#guide-handling-6",
     "title": "Plot composition",
     "section": "Guide handling",
-    "text": "Guide handling\n\nAxes are guides too\n\n\n\n(p3 / p4) + plot_layout(\n  axes = \"collect\",\n  guides = \"collect\"\n)"
+    "text": "Guide handling\nAxes are guides too\n\n\n(p3 / p4) + plot_layout(\n  axes = \"collect\",\n  guides = \"collect\"\n)"
   },
   {
     "objectID": "slides/5_composition.html#exercise-5.4",
@@ -1250,7 +1257,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpM2bCoS/Barrio-regular.ttf\", \"/tmp/RtmpM2bCoS/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpRYWGfH/Barrio-regular.ttf\", \"/tmp/RtmpRYWGfH/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
@@ -1404,7 +1411,7 @@
     "href": "slides/3_text_fonts.html#styling-4",
     "title": "Text rendering and font use",
     "section": "Styling",
-    "text": "Styling\n\n\ntext &lt;- \"\n{.fancy Readability is overrated}\n\n{.plot Even when it  \nc|2o|3n|2t|3[++]a|1i|2n|0[--]s|1[high [low  ]     data}\n\"\n\nsystemfonts::match_fonts(\"MonteCarlo\")\n\n\n# A tibble: 1 × 3\n  path                                   index features  \n  &lt;chr&gt;                                  &lt;int&gt; &lt;list&gt;    \n1 /tmp/RtmpM2bCoS/MonteCarlo-regular.ttf     0 &lt;font_ftr&gt;\n\ngrid::grid.draw(\n  marquee_grob(text, new_style)\n)"
+    "text": "Styling\n\n\ntext &lt;- \"\n{.fancy Readability is overrated}\n\n{.plot Even when it  \nc|2o|3n|2t|3[++]a|1i|2n|0[--]s|1[high [low  ]     data}\n\"\n\nsystemfonts::match_fonts(\"MonteCarlo\")\n\n\n# A tibble: 1 × 3\n  path                                   index features  \n  &lt;chr&gt;                                  &lt;int&gt; &lt;list&gt;    \n1 /tmp/RtmpRYWGfH/MonteCarlo-regular.ttf     0 &lt;font_ftr&gt;\n\ngrid::grid.draw(\n  marquee_grob(text, new_style)\n)"
   },
   {
     "objectID": "slides/3_text_fonts.html#exercise-3.3",
