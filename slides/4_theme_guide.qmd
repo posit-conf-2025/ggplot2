@@ -68,7 +68,7 @@ p
 
 ```{r}
 #| output-location: default
-#| fig-width: 12
+#| fig-width: 18
 p + theme_gray(ink = "red")
 ```
 
@@ -80,7 +80,7 @@ p + theme_gray(ink = "red")
 
 ```{r}
 #| output-location: default
-#| fig-width: 12
+#| fig-width: 18
 p + theme_bw(paper = "cornsilk")
 ```
 
@@ -92,7 +92,7 @@ p + theme_bw(paper = "cornsilk")
 
 ```{r}
 #| output-location: default
-#| fig-width: 12
+#| fig-width: 18
 p + theme_minimal(paper = "cornsilk", ink = "navy")
 ```
 
@@ -104,7 +104,7 @@ p + theme_minimal(paper = "cornsilk", ink = "navy")
 
 ```{r}
 #| output-location: default
-#| fig-width: 12
+#| fig-width: 18
 p + theme_classic(accent = "red")
 ```
 

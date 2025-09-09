@@ -153,7 +153,7 @@ named_vec
 ```{r}
 #| code-line-numbers: "3"
 #| output-location: default
-#| fig-width: 9
+#| fig-width: 18
 ggplot(mtcars, aes(mpg, disp, colour = cyl)) +
   geom_point() +
   labs(dictionary = named_vec)
@@ -261,7 +261,7 @@ Ribbon geometries now render a varying `fill` aesthetic as a gradient.
 
 ```{r}
 #| output-location: default
-#| fig-width: 9
+#| fig-width: 18
 ggplot(economics) +
   aes(date, unemploy, fill = uempmed) +
   geom_area()
@@ -441,7 +441,7 @@ Emoji isotype plot using text patterns.
 ```{r}
 #| code-fold: true
 #| output-location: default
-#| fig-width: 16
+#| fig-width: 18
 # Helper function
 width <- unit(20, "pt")
 patternise_text <- function(text) {
@@ -549,7 +549,7 @@ Using `after_stat()` yourself to redirect/modify computed variables.
 
 ```{r}
 #| code-line-numbers: "4"
-#| fig-width: 9
+#| fig-width: 18
 #| output-location: default
 ggplot(mpg, aes(displ, drv)) +
   stat_density(
@@ -653,7 +653,7 @@ Another use case can be to create half-geometries.
 ```{r}
 #| warning: false
 #| output-location: default
-#| fig-width: 12
+#| fig-width: 18
 ggplot(mpg, aes(class, displ)) +
   geom_boxplot(aes(xmin = after_scale(x)), staplewidth = 0.3) +
   geom_violin(aes(xmax = after_scale(x)))
@@ -916,7 +916,7 @@ Inner axes can be exposed, for all directions or `x` or `y` individually.
 
 ```{r}
 #| output-location: default
-#| fig-width: 12
+#| fig-width: 18
 p + facet_grid(island ~ species, axes = "all")
 ```
 
@@ -928,7 +928,7 @@ We can confine labels, so inner axes only display tick marks.
 
 ```{r}
 #| output-location: default
-#| fig-width: 12
+#| fig-width: 18
 p + facet_grid(island ~ species, axes = "all", axis.labels = "margins")
 ```
 
