@@ -1009,3 +1009,7 @@ p + facet_wrap(panels, dir = "tr")
    * First letter determines growing direction
 
 ## [Exercise](../exercises/2_ggplot2.qmd#exercise-2.5.1-facets) {.center style="text-align:center;"}
+
+## {.center}
+
+Next session: [Text rendering and font use](3_text_fonts.qmd)
