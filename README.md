@@ -3,52 +3,101 @@ Mastering Data Visualization with ggplot2: Latest Techniques and Best Practices
 
 ### posit::conf(2025)
 
-by Thomas Pedersen and Teun van den Brand
+*by Thomas Lin Pedersen and Teun van den Brand*
 
------
+🗓 &emsp; September 16, 2025<br/>
+⏰ &emsp; 09:00 - 17:00<br/>
+🏨 &emsp; Grand Hall East C<br/>
+✍️ &emsp; [pos.it/conf](http://pos.it/conf)
 
-INSTRUCTIONS FOR INSTRUCTORS: Please insert information about your workshop below. Then, add workshop content in the materials folder and link to each session’s materials from the schedule below. You are welcomed to add more rows to the schedule. We just ask that you take breaks at the specified times. Once you are done adding information, you can remove these instructions from the README.
-
-Alternatively, you can completely redo the organization of this repo  as a Quarto website or some other format you prefer to host your workshop materials. The only requirement is that your workshop materials are hosted here.
-
------
-
-:spiral_calendar: September 16, 2025  
-:alarm_clock:     09:00 - 17:00  
-:hotel:           ROOM TBD  
-:writing_hand:    [pos.it/conf](http://pos.it/conf)
-
------
 
 ## Description
+This workshop will explore the cutting-edge advancements and best practices in data visualization using ggplot2. This workshop is designed for data enthusiasts, analysts, and researchers who are eager to elevate their visual data storytelling skills. This workshop will be relevant to both ggplot2 users as well as package authors that somehow extend ggplot2 in their packages.
 
-ADD WORKSHOP DESCRIPTION.
+Throughout the day, participants will:
 
-## Setup
+- Discover the Latest Features: ggplot2 and its ecosystem is ever-evolving. We will cover all the new features of ggplot2 itself and highlight key features from important extension packages, so you can rest assured that no new features have escaped your attention.
+- Advanced Customization Techniques: Dive deep into how to manage and control the looks of your visualisation in order to create visually stunning and informative plots.
+- Understand text and fonts: Text is an indispensable part of data visualisation, yet rendering of it, especially when using custom fonts, is somewhat mysterious. Learn exactly what is going on so you can be confident in using text to the fullest
+- Multifigure Plot Compositions: Utilize the latest features of patchwork to create complex plot layouts, including native support for gt tables and improved handling of plot components across multiple grid cells.
 
-ADD INFORMATION YOU WANT LEARNERS TO HAVE / STEPS THEY WANT THEM TO COMPLETE PRIOR TO THE WORKSHOP. THIS COULD BE A LINK TO A THREAD ON POSIT COMMUNITY, PACKAGE INSTALL INSTRUCTIONS, HOW TO GET AN POSIT CLOUD ACCOUNT, ETC.
+By the end of this workshop, you'll have a comprehensive understanding of the latest tools and techniques in ggplot2, empowering you to create compelling and insightful data visualizations. Whether you're a user or a package developer, this workshop will provide valuable insights and skills to enhance your data visualization toolkit.
+
+## Preparation
+This workshop expects familiarity with ggplot2 and the grammar of graphics. In order to have time for more advanced topics we will not spend time taking about how to use ggplot2 in general, nor its design philosophy and how it ties into the grammar of graphics. If you are not yet at this level we advise that you read through https://ggplot2-book.org to the extend possible.
+
+Participants are expected to bring their own laptop with a working installation of R (preferably the latest version), as well as the latest versions of the following packages (we unfortunately need the dev version of ggplot2 and ggiraph):
+
+* ggplot2
+* patchwork
+* marquee
+* systemfonts
+* ragg
+* ggiraph
+* legendry
+* ggfx
+* ggpattern
+* gridpattern
+* tibble
+* dplyr
+* gapminder
+* gganimate
+* gifski
+* gridGraphics
+
+They can be installed with this code (if you don't have pak installed already you can do so with `install.packages("pak")`).
+
+```{r}
+#| eval: false
+#| echo: true
+
+# install.packages("pak")
+pak::pak(c(
+  "tidyverse/ggplot2",
+  "patchwork",
+  "marquee",
+  "systemfonts",
+  "ragg",
+  "davidgohel/ggiraph",
+  "legendry",
+  "ggfx",
+  "ggpattern",
+  "gridpattern",
+  "tibble",
+  "dplyr",
+  "gapminder",
+  "gganimate",
+  "gifski",
+  "gridGraphics"
+))
+```
+
+If you have trouble installing any of these packages please contact the instructors so we can sort it out before the workshop starts.
 
 ## Schedule
 
-| Time          | Activity         |
-| :------------ | :--------------- |
-| 09:00 - 10:30 | Session 1        |
-| 10:30 - 11:00 | *Coffee break*   |
-| 11:00 - 12:30 | Session 2        |
-| 12:30 - 13:30 | *Lunch break*    |
-| 13:30 - 15:00 | Session 3        |
-| 15:00 - 15:30 | *Coffee break*   |
-| 15:30 - 17:00 | Session 4        |
+| Time          | Activity                                                   |
+| :------------ | :--------------------------------------------------------- |
+| 09:00 - 9:30  | [Introduction](sessions/1_introduction.qmd)                |
+| 09:30 - 10:30 | [Modern ggplot2](sessions/2_ggplot2.qmd)                   |
+| 10:30 - 11:00 | *Coffee break*                                             |
+| 11:00 - 12:30 | [Text rendering and font use](sessions/3_text_fonts.qmd)   |
+| 12:30 - 13:30 | *Lunch break*                                              |
+| 13:30 - 14:30 | [Styling your plot](sessions/4_theme_guide.qmd)            |
+| 14:30 - 15:00 | [Plot Composition](sessions/5_composition.qmd)             |
+| 15:00 - 15:30 | *Coffee break*                                             |
+| 15:30 - 16:30 | [Plot Composition](sessions/5_composition.qmd)             |
+| 16:30 - 17:00 | [Creating extensions](sessions/6_extensions.qmd) / [Spice up your plot](sessions/7_fun.qmd) |
 
-## Instructor(s)
+## Instructor
 
-ADD INSTRUCTOR(S) INFO.
+**Thomas Lin Pedersen** (thomas.pedersen@posit.co)
 
-**Teun van den Brand**  
-*Contractor*  
-Teun van den Brand is a contractor working for Posit.
-He contributes mostly to the ggplot2 and scales packages.
-He authored CRAN packages such as legendry, ggh4x and ggarrow; all building on the ggplot2 framework.
+Thomas is a software engineer at Posit where he is in charge of most things related to R graphics. He is the maintainer of ggplot2 and author of numerous packages that improves the graphics capabilities of R. On the side, Thomas is a generative artist making computational art using R, JavaScript, and GLSL. A not insignificant number of packages or features has been born from artistic needs.
+
+**Teun van den Brand** (teun.vandenbrand@posit.co)
+
+Teun is a contractor working for Posit. He contributes mostly to the ggplot2 and scales packages and has been in charge of most of the new features in the latest releases. He has authored other packages such as legendry, ggh4x and ggarrow — all building on the ggplot2 framework.
 
 -----
 

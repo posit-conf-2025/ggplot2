@@ -6,7 +6,7 @@ title: "Mastering Data Visualization with ggplot2"
 
 🗓 &emsp; September 16, 2025<br/>
 ⏰ &emsp; 09:00 - 17:00<br/>
-🏨 &emsp; ROOM TBD<br/>
+🏨 &emsp; Grand Hall East C<br/>
 ✍️ &emsp; [pos.it/conf](http://pos.it/conf)
 
 
