@@ -87,12 +87,16 @@ p1 + p2 +
 
 ## Patchwork *in a nutshell*
 
+<!-- Demonstrate difference between `+ theme_*()` and `& theme_*()`? -->
+
 ```{r}
 p1 + p2 &
   theme_minimal()
 ```
 
 ## Patchwork layout model
+
+<!-- Should maybe include an example with facets? -->
 
 ![](../assets/img/the_grid_1.svg)
 
@@ -373,6 +377,8 @@ p1 + logo
 ```
 
 ## Other objects: grobs
+
+<!-- require Devanagari compatible font? -->
 
 ```{r}
 grob <- marquee::marquee_grob(textshaping::lorem_text("devanagari"))
