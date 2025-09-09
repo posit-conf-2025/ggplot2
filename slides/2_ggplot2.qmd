@@ -193,7 +193,7 @@ ggplot(mtcars, aes(cyl, mpg, group = cyl)) +
 * `attr(data$var, "label")`
 * `labs(dictionary)`
 
-## [Exercise](../exercises/2_ggplot2.qmd#exercise-2.1-headings) {.center style="text-align:center;"}
+## [Exercise 2.1](https://posit-conf-2025.github.io/ggplot2/exercises/2_ggplot2.qmd#exercise-2.1-headings) {.center style="text-align:center;"}
 
 ## Patterns and gradients
 
@@ -497,7 +497,7 @@ ggplot(df, aes(amount, animal, fill = animal)) +
     * Geom layers (`ggpattern::geom_boxplot_pattern()`)
     * Scales (`ggpattern::scale_pattern_density_continuous()`)
 
-## [Exercise](../exercises/2_ggplot2.qmd#exercise-2.2-patterns-and-gradients) {.center style="text-align:center;"}
+## [Exercise 2.2](https://posit-conf-2025.github.io/ggplot2/exercises/2_ggplot2.qmd#exercise-2.2-patterns-and-gradients) {.center style="text-align:center;"}
 
 ---
 
@@ -743,7 +743,7 @@ aes(
 
 * `stage()` to initiate and delay modification.
 
-## [Exercise](../exercises/2_ggplot2.qmd#exercise-2.3.1-delayed-evaluation) {.center style="text-align:center;"}
+## [Exercise 2.3](https://posit-conf-2025.github.io/ggplot2/exercises/2_ggplot2.qmd#exercise-2.3.1-delayed-evaluation) {.center style="text-align:center;"}
 
 ## Polar coordinates
 
@@ -880,7 +880,7 @@ p + coord_radial(
 * Partial circles: `start` & `end`
 * Donut: `inner.radius`
 
-## [Exercise](../exercises/2_ggplot2.qmd#exercise-2.4.1-polar-coordinates) {.center style="text-align:center;"}
+## [Exercise 2.4](https://posit-conf-2025.github.io/ggplot2/exercises/2_ggplot2.qmd#exercise-2.4.1-polar-coordinates) {.center style="text-align:center;"}
 
 ## Facets
 
@@ -1008,7 +1008,7 @@ p + facet_wrap(panels, dir = "tr")
    * Two letter code determine start position
    * First letter determines growing direction
 
-## [Exercise](../exercises/2_ggplot2.qmd#exercise-2.5.1-facets) {.center style="text-align:center;"}
+## [Exercise 2.5](https://posit-conf-2025.github.io/ggplot2/exercises/2_ggplot2.qmd#exercise-2.5.1-facets) {.center style="text-align:center;"}
 
 ## {.center}
 

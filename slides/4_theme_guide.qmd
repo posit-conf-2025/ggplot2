@@ -276,7 +276,7 @@ p + theme(
 * Most layer defaults can be set in the theme.
     * `theme(geom = element_geom(...))`
     
-## [Exercise](../exercises/4_theme_guide.qmd#exercise-4.1-ink--paper) {.center style="text-align:center;"}
+## [Exercise 4.1](https://posit-conf-2025.github.io/ggplot2/exercises/4_theme_guide.qmd#exercise-4.1-ink--paper) {.center style="text-align:center;"}
 
 ---
 
@@ -444,7 +444,7 @@ p2 + theme(
 * Input for discrete palettes `scales::as_discrete_palette()`.
 * Input for continuous palettes `scales::as_continuous_palette()`.
 
-## [Exercise](../exercises/4_theme_guide.qmd#exercise-4.2-default-palettes) {.center style="text-align:center;"}
+## [Exercise 4.2](https://posit-conf-2025.github.io/ggplot2/exercises/4_theme_guide.qmd#exercise-4.2-default-palettes) {.center style="text-align:center;"}
 
 ---
 
@@ -645,7 +645,7 @@ p + horizontal_grid()
 * (Guard custom fonts)
 * (Coordinate colour & palettes)
 
-## [Exercise](../exercises/4_theme_guide.qmd#exercise-4.3-build-your-own-theme) {.center style="text-align:center;"}
+## [Exercise 4.3](https://posit-conf-2025.github.io/ggplot2/exercises/4_theme_guide.qmd#exercise-4.3-build-your-own-theme) {.center style="text-align:center;"}
 
 ---
 
@@ -803,7 +803,7 @@ p3 + aes(colour = temperature) +
 * Guides can have local themes for individually tweaking them
 * Guide extensions, such as those in the legendry package, expand your arsenal.
 
-## [Exercise](../exercises/4_theme_guide.qmd#exercise-4.4-custom-guides) {.center style="text-align:center;"}
+## [Exercise 4.4](https://posit-conf-2025.github.io/ggplot2/exercises/4_theme_guide.qmd#exercise-4.4-custom-guides) {.center style="text-align:center;"}
 
 ## {.center}
 

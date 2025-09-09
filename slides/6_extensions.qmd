@@ -519,7 +519,7 @@ StatBoxplot$setup_data
     * Optionally, edit `setup_data()`/`setup_params()`
 * Build constructor using `make_constructor()`
 
-## [Exercise](../exercises/6_extensions.qmd#exercise-6-extension) {.center style="text-align:center;"}
+## [Exercise 6](https://posit-conf-2025.github.io/ggplot2/exercises/6_extensions.qmd#exercise-6-extension) {.center style="text-align:center;"}
 
 ---
 
