@@ -1257,7 +1257,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpRYWGfH/Barrio-regular.ttf\", \"/tmp/RtmpRYWGfH/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpJH1jBP/Barrio-regular.ttf\", \"/tmp/RtmpJH1jBP/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
@@ -1404,14 +1404,14 @@
     "href": "slides/3_text_fonts.html#styling-3",
     "title": "Text rendering and font use",
     "section": "Styling",
-    "text": "Styling\n\nnew_style &lt;- classic_style(base_size = 30) |&gt; \n  modify_style(\n    \"fancy\",\n    family = \"MonteCarlo\",\n    weight = \"light\",\n    features = font_feature(\n      ligatures = c(\"contextual\", \"discretionary\"),\n      letters = c(\"swash\", \"stylistic\"),\n      swsh = 1\n    )\n  ) |&gt; \n  modify_style(\n    \"plot\",\n    family = \"Datalegreya\",\n    weight = \"bold\"\n  )"
+    "text": "Styling\n\nnew_style &lt;- classic_style(base_size = 30) |&gt; \n  modify_style(\n    \"fancy\",\n    family = \"MonteCarlo\",\n    features = font_feature(\n      ligatures = c(\"contextual\", \"discretionary\"),\n      letters = c(\"swash\", \"stylistic\"),\n      swsh = 1\n    )\n  ) |&gt; \n  modify_style(\n    \"plot\",\n    family = \"Datalegreya\",\n    weight = \"bold\"\n  )"
   },
   {
     "objectID": "slides/3_text_fonts.html#styling-4",
     "href": "slides/3_text_fonts.html#styling-4",
     "title": "Text rendering and font use",
     "section": "Styling",
-    "text": "Styling\n\n\ntext &lt;- \"\n{.fancy Readability is overrated}\n\n{.plot Even when it  \nc|2o|3n|2t|3[++]a|1i|2n|0[--]s|1[high [low  ]     data}\n\"\n\nsystemfonts::match_fonts(\"MonteCarlo\")\n\n\n# A tibble: 1 × 3\n  path                                   index features  \n  &lt;chr&gt;                                  &lt;int&gt; &lt;list&gt;    \n1 /tmp/RtmpRYWGfH/MonteCarlo-regular.ttf     0 &lt;font_ftr&gt;\n\ngrid::grid.draw(\n  marquee_grob(text, new_style)\n)"
+    "text": "Styling\n\n\ntext &lt;- \"\n{.fancy Readability is overrated}\n\n{.plot Even when it  \nc|2o|3n|2t|3[++]a|1i|2n|0[--]s|1[high [low  ]     data}\n\"\n\ngrid::grid.draw(\n  marquee_grob(text, new_style)\n)"
   },
   {
     "objectID": "slides/3_text_fonts.html#exercise-3.3",
