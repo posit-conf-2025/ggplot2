@@ -190,7 +190,7 @@ ggplot(penguins) +
 
 ## [Exercise 3.1](https://posit-conf-2025.github.io/ggplot2/exercises/3_text_fonts.qmd#working-with-fonts) {.center style="text-align:center;"}
 
-{{< countdown minutes=5 >}}
+{{< countdown minutes=5 top="0" bottom="" >}}
 
 ## Apply rich formatting
 
