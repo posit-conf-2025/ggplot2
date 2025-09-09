@@ -3,6 +3,22 @@ title: "Spice up your plot"
 author: "Thomas Lin Pedersen"
 ---
 
+```{r setup}
+#| include: false
+library(ggplot2)
+library(ggfx)
+library(ggforce)
+library(gganimate)
+
+# Harmonise the default gray theme's panel with the slide background.
+theme_set(
+  theme_gray() +
+    theme(
+      panel.background = element_rect(colour = NA, fill = "#F0F1EB")
+    )
+)
+```
+
 ## Key takeaway today:
 
 ::: {.center-y}
@@ -30,13 +46,10 @@ author: "Thomas Lin Pedersen"
 ## Filters
 
 ```{r}
-library(ggplot2)
-library(ggfx)
-
 ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
   with_blur(
     geom_point(),
-    sigma = grid::unit(1, 'mm')
+    sigma = unit(1, 'mm')
   ) + 
   geom_smooth()
 ```
@@ -51,7 +64,7 @@ p <- ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
 with_outer_glow(
   p, 
   colour = "steelblue", 
-  sigma = grid::unit(1, "mm")
+  sigma = unit(1, "mm")
 )
 ```
 
@@ -94,8 +107,8 @@ ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
 
 ```{r}
 ggplot(penguins, aes(x = flipper_len, y = bill_len)) + 
-  with_shadow(geom_smooth(alpha = 1, level = 0.99), sigma = grid::unit(0.5, "mm")) +
-  with_shadow(geom_point(), sigma = grid::unit(0.5, "mm"))
+  with_shadow(geom_smooth(alpha = 1, level = 0.99), sigma = unit(0.5, "mm")) +
+  with_shadow(geom_point(), sigma = unit(0.5, "mm"))
 ```
 
 ## References
@@ -107,7 +120,7 @@ ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
     geom_point(),
     id = "group_1"
   ) + 
-  with_shadow("group_1", sigma = grid::unit(0.5, "mm"))
+  with_shadow("group_1", sigma = unit(0.5, "mm"))
 ```
 
 ## Moar filters
@@ -134,7 +147,9 @@ ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
 
 ::::
 
-## [Exercise](../exercises/7_fun.qmd) {.center style="text-align:center;"}
+## [Exercise 7.1](../exercises/7_fun.qmd#adding-effects-with-ggfx) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 >}}
 
 ## {.center}
 
@@ -144,7 +159,7 @@ ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
 
 ## ggforce
 
-* This is my grab-back package. Expect some chaos
+* This is my grab-bag package. Expect some chaos
 * Main focus on powerful building blocks
 
 ::: {.r-stack}
@@ -176,7 +191,6 @@ positions <- data.frame(
 ```
 
 ```{r}
-library(ggforce)
 ggplot(positions, aes(x = x, y = y, group = id)) +
   geom_shape(aes(fill = id))
 ```
@@ -184,14 +198,13 @@ ggplot(positions, aes(x = x, y = y, group = id)) +
 ## Shapes
 
 ```{r}
-library(ggforce)
 ggplot(
   positions, 
   aes(x = x, y = y, group = id)
 ) +
   geom_shape(
     aes(fill = id), 
-    radius = grid::unit(5, "mm")
+    radius = unit(5, "mm")
   )
 ```
 
@@ -204,7 +217,7 @@ ggplot(
 ) +
   geom_shape(
     aes(fill = id), 
-    expand = -grid::unit(2, "mm")
+    expand = -unit(2, "mm")
   )
 ```
 
@@ -278,7 +291,7 @@ p +
 
 ## Links
 
-* Supercharged `geom_segment()` / `geom_path()``
+* Supercharged `geom_segment()` / `geom_path()`
 * Allows interpolation of aesthetics between anchors
 
 ```{r}
@@ -316,7 +329,9 @@ ggplot(lines, aes(x = x, y = y)) +
   )
 ```
 
-## [Exercise](../exercises/7_fun.qmd) {.center style="text-align:center;"}
+## [Exercise 7.2](../exercises/7_fun.qmd#working-with-ggforce) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 >}}
 
 ## {.center}
 
@@ -337,8 +352,6 @@ ggplot(lines, aes(x = x, y = y)) +
 ## gganimate
 
 ```{r}
-library(gganimate)
-
 ggplot(penguins) + 
   geom_point(aes(bill_dep, flipper_len)) + 
   transition_states(species) + 
@@ -396,4 +409,6 @@ ggplot(penguins) +
   transition_reveal(after_stat(x))
 ```
 
-## [Exercise](../exercises/7_fun.qmd) {.center style="text-align:center;"}
+## [Exercise 7.3](../exercises/7_fun.qmd#animating-with-gganimate) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 >}}

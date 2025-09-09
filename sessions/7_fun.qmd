@@ -8,7 +8,7 @@ In this last session we will (if time permits) spend some time showcasing things
 ::: {.text-center .plain}
 :::::: {.btn-group}
 [Slides](../slides/7_fun.qmd){.btn .btn-primary role="button"}
-[Exercises](){.btn .btn-success .disabled role="button"}
+[Exercises](../exercises/7_fun.qmd){.btn .btn-success role="button"}
 ::::::
 :::
 

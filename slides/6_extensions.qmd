@@ -4,6 +4,18 @@ author: "Teun van den Brand"
 code-annotations: hover
 ---
 
+```{r setup}
+#| include: false
+library(ggplot2)
+# Harmonise the default gray theme's panel with the slide background.
+theme_set(
+  theme_gray() +
+    theme(
+      panel.background = element_rect(colour = NA, fill = "#F0F1EB")
+    )
+)
+```
+
 ## Extension points
 
 * Themes
@@ -23,13 +35,12 @@ Usually wrap some standard ggplot2 theme code.
 * Session 4: Build your own theme
 
 ```{r}
-library(ggplot2)
-
 bland_plot <- ggplot(mpg, aes(displ, hwy)) +
   geom_point()
 
 my_theme <- function(...) {
-  theme_gray() + theme(geom = element_geom(ink = "red"))
+  theme_gray() + 
+    theme(geom = element_geom(ink = "red"))
 }
 
 bland_plot + my_theme()
@@ -45,7 +56,9 @@ Often wrappers for novelty aesthetics or scale parameters.
 
 ```{r}
 scale_x_asinh <- function(...) {
-  scale_x_continuous(transform = scales::transform_asinh())
+  scale_x_continuous(
+    transform = scales::transform_asinh()
+  )
 }
 
 bland_plot + scale_x_asinh()
@@ -155,7 +168,7 @@ AddNumber <- ggproto(
   state = 0,
   add = function(self, number) {
     # We read and write the 'state' field
-    # Do not do this!
+    # Do not do this in serious code!
     self$state <- self$state + number
     self$state
   }
@@ -506,7 +519,7 @@ StatBoxplot$setup_data
     * Optionally, edit `setup_data()`/`setup_params()`
 * Build constructor using `make_constructor()`
 
-⏲️ Exercise 6
+## [Exercise](../exercises/6_extensions.qmd#exercise-6-extension) {.center style="text-align:center;"}
 
 ---
 
@@ -550,11 +563,15 @@ StatBoxplot$setup_data
 
 * data extensions
     * `ggforce::facet_matrix()`
+    * `ggraph::facet_nodes()`
 * layout extensions
     * geofacet
     * ggragged
     * `ggh4x::facet_manual()`
 * decorations
     * `ggh4x::facet_nested()`
+    * `ggforce::facet_zoom()`
     
-    
+## {.center}
+
+Next session: [Spice up your plot](7_fun.qmd)

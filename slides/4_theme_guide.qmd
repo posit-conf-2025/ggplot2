@@ -1,11 +1,6 @@
 ---
 title: "Styling your plot"
 author: "Teun van den Brand"
-knitr:
-  opts_chunk:
-    dev: ragg_png
-    dev.args:
-      scaling: 2
 ---
 
 ```{r}
@@ -15,7 +10,22 @@ systemfonts::require_font("Barrio")
 systemfonts::require_font("Dancing Script")
 
 library(ggplot2)
+theme_set(
+  theme_gray() +
+    theme(
+      panel.background = element_rect(colour = NA, fill = "#F0F1EB")
+    )
+)
 ```
+
+## The theme menu
+
+* Ink & Paper
+* Default palettes
+* Build your own theme
+* Custom guides
+
+---
 
 ## Ink & Paper
 
@@ -197,7 +207,7 @@ ggplot(mtcars) +
 
 ### Geom elements
 
-For points, we can set `pointsize` and `fontshape`
+For points, we can set `pointsize` and `pointshape`
 
 ```{r}
 #| code-line-numbers: "12-13"
@@ -209,7 +219,7 @@ element_geom()
 
 ### Geom elements
 
-For points, we can set `pointsize` and `fontshape`
+For points, we can set `pointsize` and `pointshape`
 
 ```{r}
 p + theme(geom = element_geom(
@@ -266,7 +276,7 @@ p + theme(
 * Most layer defaults can be set in the theme.
     * `theme(geom = element_geom(...))`
     
-⏲️ Exercise 4.1
+## [Exercise](../exercises/4_theme_guide.qmd#exercise-4.1-ink--paper) {.center style="text-align:center;"}
 
 ---
 
@@ -320,6 +330,35 @@ p2 + theme(palette.colour.continuous = my_palette)
 
 ---
 
+### Controlling palettes
+
+Regular scales override theme defaults
+
+```{r}
+p2 + 
+  theme(palette.colour.continuous = my_palette) +
+  scale_colour_viridis_c()
+```
+
+### Controlling palettes
+
+The default palette does not commit to a full scale.
+You can still tweak the options via the default scales (`scale_{aesthetic}_{type}`).
+
+```{r}
+p2 + 
+  theme(palette.colour.continuous = my_palette) +
+  scale_colour_continuous(
+    breaks = c(
+      ten    = 10,
+      twenty = 20,
+      thirty = 30
+    )
+  )
+```
+
+---
+
 ### Theme palettes
 
 The palette settings have the syntax `palette.{aesthetic}.{type}`, where `type` can be `"continuous"` or `"discrete"`.
@@ -346,6 +385,7 @@ The palatable palettes are those that can pass through `scales::as_continuous_pa
 
 ```{r}
 #| collapse: true
+#| output-location: default
 library(scales)
 
 # Discrete palettes
@@ -378,7 +418,9 @@ is_continuous_pal(pal)
 con_pal <- as_continuous_pal(pal)
 is_continuous_pal(con_pal)
 
-show_col(con_pal(seq(0, 1, length.out = 6)))
+seq(0, 1, length.out = 9) |>
+  con_pal() |>
+  show_col()
 ```
 
 ---
@@ -402,7 +444,7 @@ p2 + theme(
 * Input for discrete palettes `scales::as_discrete_palette()`.
 * Input for continuous palettes `scales::as_continuous_palette()`.
 
-⏲️ Exercise 4.2
+## [Exercise](../exercises/4_theme_guide.qmd#exercise-4.2-default-palettes) {.center style="text-align:center;"}
 
 ---
 
@@ -549,7 +591,19 @@ p2
 But for now, we'll reset it to something familiar.
 
 ```{r}
-theme_set(theme_gray())
+#| eval: false
+set_theme(theme_gray())
+p2
+```
+
+```{r}
+#| echo: false
+theme_set(
+  theme_gray() +
+    theme(
+      panel.background = element_rect(colour = NA, fill = "#F0F1EB")
+    )
+)
 p2
 ```
 
@@ -591,7 +645,7 @@ p + horizontal_grid()
 * (Guard custom fonts)
 * (Coordinate colour & palettes)
 
-⏲️ Exercise 4.3
+## [Exercise](../exercises/4_theme_guide.qmd#exercise-4.3-build-your-own-theme) {.center style="text-align:center;"}
 
 ---
 
@@ -629,7 +683,7 @@ p + aes(shape = factor(year), colour = class) +
   guides(
     x = guide_axis(theme = theme_classic(ink = "red")),
     y = guide_axis(theme = theme_minimal(ink = "blue")),
-    shape = guide_legend(theme = theme_gray(paper= "cornsilk")),
+    shape = guide_legend(theme = theme_gray(paper = "cornsilk")),
     colour = guide_legend(theme = theme(legend.text.position = "left"))
   )
 ```
@@ -749,4 +803,8 @@ p3 + aes(colour = temperature) +
 * Guides can have local themes for individually tweaking them
 * Guide extensions, such as those in the legendry package, expand your arsenal.
 
-⏲️ Exercise 4.4
+## [Exercise](../exercises/4_theme_guide.qmd#exercise-4.4-custom-guides) {.center style="text-align:center;"}
+
+## {.center}
+
+Next session: [Plot composition](5_composition.qmd)

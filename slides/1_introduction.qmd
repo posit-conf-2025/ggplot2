@@ -5,7 +5,7 @@
 ### *Latest Techniques and Best Practices*
 
 ::: r-stack
-[![](https://github.com/rstudio/hex-stickers/blob/main/PNG/ggplot2.png?raw=true){width="400"}](https://ggplot2.tidyverse.org)
+[![](https://github.com/rstudio/hex-stickers/blob/main/PNG/ggplot2.png?raw=true){width="400"}](https://ggplot2.tidyverse.org){target="_blank"}
 :::
 
 ## The Team
@@ -60,6 +60,8 @@
 * The exercises are for you, so give it your best shot
 * Once you're finished put the green post-it up
 * You may not have time for all of them — That is OK!
+* You will become very familiar with the palmerpenguins dataset
+  - Or you can use another with more relevanse to you
 
 ## Practical information
 

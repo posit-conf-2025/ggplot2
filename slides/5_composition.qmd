@@ -8,6 +8,12 @@ author: "Thomas Lin Pedersen"
 
 library(ggplot2)
 library(patchwork)
+theme_set(
+  theme_gray() +
+    theme(
+      panel.background = element_rect(colour = NA, fill = "#F0F1EB")
+    )
+)
 ```
 
 ## Key takeaway today
@@ -157,7 +163,9 @@ p1 + p2 +
   plot_layout(design = layout)
 ```
 
-## [Exercise](../exercises/5_composition.qmd#patchwork-composition) {.center style="text-align:center;"}
+## [Exercise 5.1](../exercises/5_composition.qmd#patchwork-composition) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 >}}
 
 ## Layout modifiers
 
@@ -175,8 +183,8 @@ p1 + inset_element(
   p2, 
   left = 0.5, 
   bottom = 0.5, 
-  right = grid::unit(1, "npc") - grid::unit(6, "mm"),
-  top = grid::unit(1, "npc") - grid::unit(6, "mm"),
+  right = unit(1, "npc") - unit(6, "mm"),
+  top = unit(1, "npc") - unit(6, "mm"),
 )
 ```
 
@@ -200,7 +208,9 @@ p1 + free(p3a, side = "b")
 free(p1, "label", side = "b") + p3a
 ```
 
-## [Exercise](../exercises/5_composition.qmd#layout-modifiers) {.center style="text-align:center;"}
+## [Exercise 5.2](../exercises/5_composition.qmd#layout-modifiers) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 >}}
 
 ## Annotations
 
@@ -235,7 +245,7 @@ p1 +
 
 ## Tagging
 
-* With multi-panel graphics you often need a way to refer to the subgraphics
+With multi-panel graphics you often need a way to refer to the subgraphics
 
 ```{r}
 p123 <- (p1 | (p2 / p3)) & theme(
@@ -251,7 +261,7 @@ p123 +
 
 ## Tagging
 
-* It knows about nesting as well
+It knows about nesting as well
 
 ```{r}
 p123[[2]] <- p123[[2]] + 
@@ -264,11 +274,13 @@ p123 +
   )
 ```
 
-## [Exercise](../exercises/5_composition.qmd#annotations-and-tagging) {.center style="text-align:center;"}
+## [Exercise 5.3](../exercises/5_composition.qmd#annotations-and-tagging) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 >}}
 
 ## Guide handling
 
-* Guides are often global instead of linked to a single subplot
+Guides are often global instead of linked to a single subplot
 
 ```{r}
 p1 / p4
@@ -276,8 +288,7 @@ p1 / p4
 
 ## Guide handling
 
-* Use `guides = "collect"` to fetch all guides from subplots and place them at
-  the top level
+Use `guides = "collect"` to fetch all guides from subplots and place them at the top level
 
 ```{r}
 (p1 / p4) + 
@@ -304,7 +315,7 @@ p1a | p4
 
 ## Guide handling
 
-* Duplicate guides are automatically removed
+Duplicate guides are automatically removed
 
 ```{r}
 p2a <- ggplot(penguins) + 
@@ -318,7 +329,7 @@ p2a <- ggplot(penguins) +
 
 ## Guide handling
 
-* Duplicate guides are automatically removed
+Duplicate guides are automatically removed
 
 ```{r}
 p2a <- ggplot(penguins) + 
@@ -332,7 +343,7 @@ p2a + p4 + p3 + guide_area() +
 
 ## Guide handling
 
-* Axes are guides too
+Axes are guides too
 
 ```{r}
 (p3 / p4) + plot_layout(
@@ -341,7 +352,9 @@ p2a + p4 + p3 + guide_area() +
 )
 ```
 
-## [Exercise](../exercises/5_composition.qmd#guide-handling) {.center style="text-align:center;"}
+## [Exercise 5.4](../exercises/5_composition.qmd#guide-handling) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 >}}
 
 ## Other objects
 
@@ -404,7 +417,9 @@ p1 +
   )
 ```
 
-## [Exercise](../exercises/5_composition.qmd#other-objects) {.center style="text-align:center;"}
+## [Exercise 5.5](../exercises/5_composition.qmd#other-objects) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 >}}
 
 ## {.center}
 
@@ -459,3 +474,7 @@ girafe(
   ggobj = p1 | p2
 )
 ```
+
+## {.center}
+
+Next session: [Creating extensions](6_extensions.qmd) or [Spice up your plot](7_fun.qmd)

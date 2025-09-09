@@ -1,5 +1,9 @@
 ---
 title: Exercises for session 3
+format:
+  live-html:
+    code-tools: 
+      source: _source/3_text_fonts.qmd
 webr:
   repos:
     - https://repo.r-wasm.org
@@ -449,7 +453,7 @@ but I'm sure you can do it better/worse
 
 ::::
 
-## 3.4 Using geom_marquee() in ggplot2
+## 3.4 Using `geom_marquee` in ggplot2
 
 :::: {.panel-tabset}
 
@@ -486,7 +490,7 @@ ggplot(penguins, aes(bill_len, flipper_len)) +
   geom_marquee(
     aes(label = label), 
     data = penguins2,
-    width = grid::unit(3, "cm"),
+    width = unit(3, "cm"),
     hjust = 0,
     vjust = 1
   ) + 

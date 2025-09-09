@@ -27,7 +27,7 @@ jobs:
           extra-packages: |
             tidyverse/ggplot2
             any::patchwork
-            any::marquee
+            r-lib/marquee
             any::systemfonts
             davidgohel/ggiraph
             any::legendry
