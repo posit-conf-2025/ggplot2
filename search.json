@@ -735,11 +735,25 @@
     "text": "Headings\nBetter default titles for variables\n\nColumn metadata\nData dictionary"
   },
   {
+    "objectID": "slides/2_ggplot2.html#exercise",
+    "href": "slides/2_ggplot2.html#exercise",
+    "title": "Modern ggplot2",
+    "section": "Exercise",
+    "text": "Exercise"
+  },
+  {
     "objectID": "slides/2_ggplot2.html#patterns-and-gradients",
     "href": "slides/2_ggplot2.html#patterns-and-gradients",
     "title": "Modern ggplot2",
     "section": "Patterns and gradients",
     "text": "Patterns and gradients\nIn R 4.1 the grid package introduced patterns and gradients.\n\ngrid::linearGradient()\ngrid::radialGradient()\ngrid::pattern()\n\nWe allow these as fill aesthetic in ggplot2.\nPatterns can aid in cases of colour vision deficiency."
+  },
+  {
+    "objectID": "slides/2_ggplot2.html#exercise-1",
+    "href": "slides/2_ggplot2.html#exercise-1",
+    "title": "Modern ggplot2",
+    "section": "Exercise",
+    "text": "Exercise"
   },
   {
     "objectID": "slides/2_ggplot2.html#delayed-evaluation",
@@ -749,11 +763,25 @@
     "text": "Delayed evaluation\nWith regards to evaluation, there are three stages:\n\nDirect input at start\nAfter computing stat\nAfter scale mapping"
   },
   {
+    "objectID": "slides/2_ggplot2.html#exercise-2",
+    "href": "slides/2_ggplot2.html#exercise-2",
+    "title": "Modern ggplot2",
+    "section": "Exercise",
+    "text": "Exercise"
+  },
+  {
     "objectID": "slides/2_ggplot2.html#polar-coordinates",
     "href": "slides/2_ggplot2.html#polar-coordinates",
     "title": "Modern ggplot2",
     "section": "Polar coordinates",
-    "text": "Polar coordinates\nThe classic coord_polar() is succeeded by coord_radial().\n\nexpand parameter\nArbitrary sectors\nDonuts"
+    "text": "Polar coordinates\nThe classic coord_polar() is superseded by coord_radial().\n\nexpand parameter\nArbitrary sectors\nDonuts"
+  },
+  {
+    "objectID": "slides/2_ggplot2.html#exercise-3",
+    "href": "slides/2_ggplot2.html#exercise-3",
+    "title": "Modern ggplot2",
+    "section": "Exercise",
+    "text": "Exercise"
   },
   {
     "objectID": "slides/2_ggplot2.html#facets",
@@ -761,6 +789,13 @@
     "title": "Modern ggplot2",
     "section": "Facets",
     "text": "Facets\n\nDisplay of inner axes\nLayer layout\nPanel ordering"
+  },
+  {
+    "objectID": "slides/2_ggplot2.html#exercise-4",
+    "href": "slides/2_ggplot2.html#exercise-4",
+    "title": "Modern ggplot2",
+    "section": "Exercise",
+    "text": "Exercise"
   },
   {
     "objectID": "slides/5_composition.html#key-takeaway-today",
@@ -1152,7 +1187,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/Rtmp2OqUQa/Barrio-regular.ttf\", \"/tmp/Rtmp2OqUQa/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpWLr3pE/Barrio-regular.ttf\", \"/tmp/RtmpWLr3pE/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
