@@ -373,7 +373,7 @@ grid::grid.draw(
 )
 ```
 
-## [Exercise 3.3](../exercises/3_text_fonts.html#advanced-marquee-styling) {.center style="text-align:center;"}
+## [Exercise 3.3](../exercises/3_text_fonts.qmd#advanced-marquee-styling){preview-link="true"} {.center style="text-align:center;"}
 
 {{< countdown minutes=5 >}}
 
