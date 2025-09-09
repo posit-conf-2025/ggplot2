@@ -49,7 +49,7 @@ theme_set(
 ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
   with_blur(
     geom_point(),
-    sigma = grid::unit(1, 'mm')
+    sigma = unit(1, 'mm')
   ) + 
   geom_smooth()
 ```
@@ -64,7 +64,7 @@ p <- ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
 with_outer_glow(
   p, 
   colour = "steelblue", 
-  sigma = grid::unit(1, "mm")
+  sigma = unit(1, "mm")
 )
 ```
 
@@ -107,8 +107,8 @@ ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
 
 ```{r}
 ggplot(penguins, aes(x = flipper_len, y = bill_len)) + 
-  with_shadow(geom_smooth(alpha = 1, level = 0.99), sigma = grid::unit(0.5, "mm")) +
-  with_shadow(geom_point(), sigma = grid::unit(0.5, "mm"))
+  with_shadow(geom_smooth(alpha = 1, level = 0.99), sigma = unit(0.5, "mm")) +
+  with_shadow(geom_point(), sigma = unit(0.5, "mm"))
 ```
 
 ## References
@@ -120,7 +120,7 @@ ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
     geom_point(),
     id = "group_1"
   ) + 
-  with_shadow("group_1", sigma = grid::unit(0.5, "mm"))
+  with_shadow("group_1", sigma = unit(0.5, "mm"))
 ```
 
 ## Moar filters
@@ -159,7 +159,7 @@ ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
 
 ## ggforce
 
-* This is my grab-back package. Expect some chaos
+* This is my grab-bag package. Expect some chaos
 * Main focus on powerful building blocks
 
 ::: {.r-stack}
@@ -204,7 +204,7 @@ ggplot(
 ) +
   geom_shape(
     aes(fill = id), 
-    radius = grid::unit(5, "mm")
+    radius = unit(5, "mm")
   )
 ```
 
@@ -217,7 +217,7 @@ ggplot(
 ) +
   geom_shape(
     aes(fill = id), 
-    expand = -grid::unit(2, "mm")
+    expand = -unit(2, "mm")
   )
 ```
 
@@ -291,7 +291,7 @@ p +
 
 ## Links
 
-* Supercharged `geom_segment()` / `geom_path()``
+* Supercharged `geom_segment()` / `geom_path()`
 * Allows interpolation of aesthetics between anchors
 
 ```{r}

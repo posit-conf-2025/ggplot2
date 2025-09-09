@@ -39,7 +39,8 @@ bland_plot <- ggplot(mpg, aes(displ, hwy)) +
   geom_point()
 
 my_theme <- function(...) {
-  theme_gray() + theme(geom = element_geom(ink = "red"))
+  theme_gray() + 
+    theme(geom = element_geom(ink = "red"))
 }
 
 bland_plot + my_theme()
@@ -55,7 +56,9 @@ Often wrappers for novelty aesthetics or scale parameters.
 
 ```{r}
 scale_x_asinh <- function(...) {
-  scale_x_continuous(transform = scales::transform_asinh())
+  scale_x_continuous(
+    transform = scales::transform_asinh()
+  )
 }
 
 bland_plot + scale_x_asinh()
@@ -165,7 +168,7 @@ AddNumber <- ggproto(
   state = 0,
   add = function(self, number) {
     # We read and write the 'state' field
-    # Do not do this!
+    # Do not do this in serious code!
     self$state <- self$state + number
     self$state
   }
