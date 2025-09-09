@@ -62,7 +62,7 @@ You need to use `with_motion_blur()` to wrap around the `geom_point()` layer. Th
 ggplot(penguins, aes(x = bill_len, y = flipper_len, color = species)) +
   with_motion_blur(
     geom_point(size = 3),
-    sigma = grid::unit(2, 'mm'),
+    sigma = unit(2, 'mm'),
     angle = 35
   )
 ```
@@ -155,7 +155,7 @@ If the radius get's to large the shapes will disappear due to how it is implemen
 ggplot(positions, aes(x = x, y = y, group = id)) +
   geom_shape(
     aes(fill = id), 
-    radius = grid::unit(5, "mm")
+    radius = unit(5, "mm")
   )
 ```
 :::

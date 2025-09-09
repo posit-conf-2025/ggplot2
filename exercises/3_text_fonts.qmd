@@ -490,7 +490,7 @@ ggplot(penguins, aes(bill_len, flipper_len)) +
   geom_marquee(
     aes(label = label), 
     data = penguins2,
-    width = grid::unit(3, "cm"),
+    width = unit(3, "cm"),
     hjust = 0,
     vjust = 1
   ) + 

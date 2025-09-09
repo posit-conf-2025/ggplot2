@@ -448,7 +448,7 @@ ggplot(
     fill = "white",
     hjust = "right-ink",
     vjust = 1,
-    width = grid::unit(5, "cm")
+    width = unit(5, "cm")
   )
 ```
 
@@ -489,7 +489,7 @@ ggplot(penguins) +
 Overview of how bill length and flipper length relate to each other
 in the penguin species *Adelie* <<1>>, *Chinstrap* <<2>>, and 
 *Gentoo* <<3>>.",
-    guide = guide_marquee(width = grid::unit(2.75, "in"))
+    guide = guide_marquee(width = unit(2.75, "in"))
   )
 ```
 
@@ -503,7 +503,7 @@ ggplot(penguins) +
 Overview of how bill length and flipper length relate to each other
 in the penguin species {.1 *Adelie*}, {.2 *Chinstrap*}, and 
 {.3 *Gentoo*}.",
-    guide = guide_marquee(width = grid::unit(2.75, "in"))
+    guide = guide_marquee(width = unit(2.75, "in"))
   )
 ```
 
