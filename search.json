@@ -116,7 +116,7 @@
     "href": "slides/6_extensions.html#theme-extensions",
     "title": "Creating extensions",
     "section": "Theme extensions",
-    "text": "Theme extensions\nUsually wrap some standard ggplot2 theme code.\n\ncowplot::theme_cowplot()\nggthemes::theme_economist()\nSession 4: Build your own theme\n\n\n\nlibrary(ggplot2)\n\nbland_plot &lt;- ggplot(mpg, aes(displ, hwy)) +\n  geom_point()\n\nmy_theme &lt;- function(...) {\n  theme_gray() + theme(geom = element_geom(ink = \"red\"))\n}\n\nbland_plot + my_theme()"
+    "text": "Theme extensions\nUsually wrap some standard ggplot2 theme code.\n\ncowplot::theme_cowplot()\nggthemes::theme_economist()\nSession 4: Build your own theme\n\n\n\nbland_plot &lt;- ggplot(mpg, aes(displ, hwy)) +\n  geom_point()\n\nmy_theme &lt;- function(...) {\n  theme_gray() + theme(geom = element_geom(ink = \"red\"))\n}\n\nbland_plot + my_theme()"
   },
   {
     "objectID": "slides/6_extensions.html#scale-extensions",
@@ -522,7 +522,7 @@
     "href": "slides/7_fun.html#filters",
     "title": "Spice up your plot",
     "section": "Filters",
-    "text": "Filters\n\n\nlibrary(ggplot2)\nlibrary(ggfx)\n\nggplot(penguins, aes(x = flipper_len, y = bill_len)) +\n  with_blur(\n    geom_point(),\n    sigma = grid::unit(1, 'mm')\n  ) + \n  geom_smooth()"
+    "text": "Filters\n\n\nggplot(penguins, aes(x = flipper_len, y = bill_len)) +\n  with_blur(\n    geom_point(),\n    sigma = grid::unit(1, 'mm')\n  ) + \n  geom_smooth()"
   },
   {
     "objectID": "slides/7_fun.html#filters-1",
@@ -592,14 +592,14 @@
     "href": "slides/7_fun.html#shapes",
     "title": "Spice up your plot",
     "section": "Shapes",
-    "text": "Shapes\n\nSuper-charged geom_polygon()\nRound corners\nExpand and subtract based on absolute sizes\n\n\n\nlibrary(ggforce)\nggplot(positions, aes(x = x, y = y, group = id)) +\n  geom_shape(aes(fill = id))"
+    "text": "Shapes\n\nSuper-charged geom_polygon()\nRound corners\nExpand and subtract based on absolute sizes\n\n\n\nggplot(positions, aes(x = x, y = y, group = id)) +\n  geom_shape(aes(fill = id))"
   },
   {
     "objectID": "slides/7_fun.html#shapes-1",
     "href": "slides/7_fun.html#shapes-1",
     "title": "Spice up your plot",
     "section": "Shapes",
-    "text": "Shapes\n\n\nlibrary(ggforce)\nggplot(\n  positions, \n  aes(x = x, y = y, group = id)\n) +\n  geom_shape(\n    aes(fill = id), \n    radius = grid::unit(5, \"mm\")\n  )"
+    "text": "Shapes\n\n\nggplot(\n  positions, \n  aes(x = x, y = y, group = id)\n) +\n  geom_shape(\n    aes(fill = id), \n    radius = grid::unit(5, \"mm\")\n  )"
   },
   {
     "objectID": "slides/7_fun.html#shapes-2",
@@ -690,7 +690,7 @@
     "href": "slides/7_fun.html#gganimate-1",
     "title": "Spice up your plot",
     "section": "gganimate",
-    "text": "gganimate\n\n\nlibrary(gganimate)\n\nggplot(penguins) + \n  geom_point(aes(bill_dep, flipper_len)) + \n  transition_states(species) + \n  enter_grow() + \n  exit_fade()"
+    "text": "gganimate\n\n\nggplot(penguins) + \n  geom_point(aes(bill_dep, flipper_len)) + \n  transition_states(species) + \n  enter_grow() + \n  exit_fade()"
   },
   {
     "objectID": "slides/7_fun.html#key-concept",
@@ -1152,7 +1152,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpRswXBC/Barrio-regular.ttf\", \"/tmp/RtmpRswXBC/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/Rtmp2OqUQa/Barrio-regular.ttf\", \"/tmp/Rtmp2OqUQa/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",

@@ -240,15 +240,12 @@ Thomas Lin Pedersen
 <h2>Filters</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(ggfx)</span>
-<span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_len, <span class="at">y =</span> bill_len)) <span class="sc">+</span></span>
-<span id="cb1-5"><a></a>  <span class="fu">with_blur</span>(</span>
-<span id="cb1-6"><a></a>    <span class="fu">geom_point</span>(),</span>
-<span id="cb1-7"><a></a>    <span class="at">sigma =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">'mm'</span>)</span>
-<span id="cb1-8"><a></a>  ) <span class="sc">+</span> </span>
-<span id="cb1-9"><a></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_len, <span class="at">y =</span> bill_len)) <span class="sc">+</span></span>
+<span id="cb1-2"><a></a>  <span class="fu">with_blur</span>(</span>
+<span id="cb1-3"><a></a>    <span class="fu">geom_point</span>(),</span>
+<span id="cb1-4"><a></a>    <span class="at">sigma =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">'mm'</span>)</span>
+<span id="cb1-5"><a></a>  ) <span class="sc">+</span> </span>
+<span id="cb1-6"><a></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -433,9 +430,8 @@ Thomas Lin Pedersen
 </ul>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(ggforce)</span>
-<span id="cb8-2"><a></a><span class="fu">ggplot</span>(positions, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">group =</span> id)) <span class="sc">+</span></span>
-<span id="cb8-3"><a></a>  <span class="fu">geom_shape</span>(<span class="fu">aes</span>(<span class="at">fill =</span> id))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(positions, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">group =</span> id)) <span class="sc">+</span></span>
+<span id="cb8-2"><a></a>  <span class="fu">geom_shape</span>(<span class="fu">aes</span>(<span class="at">fill =</span> id))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -450,15 +446,14 @@ Thomas Lin Pedersen
 <h2>Shapes</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(ggforce)</span>
-<span id="cb9-2"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb9-3"><a></a>  positions, </span>
-<span id="cb9-4"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">group =</span> id)</span>
-<span id="cb9-5"><a></a>) <span class="sc">+</span></span>
-<span id="cb9-6"><a></a>  <span class="fu">geom_shape</span>(</span>
-<span id="cb9-7"><a></a>    <span class="fu">aes</span>(<span class="at">fill =</span> id), </span>
-<span id="cb9-8"><a></a>    <span class="at">radius =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">5</span>, <span class="st">"mm"</span>)</span>
-<span id="cb9-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb9-2"><a></a>  positions, </span>
+<span id="cb9-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">group =</span> id)</span>
+<span id="cb9-4"><a></a>) <span class="sc">+</span></span>
+<span id="cb9-5"><a></a>  <span class="fu">geom_shape</span>(</span>
+<span id="cb9-6"><a></a>    <span class="fu">aes</span>(<span class="at">fill =</span> id), </span>
+<span id="cb9-7"><a></a>    <span class="at">radius =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">5</span>, <span class="st">"mm"</span>)</span>
+<span id="cb9-8"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -706,13 +701,11 @@ Thomas Lin Pedersen
 <h2>gganimate</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">library</span>(gganimate)</span>
-<span id="cb20-2"><a></a></span>
-<span id="cb20-3"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span> </span>
-<span id="cb20-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(bill_dep, flipper_len)) <span class="sc">+</span> </span>
-<span id="cb20-5"><a></a>  <span class="fu">transition_states</span>(species) <span class="sc">+</span> </span>
-<span id="cb20-6"><a></a>  <span class="fu">enter_grow</span>() <span class="sc">+</span> </span>
-<span id="cb20-7"><a></a>  <span class="fu">exit_fade</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span> </span>
+<span id="cb20-2"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(bill_dep, flipper_len)) <span class="sc">+</span> </span>
+<span id="cb20-3"><a></a>  <span class="fu">transition_states</span>(species) <span class="sc">+</span> </span>
+<span id="cb20-4"><a></a>  <span class="fu">enter_grow</span>() <span class="sc">+</span> </span>
+<span id="cb20-5"><a></a>  <span class="fu">exit_fade</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>

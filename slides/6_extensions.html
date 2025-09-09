@@ -228,16 +228,14 @@ Teun van den Brand
 </ul>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a>bland_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span></span>
-<span id="cb1-4"><a></a>  <span class="fu">geom_point</span>()</span>
-<span id="cb1-5"><a></a></span>
-<span id="cb1-6"><a></a>my_theme <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
-<span id="cb1-7"><a></a>  <span class="fu">theme_gray</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">geom =</span> <span class="fu">element_geom</span>(<span class="at">ink =</span> <span class="st">"red"</span>))</span>
-<span id="cb1-8"><a></a>}</span>
-<span id="cb1-9"><a></a></span>
-<span id="cb1-10"><a></a>bland_plot <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>bland_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span></span>
+<span id="cb1-2"><a></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a>my_theme <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
+<span id="cb1-5"><a></a>  <span class="fu">theme_gray</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">geom =</span> <span class="fu">element_geom</span>(<span class="at">ink =</span> <span class="st">"red"</span>))</span>
+<span id="cb1-6"><a></a>}</span>
+<span id="cb1-7"><a></a></span>
+<span id="cb1-8"><a></a>bland_plot <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -759,7 +757,7 @@ Caused by error in `compute_geom_1()`:
 <span id="cb14-7"><a></a><span class="do">##         position = position, show.legend = show.legend, inherit.aes = inherit.aes, </span></span>
 <span id="cb14-8"><a></a><span class="do">##         params = list2(na.rm = na.rm, formula = formula, ...))</span></span>
 <span id="cb14-9"><a></a><span class="do">## }</span></span>
-<span id="cb14-10"><a></a><span class="do">## &lt;environment: 0x55c3e41f6a68&gt;</span></span>
+<span id="cb14-10"><a></a><span class="do">## &lt;environment: 0x55e01515ba90&gt;</span></span>
 <span id="cb14-11"><a></a></span>
 <span id="cb14-12"><a></a>p <span class="sc">+</span> <span class="fu">stat_residual</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
