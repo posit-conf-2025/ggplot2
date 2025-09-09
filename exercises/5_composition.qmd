@@ -1,5 +1,9 @@
 ---
 title: Exercises for session 5
+format:
+  live-html:
+    code-tools: 
+      source: _source/5_composition.qmd
 webr:
   repos:
     - https://repo.r-wasm.org
@@ -375,7 +379,6 @@ p3 <- ggplot(penguins) +
 # empty area next to it without pushing p3 and p2 apart
 p3 + p2 + 
   plot_spacer() + p1
-______
 ```
 
 ## Hints
@@ -454,9 +457,6 @@ Create a multi-panel figure with nested plots and add automatic tagging with dif
 
 ```{webr}
 #| exercise: ex_5_3_2
-library(ggplot2)
-library(patchwork)
-
 # Create basic plots
 p1 <- ggplot(penguins) + 
   geom_point(aes(flipper_len, bill_len))

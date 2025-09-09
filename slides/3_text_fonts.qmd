@@ -188,9 +188,9 @@ ggplot(penguins) +
   (this slideshow has `require_font("Barrio")` in the beginning so it can render everywhere)
 :::
 
-## [Exercise 3.1](../exercises/3_text_fonts.qmd#working-with-fonts) {.center style="text-align:center;"}
+## [Exercise 3.1](https://posit-conf-2025.github.io/ggplot2/exercises/3_text_fonts.qmd#working-with-fonts) {.center style="text-align:center;"}
 
-{{< countdown minutes=5 >}}
+{{< countdown minutes=5 top="0" bottom="" >}}
 
 ## Apply rich formatting
 
@@ -373,7 +373,7 @@ grid::grid.draw(
 )
 ```
 
-## [Exercise 3.3](../exercises/3_text_fonts.qmd#advanced-marquee-styling){data-preview-link} {.center style="text-align:center;"}
+## [Exercise 3.3](https://posit-conf-2025.github.io/ggplot2/exercises/3_text_fonts.qmd#advanced-marquee-styling) {.center style="text-align:center;"}
 
 {{< countdown minutes=5 >}}
 
@@ -504,7 +504,7 @@ in the penguin species {.1 *Adelie*}, {.2 *Chinstrap*}, and
   )
 ```
 
-## [Exercise 3.4](../exercises/3_text_fonts.qmd#using-geom_marquee-in-ggplot2) {.center style="text-align:center;"}
+## [Exercise 3.4](https://posit-conf-2025.github.io/ggplot2/exercises/3_text_fonts.qmd#using-geom_marquee-in-ggplot2) {.center style="text-align:center;"}
 
 {{< countdown minutes=5 >}}
 
