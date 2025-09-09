@@ -365,6 +365,9 @@ text <- "
 c|2o|3n|2t|3[++]a|1i|2n|0[--]s|1[high [low  ]     data}
 "
 
+sf <- systemfonts::system_fonts()
+sf[grepl("monte", sf$family, ignore.case = TRUE),]
+
 grid::grid.draw(
   marquee_grob(text, new_style)
 )
