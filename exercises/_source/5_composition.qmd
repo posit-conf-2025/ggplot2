@@ -1,0 +1,252 @@
+---
+title: Exercises for session 5
+---
+
+## 5.1 Patchwork Composition
+
+## Exercise 5.1.1
+Combine the three plots into a single figure using patchwork. Place two plots side by side in the top row, and the third plot centered below them. Try to solve it both by only using `+` as well as by using other operators.
+
+```{r}
+# Create three plots
+p1 <- ggplot(penguins) + 
+  geom_point(aes(x = flipper_len, y = bill_len, color = species)) +
+  labs(title = "Bill vs Flipper Length")
+
+p2 <- ggplot(penguins) + 
+  geom_histogram(aes(bill_len, fill = species)) +
+  labs(title = "Bill Length Distribution")
+
+p3 <- ggplot(penguins) + 
+  geom_boxplot(aes(species, flipper_len, fill = species)) +
+  labs(title = "Flipper Length by Species")
+
+# Combine them into the requested layout
+______
+```
+
+## Exercise 5.1.2
+Combine the two plots below. Then use the patchwork operator syntax to add a geom to both plots simultaneously.
+
+```{r}
+# Create two scatter plots
+p1 <- ggplot(penguins, aes(x = flipper_len, y = bill_len, color = species)) + 
+  geom_point()
+
+p2 <- ggplot(penguins, aes(x = flipper_len, y = bill_dep, color = species)) + 
+  geom_point()
+
+# Use patchwork to combine plots and add a geom to both
+______
+```
+
+## Exercise 5.1.3
+Create a multi-panel figure with 4 plots using `wrap_plots()`, and customize the width of the plots so that the first column take up 1/3 of the width and the last column take up 2/3 of the width.
+
+```{r}
+# Create four different plots
+p1 <- ggplot(penguins) + 
+  geom_point(aes(x = flipper_len, y = bill_len, color = species))
+
+p2 <- ggplot(penguins) + 
+  geom_histogram(aes(flipper_len, fill = species))
+
+p3 <- ggplot(penguins) + 
+  geom_boxplot(aes(species, bill_len, fill = species))
+
+p4 <- ggplot(penguins) + 
+  geom_bar(aes(species, fill = sex), position = "dodge")
+
+# Combine with custom widths
+______
+```
+
+## Exercise 5.1.4
+Use the 4 plots from 5.1.3 and arrange them in a custom layout using the text-based design approach. Make a layout where the first plot spans the entire top row, two plots following plots share the middle row, and the last plot take up the right half side of the last row.
+
+Once you've succeeded, recreate the layout using `area()` specifications
+
+```{r}
+# Create a text-based layout design
+layout <- "______"
+
+# Combine plots with the layout
+p1 + p2 + p3 + p4 + 
+  ______
+```
+
+## 5.2 Layout Modifiers
+
+## Exercise 5.2.1
+Use the two plots below and add them together in a way so the histogram is placed on top of the scatterplot in the top-right corner.
+
+```{r}
+# Create two plots
+p1 <- ggplot(penguins) + 
+  geom_point(aes(x = flipper_len, y = bill_len, color = species)) +
+  theme(legend.position = "bottom")
+
+p2 <- ggplot(penguins) + 
+  geom_histogram(aes(flipper_len)) +
+  theme(plot.background = element_rect(fill = "white", color = "black"))
+
+# Add p2 on top of p1
+______
+```
+
+## Exercise 5.2.2
+Stack the three plots on top of each other. Experiment with `free()` to minimize the amount of empty space while preserving as much alignment as possible between the panels
+
+```{r}
+p1 <- ggplot(penguins) + 
+  geom_bar(aes(y = species)) + 
+  scale_y_discrete(labels = function(x) paste0("Pygoscelis ", x))
+
+p2 <- ggplot(penguins) + 
+  geom_point(aes(bill_len, flipper_len, color = species))
+
+p3 <- ggplot(penguins) + 
+  geom_boxplot(aes(x = sex, y = flipper_len))
+
+# Combine the plots to minimize whitespace
+______
+```
+
+## Exercise 5.2.3
+Use `free()` to allow the long y-axis text to extend into the empty area next to it in the composition below where we reuse the plots from 5.2.2. We have not covered this mode of `free()` so look at the documentation for the function.
+
+```{r}
+# Modify the following composition so the y-axis of p1 extends into the
+# empty area next to it without pushing p3 and p2 apart
+p3 + p2 + 
+  plot_spacer() + p1
+```
+
+## 5.3 Annotations and Tagging
+
+## Exercise 5.3.1
+Create a composition of three plots and add a title, subtitle, and caption to the entire composition using `plot_annotation()`. Use markdown formatting in your text and apply a custom theme to the annotation.
+
+```{r}
+# Create three plots
+p1 <- ggplot(penguins) + 
+  geom_point(aes(flipper_len, bill_len, color = species))
+
+p2 <- ggplot(penguins) + 
+  geom_histogram(aes(bill_len, fill = species))
+
+p3 <- ggplot(penguins) + 
+  geom_boxplot(aes(species, flipper_len, fill = species))
+
+# Combine plots and add annotations
+(p1 | p2 / p3) + 
+  plot_annotation(
+    ______
+  )
+```
+
+## Exercise 5.3.2
+Create a multi-panel figure with nested plots and add automatic tagging with different levels for the main plots and nested plots.
+
+```{r}
+# Create basic plots
+p1 <- ggplot(penguins) + 
+  geom_point(aes(flipper_len, bill_len))
+
+p2 <- ggplot(penguins) + 
+  geom_histogram(aes(bill_len))
+
+p3 <- ggplot(penguins) + 
+  geom_histogram(aes(flipper_len))
+
+p4 <- ggplot(penguins) + 
+  geom_boxplot(aes(species, bill_len))
+
+# Create a nested layout where the nested part starts a new tag level
+p_nested <- ______
+
+# Add tagging to the entire composition
+p_nested + 
+  plot_annotation(
+    ______
+  )
+```
+
+## 5.4 Guide Handling
+
+## Exercise 5.4.1
+Create two plots that share the same color aesthetic. Combine them and collect their legends into a single legend.
+
+```{r}
+# Create two plots with the same color aesthetic
+p1 <- ggplot(penguins) + 
+  geom_bar(aes(species, fill = species))
+
+p2 <- ggplot(penguins) + 
+  geom_histogram(aes(bill_len, fill = species))
+
+# Combine plots and collect legends
+______
+```
+
+## Exercise 5.4.2
+Create two plots with shared x-axis categories. Combine them vertically and use `plot_layout()` to collect the axes so that the x-axis appears only once at the bottom. Also try to make it so that the axis titles are collected at the bottom while the ticks and labels are kept in each plot.
+
+```{r}
+# Create two plots with the same x categories
+p1 <- ggplot(penguins) + 
+  geom_boxplot(aes(species, bill_len)) +
+  labs(y = "Bill Length")
+
+p2 <- ggplot(penguins) + 
+  geom_boxplot(aes(species, flipper_len)) +
+  labs(y = "Flipper Length")
+
+# Combine plots vertically and collect x-axis
+______
+```
+
+## 5.5 Other Objects
+
+## Exercise 5.5.1
+Combine the plot and the table in a way where the table ends up making up for the x-axis of the plot
+
+```{r}
+# Create a scatter plot
+p1 <- ggplot(penguins) + 
+  geom_bar(aes(species))
+
+# Create a gt table with summary statistics
+summary <- penguins |>
+  dplyr::summarise(
+    "Bill length" = paste(range(bill_len, na.rm = TRUE), collapse = " — "),
+    "Bill depth" = paste(range(bill_dep, na.rm = TRUE), collapse = " — "),
+    "Flipper length" = paste(range(flipper_len, na.rm = TRUE), collapse = " — "),
+    .by = species
+  ) |>
+  tibble::column_to_rownames("species") |>
+  t() |>
+  as.data.frame() |>
+  tibble::rownames_to_column("attribute")
+
+summary_table <- ______
+
+# Combine the plot and table
+______
+```
+
+## Exercise 5.5.2
+Create a scatter plot and add an image file in the lower right corner. For this exercise, use the patchwork logo image.
+
+```{r}
+# Create a scatter plot
+p1 <- ggplot(penguins) + 
+  geom_point(aes(flipper_len, bill_len, color = species))
+
+# Load the logo image
+logo_path <- system.file("help/figures/logo.png", package = "patchwork")
+logo <- ______
+
+# Combine the plot and the logo image
+______
+```
