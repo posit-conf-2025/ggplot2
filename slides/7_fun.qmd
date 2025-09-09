@@ -3,6 +3,22 @@ title: "Spice up your plot"
 author: "Thomas Lin Pedersen"
 ---
 
+```{r setup}
+#| include: false
+library(ggplot2)
+library(ggfx)
+library(ggforce)
+library(gganimate)
+
+# Harmonise the default gray theme's panel with the slide background.
+theme_set(
+  theme_gray() +
+    theme(
+      panel.background = element_rect(colour = NA, fill = "#F0F1EB")
+    )
+)
+```
+
 ## Key takeaway today:
 
 ::: {.center-y}
@@ -30,9 +46,6 @@ author: "Thomas Lin Pedersen"
 ## Filters
 
 ```{r}
-library(ggplot2)
-library(ggfx)
-
 ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
   with_blur(
     geom_point(),
@@ -176,7 +189,6 @@ positions <- data.frame(
 ```
 
 ```{r}
-library(ggforce)
 ggplot(positions, aes(x = x, y = y, group = id)) +
   geom_shape(aes(fill = id))
 ```
@@ -184,7 +196,6 @@ ggplot(positions, aes(x = x, y = y, group = id)) +
 ## Shapes
 
 ```{r}
-library(ggforce)
 ggplot(
   positions, 
   aes(x = x, y = y, group = id)
@@ -337,8 +348,6 @@ ggplot(lines, aes(x = x, y = y)) +
 ## gganimate
 
 ```{r}
-library(gganimate)
-
 ggplot(penguins) + 
   geom_point(aes(bill_dep, flipper_len)) + 
   transition_states(species) + 

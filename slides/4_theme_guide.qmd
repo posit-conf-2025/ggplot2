@@ -1,11 +1,6 @@
 ---
 title: "Styling your plot"
 author: "Teun van den Brand"
-knitr:
-  opts_chunk:
-    dev: ragg_png
-    dev.args:
-      scaling: 2
 ---
 
 ```{r}
@@ -15,6 +10,12 @@ systemfonts::require_font("Barrio")
 systemfonts::require_font("Dancing Script")
 
 library(ggplot2)
+theme_set(
+  theme_gray() +
+    theme(
+      panel.background = element_rect(colour = NA, fill = "#F0F1EB")
+    )
+)
 ```
 
 ## Ink & Paper

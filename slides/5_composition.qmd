@@ -8,6 +8,12 @@ author: "Thomas Lin Pedersen"
 
 library(ggplot2)
 library(patchwork)
+theme_set(
+  theme_gray() +
+    theme(
+      panel.background = element_rect(colour = NA, fill = "#F0F1EB")
+    )
+)
 ```
 
 ## Key takeaway today

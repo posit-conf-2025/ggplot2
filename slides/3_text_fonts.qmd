@@ -12,6 +12,12 @@ systemfonts::require_font("Datalegreya")
 systemfonts::require_font("Spectral")
 
 library(ggplot2)
+theme_set(
+  theme_gray() +
+    theme(
+      panel.background = element_rect(colour = NA, fill = "#F0F1EB")
+    )
+)
 ```
 
 ## Key takeaway today:

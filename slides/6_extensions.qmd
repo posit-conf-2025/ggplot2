@@ -4,6 +4,18 @@ author: "Teun van den Brand"
 code-annotations: hover
 ---
 
+```{r setup}
+#| include: false
+library(ggplot2)
+# Harmonise the default gray theme's panel with the slide background.
+theme_set(
+  theme_gray() +
+    theme(
+      panel.background = element_rect(colour = NA, fill = "#F0F1EB")
+    )
+)
+```
+
 ## Extension points
 
 * Themes
@@ -23,8 +35,6 @@ Usually wrap some standard ggplot2 theme code.
 * Session 4: Build your own theme
 
 ```{r}
-library(ggplot2)
-
 bland_plot <- ggplot(mpg, aes(displ, hwy)) +
   geom_point()
 

@@ -1,10 +1,6 @@
 ---
 title: "Modern ggplot2"
 author: "Teun van den Brand"
-knitr:
-  opts_chunk:
-    dev.args:
-      scaling: 2
 ---
 
 ```{r setup}
