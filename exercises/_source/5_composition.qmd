@@ -4,7 +4,7 @@ title: Exercises for session 5
 
 ```{r setup}
 library(ggplot2)
-library(ptchwork)
+library(patchwork)
 ```
 
 ## 5.1 Patchwork Composition
