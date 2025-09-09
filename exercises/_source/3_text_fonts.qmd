@@ -2,6 +2,13 @@
 title: Exercises for session 3
 ---
 
+```{r setup}
+library(systemfonts)
+library(marquee)
+library(grid)
+library(ggplot2)
+```
+
 ## 3.1 Working with fonts
 
 ## Exercise 3.1.1
@@ -37,8 +44,6 @@ Read the documentation of `systemfonts::get_from_google_fonts()` and `systemfont
 Use the two new fonts to style the following plot
 
 ```{r}
-library(ggplot2)
-
 ggplot(mpg) + 
   geom_bar(aes(class, fill = factor(cyl)), position = "dodge") + 
   theme(
