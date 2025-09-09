@@ -271,7 +271,7 @@ grid::grid.draw(marquee_grob(text))
 
 ## [Exercise 3.2](https://posit-conf-2025.github.io/ggplot2/exercises/3_text_fonts.html#basic-markdown-formatting-with-marquee) {.center style="text-align:center;"}
 
-{{< countdown minutes=5 >}}
+{{< countdown minutes=5 top="0" bottom="" >}}
 
 ## Supercharged images
 
@@ -375,7 +375,7 @@ grid::grid.draw(
 
 ## [Exercise 3.3](https://posit-conf-2025.github.io/ggplot2/exercises/3_text_fonts.qmd#advanced-marquee-styling) {.center style="text-align:center;"}
 
-{{< countdown minutes=5 >}}
+{{< countdown minutes=5 top="0" bottom="" >}}
 
 ## What about ggplot2
 
@@ -506,7 +506,7 @@ in the penguin species {.1 *Adelie*}, {.2 *Chinstrap*}, and
 
 ## [Exercise 3.4](https://posit-conf-2025.github.io/ggplot2/exercises/3_text_fonts.qmd#using-geom_marquee-in-ggplot2) {.center style="text-align:center;"}
 
-{{< countdown minutes=5 >}}
+{{< countdown minutes=5 top="0" bottom="" >}}
 
 ## {.center}
 

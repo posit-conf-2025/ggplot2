@@ -278,6 +278,8 @@ p + theme(
     
 ## [Exercise 4.1](https://posit-conf-2025.github.io/ggplot2/exercises/4_theme_guide.qmd#exercise-4.1-ink--paper) {.center style="text-align:center;"}
 
+{{< countdown minutes=5 top="0" bottom="" >}}
+
 ---
 
 ## Default palettes
@@ -445,6 +447,8 @@ p2 + theme(
 * Input for continuous palettes `scales::as_continuous_palette()`.
 
 ## [Exercise 4.2](https://posit-conf-2025.github.io/ggplot2/exercises/4_theme_guide.qmd#exercise-4.2-default-palettes) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 top="0" bottom="" >}}
 
 ---
 
@@ -647,6 +651,8 @@ p + horizontal_grid()
 
 ## [Exercise 4.3](https://posit-conf-2025.github.io/ggplot2/exercises/4_theme_guide.qmd#exercise-4.3-build-your-own-theme) {.center style="text-align:center;"}
 
+{{< countdown minutes=5 top="0" bottom="" >}}
+
 ---
 
 ## Custom guides
@@ -804,6 +810,8 @@ p3 + aes(colour = temperature) +
 * Guide extensions, such as those in the legendry package, expand your arsenal.
 
 ## [Exercise 4.4](https://posit-conf-2025.github.io/ggplot2/exercises/4_theme_guide.qmd#exercise-4.4-custom-guides) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 top="0" bottom="" >}}
 
 ## {.center}
 

@@ -161,7 +161,7 @@ p1 + p2 +
 
 ## [Exercise 5.1](https://posit-conf-2025.github.io/ggplot2/exercises/5_composition.qmd#patchwork-composition) {.center style="text-align:center;"}
 
-{{< countdown minutes=5 >}}
+{{< countdown minutes=5 top="0" bottom="" >}}
 
 ## Layout modifiers
 
@@ -206,7 +206,7 @@ free(p1, "label", side = "b") + p3a
 
 ## [Exercise 5.2](https://posit-conf-2025.github.io/ggplot2/exercises/5_composition.qmd#layout-modifiers) {.center style="text-align:center;"}
 
-{{< countdown minutes=5 >}}
+{{< countdown minutes=5 top="0" bottom="" >}}
 
 ## Annotations
 
@@ -272,7 +272,7 @@ p123 +
 
 ## [Exercise 5.3](https://posit-conf-2025.github.io/ggplot2/exercises/5_composition.qmd#annotations-and-tagging) {.center style="text-align:center;"}
 
-{{< countdown minutes=5 >}}
+{{< countdown minutes=5 top="0" bottom="" >}}
 
 ## Guide handling
 
@@ -350,7 +350,7 @@ Axes are guides too
 
 ## [Exercise 5.4](https://posit-conf-2025.github.io/ggplot2/exercises/5_composition.qmd#guide-handling) {.center style="text-align:center;"}
 
-{{< countdown minutes=5 >}}
+{{< countdown minutes=5 top="0" bottom="" >}}
 
 ## Other objects
 
@@ -413,7 +413,7 @@ p1 +
 
 ## [Exercise 5.5](https://posit-conf-2025.github.io/ggplot2/exercises/5_composition.qmd#other-objects) {.center style="text-align:center;"}
 
-{{< countdown minutes=5 >}}
+{{< countdown minutes=5 top="0" bottom="" >}}
 
 ## {.center}
 

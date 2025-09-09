@@ -521,6 +521,8 @@ StatBoxplot$setup_data
 
 ## [Exercise 6](https://posit-conf-2025.github.io/ggplot2/exercises/6_extensions.qmd#exercise-6-extension) {.center style="text-align:center;"}
 
+{{< countdown minutes=5 top="0" bottom="" >}}
+
 ---
 
 ## Geom extensions

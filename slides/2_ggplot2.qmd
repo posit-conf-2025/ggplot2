@@ -195,6 +195,8 @@ ggplot(mtcars, aes(cyl, mpg, group = cyl)) +
 
 ## [Exercise 2.1](https://posit-conf-2025.github.io/ggplot2/exercises/2_ggplot2.qmd#exercise-2.1-headings) {.center style="text-align:center;"}
 
+{{< countdown minutes=5 top="0" bottom="" >}}
+
 ## Patterns and gradients
 
 In R 4.1 the grid package introduced patterns and gradients.
@@ -499,6 +501,8 @@ ggplot(df, aes(amount, animal, fill = animal)) +
 
 ## [Exercise 2.2](https://posit-conf-2025.github.io/ggplot2/exercises/2_ggplot2.qmd#exercise-2.2-patterns-and-gradients) {.center style="text-align:center;"}
 
+{{< countdown minutes=5 top="0" bottom="" >}}
+
 ---
 
 ## Delayed evaluation
@@ -745,6 +749,8 @@ aes(
 
 ## [Exercise 2.3](https://posit-conf-2025.github.io/ggplot2/exercises/2_ggplot2.qmd#exercise-2.3.1-delayed-evaluation) {.center style="text-align:center;"}
 
+{{< countdown minutes=5 top="0" bottom="" >}}
+
 ## Polar coordinates
 
 The classic `coord_polar()` is superseded by `coord_radial()`.
@@ -882,6 +888,8 @@ p + coord_radial(
 
 ## [Exercise 2.4](https://posit-conf-2025.github.io/ggplot2/exercises/2_ggplot2.qmd#exercise-2.4.1-polar-coordinates) {.center style="text-align:center;"}
 
+{{< countdown minutes=5 top="0" bottom="" >}}
+
 ## Facets
 
 * Display of inner axes
@@ -1009,6 +1017,8 @@ p + facet_wrap(panels, dir = "tr")
    * First letter determines growing direction
 
 ## [Exercise 2.5](https://posit-conf-2025.github.io/ggplot2/exercises/2_ggplot2.qmd#exercise-2.5.1-facets) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 top="0" bottom="" >}}
 
 ## {.center}
 
