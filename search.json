@@ -56,11 +56,11 @@
     "text": "Ink & Paper\n\nComplete themes\nGeom element\nUse in layers"
   },
   {
-    "objectID": "slides/4_theme_guide.html#exercise",
-    "href": "slides/4_theme_guide.html#exercise",
+    "objectID": "slides/4_theme_guide.html#exercise-4.1",
+    "href": "slides/4_theme_guide.html#exercise-4.1",
     "title": "Styling your plot",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 4.1",
+    "text": "Exercise 4.1"
   },
   {
     "objectID": "slides/4_theme_guide.html#default-palettes",
@@ -70,11 +70,11 @@
     "text": "Default palettes\nSeveral ways to set a plot’s colour palette\n\nDirectly add a scale\n\n+ scale_colour_gradientn()\nNot set as default scale\n\nUsing esoteric options\n\noptions(ggplot2.continuous.colour = scale_colour_gradientn)\nArcane\n\nOverriding default scale\n\nscale_colour_continuous &lt;- scale_colour_gradientn\nMesses with namespace\n\nNEW: via theme()"
   },
   {
-    "objectID": "slides/4_theme_guide.html#exercise-1",
-    "href": "slides/4_theme_guide.html#exercise-1",
+    "objectID": "slides/4_theme_guide.html#exercise-4.2",
+    "href": "slides/4_theme_guide.html#exercise-4.2",
     "title": "Styling your plot",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 4.2",
+    "text": "Exercise 4.2"
   },
   {
     "objectID": "slides/4_theme_guide.html#build-your-own-theme",
@@ -84,11 +84,11 @@
     "text": "Build your own theme\nHow do you intend to use a personal theme?\n\nComplete theme\nPartial theme"
   },
   {
-    "objectID": "slides/4_theme_guide.html#exercise-2",
-    "href": "slides/4_theme_guide.html#exercise-2",
+    "objectID": "slides/4_theme_guide.html#exercise-4.3",
+    "href": "slides/4_theme_guide.html#exercise-4.3",
     "title": "Styling your plot",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 4.3",
+    "text": "Exercise 4.3"
   },
   {
     "objectID": "slides/4_theme_guide.html#custom-guides",
@@ -98,11 +98,11 @@
     "text": "Custom guides\nggplot2 has more guides than colour bars and legends.\n\naxes\ncolour bar\ncolour steps\nlegend\nbinned guide"
   },
   {
-    "objectID": "slides/4_theme_guide.html#exercise-3",
-    "href": "slides/4_theme_guide.html#exercise-3",
+    "objectID": "slides/4_theme_guide.html#exercise-4.4",
+    "href": "slides/4_theme_guide.html#exercise-4.4",
     "title": "Styling your plot",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 4.4",
+    "text": "Exercise 4.4"
   },
   {
     "objectID": "slides/4_theme_guide.html#section",
@@ -210,11 +210,11 @@
     "text": "Summary: stat extensions\n\nMake new Stat* ggproto class\n\nOverwrite compute_layer()/compute_panel()/compute_group() method\nRewire computed variables in default_aes\nOptionally, edit setup_data()/setup_params()\n\nBuild constructor using make_constructor()"
   },
   {
-    "objectID": "slides/6_extensions.html#exercise",
-    "href": "slides/6_extensions.html#exercise",
+    "objectID": "slides/6_extensions.html#exercise-6",
+    "href": "slides/6_extensions.html#exercise-6",
     "title": "Creating extensions",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 6",
+    "text": "Exercise 6"
   },
   {
     "objectID": "slides/6_extensions.html#geom-extensions",
@@ -791,11 +791,11 @@
     "text": "Headings\nBetter default titles for variables\n\nColumn metadata\nData dictionary"
   },
   {
-    "objectID": "slides/2_ggplot2.html#exercise",
-    "href": "slides/2_ggplot2.html#exercise",
+    "objectID": "slides/2_ggplot2.html#exercise-2.1",
+    "href": "slides/2_ggplot2.html#exercise-2.1",
     "title": "Modern ggplot2",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 2.1",
+    "text": "Exercise 2.1"
   },
   {
     "objectID": "slides/2_ggplot2.html#patterns-and-gradients",
@@ -805,11 +805,11 @@
     "text": "Patterns and gradients\nIn R 4.1 the grid package introduced patterns and gradients.\n\ngrid::linearGradient()\ngrid::radialGradient()\ngrid::pattern()\n\nWe allow these as fill aesthetic in ggplot2.\nPatterns can aid in cases of colour vision deficiency."
   },
   {
-    "objectID": "slides/2_ggplot2.html#exercise-1",
-    "href": "slides/2_ggplot2.html#exercise-1",
+    "objectID": "slides/2_ggplot2.html#exercise-2.2",
+    "href": "slides/2_ggplot2.html#exercise-2.2",
     "title": "Modern ggplot2",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 2.2",
+    "text": "Exercise 2.2"
   },
   {
     "objectID": "slides/2_ggplot2.html#delayed-evaluation",
@@ -819,11 +819,11 @@
     "text": "Delayed evaluation\nWith regards to evaluation, there are three stages:\n\nDirect input at start\nAfter computing stat\nAfter scale mapping"
   },
   {
-    "objectID": "slides/2_ggplot2.html#exercise-2",
-    "href": "slides/2_ggplot2.html#exercise-2",
+    "objectID": "slides/2_ggplot2.html#exercise-2.3",
+    "href": "slides/2_ggplot2.html#exercise-2.3",
     "title": "Modern ggplot2",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 2.3",
+    "text": "Exercise 2.3"
   },
   {
     "objectID": "slides/2_ggplot2.html#polar-coordinates",
@@ -833,11 +833,11 @@
     "text": "Polar coordinates\nThe classic coord_polar() is superseded by coord_radial().\n\nexpand parameter\nArbitrary sectors\nDonuts"
   },
   {
-    "objectID": "slides/2_ggplot2.html#exercise-3",
-    "href": "slides/2_ggplot2.html#exercise-3",
+    "objectID": "slides/2_ggplot2.html#exercise-2.4",
+    "href": "slides/2_ggplot2.html#exercise-2.4",
     "title": "Modern ggplot2",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 2.4",
+    "text": "Exercise 2.4"
   },
   {
     "objectID": "slides/2_ggplot2.html#facets",
@@ -847,11 +847,11 @@
     "text": "Facets\n\nDisplay of inner axes\nLayer layout\nPanel ordering"
   },
   {
-    "objectID": "slides/2_ggplot2.html#exercise-4",
-    "href": "slides/2_ggplot2.html#exercise-4",
+    "objectID": "slides/2_ggplot2.html#exercise-2.5",
+    "href": "slides/2_ggplot2.html#exercise-2.5",
     "title": "Modern ggplot2",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 2.5",
+    "text": "Exercise 2.5"
   },
   {
     "objectID": "slides/2_ggplot2.html#section",
@@ -1257,7 +1257,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/Rtmp1cL6BY/Barrio-regular.ttf\", \"/tmp/Rtmp1cL6BY/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpNeNEXy/Barrio-regular.ttf\", \"/tmp/RtmpNeNEXy/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
@@ -1414,11 +1414,11 @@
     "text": "Styling\n\n\ntext &lt;- \"\n{.fancy Readability is overrated}\n\n{.plot Even when it  \nc|2o|3n|2t|3[++]a|1i|2n|0[--]s|1[high [low  ]     data}\n\"\n\ngrid::grid.draw(\n  marquee_grob(text, new_style)\n)"
   },
   {
-    "objectID": "slides/3_text_fonts.html#exercise-3.3data-preview-link",
-    "href": "slides/3_text_fonts.html#exercise-3.3data-preview-link",
+    "objectID": "slides/3_text_fonts.html#exercise-3.3",
+    "href": "slides/3_text_fonts.html#exercise-3.3",
     "title": "Text rendering and font use",
-    "section": "Exercise 3.3{data-preview-link}",
-    "text": "Exercise 3.3{data-preview-link}\n\n  \n    −\n    +\n \n 05:00"
+    "section": "Exercise 3.3",
+    "text": "Exercise 3.3\n\n  \n    −\n    +\n \n 05:00"
   },
   {
     "objectID": "slides/3_text_fonts.html#what-about-ggplot2",
