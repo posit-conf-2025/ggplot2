@@ -68,7 +68,7 @@ p
 
 ```{r}
 #| output-location: default
-#| fig-width: 12
+#| fig-width: 18
 p + theme_gray(ink = "red")
 ```
 
@@ -80,7 +80,7 @@ p + theme_gray(ink = "red")
 
 ```{r}
 #| output-location: default
-#| fig-width: 12
+#| fig-width: 18
 p + theme_bw(paper = "cornsilk")
 ```
 
@@ -92,7 +92,7 @@ p + theme_bw(paper = "cornsilk")
 
 ```{r}
 #| output-location: default
-#| fig-width: 12
+#| fig-width: 18
 p + theme_minimal(paper = "cornsilk", ink = "navy")
 ```
 
@@ -104,7 +104,7 @@ p + theme_minimal(paper = "cornsilk", ink = "navy")
 
 ```{r}
 #| output-location: default
-#| fig-width: 12
+#| fig-width: 18
 p + theme_classic(accent = "red")
 ```
 
@@ -278,7 +278,7 @@ p + theme(
     
 ## [Exercise 4.1](https://posit-conf-2025.github.io/ggplot2/exercises/4_theme_guide.qmd#exercise-4.1-ink--paper) {.center style="text-align:center;"}
 
-{{< countdown minutes=5 top="0" bottom="" >}}
+{{< countdown minutes=3 top="0" bottom="" >}}
 
 ---
 
@@ -448,7 +448,7 @@ p2 + theme(
 
 ## [Exercise 4.2](https://posit-conf-2025.github.io/ggplot2/exercises/4_theme_guide.qmd#exercise-4.2-default-palettes) {.center style="text-align:center;"}
 
-{{< countdown minutes=5 top="0" bottom="" >}}
+{{< countdown minutes=3 top="0" bottom="" >}}
 
 ---
 
@@ -811,7 +811,7 @@ p3 + aes(colour = temperature) +
 
 ## [Exercise 4.4](https://posit-conf-2025.github.io/ggplot2/exercises/4_theme_guide.qmd#exercise-4.4-custom-guides) {.center style="text-align:center;"}
 
-{{< countdown minutes=5 top="0" bottom="" >}}
+{{< countdown minutes=3 top="0" bottom="" >}}
 
 ## {.center}
 
