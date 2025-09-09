@@ -172,6 +172,8 @@ ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
 * Round corners
 * Expand and subtract based on absolute sizes
 
+## Shapes
+
 ```{r}
 #| include: false
 ids <- factor(c("1.1", "2.1", "1.2", "2.2", "1.3", "2.3"))
@@ -283,7 +285,8 @@ p +
       label = "Gentoo Penguins",
       description = "This is by far the most interesting penguin"
     ), 
-    fill = "steelblue"
+    fill = "steelblue",
+    label.fontsize = 9
   )
 ```
 
