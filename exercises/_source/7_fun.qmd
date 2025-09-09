@@ -1,0 +1,115 @@
+---
+title: Exercises for session 7
+---
+
+```{r setup}
+library(ggplot2)
+library(ggfx)
+library(ggforce)
+library(gganimate)
+```
+
+## 7.1 Adding effects with ggfx
+
+## Exercise 7.1.1
+Use `with_motion_blur()` to add directional blur to a scatterplot of bill length vs. flipper length in the penguins dataset. Experiment with different values for the `sigma` and `angle` arguments to see how it affects the appearance.
+
+```{r}
+ggplot(penguins, aes(x = bill_len, y = flipper_len, color = species)) +
+  ______
+```
+
+## Exercise 7.1.2
+Create a plot using `as_reference()` and use `with_blend()` to create a masking effect. Make a density plot of bill depth vs. body mass, then punch holes in it where the data points are
+
+```{r}
+ggplot(penguins, aes(x = bill_dep, y = body_mass)) + 
+  ______ + 
+  ______
+```
+
+## 7.2 Working with ggforce
+
+## Exercise 7.2.1
+Use `geom_shape()` from ggforce to create a polygon plot with rounded corners. Start with the positions data from the slides and experiment with different radius values.
+
+```{r}
+# Creating example data similar to what was shown in slides
+ids <- factor(c("1.1", "2.1", "1.2", "2.2", "1.3", "2.3"))
+
+values <- data.frame(
+  id = ids,
+  value = c(3, 3.1, 3.1, 3.2, 3.15, 3.5)
+)
+
+positions <- data.frame(
+  id = rep(ids, each = 4),
+  x = c(2, 1, 1.1, 2.2, 1, 0, 0.3, 1.1, 2.2, 1.1, 1.2, 2.5, 1.1, 0.3,
+  0.5, 1.2, 2.5, 1.2, 1.3, 2.7, 1.2, 0.5, 0.6, 1.3),
+  y = c(-0.5, 0, 1, 0.5, 0, 0.5, 1.5, 1, 0.5, 1, 2.1, 1.7, 1, 1.5,
+  2.2, 2.1, 1.7, 2.1, 3.2, 2.8, 2.1, 2.2, 3.3, 3.2)
+)
+
+ggplot(positions, aes(x = x, y = y, fill = id)) +
+  ______
+```
+
+## Exercise 7.2.2
+Use the mark geoms from ggforce (`geom_mark_ellipse()`, `geom_mark_circle()`, `geom_mark_hull()`, etc.) to highlight groups in a scatter plot. Add informative labels and descriptions to at least one of the groups.
+
+Experiment with the various setings of the mark geom to alter its look
+
+```{r}
+# Create base plot
+base_plot <- ggplot(
+  na.omit(penguins), # Needed due to a bug in ggforce
+  aes(x = bill_dep, y = flipper_len)
+) + 
+  geom_point(aes(color = species))
+
+# Add marks to highlight a group of data
+base_plot +
+  ______
+```
+
+## 7.3 Animating with gganimate
+
+## Exercise 7.3.1
+Create an animated scatter plot of bill length vs. flipper length using `transition_states()` to transition between different penguin species. Add appropriate enter and exit effects.
+
+```{r}
+p <- ggplot(penguins, aes(x = bill_len, y = flipper_len, color = species)) +
+  geom_point() +
+  labs(title = "Penguin Measurements: {closest_state}")
+
+# Add animation components
+p_animated <- p +
+  ______
+  
+p_animated
+```
+
+## Exercise 7.3.2
+Create a line plot that gradually reveals itself over time. Use the penguins dataset to show how body mass changes across years for different species. Add a title that shows how far along the reveal is in the animation.
+
+```{r}
+# Prepare data - calculate mean body mass by year and species
+library(dplyr)
+penguin_summary <- penguins |>
+  group_by(year, species) |>
+  summarize(mean_mass = mean(body_mass, na.rm = TRUE), .groups = "drop")
+
+# Create plot
+p <- ggplot(
+  penguin_summary, 
+  aes(x = year, y = mean_mass, color = species)
+) +
+  geom_line() +
+  geom_point()
+
+# Add animation component
+p_animated <- p +
+  ______
+  
+p_animated
+```

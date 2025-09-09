@@ -1,5 +1,9 @@
 ---
 title: Exercises for session 7
+format:
+  live-html:
+    code-tools: 
+      source: _source/7_fun.qmd
 webr:
   repos:
     - https://repo.r-wasm.org

@@ -9,6 +9,7 @@ In this last session we will (if time permits) spend some time showcasing things
 :::::: {.btn-group}
 [Slides](../slides/7_fun.qmd){.btn .btn-primary role="button"}
 [Exercises](../exercises/7_fun.qmd){.btn .btn-success role="button"}
+[Source](../exercises/_source/7_fun.qmd){.btn .btn-secondary role="button"}
 ::::::
 :::
 
