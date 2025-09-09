@@ -29,6 +29,8 @@ Each exercise has one or more hints, as well as a full solution if you click thr
 #|   - ex_7_1_2
 #|   - ex_7_2_1
 #|   - ex_7_2_2
+#|   - ex_7_3_1
+#|   - ex_7_3_2
 library(ggplot2)
 library(ggfx)
 library(ggforce)
@@ -167,28 +169,20 @@ ggplot(positions, aes(x = x, y = y, group = id)) +
 ## Exercise 7.2.2
 Use the mark geoms from ggforce (`geom_mark_ellipse()`, `geom_mark_circle()`, `geom_mark_hull()`, etc.) to highlight groups in a scatter plot. Add informative labels and descriptions to at least one of the groups.
 
+Experiment with the various setings of the mark geom to alter its look
+
 ```{webr}
 #| exercise: ex_7_2_2
-library(ggplot2)
-library(ggforce)
-library(palmerpenguins)
-data(penguins)
-
 # Create base plot
-base_plot <- ggplot(na.omit(penguins), aes(x = bill_depth_mm, y = flipper_length_mm)) + 
+base_plot <- ggplot(
+  na.omit(penguins), # Needed due to a bug in ggforce
+  aes(x = bill_dep, y = flipper_len)
+) + 
   geom_point(aes(color = species))
 
-# Add marks to highlight groups
+# Add marks to highlight a group of data
 base_plot +
-  ______(
-    aes(
-      filter = ______, 
-      label = ______, 
-      description = ______
-    ),
-    fill = ______,
-    ______
-  )
+  ______
 ```
 
 ## Hints
@@ -201,40 +195,23 @@ In the `aes()`, use:
 - `description` for additional information
 
 You can also set parameters like `fill`, `color`, and `alpha` to control appearance.
+
+If no label appears try to resize the plot or make the text smaller
 :::
 
 ## Solution
 ::: {.solution exercise="ex_7_2_2"}
 ```r
-library(ggplot2)
-library(ggforce)
-library(palmerpenguins)
-data(penguins)
-
-# Create base plot
-base_plot <- ggplot(na.omit(penguins), aes(x = bill_depth_mm, y = flipper_length_mm)) + 
-  geom_point(aes(color = species))
-
-# Add marks to highlight groups
 base_plot +
   geom_mark_ellipse(
     aes(
       filter = species == "Gentoo", 
-      label = "Gentoo Penguins", 
-      description = "Species with the longest flippers and medium bill depth"
+      label = paste0(species, " Penguins"), 
+      description = "Species with the longest flippers and shortest bill depth",
+      group = species
     ),
     fill = "lightblue",
     color = "blue",
-    alpha = 0.2
-  ) +
-  geom_mark_ellipse(
-    aes(
-      filter = species == "Chinstrap", 
-      label = "Chinstrap Penguins", 
-      description = "Species with the deepest bills"
-    ),
-    fill = "lightyellow",
-    color = "orange",
     alpha = 0.2
   )
 ```
@@ -252,19 +229,12 @@ Create an animated scatter plot of bill length vs. flipper length using `transit
 
 ```{webr}
 #| exercise: ex_7_3_1
-library(ggplot2)
-library(gganimate)
-library(palmerpenguins)
-data(penguins)
-
-p <- ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
+p <- ggplot(penguins, aes(x = bill_len, y = flipper_len, color = species)) +
   geom_point() +
   labs(title = "Penguin Measurements: {closest_state}")
 
 # Add animation components
 p_animated <- p +
-  ______(______) +
-  ______(______) +
   ______
   
 p_animated
@@ -280,16 +250,6 @@ You can also customize the animation speed using `transition_length` and `state_
 ## Solution
 ::: {.solution exercise="ex_7_3_1"}
 ```r
-library(ggplot2)
-library(gganimate)
-library(palmerpenguins)
-data(penguins)
-
-p <- ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
-  geom_point() +
-  labs(title = "Penguin Measurements: {closest_state}")
-
-# Add animation components
 p_animated <- p +
   transition_states(species, transition_length = 2, state_length = 1) +
   enter_fade() +
@@ -306,18 +266,23 @@ p_animated
 :::: {.panel-tabset}
 
 ## Exercise 7.3.2
-Create an animated bar chart that changes over time using `transition_time()`. Use the penguins dataset to show counts by island for each year.
+Create a line plot that gradually reveals itself over time. Use the penguins dataset to show how body mass changes across years for different species. Add a title that shows how far along the reveal is in the animation.
 
 ```{webr}
 #| exercise: ex_7_3_2
-library(ggplot2)
-library(gganimate)
-library(palmerpenguins)
-data(penguins)
+# Prepare data - calculate mean body mass by year and species
+library(dplyr)
+penguin_summary <- penguins |>
+  group_by(year, species) |>
+  summarize(mean_mass = mean(body_mass, na.rm = TRUE), .groups = "drop")
 
-p <- ggplot(penguins, aes(x = island, fill = species)) +
-  geom_bar(position = "dodge") +
-  labs(title = "Penguin counts by island in {______}", y = "Count")
+# Create plot
+p <- ggplot(
+  penguin_summary, 
+  aes(x = year, y = mean_mass, color = species)
+) +
+  geom_line() +
+  geom_point()
 
 # Add animation component
 p_animated <- p +
@@ -328,95 +293,16 @@ p_animated
 
 ## Hints
 ::: {.hint exercise="ex_7_3_2"}
-Use `transition_time(year)` to animate the plot through different years. In the title, use `{frame_time}` to show the current year.
+Use `transition_reveal()` to make the line plot reveal itself over time. 
 
-Make sure your aes mapping includes all the variables you need and that the title contains the correct placeholder for displaying the current year.
+Read the documentation to see which variables can be used in titles
 :::
 
 ## Solution
 ::: {.solution exercise="ex_7_3_2"}
 ```r
-library(ggplot2)
-library(gganimate)
-library(palmerpenguins)
-data(penguins)
-
-p <- ggplot(penguins, aes(x = island, fill = species)) +
-  geom_bar(position = "dodge") +
-  labs(title = "Penguin counts by island in {frame_time}", y = "Count")
-
-# Add animation component
 p_animated <- p +
-  transition_time(year)
-  
-p_animated
-```
-:::
-
-::::
-
-* * *
-
-:::: {.panel-tabset}
-
-## Exercise 7.3.3
-Create a line plot that gradually reveals itself over time using `transition_reveal()`. Use the penguins dataset to show how body mass changes across years for different species.
-
-```{webr}
-#| exercise: ex_7_3_3
-library(ggplot2)
-library(gganimate)
-library(dplyr)
-library(palmerpenguins)
-data(penguins)
-
-# Prepare data - calculate mean body mass by year and species
-penguin_summary <- penguins %>%
-  group_by(year, species) %>%
-  summarize(mean_mass = mean(body_mass_g, na.rm = TRUE), .groups = "drop")
-
-# Create plot
-p <- ggplot(penguin_summary, aes(x = ______, y = ______, color = ______)) +
-  geom_line() +
-  geom_point() +
-  labs(title = "Average penguin mass by year", y = "Body mass (g)", x = "Year")
-
-# Add animation component
-p_animated <- p +
-  ______
-  
-p_animated
-```
-
-## Hints
-::: {.hint exercise="ex_7_3_3"}
-In your aesthetic mapping, map `x = year`, `y = mean_mass`, and `color = species`.
-
-Then use `transition_reveal(year)` to make the line plot reveal itself over time. This creates an effect where the lines are drawn progressively as the animation advances through the years.
-:::
-
-## Solution
-::: {.solution exercise="ex_7_3_3"}
-```r
-library(ggplot2)
-library(gganimate)
-library(dplyr)
-library(palmerpenguins)
-data(penguins)
-
-# Prepare data - calculate mean body mass by year and species
-penguin_summary <- penguins %>%
-  group_by(year, species) %>%
-  summarize(mean_mass = mean(body_mass_g, na.rm = TRUE), .groups = "drop")
-
-# Create plot
-p <- ggplot(penguin_summary, aes(x = year, y = mean_mass, color = species)) +
-  geom_line() +
-  geom_point() +
-  labs(title = "Average penguin mass by year", y = "Body mass (g)", x = "Year")
-
-# Add animation component
-p_animated <- p +
+  labs(title = "{frame_along}")
   transition_reveal(year)
   
 p_animated
