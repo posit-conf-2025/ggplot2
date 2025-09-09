@@ -159,7 +159,9 @@ p1 + p2 +
   plot_layout(design = layout)
 ```
 
-## [Exercise](../exercises/5_composition.qmd#patchwork-composition) {.center style="text-align:center;"}
+## [Exercise 5.1](../exercises/5_composition.qmd#patchwork-composition) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 >}}
 
 ## Layout modifiers
 
@@ -202,7 +204,9 @@ p1 + free(p3a, side = "b")
 free(p1, "label", side = "b") + p3a
 ```
 
-## [Exercise](../exercises/5_composition.qmd#layout-modifiers) {.center style="text-align:center;"}
+## [Exercise 5.2](../exercises/5_composition.qmd#layout-modifiers) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 >}}
 
 ## Annotations
 
@@ -266,7 +270,9 @@ p123 +
   )
 ```
 
-## [Exercise](../exercises/5_composition.qmd#annotations-and-tagging) {.center style="text-align:center;"}
+## [Exercise 5.3](../exercises/5_composition.qmd#annotations-and-tagging) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 >}}
 
 ## Guide handling
 
@@ -342,7 +348,9 @@ Axes are guides too
 )
 ```
 
-## [Exercise](../exercises/5_composition.qmd#guide-handling) {.center style="text-align:center;"}
+## [Exercise 5.4](../exercises/5_composition.qmd#guide-handling) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 >}}
 
 ## Other objects
 
@@ -403,7 +411,9 @@ p1 +
   )
 ```
 
-## [Exercise](../exercises/5_composition.qmd#other-objects) {.center style="text-align:center;"}
+## [Exercise 5.5](../exercises/5_composition.qmd#other-objects) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 >}}
 
 ## {.center}
 

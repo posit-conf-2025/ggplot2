@@ -1,5 +1,9 @@
 ---
 title: Exercises for session 3
+format:
+  live-html:
+    code-tools: 
+      source: _/source/3_text_fonts_qmd
 webr:
   repos:
     - https://repo.r-wasm.org

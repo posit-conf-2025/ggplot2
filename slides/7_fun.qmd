@@ -147,7 +147,9 @@ ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
 
 ::::
 
-## [Exercise](../exercises/7_fun.qmd#adding-effects-with-ggfx) {.center style="text-align:center;"}
+## [Exercise 7.1](../exercises/7_fun.qmd#adding-effects-with-ggfx) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 >}}
 
 ## {.center}
 
@@ -327,7 +329,9 @@ ggplot(lines, aes(x = x, y = y)) +
   )
 ```
 
-## [Exercise](../exercises/7_fun.qmd#working-with-ggforce) {.center style="text-align:center;"}
+## [Exercise 7.2](../exercises/7_fun.qmd#working-with-ggforce) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 >}}
 
 ## {.center}
 
@@ -405,4 +409,6 @@ ggplot(penguins) +
   transition_reveal(after_stat(x))
 ```
 
-## [Exercise](../exercises/7_fun.qmd#animating-with-gganimate) {.center style="text-align:center;"}
+## [Exercise 7.3](../exercises/7_fun.qmd#animating-with-gganimate) {.center style="text-align:center;"}
+
+{{< countdown minutes=5 >}}
