@@ -269,7 +269,7 @@ walked into a {.30 huge} bar and said to the {.person barman}:
 grid::grid.draw(marquee_grob(text))
 ```
 
-## [Exercise 3.2](../exercises/3_text_fonts.qmd) {.center style="text-align:center;"}
+## [Exercise 3.2](https://posit-conf-2025.github.io/ggplot2/exercises/3_text_fonts.html#basic-markdown-formatting-with-marquee) {.center style="text-align:center;"}
 
 {{< countdown minutes=5 >}}
 
