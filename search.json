@@ -1264,7 +1264,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmphSEJq1/Barrio-regular.ttf\", \"/tmp/RtmphSEJq1/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/Rtmp1h2b5z/Barrio-regular.ttf\", \"/tmp/Rtmp1h2b5z/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
@@ -1341,7 +1341,7 @@
     "href": "slides/3_text_fonts.html#marquee-1",
     "title": "Text rendering and font use",
     "section": "marquee",
-    "text": "marquee\n\n\nlibrary(marquee)\n\ntext &lt;- \"\nNow you too can **sound like an llm**\n\n_Here is what you need:_\n\n* Add boldness to text at random\n* Put everything in lists  \n✅ Make those lists use emojis\n\nRemember to delve into the intricate \nwords that **underscore your potential**\n\"\n\ngrid::grid.draw(marquee_grob(text))"
+    "text": "marquee\n\n\nlibrary(marquee)\n\ntext &lt;- \"\nNow you too can **sound like an llm**\n\n_Here is what you need:_\n\n* Add **boldness** to text at *random*\n* Put everything in lists  \n✅ Make those lists use emojis\n\nRemember to delve into the intricate \nwords that **underscore your potential**\n\"\n\ngrid::grid.draw(marquee_grob(text))"
   },
   {
     "objectID": "slides/3_text_fonts.html#custom-spans",
@@ -1355,7 +1355,7 @@
     "href": "slides/3_text_fonts.html#custom-spans-1",
     "title": "Text rendering and font use",
     "section": "Custom spans",
-    "text": "Custom spans\n\n\ntext &lt;- \"\nSome {.red *red* text} and some {#00FF00 *green* text}\nwalked into a {.30 huge} bar and said to the {.person barman}:\n”Can I get a glass of H{.sub 2}O?”\n\"\n\ngrid::grid.draw(marquee_grob(text))"
+    "text": "Custom spans\n\n\ntext &lt;- \"\nSome {.red *red* text} and some {#00FF00 *green*\ntext} walked into a {.30 huge} bar and said to \nthe {.person barman}: ”Can I get a glass of \nH{.sub 2}O?”\n\"\n\ngrid::grid.draw(marquee_grob(text))"
   },
   {
     "objectID": "slides/3_text_fonts.html#exercise-3.2",
@@ -1390,7 +1390,7 @@
     "href": "slides/3_text_fonts.html#styling-1",
     "title": "Text rendering and font use",
     "section": "Styling",
-    "text": "Styling\n\nEach tag can be styled with 37 different properties\n\nnames(classic_style()[[1]]$base)\n\n [1] \"size\"                \"background\"          \"color\"              \n [4] \"family\"              \"weight\"              \"italic\"             \n [7] \"width\"               \"features\"            \"lineheight\"         \n[10] \"align\"               \"tracking\"            \"indent\"             \n[13] \"hanging\"             \"margin_top\"          \"margin_right\"       \n[16] \"margin_bottom\"       \"margin_left\"         \"padding_top\"        \n[19] \"padding_right\"       \"padding_bottom\"      \"padding_left\"       \n[22] \"border\"              \"border_width_top\"    \"border_width_right\" \n[25] \"border_width_bottom\" \"border_width_left\"   \"border_type\"        \n[28] \"border_radius\"       \"outline\"             \"outline_width\"      \n[31] \"outline_type\"        \"outline_join\"        \"outline_mitre\"      \n[34] \"bullets\"             \"underline\"           \"strikethrough\"      \n[37] \"baseline\"            \"img_asp\"             \"text_direction\""
+    "text": "Styling\n\nEach tag can be styled with 39 different properties\n\nnames(classic_style()[[1]]$base)\n\n [1] \"size\"                \"background\"          \"color\"              \n [4] \"family\"              \"weight\"              \"italic\"             \n [7] \"width\"               \"features\"            \"lineheight\"         \n[10] \"align\"               \"tracking\"            \"indent\"             \n[13] \"hanging\"             \"margin_top\"          \"margin_right\"       \n[16] \"margin_bottom\"       \"margin_left\"         \"padding_top\"        \n[19] \"padding_right\"       \"padding_bottom\"      \"padding_left\"       \n[22] \"border\"              \"border_width_top\"    \"border_width_right\" \n[25] \"border_width_bottom\" \"border_width_left\"   \"border_type\"        \n[28] \"border_radius\"       \"outline\"             \"outline_width\"      \n[31] \"outline_type\"        \"outline_join\"        \"outline_mitre\"      \n[34] \"bullets\"             \"underline\"           \"strikethrough\"      \n[37] \"baseline\"            \"img_asp\"             \"text_direction\""
   },
   {
     "objectID": "slides/3_text_fonts.html#styling-2",
@@ -1481,14 +1481,14 @@
     "href": "slides/3_text_fonts.html#guide_marquee-1",
     "title": "Text rendering and font use",
     "section": "guide_marquee()",
-    "text": "guide_marquee()\n\n\nggplot(penguins) + \n  geom_point(aes(x = bill_len, y = flipper_len, colour = species)) + \n  scale_color_discrete(\n    name = \"\nOverview of how bill length and flipper length relate to each other\nin the penguin species *Adelie* &lt;&lt;1&gt;&gt;, *Chinstrap* &lt;&lt;2&gt;&gt;, and \n*Gentoo* &lt;&lt;3&gt;&gt;.\",\n    guide = guide_marquee(width = unit(2.75, \"in\"))\n  )"
+    "text": "guide_marquee()\n\n\nggplot(penguins) + \n  geom_point(aes(x = bill_len, y = flipper_len, colour = species)) + \n  scale_color_discrete(\n    name = \"\nOverview of how bill length and flipper length relate to each other\nin the penguin species *Adelie* &lt;&lt;1&gt;&gt;, *Chinstrap* &lt;&lt;2&gt;&gt;, and \n*Gentoo* &lt;&lt;3&gt;&gt;.\",\n    guide = guide_marquee(width = unit(4.2, \"in\"))\n  )"
   },
   {
     "objectID": "slides/3_text_fonts.html#guide_marquee-2",
     "href": "slides/3_text_fonts.html#guide_marquee-2",
     "title": "Text rendering and font use",
     "section": "guide_marquee()",
-    "text": "guide_marquee()\n\n\nggplot(penguins) + \n  geom_point(aes(x = bill_len, y = flipper_len, colour = species)) + \n  scale_color_discrete(\n    name = \"\nOverview of how bill length and flipper length relate to each other\nin the penguin species {.1 *Adelie*}, {.2 *Chinstrap*}, and \n{.3 *Gentoo*}.\",\n    guide = guide_marquee(width = unit(2.75, \"in\"))\n  )"
+    "text": "guide_marquee()\n\n\nggplot(penguins) + \n  geom_point(aes(x = bill_len, y = flipper_len, colour = species)) + \n  scale_color_discrete(\n    name = \"\nOverview of how bill length and flipper length relate to each other\nin the penguin species {.1 *Adelie*}, {.2 *Chinstrap*}, and \n{.3 *Gentoo*}.\",\n    guide = guide_marquee(width = unit(4.2, \"in\"))\n  )"
   },
   {
     "objectID": "slides/3_text_fonts.html#exercise-3.4",

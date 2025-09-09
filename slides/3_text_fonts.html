@@ -404,7 +404,7 @@ font family 'FANCY FONT' not found in PostScript font database</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 181
 Columns: 9
-$ path      &lt;chr&gt; "/tmp/RtmphSEJq1/Barrio-regular.ttf", "/tmp/RtmphSEJq1/Monte…
+$ path      &lt;chr&gt; "/tmp/Rtmp1h2b5z/Barrio-regular.ttf", "/tmp/Rtmp1h2b5z/Monte…
 $ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
 $ name      &lt;chr&gt; "Barrio-Regular", "MonteCarlo-Regular", "Datalegreya-Thin", …
 $ family    &lt;chr&gt; "Barrio", "MonteCarlo", "Datalegreya", "Datalegreya", "Datal…
@@ -524,7 +524,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 </section>
 <section id="exercise-3.1" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/3_text_fonts.qmd#working-with-fonts">Exercise 3.1</a></h2>
-<div id="timer_0cab21f65c501d44e38dd48aa5b51ce5d6606d61" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_e22f17d64a7f4041344196ac7686f5495bbba49f" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -587,7 +587,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <span id="cb13-5"><a></a></span>
 <span id="cb13-6"><a></a><span class="st">_Here is what you need:_</span></span>
 <span id="cb13-7"><a></a></span>
-<span id="cb13-8"><a></a><span class="st">* Add boldness to text at random</span></span>
+<span id="cb13-8"><a></a><span class="st">* Add **boldness** to text at *random*</span></span>
 <span id="cb13-9"><a></a><span class="st">* Put everything in lists  </span></span>
 <span id="cb13-10"><a></a><span class="st">✅ Make those lists use emojis</span></span>
 <span id="cb13-11"><a></a></span>
@@ -625,12 +625,13 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <div class="cell columns column-output-location">
 <div class="column">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
-<span id="cb14-2"><a></a><span class="st">Some {.red *red* text} and some {#00FF00 *green* text}</span></span>
-<span id="cb14-3"><a></a><span class="st">walked into a {.30 huge} bar and said to the {.person barman}:</span></span>
-<span id="cb14-4"><a></a><span class="st">”Can I get a glass of H{.sub 2}O?”</span></span>
-<span id="cb14-5"><a></a><span class="st">"</span></span>
-<span id="cb14-6"><a></a></span>
-<span id="cb14-7"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-2"><a></a><span class="st">Some {.red *red* text} and some {#00FF00 *green*</span></span>
+<span id="cb14-3"><a></a><span class="st">text} walked into a {.30 huge} bar and said to </span></span>
+<span id="cb14-4"><a></a><span class="st">the {.person barman}: ”Can I get a glass of </span></span>
+<span id="cb14-5"><a></a><span class="st">H{.sub 2}O?”</span></span>
+<span id="cb14-6"><a></a><span class="st">"</span></span>
+<span id="cb14-7"><a></a></span>
+<span id="cb14-8"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -643,7 +644,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 </section>
 <section id="exercise-3.2" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/3_text_fonts.html#basic-markdown-formatting-with-marquee">Exercise 3.2</a></h2>
-<div id="timer_0cab21f65c501d44e38dd48aa5b51ce5d6606d61" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_e22f17d64a7f4041344196ac7686f5495bbba49f" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -718,7 +719,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <section id="styling-1" class="slide level2">
 <h2>Styling</h2>
 <ul>
-<li><p>Each tag can be styled with 37 different properties</p>
+<li><p>Each tag can be styled with 39 different properties</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">names</span>(<span class="fu">classic_style</span>()[[<span class="dv">1</span>]]<span class="sc">$</span>base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -802,7 +803,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 </section>
 <section id="exercise-3.3" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/3_text_fonts.qmd#advanced-marquee-styling">Exercise 3.3</a></h2>
-<div id="timer_0cab21f65c501d44e38dd48aa5b51ce5d6606d61" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_e22f17d64a7f4041344196ac7686f5495bbba49f" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -834,7 +835,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <h2><code>geom_marquee()</code></h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb23" data-code-line-numbers="|16-22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>penguins<span class="sc">$</span>outlier <span class="ot">&lt;-</span> penguins<span class="sc">$</span>bill_len <span class="sc">&gt;</span> <span class="dv">55</span> <span class="sc">&amp;</span> </span>
+<div class="sourceCode cell-code" id="cb23" data-code-line-numbers="|24-31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>penguins<span class="sc">$</span>outlier <span class="ot">&lt;-</span> penguins<span class="sc">$</span>bill_len <span class="sc">&gt;</span> <span class="dv">55</span> <span class="sc">&amp;</span> </span>
 <span id="cb23-2"><a></a>  penguins<span class="sc">$</span>flipper_len <span class="sc">&lt;</span> <span class="dv">190</span></span>
 <span id="cb23-3"><a></a>penguins<span class="sc">$</span>text <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
 <span id="cb23-4"><a></a>  <span class="st">"Suspecious *Pygoscelis "</span>, </span>
@@ -956,7 +957,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <span id="cb26-5"><a></a><span class="st">Overview of how bill length and flipper length relate to each other</span></span>
 <span id="cb26-6"><a></a><span class="st">in the penguin species *Adelie* &lt;&lt;1&gt;&gt;, *Chinstrap* &lt;&lt;2&gt;&gt;, and </span></span>
 <span id="cb26-7"><a></a><span class="st">*Gentoo* &lt;&lt;3&gt;&gt;."</span>,</span>
-<span id="cb26-8"><a></a>    <span class="at">guide =</span> <span class="fu">guide_marquee</span>(<span class="at">width =</span> <span class="fu">unit</span>(<span class="fl">2.75</span>, <span class="st">"in"</span>))</span>
+<span id="cb26-8"><a></a>    <span class="at">guide =</span> <span class="fu">guide_marquee</span>(<span class="at">width =</span> <span class="fu">unit</span>(<span class="fl">4.2</span>, <span class="st">"in"</span>))</span>
 <span id="cb26-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
@@ -979,7 +980,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <span id="cb27-5"><a></a><span class="st">Overview of how bill length and flipper length relate to each other</span></span>
 <span id="cb27-6"><a></a><span class="st">in the penguin species {.1 *Adelie*}, {.2 *Chinstrap*}, and </span></span>
 <span id="cb27-7"><a></a><span class="st">{.3 *Gentoo*}."</span>,</span>
-<span id="cb27-8"><a></a>    <span class="at">guide =</span> <span class="fu">guide_marquee</span>(<span class="at">width =</span> <span class="fu">unit</span>(<span class="fl">2.75</span>, <span class="st">"in"</span>))</span>
+<span id="cb27-8"><a></a>    <span class="at">guide =</span> <span class="fu">guide_marquee</span>(<span class="at">width =</span> <span class="fu">unit</span>(<span class="fl">4.2</span>, <span class="st">"in"</span>))</span>
 <span id="cb27-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
@@ -993,7 +994,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 </section>
 <section id="exercise-3.4" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/3_text_fonts.qmd#using-geom_marquee-in-ggplot2">Exercise 3.4</a></h2>
-<div id="timer_0cab21f65c501d44e38dd48aa5b51ce5d6606d61" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_e22f17d64a7f4041344196ac7686f5495bbba49f" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
