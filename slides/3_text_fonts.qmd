@@ -365,6 +365,8 @@ text <- "
 c|2o|3n|2t|3[++]a|1i|2n|0[--]s|1[high [low  ]     data}
 "
 
+systemfonts::match_fonts("MonteCarlo", weight = "light")
+
 grid::grid.draw(
   marquee_grob(text, new_style)
 )
@@ -437,6 +439,7 @@ ggplot(
     aes(label = text), 
     data = penguins[penguins$outlier,],
     style = style,
+    fill = "white",
     hjust = "right-ink",
     vjust = 1,
     width = grid::unit(5, "cm")
@@ -498,7 +501,7 @@ in the penguin species {.1 *Adelie*}, {.2 *Chinstrap*}, and
   )
 ```
 
-## [Exercise](../exercises/3_text_fonts.qmd#using-geom_marquee(-in-ggplot2) {.center style="text-align:center;"}
+## [Exercise](../exercises/3_text_fonts.qmd#using-geom_marquee-in-ggplot2) {.center style="text-align:center;"}
 
 ## {.center}
 

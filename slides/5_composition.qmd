@@ -459,3 +459,7 @@ girafe(
   ggobj = p1 | p2
 )
 ```
+
+## {.center}
+
+Next session: [Creating extensions](6_extensions.qmd) or [Spice up your plot](7_fun.qmd)

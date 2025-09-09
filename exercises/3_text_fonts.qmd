@@ -449,7 +449,7 @@ but I'm sure you can do it better/worse
 
 ::::
 
-## 3.4 Using geom_marquee() in ggplot2
+## 3.4 Using `geom_marquee` in ggplot2
 
 :::: {.panel-tabset}
 

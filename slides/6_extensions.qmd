@@ -516,7 +516,7 @@ StatBoxplot$setup_data
     * Optionally, edit `setup_data()`/`setup_params()`
 * Build constructor using `make_constructor()`
 
-⏲️ Exercise 6
+## [Exercise](../exercises/6_extensions.qmd#exercise-6-extension) {.center style="text-align:center;"}
 
 ---
 
@@ -560,11 +560,15 @@ StatBoxplot$setup_data
 
 * data extensions
     * `ggforce::facet_matrix()`
+    * `ggraph::facet_nodes()`
 * layout extensions
     * geofacet
     * ggragged
     * `ggh4x::facet_manual()`
 * decorations
     * `ggh4x::facet_nested()`
+    * `ggforce::facet_zoom()`
     
-    
+## {.center}
+
+Next session: [Spice up your plot](7_fun.qmd)
