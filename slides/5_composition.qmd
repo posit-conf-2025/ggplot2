@@ -179,8 +179,8 @@ p1 + inset_element(
   p2, 
   left = 0.5, 
   bottom = 0.5, 
-  right = grid::unit(1, "npc") - grid::unit(6, "mm"),
-  top = grid::unit(1, "npc") - grid::unit(6, "mm"),
+  right = unit(1, "npc") - unit(6, "mm"),
+  top = unit(1, "npc") - unit(6, "mm"),
 )
 ```
 
@@ -241,7 +241,7 @@ p1 +
 
 ## Tagging
 
-* With multi-panel graphics you often need a way to refer to the subgraphics
+With multi-panel graphics you often need a way to refer to the subgraphics
 
 ```{r}
 p123 <- (p1 | (p2 / p3)) & theme(
@@ -257,7 +257,7 @@ p123 +
 
 ## Tagging
 
-* It knows about nesting as well
+It knows about nesting as well
 
 ```{r}
 p123[[2]] <- p123[[2]] + 
@@ -276,7 +276,7 @@ p123 +
 
 ## Guide handling
 
-* Guides are often global instead of linked to a single subplot
+Guides are often global instead of linked to a single subplot
 
 ```{r}
 p1 / p4
@@ -284,8 +284,7 @@ p1 / p4
 
 ## Guide handling
 
-* Use `guides = "collect"` to fetch all guides from subplots and place them at
-  the top level
+Use `guides = "collect"` to fetch all guides from subplots and place them at the top level
 
 ```{r}
 (p1 / p4) + 
@@ -312,7 +311,7 @@ p1a | p4
 
 ## Guide handling
 
-* Duplicate guides are automatically removed
+Duplicate guides are automatically removed
 
 ```{r}
 p2a <- ggplot(penguins) + 
@@ -326,7 +325,7 @@ p2a <- ggplot(penguins) +
 
 ## Guide handling
 
-* Duplicate guides are automatically removed
+Duplicate guides are automatically removed
 
 ```{r}
 p2a <- ggplot(penguins) + 
@@ -340,7 +339,7 @@ p2a + p4 + p3 + guide_area() +
 
 ## Guide handling
 
-* Axes are guides too
+Axes are guides too
 
 ```{r}
 (p3 / p4) + plot_layout(

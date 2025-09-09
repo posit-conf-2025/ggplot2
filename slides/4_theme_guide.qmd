@@ -18,6 +18,15 @@ theme_set(
 )
 ```
 
+## The theme menu
+
+* Ink & Paper
+* Default palettes
+* Build your own theme
+* Custom guides
+
+---
+
 ## Ink & Paper
 
 * Complete themes
@@ -321,6 +330,35 @@ p2 + theme(palette.colour.continuous = my_palette)
 
 ---
 
+### Controlling palettes
+
+Regular scales override theme defaults
+
+```{r}
+p2 + 
+  theme(palette.colour.continuous = my_palette) +
+  scale_colour_viridis_c()
+```
+
+### Controlling palettes
+
+The default palette does not commit to a full scale.
+You can still tweak the options via the default scales (`scale_{aesthetic}_{type}`).
+
+```{r}
+p2 + 
+  theme(palette.colour.continuous = my_palette) +
+  scale_colour_continuous(
+    breaks = c(
+      ten    = 10,
+      twenty = 20,
+      thirty = 30
+    )
+  )
+```
+
+---
+
 ### Theme palettes
 
 The palette settings have the syntax `palette.{aesthetic}.{type}`, where `type` can be `"continuous"` or `"discrete"`.
@@ -347,6 +385,7 @@ The palatable palettes are those that can pass through `scales::as_continuous_pa
 
 ```{r}
 #| collapse: true
+#| output-location: default
 library(scales)
 
 # Discrete palettes
@@ -379,7 +418,9 @@ is_continuous_pal(pal)
 con_pal <- as_continuous_pal(pal)
 is_continuous_pal(con_pal)
 
-show_col(con_pal(seq(0, 1, length.out = 6)))
+seq(0, 1, length.out = 9) |>
+  con_pal() |>
+  show_col()
 ```
 
 ---
@@ -551,7 +592,7 @@ But for now, we'll reset it to something familiar.
 
 ```{r}
 #| eval: false
-theme_set(theme_gray())
+set_theme(theme_gray())
 p2
 ```
 
