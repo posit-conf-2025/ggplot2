@@ -623,11 +623,11 @@
     "text": "Moar filters\n\n\n\nCustom blend\nBloom\nFully custom\nDisplacement\nDither\nInner glow\n\n\n\nInterpolate\nKernel\nMask\nMotion blur\nShading (bump mapping)\nVariable blur"
   },
   {
-    "objectID": "slides/7_fun.html#exercise",
-    "href": "slides/7_fun.html#exercise",
+    "objectID": "slides/7_fun.html#exercise-7.1",
+    "href": "slides/7_fun.html#exercise-7.1",
     "title": "Spice up your plot",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 7.1",
+    "text": "Exercise 7.1\n\n  \n    −\n    +\n \n 05:00"
   },
   {
     "objectID": "slides/7_fun.html#ggforce",
@@ -721,11 +721,11 @@
     "text": "Links\n\n\nggplot(lines, aes(x = x, y = y)) +\n  geom_link2(\n    aes(\n      colour = colour, \n      linewidth = width,\n      group = 1\n    ),\n    lineend = \"round\"\n  )"
   },
   {
-    "objectID": "slides/7_fun.html#exercise-1",
-    "href": "slides/7_fun.html#exercise-1",
+    "objectID": "slides/7_fun.html#exercise-7.2",
+    "href": "slides/7_fun.html#exercise-7.2",
     "title": "Spice up your plot",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 7.2",
+    "text": "Exercise 7.2\n\n  \n    −\n    +\n \n 05:00"
   },
   {
     "objectID": "slides/7_fun.html#gganimate",
@@ -763,11 +763,11 @@
     "text": "gganimate\n\n\nggplot(penguins) + \n  geom_smooth(\n    aes(\n      x = as.Date(as.character(year), format = \"%Y\"), \n      y = body_mass, \n      color = species\n    ),\n    method = \"lm\"\n  ) + \n  scale_x_date(name = NULL) + \n  transition_reveal(after_stat(x))"
   },
   {
-    "objectID": "slides/7_fun.html#exercise-2",
-    "href": "slides/7_fun.html#exercise-2",
+    "objectID": "slides/7_fun.html#exercise-7.3",
+    "href": "slides/7_fun.html#exercise-7.3",
     "title": "Spice up your plot",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 7.3",
+    "text": "Exercise 7.3\n\n  \n    −\n    +\n \n 05:00"
   },
   {
     "objectID": "slides/2_ggplot2.html#todays-topics",
@@ -973,11 +973,11 @@
     "text": "More layout options\n\n\nlayout &lt;- c(\n  area(1, 1, 2, 3),\n  area(2, 2, 3, 3)\n)\np1 + p2 + \n  plot_layout(design = layout)"
   },
   {
-    "objectID": "slides/5_composition.html#exercise",
-    "href": "slides/5_composition.html#exercise",
+    "objectID": "slides/5_composition.html#exercise-5.1",
+    "href": "slides/5_composition.html#exercise-5.1",
     "title": "Plot composition",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 5.1",
+    "text": "Exercise 5.1\n\n  \n    −\n    +\n \n 05:00"
   },
   {
     "objectID": "slides/5_composition.html#layout-modifiers",
@@ -1015,11 +1015,11 @@
     "text": "Layout modifiers - Free\n\n\nfree(p1, \"label\", side = \"b\") + p3a"
   },
   {
-    "objectID": "slides/5_composition.html#exercise-1",
-    "href": "slides/5_composition.html#exercise-1",
+    "objectID": "slides/5_composition.html#exercise-5.2",
+    "href": "slides/5_composition.html#exercise-5.2",
     "title": "Plot composition",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 5.2",
+    "text": "Exercise 5.2\n\n  \n    −\n    +\n \n 05:00"
   },
   {
     "objectID": "slides/5_composition.html#annotations",
@@ -1050,11 +1050,11 @@
     "text": "Tagging\n\nIt knows about nesting as well\n\n\n\np123[[2]] &lt;- p123[[2]] + \n  plot_layout(tag_level = \"new\")\n\np123 + \n  plot_annotation(\n    tag_levels = c(\"1\", \"a\"),\n    tag_suffix = \")\"\n  )"
   },
   {
-    "objectID": "slides/5_composition.html#exercise-2",
-    "href": "slides/5_composition.html#exercise-2",
+    "objectID": "slides/5_composition.html#exercise-5.3",
+    "href": "slides/5_composition.html#exercise-5.3",
     "title": "Plot composition",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 5.3",
+    "text": "Exercise 5.3\n\n  \n    −\n    +\n \n 05:00"
   },
   {
     "objectID": "slides/5_composition.html#guide-handling",
@@ -1106,11 +1106,11 @@
     "text": "Guide handling\n\nAxes are guides too\n\n\n\n(p3 / p4) + plot_layout(\n  axes = \"collect\",\n  guides = \"collect\"\n)"
   },
   {
-    "objectID": "slides/5_composition.html#exercise-3",
-    "href": "slides/5_composition.html#exercise-3",
+    "objectID": "slides/5_composition.html#exercise-5.4",
+    "href": "slides/5_composition.html#exercise-5.4",
     "title": "Plot composition",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 5.4",
+    "text": "Exercise 5.4\n\n  \n    −\n    +\n \n 05:00"
   },
   {
     "objectID": "slides/5_composition.html#other-objects",
@@ -1162,11 +1162,11 @@
     "text": "Other objects: base graphics\n\n\npar(mar = c(0, 2, 0, 0), bg = NA)\np1 + \n  wrap_elements(\n    panel = ~plot(penguins$flipper_len, penguins$bill_len), \n    clip = FALSE\n  )"
   },
   {
-    "objectID": "slides/5_composition.html#exercise-4",
-    "href": "slides/5_composition.html#exercise-4",
+    "objectID": "slides/5_composition.html#exercise-5.5",
+    "href": "slides/5_composition.html#exercise-5.5",
     "title": "Plot composition",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 5.5",
+    "text": "Exercise 5.5\n\n  \n    −\n    +\n \n 05:00"
   },
   {
     "objectID": "slides/5_composition.html#ggiraph-integration",
@@ -1250,7 +1250,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/Rtmp6K8Tku/Barrio-regular.ttf\", \"/tmp/Rtmp6K8Tku/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpM2bCoS/Barrio-regular.ttf\", \"/tmp/RtmpM2bCoS/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
@@ -1295,11 +1295,11 @@
     "text": "systemfonts\n\nProblem:\n\nI don’t know if the font is available on the computer my script will be running on\n\nSolution\n\nUse require_font() to ensure the font is installed from a web repository if missing (or error if it can’t be found there)\n(this slideshow has require_font(\"Barrio\") in the beginning so it can render everywhere)"
   },
   {
-    "objectID": "slides/3_text_fonts.html#exercise",
-    "href": "slides/3_text_fonts.html#exercise",
+    "objectID": "slides/3_text_fonts.html#exercise-3.1",
+    "href": "slides/3_text_fonts.html#exercise-3.1",
     "title": "Text rendering and font use",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 3.1",
+    "text": "Exercise 3.1\n\n  \n    −\n    +\n \n 05:00"
   },
   {
     "objectID": "slides/3_text_fonts.html#apply-rich-formatting",
@@ -1344,11 +1344,11 @@
     "text": "Custom spans\n\n\ntext &lt;- \"\nSome {.red *red* text} and some {#00FF00 *green* text}\nwalked into a {.30 huge} bar and said to the {.person barman}:\n”Can I get a glass of H{.sub 2}O?”\n\"\n\ngrid::grid.draw(marquee_grob(text))"
   },
   {
-    "objectID": "slides/3_text_fonts.html#exercise-1",
-    "href": "slides/3_text_fonts.html#exercise-1",
+    "objectID": "slides/3_text_fonts.html#exercise-3.2",
+    "href": "slides/3_text_fonts.html#exercise-3.2",
     "title": "Text rendering and font use",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 3.2",
+    "text": "Exercise 3.2\n\n  \n    −\n    +\n \n 05:00"
   },
   {
     "objectID": "slides/3_text_fonts.html#supercharged-images",
@@ -1404,14 +1404,14 @@
     "href": "slides/3_text_fonts.html#styling-4",
     "title": "Text rendering and font use",
     "section": "Styling",
-    "text": "Styling\n\n\ntext &lt;- \"\n{.fancy Readability is overrated}\n\n{.plot Even when it  \nc|2o|3n|2t|3[++]a|1i|2n|0[--]s|1[high [low  ]     data}\n\"\n\nsystemfonts::match_fonts(\"MonteCarlo\", weight = \"light\")\n\n\n# A tibble: 1 × 3\n  path                                                       index features  \n  &lt;chr&gt;                                                      &lt;int&gt; &lt;list&gt;    \n1 /usr/share/fonts/truetype/dejavu/DejaVuSans-ExtraLight.ttf     0 &lt;font_ftr&gt;\n\ngrid::grid.draw(\n  marquee_grob(text, new_style)\n)"
+    "text": "Styling\n\n\ntext &lt;- \"\n{.fancy Readability is overrated}\n\n{.plot Even when it  \nc|2o|3n|2t|3[++]a|1i|2n|0[--]s|1[high [low  ]     data}\n\"\n\nsystemfonts::match_fonts(\"MonteCarlo\")\n\n\n# A tibble: 1 × 3\n  path                                   index features  \n  &lt;chr&gt;                                  &lt;int&gt; &lt;list&gt;    \n1 /tmp/RtmpM2bCoS/MonteCarlo-regular.ttf     0 &lt;font_ftr&gt;\n\ngrid::grid.draw(\n  marquee_grob(text, new_style)\n)"
   },
   {
-    "objectID": "slides/3_text_fonts.html#exercise-2",
-    "href": "slides/3_text_fonts.html#exercise-2",
+    "objectID": "slides/3_text_fonts.html#exercise-3.3",
+    "href": "slides/3_text_fonts.html#exercise-3.3",
     "title": "Text rendering and font use",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 3.3",
+    "text": "Exercise 3.3\n\n  \n    −\n    +\n \n 05:00"
   },
   {
     "objectID": "slides/3_text_fonts.html#what-about-ggplot2",
@@ -1477,11 +1477,11 @@
     "text": "guide_marquee()\n\n\nggplot(penguins) + \n  geom_point(aes(x = bill_len, y = flipper_len, colour = species)) + \n  scale_color_discrete(\n    name = \"\nOverview of how bill length and flipper length relate to each other\nin the penguin species {.1 *Adelie*}, {.2 *Chinstrap*}, and \n{.3 *Gentoo*}.\",\n    guide = guide_marquee(width = grid::unit(2.75, \"in\"))\n  )"
   },
   {
-    "objectID": "slides/3_text_fonts.html#exercise-3",
-    "href": "slides/3_text_fonts.html#exercise-3",
+    "objectID": "slides/3_text_fonts.html#exercise-3.4",
+    "href": "slides/3_text_fonts.html#exercise-3.4",
     "title": "Text rendering and font use",
-    "section": "Exercise",
-    "text": "Exercise"
+    "section": "Exercise 3.4",
+    "text": "Exercise 3.4\n\n  \n    −\n    +\n \n 05:00"
   },
   {
     "objectID": "slides/3_text_fonts.html#section-2",
