@@ -325,7 +325,7 @@ p2a <- ggplot(penguins) +
 
 ## Guide handling
 
-Duplicate guides are automatically removed
+You can place guides inside the composition as well.
 
 ```{r}
 p2a <- ggplot(penguins) + 
@@ -373,7 +373,11 @@ p1 + table
 
 ```{r}
 p1 + 
-  wrap_table(table, panel = "full", space = "fixed")
+  wrap_table(
+    table, 
+    panel = "full", 
+    space = "fixed"
+  )
 ```
 
 ## Other objects: images
@@ -388,7 +392,9 @@ p1 + logo
 ## Other objects: grobs
 
 ```{r}
-grob <- marquee::marquee_grob(textshaping::lorem_text("devanagari"))
+grob <- marquee::marquee_grob(
+  textshaping::lorem_text("kana")
+)
 
 p1 + grob
 ```
@@ -397,7 +403,11 @@ p1 + grob
 ## Other objects: base graphics
 
 ```{r}
-p1 + ~plot(penguins$flipper_len, penguins$bill_len)
+p1 + 
+  ~plot(
+    penguins$flipper_len, 
+    penguins$bill_len
+  )
 ```
 
 ## Other objects: base graphics
@@ -406,7 +416,10 @@ p1 + ~plot(penguins$flipper_len, penguins$bill_len)
 par(mar = c(0, 2, 0, 0), bg = NA)
 p1 + 
   wrap_elements(
-    panel = ~plot(penguins$flipper_len, penguins$bill_len), 
+    panel = ~plot(
+      penguins$flipper_len, 
+      penguins$bill_len
+    ), 
     clip = FALSE
   )
 ```

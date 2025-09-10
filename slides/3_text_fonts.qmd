@@ -188,6 +188,12 @@ ggplot(penguins) +
   (this slideshow has `require_font("Barrio")` in the beginning so it can render everywhere)
 :::
 
+## Learn more
+
+:::: r-stack
+[![https://www.tidyverse.org/blog/2025/05/fonts-in-r/](../assets/img/blogpost.png){width=800 style="max-width:100%;"}](https://www.tidyverse.org/blog/2025/05/fonts-in-r/)
+::::
+
 ## [Exercise 3.1](https://posit-conf-2025.github.io/ggplot2/exercises/3_text_fonts.qmd#working-with-fonts) {.center style="text-align:center;"}
 
 {{< countdown minutes=5 top="0" bottom="" >}}
@@ -197,18 +203,18 @@ ggplot(penguins) +
 &nbsp;
 
 #### The limitations of R
-* font selection is limited.
+* Font selection is limited.
   * Two levels of boldness (normal and bold)
   * Italic on/off
 * All text need to share the same font
 
 ## Apply rich formatting
 
-* ggtext by Claus Wilke
+* [ggtext](https://wilkelab.org/ggtext/) by Claus Wilke
   * Works within the bounds of the old graphics engine limits
   * Uses a mix of basic markdown and a subset of HTML
   * Doesn't have a hex logo
-* marquee by me
+* [marquee](https://marquee.r-lib.org) by me
   * Uses very new and fancy functionality I got Paul to add to R
   * Uses a superset of CommonMark syntax
   * Does have a logo
@@ -465,10 +471,14 @@ ggplot(
 ) + 
   geom_point() +
   labs(
-    title = "An overview of various *Pygoscelis* (penguin) species"
+    title = 
+"An overview of various *Pygoscelis*
+(penguin) species"
   ) + 
   theme(
-    plot.title = element_marquee(family = "Spectral")
+    plot.title = element_marquee(
+      family = "Spectral"
+    )
   )
 ```
 
@@ -481,13 +491,22 @@ ggplot(
 
 ```{r}
 ggplot(penguins) + 
-  geom_point(aes(x = bill_len, y = flipper_len, colour = species)) + 
+  geom_point(
+    aes(
+      x = bill_len, 
+      y = flipper_len, 
+      colour = species
+    )
+  ) + 
   scale_color_discrete(
-    name = "
-Overview of how bill length and flipper length relate to each other
-in the penguin species *Adelie* <<1>>, *Chinstrap* <<2>>, and 
-*Gentoo* <<3>>.",
-    guide = guide_marquee(width = unit(4.2, "in"))
+    name = 
+"Overview of how bill length and flipper 
+length relate to each other in the penguin 
+species *Adelie* <<1>>, *Chinstrap* <<2>>, 
+and *Gentoo* <<3>>.",
+    guide = guide_marquee(
+      width = unit(4.35, "in")
+    )
   )
 ```
 
@@ -495,13 +514,22 @@ in the penguin species *Adelie* <<1>>, *Chinstrap* <<2>>, and
 
 ```{r}
 ggplot(penguins) + 
-  geom_point(aes(x = bill_len, y = flipper_len, colour = species)) + 
+  geom_point(
+    aes(
+      x = bill_len, 
+      y = flipper_len, 
+      colour = species
+    )
+  ) + 
   scale_color_discrete(
-    name = "
-Overview of how bill length and flipper length relate to each other
-in the penguin species {.1 *Adelie*}, {.2 *Chinstrap*}, and 
+    name = 
+"Overview of how bill length and flipper
+length relate to each other in the penguin 
+species {.1 *Adelie*}, {.2 *Chinstrap*}, and 
 {.3 *Gentoo*}.",
-    guide = guide_marquee(width = unit(4.2, "in"))
+    guide = guide_marquee(
+      width = unit(4.35, "in")
+    )
   )
 ```
 
