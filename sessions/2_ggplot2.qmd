@@ -15,6 +15,7 @@ The goal of this session is to get you up to speed with the latest developments 
 :::::: {.btn-group}
 [Slides](../slides/2_ggplot2.qmd){.btn .btn-primary role="button"}
 [Exercises](../exercises/2_ggplot2.qmd){.btn .btn-success role="button"}
+[Worksheet](../exercises/_source/2_ggplot2.qmd){.btn .btn-secondary role="button"}
 ::::::
 :::
 
