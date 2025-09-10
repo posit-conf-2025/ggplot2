@@ -1,0 +1,160 @@
+---
+title: Exercises for session 2
+---
+
+```{r}
+#| label: setup
+library(ggplot2)
+library(grid)
+
+# Some graphics devices don't support gradients and patterns. We set the
+# device to ragg, which does support these.
+knitr::opts_chunk$set(dev = "ragg_png")
+```
+
+## Exercise 2.1: Headings
+
+### Exercise 2.1.1
+
+We can use the `label` attribute in columns to automatically label a variable.
+
+Complete the chunk below to set a `label` attribute for the `unemploy` column in the `economics` dataset.
+Per `?economics`, the `unemploy` variable gives the number of unemployed people in thousands.
+
+```{r}
+attr(economics$date, "label") <- "Year"
+______
+
+ggplot(economics, aes(date, unemploy)) +
+  geom_area(alpha = 0.4, colour = "black")
+```
+
+### Exercise 2.1.2
+
+If we don't have pre-set labels, we can also use the `labs(dictionary)` argument to populate column-label pairs.
+Use this argument to label the variables in the plot below.
+You can use `?mpg` to find out what the columns are.
+
+```{webr}
+ggplot(mpg, aes(displ, hwy, colour = drv)) +
+  geom_point() +
+  labs(dictionary = ______)
+```
+
+## Exercise 2.2: Patterns and gradients
+
+### Exercise 2.2.1
+
+Use `grid::linearGradient()` to set up a horizontal colour gradient.
+Which arguments do you have to tweak to change the default diagonal gradient to a horizontal one?
+How would you set a vertical gradient instead?
+
+```{r}
+gradient <- ______
+
+ggplot(economics, aes(date, unemploy)) +
+  geom_area(fill = list(gradient), colour = "black")
+```
+
+### Exercise 2.2.2
+
+The following code sets up a crosshatch pattern that can be used as the `fill` aesthetic.
+
+```{r}
+width <- height <- unit(3, "mm")
+crosshatch <- pattern(
+  segmentsGrob(
+    x0 = c(0, 1), x1 = c(1, 0), 
+    y0 = c(0, 0), y1 = c(1, 1),
+    gp = gg_par(col = "black", lwd = 0.5),
+    vp = viewport(width = width, height = height)
+  ),
+  width = width, height = height,
+  extend = "repeat"
+)
+
+ggplot(economics, aes(date, unemploy)) +
+  geom_area(fill = crosshatch, colour = "black")
+```
+
+Create a new pattern of your liking.
+Can you design a polka-dot or checkerboard pattern?
+You can use `grid::circleGrob()` and `grid::rectGrob()` for circles and rectangles respectively.
+We'll use it to create a manual fill scale of patterns.
+
+```{r}
+my_pattern <- pattern(
+  ______
+)
+
+patterns <- list(
+  crosshatch,
+  gradient,
+  my_pattern
+)
+
+ggplot(penguins) +
+  aes(species, fill = island) +
+  geom_bar() +
+  scale_fill_manual(values = patterns)
+```
+
+## Exercise 2.3.1: Delayed evaluation
+
+In the plot below, can you redirect the `alpha` aesthetic to represent the `count` computed variable?
+For an extra challenge, can you use `scale_alpha_continuous()` to anchor 0 at complete transparency?
+
+```{webr}
+#| exercise: ex_231
+ggplot(diamonds) +
+  aes(carat, price) +
+  stat_bin_2d(
+    ______,
+    binwidth = c(0.05, 200)
+  )
+```
+
+## Exercise 2.4.1: Polar coordinates
+
+Plot `p` displays a Cartesian bar chart of car manufacturers.
+
+```{r}
+p <- ggplot(mpg) +
+  aes(manufacturer, label = manufacturer) +
+  geom_bar() +
+  geom_text(
+    aes(y = 37),
+    # Prevent duplicated labels
+    data = ~ dplyr::filter(.x, !duplicated(manufacturer)),
+    angle = 90, hjust = 1
+  ) +
+  scale_x_discrete(guide = "none")
+p
+```
+
+Add a `coord_radial()` with arguments to `p` to make a half-ring shape coxcomb/windrose chart with nicely displayed text.
+
+```{r}
+p + ______
+```
+
+## Exercise 2.5.1: Facets
+
+We have the following facetted plot:
+
+```{r}
+p <- ggplot(diamonds) +
+  aes(carat, price) +
+  geom_point(shape = ".")
+p + facet_wrap(~ cut, dir = "lt")
+```
+
+Given the following code, adapt the `facet_wrap()` statement to:
+
+* Mirror the facet order
+* Place labelled axes at the bottom of every panel
+* Place axis ticks on all y-axes
+
+```{r}
+p + facet_wrap(~ cut, ______)
+```
