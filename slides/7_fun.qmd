@@ -314,7 +314,7 @@ p +
 
 ## Marks
 
-```{r, dev.args = list(scaling=1.5)}
+```{r, dev.args = list(scaling=1.7)}
 p + 
   geom_mark_ellipse(
     aes(
