@@ -4,6 +4,7 @@ format:
   live-html:
     code-tools: 
       source: _source/7_fun.qmd
+      caption: worksheet
 webr:
   repos:
     - https://repo.r-wasm.org
