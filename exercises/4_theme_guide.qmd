@@ -1,6 +1,11 @@
 ---
 title: "Exercises for session 4"
 toc: true
+format:
+  live-html:
+    code-tools:
+      source: _source/4_theme_guide.qmd
+      caption: worksheet
 webr:
   repos:
     - https://repo.r-wasm.org
@@ -11,7 +16,6 @@ webr:
   packages:
     - ggplot2
     - ragg
-    - palmerpenguins
     - legendry
     - MASS
 ---
@@ -30,8 +34,8 @@ knitr::opts_chunk$set(dev = "ragg_png")
 We'll work with this plot of the penguins dataset.
 
 ```{r}
-p <- ggplot(palmerpenguins::penguins) +
-  aes(body_mass_g, flipper_length_mm, shape = species) +
+p <- ggplot(penguins) +
+  aes(body_mass, flipper_len, shape = species) +
   geom_point(na.rm = TRUE) +
   labs(
     x = "Body Mass (g)",
@@ -52,8 +56,8 @@ of it.
 #| exercise: ex_41
 #| setup: true
 library(ggplot2)
-p <- ggplot(palmerpenguins::penguins) +
-  aes(body_mass_g, flipper_length_mm, shape = species) +
+p <- ggplot(penguins) +
+  aes(body_mass, flipper_len, shape = species) +
   geom_point(na.rm = TRUE) +
   labs(
     x = "Body Mass (g)",

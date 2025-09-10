@@ -61,7 +61,7 @@
 * Once you're finished put the green post-it up
 * You may not have time for all of them — That is OK!
 * You will become very familiar with the palmerpenguins dataset
-  - Or you can use another with more relevanse to you
+  - Or you can use another with more relevance to you
 
 ## Practical information
 

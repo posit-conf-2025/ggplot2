@@ -1,6 +1,11 @@
 ---
 title: Exercises for session 2
 toc: true
+format:
+  live-html:
+    code-tools:
+      source: _source/2_ggplot2.qmd
+      caption: worksheet
 webr:
   repos:
     - https://repo.r-wasm.org
@@ -11,7 +16,6 @@ webr:
   packages:
     - ggplot2
     - grid
-    - palmerpenguins
     - ragg
     - dplyr
 ---
@@ -262,7 +266,7 @@ patterns <- list(
   my_pattern
 )
 
-ggplot(palmerpenguins::penguins) +
+ggplot(penguins) +
   aes(species, fill = island) +
   geom_bar() +
   scale_fill_manual(values = patterns)
@@ -319,7 +323,7 @@ patterns <- list(
   gradient
 )
 
-ggplot(palmerpenguins::penguins) +
+ggplot(penguins) +
   aes(species, fill = island) +
   geom_bar() +
   scale_fill_manual(values = patterns)
@@ -463,10 +467,10 @@ p + coord_radial(
 We have the following facetted plot:
 
 ```{r}
-ggplot(diamonds) +
+p <- ggplot(diamonds) +
   aes(carat, price) +
-  geom_point(shape = ".") +
-  facet_wrap(~ cut, dir = "lt")
+  geom_point(shape = ".")
+p + facet_wrap(~ cut, dir = "lt")
 ```
 
 
@@ -482,10 +486,16 @@ Given the following code, adapt the `facet_wrap()` statement to:
 
 ```{webr}
 #| exercise: ex_251
-ggplot(diamonds) +
+#| setup: true
+p <- ggplot(diamonds) +
   aes(carat, price) +
-  geom_point(shape = ".") +
-  facet_wrap(~ cut, dir = "lt") # <- change me
+  geom_point(shape = ".")
+```
+
+
+```{webr}
+#| exercise: ex_251
+p + facet_wrap(~ cut, ______)
 ```
 
 ### Hints

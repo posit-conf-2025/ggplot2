@@ -36,7 +36,6 @@ jobs:
             any::gridpattern
             any::tibble
             any::dplyr
-            any::palmerpenguins
             any::gapminder
             any::gganimate
             any::plotly

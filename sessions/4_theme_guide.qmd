@@ -14,6 +14,7 @@ In this session, we learn about the following topics:
 :::::: {.btn-group}
 [Slides](../slides/4_theme_guide.qmd){.btn .btn-primary role="button"}
 [Exercises](../exercises/4_theme_guide.qmd){.btn .btn-success role="button"}
+[Worksheet](../exercises/_source/4_theme_guide.qmd){.btn .btn-secondary role="button"}
 ::::::
 :::
 
