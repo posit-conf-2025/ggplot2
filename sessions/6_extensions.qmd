@@ -13,6 +13,7 @@ Here we talk about creating reusable pieces of code that fit into the grammar:
 :::::: {.btn-group}
 [Slides](../slides/6_extensions.qmd){.btn .btn-primary role="button"}
 [Exercises](../exercises/6_extensions.qmd){.btn .btn-success role="button"}
+[Worksheet](../exercises/_source/6_extensions.qmd){.btn .btn-secondary role="button"}
 ::::::
 :::
 

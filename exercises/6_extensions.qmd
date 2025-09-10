@@ -1,5 +1,10 @@
 ---
 title: Exercises for session 6
+format:
+  live-html:
+    code-tools:
+      source: _source/6_extensions.qmd
+      caption: worksheet
 webr:
   repos:
     - https://repo.r-wasm.org
