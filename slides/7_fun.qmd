@@ -286,7 +286,7 @@ p +
       description = "This is by far the most interesting penguin"
     ), 
     fill = "steelblue",
-    label.fontsize = 9
+    label.fontsize = 7
   )
 ```
 
