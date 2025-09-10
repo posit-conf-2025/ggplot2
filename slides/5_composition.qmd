@@ -133,7 +133,8 @@ wrap_plots(p1, p2, p3, p4, widths = c(1, 2))
 ## More layout options
 
 ```{r}
-p1 + p2 + p3 + p4 + plot_layout(widths = c(1, 2))
+p1 + p2 + p3 + p4 + 
+  plot_layout(widths = c(1, 2))
 ```
 
 ## More layout options
@@ -393,7 +394,8 @@ p1 + logo
 
 ```{r}
 grob <- marquee::marquee_grob(
-  textshaping::lorem_text("kana")
+  textshaping::lorem_text("kana"),
+  classic_style(base_size = 10)
 )
 
 p1 + grob
