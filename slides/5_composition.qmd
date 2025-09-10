@@ -395,7 +395,7 @@ p1 + logo
 ```{r}
 grob <- marquee::marquee_grob(
   textshaping::lorem_text("kana"),
-  classic_style(base_size = 10)
+  marquee::classic_style(base_size = 10)
 )
 
 p1 + grob
