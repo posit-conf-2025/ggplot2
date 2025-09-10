@@ -8,7 +8,7 @@
   color: #4496AD;
 }
 
-.reveal code span.do {
+.reveal code span.do, .reveal code span.co {
   color: #6C9DD6;
 }
 
