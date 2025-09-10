@@ -314,7 +314,7 @@ p +
 
 ## Marks
 
-```{r}
+```{r, dev.args = list(scaling=1)}
 p + 
   geom_mark_ellipse(
     aes(
@@ -323,9 +323,7 @@ p +
       description = 
 "This is by far the most interesting penguin"
     ), 
-    fill = "steelblue",
-    label.fontsize = 7,
-    label.buffer = grid::unit(1, "mm")
+    fill = "steelblue"
   )
 ```
 
@@ -400,6 +398,7 @@ ggplot(
 ## gganimate
 
 ```{r}
+#| eval: false
 ggplot(penguins) + 
   geom_point(aes(bill_dep, flipper_len)) + 
   transition_states(species) + 
@@ -435,6 +434,7 @@ ggplot(penguins) +
 ## gganimate
 
 ```{r}
+#| eval: false
 ggplot(penguins) + 
   geom_bar(
     aes(
@@ -449,6 +449,7 @@ ggplot(penguins) +
 ## gganimate
 
 ```{r}
+#| eval: false
 penguins$year_d <- as.Date(
   as.character(penguins$year), 
   format = "%Y"
