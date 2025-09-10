@@ -3,7 +3,13 @@ title: "Spice up your plot"
 author: "Thomas Lin Pedersen"
 ---
 
-In this last session we will (if time permits) spend some time showcasing things you can do with ggplots and its extensions that may make Tufte roll over, but on the other hand can help you create memorable visualisations with a lot of personality
+In this last session we will (if time permits) spend some time showcasing things you can do with ggplots and its extensions that may make Tufte roll over, but on the other hand can help you create memorable visualisations with a lot of personality.
+
+Key points:
+
+* Adding effects with ggfx
+* The many weird functions of ggforce
+* Animate your plot with gganimate
 
 ::: {.text-center .plain}
 :::::: {.btn-group}

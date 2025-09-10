@@ -5,6 +5,19 @@ author: "Thomas Lin Pedersen"
 
 In this session we will dive into how you present multiple plots in the same figure. The key package here is patchwork and you will learn (almost) all there is to now about how to harness its power.
 
+Key points:
+
+* Introduce patchwork for plot composition
+* From simple to complex layouts
+  - Key design principles
+  - Operators
+  - Escaping the grid
+* The non-panel stuff
+  - Annotation
+  - Guide handling
+* Object support
+* Interactivity
+
 ::: {.text-center .plain}
 :::::: {.btn-group}
 [Slides](../slides/5_composition.qmd){.btn .btn-primary role="button"}

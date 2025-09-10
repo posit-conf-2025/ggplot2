@@ -6,6 +6,7 @@ author: "Thomas Lin Pedersen"
 This session will briefly introduce the rest of the day, giving an overview of the schedule and any practical information that may be relevant.
 
 Key points:
+
 * Agenda
 * Who we are
 * Practical info
@@ -17,6 +18,7 @@ Key points:
 :::::: {.btn-group}
 [Slides](../slides/1_introduction.qmd){.btn .btn-primary role="button"}
 [Exercises](){.btn .btn-success .disabled role="button"}
+[Worksheet](){.btn .btn-secondary .disabled role="button"}
 ::::::
 :::
 
