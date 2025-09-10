@@ -46,7 +46,10 @@ theme_set(
 ## Filters
 
 ```{r}
-ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
+ggplot(
+  penguins, 
+  aes(x = flipper_len, y = bill_len)
+) +
   with_blur(
     geom_point(),
     sigma = unit(1, 'mm')
@@ -57,7 +60,10 @@ ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
 ## Filters
 
 ```{r}
-p <- ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
+p <- ggplot(
+  penguins, 
+  aes(x = flipper_len, y = bill_len)
+) +
   geom_point() + 
   geom_smooth()
 
@@ -71,18 +77,26 @@ with_outer_glow(
 ## Filters
 
 ```{r}
-ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
+ggplot(
+  penguins, 
+  aes(x = flipper_len, y = bill_len)
+) +
   geom_point() + 
   geom_smooth() + 
   theme(
-    axis.title = with_shadow(element_text())
+    axis.title = with_shadow(
+      element_text()
+    )
   )
 ```
 
 ## References
 
 ```{r}
-ggplot(penguins, aes(x = flipper_len, y = bill_len)) + 
+ggplot(
+  penguins, 
+  aes(x = flipper_len, y = bill_len)
+) + 
   geom_density_2d_filled() +
   geom_point()
 ```
@@ -90,7 +104,10 @@ ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
 ## References
 
 ```{r}
-ggplot(penguins, aes(x = flipper_len, y = bill_len)) + 
+ggplot(
+  penguins, 
+  aes(x = flipper_len, y = bill_len)
+) + 
   as_reference(
     geom_density_2d_filled(), 
     id = "density"
@@ -106,21 +123,36 @@ ggplot(penguins, aes(x = flipper_len, y = bill_len)) +
 ## References
 
 ```{r}
-ggplot(penguins, aes(x = flipper_len, y = bill_len)) + 
-  with_shadow(geom_smooth(alpha = 1, level = 0.99), sigma = unit(0.5, "mm")) +
-  with_shadow(geom_point(), sigma = unit(0.5, "mm"))
+ggplot(
+  penguins, 
+  aes(x = flipper_len, y = bill_len)
+) + 
+  with_shadow(
+    geom_smooth(alpha = 1, level = 0.99), 
+    sigma = unit(0.5, "mm")
+  ) +
+  with_shadow(
+    geom_point(), 
+    sigma = unit(0.5, "mm")
+  )
 ```
 
 ## References
 
 ```{r}
-ggplot(penguins, aes(x = flipper_len, y = bill_len)) + 
+ggplot(
+  penguins, 
+  aes(x = flipper_len, y = bill_len)
+) + 
   as_group(
     geom_smooth(alpha = 1, level = 0.99),
     geom_point(),
     id = "group_1"
   ) + 
-  with_shadow("group_1", sigma = unit(0.5, "mm"))
+  with_shadow(
+    "group_1", 
+    sigma = unit(0.5, "mm")
+  )
 ```
 
 ## Moar filters
@@ -193,7 +225,10 @@ positions <- data.frame(
 ```
 
 ```{r}
-ggplot(positions, aes(x = x, y = y, group = id)) +
+ggplot(
+  positions, 
+  aes(x = x, y = y, group = id)
+) +
   geom_shape(aes(fill = id))
 ```
 
@@ -270,7 +305,9 @@ p +
 ```{r}
 p + 
   geom_mark_ellipse(
-    aes(filter = species == "Gentoo"), 
+    aes(
+      filter = species == "Gentoo"
+    ), 
     fill = "steelblue"
   )
 ```
@@ -283,10 +320,12 @@ p +
     aes(
       filter = species == "Gentoo",
       label = "Gentoo Penguins",
-      description = "This is by far the most interesting penguin"
+      description = 
+"This is by far the most interesting penguin"
     ), 
     fill = "steelblue",
-    label.fontsize = 7
+    label.fontsize = 7,
+    label.buffer = grid::unit(1, "mm")
   )
 ```
 
@@ -308,7 +347,10 @@ lines <- data.frame(
   colour = letters[1:5]
 )
 
-ggplot(lines, aes(x = x, y = y, xend = xend, yend = yend)) +
+ggplot(
+  lines, 
+  aes(x = x, y = y, xend = xend, yend = yend)
+) +
   geom_link(
     aes(
       colour = colour, 
@@ -321,7 +363,10 @@ ggplot(lines, aes(x = x, y = y, xend = xend, yend = yend)) +
 ## Links
 
 ```{r}
-ggplot(lines, aes(x = x, y = y)) +
+ggplot(
+  lines, 
+  aes(x = x, y = y)
+) +
   geom_link2(
     aes(
       colour = colour, 
@@ -391,7 +436,12 @@ ggplot(penguins) +
 
 ```{r}
 ggplot(penguins) + 
-  geom_bar(aes(x = island, fill = after_stat(count))) + 
+  geom_bar(
+    aes(
+      x = island, 
+      fill = after_stat(count)
+    )
+  ) + 
   transition_time(year) + 
   labs(title = "{frame_time}", x = NULL)
 ```
@@ -399,10 +449,14 @@ ggplot(penguins) +
 ## gganimate
 
 ```{r}
+penguins$year_d <- as.Date(
+  as.character(penguins$year), 
+  format = "%Y"
+)
 ggplot(penguins) + 
   geom_smooth(
     aes(
-      x = as.Date(as.character(year), format = "%Y"), 
+      x = year_d, 
       y = body_mass, 
       color = species
     ),
