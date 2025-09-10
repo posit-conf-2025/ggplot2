@@ -902,8 +902,8 @@ p + coord_radial(
 ### Display of inner axes
 
 ```{r}
-p <- ggplot(palmerpenguins::penguins) +
-  aes(bill_length_mm, bill_depth_mm, colour = sex) +
+p <- ggplot(penguins) +
+  aes(bill_len, bill_dep, colour = sex) +
   geom_point(na.rm = TRUE)
 p + facet_grid(island ~ species)
 ```

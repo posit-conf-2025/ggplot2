@@ -93,7 +93,7 @@ patterns <- list(
   my_pattern
 )
 
-ggplot(palmerpenguins::penguins) +
+ggplot(penguins) +
   aes(species, fill = island) +
   geom_bar() +
   scale_fill_manual(values = patterns)

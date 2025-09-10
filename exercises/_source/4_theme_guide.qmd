@@ -14,8 +14,8 @@ knitr::opts_chunk$set(dev = "ragg_png")
 We'll work with this plot of the penguins dataset.
 
 ```{r}
-p <- ggplot(palmerpenguins::penguins) +
-  aes(body_mass_g, flipper_length_mm, shape = species) +
+p <- ggplot(penguins) +
+  aes(body_mass, flipper_len, shape = species) +
   geom_point(na.rm = TRUE) +
   labs(
     x = "Body Mass (g)",
