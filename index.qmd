@@ -35,6 +35,7 @@ Participants are expected to bring their own laptop with a working installation 
 * ggiraph
 * legendry
 * ggfx
+* ggforce
 * ggpattern
 * gridpattern
 * tibble
@@ -60,6 +61,7 @@ pak::pak(c(
   "davidgohel/ggiraph",
   "legendry",
   "ggfx",
+  "ggforce",
   "ggpattern",
   "gridpattern",
   "tibble",
