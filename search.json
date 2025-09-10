@@ -522,7 +522,7 @@
     "href": "sessions/7_fun.html",
     "title": "Spice up your plot",
     "section": "",
-    "text": "In this last session we will (if time permits) spend some time showcasing things you can do with ggplots and its extensions that may make Tufte roll over, but on the other hand can help you create memorable visualisations with a lot of personality\n\n\nSlides Exercises Source\n\n\n\n\n Previous session\nNext session"
+    "text": "In this last session we will (if time permits) spend some time showcasing things you can do with ggplots and its extensions that may make Tufte roll over, but on the other hand can help you create memorable visualisations with a lot of personality\n\n\nSlides Exercises Worksheet\n\n\n\n\n Previous session\nNext session"
   },
   {
     "objectID": "sessions/2_ggplot2.html",
@@ -536,14 +536,14 @@
     "href": "sessions/5_composition.html",
     "title": "Plot composition",
     "section": "",
-    "text": "In this session we will dive into how you present multiple plots in the same figure. The key package here is patchwork and you will learn (almost) all there is to now about how to harness its power.\n\n\nSlides Exercises Source\n\n\n\n\n Previous session\nNext session"
+    "text": "In this session we will dive into how you present multiple plots in the same figure. The key package here is patchwork and you will learn (almost) all there is to now about how to harness its power.\n\n\nSlides Exercises Worksheet\n\n\n\n\n Previous session\nNext session"
   },
   {
     "objectID": "sessions/3_text_fonts.html",
     "href": "sessions/3_text_fonts.html",
     "title": "Text rendering and font use",
     "section": "",
-    "text": "In this session we will dive into working with text in ggplot2. There are two areas of special interest here: How to access the typeface (font) you want to use, and how to add rich formatting to your text. You will be introduced to two key packages that work in unison, namely systemfonts and marquee. Further, you will get an understanding of why selecting the right graphics device is paramount when it comes to text, moreso than for most other graphics features.\n\n\nSlides Exercises Source\n\n\n\n\n Previous session\nNext session"
+    "text": "In this session we will dive into working with text in ggplot2. There are two areas of special interest here: How to access the typeface (font) you want to use, and how to add rich formatting to your text. You will be introduced to two key packages that work in unison, namely systemfonts and marquee. Further, you will get an understanding of why selecting the right graphics device is paramount when it comes to text, moreso than for most other graphics features.\n\n\nSlides Exercises Worksheet\n\n\n\n\n Previous session\nNext session"
   },
   {
     "objectID": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
@@ -1110,7 +1110,7 @@
     "href": "slides/5_composition.html#guide-handling-5",
     "title": "Plot composition",
     "section": "Guide handling",
-    "text": "Guide handling\nDuplicate guides are automatically removed\n\n\np2a &lt;- ggplot(penguins) + \n  geom_histogram(\n    aes(flipper_len, fill = sex)\n  )\n\np2a + p4 + p3 + guide_area() + \n  plot_layout(guides = \"collect\")"
+    "text": "Guide handling\nYou can place guides inside the composition as well.\n\n\np2a &lt;- ggplot(penguins) + \n  geom_histogram(\n    aes(flipper_len, fill = sex)\n  )\n\np2a + p4 + p3 + guide_area() + \n  plot_layout(guides = \"collect\")"
   },
   {
     "objectID": "slides/5_composition.html#guide-handling-6",
@@ -1145,7 +1145,7 @@
     "href": "slides/5_composition.html#other-objects-gt-1",
     "title": "Plot composition",
     "section": "Other objects: gt",
-    "text": "Other objects: gt\n\n\np1 + \n  wrap_table(table, panel = \"full\", space = \"fixed\")"
+    "text": "Other objects: gt\n\n\np1 + \n  wrap_table(\n    table, \n    panel = \"full\", \n    space = \"fixed\"\n  )"
   },
   {
     "objectID": "slides/5_composition.html#other-objects-images",
@@ -1159,21 +1159,21 @@
     "href": "slides/5_composition.html#other-objects-grobs",
     "title": "Plot composition",
     "section": "Other objects: grobs",
-    "text": "Other objects: grobs\n\n\ngrob &lt;- marquee::marquee_grob(textshaping::lorem_text(\"devanagari\"))\n\np1 + grob"
+    "text": "Other objects: grobs\n\n\ngrob &lt;- marquee::marquee_grob(\n  textshaping::lorem_text(\"kana\")\n)\n\np1 + grob"
   },
   {
     "objectID": "slides/5_composition.html#other-objects-base-graphics",
     "href": "slides/5_composition.html#other-objects-base-graphics",
     "title": "Plot composition",
     "section": "Other objects: base graphics",
-    "text": "Other objects: base graphics\n\n\np1 + ~plot(penguins$flipper_len, penguins$bill_len)"
+    "text": "Other objects: base graphics\n\n\np1 + \n  ~plot(\n    penguins$flipper_len, \n    penguins$bill_len\n  )"
   },
   {
     "objectID": "slides/5_composition.html#other-objects-base-graphics-1",
     "href": "slides/5_composition.html#other-objects-base-graphics-1",
     "title": "Plot composition",
     "section": "Other objects: base graphics",
-    "text": "Other objects: base graphics\n\n\npar(mar = c(0, 2, 0, 0), bg = NA)\np1 + \n  wrap_elements(\n    panel = ~plot(penguins$flipper_len, penguins$bill_len), \n    clip = FALSE\n  )"
+    "text": "Other objects: base graphics\n\n\npar(mar = c(0, 2, 0, 0), bg = NA)\np1 + \n  wrap_elements(\n    panel = ~plot(\n      penguins$flipper_len, \n      penguins$bill_len\n    ), \n    clip = FALSE\n  )"
   },
   {
     "objectID": "slides/5_composition.html#exercise-5.5",
@@ -1264,7 +1264,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/Rtmp2exIZq/Barrio-regular.ttf\", \"/tmp/Rtmp2exIZq/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpffeY2l/Barrio-regular.ttf\", \"/tmp/RtmpffeY2l/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
@@ -1309,6 +1309,13 @@
     "text": "systemfonts\n\nProblem:\n\nI don’t know if the font is available on the computer my script will be running on\n\nSolution\n\nUse require_font() to ensure the font is installed from a web repository if missing (or error if it can’t be found there)\n(this slideshow has require_font(\"Barrio\") in the beginning so it can render everywhere)"
   },
   {
+    "objectID": "slides/3_text_fonts.html#learn-more",
+    "href": "slides/3_text_fonts.html#learn-more",
+    "title": "Text rendering and font use",
+    "section": "Learn more",
+    "text": "Learn more\n\n\n\n\nhttps://www.tidyverse.org/blog/2025/05/fonts-in-r/"
+  },
+  {
     "objectID": "slides/3_text_fonts.html#exercise-3.1",
     "href": "slides/3_text_fonts.html#exercise-3.1",
     "title": "Text rendering and font use",
@@ -1320,7 +1327,7 @@
     "href": "slides/3_text_fonts.html#apply-rich-formatting",
     "title": "Text rendering and font use",
     "section": "Apply rich formatting",
-    "text": "Apply rich formatting\n \nThe limitations of R\n\nfont selection is limited.\n\nTwo levels of boldness (normal and bold)\nItalic on/off\n\nAll text need to share the same font"
+    "text": "Apply rich formatting\n \nThe limitations of R\n\nFont selection is limited.\n\nTwo levels of boldness (normal and bold)\nItalic on/off\n\nAll text need to share the same font"
   },
   {
     "objectID": "slides/3_text_fonts.html#apply-rich-formatting-1",
@@ -1467,7 +1474,7 @@
     "href": "slides/3_text_fonts.html#element_marquee-1",
     "title": "Text rendering and font use",
     "section": "element_marquee()",
-    "text": "element_marquee()\n\n\nggplot(\n  penguins, \n  aes(x = bill_len, y = flipper_len)\n) + \n  geom_point() +\n  labs(\n    title = \"An overview of various *Pygoscelis* (penguin) species\"\n  ) + \n  theme(\n    plot.title = element_marquee(family = \"Spectral\")\n  )"
+    "text": "element_marquee()\n\n\nggplot(\n  penguins, \n  aes(x = bill_len, y = flipper_len)\n) + \n  geom_point() +\n  labs(\n    title = \n\"An overview of various *Pygoscelis*\n(penguin) species\"\n  ) + \n  theme(\n    plot.title = element_marquee(\n      family = \"Spectral\"\n    )\n  )"
   },
   {
     "objectID": "slides/3_text_fonts.html#guide_marquee",
@@ -1481,14 +1488,14 @@
     "href": "slides/3_text_fonts.html#guide_marquee-1",
     "title": "Text rendering and font use",
     "section": "guide_marquee()",
-    "text": "guide_marquee()\n\n\nggplot(penguins) + \n  geom_point(aes(x = bill_len, y = flipper_len, colour = species)) + \n  scale_color_discrete(\n    name = \"\nOverview of how bill length and flipper length relate to each other\nin the penguin species *Adelie* &lt;&lt;1&gt;&gt;, *Chinstrap* &lt;&lt;2&gt;&gt;, and \n*Gentoo* &lt;&lt;3&gt;&gt;.\",\n    guide = guide_marquee(width = unit(4.2, \"in\"))\n  )"
+    "text": "guide_marquee()\n\n\nggplot(penguins) + \n  geom_point(\n    aes(\n      x = bill_len, \n      y = flipper_len, \n      colour = species\n    )\n  ) + \n  scale_color_discrete(\n    name = \n\"Overview of how bill length and flipper \nlength relate to each other in the penguin \nspecies *Adelie* &lt;&lt;1&gt;&gt;, *Chinstrap* &lt;&lt;2&gt;&gt;, \nand *Gentoo* &lt;&lt;3&gt;&gt;.\",\n    guide = guide_marquee(\n      width = unit(4.35, \"in\")\n    )\n  )"
   },
   {
     "objectID": "slides/3_text_fonts.html#guide_marquee-2",
     "href": "slides/3_text_fonts.html#guide_marquee-2",
     "title": "Text rendering and font use",
     "section": "guide_marquee()",
-    "text": "guide_marquee()\n\n\nggplot(penguins) + \n  geom_point(aes(x = bill_len, y = flipper_len, colour = species)) + \n  scale_color_discrete(\n    name = \"\nOverview of how bill length and flipper length relate to each other\nin the penguin species {.1 *Adelie*}, {.2 *Chinstrap*}, and \n{.3 *Gentoo*}.\",\n    guide = guide_marquee(width = unit(4.2, \"in\"))\n  )"
+    "text": "guide_marquee()\n\n\nggplot(penguins) + \n  geom_point(\n    aes(\n      x = bill_len, \n      y = flipper_len, \n      colour = species\n    )\n  ) + \n  scale_color_discrete(\n    name = \n\"Overview of how bill length and flipper\nlength relate to each other in the penguin \nspecies {.1 *Adelie*}, {.2 *Chinstrap*}, and \n{.3 *Gentoo*}.\",\n    guide = guide_marquee(\n      width = unit(4.35, \"in\")\n    )\n  )"
   },
   {
     "objectID": "slides/3_text_fonts.html#exercise-3.4",

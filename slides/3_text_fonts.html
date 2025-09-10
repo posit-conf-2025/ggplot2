@@ -404,7 +404,7 @@ font family 'FANCY FONT' not found in PostScript font database</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 181
 Columns: 9
-$ path      &lt;chr&gt; "/tmp/Rtmp2exIZq/Barrio-regular.ttf", "/tmp/Rtmp2exIZq/Monte…
+$ path      &lt;chr&gt; "/tmp/RtmpffeY2l/Barrio-regular.ttf", "/tmp/RtmpffeY2l/Monte…
 $ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
 $ name      &lt;chr&gt; "Barrio-Regular", "MonteCarlo-Regular", "Datalegreya-Thin", …
 $ family    &lt;chr&gt; "Barrio", "MonteCarlo", "Datalegreya", "Datalegreya", "Datal…
@@ -522,9 +522,20 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 </ul>
 </div>
 </section>
+<section id="learn-more" class="slide level2">
+<h2>Learn more</h2>
+<div class="r-stack">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://www.tidyverse.org/blog/2025/05/fonts-in-r/"><img data-src="../assets/img/blogpost.png" style="max-width:100%;" width="800"></a></p>
+<figcaption>https://www.tidyverse.org/blog/2025/05/fonts-in-r/</figcaption>
+</figure>
+</div>
+</div>
+</section>
 <section id="exercise-3.1" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/3_text_fonts.qmd#working-with-fonts">Exercise 3.1</a></h2>
-<div id="timer_133950411b8a4e7455d3973ca3fce3a73b265d3f" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_743a6a5b28e123f77852d77b26e0d8c882c381fe" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -537,7 +548,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <p>&nbsp;</p>
 <h4 id="the-limitations-of-r">The limitations of R</h4>
 <ul>
-<li>font selection is limited.
+<li>Font selection is limited.
 <ul>
 <li>Two levels of boldness (normal and bold)</li>
 <li>Italic on/off</li>
@@ -548,13 +559,13 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <section id="apply-rich-formatting-1" class="slide level2">
 <h2>Apply rich formatting</h2>
 <ul>
-<li>ggtext by Claus Wilke
+<li><a href="https://wilkelab.org/ggtext/">ggtext</a> by Claus Wilke
 <ul>
 <li>Works within the bounds of the old graphics engine limits</li>
 <li>Uses a mix of basic markdown and a subset of HTML</li>
 <li>Doesn’t have a hex logo</li>
 </ul></li>
-<li>marquee by me
+<li><a href="https://marquee.r-lib.org">marquee</a> by me
 <ul>
 <li>Uses very new and fancy functionality I got Paul to add to R</li>
 <li>Uses a superset of CommonMark syntax</li>
@@ -644,7 +655,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 </section>
 <section id="exercise-3.2" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/3_text_fonts.html#basic-markdown-formatting-with-marquee">Exercise 3.2</a></h2>
-<div id="timer_133950411b8a4e7455d3973ca3fce3a73b265d3f" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_743a6a5b28e123f77852d77b26e0d8c882c381fe" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -803,7 +814,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 </section>
 <section id="exercise-3.3" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/3_text_fonts.qmd#advanced-marquee-styling">Exercise 3.3</a></h2>
-<div id="timer_133950411b8a4e7455d3973ca3fce3a73b265d3f" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_743a6a5b28e123f77852d77b26e0d8c882c381fe" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -924,11 +935,15 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <span id="cb25-4"><a></a>) <span class="sc">+</span> </span>
 <span id="cb25-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb25-6"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb25-7"><a></a>    <span class="at">title =</span> <span class="st">"An overview of various *Pygoscelis* (penguin) species"</span></span>
-<span id="cb25-8"><a></a>  ) <span class="sc">+</span> </span>
-<span id="cb25-9"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb25-10"><a></a>    <span class="at">plot.title =</span> <span class="fu">element_marquee</span>(<span class="at">family =</span> <span class="st">"Spectral"</span>)</span>
-<span id="cb25-11"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-7"><a></a>    <span class="at">title =</span> </span>
+<span id="cb25-8"><a></a><span class="st">"An overview of various *Pygoscelis*</span></span>
+<span id="cb25-9"><a></a><span class="st">(penguin) species"</span></span>
+<span id="cb25-10"><a></a>  ) <span class="sc">+</span> </span>
+<span id="cb25-11"><a></a>  <span class="fu">theme</span>(</span>
+<span id="cb25-12"><a></a>    <span class="at">plot.title =</span> <span class="fu">element_marquee</span>(</span>
+<span id="cb25-13"><a></a>      <span class="at">family =</span> <span class="st">"Spectral"</span></span>
+<span id="cb25-14"><a></a>    )</span>
+<span id="cb25-15"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -951,14 +966,23 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <div class="cell columns column-output-location">
 <div class="column">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span> </span>
-<span id="cb26-2"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_len, <span class="at">y =</span> flipper_len, <span class="at">colour =</span> species)) <span class="sc">+</span> </span>
-<span id="cb26-3"><a></a>  <span class="fu">scale_color_discrete</span>(</span>
-<span id="cb26-4"><a></a>    <span class="at">name =</span> <span class="st">"</span></span>
-<span id="cb26-5"><a></a><span class="st">Overview of how bill length and flipper length relate to each other</span></span>
-<span id="cb26-6"><a></a><span class="st">in the penguin species *Adelie* &lt;&lt;1&gt;&gt;, *Chinstrap* &lt;&lt;2&gt;&gt;, and </span></span>
-<span id="cb26-7"><a></a><span class="st">*Gentoo* &lt;&lt;3&gt;&gt;."</span>,</span>
-<span id="cb26-8"><a></a>    <span class="at">guide =</span> <span class="fu">guide_marquee</span>(<span class="at">width =</span> <span class="fu">unit</span>(<span class="fl">4.2</span>, <span class="st">"in"</span>))</span>
-<span id="cb26-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-2"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb26-3"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb26-4"><a></a>      <span class="at">x =</span> bill_len, </span>
+<span id="cb26-5"><a></a>      <span class="at">y =</span> flipper_len, </span>
+<span id="cb26-6"><a></a>      <span class="at">colour =</span> species</span>
+<span id="cb26-7"><a></a>    )</span>
+<span id="cb26-8"><a></a>  ) <span class="sc">+</span> </span>
+<span id="cb26-9"><a></a>  <span class="fu">scale_color_discrete</span>(</span>
+<span id="cb26-10"><a></a>    <span class="at">name =</span> </span>
+<span id="cb26-11"><a></a><span class="st">"Overview of how bill length and flipper </span></span>
+<span id="cb26-12"><a></a><span class="st">length relate to each other in the penguin </span></span>
+<span id="cb26-13"><a></a><span class="st">species *Adelie* &lt;&lt;1&gt;&gt;, *Chinstrap* &lt;&lt;2&gt;&gt;, </span></span>
+<span id="cb26-14"><a></a><span class="st">and *Gentoo* &lt;&lt;3&gt;&gt;."</span>,</span>
+<span id="cb26-15"><a></a>    <span class="at">guide =</span> <span class="fu">guide_marquee</span>(</span>
+<span id="cb26-16"><a></a>      <span class="at">width =</span> <span class="fu">unit</span>(<span class="fl">4.35</span>, <span class="st">"in"</span>)</span>
+<span id="cb26-17"><a></a>    )</span>
+<span id="cb26-18"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -974,14 +998,23 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <div class="cell columns column-output-location">
 <div class="column">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span> </span>
-<span id="cb27-2"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_len, <span class="at">y =</span> flipper_len, <span class="at">colour =</span> species)) <span class="sc">+</span> </span>
-<span id="cb27-3"><a></a>  <span class="fu">scale_color_discrete</span>(</span>
-<span id="cb27-4"><a></a>    <span class="at">name =</span> <span class="st">"</span></span>
-<span id="cb27-5"><a></a><span class="st">Overview of how bill length and flipper length relate to each other</span></span>
-<span id="cb27-6"><a></a><span class="st">in the penguin species {.1 *Adelie*}, {.2 *Chinstrap*}, and </span></span>
-<span id="cb27-7"><a></a><span class="st">{.3 *Gentoo*}."</span>,</span>
-<span id="cb27-8"><a></a>    <span class="at">guide =</span> <span class="fu">guide_marquee</span>(<span class="at">width =</span> <span class="fu">unit</span>(<span class="fl">4.2</span>, <span class="st">"in"</span>))</span>
-<span id="cb27-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-2"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb27-3"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb27-4"><a></a>      <span class="at">x =</span> bill_len, </span>
+<span id="cb27-5"><a></a>      <span class="at">y =</span> flipper_len, </span>
+<span id="cb27-6"><a></a>      <span class="at">colour =</span> species</span>
+<span id="cb27-7"><a></a>    )</span>
+<span id="cb27-8"><a></a>  ) <span class="sc">+</span> </span>
+<span id="cb27-9"><a></a>  <span class="fu">scale_color_discrete</span>(</span>
+<span id="cb27-10"><a></a>    <span class="at">name =</span> </span>
+<span id="cb27-11"><a></a><span class="st">"Overview of how bill length and flipper</span></span>
+<span id="cb27-12"><a></a><span class="st">length relate to each other in the penguin </span></span>
+<span id="cb27-13"><a></a><span class="st">species {.1 *Adelie*}, {.2 *Chinstrap*}, and </span></span>
+<span id="cb27-14"><a></a><span class="st">{.3 *Gentoo*}."</span>,</span>
+<span id="cb27-15"><a></a>    <span class="at">guide =</span> <span class="fu">guide_marquee</span>(</span>
+<span id="cb27-16"><a></a>      <span class="at">width =</span> <span class="fu">unit</span>(<span class="fl">4.35</span>, <span class="st">"in"</span>)</span>
+<span id="cb27-17"><a></a>    )</span>
+<span id="cb27-18"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -994,7 +1027,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 </section>
 <section id="exercise-3.4" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/3_text_fonts.qmd#using-geom_marquee-in-ggplot2">Exercise 3.4</a></h2>
-<div id="timer_133950411b8a4e7455d3973ca3fce3a73b265d3f" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_743a6a5b28e123f77852d77b26e0d8c882c381fe" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
