@@ -270,7 +270,7 @@
     "href": "index.html#preparation",
     "title": "Mastering Data Visualization with ggplot2",
     "section": "Preparation",
-    "text": "Preparation\nThis workshop expects familiarity with ggplot2 and the grammar of graphics. In order to have time for more advanced topics we will not spend time taking about how to use ggplot2 in general, nor its design philosophy and how it ties into the grammar of graphics. If you are not yet at this level we advise that you read through https://ggplot2-book.org to the extend possible.\nParticipants are expected to bring their own laptop with a working installation of R (preferably the latest version), as well as the latest versions of the following packages (we unfortunately need the dev version of ggplot2 and ggiraph):\n\nggplot2\npatchwork\nmarquee\nsystemfonts\nragg\nggiraph\nlegendry\nggfx\nggpattern\ngridpattern\ntibble\ndplyr\ngapminder\ngganimate\ngifski\ngridGraphics\n\nThey can be installed with this code (if you don’t have pak installed already you can do so with install.packages(\"pak\")).\n\n# install.packages(\"pak\")\npak::pak(c(\n  \"tidyverse/ggplot2\",\n  \"patchwork\",\n  \"marquee\",\n  \"systemfonts\",\n  \"ragg\",\n  \"davidgohel/ggiraph\",\n  \"legendry\",\n  \"ggfx\",\n  \"ggpattern\",\n  \"gridpattern\",\n  \"tibble\",\n  \"dplyr\",\n  \"gapminder\",\n  \"gganimate\",\n  \"gifski\",\n  \"gridGraphics\"\n))\n\nIf you have trouble installing any of these packages please contact the instructors so we can sort it out before the workshop starts."
+    "text": "Preparation\nThis workshop expects familiarity with ggplot2 and the grammar of graphics. In order to have time for more advanced topics we will not spend time taking about how to use ggplot2 in general, nor its design philosophy and how it ties into the grammar of graphics. If you are not yet at this level we advise that you read through https://ggplot2-book.org to the extend possible.\nParticipants are expected to bring their own laptop with a working installation of R (preferably the latest version), as well as the latest versions of the following packages (we unfortunately need the dev version of ggplot2 and ggiraph):\n\nggplot2\npatchwork\nmarquee\nsystemfonts\nragg\nggiraph\nlegendry\nggfx\nggforce\nggpattern\ngridpattern\ntibble\ndplyr\ngapminder\ngganimate\ngifski\ngridGraphics\n\nThey can be installed with this code (if you don’t have pak installed already you can do so with install.packages(\"pak\")).\n\n# install.packages(\"pak\")\npak::pak(c(\n  \"tidyverse/ggplot2\",\n  \"patchwork\",\n  \"marquee\",\n  \"systemfonts\",\n  \"ragg\",\n  \"davidgohel/ggiraph\",\n  \"legendry\",\n  \"ggfx\",\n  \"ggforce\",\n  \"ggpattern\",\n  \"gridpattern\",\n  \"tibble\",\n  \"dplyr\",\n  \"gapminder\",\n  \"gganimate\",\n  \"gifski\",\n  \"gridGraphics\"\n))\n\nIf you have trouble installing any of these packages please contact the instructors so we can sort it out before the workshop starts."
   },
   {
     "objectID": "index.html#schedule",
@@ -291,7 +291,7 @@
     "href": "sessions/1_introduction.html",
     "title": "Introduction",
     "section": "",
-    "text": "This session will briefly introduce the rest of the day, giving an overview of the schedule and any practical information that may be relevant.\nKey points: * Agenda * Who we are * Practical info * Toilets * Ribbons * Etc\n\n\nSlides Exercises\n\n\n\n\n Previous session\nNext session"
+    "text": "This session will briefly introduce the rest of the day, giving an overview of the schedule and any practical information that may be relevant.\nKey points:\n\nAgenda\nWho we are\nPractical info\n\nToilets\nRibbons\nEtc\n\n\n\n\nSlides Exercises Worksheet\n\n\n\n\n Previous session\nNext session"
   },
   {
     "objectID": "sessions/4_theme_guide.html",
@@ -522,7 +522,7 @@
     "href": "sessions/7_fun.html",
     "title": "Spice up your plot",
     "section": "",
-    "text": "In this last session we will (if time permits) spend some time showcasing things you can do with ggplots and its extensions that may make Tufte roll over, but on the other hand can help you create memorable visualisations with a lot of personality\n\n\nSlides Exercises Worksheet\n\n\n\n\n Previous session\nNext session"
+    "text": "In this last session we will (if time permits) spend some time showcasing things you can do with ggplots and its extensions that may make Tufte roll over, but on the other hand can help you create memorable visualisations with a lot of personality.\nKey points:\n\nAdding effects with ggfx\nThe many weird functions of ggforce\nAnimate your plot with gganimate\n\n\n\nSlides Exercises Worksheet\n\n\n\n\n Previous session\nNext session"
   },
   {
     "objectID": "sessions/2_ggplot2.html",
@@ -536,14 +536,14 @@
     "href": "sessions/5_composition.html",
     "title": "Plot composition",
     "section": "",
-    "text": "In this session we will dive into how you present multiple plots in the same figure. The key package here is patchwork and you will learn (almost) all there is to now about how to harness its power.\n\n\nSlides Exercises Worksheet\n\n\n\n\n Previous session\nNext session"
+    "text": "In this session we will dive into how you present multiple plots in the same figure. The key package here is patchwork and you will learn (almost) all there is to now about how to harness its power.\nKey points:\n\nIntroduce patchwork for plot composition\nFrom simple to complex layouts\n\nKey design principles\nOperators\nEscaping the grid\n\nThe non-panel stuff\n\nAnnotation\nGuide handling\n\nObject support\nInteractivity\n\n\n\nSlides Exercises Worksheet\n\n\n\n\n Previous session\nNext session"
   },
   {
     "objectID": "sessions/3_text_fonts.html",
     "href": "sessions/3_text_fonts.html",
     "title": "Text rendering and font use",
     "section": "",
-    "text": "In this session we will dive into working with text in ggplot2. There are two areas of special interest here: How to access the typeface (font) you want to use, and how to add rich formatting to your text. You will be introduced to two key packages that work in unison, namely systemfonts and marquee. Further, you will get an understanding of why selecting the right graphics device is paramount when it comes to text, moreso than for most other graphics features.\n\n\nSlides Exercises Worksheet\n\n\n\n\n Previous session\nNext session"
+    "text": "In this session we will dive into working with text in ggplot2. There are two areas of special interest here: How to access the typeface (font) you want to use, and how to add rich formatting to your text. You will be introduced to two key packages that work in unison, namely systemfonts and marquee. Further, you will get an understanding of why selecting the right graphics device is paramount when it comes to text, moreso than for most other graphics features.\nKey points:\n\nSelecting the right typeface\n\nThe systemfonts package and why graphics devices matters\nHow it just works\nUsing web fonts\n\nApply rich formatting\n\nThe marquee package\nmarquee-flavoured markdown\nUsing it in ggplot2\n\n\n\n\nSlides Exercises Worksheet\n\n\n\n\n Previous session\nNext session"
   },
   {
     "objectID": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
@@ -718,7 +718,7 @@
     "href": "slides/7_fun.html#marks-6",
     "title": "Spice up your plot",
     "section": "Marks",
-    "text": "Marks\n\n\np + \n  geom_mark_ellipse(\n    aes(\n      filter = species == \"Gentoo\",\n      label = \"Gentoo Penguins\",\n      description = \n\"This is by far the most interesting penguin\"\n    ), \n    fill = \"steelblue\",\n    label.fontsize = 7,\n    label.buffer = grid::unit(1, \"mm\")\n  )\n\n\n\n\n\n\n\n\n\n(geom_mark_*() is not yet marquee-aware)"
+    "text": "Marks\n\n\np + \n  geom_mark_ellipse(\n    aes(\n      filter = species == \"Gentoo\",\n      label = \"Gentoo Penguins\",\n      description = \n\"This is by far the most interesting penguin\"\n    ), \n    fill = \"steelblue\"\n  )\n\n\n\n\n\n\n\n\n\n(geom_mark_*() is not yet marquee-aware)"
   },
   {
     "objectID": "slides/7_fun.html#links",
@@ -970,7 +970,7 @@
     "href": "slides/5_composition.html#more-layout-options-1",
     "title": "Plot composition",
     "section": "More layout options",
-    "text": "More layout options\n\n\np1 + p2 + p3 + p4 + plot_layout(widths = c(1, 2))"
+    "text": "More layout options\n\n\np1 + p2 + p3 + p4 + \n  plot_layout(widths = c(1, 2))"
   },
   {
     "objectID": "slides/5_composition.html#more-layout-options-2",
@@ -1159,7 +1159,7 @@
     "href": "slides/5_composition.html#other-objects-grobs",
     "title": "Plot composition",
     "section": "Other objects: grobs",
-    "text": "Other objects: grobs\n\n\ngrob &lt;- marquee::marquee_grob(\n  textshaping::lorem_text(\"kana\")\n)\n\np1 + grob"
+    "text": "Other objects: grobs\n\n\ngrob &lt;- marquee::marquee_grob(\n  textshaping::lorem_text(\"kana\"),\n  marquee::classic_style(base_size = 10)\n)\n\np1 + grob"
   },
   {
     "objectID": "slides/5_composition.html#other-objects-base-graphics",
@@ -1264,7 +1264,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpNOLZbo/Barrio-regular.ttf\", \"/tmp/RtmpNOLZbo/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpC2nlpn/Barrio-regular.ttf\", \"/tmp/RtmpC2nlpn/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
