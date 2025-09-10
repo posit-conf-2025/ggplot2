@@ -578,49 +578,49 @@
     "href": "slides/7_fun.html#filters",
     "title": "Spice up your plot",
     "section": "Filters",
-    "text": "Filters\n\n\nggplot(penguins, aes(x = flipper_len, y = bill_len)) +\n  with_blur(\n    geom_point(),\n    sigma = unit(1, 'mm')\n  ) + \n  geom_smooth()"
+    "text": "Filters\n\n\nggplot(\n  penguins, \n  aes(x = flipper_len, y = bill_len)\n) +\n  with_blur(\n    geom_point(),\n    sigma = unit(1, 'mm')\n  ) + \n  geom_smooth()"
   },
   {
     "objectID": "slides/7_fun.html#filters-1",
     "href": "slides/7_fun.html#filters-1",
     "title": "Spice up your plot",
     "section": "Filters",
-    "text": "Filters\n\n\np &lt;- ggplot(penguins, aes(x = flipper_len, y = bill_len)) +\n  geom_point() + \n  geom_smooth()\n\nwith_outer_glow(\n  p, \n  colour = \"steelblue\", \n  sigma = unit(1, \"mm\")\n)"
+    "text": "Filters\n\n\np &lt;- ggplot(\n  penguins, \n  aes(x = flipper_len, y = bill_len)\n) +\n  geom_point() + \n  geom_smooth()\n\nwith_outer_glow(\n  p, \n  colour = \"steelblue\", \n  sigma = unit(1, \"mm\")\n)"
   },
   {
     "objectID": "slides/7_fun.html#filters-2",
     "href": "slides/7_fun.html#filters-2",
     "title": "Spice up your plot",
     "section": "Filters",
-    "text": "Filters\n\n\nggplot(penguins, aes(x = flipper_len, y = bill_len)) +\n  geom_point() + \n  geom_smooth() + \n  theme(\n    axis.title = with_shadow(element_text())\n  )"
+    "text": "Filters\n\n\nggplot(\n  penguins, \n  aes(x = flipper_len, y = bill_len)\n) +\n  geom_point() + \n  geom_smooth() + \n  theme(\n    axis.title = with_shadow(\n      element_text()\n    )\n  )"
   },
   {
     "objectID": "slides/7_fun.html#references",
     "href": "slides/7_fun.html#references",
     "title": "Spice up your plot",
     "section": "References",
-    "text": "References\n\n\nggplot(penguins, aes(x = flipper_len, y = bill_len)) + \n  geom_density_2d_filled() +\n  geom_point()"
+    "text": "References\n\n\nggplot(\n  penguins, \n  aes(x = flipper_len, y = bill_len)\n) + \n  geom_density_2d_filled() +\n  geom_point()"
   },
   {
     "objectID": "slides/7_fun.html#references-1",
     "href": "slides/7_fun.html#references-1",
     "title": "Spice up your plot",
     "section": "References",
-    "text": "References\n\n\nggplot(penguins, aes(x = flipper_len, y = bill_len)) + \n  as_reference(\n    geom_density_2d_filled(), \n    id = \"density\"\n  ) +\n  with_blend(\n    geom_point(),\n    \"density\",\n    blend_type = \"in\",\n    flip_order = TRUE\n  )"
+    "text": "References\n\n\nggplot(\n  penguins, \n  aes(x = flipper_len, y = bill_len)\n) + \n  as_reference(\n    geom_density_2d_filled(), \n    id = \"density\"\n  ) +\n  with_blend(\n    geom_point(),\n    \"density\",\n    blend_type = \"in\",\n    flip_order = TRUE\n  )"
   },
   {
     "objectID": "slides/7_fun.html#references-2",
     "href": "slides/7_fun.html#references-2",
     "title": "Spice up your plot",
     "section": "References",
-    "text": "References\n\n\nggplot(penguins, aes(x = flipper_len, y = bill_len)) + \n  with_shadow(geom_smooth(alpha = 1, level = 0.99), sigma = unit(0.5, \"mm\")) +\n  with_shadow(geom_point(), sigma = unit(0.5, \"mm\"))"
+    "text": "References\n\n\nggplot(\n  penguins, \n  aes(x = flipper_len, y = bill_len)\n) + \n  with_shadow(\n    geom_smooth(alpha = 1, level = 0.99), \n    sigma = unit(0.5, \"mm\")\n  ) +\n  with_shadow(\n    geom_point(), \n    sigma = unit(0.5, \"mm\")\n  )"
   },
   {
     "objectID": "slides/7_fun.html#references-3",
     "href": "slides/7_fun.html#references-3",
     "title": "Spice up your plot",
     "section": "References",
-    "text": "References\n\n\nggplot(penguins, aes(x = flipper_len, y = bill_len)) + \n  as_group(\n    geom_smooth(alpha = 1, level = 0.99),\n    geom_point(),\n    id = \"group_1\"\n  ) + \n  with_shadow(\"group_1\", sigma = unit(0.5, \"mm\"))"
+    "text": "References\n\n\nggplot(\n  penguins, \n  aes(x = flipper_len, y = bill_len)\n) + \n  as_group(\n    geom_smooth(alpha = 1, level = 0.99),\n    geom_point(),\n    id = \"group_1\"\n  ) + \n  with_shadow(\n    \"group_1\", \n    sigma = unit(0.5, \"mm\")\n  )"
   },
   {
     "objectID": "slides/7_fun.html#moar-filters",
@@ -655,7 +655,7 @@
     "href": "slides/7_fun.html#shapes-1",
     "title": "Spice up your plot",
     "section": "Shapes",
-    "text": "Shapes\n\n\nggplot(positions, aes(x = x, y = y, group = id)) +\n  geom_shape(aes(fill = id))"
+    "text": "Shapes\n\n\nggplot(\n  positions, \n  aes(x = x, y = y, group = id)\n) +\n  geom_shape(aes(fill = id))"
   },
   {
     "objectID": "slides/7_fun.html#shapes-2",
@@ -711,28 +711,28 @@
     "href": "slides/7_fun.html#marks-5",
     "title": "Spice up your plot",
     "section": "Marks",
-    "text": "Marks\n\n\np + \n  geom_mark_ellipse(\n    aes(filter = species == \"Gentoo\"), \n    fill = \"steelblue\"\n  )"
+    "text": "Marks\n\n\np + \n  geom_mark_ellipse(\n    aes(\n      filter = species == \"Gentoo\"\n    ), \n    fill = \"steelblue\"\n  )"
   },
   {
     "objectID": "slides/7_fun.html#marks-6",
     "href": "slides/7_fun.html#marks-6",
     "title": "Spice up your plot",
     "section": "Marks",
-    "text": "Marks\n\n\np + \n  geom_mark_ellipse(\n    aes(\n      filter = species == \"Gentoo\",\n      label = \"Gentoo Penguins\",\n      description = \"This is by far the most interesting penguin\"\n    ), \n    fill = \"steelblue\",\n    label.fontsize = 7\n  )\n\n\n\n\n\n\n\n\n\n(geom_mark_*() is not yet marquee-aware)"
+    "text": "Marks\n\n\np + \n  geom_mark_ellipse(\n    aes(\n      filter = species == \"Gentoo\",\n      label = \"Gentoo Penguins\",\n      description = \n\"This is by far the most interesting penguin\"\n    ), \n    fill = \"steelblue\",\n    label.fontsize = 7,\n    label.buffer = grid::unit(1, \"mm\")\n  )\n\n\n\n\n\n\n\n\n\n(geom_mark_*() is not yet marquee-aware)"
   },
   {
     "objectID": "slides/7_fun.html#links",
     "href": "slides/7_fun.html#links",
     "title": "Spice up your plot",
     "section": "Links",
-    "text": "Links\n\nSupercharged geom_segment() / geom_path()\nAllows interpolation of aesthetics between anchors\n\n\n\n# Lets make some data\nlines &lt;- data.frame(\n  x = c(5, 12, 15, 9, 6),\n  y = c(17, 20, 4, 15, 5),\n  xend = c(19, 17, 2, 9, 5),\n  yend = c(10, 18, 7, 12, 1),\n  width = c(1, 10, 6, 2, 3),\n  colour = letters[1:5]\n)\n\nggplot(lines, aes(x = x, y = y, xend = xend, yend = yend)) +\n  geom_link(\n    aes(\n      colour = colour, \n      alpha = after_stat(index), \n      linewidth = after_stat(index)\n    )\n  )"
+    "text": "Links\n\nSupercharged geom_segment() / geom_path()\nAllows interpolation of aesthetics between anchors\n\n\n\n# Lets make some data\nlines &lt;- data.frame(\n  x = c(5, 12, 15, 9, 6),\n  y = c(17, 20, 4, 15, 5),\n  xend = c(19, 17, 2, 9, 5),\n  yend = c(10, 18, 7, 12, 1),\n  width = c(1, 10, 6, 2, 3),\n  colour = letters[1:5]\n)\n\nggplot(\n  lines, \n  aes(x = x, y = y, xend = xend, yend = yend)\n) +\n  geom_link(\n    aes(\n      colour = colour, \n      alpha = after_stat(index), \n      linewidth = after_stat(index)\n    )\n  )"
   },
   {
     "objectID": "slides/7_fun.html#links-1",
     "href": "slides/7_fun.html#links-1",
     "title": "Spice up your plot",
     "section": "Links",
-    "text": "Links\n\n\nggplot(lines, aes(x = x, y = y)) +\n  geom_link2(\n    aes(\n      colour = colour, \n      linewidth = width,\n      group = 1\n    ),\n    lineend = \"round\"\n  )"
+    "text": "Links\n\n\nggplot(\n  lines, \n  aes(x = x, y = y)\n) +\n  geom_link2(\n    aes(\n      colour = colour, \n      linewidth = width,\n      group = 1\n    ),\n    lineend = \"round\"\n  )"
   },
   {
     "objectID": "slides/7_fun.html#exercise-7.2",
@@ -767,14 +767,14 @@
     "href": "slides/7_fun.html#gganimate-2",
     "title": "Spice up your plot",
     "section": "gganimate",
-    "text": "gganimate\n\n\nggplot(penguins) + \n  geom_bar(aes(x = island, fill = after_stat(count))) + \n  transition_time(year) + \n  labs(title = \"{frame_time}\", x = NULL)"
+    "text": "gganimate\n\n\nggplot(penguins) + \n  geom_bar(\n    aes(\n      x = island, \n      fill = after_stat(count)\n    )\n  ) + \n  transition_time(year) + \n  labs(title = \"{frame_time}\", x = NULL)"
   },
   {
     "objectID": "slides/7_fun.html#gganimate-3",
     "href": "slides/7_fun.html#gganimate-3",
     "title": "Spice up your plot",
     "section": "gganimate",
-    "text": "gganimate\n\n\nggplot(penguins) + \n  geom_smooth(\n    aes(\n      x = as.Date(as.character(year), format = \"%Y\"), \n      y = body_mass, \n      color = species\n    ),\n    method = \"lm\"\n  ) + \n  scale_x_date(name = NULL) + \n  transition_reveal(after_stat(x))"
+    "text": "gganimate\n\n\npenguins$year_d &lt;- as.Date(\n  as.character(penguins$year), \n  format = \"%Y\"\n)\nggplot(penguins) + \n  geom_smooth(\n    aes(\n      x = year_d, \n      y = body_mass, \n      color = species\n    ),\n    method = \"lm\"\n  ) + \n  scale_x_date(name = NULL) + \n  transition_reveal(after_stat(x))"
   },
   {
     "objectID": "slides/7_fun.html#exercise-7.3",
@@ -1264,7 +1264,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpffeY2l/Barrio-regular.ttf\", \"/tmp/RtmpffeY2l/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/Rtmp3boeEt/Barrio-regular.ttf\", \"/tmp/Rtmp3boeEt/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",
