@@ -696,6 +696,14 @@ p + aes(shape = factor(year), colour = class) +
 
 ---
 
+## {.center}
+
+::: {.r-stack}
+[![](https://github.com/teunbrand/legendry/blob/main/man/figures/logo.png?raw=true){width="400"}](https://teunbrand.github.io/legendry/)
+:::
+
+---
+
 ### Guide extensions
 
 Specialised guides for niche applications, like periodical data.
