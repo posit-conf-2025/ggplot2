@@ -167,6 +167,8 @@ ggplot(mtcars, aes(mpg, disp, colour = cyl)) +
 - Rewards habit of annotating data
 - Reusable within document
 
+<!-- The code and plot kinda overflows the slide here -->
+
 ```{r}
 ggplot(mtcars, aes(cyl, mpg, group = cyl)) +
   geom_boxplot() +
@@ -243,6 +245,8 @@ radial <- radialGradient(
 ### Gradients
 
 Use these gradients by providing them as a list.
+
+<!--  Do we really advocate this? When setting aesthetics rather than mapping them we generally say "only a single value", right? -->
 
 ```{r}
 #| code-line-numbers: "4"
@@ -806,6 +810,8 @@ polar + radial
 ### Polar versus radial
 
 Set `expand = FALSE` for use in pie charts.
+
+<!-- The title overflows in the plot -->
 
 ```{r}
 #| code-line-numbers: "5"

@@ -342,6 +342,8 @@ p2 +
   scale_colour_viridis_c()
 ```
 
+<!-- too much content. did you mean to add a new slide -->
+
 ### Controlling palettes
 
 The default palette does not commit to a full scale.
@@ -684,6 +686,7 @@ p +
 
 Guides can have their own local themes for customisation.
 
+<!-- need to spread out the code so it is less wide -->
 ```{r}
 p + aes(shape = factor(year), colour = class) +
   guides(

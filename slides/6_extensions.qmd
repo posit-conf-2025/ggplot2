@@ -34,6 +34,7 @@ Usually wrap some standard ggplot2 theme code.
 * `ggthemes::theme_economist()`
 * Session 4: Build your own theme
 
+<!-- new slide or less high plot -->
 ```{r}
 bland_plot <- ggplot(mpg, aes(displ, hwy)) +
   geom_point()
@@ -54,6 +55,7 @@ Often wrappers for novelty aesthetics or scale parameters.
 * `binned_scale()`
 * `discrete_scale()`
 
+<!-- new slide or less high plot -->
 ```{r}
 scale_x_asinh <- function(...) {
   scale_x_continuous(
