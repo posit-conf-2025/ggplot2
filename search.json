@@ -158,14 +158,14 @@
     "href": "slides/6_extensions.html#theme-extensions",
     "title": "Creating extensions",
     "section": "Theme extensions",
-    "text": "Theme extensions\nUsually wrap some standard ggplot2 theme code.\n\ncowplot::theme_cowplot()\nggthemes::theme_economist()\nSession 4: Build your own theme\n\n\n\nbland_plot &lt;- ggplot(mpg, aes(displ, hwy)) +\n  geom_point()\n\nmy_theme &lt;- function(...) {\n  theme_gray() + \n    theme(geom = element_geom(ink = \"red\"))\n}\n\nbland_plot + my_theme()"
+    "text": "Theme extensions\n\n\nUsually wrap some standard ggplot2 theme code.\n\ncowplot::theme_cowplot()\nggthemes::theme_economist()\nSession 4: Build your own theme\n\n\n\nbland_plot &lt;- ggplot(mpg, aes(displ, hwy)) +\n  geom_point()\n\nmy_theme &lt;- function(...) {\n  theme_gray() + \n    theme(geom = element_geom(ink = \"red\"))\n}\n\nbland_plot + my_theme()"
   },
   {
     "objectID": "slides/6_extensions.html#scale-extensions",
     "href": "slides/6_extensions.html#scale-extensions",
     "title": "Creating extensions",
     "section": "Scale extensions",
-    "text": "Scale extensions\nOften wrappers for novelty aesthetics or scale parameters.\n\ncontinuous_scale()\nbinned_scale()\ndiscrete_scale()\n\n\n\nscale_x_asinh &lt;- function(...) {\n  scale_x_continuous(\n    transform = scales::transform_asinh()\n  )\n}\n\nbland_plot + scale_x_asinh()"
+    "text": "Scale extensions\n\n\nOften wrappers for novelty aesthetics or scale parameters.\n\ncontinuous_scale()\nbinned_scale()\ndiscrete_scale()\n\n\n\nscale_x_asinh &lt;- function(...) {\n  scale_x_continuous(\n    transform = scales::transform_asinh()\n  )\n}\n\nbland_plot + scale_x_asinh()"
   },
   {
     "objectID": "slides/6_extensions.html#the-dark-side-of-ggplot2-ggproto",
@@ -1271,7 +1271,7 @@
     "href": "slides/3_text_fonts.html#systemfonts",
     "title": "Text rendering and font use",
     "section": "systemfonts",
-    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/RtmpVEsmSa/Barrio-regular.ttf\", \"/tmp/RtmpVEsmSa/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
+    "text": "systemfonts\nIt (should) just work\n\nlibrary(systemfonts)\n\ndplyr::glimpse(system_fonts())\n\nRows: 181\nColumns: 9\n$ path      &lt;chr&gt; \"/tmp/Rtmpjjt5Gj/Barrio-regular.ttf\", \"/tmp/Rtmpjjt5Gj/Monte…\n$ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ name      &lt;chr&gt; \"Barrio-Regular\", \"MonteCarlo-Regular\", \"Datalegreya-Thin\", …\n$ family    &lt;chr&gt; \"Barrio\", \"MonteCarlo\", \"Datalegreya\", \"Datalegreya\", \"Datal…\n$ style     &lt;chr&gt; \"Regular\", \"Regular\", \"Thin\", \"Gradient\", \"Dot\", \"ExtraLight…\n$ weight    &lt;ord&gt; normal, normal, light, normal, bold, ultralight, ultralight,…\n$ width     &lt;ord&gt; normal, normal, normal, normal, normal, normal, normal, norm…\n$ italic    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE,…\n$ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…"
   },
   {
     "objectID": "slides/3_text_fonts.html#systemfonts-1",

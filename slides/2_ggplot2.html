@@ -410,7 +410,7 @@ Teun van den Brand
 </section>
 <section id="exercise-2.1" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/2_ggplot2.qmd#exercise-2.1-headings">Exercise 2.1</a></h2>
-<div id="timer_da13196c222aad4f6888bdf1292e8d1fba352845" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_96430d88f000affc6e9671ebcbdbeff726d83d66" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -462,11 +462,13 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p>Use these gradients by providing them as a list.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(mtcars) <span class="sc">+</span></span>
-<span id="cb10-2"><a></a>  <span class="fu">aes</span>(<span class="fu">factor</span>(vs)) <span class="sc">+</span></span>
-<span id="cb10-3"><a></a>  <span class="fu">geom_bar</span>(</span>
-<span id="cb10-4"><a></a>    <span class="at">fill =</span> <span class="fu">list</span>(linear, radial)</span>
-<span id="cb10-5"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars) <span class="sc">+</span></span>
+<span id="cb10-2"><a></a>  <span class="fu">aes</span>(<span class="fu">factor</span>(vs))</span>
+<span id="cb10-3"><a></a></span>
+<span id="cb10-4"><a></a>p1 <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="fu">list</span>(linear))</span>
+<span id="cb10-5"><a></a>p2 <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="fu">list</span>(radial))</span>
+<span id="cb10-6"><a></a></span>
+<span id="cb10-7"><a></a>p1 <span class="sc">/</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -737,7 +739,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 </section>
 <section id="exercise-2.2" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/2_ggplot2.qmd#exercise-2.2-patterns-and-gradients">Exercise 2.2</a></h2>
-<div id="timer_da13196c222aad4f6888bdf1292e8d1fba352845" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_96430d88f000affc6e9671ebcbdbeff726d83d66" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -1030,7 +1032,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 </section>
 <section id="exercise-2.3" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/2_ggplot2.qmd#exercise-2.3.1-delayed-evaluation">Exercise 2.3</a></h2>
-<div id="timer_da13196c222aad4f6888bdf1292e8d1fba352845" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_96430d88f000affc6e9671ebcbdbeff726d83d66" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -1106,7 +1108,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <span id="cb35-3"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"coord_polar()"</span>)</span>
 <span id="cb35-4"><a></a>radial <span class="ot">&lt;-</span> p <span class="sc">+</span> </span>
 <span id="cb35-5"><a></a>  <span class="fu">coord_radial</span>(<span class="at">expand =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb35-6"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"coord_radial(expand = FALSE)"</span>)</span>
+<span id="cb35-6"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"coord_radial()"</span>)</span>
 <span id="cb35-7"><a></a></span>
 <span id="cb35-8"><a></a>polar <span class="sc">+</span> radial</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
@@ -1206,7 +1208,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 </section>
 <section id="exercise-2.4" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/2_ggplot2.qmd#exercise-2.4.1-polar-coordinates">Exercise 2.4</a></h2>
-<div id="timer_da13196c222aad4f6888bdf1292e8d1fba352845" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_96430d88f000affc6e9671ebcbdbeff726d83d66" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -1364,7 +1366,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 </section>
 <section id="exercise-2.5" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/2_ggplot2.qmd#exercise-2.5.1-facets">Exercise 2.5</a></h2>
-<div id="timer_da13196c222aad4f6888bdf1292e8d1fba352845" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_96430d88f000affc6e9671ebcbdbeff726d83d66" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>

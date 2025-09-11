@@ -222,14 +222,16 @@ Teun van den Brand
 </section>
 <section id="theme-extensions" class="slide level2">
 <h2>Theme extensions</h2>
+<div class="columns">
+<div class="column">
 <p>Usually wrap some standard ggplot2 theme code.</p>
 <ul>
 <li><code>cowplot::theme_cowplot()</code></li>
 <li><code>ggthemes::theme_economist()</code></li>
 <li>Session 4: Build your own theme</li>
 </ul>
-<div class="cell columns column-output-location">
-<div class="column">
+</div><div class="column">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>bland_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span></span>
 <span id="cb1-2"><a></a>  <span class="fu">geom_point</span>()</span>
 <span id="cb1-3"><a></a></span>
@@ -239,7 +241,6 @@ Teun van den Brand
 <span id="cb1-7"><a></a>}</span>
 <span id="cb1-8"><a></a></span>
 <span id="cb1-9"><a></a>bland_plot <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
 <div class="cell-output-display">
 <div>
 <figure>
@@ -247,18 +248,21 @@ Teun van den Brand
 </figure>
 </div>
 </div>
+</div>
 </div></div>
 </section>
 <section id="scale-extensions" class="slide level2">
 <h2>Scale extensions</h2>
+<div class="columns">
+<div class="column">
 <p>Often wrappers for novelty aesthetics or scale parameters.</p>
 <ul>
 <li><code>continuous_scale()</code></li>
 <li><code>binned_scale()</code></li>
 <li><code>discrete_scale()</code></li>
 </ul>
-<div class="cell columns column-output-location">
-<div class="column">
+</div><div class="column">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>scale_x_asinh <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
 <span id="cb2-2"><a></a>  <span class="fu">scale_x_continuous</span>(</span>
 <span id="cb2-3"><a></a>    <span class="at">transform =</span> scales<span class="sc">::</span><span class="fu">transform_asinh</span>()</span>
@@ -266,12 +270,12 @@ Teun van den Brand
 <span id="cb2-5"><a></a>}</span>
 <span id="cb2-6"><a></a></span>
 <span id="cb2-7"><a></a>bland_plot <span class="sc">+</span> <span class="fu">scale_x_asinh</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
 <div class="cell-output-display">
 <div>
 <figure>
 <p><img data-src="6_extensions_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
 </figure>
+</div>
 </div>
 </div>
 </div></div>
@@ -607,65 +611,65 @@ Caused by error in `compute_geom_1()`:
 <p>A good start is to use other constructors as a template.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="annotated-cell-13"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-13-1"><a href="#annotated-cell-13-1"></a>stat_boxplot</span>
-<span id="annotated-cell-13-2"><a href="#annotated-cell-13-2"></a><span class="co">#&gt; function(</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1">1</button><span id="annotated-cell-13-3" class="code-annotation-target"><a href="#annotated-cell-13-3"></a><span class="co">#&gt;   mapping = NULL,</span></span>
-<span id="annotated-cell-13-4"><a href="#annotated-cell-13-4"></a><span class="co">#&gt;   data = NULL,</span></span>
-<span id="annotated-cell-13-5"><a href="#annotated-cell-13-5"></a><span class="co">#&gt;   geom = "boxplot",</span></span>
-<span id="annotated-cell-13-6"><a href="#annotated-cell-13-6"></a><span class="co">#&gt;   position = "dodge2",</span></span>
-<span id="annotated-cell-13-7"><a href="#annotated-cell-13-7"></a><span class="co">#&gt;   ...,          </span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2">2</button><span id="annotated-cell-13-8" class="code-annotation-target"><a href="#annotated-cell-13-8"></a><span class="co">#&gt;   orientation = NA,</span></span>
-<span id="annotated-cell-13-9"><a href="#annotated-cell-13-9"></a><span class="co">#&gt;   coef = 1.5,</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="3">3</button><span id="annotated-cell-13-10" class="code-annotation-target"><a href="#annotated-cell-13-10"></a><span class="co">#&gt;   na.rm = FALSE,</span></span>
-<span id="annotated-cell-13-11"><a href="#annotated-cell-13-11"></a><span class="co">#&gt;   show.legend = NA,</span></span>
-<span id="annotated-cell-13-12"><a href="#annotated-cell-13-12"></a><span class="co">#&gt;   inherit.aes = TRUE</span></span>
-<span id="annotated-cell-13-13"><a href="#annotated-cell-13-13"></a><span class="co">#&gt; ) {</span></span>
-<span id="annotated-cell-13-14"><a href="#annotated-cell-13-14"></a><span class="co">#&gt;   layer(</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="4">4</button><span id="annotated-cell-13-15" class="code-annotation-target"><a href="#annotated-cell-13-15"></a><span class="co">#&gt;     mapping = mapping,</span></span>
-<span id="annotated-cell-13-16"><a href="#annotated-cell-13-16"></a><span class="co">#&gt;     data = data,</span></span>
-<span id="annotated-cell-13-17"><a href="#annotated-cell-13-17"></a><span class="co">#&gt;     geom = geom,</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="7">7</button><span id="annotated-cell-13-18" class="code-annotation-target"><a href="#annotated-cell-13-18"></a><span class="co">#&gt;     stat = "boxplot",</span></span>
-<span id="annotated-cell-13-19"><a href="#annotated-cell-13-19"></a><span class="co">#&gt;     position = position,</span></span>
-<span id="annotated-cell-13-20"><a href="#annotated-cell-13-20"></a><span class="co">#&gt;     show.legend = show.legend,</span></span>
-<span id="annotated-cell-13-21"><a href="#annotated-cell-13-21"></a><span class="co">#&gt;     inherit.aes = inherit.aes,</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="5">5</button><span id="annotated-cell-13-22" class="code-annotation-target"><a href="#annotated-cell-13-22"></a><span class="co">#&gt;     params = list2(</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="6">6</button><span id="annotated-cell-13-23" class="code-annotation-target"><a href="#annotated-cell-13-23"></a><span class="co">#&gt;       na.rm = na.rm,</span></span>
-<span id="annotated-cell-13-24"><a href="#annotated-cell-13-24"></a><span class="co">#&gt;       orientation = orientation,</span></span>
-<span id="annotated-cell-13-25"><a href="#annotated-cell-13-25"></a><span class="co">#&gt;       coef = coef,</span></span>
-<span id="annotated-cell-13-26"><a href="#annotated-cell-13-26"></a><span class="co">#&gt;       ...</span></span>
-<span id="annotated-cell-13-27"><a href="#annotated-cell-13-27"></a><span class="co">#&gt;     )</span></span>
-<span id="annotated-cell-13-28"><a href="#annotated-cell-13-28"></a><span class="co">#&gt;   )</span></span>
-<span id="annotated-cell-13-29"><a href="#annotated-cell-13-29"></a><span class="co">#&gt; }</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-11"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-11-1"><a href="#annotated-cell-11-1"></a>stat_boxplot</span>
+<span id="annotated-cell-11-2"><a href="#annotated-cell-11-2"></a><span class="co">#&gt; function(</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1">1</button><span id="annotated-cell-11-3" class="code-annotation-target"><a href="#annotated-cell-11-3"></a><span class="co">#&gt;   mapping = NULL,</span></span>
+<span id="annotated-cell-11-4"><a href="#annotated-cell-11-4"></a><span class="co">#&gt;   data = NULL,</span></span>
+<span id="annotated-cell-11-5"><a href="#annotated-cell-11-5"></a><span class="co">#&gt;   geom = "boxplot",</span></span>
+<span id="annotated-cell-11-6"><a href="#annotated-cell-11-6"></a><span class="co">#&gt;   position = "dodge2",</span></span>
+<span id="annotated-cell-11-7"><a href="#annotated-cell-11-7"></a><span class="co">#&gt;   ...,          </span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="2">2</button><span id="annotated-cell-11-8" class="code-annotation-target"><a href="#annotated-cell-11-8"></a><span class="co">#&gt;   orientation = NA,</span></span>
+<span id="annotated-cell-11-9"><a href="#annotated-cell-11-9"></a><span class="co">#&gt;   coef = 1.5,</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="3">3</button><span id="annotated-cell-11-10" class="code-annotation-target"><a href="#annotated-cell-11-10"></a><span class="co">#&gt;   na.rm = FALSE,</span></span>
+<span id="annotated-cell-11-11"><a href="#annotated-cell-11-11"></a><span class="co">#&gt;   show.legend = NA,</span></span>
+<span id="annotated-cell-11-12"><a href="#annotated-cell-11-12"></a><span class="co">#&gt;   inherit.aes = TRUE</span></span>
+<span id="annotated-cell-11-13"><a href="#annotated-cell-11-13"></a><span class="co">#&gt; ) {</span></span>
+<span id="annotated-cell-11-14"><a href="#annotated-cell-11-14"></a><span class="co">#&gt;   layer(</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="4">4</button><span id="annotated-cell-11-15" class="code-annotation-target"><a href="#annotated-cell-11-15"></a><span class="co">#&gt;     mapping = mapping,</span></span>
+<span id="annotated-cell-11-16"><a href="#annotated-cell-11-16"></a><span class="co">#&gt;     data = data,</span></span>
+<span id="annotated-cell-11-17"><a href="#annotated-cell-11-17"></a><span class="co">#&gt;     geom = geom,</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="7">7</button><span id="annotated-cell-11-18" class="code-annotation-target"><a href="#annotated-cell-11-18"></a><span class="co">#&gt;     stat = "boxplot",</span></span>
+<span id="annotated-cell-11-19"><a href="#annotated-cell-11-19"></a><span class="co">#&gt;     position = position,</span></span>
+<span id="annotated-cell-11-20"><a href="#annotated-cell-11-20"></a><span class="co">#&gt;     show.legend = show.legend,</span></span>
+<span id="annotated-cell-11-21"><a href="#annotated-cell-11-21"></a><span class="co">#&gt;     inherit.aes = inherit.aes,</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="5">5</button><span id="annotated-cell-11-22" class="code-annotation-target"><a href="#annotated-cell-11-22"></a><span class="co">#&gt;     params = list2(</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="6">6</button><span id="annotated-cell-11-23" class="code-annotation-target"><a href="#annotated-cell-11-23"></a><span class="co">#&gt;       na.rm = na.rm,</span></span>
+<span id="annotated-cell-11-24"><a href="#annotated-cell-11-24"></a><span class="co">#&gt;       orientation = orientation,</span></span>
+<span id="annotated-cell-11-25"><a href="#annotated-cell-11-25"></a><span class="co">#&gt;       coef = coef,</span></span>
+<span id="annotated-cell-11-26"><a href="#annotated-cell-11-26"></a><span class="co">#&gt;       ...</span></span>
+<span id="annotated-cell-11-27"><a href="#annotated-cell-11-27"></a><span class="co">#&gt;     )</span></span>
+<span id="annotated-cell-11-28"><a href="#annotated-cell-11-28"></a><span class="co">#&gt;   )</span></span>
+<span id="annotated-cell-11-29"><a href="#annotated-cell-11-29"></a><span class="co">#&gt; }</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-13" data-code-lines="3,4,5,6" data-code-annotation="1">Typically, the first two arguments are <code>mapping</code> and <code>data</code>. Every layer needs <code>geom</code>, <code>stat</code> and <code>position</code>. A <code>stat_*</code> constructor omits the <code>stat</code> argument because that will be provided for you. A <code>geom_*()</code> constructor omits the <code>geom</code> argument.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="3,4,5,6" data-code-annotation="1">Typically, the first two arguments are <code>mapping</code> and <code>data</code>. Every layer needs <code>geom</code>, <code>stat</code> and <code>position</code>. A <code>stat_*</code> constructor omits the <code>stat</code> argument because that will be provided for you. A <code>geom_*()</code> constructor omits the <code>geom</code> argument.</span>
 </dd>
-<dt data-target-cell="annotated-cell-13" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-13" data-code-lines="8,9" data-code-annotation="2">Parameters for your Stat come after the <code>...</code> argument, which requires users to write the argument names out in full.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="8,9" data-code-annotation="2">Parameters for your Stat come after the <code>...</code> argument, which requires users to write the argument names out in full.</span>
 </dd>
-<dt data-target-cell="annotated-cell-13" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-13" data-code-lines="10,11,12" data-code-annotation="3">The <code>na.rm</code>, <code>show.legend</code> and <code>inherit.aes</code> arguments come last and should have these default values in most cases. If you’re making an <code>annotate_*()</code> layer, you may put <code>inherit.aes = FALSE</code> for example.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="10,11,12" data-code-annotation="3">The <code>na.rm</code>, <code>show.legend</code> and <code>inherit.aes</code> arguments come last and should have these default values in most cases. If you’re making an <code>annotate_*()</code> layer, you may put <code>inherit.aes = FALSE</code> for example.</span>
 </dd>
-<dt data-target-cell="annotated-cell-13" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-13" data-code-lines="15,16,17,19,20,21" data-code-annotation="4">You can look at the <code>?layer</code> documentation to see what are the standard arguments.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="15,16,17,19,20,21" data-code-annotation="4">You can look at the <code>?layer</code> documentation to see what are the standard arguments.</span>
 </dd>
-<dt data-target-cell="annotated-cell-13" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-13" data-code-lines="22" data-code-annotation="5">We’re using <code>rlang::list2()</code> because it supports argument splicing.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="22" data-code-annotation="5">We’re using <code>rlang::list2()</code> because it supports argument splicing.</span>
 </dd>
-<dt data-target-cell="annotated-cell-13" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-13" data-code-lines="23,24,25,26" data-code-annotation="6">The <code>na.rm</code> argument, all parameters to the Stat and <code>...</code> gets passed to the <code>layer(params)</code> argument.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="23,24,25,26" data-code-annotation="6">The <code>na.rm</code> argument, all parameters to the Stat and <code>...</code> gets passed to the <code>layer(params)</code> argument.</span>
 </dd>
-<dt data-target-cell="annotated-cell-13" data-target-annotation="7">7</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-13" data-code-lines="18" data-code-annotation="7">Note that in a <code>stat_*()</code> constructor, the <code>layer(stat)</code> argument is fixed. In a <code>geom_*()</code> constructor, the <code>layer(geom)</code> argument is fixed.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="18" data-code-annotation="7">Note that in a <code>stat_*()</code> constructor, the <code>layer(stat)</code> argument is fixed. In a <code>geom_*()</code> constructor, the <code>layer(geom)</code> argument is fixed.</span>
 </dd>
 </dl>
 </div>
@@ -677,64 +681,64 @@ Caused by error in `compute_geom_1()`:
 <p>When we make our own constructor, we follow the same rules.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1"></a>stat_residual <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1">1</button><span id="annotated-cell-14-2" class="code-annotation-target"><a href="#annotated-cell-14-2"></a>  <span class="at">mapping =</span> <span class="cn">NULL</span>,</span>
-<span id="annotated-cell-14-3"><a href="#annotated-cell-14-3"></a>  <span class="at">data =</span> <span class="cn">NULL</span>,</span>
-<span id="annotated-cell-14-4"><a href="#annotated-cell-14-4"></a>  <span class="at">geom =</span> <span class="st">"segment"</span>,</span>
-<span id="annotated-cell-14-5"><a href="#annotated-cell-14-5"></a>  <span class="at">position =</span> <span class="st">"identity"</span>,</span>
-<span id="annotated-cell-14-6"><a href="#annotated-cell-14-6"></a>  ...,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2">2</button><span id="annotated-cell-14-7" class="code-annotation-target"><a href="#annotated-cell-14-7"></a>  <span class="at">formula =</span> y <span class="sc">~</span> x,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="3">3</button><span id="annotated-cell-14-8" class="code-annotation-target"><a href="#annotated-cell-14-8"></a>  <span class="at">na.rm =</span> <span class="cn">FALSE</span>,</span>
-<span id="annotated-cell-14-9"><a href="#annotated-cell-14-9"></a>  <span class="at">show.legend =</span> <span class="cn">NA</span>,</span>
-<span id="annotated-cell-14-10"><a href="#annotated-cell-14-10"></a>  <span class="at">inherit.aes =</span> <span class="cn">TRUE</span></span>
-<span id="annotated-cell-14-11"><a href="#annotated-cell-14-11"></a>) {</span>
-<span id="annotated-cell-14-12"><a href="#annotated-cell-14-12"></a>  <span class="fu">layer</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="4">4</button><span id="annotated-cell-14-13" class="code-annotation-target"><a href="#annotated-cell-14-13"></a>    <span class="at">mapping =</span> mapping,</span>
-<span id="annotated-cell-14-14"><a href="#annotated-cell-14-14"></a>    <span class="at">data =</span> data,</span>
-<span id="annotated-cell-14-15"><a href="#annotated-cell-14-15"></a>    <span class="at">geom =</span> geom,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="7">7</button><span id="annotated-cell-14-16" class="code-annotation-target"><a href="#annotated-cell-14-16"></a>    <span class="at">stat =</span> StatResidual,</span>
-<span id="annotated-cell-14-17"><a href="#annotated-cell-14-17"></a>    <span class="at">position =</span> position,</span>
-<span id="annotated-cell-14-18"><a href="#annotated-cell-14-18"></a>    <span class="at">show.legend =</span> show.legend,</span>
-<span id="annotated-cell-14-19"><a href="#annotated-cell-14-19"></a>    <span class="at">inherit.aes =</span> inherit.aes,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="5">5</button><span id="annotated-cell-14-20" class="code-annotation-target"><a href="#annotated-cell-14-20"></a>    <span class="at">params =</span> rlang<span class="sc">::</span><span class="fu">list2</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="6">6</button><span id="annotated-cell-14-21" class="code-annotation-target"><a href="#annotated-cell-14-21"></a>      <span class="at">na.rm =</span> na.rm,</span>
-<span id="annotated-cell-14-22"><a href="#annotated-cell-14-22"></a>      <span class="at">formula =</span> formula,</span>
-<span id="annotated-cell-14-23"><a href="#annotated-cell-14-23"></a>      ...</span>
-<span id="annotated-cell-14-24"><a href="#annotated-cell-14-24"></a>    )</span>
-<span id="annotated-cell-14-25"><a href="#annotated-cell-14-25"></a>  )</span>
-<span id="annotated-cell-14-26"><a href="#annotated-cell-14-26"></a>}</span>
-<span id="annotated-cell-14-27"><a href="#annotated-cell-14-27"></a></span>
-<span id="annotated-cell-14-28"><a href="#annotated-cell-14-28"></a>p <span class="sc">+</span> <span class="fu">stat_residual</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-12-1"><a href="#annotated-cell-12-1"></a>stat_residual <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1">1</button><span id="annotated-cell-12-2" class="code-annotation-target"><a href="#annotated-cell-12-2"></a>  <span class="at">mapping =</span> <span class="cn">NULL</span>,</span>
+<span id="annotated-cell-12-3"><a href="#annotated-cell-12-3"></a>  <span class="at">data =</span> <span class="cn">NULL</span>,</span>
+<span id="annotated-cell-12-4"><a href="#annotated-cell-12-4"></a>  <span class="at">geom =</span> <span class="st">"segment"</span>,</span>
+<span id="annotated-cell-12-5"><a href="#annotated-cell-12-5"></a>  <span class="at">position =</span> <span class="st">"identity"</span>,</span>
+<span id="annotated-cell-12-6"><a href="#annotated-cell-12-6"></a>  ...,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="2">2</button><span id="annotated-cell-12-7" class="code-annotation-target"><a href="#annotated-cell-12-7"></a>  <span class="at">formula =</span> y <span class="sc">~</span> x,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="3">3</button><span id="annotated-cell-12-8" class="code-annotation-target"><a href="#annotated-cell-12-8"></a>  <span class="at">na.rm =</span> <span class="cn">FALSE</span>,</span>
+<span id="annotated-cell-12-9"><a href="#annotated-cell-12-9"></a>  <span class="at">show.legend =</span> <span class="cn">NA</span>,</span>
+<span id="annotated-cell-12-10"><a href="#annotated-cell-12-10"></a>  <span class="at">inherit.aes =</span> <span class="cn">TRUE</span></span>
+<span id="annotated-cell-12-11"><a href="#annotated-cell-12-11"></a>) {</span>
+<span id="annotated-cell-12-12"><a href="#annotated-cell-12-12"></a>  <span class="fu">layer</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="4">4</button><span id="annotated-cell-12-13" class="code-annotation-target"><a href="#annotated-cell-12-13"></a>    <span class="at">mapping =</span> mapping,</span>
+<span id="annotated-cell-12-14"><a href="#annotated-cell-12-14"></a>    <span class="at">data =</span> data,</span>
+<span id="annotated-cell-12-15"><a href="#annotated-cell-12-15"></a>    <span class="at">geom =</span> geom,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="7">7</button><span id="annotated-cell-12-16" class="code-annotation-target"><a href="#annotated-cell-12-16"></a>    <span class="at">stat =</span> StatResidual,</span>
+<span id="annotated-cell-12-17"><a href="#annotated-cell-12-17"></a>    <span class="at">position =</span> position,</span>
+<span id="annotated-cell-12-18"><a href="#annotated-cell-12-18"></a>    <span class="at">show.legend =</span> show.legend,</span>
+<span id="annotated-cell-12-19"><a href="#annotated-cell-12-19"></a>    <span class="at">inherit.aes =</span> inherit.aes,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="5">5</button><span id="annotated-cell-12-20" class="code-annotation-target"><a href="#annotated-cell-12-20"></a>    <span class="at">params =</span> rlang<span class="sc">::</span><span class="fu">list2</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="6">6</button><span id="annotated-cell-12-21" class="code-annotation-target"><a href="#annotated-cell-12-21"></a>      <span class="at">na.rm =</span> na.rm,</span>
+<span id="annotated-cell-12-22"><a href="#annotated-cell-12-22"></a>      <span class="at">formula =</span> formula,</span>
+<span id="annotated-cell-12-23"><a href="#annotated-cell-12-23"></a>      ...</span>
+<span id="annotated-cell-12-24"><a href="#annotated-cell-12-24"></a>    )</span>
+<span id="annotated-cell-12-25"><a href="#annotated-cell-12-25"></a>  )</span>
+<span id="annotated-cell-12-26"><a href="#annotated-cell-12-26"></a>}</span>
+<span id="annotated-cell-12-27"><a href="#annotated-cell-12-27"></a></span>
+<span id="annotated-cell-12-28"><a href="#annotated-cell-12-28"></a>p <span class="sc">+</span> <span class="fu">stat_residual</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="2,3,4,5" data-code-annotation="1">Typically, the first two arguments are <code>mapping</code> and <code>data</code>. Every layer needs <code>geom</code>, <code>stat</code> and <code>position</code>. A <code>stat_*</code> constructor omits the <code>stat</code> argument because that will be provided for you. A <code>geom_*()</code> constructor omits the <code>geom</code> argument.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="2,3,4,5" data-code-annotation="1">Typically, the first two arguments are <code>mapping</code> and <code>data</code>. Every layer needs <code>geom</code>, <code>stat</code> and <code>position</code>. A <code>stat_*</code> constructor omits the <code>stat</code> argument because that will be provided for you. A <code>geom_*()</code> constructor omits the <code>geom</code> argument.</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="7" data-code-annotation="2">Parameters for your Stat come after the <code>...</code> argument, which requires users to write the argument names out in full.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="7" data-code-annotation="2">Parameters for your Stat come after the <code>...</code> argument, which requires users to write the argument names out in full.</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="8,9,10" data-code-annotation="3">The <code>na.rm</code>, <code>show.legend</code> and <code>inherit.aes</code> arguments come last and should have these default values in most cases. If you’re making an <code>annotate_*()</code> layer, you may put <code>inherit.aes = FALSE</code> for example.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="8,9,10" data-code-annotation="3">The <code>na.rm</code>, <code>show.legend</code> and <code>inherit.aes</code> arguments come last and should have these default values in most cases. If you’re making an <code>annotate_*()</code> layer, you may put <code>inherit.aes = FALSE</code> for example.</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="13,14,15,17,18,19" data-code-annotation="4">You can look at the <code>?layer</code> documentation to see what are the standard arguments.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="13,14,15,17,18,19" data-code-annotation="4">You can look at the <code>?layer</code> documentation to see what are the standard arguments.</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="20" data-code-annotation="5">We’re using <code>rlang::list2()</code> because it supports argument splicing.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="20" data-code-annotation="5">We’re using <code>rlang::list2()</code> because it supports argument splicing.</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="21,22,23" data-code-annotation="6">The <code>na.rm</code> argument, all parameters to the Stat and <code>...</code> gets passed to the <code>layer(params)</code> argument.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="21,22,23" data-code-annotation="6">The <code>na.rm</code> argument, all parameters to the Stat and <code>...</code> gets passed to the <code>layer(params)</code> argument.</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="7">7</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="16" data-code-annotation="7">Note that in a <code>stat_*()</code> constructor, the <code>layer(stat)</code> argument is fixed. In a <code>geom_*()</code> constructor, the <code>layer(geom)</code> argument is fixed.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="16" data-code-annotation="7">Note that in a <code>stat_*()</code> constructor, the <code>layer(stat)</code> argument is fixed. In a <code>geom_*()</code> constructor, the <code>layer(geom)</code> argument is fixed.</span>
 </dd>
 </dl>
 </div>
@@ -762,7 +766,7 @@ Caused by error in `compute_geom_1()`:
 <span id="cb14-7"><a></a><span class="do">##         position = position, show.legend = show.legend, inherit.aes = inherit.aes, </span></span>
 <span id="cb14-8"><a></a><span class="do">##         params = list2(na.rm = na.rm, formula = formula, ...))</span></span>
 <span id="cb14-9"><a></a><span class="do">## }</span></span>
-<span id="cb14-10"><a></a><span class="do">## &lt;environment: 0x55ab54debb98&gt;</span></span>
+<span id="cb14-10"><a></a><span class="do">## &lt;environment: 0x563a115406e8&gt;</span></span>
 <span id="cb14-11"><a></a></span>
 <span id="cb14-12"><a></a>p <span class="sc">+</span> <span class="fu">stat_residual</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
@@ -864,7 +868,7 @@ Caused by error in `compute_geom_1()`:
 </section>
 <section id="exercise-6" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/6_extensions.qmd#exercise-6-extension">Exercise 6</a></h2>
-<div id="timer_c0204c7fb50e5bc4a0af000ad9e2ef50530d3f12" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_958ce06a0c6388bfbd555e89f5a225f790fbef1c" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>

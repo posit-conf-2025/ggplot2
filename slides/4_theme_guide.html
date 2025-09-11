@@ -575,7 +575,7 @@ Teun van den Brand
 </section>
 <section id="exercise-4.1" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/4_theme_guide.qmd#exercise-4.1-ink--paper">Exercise 4.1</a></h2>
-<div id="timer_c302159fb9e4438ec6463e618657bd765edddf76" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_62c71e7408547e5d369375b983780525b2b4014f" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -661,6 +661,9 @@ Teun van den Brand
 </div>
 </div>
 </div></div>
+</section>
+<section class="slide level2">
+
 <h3 id="controlling-palettes-2">Controlling palettes</h3>
 <p>The default palette does not commit to a full scale. You can still tweak the options via the default scales (<code>scale_{aesthetic}_{type}</code>).</p>
 <div class="cell columns column-output-location">
@@ -796,7 +799,7 @@ Teun van den Brand
 </section>
 <section id="exercise-4.2" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/4_theme_guide.qmd#exercise-4.2-default-palettes">Exercise 4.2</a></h2>
-<div id="timer_c302159fb9e4438ec6463e618657bd765edddf76" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_62c71e7408547e5d369375b983780525b2b4014f" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -1047,7 +1050,7 @@ Teun van den Brand
 </section>
 <section id="exercise-4.3" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/4_theme_guide.qmd#exercise-4.3-build-your-own-theme">Exercise 4.3</a></h2>
-<div id="timer_c302159fb9e4438ec6463e618657bd765edddf76" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_62c71e7408547e5d369375b983780525b2b4014f" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -1092,13 +1095,22 @@ Teun van den Brand
 <p>Guides can have their own local themes for customisation.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>p <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">shape =</span> <span class="fu">factor</span>(year), <span class="at">colour =</span> class) <span class="sc">+</span></span>
-<span id="cb34-2"><a></a>  <span class="fu">guides</span>(</span>
-<span id="cb34-3"><a></a>    <span class="at">x =</span> <span class="fu">guide_axis</span>(<span class="at">theme =</span> <span class="fu">theme_classic</span>(<span class="at">ink =</span> <span class="st">"red"</span>)),</span>
-<span id="cb34-4"><a></a>    <span class="at">y =</span> <span class="fu">guide_axis</span>(<span class="at">theme =</span> <span class="fu">theme_minimal</span>(<span class="at">ink =</span> <span class="st">"blue"</span>)),</span>
-<span id="cb34-5"><a></a>    <span class="at">shape =</span> <span class="fu">guide_legend</span>(<span class="at">theme =</span> <span class="fu">theme_gray</span>(<span class="at">paper =</span> <span class="st">"cornsilk"</span>)),</span>
-<span id="cb34-6"><a></a>    <span class="at">colour =</span> <span class="fu">guide_legend</span>(<span class="at">theme =</span> <span class="fu">theme</span>(<span class="at">legend.text.position =</span> <span class="st">"left"</span>))</span>
-<span id="cb34-7"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>p <span class="sc">+</span></span>
+<span id="cb34-2"><a></a>  <span class="fu">aes</span>(<span class="at">shape =</span> <span class="fu">factor</span>(year), <span class="at">colour =</span> class) <span class="sc">+</span></span>
+<span id="cb34-3"><a></a>  <span class="fu">guides</span>(</span>
+<span id="cb34-4"><a></a>    <span class="at">x =</span> <span class="fu">guide_axis</span>(</span>
+<span id="cb34-5"><a></a>      <span class="at">theme =</span> <span class="fu">theme_classic</span>(<span class="at">ink =</span> <span class="st">"red"</span>)</span>
+<span id="cb34-6"><a></a>    ),</span>
+<span id="cb34-7"><a></a>    <span class="at">y =</span> <span class="fu">guide_axis</span>(</span>
+<span id="cb34-8"><a></a>      <span class="at">theme =</span> <span class="fu">theme_minimal</span>(<span class="at">ink =</span> <span class="st">"blue"</span>)</span>
+<span id="cb34-9"><a></a>    ),</span>
+<span id="cb34-10"><a></a>    <span class="at">shape =</span> <span class="fu">guide_legend</span>(</span>
+<span id="cb34-11"><a></a>      <span class="at">theme =</span> <span class="fu">theme_gray</span>(<span class="at">paper =</span> <span class="st">"cornsilk"</span>)</span>
+<span id="cb34-12"><a></a>    ),</span>
+<span id="cb34-13"><a></a>    <span class="at">colour =</span> <span class="fu">guide_legend</span>(</span>
+<span id="cb34-14"><a></a>      <span class="at">theme =</span> <span class="fu">theme</span>(<span class="at">legend.text.position =</span> <span class="st">"left"</span>)</span>
+<span id="cb34-15"><a></a>    )</span>
+<span id="cb34-16"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -1273,7 +1285,7 @@ Teun van den Brand
 </section>
 <section id="exercise-4.4" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/4_theme_guide.qmd#exercise-4.4-custom-guides">Exercise 4.4</a></h2>
-<div id="timer_c302159fb9e4438ec6463e618657bd765edddf76" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_62c71e7408547e5d369375b983780525b2b4014f" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
