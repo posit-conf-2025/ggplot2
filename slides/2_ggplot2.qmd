@@ -173,6 +173,7 @@ ggplot(mtcars, aes(mpg, disp, colour = cyl)) +
 - Reusable within document
 
 ```{r}
+#| fig-height: 6
 ggplot(mtcars, aes(cyl, mpg, group = cyl)) +
   geom_boxplot() +
   labs(dictionary = named_vec)
@@ -251,11 +252,13 @@ Use these gradients by providing them as a list.
 
 ```{r}
 #| code-line-numbers: "4"
-ggplot(mtcars) +
-  aes(factor(vs)) +
-  geom_bar(
-    fill = list(linear, radial)
-  )
+p <- ggplot(mtcars) +
+  aes(factor(vs))
+
+p1 <- p + geom_bar(fill = list(linear))
+p2 <- p + geom_bar(fill = list(radial))
+
+p1 / p2
 ```
 
 ---
@@ -820,7 +823,7 @@ polar <- p +
   labs(title = "coord_polar()")
 radial <- p + 
   coord_radial(expand = FALSE) + 
-  labs(title = "coord_radial(expand = FALSE)")
+  labs(title = "coord_radial()")
 
 polar + radial
 ```

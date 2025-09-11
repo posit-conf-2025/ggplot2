@@ -342,6 +342,8 @@ p2 +
   scale_colour_viridis_c()
 ```
 
+---
+
 ### Controlling palettes
 
 The default palette does not commit to a full scale.
@@ -685,12 +687,22 @@ p +
 Guides can have their own local themes for customisation.
 
 ```{r}
-p + aes(shape = factor(year), colour = class) +
+
+p +
+  aes(shape = factor(year), colour = class) +
   guides(
-    x = guide_axis(theme = theme_classic(ink = "red")),
-    y = guide_axis(theme = theme_minimal(ink = "blue")),
-    shape = guide_legend(theme = theme_gray(paper = "cornsilk")),
-    colour = guide_legend(theme = theme(legend.text.position = "left"))
+    x = guide_axis(
+      theme = theme_classic(ink = "red")
+    ),
+    y = guide_axis(
+      theme = theme_minimal(ink = "blue")
+    ),
+    shape = guide_legend(
+      theme = theme_gray(paper = "cornsilk")
+    ),
+    colour = guide_legend(
+      theme = theme(legend.text.position = "left")
+    )
   )
 ```
 
