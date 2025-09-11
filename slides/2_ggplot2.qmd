@@ -15,6 +15,11 @@ theme_set(
 )
 ```
 
+## Recent release of new major version
+
+:::: r-stack
+[![https://www.tidyverse.org/blog/2025/09/ggplot2-4-0-0/](../assets/img/blogpost_ggplot2.png){width=800 style="max-width:100%;"}](https://www.tidyverse.org/blog/2025/09/ggplot2-4-0-0/)
+::::
 
 ## Today's topics
 
