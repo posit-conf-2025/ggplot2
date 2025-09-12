@@ -28,13 +28,22 @@ theme_set(
 
 ## Theme extensions
 
+:::: {.columns}
+
+::: {.column}
+
 Usually wrap some standard ggplot2 theme code.
 
 * `cowplot::theme_cowplot()`
 * `ggthemes::theme_economist()`
 * Session 4: Build your own theme
 
+:::
+
+::: {.column}
+
 ```{r}
+#| output-location: default
 bland_plot <- ggplot(mpg, aes(displ, hwy)) +
   geom_point()
 
@@ -46,7 +55,15 @@ my_theme <- function(...) {
 bland_plot + my_theme()
 ```
 
+:::
+
+::::
+
 ## Scale extensions
+
+:::: {.columns}
+
+::: {.column}
 
 Often wrappers for novelty aesthetics or scale parameters.
 
@@ -54,7 +71,12 @@ Often wrappers for novelty aesthetics or scale parameters.
 * `binned_scale()`
 * `discrete_scale()`
 
+:::
+
+::: {.column}
+
 ```{r}
+#| output-location: default
 scale_x_asinh <- function(...) {
   scale_x_continuous(
     transform = scales::transform_asinh()
@@ -63,6 +85,10 @@ scale_x_asinh <- function(...) {
 
 bland_plot + scale_x_asinh()
 ```
+
+:::
+
+::::
 
 ---
 
