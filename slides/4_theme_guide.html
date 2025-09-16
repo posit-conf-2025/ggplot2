@@ -7,10 +7,10 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-5976f41d9484d52fe052c70bfe1df58c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-8e4e14b15a7e2cd7dcd71f711558ebb9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/quarto-contrib/countdown-0.5.0/countdown.js"></script>
 <link href="../site_libs/quarto-contrib/countdown-0.5.0/countdown.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.34">
+  <meta name="generator" content="quarto-1.8.24">
 
   <meta name="author" content="Teun van den Brand">
   <title>Mastering Data Visualization with ggplot2 – Styling your plot</title>
@@ -98,7 +98,7 @@
     code span.vs { color: #a3be8c; } /* VerbatimString */
     code span.wa { color: #bf616a; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-533d6c76c08492e31a51aaad62ff101b.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-35de1ab00eb51d9ea3b36b1a82fe3846.css">
   <link rel="stylesheet" href="styles.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -230,7 +230,7 @@ Teun van den Brand
 <h3 id="complete-themes">Complete themes</h3>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(ggplot2)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-2"><a></a></span>
 <span id="cb1-3"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
 <span id="cb1-4"><a></a>  <span class="fu">aes</span>(displ, hwy) <span class="sc">+</span></span>
@@ -249,7 +249,7 @@ Teun van den Brand
 <span id="cb1-17"><a></a>      <span class="st">"factor(year)"</span> <span class="ot">=</span> <span class="st">"Year"</span>,</span>
 <span id="cb1-18"><a></a>      <span class="at">class =</span> <span class="st">"Class"</span></span>
 <span id="cb1-19"><a></a>  ))</span>
-<span id="cb1-20"><a></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-20"><a></a>p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -265,7 +265,7 @@ Teun van den Brand
 <h3 id="complete-themes-1">Complete themes</h3>
 <p><code>ink</code> affects all foreground elements and parts of layers.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>p <span class="sc">+</span> <span class="fu">theme_gray</span>(<span class="at">ink =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>p <span class="sc">+</span> <span class="fu">theme_gray</span>(<span class="at">ink =</span> <span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-3-1.png" width="1728" class="r-stretch"></section>
@@ -274,7 +274,7 @@ Teun van den Brand
 <h3 id="complete-themes-2">Complete themes</h3>
 <p><code>paper</code> affects all background elements and parts of layers.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>p <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">paper =</span> <span class="st">"cornsilk"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>p <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">paper =</span> <span class="st">"cornsilk"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-4-1.png" width="1728" class="r-stretch"></section>
@@ -283,7 +283,7 @@ Teun van den Brand
 <h3 id="complete-themes-3">Complete themes</h3>
 <p><code>ink</code> and <code>paper</code> can be combined to recolour a plot.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>p <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">paper =</span> <span class="st">"cornsilk"</span>, <span class="at">ink =</span> <span class="st">"navy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>p <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">paper =</span> <span class="st">"cornsilk"</span>, <span class="at">ink =</span> <span class="st">"navy"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-5-1.png" width="1728" class="r-stretch"></section>
@@ -292,7 +292,7 @@ Teun van den Brand
 <h3 id="complete-themes-4">Complete themes</h3>
 <p><code>accent</code> has niche application in <code>geom_smooth()</code> and <code>geom_contour()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>p <span class="sc">+</span> <span class="fu">theme_classic</span>(<span class="at">accent =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>p <span class="sc">+</span> <span class="fu">theme_classic</span>(<span class="at">accent =</span> <span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="4_theme_guide_files/figure-revealjs/unnamed-chunk-6-1.png" width="1728" class="r-stretch"></section>
@@ -302,10 +302,10 @@ Teun van den Brand
 <p><code>theme(geom)</code> accommodates the layer settings</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>p <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">geom =</span> <span class="fu">element_geom</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>p <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">geom =</span> <span class="fu">element_geom</span>(</span>
 <span id="cb6-2"><a></a>  <span class="at">ink    =</span> <span class="st">"red"</span>, </span>
 <span id="cb6-3"><a></a>  <span class="at">accent =</span> <span class="st">"black"</span></span>
-<span id="cb6-4"><a></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-4"><a></a>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -322,7 +322,7 @@ Teun van den Brand
 <p><code>ink</code>/<code>paper</code>/<code>accent</code> act as described for complete themes</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="3-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">element_geom</span>()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" data-code-line-numbers="3-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">element_geom</span>()</span>
 <span id="cb7-2"><a></a><span class="do">## &lt;ggplot2::element_geom&gt;</span></span>
 <span id="cb7-3"><a></a><span class="do">##  @ ink        : NULL</span></span>
 <span id="cb7-4"><a></a><span class="do">##  @ paper      : NULL</span></span>
@@ -336,7 +336,7 @@ Teun van den Brand
 <span id="cb7-12"><a></a><span class="do">##  @ pointsize  : NULL</span></span>
 <span id="cb7-13"><a></a><span class="do">##  @ pointshape : NULL</span></span>
 <span id="cb7-14"><a></a><span class="do">##  @ colour     : NULL</span></span>
-<span id="cb7-15"><a></a><span class="do">##  @ fill       : NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-15"><a></a><span class="do">##  @ fill       : NULL</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 
 </div></div>
@@ -347,7 +347,7 @@ Teun van den Brand
 <p>For lines, we distinguish borders (of polygons) and ‘naked’ lines.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="6-9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">element_geom</span>()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-code-line-numbers="6-9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">element_geom</span>()</span>
 <span id="cb8-2"><a></a><span class="do">## &lt;ggplot2::element_geom&gt;</span></span>
 <span id="cb8-3"><a></a><span class="do">##  @ ink        : NULL</span></span>
 <span id="cb8-4"><a></a><span class="do">##  @ paper      : NULL</span></span>
@@ -361,7 +361,7 @@ Teun van den Brand
 <span id="cb8-12"><a></a><span class="do">##  @ pointsize  : NULL</span></span>
 <span id="cb8-13"><a></a><span class="do">##  @ pointshape : NULL</span></span>
 <span id="cb8-14"><a></a><span class="do">##  @ colour     : NULL</span></span>
-<span id="cb8-15"><a></a><span class="do">##  @ fill       : NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-15"><a></a><span class="do">##  @ fill       : NULL</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 
 </div></div>
@@ -372,7 +372,7 @@ Teun van den Brand
 <p>Illustration of polygon border versus naked line</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="9-16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>binwidth <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" data-code-line-numbers="9-16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>binwidth <span class="ot">&lt;-</span> <span class="dv">2</span></span>
 <span id="cb9-2"><a></a><span class="fu">ggplot</span>(faithful, <span class="fu">aes</span>(waiting)) <span class="sc">+</span></span>
 <span id="cb9-3"><a></a>  <span class="fu">geom_histogram</span>(</span>
 <span id="cb9-4"><a></a>    <span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">binwidth =</span> binwidth</span>
@@ -387,7 +387,7 @@ Teun van den Brand
 <span id="cb9-13"><a></a>    <span class="co"># Affects density line</span></span>
 <span id="cb9-14"><a></a>    <span class="at">linewidth =</span> <span class="dv">1</span>,</span>
 <span id="cb9-15"><a></a>    <span class="at">linetype  =</span> <span class="st">"dotted"</span></span>
-<span id="cb9-16"><a></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-16"><a></a>  ))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -404,7 +404,7 @@ Teun van den Brand
 <p>For text, we can set <code>family</code> and <code>fontsize</code></p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="10-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">element_geom</span>()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" data-code-line-numbers="10-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">element_geom</span>()</span>
 <span id="cb10-2"><a></a><span class="do">## &lt;ggplot2::element_geom&gt;</span></span>
 <span id="cb10-3"><a></a><span class="do">##  @ ink        : NULL</span></span>
 <span id="cb10-4"><a></a><span class="do">##  @ paper      : NULL</span></span>
@@ -418,7 +418,7 @@ Teun van den Brand
 <span id="cb10-12"><a></a><span class="do">##  @ pointsize  : NULL</span></span>
 <span id="cb10-13"><a></a><span class="do">##  @ pointshape : NULL</span></span>
 <span id="cb10-14"><a></a><span class="do">##  @ colour     : NULL</span></span>
-<span id="cb10-15"><a></a><span class="do">##  @ fill       : NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-15"><a></a><span class="do">##  @ fill       : NULL</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 
 </div></div>
@@ -429,7 +429,7 @@ Teun van den Brand
 <p>For text, we can set <code>family</code> and <code>fontsize</code></p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="5-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(mtcars) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" data-code-line-numbers="5-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(mtcars) <span class="sc">+</span></span>
 <span id="cb11-2"><a></a>  <span class="fu">aes</span>(disp, mpg, <span class="at">label =</span> <span class="fu">rownames</span>(mtcars)) <span class="sc">+</span></span>
 <span id="cb11-3"><a></a>  <span class="fu">geom_label</span>() <span class="sc">+</span></span>
 <span id="cb11-4"><a></a>  <span class="fu">theme</span>(</span>
@@ -437,7 +437,7 @@ Teun van den Brand
 <span id="cb11-6"><a></a>      <span class="at">family =</span> <span class="st">"Barrio"</span>,</span>
 <span id="cb11-7"><a></a>      <span class="at">fontsize =</span> <span class="dv">10</span></span>
 <span id="cb11-8"><a></a>    )</span>
-<span id="cb11-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-9"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -454,7 +454,7 @@ Teun van den Brand
 <p>For points, we can set <code>pointsize</code> and <code>pointshape</code></p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="12-13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">element_geom</span>()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" data-code-line-numbers="12-13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">element_geom</span>()</span>
 <span id="cb12-2"><a></a><span class="do">## &lt;ggplot2::element_geom&gt;</span></span>
 <span id="cb12-3"><a></a><span class="do">##  @ ink        : NULL</span></span>
 <span id="cb12-4"><a></a><span class="do">##  @ paper      : NULL</span></span>
@@ -468,7 +468,7 @@ Teun van den Brand
 <span id="cb12-12"><a></a><span class="do">##  @ pointsize  : NULL</span></span>
 <span id="cb12-13"><a></a><span class="do">##  @ pointshape : NULL</span></span>
 <span id="cb12-14"><a></a><span class="do">##  @ colour     : NULL</span></span>
-<span id="cb12-15"><a></a><span class="do">##  @ fill       : NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-15"><a></a><span class="do">##  @ fill       : NULL</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 
 </div></div>
@@ -479,10 +479,10 @@ Teun van den Brand
 <p>For points, we can set <code>pointsize</code> and <code>pointshape</code></p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>p <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">geom =</span> <span class="fu">element_geom</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>p <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">geom =</span> <span class="fu">element_geom</span>(</span>
 <span id="cb13-2"><a></a>  <span class="at">pointsize  =</span> <span class="dv">2</span>,</span>
 <span id="cb13-3"><a></a>  <span class="at">pointshape =</span> <span class="st">"triangle"</span></span>
-<span id="cb13-4"><a></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-4"><a></a>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -499,7 +499,7 @@ Teun van den Brand
 <p>There is also the familiar <code>colour</code> and <code>fill</code>.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb14" data-code-line-numbers="14-15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">element_geom</span>()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" data-code-line-numbers="14-15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">element_geom</span>()</span>
 <span id="cb14-2"><a></a><span class="do">## &lt;ggplot2::element_geom&gt;</span></span>
 <span id="cb14-3"><a></a><span class="do">##  @ ink        : NULL</span></span>
 <span id="cb14-4"><a></a><span class="do">##  @ paper      : NULL</span></span>
@@ -513,7 +513,7 @@ Teun van den Brand
 <span id="cb14-12"><a></a><span class="do">##  @ pointsize  : NULL</span></span>
 <span id="cb14-13"><a></a><span class="do">##  @ pointshape : NULL</span></span>
 <span id="cb14-14"><a></a><span class="do">##  @ colour     : NULL</span></span>
-<span id="cb14-15"><a></a><span class="do">##  @ fill       : NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-15"><a></a><span class="do">##  @ fill       : NULL</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 
 </div></div>
@@ -524,11 +524,11 @@ Teun van den Brand
 <p><code>colour</code> and <code>fill</code> are direct, but indiscriminate. Note how <code>accent</code> is now ignored.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>p <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">geom =</span> <span class="fu">element_geom</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>p <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">geom =</span> <span class="fu">element_geom</span>(</span>
 <span id="cb15-2"><a></a>  <span class="at">colour =</span> <span class="st">"red"</span>, </span>
 <span id="cb15-3"><a></a>  <span class="at">fill   =</span> <span class="st">"cyan"</span>,</span>
 <span id="cb15-4"><a></a>  <span class="at">accent =</span> <span class="st">"limegreen"</span></span>
-<span id="cb15-5"><a></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-5"><a></a>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -545,10 +545,10 @@ Teun van den Brand
 <p><code>colour</code> and <code>fill</code> are designed to tailor for individual geom types.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>p <span class="sc">+</span> <span class="fu">theme</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>p <span class="sc">+</span> <span class="fu">theme</span>(</span>
 <span id="cb16-2"><a></a>  <span class="at">geom.point  =</span> <span class="fu">element_geom</span>(<span class="at">colour =</span> <span class="st">"dodgerblue"</span>),</span>
 <span id="cb16-3"><a></a>  <span class="at">geom.smooth =</span> <span class="fu">element_geom</span>(<span class="at">colour =</span> <span class="st">"navy"</span>)</span>
-<span id="cb16-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-4"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -575,7 +575,7 @@ Teun van den Brand
 </section>
 <section id="exercise-4.1" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/4_theme_guide.qmd#exercise-4.1-ink--paper">Exercise 4.1</a></h2>
-<div id="timer_2cf02641ef951a838f1c99d9d3648bf3c84f82a6" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_b1c74721e39ff532675fe9c9d653f9b7ac2e0bc0" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -611,7 +611,7 @@ Teun van den Brand
 <p>A tour through various options</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb17" data-code-line-numbers="8-9|11-14|16-19|21-22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>my_palette <span class="ot">&lt;-</span> <span class="fu">hcl.colors</span>(<span class="dv">15</span>, <span class="st">"sunset"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17" data-code-line-numbers="8-9|11-14|16-19|21-22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>my_palette <span class="ot">&lt;-</span> <span class="fu">hcl.colors</span>(<span class="dv">15</span>, <span class="st">"sunset"</span>)</span>
 <span id="cb17-2"><a></a>custom_scale <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
 <span id="cb17-3"><a></a>  <span class="fu">scale_colour_gradientn</span>(<span class="at">colours =</span> my_palette, ...)</span>
 <span id="cb17-4"><a></a>}</span>
@@ -632,7 +632,7 @@ Teun van den Brand
 <span id="cb17-19"><a></a>scale_colour_continuous <span class="ot">&lt;-</span> ggplot2<span class="sc">::</span>scale_colour_continuous <span class="co"># reset</span></span>
 <span id="cb17-20"><a></a></span>
 <span id="cb17-21"><a></a><span class="co"># 4. Using theme</span></span>
-<span id="cb17-22"><a></a>p2 <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">palette.colour.continuous =</span> my_palette)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-22"><a></a>p2 <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">palette.colour.continuous =</span> my_palette)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -649,9 +649,9 @@ Teun van den Brand
 <p>Regular scales override theme defaults</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>p2 <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>p2 <span class="sc">+</span> </span>
 <span id="cb18-2"><a></a>  <span class="fu">theme</span>(<span class="at">palette.colour.continuous =</span> my_palette) <span class="sc">+</span></span>
-<span id="cb18-3"><a></a>  <span class="fu">scale_colour_viridis_c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-3"><a></a>  <span class="fu">scale_colour_viridis_c</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -668,7 +668,7 @@ Teun van den Brand
 <p>The default palette does not commit to a full scale. You can still tweak the options via the default scales (<code>scale_{aesthetic}_{type}</code>).</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>p2 <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>p2 <span class="sc">+</span> </span>
 <span id="cb19-2"><a></a>  <span class="fu">theme</span>(<span class="at">palette.colour.continuous =</span> my_palette) <span class="sc">+</span></span>
 <span id="cb19-3"><a></a>  <span class="fu">scale_colour_continuous</span>(</span>
 <span id="cb19-4"><a></a>    <span class="at">breaks =</span> <span class="fu">c</span>(</span>
@@ -676,7 +676,7 @@ Teun van den Brand
 <span id="cb19-6"><a></a>      <span class="at">twenty =</span> <span class="dv">20</span>,</span>
 <span id="cb19-7"><a></a>      <span class="at">thirty =</span> <span class="dv">30</span></span>
 <span id="cb19-8"><a></a>    )</span>
-<span id="cb19-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-9"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -693,7 +693,7 @@ Teun van den Brand
 <p>The palette settings have the syntax <code>palette.{aesthetic}.{type}</code>, where <code>type</code> can be <code>"continuous"</code> or <code>"discrete"</code>.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>shapes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"triangle filled"</span>, <span class="st">"square filled"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>shapes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"triangle filled"</span>, <span class="st">"square filled"</span>)</span>
 <span id="cb20-2"><a></a>p <span class="sc">+</span></span>
 <span id="cb20-3"><a></a>  <span class="fu">aes</span>(</span>
 <span id="cb20-4"><a></a>    <span class="at">fill =</span> cty,</span>
@@ -702,7 +702,7 @@ Teun van den Brand
 <span id="cb20-7"><a></a>  <span class="fu">theme</span>(</span>
 <span id="cb20-8"><a></a>    <span class="at">palette.shape.discrete =</span> shapes,</span>
 <span id="cb20-9"><a></a>    <span class="at">palette.fill.continuous =</span> <span class="st">"sunset"</span></span>
-<span id="cb20-10"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-10"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -718,7 +718,7 @@ Teun van den Brand
 <h3 id="palette-input">Palette input</h3>
 <p>The palatable palettes are those that can pass through <code>scales::as_continuous_pal()</code> and <code>scales::as_discrete_pal()</code> respectively.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">library</span>(scales)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">library</span>(scales)</span>
 <span id="cb21-2"><a></a></span>
 <span id="cb21-3"><a></a><span class="co"># Discrete palettes</span></span>
 <span id="cb21-4"><a></a>pal <span class="ot">&lt;-</span> <span class="fu">as_discrete_pal</span>(<span class="fu">c</span>(<span class="st">"foo"</span>, <span class="st">"bar"</span>, <span class="st">"qux"</span>))</span>
@@ -734,7 +734,7 @@ Teun van den Brand
 <span id="cb21-14"><a></a><span class="fu">pal</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>))</span>
 <span id="cb21-15"><a></a><span class="do">## [1] "#FF00FF" "#C9B2A2" "#00FF00"</span></span>
 <span id="cb21-16"><a></a><span class="fu">palette_type</span>(pal)</span>
-<span id="cb21-17"><a></a><span class="do">## [1] "colour"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-17"><a></a><span class="do">## [1] "colour"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -743,7 +743,7 @@ Teun van den Brand
 <p>With the right metadata, we can interchange discrete and continuous palettes.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>pal <span class="ot">&lt;-</span> <span class="fu">new_discrete_palette</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>pal <span class="ot">&lt;-</span> <span class="fu">new_discrete_palette</span>(</span>
 <span id="cb22-2"><a></a>  <span class="fu">pal_manual</span>(<span class="fu">c</span>(<span class="st">"magenta"</span>, <span class="st">"cyan"</span>, <span class="st">"green"</span>)),</span>
 <span id="cb22-3"><a></a>  <span class="at">type =</span> <span class="st">"colour"</span>, <span class="at">nlevels =</span> <span class="dv">3</span></span>
 <span id="cb22-4"><a></a>)</span>
@@ -757,7 +757,7 @@ Teun van den Brand
 <span id="cb22-12"><a></a></span>
 <span id="cb22-13"><a></a><span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">9</span>) <span class="sc">|&gt;</span></span>
 <span id="cb22-14"><a></a>  <span class="fu">con_pal</span>() <span class="sc">|&gt;</span></span>
-<span id="cb22-15"><a></a>  <span class="fu">show_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-15"><a></a>  <span class="fu">show_col</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -774,10 +774,10 @@ Teun van den Brand
 <p>Just because we can swap discrete and continuous palettes, doesn’t mean we should!</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>p2 <span class="sc">+</span> <span class="fu">theme</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>p2 <span class="sc">+</span> <span class="fu">theme</span>(</span>
 <span id="cb23-2"><a></a>  <span class="co"># No! What have I done?!</span></span>
 <span id="cb23-3"><a></a>  <span class="at">palette.colour.continuous =</span> <span class="fu">pal_brewer</span>(<span class="st">"qual"</span>)</span>
-<span id="cb23-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-4"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -799,7 +799,7 @@ Teun van den Brand
 </section>
 <section id="exercise-4.2" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/4_theme_guide.qmd#exercise-4.2-default-palettes">Exercise 4.2</a></h2>
-<div id="timer_2cf02641ef951a838f1c99d9d3648bf3c84f82a6" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_b1c74721e39ff532675fe9c9d653f9b7ac2e0bc0" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -821,11 +821,11 @@ Teun van den Brand
 <p>Capture your theme as a function.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>my_theme <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>my_theme <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
 <span id="cb24-2"><a></a>  <span class="cn">NULL</span></span>
 <span id="cb24-3"><a></a>}</span>
 <span id="cb24-4"><a></a></span>
-<span id="cb24-5"><a></a>p <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-5"><a></a>p <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -842,11 +842,11 @@ Teun van den Brand
 <p>Start with using a complete theme as base.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>my_theme <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>my_theme <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
 <span id="cb25-2"><a></a>  <span class="fu">theme_gray</span>(...)</span>
 <span id="cb25-3"><a></a>}</span>
 <span id="cb25-4"><a></a></span>
-<span id="cb25-5"><a></a>p <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-5"><a></a>p <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -863,7 +863,7 @@ Teun van den Brand
 <p>Build your own customisations on top.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>my_theme <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>my_theme <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
 <span id="cb26-2"><a></a>  <span class="fu">theme_gray</span>(...) <span class="sc">+</span></span>
 <span id="cb26-3"><a></a>    <span class="fu">theme</span>(</span>
 <span id="cb26-4"><a></a>      <span class="at">axis.line =</span> <span class="fu">element_line</span>(),</span>
@@ -871,7 +871,7 @@ Teun van den Brand
 <span id="cb26-6"><a></a>    )</span>
 <span id="cb26-7"><a></a>}</span>
 <span id="cb26-8"><a></a></span>
-<span id="cb26-9"><a></a>p <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-9"><a></a>p <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -888,7 +888,7 @@ Teun van den Brand
 <p>For custom fonts, put in guardrails for their possible absence.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>my_theme <span class="ot">&lt;-</span> <span class="cf">function</span>(..., <span class="at">header_family =</span> <span class="st">"Dancing Script"</span>) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>my_theme <span class="ot">&lt;-</span> <span class="cf">function</span>(..., <span class="at">header_family =</span> <span class="st">"Dancing Script"</span>) {</span>
 <span id="cb27-2"><a></a>  systemfonts<span class="sc">::</span><span class="fu">require_font</span>(header_family)</span>
 <span id="cb27-3"><a></a>  <span class="fu">theme_gray</span>(..., <span class="at">header_family =</span> header_family) <span class="sc">+</span></span>
 <span id="cb27-4"><a></a>    <span class="fu">theme</span>(</span>
@@ -897,7 +897,7 @@ Teun van den Brand
 <span id="cb27-7"><a></a>    )</span>
 <span id="cb27-8"><a></a>}</span>
 <span id="cb27-9"><a></a></span>
-<span id="cb27-10"><a></a>p <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-10"><a></a>p <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -914,7 +914,7 @@ Teun van den Brand
 <p>You can coordinate the <code>ink</code>/<code>paper</code>/<code>accent</code> settings, along with the <code>geom</code> argument.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>my_theme <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>my_theme <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
 <span id="cb28-2"><a></a>  ...,</span>
 <span id="cb28-3"><a></a>  <span class="at">ink =</span> <span class="st">"hotpink"</span>,</span>
 <span id="cb28-4"><a></a>  <span class="at">accent =</span> <span class="st">"black"</span>,</span>
@@ -929,7 +929,7 @@ Teun van den Brand
 <span id="cb28-13"><a></a>    )</span>
 <span id="cb28-14"><a></a>}</span>
 <span id="cb28-15"><a></a></span>
-<span id="cb28-16"><a></a>p <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-16"><a></a>p <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -946,7 +946,7 @@ Teun van den Brand
 <p>If you have flamboyant <code>ink</code> or <code>paper</code> colours, you may also want to direct the <code>palette.colour.continuous</code> and <code>palette.colour.discrete</code> palettes.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>my_theme <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>my_theme <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
 <span id="cb29-2"><a></a>  ...,</span>
 <span id="cb29-3"><a></a>  <span class="at">ink =</span> <span class="st">"hotpink"</span>,</span>
 <span id="cb29-4"><a></a>  <span class="at">accent =</span> <span class="st">"black"</span>,</span>
@@ -962,7 +962,7 @@ Teun van den Brand
 <span id="cb29-14"><a></a>    )</span>
 <span id="cb29-15"><a></a>}</span>
 <span id="cb29-16"><a></a></span>
-<span id="cb29-17"><a></a>p2 <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-17"><a></a>p2 <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -979,9 +979,9 @@ Teun van den Brand
 <p>You can activate your theme for all plots in your document by using <code>set_theme()</code>.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">set_theme</span>(<span class="fu">my_theme</span>())</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">set_theme</span>(<span class="fu">my_theme</span>())</span>
 <span id="cb30-2"><a></a><span class="co"># Now all plots will be rendered with your theme</span></span>
-<span id="cb30-3"><a></a>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-3"><a></a>p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -998,8 +998,8 @@ Teun van den Brand
 <p>But for now, we’ll reset it to something familiar.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">set_theme</span>(<span class="fu">theme_gray</span>())</span>
-<span id="cb31-2"><a></a>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">set_theme</span>(<span class="fu">theme_gray</span>())</span>
+<span id="cb31-2"><a></a>p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 
 </div></div>
@@ -1017,7 +1017,7 @@ Teun van den Brand
 <p>You still call a <code>theme()</code> or <code>theme_sub()</code> function to initiate a fresh, (incomplete) theme. No need to start with a complete theme base.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>horizontal_grid <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>horizontal_grid <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
 <span id="cb32-2"><a></a>  <span class="fu">theme_sub_panel</span>(</span>
 <span id="cb32-3"><a></a>    <span class="at">grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb32-4"><a></a>    <span class="at">grid.minor.x =</span> <span class="fu">element_blank</span>(),</span>
@@ -1026,7 +1026,7 @@ Teun van den Brand
 <span id="cb32-7"><a></a>  )</span>
 <span id="cb32-8"><a></a>}</span>
 <span id="cb32-9"><a></a></span>
-<span id="cb32-10"><a></a>p <span class="sc">+</span> <span class="fu">horizontal_grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-10"><a></a>p <span class="sc">+</span> <span class="fu">horizontal_grid</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -1050,7 +1050,7 @@ Teun van den Brand
 </section>
 <section id="exercise-4.3" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/4_theme_guide.qmd#exercise-4.3-build-your-own-theme">Exercise 4.3</a></h2>
-<div id="timer_2cf02641ef951a838f1c99d9d3648bf3c84f82a6" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_b1c74721e39ff532675fe9c9d653f9b7ac2e0bc0" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -1075,10 +1075,10 @@ Teun van den Brand
 <p>A guide can be specified in <code>guides()</code> or in the <code>scale_*(guide)</code> argument.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>p <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>p <span class="sc">+</span></span>
 <span id="cb33-2"><a></a>  <span class="fu">aes</span>(<span class="at">size =</span> cty) <span class="sc">+</span></span>
 <span id="cb33-3"><a></a>  <span class="fu">scale_size_continuous</span>(<span class="at">guide =</span> <span class="st">"bins"</span>) <span class="sc">+</span></span>
-<span id="cb33-4"><a></a>  <span class="fu">guides</span>(<span class="at">x =</span> <span class="fu">guide_axis</span>(<span class="at">minor.ticks =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-4"><a></a>  <span class="fu">guides</span>(<span class="at">x =</span> <span class="fu">guide_axis</span>(<span class="at">minor.ticks =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -1095,7 +1095,7 @@ Teun van den Brand
 <p>Guides can have their own local themes for customisation.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>p <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>p <span class="sc">+</span></span>
 <span id="cb34-2"><a></a>  <span class="fu">aes</span>(<span class="at">shape =</span> <span class="fu">factor</span>(year), <span class="at">colour =</span> class) <span class="sc">+</span></span>
 <span id="cb34-3"><a></a>  <span class="fu">guides</span>(</span>
 <span id="cb34-4"><a></a>    <span class="at">x =</span> <span class="fu">guide_axis</span>(</span>
@@ -1110,7 +1110,7 @@ Teun van den Brand
 <span id="cb34-13"><a></a>    <span class="at">colour =</span> <span class="fu">guide_legend</span>(</span>
 <span id="cb34-14"><a></a>      <span class="at">theme =</span> <span class="fu">theme</span>(<span class="at">legend.text.position =</span> <span class="st">"left"</span>)</span>
 <span id="cb34-15"><a></a>    )</span>
-<span id="cb34-16"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-16"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -1133,7 +1133,7 @@ Teun van den Brand
 <p>Specialised guides for niche applications, like periodical data.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">library</span>(legendry)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">library</span>(legendry)</span>
 <span id="cb35-2"><a></a></span>
 <span id="cb35-3"><a></a>dplyr<span class="sc">::</span><span class="fu">filter</span>(txhousing, city <span class="sc">==</span> <span class="st">"Houston"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb35-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(date, median, <span class="at">colour =</span> month)) <span class="sc">+</span></span>
@@ -1143,7 +1143,7 @@ Teun van den Brand
 <span id="cb35-8"><a></a>    <span class="at">palette =</span> <span class="st">"romaO"</span>,</span>
 <span id="cb35-9"><a></a>    <span class="at">guide =</span> <span class="st">"colring"</span></span>
 <span id="cb35-10"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb35-11"><a></a>  <span class="fu">theme</span>(<span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="dv">5</span>, <span class="st">"mm"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-11"><a></a>  <span class="fu">theme</span>(<span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="dv">5</span>, <span class="st">"mm"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -1160,7 +1160,7 @@ Teun van den Brand
 <p>Guides can be specified flexibly to at least the degree of secondary axes.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="co"># Translate Celsius range to Fahrenheit</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="co"># Translate Celsius range to Fahrenheit</span></span>
 <span id="cb36-2"><a></a>deg_C <span class="ot">&lt;-</span> <span class="fu">range</span>(pressure<span class="sc">$</span>temperature)</span>
 <span id="cb36-3"><a></a>deg_F <span class="ot">&lt;-</span> (deg_C <span class="sc">*</span> <span class="dv">9</span> <span class="sc">/</span> <span class="dv">5</span>) <span class="sc">+</span> <span class="dv">32</span></span>
 <span id="cb36-4"><a></a><span class="co"># Compute breaks and translate back to Celsius</span></span>
@@ -1176,7 +1176,7 @@ Teun van den Brand
 <span id="cb36-14"><a></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb36-15"><a></a>  <span class="fu">theme</span>(<span class="at">axis.line.x =</span> <span class="fu">element_line</span>())</span>
 <span id="cb36-16"><a></a></span>
-<span id="cb36-17"><a></a>p3 <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">x.sec =</span> fahrenheit_axis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-17"><a></a>p3 <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">x.sec =</span> fahrenheit_axis)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -1193,13 +1193,13 @@ Teun van den Brand
 <p>In addition, many guides can be composed like stacking the Celsius and Fahrenheit guide.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>stacked <span class="ot">&lt;-</span> <span class="fu">compose_stack</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>stacked <span class="ot">&lt;-</span> <span class="fu">compose_stack</span>(</span>
 <span id="cb37-2"><a></a>  <span class="st">"axis"</span>,</span>
 <span id="cb37-3"><a></a>  fahrenheit_axis,</span>
 <span id="cb37-4"><a></a>  <span class="at">side.titles =</span> <span class="fu">c</span>(<span class="st">"°C"</span>, <span class="st">"°F"</span>)</span>
 <span id="cb37-5"><a></a>)</span>
 <span id="cb37-6"><a></a></span>
-<span id="cb37-7"><a></a>p3 <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">x =</span> stacked)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-7"><a></a>p3 <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">x =</span> stacked)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -1216,11 +1216,11 @@ Teun van den Brand
 <p>legendry has re-imagined some guides as compositions.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>p3 <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">colour =</span> temperature) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>p3 <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">colour =</span> temperature) <span class="sc">+</span></span>
 <span id="cb38-2"><a></a>  <span class="fu">guides</span>(<span class="at">colour =</span> <span class="fu">guide_colbar</span>(</span>
 <span id="cb38-3"><a></a>    <span class="at">second_guide =</span> fahrenheit_axis,</span>
 <span id="cb38-4"><a></a>    <span class="at">suppress_labels =</span> <span class="st">"none"</span></span>
-<span id="cb38-5"><a></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-5"><a></a>  ))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -1237,11 +1237,11 @@ Teun van den Brand
 <p>Aside from composability, re-imagined guides come with extra features.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>p3 <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">colour =</span> temperature) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>p3 <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">colour =</span> temperature) <span class="sc">+</span></span>
 <span id="cb39-2"><a></a>  <span class="fu">scale_colour_viridis_c</span>(</span>
 <span id="cb39-3"><a></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">300</span>),</span>
 <span id="cb39-4"><a></a>    <span class="at">guide =</span> <span class="st">"colbar"</span></span>
-<span id="cb39-5"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-5"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -1258,12 +1258,12 @@ Teun van den Brand
 <p>Aside from composability, re-imagined guides come with extra features.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>p3 <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">colour =</span> temperature) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>p3 <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">colour =</span> temperature) <span class="sc">+</span></span>
 <span id="cb40-2"><a></a>  <span class="fu">scale_colour_viridis_c</span>(</span>
 <span id="cb40-3"><a></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="dv">300</span>),</span>
 <span id="cb40-4"><a></a>    <span class="at">guide =</span> <span class="st">"colbar"</span>,</span>
 <span id="cb40-5"><a></a>    <span class="at">oob =</span> scales<span class="sc">::</span>oob_squish</span>
-<span id="cb40-6"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-6"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -1285,7 +1285,7 @@ Teun van den Brand
 </section>
 <section id="exercise-4.4" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/4_theme_guide.qmd#exercise-4.4-custom-guides">Exercise 4.4</a></h2>
-<div id="timer_2cf02641ef951a838f1c99d9d3648bf3c84f82a6" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_b1c74721e39ff532675fe9c9d653f9b7ac2e0bc0" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -1488,7 +1488,7 @@ Teun van den Brand
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1600,13 +1600,14 @@ Teun van den Brand
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

@@ -7,10 +7,10 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-5976f41d9484d52fe052c70bfe1df58c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-8e4e14b15a7e2cd7dcd71f711558ebb9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/quarto-contrib/countdown-0.5.0/countdown.js"></script>
 <link href="../site_libs/quarto-contrib/countdown-0.5.0/countdown.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.34">
+  <meta name="generator" content="quarto-1.8.24">
 
   <meta name="author" content="Teun van den Brand">
   <title>Mastering Data Visualization with ggplot2 – Creating extensions</title>
@@ -98,7 +98,7 @@
     code span.vs { color: #a3be8c; } /* VerbatimString */
     code span.wa { color: #bf616a; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-533d6c76c08492e31a51aaad62ff101b.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-35de1ab00eb51d9ea3b36b1a82fe3846.css">
   <link rel="stylesheet" href="styles.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -232,7 +232,7 @@ Teun van den Brand
 </ul>
 </div><div class="column">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>bland_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>bland_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span></span>
 <span id="cb1-2"><a></a>  <span class="fu">geom_point</span>()</span>
 <span id="cb1-3"><a></a></span>
 <span id="cb1-4"><a></a>my_theme <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
@@ -240,7 +240,7 @@ Teun van den Brand
 <span id="cb1-6"><a></a>    <span class="fu">theme</span>(<span class="at">geom =</span> <span class="fu">element_geom</span>(<span class="at">ink =</span> <span class="st">"red"</span>))</span>
 <span id="cb1-7"><a></a>}</span>
 <span id="cb1-8"><a></a></span>
-<span id="cb1-9"><a></a>bland_plot <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a></a>bland_plot <span class="sc">+</span> <span class="fu">my_theme</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -263,13 +263,13 @@ Teun van den Brand
 </ul>
 </div><div class="column">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>scale_x_asinh <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>scale_x_asinh <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
 <span id="cb2-2"><a></a>  <span class="fu">scale_x_continuous</span>(</span>
 <span id="cb2-3"><a></a>    <span class="at">transform =</span> scales<span class="sc">::</span><span class="fu">transform_asinh</span>()</span>
 <span id="cb2-4"><a></a>  )</span>
 <span id="cb2-5"><a></a>}</span>
 <span id="cb2-6"><a></a></span>
-<span id="cb2-7"><a></a>bland_plot <span class="sc">+</span> <span class="fu">scale_x_asinh</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-7"><a></a>bland_plot <span class="sc">+</span> <span class="fu">scale_x_asinh</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -296,7 +296,7 @@ Teun van den Brand
 </ul>
 </div><div class="column">
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-16"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1"></a>StatDensity</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-16"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1"></a>StatDensity</span>
 <span id="annotated-cell-16-2"><a href="#annotated-cell-16-2"></a><span class="co">#&gt; &lt;ggproto object: Class StatDensity, Stat, gg&gt;</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1">1</button><span id="annotated-cell-16-3" class="code-annotation-target"><a href="#annotated-cell-16-3"></a><span class="co">#&gt;     aesthetics: function</span></span>
 <span id="annotated-cell-16-4"><a href="#annotated-cell-16-4"></a><span class="co">#&gt;     compute_group: function</span></span>
@@ -313,7 +313,7 @@ Teun van den Brand
 <span id="annotated-cell-16-15"><a href="#annotated-cell-16-15"></a><span class="co">#&gt;     optional_aes:</span></span>
 <span id="annotated-cell-16-16"><a href="#annotated-cell-16-16"></a><span class="co">#&gt;     required_aes: x|y</span></span>
 <span id="annotated-cell-16-17"><a href="#annotated-cell-16-17"></a><span class="co">#&gt;     retransform: TRUE</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="3">3</button><span id="annotated-cell-16-18" class="code-annotation-target"><a href="#annotated-cell-16-18"></a><span class="co">#&gt;     super:  &lt;ggproto object: Class Stat, gg&gt;</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="3">3</button><span id="annotated-cell-16-18" class="code-annotation-target"><a href="#annotated-cell-16-18"></a><span class="co">#&gt;     super:  &lt;ggproto object: Class Stat, gg&gt;</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
@@ -337,7 +337,7 @@ Teun van den Brand
 <h2>ggproto esoterica</h2>
 <p>Primer on modify-in-place</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Creating modifiable copy of Stat</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Creating modifiable copy of Stat</span></span>
 <span id="cb3-2"><a></a>StatGood <span class="ot">&lt;-</span> <span class="fu">ggproto</span>(<span class="cn">NULL</span>, Stat)</span>
 <span id="cb3-3"><a></a></span>
 <span id="cb3-4"><a></a><span class="co"># Changing a field</span></span>
@@ -354,14 +354,14 @@ Teun van den Brand
 <span id="cb3-15"><a></a><span class="do">## [1] "x"</span></span>
 <span id="cb3-16"><a></a></span>
 <span id="cb3-17"><a></a><span class="co"># Never circularly define a ggproto object</span></span>
-<span id="cb3-18"><a></a><span class="co"># Stat &lt;- ggproto(NULL, Stat)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-18"><a></a><span class="co"># Stat &lt;- ggproto(NULL, Stat)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="ggproto-esoterica-1" class="slide level2">
 <h2>ggproto esoterica</h2>
 <p>Methods have access to the class object itself via a <code>self</code> variable if it is included as an argument in the method. It can be used to read fields and use other methods.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>Stat<span class="sc">$</span>aesthetics</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>Stat<span class="sc">$</span>aesthetics</span>
 <span id="cb4-2"><a></a><span class="do">## &lt;ggproto method&gt;</span></span>
 <span id="cb4-3"><a></a><span class="do">##   &lt;Wrapper function&gt;</span></span>
 <span id="cb4-4"><a></a><span class="do">##     function (...) </span></span>
@@ -382,14 +382,14 @@ Teun van den Brand
 <span id="cb4-19"><a></a><span class="do">## }</span></span>
 <span id="cb4-20"><a></a></span>
 <span id="cb4-21"><a></a>StatDensity<span class="sc">$</span><span class="fu">aesthetics</span>()</span>
-<span id="cb4-22"><a></a><span class="do">## [1] "x"      "y"      "fill"   "weight" "group"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-22"><a></a><span class="do">## [1] "x"      "y"      "fill"   "weight" "group"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="ggproto-esoterica-2" class="slide level2">
 <h2>ggproto esoterica</h2>
 <p>Extendible classes are <em>stateless</em>: fields don’t mutate during plot building. State is primarily encoded in the data, and secondarily in <code>params</code> managed by ggplot2’s internals. Fields should be ‘read only’.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>AddNumber <span class="ot">&lt;-</span> <span class="fu">ggproto</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>AddNumber <span class="ot">&lt;-</span> <span class="fu">ggproto</span>(</span>
 <span id="cb5-2"><a></a>  <span class="st">"AddNumber"</span>,</span>
 <span id="cb5-3"><a></a>  <span class="at">state =</span> <span class="dv">0</span>,</span>
 <span id="cb5-4"><a></a>  <span class="at">add =</span> <span class="cf">function</span>(self, number) {</span>
@@ -402,7 +402,7 @@ Teun van den Brand
 <span id="cb5-11"><a></a>AddNumber<span class="sc">$</span><span class="fu">add</span>(<span class="dv">10</span>)</span>
 <span id="cb5-12"><a></a><span class="do">## [1] 10</span></span>
 <span id="cb5-13"><a></a>AddNumber<span class="sc">$</span><span class="fu">add</span>(<span class="dv">5</span>)</span>
-<span id="cb5-14"><a></a><span class="do">## [1] 15</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-14"><a></a><span class="do">## [1] 15</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="build-your-own-stat" class="slide level2">
@@ -419,13 +419,13 @@ Teun van den Brand
 <h3 id="defining-a-compute-function">Defining a compute function</h3>
 <p>This adds fitted values and residuals from a linear model to data as computed variables. Similar to a bare bone <code>broom::augment()</code>. It assumes the presence of an <code>x</code> and <code>y</code> variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>residual_lines <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">formula =</span> y <span class="sc">~</span> x, ...) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>residual_lines <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">formula =</span> y <span class="sc">~</span> x, ...) {</span>
 <span id="cb6-2"><a></a>  model <span class="ot">&lt;-</span> <span class="fu">lm</span>(formula, <span class="at">data =</span> data)</span>
 <span id="cb6-3"><a></a>  <span class="co"># Create computed variables</span></span>
 <span id="cb6-4"><a></a>  data<span class="sc">$</span>fitted <span class="ot">&lt;-</span> <span class="fu">predict</span>(model)</span>
 <span id="cb6-5"><a></a>  data<span class="sc">$</span>residual <span class="ot">&lt;-</span> <span class="fu">residuals</span>(model)</span>
 <span id="cb6-6"><a></a>  data</span>
-<span id="cb6-7"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-7"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -434,7 +434,7 @@ Teun van den Brand
 <p>You can test the compute function outside ggplot to convince yourself it is doing the right thing. Using a separate function is also easier to debug.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(disp, mpg)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(disp, mpg)) <span class="sc">+</span></span>
 <span id="cb7-2"><a></a>  <span class="fu">geom_smooth</span>(</span>
 <span id="cb7-3"><a></a>    <span class="at">method =</span> <span class="st">"lm"</span>, </span>
 <span id="cb7-4"><a></a>    <span class="at">formula =</span> y <span class="sc">~</span> x</span>
@@ -449,7 +449,7 @@ Teun van den Brand
 <span id="cb7-13"><a></a>p <span class="sc">+</span> <span class="fu">geom_segment</span>(</span>
 <span id="cb7-14"><a></a>  <span class="at">data =</span> new_data,</span>
 <span id="cb7-15"><a></a>  <span class="fu">aes</span>(<span class="at">yend =</span> fitted)</span>
-<span id="cb7-16"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-16"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -466,13 +466,13 @@ Teun van den Brand
 <p>We create a Stat subclass using our function as the <code>compute_group</code> method.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>StatResidual <span class="ot">&lt;-</span> <span class="fu">ggproto</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>StatResidual <span class="ot">&lt;-</span> <span class="fu">ggproto</span>(</span>
 <span id="cb8-2"><a></a>  <span class="st">"StatResidual"</span>, <span class="co"># class name</span></span>
 <span id="cb8-3"><a></a>  Stat,           <span class="co"># parent</span></span>
 <span id="cb8-4"><a></a>  <span class="at">compute_group =</span> residual_lines</span>
 <span id="cb8-5"><a></a>)</span>
 <span id="cb8-6"><a></a></span>
-<span id="cb8-7"><a></a>p <span class="sc">+</span> <span class="fu">geom_segment</span>(<span class="at">stat =</span> StatResidual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-7"><a></a>p <span class="sc">+</span> <span class="fu">geom_segment</span>(<span class="at">stat =</span> StatResidual)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-error">
 <pre><code>Error in `geom_segment()`:
@@ -490,7 +490,7 @@ Caused by error in `compute_geom_1()`:
 <p>To resolve friction, we can try fixing it on the user-side.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>StatResidual <span class="ot">&lt;-</span> <span class="fu">ggproto</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" data-code-line-numbers="8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>StatResidual <span class="ot">&lt;-</span> <span class="fu">ggproto</span>(</span>
 <span id="cb10-2"><a></a>  <span class="st">"StatResidual"</span>, <span class="co"># class name</span></span>
 <span id="cb10-3"><a></a>  Stat,           <span class="co"># parent</span></span>
 <span id="cb10-4"><a></a>  <span class="at">compute_group =</span> residual_lines</span>
@@ -499,7 +499,7 @@ Caused by error in `compute_geom_1()`:
 <span id="cb10-7"><a></a>p <span class="sc">+</span> <span class="fu">geom_segment</span>(</span>
 <span id="cb10-8"><a></a>  <span class="fu">aes</span>(<span class="at">yend =</span> <span class="fu">after_stat</span>(fitted)), </span>
 <span id="cb10-9"><a></a>  <span class="at">stat =</span> StatResidual</span>
-<span id="cb10-10"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-10"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -516,7 +516,7 @@ Caused by error in `compute_geom_1()`:
 <p>But in this case we can provide the missing aesthetic as a default from the computed variables.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="5-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>StatResidual <span class="ot">&lt;-</span> <span class="fu">ggproto</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" data-code-line-numbers="5-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>StatResidual <span class="ot">&lt;-</span> <span class="fu">ggproto</span>(</span>
 <span id="cb11-2"><a></a>  <span class="st">"StatResidual"</span>,</span>
 <span id="cb11-3"><a></a>  Stat,</span>
 <span id="cb11-4"><a></a>  <span class="at">compute_group =</span> residual_lines,</span>
@@ -525,7 +525,7 @@ Caused by error in `compute_geom_1()`:
 <span id="cb11-7"><a></a>  )</span>
 <span id="cb11-8"><a></a>)</span>
 <span id="cb11-9"><a></a></span>
-<span id="cb11-10"><a></a>p <span class="sc">+</span> <span class="fu">geom_segment</span>(<span class="at">stat =</span> StatResidual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-10"><a></a>p <span class="sc">+</span> <span class="fu">geom_segment</span>(<span class="at">stat =</span> StatResidual)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -542,7 +542,7 @@ Caused by error in `compute_geom_1()`:
 <p>We may need to formalise any required aesthetics, or in some cases: list optional aesthetics.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="8-14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>StatResidual <span class="ot">&lt;-</span> <span class="fu">ggproto</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" data-code-line-numbers="8-14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>StatResidual <span class="ot">&lt;-</span> <span class="fu">ggproto</span>(</span>
 <span id="cb12-2"><a></a>  <span class="st">"StatResidual"</span>,</span>
 <span id="cb12-3"><a></a>  Stat,</span>
 <span id="cb12-4"><a></a>  <span class="at">compute_group =</span> residual_lines,</span>
@@ -558,7 +558,7 @@ Caused by error in `compute_geom_1()`:
 <span id="cb12-14"><a></a>  <span class="at">optional_aes =</span> <span class="fu">character</span>() </span>
 <span id="cb12-15"><a></a>)</span>
 <span id="cb12-16"><a></a></span>
-<span id="cb12-17"><a></a>p <span class="sc">+</span> <span class="fu">geom_segment</span>(<span class="at">stat =</span> StatResidual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-17"><a></a>p <span class="sc">+</span> <span class="fu">geom_segment</span>(<span class="at">stat =</span> StatResidual)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -575,8 +575,8 @@ Caused by error in `compute_geom_1()`:
 <p>We can re-assure ourselves that our Stat behaves correctly when the data has groups.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>p <span class="sc">+</span> <span class="fu">geom_segment</span>(<span class="at">stat =</span> StatResidual) <span class="sc">+</span></span>
-<span id="cb13-2"><a></a>  <span class="fu">aes</span>(<span class="at">colour =</span> <span class="fu">factor</span>(cyl))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>p <span class="sc">+</span> <span class="fu">geom_segment</span>(<span class="at">stat =</span> StatResidual) <span class="sc">+</span></span>
+<span id="cb13-2"><a></a>  <span class="fu">aes</span>(<span class="at">colour =</span> <span class="fu">factor</span>(cyl))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -611,7 +611,7 @@ Caused by error in `compute_geom_1()`:
 <p>A good start is to use other constructors as a template.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="annotated-cell-11"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-11-1"><a href="#annotated-cell-11-1"></a>stat_boxplot</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-11"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-11-1"><a href="#annotated-cell-11-1"></a>stat_boxplot</span>
 <span id="annotated-cell-11-2"><a href="#annotated-cell-11-2"></a><span class="co">#&gt; function(</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1">1</button><span id="annotated-cell-11-3" class="code-annotation-target"><a href="#annotated-cell-11-3"></a><span class="co">#&gt;   mapping = NULL,</span></span>
 <span id="annotated-cell-11-4"><a href="#annotated-cell-11-4"></a><span class="co">#&gt;   data = NULL,</span></span>
@@ -639,7 +639,7 @@ Caused by error in `compute_geom_1()`:
 <span id="annotated-cell-11-26"><a href="#annotated-cell-11-26"></a><span class="co">#&gt;       ...</span></span>
 <span id="annotated-cell-11-27"><a href="#annotated-cell-11-27"></a><span class="co">#&gt;     )</span></span>
 <span id="annotated-cell-11-28"><a href="#annotated-cell-11-28"></a><span class="co">#&gt;   )</span></span>
-<span id="annotated-cell-11-29"><a href="#annotated-cell-11-29"></a><span class="co">#&gt; }</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-11-29"><a href="#annotated-cell-11-29"></a><span class="co">#&gt; }</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
@@ -681,7 +681,7 @@ Caused by error in `compute_geom_1()`:
 <p>When we make our own constructor, we follow the same rules.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-12-1"><a href="#annotated-cell-12-1"></a>stat_residual <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-12-1"><a href="#annotated-cell-12-1"></a>stat_residual <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1">1</button><span id="annotated-cell-12-2" class="code-annotation-target"><a href="#annotated-cell-12-2"></a>  <span class="at">mapping =</span> <span class="cn">NULL</span>,</span>
 <span id="annotated-cell-12-3"><a href="#annotated-cell-12-3"></a>  <span class="at">data =</span> <span class="cn">NULL</span>,</span>
 <span id="annotated-cell-12-4"><a href="#annotated-cell-12-4"></a>  <span class="at">geom =</span> <span class="st">"segment"</span>,</span>
@@ -708,7 +708,7 @@ Caused by error in `compute_geom_1()`:
 <span id="annotated-cell-12-25"><a href="#annotated-cell-12-25"></a>  )</span>
 <span id="annotated-cell-12-26"><a href="#annotated-cell-12-26"></a>}</span>
 <span id="annotated-cell-12-27"><a href="#annotated-cell-12-27"></a></span>
-<span id="annotated-cell-12-28"><a href="#annotated-cell-12-28"></a>p <span class="sc">+</span> <span class="fu">stat_residual</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-12-28"><a href="#annotated-cell-12-28"></a>p <span class="sc">+</span> <span class="fu">stat_residual</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
@@ -757,7 +757,7 @@ Caused by error in `compute_geom_1()`:
 <p>Instead of following all the rules, you can also use cookie-cutter <code>make_constructor()</code>.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>stat_residual <span class="ot">&lt;-</span> <span class="fu">make_constructor</span>(StatResidual, <span class="at">geom =</span> <span class="st">"segment"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>stat_residual <span class="ot">&lt;-</span> <span class="fu">make_constructor</span>(StatResidual, <span class="at">geom =</span> <span class="st">"segment"</span>)</span>
 <span id="cb14-2"><a></a><span class="fu">print</span>(stat_residual)</span>
 <span id="cb14-3"><a></a><span class="do">## function (mapping = NULL, data = NULL, geom = "segment", position = "identity", </span></span>
 <span id="cb14-4"><a></a><span class="do">##     ..., formula = y ~ x, na.rm = FALSE, show.legend = NA, inherit.aes = TRUE) </span></span>
@@ -766,9 +766,9 @@ Caused by error in `compute_geom_1()`:
 <span id="cb14-7"><a></a><span class="do">##         position = position, show.legend = show.legend, inherit.aes = inherit.aes, </span></span>
 <span id="cb14-8"><a></a><span class="do">##         params = list2(na.rm = na.rm, formula = formula, ...))</span></span>
 <span id="cb14-9"><a></a><span class="do">## }</span></span>
-<span id="cb14-10"><a></a><span class="do">## &lt;environment: 0x5574d1913fb0&gt;</span></span>
+<span id="cb14-10"><a></a><span class="do">## &lt;environment: 0x55ad069a00d0&gt;</span></span>
 <span id="cb14-11"><a></a></span>
-<span id="cb14-12"><a></a>p <span class="sc">+</span> <span class="fu">stat_residual</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-12"><a></a>p <span class="sc">+</span> <span class="fu">stat_residual</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -802,7 +802,7 @@ Caused by error in `compute_geom_1()`:
 </ul>
 </div><div class="column">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>StatContour<span class="sc">$</span>setup_params</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>StatContour<span class="sc">$</span>setup_params</span>
 <span id="cb15-2"><a></a><span class="do">## &lt;ggproto method&gt;</span></span>
 <span id="cb15-3"><a></a><span class="do">##   &lt;Wrapper function&gt;</span></span>
 <span id="cb15-4"><a></a><span class="do">##     function (...) </span></span>
@@ -813,7 +813,7 @@ Caused by error in `compute_geom_1()`:
 <span id="cb15-9"><a></a><span class="do">## {</span></span>
 <span id="cb15-10"><a></a><span class="do">##     params$z.range &lt;- range(data$z, na.rm = TRUE, finite = TRUE)</span></span>
 <span id="cb15-11"><a></a><span class="do">##     params</span></span>
-<span id="cb15-12"><a></a><span class="do">## }</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-12"><a></a><span class="do">## }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 </section>
@@ -836,7 +836,7 @@ Caused by error in `compute_geom_1()`:
 </ul>
 </div><div class="column">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>StatBoxplot<span class="sc">$</span>setup_data</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>StatBoxplot<span class="sc">$</span>setup_data</span>
 <span id="cb16-2"><a></a><span class="do">## &lt;ggproto method&gt;</span></span>
 <span id="cb16-3"><a></a><span class="do">##   &lt;Wrapper function&gt;</span></span>
 <span id="cb16-4"><a></a><span class="do">##     function (...) </span></span>
@@ -850,7 +850,7 @@ Caused by error in `compute_geom_1()`:
 <span id="cb16-12"><a></a><span class="do">##     data &lt;- remove_missing(data, na.rm = params$na.rm, vars = "x", </span></span>
 <span id="cb16-13"><a></a><span class="do">##         name = "stat_boxplot")</span></span>
 <span id="cb16-14"><a></a><span class="do">##     flip_data(data, params$flipped_aes)</span></span>
-<span id="cb16-15"><a></a><span class="do">## }</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-15"><a></a><span class="do">## }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 </section>
@@ -868,7 +868,7 @@ Caused by error in `compute_geom_1()`:
 </section>
 <section id="exercise-6" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/6_extensions.qmd#exercise-6-extension">Exercise 6</a></h2>
-<div id="timer_0cb1381df77f5e90ce7679275eba83b238189553" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_7adae03443ce949418ca205e9e2dce92bf87e16d" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -1136,7 +1136,7 @@ Caused by error in `compute_geom_1()`:
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1248,13 +1248,14 @@ Caused by error in `compute_geom_1()`:
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

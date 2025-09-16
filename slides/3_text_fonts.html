@@ -7,10 +7,10 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-5976f41d9484d52fe052c70bfe1df58c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-8e4e14b15a7e2cd7dcd71f711558ebb9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/quarto-contrib/countdown-0.5.0/countdown.js"></script>
 <link href="../site_libs/quarto-contrib/countdown-0.5.0/countdown.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.34">
+  <meta name="generator" content="quarto-1.8.24">
 
   <meta name="author" content="Thomas Lin Pedersen">
   <title>Mastering Data Visualization with ggplot2 – Text rendering and font use</title>
@@ -98,7 +98,7 @@
     code span.vs { color: #a3be8c; } /* VerbatimString */
     code span.wa { color: #bf616a; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-533d6c76c08492e31a51aaad62ff101b.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-35de1ab00eb51d9ea3b36b1a82fe3846.css">
   <link rel="stylesheet" href="styles.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -236,9 +236,9 @@ Thomas Lin Pedersen
 <section id="selecting-the-right-typeface" class="slide level2">
 <h2>Selecting the right typeface</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
 <span id="cb1-2"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_len, <span class="at">y =</span> body_mass)) <span class="sc">+</span></span>
-<span id="cb1-3"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"FANCY FONT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"FANCY FONT"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stderr">
@@ -392,19 +392,19 @@ font family 'FANCY FONT' not found in PostScript font database</code></pre>
 <li><strong>In Shiny and plumber2</strong>: Used by default</li>
 </ul>
 <p>or</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>ragg<span class="sc">::</span><span class="fu">agg_png</span>() <span class="co"># instead of calling png()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>ragg<span class="sc">::</span><span class="fu">agg_png</span>() <span class="co"># instead of calling png()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="systemfonts" class="slide level2">
 <h2>systemfonts</h2>
 <h4 id="it-should-just-work">It (should) just work</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(systemfonts)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(systemfonts)</span>
 <span id="cb9-2"><a></a></span>
-<span id="cb9-3"><a></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(<span class="fu">system_fonts</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(<span class="fu">system_fonts</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 181
 Columns: 9
-$ path      &lt;chr&gt; "/tmp/RtmpLOuNG1/Barrio-regular.ttf", "/tmp/RtmpLOuNG1/Monte…
+$ path      &lt;chr&gt; "/tmp/RtmpHiEMLQ/Barrio-regular.ttf", "/tmp/RtmpHiEMLQ/Monte…
 $ index     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
 $ name      &lt;chr&gt; "Barrio-Regular", "MonteCarlo-Regular", "Datalegreya-Thin", …
 $ family    &lt;chr&gt; "Barrio", "MonteCarlo", "Datalegreya", "Datalegreya", "Datal…
@@ -421,7 +421,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <h4 id="it-should-just-work-1">It (should) just work</h4>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
 <span id="cb11-2"><a></a>  <span class="fu">geom_point</span>(</span>
 <span id="cb11-3"><a></a>    <span class="fu">aes</span>(</span>
 <span id="cb11-4"><a></a>      <span class="at">x =</span> bill_len,</span>
@@ -430,7 +430,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <span id="cb11-7"><a></a>  ) <span class="sc">+</span></span>
 <span id="cb11-8"><a></a>  <span class="fu">theme_minimal</span>(</span>
 <span id="cb11-9"><a></a>    <span class="at">base_family =</span> <span class="st">"Barrio"</span></span>
-<span id="cb11-10"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-10"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -446,7 +446,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <h4 id="it-should-just-work-2">It (should) just work</h4>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
 <span id="cb12-2"><a></a>  <span class="fu">geom_point</span>(</span>
 <span id="cb12-3"><a></a>    <span class="fu">aes</span>(</span>
 <span id="cb12-4"><a></a>      <span class="at">x =</span> bill_len,</span>
@@ -458,7 +458,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <span id="cb12-10"><a></a>  ) <span class="sc">+</span></span>
 <span id="cb12-11"><a></a>  <span class="fu">labs</span>(</span>
 <span id="cb12-12"><a></a>    <span class="at">title =</span> <span class="st">"I speak emoji 🤓"</span></span>
-<span id="cb12-13"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-13"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -535,7 +535,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 </section>
 <section id="exercise-3.1" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/3_text_fonts.qmd#working-with-fonts">Exercise 3.1</a></h2>
-<div id="timer_a02dcff550b64920a1173849f57109bce945fa9f" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_e9683fb076719608c4a83de44bdff99078ddb154" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -591,7 +591,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <h2>marquee</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">library</span>(marquee)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">library</span>(marquee)</span>
 <span id="cb13-2"><a></a></span>
 <span id="cb13-3"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
 <span id="cb13-4"><a></a><span class="st">Now you too can **sound like an llm**</span></span>
@@ -606,7 +606,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <span id="cb13-13"><a></a><span class="st">words that **underscore your potential**</span></span>
 <span id="cb13-14"><a></a><span class="st">"</span></span>
 <span id="cb13-15"><a></a></span>
-<span id="cb13-16"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-16"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -635,14 +635,14 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <h2>Custom spans</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
 <span id="cb14-2"><a></a><span class="st">Some {.red *red* text} and some {#00FF00 *green*</span></span>
 <span id="cb14-3"><a></a><span class="st">text} walked into a {.30 huge} bar and said to </span></span>
 <span id="cb14-4"><a></a><span class="st">the {.person barman}: ”Can I get a glass of </span></span>
 <span id="cb14-5"><a></a><span class="st">H{.sub 2}O?”</span></span>
 <span id="cb14-6"><a></a><span class="st">"</span></span>
 <span id="cb14-7"><a></a></span>
-<span id="cb14-8"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-8"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -655,7 +655,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 </section>
 <section id="exercise-3.2" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/3_text_fonts.html#basic-markdown-formatting-with-marquee">Exercise 3.2</a></h2>
-<div id="timer_a02dcff550b64920a1173849f57109bce945fa9f" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_e9683fb076719608c4a83de44bdff99078ddb154" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -667,7 +667,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <h2>Supercharged images</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">last_plot</span>()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">last_plot</span>()</span>
 <span id="cb15-2"><a></a>point <span class="ot">&lt;-</span> grid<span class="sc">::</span><span class="fu">pointsGrob</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>)</span>
 <span id="cb15-3"><a></a></span>
 <span id="cb15-4"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
@@ -678,7 +678,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <span id="cb15-9"><a></a><span class="st">It can even work with grobs: ![](point)</span></span>
 <span id="cb15-10"><a></a><span class="st">"</span></span>
 <span id="cb15-11"><a></a></span>
-<span id="cb15-12"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-12"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -694,7 +694,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <p>No markdown table support, but…</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>table <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">gt</span>(penguins[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>table <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">gt</span>(penguins[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span>
 <span id="cb16-2"><a></a></span>
 <span id="cb16-3"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
 <span id="cb16-4"><a></a><span class="st">Why use markdown when you have gt</span></span>
@@ -702,7 +702,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <span id="cb16-6"><a></a><span class="st">![](table)</span></span>
 <span id="cb16-7"><a></a><span class="st">"</span></span>
 <span id="cb16-8"><a></a></span>
-<span id="cb16-9"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-9"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">marquee_grob</span>(text))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -719,7 +719,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <li><p>So far we have used the default style which matches standard (GitHub) markdown rendering</p></li>
 <li><p>marquee provides a simple but powerful styling system</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">classic_style</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">classic_style</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;marquee_style_set[1]&gt;
 [1] &lt;base, body, ul, ol, li, hr, h1, h2, h3, h4, h5, h6, cb, p, qb, em, str, a, code, u, del, img, sub, sup, out&gt;</code></pre>
@@ -732,7 +732,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <ul>
 <li><p>Each tag can be styled with 39 different properties</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">names</span>(<span class="fu">classic_style</span>()[[<span class="dv">1</span>]]<span class="sc">$</span>base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">names</span>(<span class="fu">classic_style</span>()[[<span class="dv">1</span>]]<span class="sc">$</span>base)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "size"                "background"          "color"              
  [4] "family"              "weight"              "italic"             
@@ -771,7 +771,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <section id="styling-3" class="slide level2">
 <h2>Styling</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>new_style <span class="ot">&lt;-</span> <span class="fu">classic_style</span>(<span class="at">base_size =</span> <span class="dv">30</span>) <span class="sc">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>new_style <span class="ot">&lt;-</span> <span class="fu">classic_style</span>(<span class="at">base_size =</span> <span class="dv">30</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb21-2"><a></a>  <span class="fu">modify_style</span>(</span>
 <span id="cb21-3"><a></a>    <span class="st">"fancy"</span>,</span>
 <span id="cb21-4"><a></a>    <span class="at">family =</span> <span class="st">"MonteCarlo"</span>,</span>
@@ -785,14 +785,14 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <span id="cb21-12"><a></a>    <span class="st">"plot"</span>,</span>
 <span id="cb21-13"><a></a>    <span class="at">family =</span> <span class="st">"Datalegreya"</span>,</span>
 <span id="cb21-14"><a></a>    <span class="at">weight =</span> <span class="st">"bold"</span></span>
-<span id="cb21-15"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-15"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="styling-4" class="slide level2">
 <h2>Styling</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>text <span class="ot">&lt;-</span> <span class="st">"</span></span>
 <span id="cb22-2"><a></a><span class="st">{.fancy Readability is overrated}</span></span>
 <span id="cb22-3"><a></a></span>
 <span id="cb22-4"><a></a><span class="st">{.plot Even when it  </span></span>
@@ -801,7 +801,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <span id="cb22-7"><a></a></span>
 <span id="cb22-8"><a></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(</span>
 <span id="cb22-9"><a></a>  <span class="fu">marquee_grob</span>(text, new_style)</span>
-<span id="cb22-10"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-10"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -814,7 +814,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 </section>
 <section id="exercise-3.3" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/3_text_fonts.qmd#advanced-marquee-styling">Exercise 3.3</a></h2>
-<div id="timer_a02dcff550b64920a1173849f57109bce945fa9f" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_e9683fb076719608c4a83de44bdff99078ddb154" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -846,7 +846,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <h2><code>geom_marquee()</code></h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb23" data-code-line-numbers="|24-31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>penguins<span class="sc">$</span>outlier <span class="ot">&lt;-</span> penguins<span class="sc">$</span>bill_len <span class="sc">&gt;</span> <span class="dv">55</span> <span class="sc">&amp;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" data-code-line-numbers="|24-31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>penguins<span class="sc">$</span>outlier <span class="ot">&lt;-</span> penguins<span class="sc">$</span>bill_len <span class="sc">&gt;</span> <span class="dv">55</span> <span class="sc">&amp;</span> </span>
 <span id="cb23-2"><a></a>  penguins<span class="sc">$</span>flipper_len <span class="sc">&lt;</span> <span class="dv">190</span></span>
 <span id="cb23-3"><a></a>penguins<span class="sc">$</span>text <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
 <span id="cb23-4"><a></a>  <span class="st">"Suspecious *Pygoscelis "</span>, </span>
@@ -876,7 +876,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <span id="cb23-28"><a></a>    <span class="at">style =</span> style,</span>
 <span id="cb23-29"><a></a>    <span class="at">hjust =</span> <span class="dv">1</span>,</span>
 <span id="cb23-30"><a></a>    <span class="at">vjust =</span> <span class="dv">1</span></span>
-<span id="cb23-31"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-31"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -891,7 +891,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <h2><code>geom_marquee()</code></h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">ggplot</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">ggplot</span>(</span>
 <span id="cb24-2"><a></a>  penguins, </span>
 <span id="cb24-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> bill_len, <span class="at">y =</span> flipper_len)</span>
 <span id="cb24-4"><a></a>) <span class="sc">+</span> </span>
@@ -906,7 +906,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <span id="cb24-13"><a></a>    <span class="at">hjust =</span> <span class="st">"right-ink"</span>,</span>
 <span id="cb24-14"><a></a>    <span class="at">vjust =</span> <span class="dv">1</span>,</span>
 <span id="cb24-15"><a></a>    <span class="at">width =</span> <span class="fu">unit</span>(<span class="dv">5</span>, <span class="st">"cm"</span>)</span>
-<span id="cb24-16"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-16"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -929,7 +929,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <h2><code>element_marquee()</code></h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">ggplot</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">ggplot</span>(</span>
 <span id="cb25-2"><a></a>  penguins, </span>
 <span id="cb25-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> bill_len, <span class="at">y =</span> flipper_len)</span>
 <span id="cb25-4"><a></a>) <span class="sc">+</span> </span>
@@ -943,7 +943,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <span id="cb25-12"><a></a>    <span class="at">plot.title =</span> <span class="fu">element_marquee</span>(</span>
 <span id="cb25-13"><a></a>      <span class="at">family =</span> <span class="st">"Spectral"</span></span>
 <span id="cb25-14"><a></a>    )</span>
-<span id="cb25-15"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-15"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -965,7 +965,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <h2><code>guide_marquee()</code></h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span> </span>
 <span id="cb26-2"><a></a>  <span class="fu">geom_point</span>(</span>
 <span id="cb26-3"><a></a>    <span class="fu">aes</span>(</span>
 <span id="cb26-4"><a></a>      <span class="at">x =</span> bill_len, </span>
@@ -982,7 +982,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <span id="cb26-15"><a></a>    <span class="at">guide =</span> <span class="fu">guide_marquee</span>(</span>
 <span id="cb26-16"><a></a>      <span class="at">width =</span> <span class="fu">unit</span>(<span class="fl">4.35</span>, <span class="st">"in"</span>)</span>
 <span id="cb26-17"><a></a>    )</span>
-<span id="cb26-18"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-18"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -997,7 +997,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <h2><code>guide_marquee()</code></h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span> </span>
 <span id="cb27-2"><a></a>  <span class="fu">geom_point</span>(</span>
 <span id="cb27-3"><a></a>    <span class="fu">aes</span>(</span>
 <span id="cb27-4"><a></a>      <span class="at">x =</span> bill_len, </span>
@@ -1014,7 +1014,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 <span id="cb27-15"><a></a>    <span class="at">guide =</span> <span class="fu">guide_marquee</span>(</span>
 <span id="cb27-16"><a></a>      <span class="at">width =</span> <span class="fu">unit</span>(<span class="fl">4.35</span>, <span class="st">"in"</span>)</span>
 <span id="cb27-17"><a></a>    )</span>
-<span id="cb27-18"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-18"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -1027,7 +1027,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
 </section>
 <section id="exercise-3.4" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/3_text_fonts.qmd#using-geom_marquee-in-ggplot2">Exercise 3.4</a></h2>
-<div id="timer_a02dcff550b64920a1173849f57109bce945fa9f" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_e9683fb076719608c4a83de44bdff99078ddb154" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -1230,7 +1230,7 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1342,13 +1342,14 @@ $ monospace &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

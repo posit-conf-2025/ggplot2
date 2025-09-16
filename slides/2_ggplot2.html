@@ -7,10 +7,10 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-5976f41d9484d52fe052c70bfe1df58c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-8e4e14b15a7e2cd7dcd71f711558ebb9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/quarto-contrib/countdown-0.5.0/countdown.js"></script>
 <link href="../site_libs/quarto-contrib/countdown-0.5.0/countdown.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.34">
+  <meta name="generator" content="quarto-1.8.24">
 
   <meta name="author" content="Teun van den Brand">
   <title>Mastering Data Visualization with ggplot2 – Modern ggplot2</title>
@@ -98,7 +98,7 @@
     code span.vs { color: #a3be8c; } /* VerbatimString */
     code span.wa { color: #bf616a; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-533d6c76c08492e31a51aaad62ff101b.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-35de1ab00eb51d9ea3b36b1a82fe3846.css">
   <link rel="stylesheet" href="styles.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -248,7 +248,7 @@ Teun van den Brand
 </ul>
 </div><div class="column">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>df <span class="ot">&lt;-</span> mtcars</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>df <span class="ot">&lt;-</span> mtcars</span>
 <span id="cb1-2"><a></a></span>
 <span id="cb1-3"><a></a>df<span class="sc">$</span>mpg <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">labelled</span>(df<span class="sc">$</span>mpg, <span class="at">label =</span> <span class="st">"Miles per gallon"</span>)</span>
 <span id="cb1-4"><a></a></span>
@@ -257,7 +257,7 @@ Teun van den Brand
 <span id="cb1-7"><a></a><span class="do">## [1] 21.0 21.0 22.8 21.4 18.7 18.1</span></span>
 <span id="cb1-8"><a></a></span>
 <span id="cb1-9"><a></a><span class="fu">attr</span>(df<span class="sc">$</span>mpg, <span class="st">"label"</span>)</span>
-<span id="cb1-10"><a></a><span class="do">## [1] "Miles per gallon"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a></a><span class="do">## [1] "Miles per gallon"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 </section>
@@ -273,7 +273,7 @@ Teun van den Brand
 </ul>
 </div><div class="column">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>df <span class="ot">&lt;-</span> mtcars</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>df <span class="ot">&lt;-</span> mtcars</span>
 <span id="cb2-2"><a></a></span>
 <span id="cb2-3"><a></a><span class="fu">attr</span>(df<span class="sc">$</span>mpg, <span class="st">"label"</span>) <span class="ot">&lt;-</span> <span class="st">"Miles per gallon"</span></span>
 <span id="cb2-4"><a></a></span>
@@ -283,7 +283,7 @@ Teun van den Brand
 <span id="cb2-8"><a></a>vctrs<span class="sc">::</span><span class="fu">vec_slice</span>(df<span class="sc">$</span>mpg, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span>
 <span id="cb2-9"><a></a><span class="do">## [1] 21.0 21.0 22.8 21.4 18.7 18.1</span></span>
 <span id="cb2-10"><a></a><span class="do">## attr(,"label")</span></span>
-<span id="cb2-11"><a></a><span class="do">## [1] "Miles per gallon"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-11"><a></a><span class="do">## [1] "Miles per gallon"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 </section>
@@ -293,14 +293,14 @@ Teun van den Brand
 <p>Label attribute automatically detected.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(ggplot2)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb3-2"><a></a><span class="fu">library</span>(patchwork)</span>
 <span id="cb3-3"><a></a></span>
 <span id="cb3-4"><a></a>df <span class="ot">&lt;-</span> mtcars</span>
 <span id="cb3-5"><a></a><span class="fu">attr</span>(df<span class="sc">$</span>mpg, <span class="st">"label"</span>) <span class="ot">&lt;-</span> <span class="st">"Miles per gallon"</span></span>
 <span id="cb3-6"><a></a></span>
 <span id="cb3-7"><a></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(mpg, disp)) <span class="sc">+</span></span>
-<span id="cb3-8"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-8"><a></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -316,7 +316,7 @@ Teun van den Brand
 <h3 id="data-dictionary">Data dictionary</h3>
 <p>Example dictionary for <code>mtcars</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>dict <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>dict <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
 <span id="cb4-2"><a></a>  <span class="sc">~</span>column, <span class="sc">~</span>label,                <span class="sc">~</span>unit,    <span class="sc">~</span>note,</span>
 <span id="cb4-3"><a></a>  <span class="st">"mpg"</span>,   <span class="st">"Efficiency"</span>,          <span class="st">"mi/gal"</span>, <span class="st">"Gallons are US gallons"</span>,</span>
 <span id="cb4-4"><a></a>  <span class="st">"cyl"</span>,   <span class="st">"Number of cylinders"</span>, <span class="st">""</span>,       <span class="st">""</span>,</span>
@@ -324,7 +324,7 @@ Teun van den Brand
 <span id="cb4-6"><a></a>  <span class="st">"am"</span>,    <span class="st">"Transmission"</span>,        <span class="st">""</span>,       <span class="st">"0 = automatic, 1 = manual"</span></span>
 <span id="cb4-7"><a></a>  <span class="co"># Additional rows for the other variables</span></span>
 <span id="cb4-8"><a></a>)</span>
-<span id="cb4-9"><a></a>dict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-9"><a></a>dict</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 4
   column label               unit     note                       
@@ -341,7 +341,7 @@ Teun van den Brand
 <h3 id="data-dictionary-1">Data dictionary</h3>
 <p>Preparing the dictionary for ggplot2 labels</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># Format label as named vector</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># Format label as named vector</span></span>
 <span id="cb6-2"><a></a>named_vec <span class="ot">&lt;-</span> <span class="fu">setNames</span>(dict<span class="sc">$</span>label, dict<span class="sc">$</span>column)</span>
 <span id="cb6-3"><a></a><span class="co"># or:</span></span>
 <span id="cb6-4"><a></a>named_vec <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">pull</span>(dict, label, <span class="at">name =</span> column)</span>
@@ -350,16 +350,16 @@ Teun van den Brand
 <span id="cb6-7"><a></a><span class="do">##                   mpg                   cyl                  disp </span></span>
 <span id="cb6-8"><a></a><span class="do">##          "Efficiency" "Number of cylinders" "Engine Displacement" </span></span>
 <span id="cb6-9"><a></a><span class="do">##                    am </span></span>
-<span id="cb6-10"><a></a><span class="do">##        "Transmission"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-10"><a></a><span class="do">##        "Transmission"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
 <h3 id="data-dictionary-2">Data dictionary</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(mpg, disp, <span class="at">colour =</span> cyl)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(mpg, disp, <span class="at">colour =</span> cyl)) <span class="sc">+</span></span>
 <span id="cb7-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb7-3"><a></a>  <span class="fu">labs</span>(<span class="at">dictionary =</span> named_vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-3"><a></a>  <span class="fu">labs</span>(<span class="at">dictionary =</span> named_vec)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="2_ggplot2_files/figure-revealjs/unnamed-chunk-6-1.png" width="1728" class="r-stretch"></section>
@@ -373,9 +373,9 @@ Teun van den Brand
 </ul>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(cyl, mpg, <span class="at">group =</span> cyl)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(cyl, mpg, <span class="at">group =</span> cyl)) <span class="sc">+</span></span>
 <span id="cb8-2"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb8-3"><a></a>  <span class="fu">labs</span>(<span class="at">dictionary =</span> named_vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-3"><a></a>  <span class="fu">labs</span>(<span class="at">dictionary =</span> named_vec)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -410,7 +410,7 @@ Teun van den Brand
 </section>
 <section id="exercise-2.1" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/2_ggplot2.qmd#exercise-2.1-headings">Exercise 2.1</a></h2>
-<div id="timer_4fcc5e364a3b71b2aa4fede4fc1e87222826352e" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_126bec097cc0d4ffd6b0ccfc0cebcf505ef3019b" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -434,7 +434,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <h3 id="gradients">Gradients</h3>
 <p>Simple examples of linear and radial gradients.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># A vector of 15 colours</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># A vector of 15 colours</span></span>
 <span id="cb9-2"><a></a>colours <span class="ot">&lt;-</span> <span class="fu">rev</span>(<span class="fu">hcl.colors</span>(<span class="dv">15</span>, <span class="st">"Sunset"</span>))</span>
 <span id="cb9-3"><a></a></span>
 <span id="cb9-4"><a></a><span class="fu">library</span>(grid)</span>
@@ -453,7 +453,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <span id="cb9-17"><a></a>  <span class="at">cx2 =</span> <span class="fl">0.5</span>, <span class="at">cy2 =</span> <span class="fl">0.5</span>, <span class="at">r2 =</span> <span class="fl">0.5</span>,</span>
 <span id="cb9-18"><a></a>  <span class="co"># Draw separately for every area</span></span>
 <span id="cb9-19"><a></a>  <span class="at">group =</span> <span class="cn">FALSE</span></span>
-<span id="cb9-20"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-20"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -462,13 +462,13 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p>Use these gradients by providing them as a list.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars) <span class="sc">+</span></span>
 <span id="cb10-2"><a></a>  <span class="fu">aes</span>(<span class="fu">factor</span>(vs))</span>
 <span id="cb10-3"><a></a></span>
 <span id="cb10-4"><a></a>p1 <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="fu">list</span>(linear))</span>
 <span id="cb10-5"><a></a>p2 <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="fu">list</span>(radial))</span>
 <span id="cb10-6"><a></a></span>
-<span id="cb10-7"><a></a>p1 <span class="sc">/</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-7"><a></a>p1 <span class="sc">/</span> p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -484,9 +484,9 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <h3 id="ribbon-gradient">Ribbon gradient</h3>
 <p>Ribbon geometries now render a varying <code>fill</code> aesthetic as a gradient.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(economics) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(economics) <span class="sc">+</span></span>
 <span id="cb11-2"><a></a>  <span class="fu">aes</span>(date, unemploy, <span class="at">fill =</span> uempmed) <span class="sc">+</span></span>
-<span id="cb11-3"><a></a>  <span class="fu">geom_area</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-3"><a></a>  <span class="fu">geom_area</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="2_ggplot2_files/figure-revealjs/unnamed-chunk-10-1.png" width="1728" class="r-stretch"></section>
@@ -495,7 +495,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <h3 id="patterns">Patterns</h3>
 <p>Patterns are more complicated. You may need to know a little bit of grid to get these right. Here we’re using a diagonal line as a pattern.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="3-9,12|1,8,13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>width <span class="ot">&lt;-</span> height <span class="ot">&lt;-</span> <span class="fu">unit</span>(<span class="dv">3</span>, <span class="st">"mm"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" data-code-line-numbers="3-9,12|1,8,13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>width <span class="ot">&lt;-</span> height <span class="ot">&lt;-</span> <span class="fu">unit</span>(<span class="dv">3</span>, <span class="st">"mm"</span>)</span>
 <span id="cb12-2"><a></a></span>
 <span id="cb12-3"><a></a>inner_drawing <span class="ot">&lt;-</span> <span class="fu">segmentsGrob</span>(</span>
 <span id="cb12-4"><a></a>  <span class="co"># Diagonal line</span></span>
@@ -509,7 +509,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <span id="cb12-12"><a></a>  inner_drawing,</span>
 <span id="cb12-13"><a></a>  <span class="at">width =</span> width, <span class="at">height =</span> height,</span>
 <span id="cb12-14"><a></a>  <span class="at">extend =</span> <span class="st">"repeat"</span></span>
-<span id="cb12-15"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-15"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -518,12 +518,12 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p>Like gradients, patterns can be given as a list.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb13" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">ggplot</span>(mtcars) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">ggplot</span>(mtcars) <span class="sc">+</span></span>
 <span id="cb13-2"><a></a>  <span class="fu">aes</span>(<span class="fu">factor</span>(cyl)) <span class="sc">+</span></span>
 <span id="cb13-3"><a></a>  <span class="fu">geom_bar</span>(</span>
 <span id="cb13-4"><a></a>    <span class="at">fill =</span> <span class="fu">list</span>(hatching),</span>
 <span id="cb13-5"><a></a>    <span class="at">colour =</span> <span class="st">"black"</span></span>
-<span id="cb13-6"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-6"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -540,7 +540,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p>To ‘fix’ patterning artefacts, you may need to adjust the strokes in the inner drawing.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb14" data-code-line-numbers="3-4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>width <span class="ot">&lt;-</span> height <span class="ot">&lt;-</span> <span class="fu">unit</span>(<span class="dv">3</span>, <span class="st">"mm"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" data-code-line-numbers="3-4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>width <span class="ot">&lt;-</span> height <span class="ot">&lt;-</span> <span class="fu">unit</span>(<span class="dv">3</span>, <span class="st">"mm"</span>)</span>
 <span id="cb14-2"><a></a>inner_drawing <span class="ot">&lt;-</span> <span class="fu">segmentsGrob</span>(</span>
 <span id="cb14-3"><a></a>  <span class="at">x0 =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>), <span class="at">x1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>),</span>
 <span id="cb14-4"><a></a>  <span class="at">y0 =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="at">y1 =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>),</span>
@@ -551,7 +551,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <span id="cb14-9"><a></a>  inner_drawing,</span>
 <span id="cb14-10"><a></a>  <span class="at">width =</span> width, <span class="at">height =</span> height,</span>
 <span id="cb14-11"><a></a>  <span class="at">extend =</span> <span class="st">"repeat"</span></span>
-<span id="cb14-12"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-12"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 
 </div></div>
@@ -563,12 +563,12 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p>Using patterns as a scale.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb15" data-code-line-numbers="4-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">ggplot</span>(mtcars) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" data-code-line-numbers="4-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">ggplot</span>(mtcars) <span class="sc">+</span></span>
 <span id="cb15-2"><a></a>  <span class="fu">aes</span>(<span class="fu">factor</span>(cyl), <span class="at">fill =</span> <span class="fu">factor</span>(cyl)) <span class="sc">+</span></span>
 <span id="cb15-3"><a></a>  <span class="fu">geom_bar</span>(<span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb15-4"><a></a>  <span class="fu">scale_fill_manual</span>(</span>
 <span id="cb15-5"><a></a>    <span class="at">values =</span> <span class="fu">list</span>(linear, radial, hatching)</span>
-<span id="cb15-6"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-6"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -585,7 +585,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p>Using the gridpattern package to easily generate patterns.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>herringbone <span class="ot">&lt;-</span> gridpattern<span class="sc">::</span><span class="fu">patternFill</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>herringbone <span class="ot">&lt;-</span> gridpattern<span class="sc">::</span><span class="fu">patternFill</span>(</span>
 <span id="cb16-2"><a></a>  <span class="at">pattern =</span> <span class="st">"polygon_tiling"</span>,</span>
 <span id="cb16-3"><a></a>  <span class="at">type =</span> <span class="st">"herringbone"</span>,</span>
 <span id="cb16-4"><a></a>  <span class="at">spacing =</span> <span class="fl">0.2</span>,</span>
@@ -607,7 +607,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <span id="cb16-20"><a></a>  <span class="at">units =</span> <span class="st">"cm"</span>,</span>
 <span id="cb16-21"><a></a>  <span class="at">colour =</span> <span class="st">"grey40"</span>,</span>
 <span id="cb16-22"><a></a>  <span class="at">linewidth =</span> <span class="fl">0.3</span></span>
-<span id="cb16-23"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-23"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 
 </div></div>
@@ -618,12 +618,12 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p>Using the gridpattern package to easily generate patterns.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">ggplot</span>(mtcars) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">ggplot</span>(mtcars) <span class="sc">+</span></span>
 <span id="cb17-2"><a></a>  <span class="fu">aes</span>(<span class="fu">factor</span>(cyl), <span class="at">fill =</span> <span class="fu">factor</span>(cyl)) <span class="sc">+</span></span>
 <span id="cb17-3"><a></a>  <span class="fu">geom_bar</span>(<span class="at">colour =</span> <span class="st">"grey40"</span>) <span class="sc">+</span></span>
 <span id="cb17-4"><a></a>  <span class="fu">scale_fill_manual</span>(</span>
 <span id="cb17-5"><a></a>    <span class="at">values =</span> <span class="fu">list</span>(herringbone, hexagons, waves)</span>
-<span id="cb17-6"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-6"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -640,7 +640,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p>Parametrised patterns with the ggpattern package.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="8-11|6|12-14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">library</span>(ggpattern)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" data-code-line-numbers="8-11|6|12-14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">library</span>(ggpattern)</span>
 <span id="cb18-2"><a></a></span>
 <span id="cb18-3"><a></a><span class="fu">ggplot</span>(mtcars) <span class="sc">+</span></span>
 <span id="cb18-4"><a></a>  <span class="fu">aes</span>(</span>
@@ -653,7 +653,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <span id="cb18-11"><a></a>  ) <span class="sc">+</span></span>
 <span id="cb18-12"><a></a>  <span class="fu">scale_pattern_spacing_continuous</span>(</span>
 <span id="cb18-13"><a></a>    <span class="at">range =</span> <span class="fu">c</span>(<span class="fl">0.02</span>, <span class="fl">0.05</span>)</span>
-<span id="cb18-14"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-14"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -671,7 +671,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co"># Helper function</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co"># Helper function</span></span>
 <span id="cb19-2"><a></a>width <span class="ot">&lt;-</span> <span class="fu">unit</span>(<span class="dv">20</span>, <span class="st">"pt"</span>)</span>
 <span id="cb19-3"><a></a>patternise_text <span class="ot">&lt;-</span> <span class="cf">function</span>(text) {</span>
 <span id="cb19-4"><a></a>  <span class="fu">lapply</span>(text, <span class="cf">function</span>(string) {</span>
@@ -712,7 +712,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <span id="cb19-39"><a></a>  <span class="fu">theme</span>(</span>
 <span id="cb19-40"><a></a>    <span class="at">legend.key.width =</span> width,</span>
 <span id="cb19-41"><a></a>    <span class="at">legend.key.height =</span> <span class="fu">unit</span>(<span class="dv">18</span>, <span class="st">"pt"</span>) <span class="co"># see fontsize in pattern</span></span>
-<span id="cb19-42"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-42"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 
 </div>
@@ -739,7 +739,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 </section>
 <section id="exercise-2.2" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/2_ggplot2.qmd#exercise-2.2-patterns-and-gradients">Exercise 2.2</a></h2>
-<div id="timer_4fcc5e364a3b71b2aa4fede4fc1e87222826352e" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_126bec097cc0d4ffd6b0ccfc0cebcf505ef3019b" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -775,8 +775,8 @@ Patterns can aid in cases of colour vision deficiency.</p>
 </ul>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="co"># Inspect default aesthetics</span></span>
-<span id="cb20-2"><a></a>StatDensity<span class="sc">$</span>default_aes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="co"># Inspect default aesthetics</span></span>
+<span id="cb20-2"><a></a>StatDensity<span class="sc">$</span>default_aes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>Aesthetic mapping: 
@@ -792,11 +792,11 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <h3 id="after-computing-stat-1">After computing stat</h3>
 <p>Using <code>after_stat()</code> yourself to redirect/modify computed variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, drv)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, drv)) <span class="sc">+</span></span>
 <span id="cb22-2"><a></a>  <span class="fu">stat_density</span>(</span>
 <span id="cb22-3"><a></a>    <span class="at">geom =</span> <span class="st">"tile"</span>, <span class="at">position =</span> <span class="st">"identity"</span>,</span>
 <span id="cb22-4"><a></a>    <span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">after_stat</span>(scaled))</span>
-<span id="cb22-5"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-5"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="2_ggplot2_files/figure-revealjs/unnamed-chunk-21-1.png" width="1728" class="r-stretch"></section>
@@ -806,11 +806,11 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p>You may have run into a histogram/density misalignment problem.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>binwidth <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>binwidth <span class="ot">&lt;-</span> <span class="dv">2</span></span>
 <span id="cb23-2"><a></a></span>
 <span id="cb23-3"><a></a><span class="fu">ggplot</span>(faithful, <span class="fu">aes</span>(waiting)) <span class="sc">+</span></span>
 <span id="cb23-4"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> binwidth) <span class="sc">+</span></span>
-<span id="cb23-5"><a></a>  <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-5"><a></a>  <span class="fu">geom_density</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -827,12 +827,12 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p>This can be fixed by using the <code>density</code> computed variable in the histogram.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb24" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">ggplot</span>(faithful, <span class="fu">aes</span>(waiting)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">ggplot</span>(faithful, <span class="fu">aes</span>(waiting)) <span class="sc">+</span></span>
 <span id="cb24-2"><a></a>  <span class="fu">geom_histogram</span>(</span>
 <span id="cb24-3"><a></a>    <span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)), </span>
 <span id="cb24-4"><a></a>    <span class="at">binwidth =</span> binwidth</span>
 <span id="cb24-5"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb24-6"><a></a>  <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-6"><a></a>  <span class="fu">geom_density</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -849,11 +849,11 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p>Or scaling the <code>count</code> computed variable in the density.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb25" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">ggplot</span>(faithful, <span class="fu">aes</span>(waiting)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">ggplot</span>(faithful, <span class="fu">aes</span>(waiting)) <span class="sc">+</span></span>
 <span id="cb25-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> binwidth) <span class="sc">+</span></span>
 <span id="cb25-3"><a></a>  <span class="fu">geom_density</span>(</span>
 <span id="cb25-4"><a></a>    <span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(count <span class="sc">*</span> binwidth))</span>
-<span id="cb25-5"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-5"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -886,12 +886,12 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p>A typical use of <code>after_scale()</code> is to derive colours from <code>colour</code> to <code>fill</code> or vice versa.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb26" data-code-line-numbers="3-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, <span class="at">fill =</span> drv)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" data-code-line-numbers="3-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, <span class="at">fill =</span> drv)) <span class="sc">+</span></span>
 <span id="cb26-2"><a></a>  <span class="fu">geom_density</span>(</span>
 <span id="cb26-3"><a></a>    <span class="fu">aes</span>(<span class="at">colour =</span> <span class="fu">after_scale</span>(</span>
 <span id="cb26-4"><a></a>      scales<span class="sc">::</span><span class="fu">col_mix</span>(fill, <span class="st">"black"</span>)</span>
 <span id="cb26-5"><a></a>    ))</span>
-<span id="cb26-6"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-6"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -908,8 +908,8 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p>A nice benefit of using <code>after_scale()</code> is that you derive colours, so you can still swap out scales.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">last_plot</span>() <span class="sc">+</span> </span>
-<span id="cb27-2"><a></a>  <span class="fu">scale_fill_viridis_d</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">last_plot</span>() <span class="sc">+</span> </span>
+<span id="cb27-2"><a></a>  <span class="fu">scale_fill_viridis_d</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -925,9 +925,9 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <h3 id="after-scales-3">After scales</h3>
 <p>Another use case can be to create half-geometries.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(class, displ)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(class, displ)) <span class="sc">+</span></span>
 <span id="cb28-2"><a></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> <span class="fu">after_scale</span>(x)), <span class="at">staplewidth =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb28-3"><a></a>  <span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">xmax =</span> <span class="fu">after_scale</span>(x)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-3"><a></a>  <span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">xmax =</span> <span class="fu">after_scale</span>(x)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="2_ggplot2_files/figure-revealjs/unnamed-chunk-27-1.png" width="1728" class="r-stretch"></section>
@@ -947,13 +947,13 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p>A typical use case is when you want to initialise the aesthetic with one column, and later modify the mapped values.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(drv, displ)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(drv, displ)) <span class="sc">+</span></span>
 <span id="cb29-2"><a></a>  <span class="fu">geom_violin</span>(</span>
 <span id="cb29-3"><a></a>    <span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">stage</span>(</span>
 <span id="cb29-4"><a></a>      <span class="at">start =</span> drv, </span>
 <span id="cb29-5"><a></a>      <span class="at">after_scale =</span> scales<span class="sc">::</span><span class="fu">col_mix</span>(fill, <span class="st">"white"</span>)</span>
 <span id="cb29-6"><a></a>    ))</span>
-<span id="cb29-7"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-7"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -970,7 +970,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p>Another use case is to reposition labels after computing a statistic.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb30" data-code-line-numbers="4-8|9-12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(drv, displ, <span class="at">fill =</span> drv)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30" data-code-line-numbers="4-8|9-12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(drv, displ, <span class="at">fill =</span> drv)) <span class="sc">+</span></span>
 <span id="cb30-2"><a></a>  <span class="fu">geom_violin</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
 <span id="cb30-3"><a></a>  <span class="fu">stat_summary</span>(</span>
 <span id="cb30-4"><a></a>    <span class="at">fun.data =</span> <span class="sc">~</span> <span class="fu">data.frame</span>(</span>
@@ -983,7 +983,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <span id="cb30-11"><a></a>      <span class="at">label =</span> <span class="fu">after_stat</span>(<span class="fu">sprintf</span>(<span class="st">"%.2f±%.2f"</span>, mean, sd))</span>
 <span id="cb30-12"><a></a>    ),</span>
 <span id="cb30-13"><a></a>    <span class="at">geom =</span> <span class="st">"text"</span></span>
-<span id="cb30-14"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-14"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -999,18 +999,18 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <h3 id="caveat">Caveat</h3>
 <p>Staging function on their own are inert.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">after_stat</span>(<span class="dv">10</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">after_stat</span>(<span class="dv">10</span>)</span>
 <span id="cb31-2"><a></a><span class="do">## [1] 10</span></span>
 <span id="cb31-3"><a></a></span>
 <span id="cb31-4"><a></a><span class="fu">after_scale</span>(<span class="dv">10</span>)</span>
 <span id="cb31-5"><a></a><span class="do">## [1] 10</span></span>
 <span id="cb31-6"><a></a></span>
 <span id="cb31-7"><a></a><span class="fu">stage</span>(<span class="dv">10</span>, <span class="st">"A"</span>, mpg)</span>
-<span id="cb31-8"><a></a><span class="do">## [1] 10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-8"><a></a><span class="do">## [1] 10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>They need to be put in <code>aes()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">aes</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">aes</span>(</span>
 <span id="cb32-2"><a></a>  <span class="at">a =</span> <span class="fu">after_stat</span>(<span class="dv">10</span>),</span>
 <span id="cb32-3"><a></a>  <span class="at">b =</span> <span class="fu">after_scale</span>(<span class="dv">10</span>),</span>
 <span id="cb32-4"><a></a>  <span class="at">c =</span> <span class="fu">stage</span>(<span class="dv">10</span>, <span class="st">"A"</span>, mpg)</span>
@@ -1018,7 +1018,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <span id="cb32-6"><a></a><span class="do">## Aesthetic mapping: </span></span>
 <span id="cb32-7"><a></a><span class="do">## * `a` -&gt; `after_stat(10)`</span></span>
 <span id="cb32-8"><a></a><span class="do">## * `b` -&gt; `after_scale(10)`</span></span>
-<span id="cb32-9"><a></a><span class="do">## * `c` -&gt; `stage(10, "A", mpg)`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-9"><a></a><span class="do">## * `c` -&gt; `stage(10, "A", mpg)`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -1032,7 +1032,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 </section>
 <section id="exercise-2.3" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/2_ggplot2.qmd#exercise-2.3.1-delayed-evaluation">Exercise 2.3</a></h2>
-<div id="timer_4fcc5e364a3b71b2aa4fede4fc1e87222826352e" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_8a5252a7efd9e1fc19c4bcab66297b2108e152cd" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -1056,7 +1056,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">factor</span>(<span class="dv">1</span>), <span class="at">fill =</span> <span class="fu">factor</span>(drv))) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">factor</span>(<span class="dv">1</span>), <span class="at">fill =</span> <span class="fu">factor</span>(drv))) <span class="sc">+</span></span>
 <span id="cb33-2"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
 <span id="cb33-3"><a></a>  <span class="co"># Add labels</span></span>
 <span id="cb33-4"><a></a>  <span class="fu">stat_count</span>(</span>
@@ -1067,7 +1067,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <span id="cb33-9"><a></a>  <span class="co"># Turn off y-axis and legend</span></span>
 <span id="cb33-10"><a></a>  <span class="fu">scale_y_discrete</span>(<span class="at">guide =</span> <span class="st">"none"</span>, <span class="at">name =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
 <span id="cb33-11"><a></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">guide =</span> <span class="st">"none"</span>)</span>
-<span id="cb33-12"><a></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-12"><a></a>p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 
 </div>
@@ -1078,7 +1078,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p>Differences between <code>coord_polar()</code> and <code>coord_radial()</code>.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>polar <span class="ot">&lt;-</span> p <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>polar <span class="ot">&lt;-</span> p <span class="sc">+</span> </span>
 <span id="cb34-2"><a></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span> </span>
 <span id="cb34-3"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"coord_polar()"</span>)</span>
 <span id="cb34-4"><a></a>radial <span class="ot">&lt;-</span> p <span class="sc">+</span> </span>
@@ -1086,7 +1086,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <span id="cb34-6"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"coord_radial()"</span>)</span>
 <span id="cb34-7"><a></a></span>
 <span id="cb34-8"><a></a><span class="co"># Thomas will explain this here mystery later</span></span>
-<span id="cb34-9"><a></a>polar <span class="sc">+</span> radial</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-9"><a></a>polar <span class="sc">+</span> radial</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -1103,14 +1103,14 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p>Set <code>expand = FALSE</code> for use in pie charts.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb35" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>polar <span class="ot">&lt;-</span> p <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>polar <span class="ot">&lt;-</span> p <span class="sc">+</span> </span>
 <span id="cb35-2"><a></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span> </span>
 <span id="cb35-3"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"coord_polar()"</span>)</span>
 <span id="cb35-4"><a></a>radial <span class="ot">&lt;-</span> p <span class="sc">+</span> </span>
 <span id="cb35-5"><a></a>  <span class="fu">coord_radial</span>(<span class="at">expand =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
 <span id="cb35-6"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"coord_radial()"</span>)</span>
 <span id="cb35-7"><a></a></span>
-<span id="cb35-8"><a></a>polar <span class="sc">+</span> radial</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-8"><a></a>polar <span class="sc">+</span> radial</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -1127,7 +1127,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p><code>coord_radial()</code> interfaces with guide system mostly via <code>guide_axis_theta()</code>. Also note the text angles.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>red_axis <span class="ot">&lt;-</span> <span class="fu">scale_x_continuous</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>red_axis <span class="ot">&lt;-</span> <span class="fu">scale_x_continuous</span>(</span>
 <span id="cb36-2"><a></a>  <span class="at">guide =</span> <span class="fu">guide_axis_theta</span>(</span>
 <span id="cb36-3"><a></a>    <span class="at">angle =</span> <span class="dv">0</span>, </span>
 <span id="cb36-4"><a></a>    <span class="at">theme =</span> <span class="fu">theme_gray</span>(<span class="at">ink =</span> <span class="st">"red"</span>)</span>
@@ -1137,7 +1137,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <span id="cb36-8"><a></a><span class="co"># Ignores guide</span></span>
 <span id="cb36-9"><a></a>(polar <span class="sc">+</span> red_axis) <span class="sc">+</span> </span>
 <span id="cb36-10"><a></a>  <span class="co"># Uses correct guide</span></span>
-<span id="cb36-11"><a></a>  (radial <span class="sc">+</span> red_axis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-11"><a></a>  (radial <span class="sc">+</span> red_axis)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -1153,7 +1153,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <h3 id="partial-circles">Partial circles</h3>
 <p>We’re no longer restricted to complete circles.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>p <span class="sc">+</span> <span class="fu">coord_radial</span>(<span class="at">start =</span> <span class="sc">-</span><span class="fl">0.4</span> <span class="sc">*</span> pi, <span class="at">end =</span> <span class="fl">0.4</span> <span class="sc">*</span> pi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>p <span class="sc">+</span> <span class="fu">coord_radial</span>(<span class="at">start =</span> <span class="sc">-</span><span class="fl">0.4</span> <span class="sc">*</span> pi, <span class="at">end =</span> <span class="fl">0.4</span> <span class="sc">*</span> pi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="2_ggplot2_files/figure-revealjs/unnamed-chunk-36-1.png" width="960" class="r-stretch"></section>
@@ -1163,10 +1163,10 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p>Switching a pie chart to a donut chart is as easy as setting the <code>inner.radius</code> argument.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>p <span class="sc">+</span> <span class="fu">coord_radial</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>p <span class="sc">+</span> <span class="fu">coord_radial</span>(</span>
 <span id="cb38-2"><a></a>  <span class="at">expand =</span> <span class="cn">FALSE</span>, </span>
 <span id="cb38-3"><a></a>  <span class="at">inner.radius =</span> <span class="fl">0.5</span></span>
-<span id="cb38-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-4"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -1183,10 +1183,10 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p>We can combine partial polar coordinates with donuts.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>p <span class="sc">+</span> <span class="fu">coord_radial</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>p <span class="sc">+</span> <span class="fu">coord_radial</span>(</span>
 <span id="cb39-2"><a></a>  <span class="at">start =</span> <span class="dv">0</span>, <span class="at">end =</span> <span class="fl">0.5</span> <span class="sc">*</span> pi, </span>
 <span id="cb39-3"><a></a>  <span class="at">inner.radius =</span> <span class="fl">0.5</span></span>
-<span id="cb39-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-4"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -1208,7 +1208,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 </section>
 <section id="exercise-2.4" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/2_ggplot2.qmd#exercise-2.4.1-polar-coordinates">Exercise 2.4</a></h2>
-<div id="timer_4fcc5e364a3b71b2aa4fede4fc1e87222826352e" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_8a5252a7efd9e1fc19c4bcab66297b2108e152cd" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -1229,10 +1229,10 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <h3 id="display-of-inner-axes">Display of inner axes</h3>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
 <span id="cb40-2"><a></a>  <span class="fu">aes</span>(bill_len, bill_dep, <span class="at">colour =</span> sex) <span class="sc">+</span></span>
 <span id="cb40-3"><a></a>  <span class="fu">geom_point</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb40-4"><a></a>p <span class="sc">+</span> <span class="fu">facet_grid</span>(island <span class="sc">~</span> species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-4"><a></a>p <span class="sc">+</span> <span class="fu">facet_grid</span>(island <span class="sc">~</span> species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -1248,7 +1248,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <h3 id="display-of-inner-axes-1">Display of inner axes</h3>
 <p>Inner axes can be exposed, for all directions or <code>x</code> or <code>y</code> individually.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>p <span class="sc">+</span> <span class="fu">facet_grid</span>(island <span class="sc">~</span> species, <span class="at">axes =</span> <span class="st">"all"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>p <span class="sc">+</span> <span class="fu">facet_grid</span>(island <span class="sc">~</span> species, <span class="at">axes =</span> <span class="st">"all"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="2_ggplot2_files/figure-revealjs/unnamed-chunk-40-1.png" width="1728" class="r-stretch"></section>
@@ -1257,7 +1257,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <h3 id="display-of-inner-axes-2">Display of inner axes</h3>
 <p>We can confine labels, so inner axes only display tick marks.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>p <span class="sc">+</span> <span class="fu">facet_grid</span>(island <span class="sc">~</span> species, <span class="at">axes =</span> <span class="st">"all"</span>, <span class="at">axis.labels =</span> <span class="st">"margins"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>p <span class="sc">+</span> <span class="fu">facet_grid</span>(island <span class="sc">~</span> species, <span class="at">axes =</span> <span class="st">"all"</span>, <span class="at">axis.labels =</span> <span class="st">"margins"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="2_ggplot2_files/figure-revealjs/unnamed-chunk-41-1.png" width="1728" class="r-stretch"></section>
@@ -1267,14 +1267,14 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p>Layers have a <code>layout</code> argument that can be interpreted by facets.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb43" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>p <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>p <span class="sc">+</span></span>
 <span id="cb43-2"><a></a>  <span class="fu">geom_point</span>(</span>
 <span id="cb43-3"><a></a>    <span class="at">colour =</span><span class="st">"grey"</span>, <span class="at">shape =</span> <span class="dv">1</span>, </span>
 <span id="cb43-4"><a></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb43-5"><a></a>    <span class="at">layout =</span> <span class="st">"fixed"</span></span>
 <span id="cb43-6"><a></a>  ) <span class="sc">+</span></span>
 <span id="cb43-7"><a></a>  <span class="fu">geom_point</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb43-8"><a></a>  <span class="fu">facet_grid</span>(island <span class="sc">~</span> species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-8"><a></a>  <span class="fu">facet_grid</span>(island <span class="sc">~</span> species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -1291,13 +1291,13 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <p><code>facet_wrap()</code> and <code>facet_grid()</code> allow placement at certain panels.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb44" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>p <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>p <span class="sc">+</span></span>
 <span id="cb44-2"><a></a>  <span class="fu">annotate</span>(</span>
 <span id="cb44-3"><a></a>    <span class="at">geom =</span> <span class="st">"text"</span>, <span class="at">x =</span> <span class="fu">I</span>(<span class="fl">0.7</span>), <span class="at">y =</span> <span class="fu">I</span>(<span class="fl">0.25</span>), <span class="at">size =</span> <span class="dv">2</span>,</span>
 <span id="cb44-4"><a></a>    <span class="at">label =</span> <span class="st">"Adelie Penguins</span><span class="sc">\n</span><span class="st">on Dream island"</span>,</span>
 <span id="cb44-5"><a></a>    <span class="at">layout =</span> <span class="dv">4</span></span>
 <span id="cb44-6"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb44-7"><a></a>  <span class="fu">facet_grid</span>(island <span class="sc">~</span> species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-7"><a></a>  <span class="fu">facet_grid</span>(island <span class="sc">~</span> species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -1330,8 +1330,8 @@ Patterns can aid in cases of colour vision deficiency.</p>
 <h3 id="wrap-panel-order-1">Wrap panel order</h3>
 <p>The default order is <code>"lt"</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>panels <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">as.integer</span>(<span class="fu">interaction</span>(species, island, <span class="at">drop =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb45-2"><a></a>p <span class="sc">+</span> <span class="fu">facet_wrap</span>(panels, <span class="at">dir =</span> <span class="st">"lt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>panels <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">as.integer</span>(<span class="fu">interaction</span>(species, island, <span class="at">drop =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb45-2"><a></a>p <span class="sc">+</span> <span class="fu">facet_wrap</span>(panels, <span class="at">dir =</span> <span class="st">"lt"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="2_ggplot2_files/figure-revealjs/unnamed-chunk-44-1.png" width="960" class="r-stretch"></section>
@@ -1339,7 +1339,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 
 <h3 id="wrap-panel-order-2">Wrap panel order</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a>p <span class="sc">+</span> <span class="fu">facet_wrap</span>(panels, <span class="at">dir =</span> <span class="st">"tr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a>p <span class="sc">+</span> <span class="fu">facet_wrap</span>(panels, <span class="at">dir =</span> <span class="st">"tr"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="2_ggplot2_files/figure-revealjs/unnamed-chunk-45-1.png" width="960" class="r-stretch"></section>
@@ -1366,7 +1366,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
 </section>
 <section id="exercise-2.5" class="slide level2 center" style="text-align:center;">
 <h2><a href="https://posit-conf-2025.github.io/ggplot2/exercises/2_ggplot2.qmd#exercise-2.5.1-facets">Exercise 2.5</a></h2>
-<div id="timer_4fcc5e364a3b71b2aa4fede4fc1e87222826352e" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_8a5252a7efd9e1fc19c4bcab66297b2108e152cd" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -1569,7 +1569,7 @@ Patterns can aid in cases of colour vision deficiency.</p>
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1681,13 +1681,14 @@ Patterns can aid in cases of colour vision deficiency.</p>
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
