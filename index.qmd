@@ -100,6 +100,11 @@ Thomas is a software engineer at Posit where he is in charge of most things rela
 
 Teun is a contractor working for Posit. He contributes mostly to the ggplot2 and scales packages and has been in charge of most of the new features in the latest releases. He has authored other packages such as legendry, ggh4x and ggarrow — all building on the ggplot2 framework.
 
+## Survey
+
+Please fill out the survey:
+http://pos.it/conf-workshop-survey
+
 -----
 
 ![](https://i.creativecommons.org/l/by/4.0/88x31.png) This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
