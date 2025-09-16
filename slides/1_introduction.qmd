@@ -66,7 +66,7 @@
 ## Practical information
 
 ::: {.center-y}
-**Workshop website:** <http://pos.it/ggplot2-conf25>
+**Workshop website:** <https://pos.it/ggplot2-conf25>
 
 &nbsp;
 
@@ -83,4 +83,9 @@
 &nbsp;
 
 **Respect the red lanyards and any contact preferences**
+
+&nbsp;
+
+**Code of Conduct:** <https://posit.co/code-of-conduct>. Please review carefully. You can report Code of Conduct violations in person, by email, or by phone. Please see the policy linked above for contact information.
+
 :::
