@@ -102,8 +102,7 @@ Teun is a contractor working for Posit. He contributes mostly to the ggplot2 and
 
 ## Survey
 
-Please fill out the survey:
-http://pos.it/conf-workshop-survey
+Please fill out [the survey](http://pos.it/conf-workshop-survey)
 
 -----
 
